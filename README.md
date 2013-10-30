@@ -1,4 +1,4 @@
-# Support Foo
+# Supportly
 
 ## Support that makes you better at support.
 

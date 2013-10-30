@@ -17,7 +17,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: support_foo_development
+  database: supportly_development
   pool: 5
 
   # Connect on a TCP socket. Omitted by default since the client uses a
@@ -44,11 +44,11 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: support_foo_test
+  database: supportly_test
   pool: 5
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: support_foo_production
+  database: supportly_production
   pool: 5
