@@ -11,16 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131030010016) do
+ActiveRecord::Schema.define(version: 20131031210722) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
 
-  create_table "messages", id: false, force: true do |t|
+  create_table "accounts", id: false, force: true do |t|
+    t.uuid     "id",         null: false
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "conversations", id: false, force: true do |t|
     t.uuid     "id",         null: false
     t.integer  "number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.uuid     "account_id", null: false
+  end
+
+  create_table "messages", id: false, force: true do |t|
+    t.uuid     "id",              null: false
+    t.string   "type"
+    t.uuid     "conversation_id", null: false
     t.string   "from"
-    t.text     "body"
+    t.text     "content"
+    t.hstore   "data"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
