@@ -1,5 +1,7 @@
 # Supportly
 
+[![Build Status](https://travis-ci.org/support-foo/web.png?branch=master)](https://travis-ci.org/support-foo/web)
+
 ## Support that makes you better at support.
 
 This is a placeholder repo for a product that's under review at Assembly. You can help this idea get made into a product by visiting [https://assemblymade.com/support-foo](https://assemblymade.com/support-foo).
