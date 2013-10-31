@@ -97,5 +97,6 @@ DEPENDENCIES
   pg
   puma
   rails (= 4.0.0)
+  rake
   sass-rails (~> 4.0.0)
   uglifier (>= 1.3.0)
