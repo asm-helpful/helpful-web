@@ -18,6 +18,7 @@ development:
   adapter: postgresql
   encoding: unicode
   database: supportly_development
+  host: localhost
   pool: 5
 
   # Connect on a TCP socket. Omitted by default since the client uses a
