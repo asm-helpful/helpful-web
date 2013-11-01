@@ -1,5 +1,7 @@
 Supportly::Application.routes.draw do
 
+  resource :beta_invites, only: [:create]
+
   root to: 'pages#home'
   resources :messages
 
