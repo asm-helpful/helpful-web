@@ -14,6 +14,13 @@ module Supportly
 
     config.autoload_paths << File.join(config.root, 'lib')
 
+
+    # Use MiniTest::Spec and FactoryGirl
+    config.generators do |g|
+      g.test_framework :mini_test, spec: true, fixture: false
+    end
+
+
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     # config.time_zone = 'Central Time (US & Canada)'
