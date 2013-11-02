@@ -11,6 +11,7 @@ gem 'uglifier', '>= 1.3.0'
 group :development, :test do
   gem 'rake'
 
+  gem 'minitest-rails-capybara', '~> 0.10.0'
   gem 'minitest-rails', '~> 0.9.2'
   gem 'mocha', '~> 0.14.0', require: false
 
