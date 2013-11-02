@@ -1,0 +1,9 @@
+<%= form_for(BetaInvite.new) do |f| %>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Email me when Supportly launches" %>
+  </div>
+<% end %>

@@ -7,6 +7,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+  <%= render '/layouts/flash' %>
+
   <%= yield %>
   <%= javascript_include_tag "embed" %>
 </body>
