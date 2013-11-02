@@ -15,3 +15,10 @@ end
 group :production do
   gem 'rails_12factor'
 end
+
+gem 'sidekiq'
+#For sidekiq admin support
+group :development do 
+  gem 'sinatra', require: false
+  gem 'slim'
+end
