@@ -7,7 +7,7 @@ require "minitest/rails/capybara"
 require "capybara/poltergeist"
 
 # Uncomment for awesome colorful output
-require "minitest/pride"
+# require "minitest/pride"
 
 # Enabling Mocha after everything else...
 require "mocha/setup"
