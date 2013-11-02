@@ -2,5 +2,5 @@ language: ruby
 rvm:
   - 2.0.0
 before_script:
+  - cp config/database.yml.example config/database.yml
   - psql -c 'create database supportly_test;' -U postgres
-
