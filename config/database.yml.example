@@ -1,0 +1,16 @@
+common: &common
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username:
+  password:
+  host: localhost
+
+development:
+  <<: *common
+  database: supportly_development
+
+test:
+  <<: *common
+  database: supportly_test
+

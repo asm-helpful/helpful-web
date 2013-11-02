@@ -15,4 +15,11 @@
 /log/*.log
 /tmp
 
+# Ignore .env file foreman uses
 /.env
+
+# Ignore bundle binstubs
+/bin
+
+# Ignore database config
+/config/database.yml
