@@ -5,6 +5,11 @@ Supportly::Application.routes.draw do
   root to: 'pages#home'
   resources :messages
 
+  if Rails.env.development?
+    require 'sidekiq/web'
+    mount Sidekiq::Web, at: "/sidekiq"
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
