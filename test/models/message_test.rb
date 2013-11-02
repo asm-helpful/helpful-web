@@ -1,4 +1,11 @@
 require 'test_helper'
 
-class MessageTest < ActiveSupport::TestCase
+describe Message do
+  before do
+    @message = Message.new
+  end
+
+  it "must be valid" do
+    @message.valid?.must_equal true
+  end
 end

@@ -1,10 +1,7 @@
 require 'test_helper'
 
-class MessagesControllerTest < ActionController::TestCase
-
-  def test_index_ok
-    get :index
-    assert_response :ok
-  end
-
+describe MessagesController do
+  # it "must be a real test" do
+  #   flunk "Need real tests"
+  # end
 end

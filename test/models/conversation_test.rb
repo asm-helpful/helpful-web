@@ -1,4 +1,11 @@
 require 'test_helper'
 
-class ConversationTest < ActiveSupport::TestCase
+describe Conversation do
+  before do
+    @conversation = Conversation.new
+  end
+
+  it "must be valid" do
+    @conversation.valid?.must_equal true
+  end
 end
