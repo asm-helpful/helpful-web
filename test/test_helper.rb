@@ -13,3 +13,8 @@ require "capybara/poltergeist"
 require "mocha/setup"
 
 Capybara.javascript_driver = :poltergeist
+
+Mail.defaults do
+  delivery_method :test
+end
+
