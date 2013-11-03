@@ -6,12 +6,14 @@ ruby '2.0.0'
 gem 'devise', '~> 3.1'
 gem 'friendly_id', '~> 5.0'
 gem 'jquery-rails'
+gem 'mailman', require: false
 gem 'pg'
 gem 'puma'
 gem 'rails', '4.0.1'
 gem 'sass-rails', '~> 4.0.0'
 gem 'sidekiq'
 gem 'uglifier', '>= 1.3.0'
+
 
 group :development do
   gem 'minitest-spec-rails'
