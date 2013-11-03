@@ -1,7 +1,13 @@
 require 'test_helper'
 
-class BetaInviteTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+describe BetaInvite do
+  before do
+    @beta_invite = BetaInvite.new(
+      email: "bob@example.com"
+    )
+  end
+
+  it "is valid" do
+    assert @beta_invite.valid?
+  end
 end

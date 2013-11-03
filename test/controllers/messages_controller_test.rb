@@ -1,7 +1,8 @@
 require 'test_helper'
 
 describe MessagesController do
-  # it "must be a real test" do
-  #   flunk "Need real tests"
-  # end
+  test "index is ok" do
+    get :index
+    assert_equal response.status, 200
+  end
 end

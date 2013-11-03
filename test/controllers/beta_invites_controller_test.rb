@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class BetaInvitesControllerTest < ActionController::TestCase
+describe BetaInvitesController do
   test "should create beta_invite" do
     assert_difference('BetaInvite.count') do
       post :create, beta_invite: { email: 'supportfoo@example.com' }

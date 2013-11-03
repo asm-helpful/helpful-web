@@ -5,7 +5,7 @@ describe Conversation do
     @conversation = Conversation.new
   end
 
-  it "must be valid" do
-    @conversation.valid?.must_equal true
+  it "is valid" do
+    assert @conversation.valid?
   end
 end

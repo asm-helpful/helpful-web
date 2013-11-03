@@ -5,7 +5,7 @@ describe Message do
     @message = Message.new
   end
 
-  it "must be valid" do
-    @message.valid?.must_equal true
+  it "is valid" do
+    assert @message.valid?
   end
 end
