@@ -2,5 +2,6 @@
 
 FactoryGirl.define do
   factory :message do
+    conversation
   end
 end

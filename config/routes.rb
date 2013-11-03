@@ -1,9 +1,16 @@
 Supportly::Application.routes.draw do
 
+  get "conversations/index"
   resource :beta_invites, only: [:create]
 
   root to: 'pages#home'
   resources :messages
+
+  scope ':account' do
+    #resources :"", controller: 'conversations', as: 'conversations'
+    resources :conversations
+    get '/', to:'conversations#index'
+  end
 
   if Rails.env.development?
     require 'sidekiq/web'
