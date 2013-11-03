@@ -2,5 +2,6 @@
 
 FactoryGirl.define do
   factory :conversation do
+    account
   end
 end
