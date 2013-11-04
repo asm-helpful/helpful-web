@@ -6,6 +6,24 @@
 
 This is a placeholder repo for a product that's under review at Assembly. You can help this idea get made into a product by visiting [https://assemblymade.com/support-foo](https://assemblymade.com/support-foo).
 
+### Development Instructions
+
+
+1. bundle install
+2. cp config/database.yml.example database.yml
+3. Modify config/database.yml as needed
+4. cp .env.example .env
+5. Modify .env as needed
+6. foreman start
+7. Navigate to localhost:5000
+
+#### Email
+
+Supportly ships with a script for fetching email from an IMAP folder 
+(in GMail just create a new label). To use this functionality you will need to 
+modify .env and enter your IMAP account information. By default the bin/mailman 
+script polls every 30 seconds for unread email in the specified IMAP folder.
+
 ### Proposed Stack
 
   * Web app, written in Ruby on Rails, hosted on Heroku
