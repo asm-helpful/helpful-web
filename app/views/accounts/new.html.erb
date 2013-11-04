@@ -1,0 +1,23 @@
+<h2>Sign up</h2>
+
+<%= render "/shared/error_messages", :target => @account %>
+<%= render "/shared/error_messages", :target => @new_account_user %>
+
+<%= form_for @account, url: account_path do |f| %>
+
+  <div><%= f.label :name, "Company name" %><br />
+    <%= f.text_field :name, :autofocus => true %></div>
+
+  <%= fields_for @new_account_user do |ff| %>
+    <div><%= ff.label :email %><br />
+      <%= ff.email_field :email %></div>
+
+    <div><%= ff.label :password %><br />
+      <%= ff.password_field :password %></div>
+
+    <div><%= ff.label :password_confirmation %><br />
+      <%= ff.password_field :password_confirmation %></div>
+  <% end %>
+
+  <div><%= f.submit "Sign up" %></div>
+<% end %>

@@ -1,11 +1,27 @@
 Supportly::Application.routes.draw do
 
   get "conversations/index"
-  devise_for :users
+  devise_for :users, skip: :registrations
+
+  # This is the normal user registrations but NO new/create - That is handled by either:
+  # * Users#new (for new users to an existing acct) or
+  # * Account#new (for a new account and the first user)
+  devise_scope :user do
+    resource :registration,
+             only: [:edit, :update, :destroy],
+             path: 'users',
+             path_names: { new: 'sign_up' },
+             controller: 'devise/registrations',
+             as: :user_registration do
+      get :cancel
+    end
+  end
+
   resource :beta_invites, only: [:create]
+  resource :account, only: [:new, :create]
+  resources :messages
 
   root to: 'pages#home'
-  resources :messages
 
   scope ':account' do
     #resources :"", controller: 'conversations', as: 'conversations'
@@ -17,59 +33,4 @@ Supportly::Application.routes.draw do
     require 'sidekiq/web'
     mount Sidekiq::Web, at: "/sidekiq"
   end
-
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
-
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
-
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
-
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
-
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
 end
