@@ -1,5 +1,6 @@
 Supportly::Application.routes.draw do
 
+  get "conversations/index"
   devise_for :users, skip: :registrations
 
   # This is the normal user registrations but NO new/create - That is handled by either:
@@ -21,6 +22,12 @@ Supportly::Application.routes.draw do
   resources :messages
 
   root to: 'pages#home'
+
+  scope ':account' do
+    #resources :"", controller: 'conversations', as: 'conversations'
+    resources :conversations
+    get '/', to:'conversations#index'
+  end
 
   if Rails.env.development?
     require 'sidekiq/web'

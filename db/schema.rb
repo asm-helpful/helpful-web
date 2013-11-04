@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 20131104202406) do
     t.datetime "updated_at"
   end
 
+  add_index "accounts", ["name"], name: "index_accounts_on_name", unique: true, using: :btree
+
   create_table "beta_invites", force: true do |t|
     t.string   "email"
     t.string   "invite_token"
