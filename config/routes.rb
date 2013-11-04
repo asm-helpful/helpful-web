@@ -1,5 +1,6 @@
 Supportly::Application.routes.draw do
 
+  devise_for :users
   resource :beta_invites, only: [:create]
 
   root to: 'pages#home'
