@@ -8,4 +8,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :trackable, :validatable,
          :confirmable, :lockable, :timeoutable
+
+  has_many :memberships
+  has_many :accounts, through: :memberships
 end

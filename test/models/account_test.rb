@@ -2,7 +2,7 @@ require 'test_helper'
 
 describe Account do
   before do
-    @account = Account.new
+    @account = FactoryGirl.build(:account)
   end
 
   it "must be valid" do

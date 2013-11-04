@@ -83,6 +83,9 @@ GEM
       minitest-capybara (~> 0.4)
       minitest-metadata (~> 0.4)
       minitest-rails (~> 0.9.1)
+    minitest-spec-rails (4.7.3)
+      minitest (~> 4.7)
+      rails (>= 3.0)
     mocha (0.14.0)
       metaclass (~> 0.0.1)
     multi_json (1.8.2)
@@ -183,6 +186,7 @@ DEPENDENCIES
   jquery-rails
   minitest-rails (~> 0.9.2)
   minitest-rails-capybara (~> 0.10.0)
+  minitest-spec-rails
   mocha (~> 0.14.0)
   pg
   poltergeist (~> 1.4.1)
