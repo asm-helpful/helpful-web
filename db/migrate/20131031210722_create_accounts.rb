@@ -7,5 +7,6 @@ class CreateAccounts < ActiveRecord::Migration
     end
 
     add_column :conversations, :account_id, :uuid, null: false
+    add_index  :conversations, :account_id
   end
 end

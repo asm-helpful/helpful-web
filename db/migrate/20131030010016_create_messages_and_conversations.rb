@@ -16,6 +16,8 @@ class CreateMessagesAndConversations < ActiveRecord::Migration
       t.hstore      :data
       t.timestamps
     end
+
+    add_index :messages, :conversation_id
   end
 
 end
