@@ -1,6 +1,7 @@
 Supportly::Application.routes.draw do
 
   get "conversations/index"
+  devise_for :users
   resource :beta_invites, only: [:create]
 
   root to: 'pages#home'
