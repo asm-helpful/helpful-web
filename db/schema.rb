@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131101203128) do
+ActiveRecord::Schema.define(version: 20131104034821) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,14 @@ ActiveRecord::Schema.define(version: 20131101203128) do
     t.uuid     "account_id", null: false
   end
 
+  create_table "identities", id: false, force: true do |t|
+    t.uuid     "id",              null: false
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "messages", id: false, force: true do |t|
     t.uuid     "id",              null: false
     t.string   "type"
@@ -49,6 +57,27 @@ ActiveRecord::Schema.define(version: 20131101203128) do
     t.string   "from"
     t.text     "content"
     t.hstore   "data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sequential", force: true do |t|
+    t.string   "model"
+    t.string   "column"
+    t.string   "scope"
+    t.integer  "scope_value"
+    t.integer  "value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", id: false, force: true do |t|
+    t.uuid     "id",         null: false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "provider"
+    t.string   "uid"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
