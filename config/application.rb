@@ -6,6 +6,12 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env)
 
+# Permits the use of default env variables in dev/test, but requires that they be set for production to work correctly
+# This method must exist before the environment initializers that use it
+def easy_env_default(key, default = 'insecure')
+  ENV[key.to_s] || (Rails.env.production? ? raise("ENV variable must exist: #{key}") : default)
+end
+
 module Supportly
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
