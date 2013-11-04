@@ -42,6 +42,8 @@ ActiveRecord::Schema.define(version: 20131104202406) do
     t.uuid     "account_id", null: false
   end
 
+  add_index "conversations", ["account_id"], name: "index_conversations_on_account_id", using: :btree
+
   create_table "memberships", id: false, force: true do |t|
     t.uuid     "id",         null: false
     t.uuid     "account_id", null: false
@@ -64,6 +66,8 @@ ActiveRecord::Schema.define(version: 20131104202406) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
 
   create_table "users", id: false, force: true do |t|
     t.uuid     "id",                                  null: false
