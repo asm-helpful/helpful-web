@@ -45,7 +45,6 @@ test:
   adapter: postgresql
   encoding: unicode
   database: supportly_test
-  username: postgres
   pool: 5
 
 production:
