@@ -6,8 +6,15 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env)
 
+# Permits the use of default env variables in dev/test, but requires that they be set for production to work correctly
+# This method must exist before the environment initializers that use it
+def easy_env_default(key, default = 'insecure')
+  ENV[key.to_s] || (Rails.env.production? ? raise("ENV variable must exist: #{key}") : default)
+end
+
 module Supportly
   class Application < Rails::Application
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -28,5 +35,8 @@ module Supportly
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+
+    # For Heroku & Devise
+    config.assets.initialize_on_precompile = false
   end
 end

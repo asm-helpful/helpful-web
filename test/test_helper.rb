@@ -13,3 +13,18 @@ require "capybara/poltergeist"
 require "mocha/setup"
 
 Capybara.javascript_driver = :poltergeist
+
+class ActionController::TestCase
+  include Devise::TestHelpers
+end
+
+class IntegrationSpec < Minitest::Unit::TestCase
+  include Capybara::DSL
+  include Capybara::Assertions
+  extend Minitest::Spec::DSL
+
+  def teardown
+    Capybara.reset_session!
+    Capybara.use_default_driver
+  end
+end
