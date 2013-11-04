@@ -17,3 +17,5 @@
 
 /.env
 /config/database.yml
+
+Procfile.dev
