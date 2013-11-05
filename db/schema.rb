@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20131105135339) do
-=======
-ActiveRecord::Schema.define(version: 20131105124248) do
->>>>>>> Making conversations archivable
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,11 +38,11 @@ ActiveRecord::Schema.define(version: 20131105124248) do
   add_index "beta_invites", ["email"], name: "index_beta_invites_on_email", unique: true, using: :btree
 
   create_table "conversations", id: false, force: true do |t|
-    t.uuid     "id",         null: false
+    t.uuid     "id",                         null: false
     t.integer  "number"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.uuid     "account_id", null: false
+    t.uuid     "account_id",                 null: false
     t.string   "status",     default: "new", null: false
   end
 
