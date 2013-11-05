@@ -14,6 +14,7 @@ gem 'sidekiq'
 gem 'uglifier', '>= 1.3.0'
 
 group :development do
+  gem 'minitest-spec-rails'
   gem 'sinatra', require: false
   gem 'slim'
 end
@@ -25,7 +26,6 @@ group :development, :test do
   gem 'ffaker', '~> 1.20'
   gem 'minitest-rails', '~> 0.9.2'
   gem 'minitest-rails-capybara', '~> 0.10.0'
-  gem 'minitest-spec-rails'
   gem 'mocha', '~> 0.14.0', require: false
   gem 'poltergeist', '~> 1.4.1'
   gem 'rake'
