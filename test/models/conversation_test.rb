@@ -19,10 +19,10 @@ describe Conversation do
     assert conversation.archived?
   end
 
-  it "should only return unarchived conversations as default" do
+  it "should only return unarchived conversations" do
     FactoryGirl.create :conversation
     FactoryGirl.create :archived_conversation
-    Conversation.all.each do |c|
+    Conversation.unarchived.each do |c|
       assert !c.archived?
     end
   end

@@ -6,8 +6,8 @@ class Conversation < ActiveRecord::Base
   belongs_to :account
   has_many :messages
 
-  default_scope { where(archived: false) }
-  scope :archived, -> { where(archived: true) }
+  scope :unarchived, -> { where.not(status: "archived") }
+  scope :archived, -> { where(status: "archived") }
 
   def ordered_messages
     messages.order('created_at ASC')
@@ -17,12 +17,18 @@ class Conversation < ActiveRecord::Base
     ordered_messages.pluck("messages.from").uniq
   end
 
+  def archived?
+    !status.blank? && status == "archived"
+  end
+
   def archive
-    update_attribute(:archived, true)
+    update_attribute(:status, "archived")
   end
 
   def unarchive
-    update_attribute(:archived, false)
+    if status == "archived"
+      update_attribute(:status, nil)
+    end
   end
 
 end
