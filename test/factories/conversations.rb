@@ -4,6 +4,10 @@ FactoryGirl.define do
   factory :conversation do
     account
 
+    factory :archived_conversation do
+      archived true
+    end
+
     factory :conversation_with_messages do
       ignore do
         messages_count 5
