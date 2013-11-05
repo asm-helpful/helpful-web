@@ -9,9 +9,10 @@ describe Account do
     @account.valid?.must_equal true
   end
 
-  it "must have a unique name" do
-    Account.create name: 'unique'
+  it "must have a unique slug" do
+    Account.create name: 'unique', slug: 'unique'
     @account.name = 'unique'
+    @account.slug = 'unique'
 
     assert_raises(ActiveRecord::RecordNotUnique) do
       @account.save

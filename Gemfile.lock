@@ -56,6 +56,8 @@ GEM
       factory_girl (~> 4.2.0)
       railties (>= 3.0.0)
     ffaker (1.20.0)
+    friendly_id (5.0.1)
+      activerecord (~> 4.0.0)
     hike (1.2.3)
     i18n (0.6.5)
     jquery-rails (3.0.4)
@@ -183,6 +185,7 @@ DEPENDENCIES
   devise (~> 3.1)
   factory_girl_rails (~> 4.2.1)
   ffaker (~> 1.20)
+  friendly_id (~> 5.0)
   jquery-rails
   minitest-rails (~> 0.9.2)
   minitest-rails-capybara (~> 0.10.0)

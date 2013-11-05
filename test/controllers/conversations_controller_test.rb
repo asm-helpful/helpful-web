@@ -6,13 +6,13 @@ describe ConversationsController do
   end
 
   test "should set account" do
-    get :index, account: @conversation.account.name
+    get :index, account: @conversation.account.slug
     assert_response :success
     assert_not_nil assigns(:account)
   end
 
   test "should render conversation for account" do
-    get :index, account: @conversation.account.name
+    get :index, account: @conversation.account.slug
     assert_response :success
     assert_not_nil assigns(:conversations)
 
