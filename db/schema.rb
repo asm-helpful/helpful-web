@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 20131105124248) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.uuid     "account_id", null: false
-    t.string   "status"
+    t.string   "status",     default: "new", null: false
   end
 
   add_index "conversations", ["account_id"], name: "index_conversations_on_account_id", using: :btree

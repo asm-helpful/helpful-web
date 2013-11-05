@@ -18,17 +18,11 @@ class Conversation < ActiveRecord::Base
   end
 
   def archived?
-    !status.blank? && status == "archived"
+    status == "archived"
   end
 
   def archive
     update_attribute(:status, "archived")
-  end
-
-  def unarchive
-    if status == "archived"
-      update_attribute(:status, nil)
-    end
   end
 
 end
