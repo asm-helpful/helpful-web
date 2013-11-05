@@ -51,7 +51,7 @@ bundle exec rake db:setup
 Now run this thing!
 
 ```
-bundle exec foreman start -f Procfile.dev
+bundle exec foreman start
 ```
 
 Everything should be up and running here [http://0.0.0.0:5000](http://0.0.0.0:5000)
