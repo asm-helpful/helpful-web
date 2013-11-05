@@ -39,7 +39,7 @@ Now let's get some configuration in place
 
 ```
 cp config/database.yml.example config/database.yml
-cp .evn.example .env
+cp .env.example .env
 ```
 
 Now let's create the databases
