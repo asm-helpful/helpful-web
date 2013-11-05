@@ -8,5 +8,5 @@ class Membership < ActiveRecord::Base
 
   validates :account, presence: true
   validates :user, presence: true
-  validates :role, inclusion: ['owner', 'support', 'customer']
+  validates :role, inclusion: ['owner', 'agent', 'customer']
 end
