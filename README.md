@@ -18,6 +18,44 @@ Assembly products are like open-source and made with contributions from the comm
 
 Visit [https://assemblymade.com](https://assemblymade.com) to learn more.
 
+## Getting started with development
+
+*Note: This assumes you have Ruby 1.9.2 or later installed properly and have a basic working knowledge of how to use RubyGems*
+
+First you'll need to fork and clone this repo.
+
+```
+git clone git://github.com/support-foo/web.git web
+cd web
+```
+
+Let get our dependencies setup:
+
+```
+bundle install --path .bundle --binstubs
+```
+
+Now let's get some configuration in place
+
+```
+cp config/database.yml.example config/database.yml
+cp .env.example .env
+```
+
+Now let's create the databases
+
+```
+bundle exec rake db:setup
+```
+
+Now run this thing!
+
+```
+bundle exec foreman start
+```
+
+Everything should be up and running here [http://0.0.0.0:5000](http://0.0.0.0:5000)
+
 ### Background working (with Sidekiq)
 
 As proposed Sidekiq is used for background working.
@@ -33,3 +71,4 @@ Before launcing in production sidekiq should be tuned acording to numbers of web
 Number of concurrent workers can be set by env. variable ```SIDEKIQ_CONCURRENCY``` and updating ```config/initializers/sidekiq.rb```
 
 Sidekiq admin view (/sidekiq) is available in _development_ environment only.
+

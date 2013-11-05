@@ -15,7 +15,11 @@
 /log/*.log
 /tmp
 
-/.env
-/config/database.yml
+# Ignore Foreman .env files
+*.env
 
-Procfile.dev
+# Ignore Bundler binstubs
+/bin/*
+
+# Ignore database config
+/config/database.yml
