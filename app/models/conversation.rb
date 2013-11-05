@@ -5,10 +5,12 @@ class Conversation < ActiveRecord::Base
 
   belongs_to :account
   has_many :messages
-
+  
+  sequential column: :number, scope: :account_id
+  
   scope :unarchived, -> { where.not(status: "archived") }
   scope :archived, -> { where(status: "archived") }
-
+  
   def ordered_messages
     messages.order('created_at ASC')
   end
@@ -24,5 +26,4 @@ class Conversation < ActiveRecord::Base
   def archive
     update_attribute(:status, "archived")
   end
-
 end

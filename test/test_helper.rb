@@ -28,3 +28,8 @@ class IntegrationSpec < Minitest::Unit::TestCase
     Capybara.use_default_driver
   end
 end
+
+Mail.defaults do
+  delivery_method :test
+end
+
