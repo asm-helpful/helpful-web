@@ -1,8 +1,6 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 
-gem 'foreman'
-gem 'jquery-rails'
 gem 'pg'
 gem 'puma'
 gem 'rails', '4.0.0'
