@@ -12,6 +12,10 @@
 
   <%= render '/layouts/header' %>
 
+  <% if user_signed_in? %>
+    <%= render '/layouts/nav' %>
+  <% end %>
+
   <%= yield %>
   <%= javascript_include_tag "embed" %>
 </body>

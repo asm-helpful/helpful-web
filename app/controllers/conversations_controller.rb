@@ -8,6 +8,6 @@ class ConversationsController < ApplicationController
 
   private
   def load_account
-    @account = Account.where(name: params[:account]).first!
+    @account = Account.where(slug: params[:account]).first!
   end
 end
