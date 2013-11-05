@@ -23,7 +23,7 @@ messages = [
 Message.record_timestamps = false # so we can backdate seeds
 
 messages.each_with_index do |message_list, i|
-  c = supportly.conversations.create number: i+1
+  c = supportly.conversations.create
 
   message_list.each do |message|
     past = (i*2).minutes.ago

@@ -12,6 +12,7 @@ describe Messages::Email do
   describe "self.receive" do
 
     before do
+      Mail::TestMailer.deliveries.clear
       Mail.deliver do
         to 'supportly@example.com'
         from 'client@example.com'
@@ -23,9 +24,16 @@ describe Messages::Email do
 
     it "creates an email message" do
       refute @message.nil?
+      
+      # Clear out all email messages before we run this test
+      Message.where(type: "Messages::Email").each { |m| m.delete }
+      assert_equal 0, Message.where(type: "Messages::Email").count
+      
+      # Now process the email we have created
       Messages::Email.receive(@message)
       assert_equal 1, Message.where(type: "Messages::Email").count
       @email = Message.where(type: "Messages::Email").first
+      
       assert_equal 'supportly@example.com', @email.to
       assert_equal 'client@example.com', @email.from
       assert_equal 'testing', @email.subject
