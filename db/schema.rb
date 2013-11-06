@@ -73,6 +73,20 @@ ActiveRecord::Schema.define(version: 20131105213142) do
 
   add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
 
+  create_table "people", id: false, force: true do |t|
+    t.uuid     "id",         null: false
+    t.uuid     "user_id"
+    t.string   "name"
+    t.string   "email"
+    t.string   "twitter"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "people", ["email"], name: "index_people_on_email", unique: true, using: :btree
+  add_index "people", ["twitter"], name: "index_people_on_twitter", unique: true, using: :btree
+  add_index "people", ["user_id"], name: "index_people_on_user_id", unique: true, using: :btree
+
   create_table "sequential", force: true do |t|
     t.string   "model"
     t.string   "column"

@@ -11,4 +11,6 @@ class User < ActiveRecord::Base
 
   has_many :memberships
   has_many :accounts, through: :memberships
+
+  has_one :person
 end
