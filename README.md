@@ -1,6 +1,7 @@
 # Supportly
 
 [![Build Status](https://travis-ci.org/support-foo/web.png?branch=master)](https://travis-ci.org/support-foo/web)
+[![Code Climate](https://codeclimate.com/github/support-foo/web.png)](https://codeclimate.com/github/support-foo/web)
 
 ## Support that makes you better at support.
 
