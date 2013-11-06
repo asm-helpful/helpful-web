@@ -12,6 +12,7 @@ Mailman.config.imap = {
 }
 
 Mailman.config.poll_interval = 30
+Mailman.config.ignore_stdin = true
 
 Mailman::Application.run do
   default do
