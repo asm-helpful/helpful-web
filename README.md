@@ -1,101 +1,57 @@
-# Supportly
+# [Helpful](http://helpful.io)
+Support that makes you better at support.
 
 [![Build Status](https://travis-ci.org/support-foo/web.png?branch=master)](https://travis-ci.org/support-foo/web)
 [![Code Climate](https://codeclimate.com/github/support-foo/web.png)](https://codeclimate.com/github/support-foo/web)
 
-## Support that makes you better at support.
-
-This is a placeholder repo for a product that's under review at Assembly. You can help this idea get made into a product by visiting [https://assemblymade.com/support-foo](https://assemblymade.com/support-foo).
-
-### Development Instructions
+Helpful is an open product that's being build by a fantastic group of people on [Assembly](https://assemblymade.com/support-foo). Anybody can join in building this product and earn a stake of the profit.
 
 
-1. bundle install
-2. cp config/database.yml.example database.yml
-3. Modify config/database.yml as needed
-4. cp .env.example .env
-5. Modify .env as needed
-6. foreman start
-7. Navigate to localhost:5000
+## Getting started
 
-#### Email
+You need [Ruby 2.0.0](https://www.ruby-lang.org), [Postgres](http://www.postgresql.org), [Redis](http://redis.io) and the [Heroku Toolbelt](https://toolbelt.heroku.com) installed locally to run Helpful. 
+  
+    # Install dependent gems
+    $ bundle install --binstubs
+    
+    # Configure the environment
+    $ cp .env.example .env
+    # edit .env
+    
+    # Setup the database
+    $ cp config/database.yml.example database.yml
+    # edit config/database.
+    $ bin/rake db:setup
+    
+    # Start the server
+    $ foreman start
+    # open localhost:5000 in your browser
 
-Supportly ships with a script for fetching email from an IMAP folder 
-(in GMail just create a new label). To use this functionality you will need to 
-modify .env and enter your IMAP account information. By default the bin/mailman 
-script polls every 30 seconds for unread email in the specified IMAP folder.
+### Experimental IMAP Support
 
-### Proposed Stack
+Helpful has an experimental script for fetching email from an IMAP. To use this functionality you will need to .env and enter the details for the following environment variables:
 
-  * Web app, written in Ruby on Rails, hosted on Heroku
-  * Mac desktop app, written in Objective-C
-  * Windows desktop app, written in C#
+    MAILMAN_IMAP_SERVER
+    MAILMAN_IMAP_PORT
+    MAILMAN_IMAP_USERNAME
+    MAILMAN_IMAP_PASSWORD
+    MAILMAN_IMAP_FOLDER
 
-### How Assembly Works
+To run this script
 
-Assembly products are like open-source and made with contributions from the community. Assembly handles the boring stuff like hosting, support, financing, legal, etc. Once the product launches we collect the revenue and split the profits amongst the contributors.
-
-Visit [https://assemblymade.com](https://assemblymade.com) to learn more.
-
-## Getting started with development
-
-*Note: This assumes you have Ruby 1.9.2 or later installed properly and have a basic working knowledge of how to use RubyGems*
-
-First you'll need to fork and clone this repo.
-
-```
-git clone git://github.com/support-foo/web.git web
-cd web
-```
-
-Let get our dependencies setup:
-
-```
-bundle install --path .bundle --binstubs
-```
-
-Now let's get some configuration in place
-
-```
-cp config/database.yml.example config/database.yml
-cp .env.example .env
-```
-
-Now let's create the databases
-
-```
-bundle exec rake db:setup
-```
-
-Now run this thing!
-
-```
-bundle exec foreman start
-```
-
-Everything should be up and running here [http://0.0.0.0:5000](http://0.0.0.0:5000)
-
-#### Email
-
-Supportly ships with a script for fetching email from an IMAP folder 
-(in GMail just create a new label). To use this functionality you will need to 
-modify .env and enter your IMAP account information. By default the bin/mailman 
-script polls every 30 seconds for unread email in the specified IMAP folder.
+    $ bin/mailman
 
 
-### Background working (with Sidekiq)
+## Contributing
 
-As proposed Sidekiq is used for background working.
+There are a couple of steps you need to take before contributing:
 
-Put "jobs" in app/workers directory (Resque syntax is supported).
+1. Go to https://assemblymade.com and sign up.
+2. Link your GitHub account to your Assembly account
+3. Create a new WIP at https://assemblymade.com/support-foo/wips. Think of WIPs as GitHub issues.
 
-Sidekiq needs a Redis server, recommended are RedisToGo (available for free at Heroku).
+Then just go ahead, fork the repo & issue a pull request. You're on your way to having a stake in Helpful.
 
-Before launcing in production sidekiq should be tuned acording to numbers of web (workers) in use.
 
-[http://manuel.manuelles.nl/sidekiq-heroku-redis-calc](http://manuel.manuelles.nl/sidekiq-heroku-redis-calc) gives some nice estimations for numbers to use.
-
-Number of concurrent workers can be set by env. variable ```SIDEKIQ_CONCURRENCY``` and updating ```config/initializers/sidekiq.rb```
-
-Sidekiq admin view (/sidekiq) is available in _development_ environment only.
+## License
 
