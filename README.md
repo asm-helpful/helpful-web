@@ -75,6 +75,18 @@ bundle exec foreman start
 
 Everything should be up and running here [http://0.0.0.0:5000](http://0.0.0.0:5000)
 
+#### Running with Vagrant
+1. Install [Vagrant](http://www.vagrantup.com/)
+
+2.
+```
+vagrant up
+vagrant ssh
+cd /vagrant
+```
+3. Execute the usual development commands
+4. Visit [http://0.0.0.0:5000](http://0.0.0.0:5000) from the host machine browser
+
 #### Email
 
 Supportly ships with a script for fetching email from an IMAP folder 
