@@ -1,5 +1,10 @@
 Supportly::Application.routes.draw do
-
+  
+  if Rails.env.development?
+    require 'sidekiq/web'
+    mount Sidekiq::Web, at: "/sidekiq"
+  end
+  
   get "conversations/index"
   devise_for :users, skip: :registrations
 
@@ -27,10 +32,5 @@ Supportly::Application.routes.draw do
     #resources :"", controller: 'conversations', as: 'conversations'
     resources :conversations
     get '/', to:'conversations#index'
-  end
-
-  if Rails.env.development?
-    require 'sidekiq/web'
-    mount Sidekiq::Web, at: "/sidekiq"
   end
 end
