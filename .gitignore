@@ -23,3 +23,9 @@
 
 # Ignore database config
 /config/database.yml
+
+# Ignore vagrant folder
+/.vagrant
+
+# Ignore mac .DS_Store files
+.DS_Store
