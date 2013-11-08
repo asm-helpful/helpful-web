@@ -27,6 +27,8 @@ Supportly::Application.routes.draw do
   resources :messages
 
   root to: 'pages#home'
+  
+  get '/widget' => 'pages#widget'
 
   scope ':account' do
     #resources :"", controller: 'conversations', as: 'conversations'
