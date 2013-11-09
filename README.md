@@ -51,7 +51,3 @@ There are a couple of steps you need to take before contributing:
 3. Create a new WIP at https://assemblymade.com/support-foo/wips. Think of WIPs as GitHub issues.
 
 Then just go ahead, fork the repo & issue a pull request. You're on your way to having a stake in Helpful.
-
-
-## License
-
