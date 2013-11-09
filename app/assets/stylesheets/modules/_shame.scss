@@ -1,0 +1,8 @@
+// CSS Hacks - Strive to keep this file empty
+
+
+// Avoid scrolling on beta invites page
+.beta_invites {
+  height: 100%;
+  overflow: hidden;
+}

@@ -1,22 +1,32 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Supportly</title>
-  <%= stylesheet_link_tag    "application", media: "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>Helpful</title>
+    <%= stylesheet_link_tag    "application", media: "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  
+  <body class="<%= yield (:body_class) %>">
 
-  <%= render '/layouts/flash' %>
+    <div class="content_wrapper group">
+    
+      <%= render '/layouts/flash' %>
 
-  <%= render '/layouts/header' %>
+      <%= render '/layouts/header' %>
 
-  <% if user_signed_in? %>
-    <%= render '/layouts/nav' %>
-  <% end %>
+      <% if user_signed_in? %>
+        <%= render '/layouts/nav' %>
+      <% end %>
 
-  <%= yield %>
-  <%= javascript_include_tag "embed" %>
-</body>
+      <%= yield %>
+
+    </div>
+
+    <%= render '/layouts/footer' %>
+
+    
+    <%= javascript_include_tag "embed" %>
+
+  </body>
 </html>

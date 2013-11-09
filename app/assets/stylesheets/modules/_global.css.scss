@@ -1,0 +1,73 @@
+// Global variables
+
+$white: #FFFFFF;
+$black: #000000;
+
+$color-bg: #CAF7F4;
+$color-primary: #216888;
+$color-secondary: #E5674A;
+
+body {
+  color: $color-primary;
+  background-color: $color-bg;
+  font-family: 'klinic_slabbook', serif;
+
+  a {
+    color: $color-primary;
+  }
+
+  input,
+  textarea,
+  select {
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .group:after {
+    content: '';
+    clear: both;
+    display: table;
+  }
+
+  .left {
+    float: left;
+  }
+  .right {
+    float: right;
+  }
+}
+
+.content_wrapper {
+  width: 31.25em;
+  margin: 0 auto;
+}
+
+.footer_waves {
+  margin-top: 5em;
+  height: 6.9375em;
+  position:relative;
+  @include background-image-retina('footer_wave', 'png', 33px, 111px);
+  background-repeat: repeat-x;
+  z-index: 2;
+
+}
+.footer {
+  min-height: 20em;
+  position: relative;
+  background-color: $color-primary;
+
+  .footer_wrapper {
+    width: 31.25em;
+    margin: 0 auto;
+  }
+
+  .life_saver {
+    top: -150px;
+    width: 136px;
+    height: 136px;
+    position: absolute;
+    @include background-image-retina('life_saver', 'png', 136px, 136px);
+    z-index: 1;
+  }
+}
