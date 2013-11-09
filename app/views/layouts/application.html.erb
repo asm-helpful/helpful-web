@@ -12,21 +12,13 @@
     <div class="content_wrapper group">
     
       <%= render '/layouts/flash' %>
-
       <%= render '/layouts/header' %>
-
-      <% if user_signed_in? %>
-        <%= render '/layouts/nav' %>
-      <% end %>
-
       <%= yield %>
 
     </div>
 
     <%= render '/layouts/footer' %>
-
     
     <%= javascript_include_tag "embed" %>
-
   </body>
 </html>

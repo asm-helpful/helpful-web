@@ -38,9 +38,72 @@ body {
   }
 }
 
+#flash_messages {
+  background-color: $white;
+  @include border-radius(0 0 5px 5px);
+
+  .flash {
+    padding: 1em;
+
+    &.alert {
+      color: red;
+    }
+    &.notice {
+      color: green;
+    }
+  }
+}
+
 .content_wrapper {
   width: 31.25em;
   margin: 0 auto;
+
+  .header {
+    .nav {
+      padding: 0;
+
+      li {
+        float: left;
+        display: block;
+        list-style: none;
+        margin-right: 1em;
+
+        a {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+  .content {
+
+    form {
+
+      input[type="text"],
+      input[type="email"],
+      input[type="password"] {
+        border: none;
+        padding: 0.5em;
+        background: $white;
+        margin: 0.25em 0 1em;
+        @include border-radius(5px);
+      }
+
+      input[type="submit"] {
+        border: none;
+        color: $white;
+        display: block;
+        padding: 0.5em 1em;
+        margin-bottom: 2em;
+        background: $color-secondary;
+        font-family: 'klinic_slabmedium', serif;
+        border-bottom: 3px solid darken($color-secondary, 10%);
+        @include border-radius(5px);
+      }
+
+    }
+
+  }
+
 }
 
 .footer_waves {

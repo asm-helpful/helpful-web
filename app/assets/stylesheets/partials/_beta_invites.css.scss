@@ -2,70 +2,74 @@
 
 .beta_invites {
 
-  .title {
-    width: 16em;
-    position: relative;
-    font-family: 'klinic_slablight', serif;
+  .content {
+    padding: 4em 0;
 
-    .helpful {
-      font-size: 5em;
-      color: $color-secondary;
-      font-family: 'klinic_slabmedium', serif;
-    }
-    .hey {
-      top: -0.625em;
-      left: 1.825em;
-      font-size: 1.625em;
-      position: absolute;
-      font-weight: normal;
-    }
-    .under_construction {
-      display: block;
-      text-align: center;
-      font-size: 1.625em;
-    }
-  }
-  .new_beta_invite {
-    margin: 2em 0;
-    
-    p {
-      text-align: center;
-      font-family: 'klinic_slabbook_italic', serif;
-    }
-    .text_field {
-      width: 90%;
-      border: none;
-      color: $white;
-      padding: 5%;
-      background: $color-primary;
-      @include border-radius(5px);
+    .title {
+      width: 16em;
+      position: relative;
+      font-family: 'klinic_slablight', serif;
 
-      &::-webkit-input-placeholder {
-        color: $white;
+      .helpful {
+        font-size: 5em;
+        color: $color-secondary;
+        font-family: 'klinic_slabmedium', serif;
       }
-      &:-moz-placeholder { /* Firefox 18- */
-        color: $white;
+      .hey {
+        top: -0.625em;
+        left: 1.825em;
+        font-size: 1.625em;
+        position: absolute;
+        font-weight: normal;
       }
-      &::-moz-placeholder {  /* Firefox 19+ */
-        color: $white;
-      }
-      &:-ms-input-placeholder {
-        color: $white;
+      .under_construction {
+        display: block;
+        text-align: center;
+        font-size: 1.625em;
       }
     }
-    .actions {
-      margin: 1em 0;
+    .new_beta_invite {
+      margin: 2em 0;
 
-      .button {
+      p {
+        text-align: center;
+        font-family: 'klinic_slabbook_italic', serif;
+      }
+      .text_field {
+        width: 90%;
+        padding: 5%;
         border: none;
         color: $white;
-        display: block;
-        margin: 0 auto;
-        padding: 0.5em 2em;
-        background: $color-secondary;
-        font-family: 'klinic_slabmedium', serif;
-        border-bottom: 3px solid darken($color-secondary, 10%);
+        background: $color-primary;
         @include border-radius(5px);
+
+        &::-webkit-input-placeholder {
+          color: $white;
+        }
+        &:-moz-placeholder { /* Firefox 18- */
+          color: $white;
+        }
+        &::-moz-placeholder {  /* Firefox 19+ */
+          color: $white;
+        }
+        &:-ms-input-placeholder {
+          color: $white;
+        }
+      }
+      .actions {
+        margin-top: 1em;
+
+        .button {
+          border: none;
+          color: $white;
+          display: block;
+          margin: 0 auto;
+          padding: 0.5em 2em;
+          background: $color-secondary;
+          font-family: 'klinic_slabmedium', serif;
+          border-bottom: 3px solid darken($color-secondary, 10%);
+          @include border-radius(5px);
+        }
       }
     }
   }

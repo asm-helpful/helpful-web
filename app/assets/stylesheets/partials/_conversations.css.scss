@@ -1,27 +1,26 @@
-// Place all the styles related to the Conversations controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// Conversations
 
-#conversations {
+.conversations {
   border: solid thin;
   border-collapse: collapse;
-}
 
-#conversations th,
-#conversations td {
-  border: solid thin;
-  padding: 0.2rem 1rem;
-}
+  th,
+  td {
+    border: solid thin;
+    padding: 0.2rem 1rem;
+  }
 
-#conversations td {
-  border-style: none solid;
-}
+  td {
+    border-style: none solid;
+  }
 
-// striping
-#conversations tr:nth-child(even) {
-  background: #eee;
-}
+  // striping
+  tr:nth-child(even) {
+    background: #F8F8F8;
+  }
 
-#conversations thead th {
-  background: #ccc;
+  thead th {
+    background: #EEE;
+  }
+
 }
