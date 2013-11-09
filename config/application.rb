@@ -29,5 +29,9 @@ module Supportly
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+    
+    # Stop assets from accessing models. Useful for Heroku and Devise.
+    config.assets.initialize_on_precompile = false
+    
   end
 end
