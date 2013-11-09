@@ -8,6 +8,5 @@ before_script:
   
   - psql -c 'create database supportly_test;' -U postgres
   - cp config/database.yml.example config/database.yml
-  - rake db:test:prepare
 
 script: foreman run rake
