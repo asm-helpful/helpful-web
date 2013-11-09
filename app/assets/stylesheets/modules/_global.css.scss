@@ -10,7 +10,7 @@ $color-secondary: #E5674A;
 body {
   color: $color-primary;
   background-color: $color-bg;
-  font-family: 'klinic_slabbook', serif;
+  font-family: 'Open Sans', sans-serif;
 
   a {
     color: $color-primary;
@@ -18,7 +18,8 @@ body {
 
   input,
   textarea,
-  select {
+  select,
+  button {
     &:focus {
       outline: none;
     }
@@ -92,10 +93,10 @@ body {
         border: none;
         color: $white;
         display: block;
+        font-weight: bold;
         padding: 0.5em 1em;
         margin-bottom: 2em;
         background: $color-secondary;
-        font-family: 'klinic_slabmedium', serif;
         border-bottom: 3px solid darken($color-secondary, 10%);
         @include border-radius(5px);
       }

@@ -8,7 +8,7 @@ var supportFooEmbed = (function() {
     var body = document.getElementsByTagName('body')[0];
     var supportButton = document.createElement('button');
     supportButton.setAttribute('id', 'supportFooButton');
-    supportButton.setAttribute('style', 'background-color: #eaeaea; border: 1px solid #333333; bottom: 15px; cursor: pointer; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; height: 50px; position: fixed; right:15px; width: 150px;');
+    supportButton.setAttribute('style', 'color: #FFF; font-weight: bold; background-color: #E5674A; border: 1px solid #DC4320; bottom: 20px; right: 20px; position: fixed; height: 50px; width: 100px; cursor: pointer; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box;');
     supportButton.setAttribute('onClick', 'supportFooEmbed.popupModal()');
     var buttonText = document.createTextNode('Help!');
     supportButton.appendChild(buttonText);
@@ -23,7 +23,7 @@ var supportFooEmbed = (function() {
 
         var modal = document.createElement('div');
         modal.setAttribute('id', 'supportFooModal');
-        modal.setAttribute('style', 'background-color: #eaeaea; height: 800px; left: 50%; border: 1px solid #333333; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; margin-left: -300px; margin-top: -400px; position: fixed; top: 50%; width: 600px; z-index: 1;');
+        modal.setAttribute('style', 'background-color: #eaeaea; height: 800px; left: 50%; border: 1px solid #333333; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; margin-left: -300px; margin-top: -400px; position: fixed; top: 50%; width: 600px; z-index: 99;');
 
         var modalBody = document.createElement('div');
         modalBody.setAttribute('id', 'supportFooModalBody');

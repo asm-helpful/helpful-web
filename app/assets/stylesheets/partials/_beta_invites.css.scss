@@ -57,18 +57,10 @@
         }
       }
       .actions {
-        margin-top: 1em;
 
         .button {
-          border: none;
-          color: $white;
-          display: block;
           margin: 0 auto;
           padding: 0.5em 2em;
-          background: $color-secondary;
-          font-family: 'klinic_slabmedium', serif;
-          border-bottom: 3px solid darken($color-secondary, 10%);
-          @include border-radius(5px);
         }
       }
     }
