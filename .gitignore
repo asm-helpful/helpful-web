@@ -4,28 +4,31 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
-# Ignore bundler config.
+# Bundler config.
 /.bundle
 
-# Ignore the default SQLite database.
+# Default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-journal
 
-# Ignore all logfiles and tempfiles.
+# All logfiles and tempfiles.
 /log/*.log
 /tmp
 
-# Ignore Foreman .env files
+# Foreman .env files
 *.env
 
-# Ignore Bundler binstubs
+# Bundler binstubs
 /bin/*
 
-# Ignore database config
+# Database config
 /config/database.yml
 
-# Ignore vagrant folder
+# Vagrant folder
 /.vagrant
 
-# Ignore mac .DS_Store files
+# Mac .DS_Store files
 .DS_Store
+
+# Bower source files
+/vendor/assets/components
