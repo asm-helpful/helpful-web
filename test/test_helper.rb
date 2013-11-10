@@ -4,10 +4,6 @@ require "rails/test_help"
 require "minitest/rails"
 require "minitest/mock"
 
-if $stdin.tty?
-  require "minitest/pride"
-end
-
 class ActionController::TestCase
   include Devise::TestHelpers
 end
