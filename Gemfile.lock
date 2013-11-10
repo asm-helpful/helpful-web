@@ -28,6 +28,9 @@ GEM
     arel (4.0.1)
     atomic (1.1.14)
     bcrypt-ruby (3.1.2)
+    bourbon (3.1.8)
+      sass (>= 3.2.0)
+      thor
     builder (3.1.4)
     celluloid (0.15.2)
       timers (~> 1.1.0)
@@ -158,6 +161,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bourbon
   devise (~> 3.1)
   factory_girl_rails (~> 4.2.1)
   ffaker (~> 1.20)
