@@ -11,18 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131105213142) do
+ActiveRecord::Schema.define(version: 20131108232653) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
 
   create_table "accounts", id: false, force: true do |t|
-    t.uuid     "id",         null: false
+    t.uuid     "id",           null: false
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "slug",       null: false
+    t.string   "slug",         null: false
+    t.string   "web_hook_url"
   end
 
   add_index "accounts", ["slug"], name: "index_accounts_on_slug", unique: true, using: :btree

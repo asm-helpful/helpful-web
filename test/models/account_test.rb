@@ -18,4 +18,8 @@ describe Account do
       @account.save
     end
   end
+  
+  it "must have a web_hook_url field" do
+    assert Account.column_names.include? "web_hook_url"
+  end
 end
