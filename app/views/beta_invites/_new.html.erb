@@ -1,9 +1,22 @@
-<%= form_for(BetaInvite.new) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
+<% content_for :body_class, "beta_invites" %>
+
+<div class="content right">
+
+  <div class="title">
+    <span class="hey">hey,</span>
+    <div class="helpful">Helpful</div>
+    <span class="under_construction">is under construction</span>
   </div>
-  <div class="actions">
-    <%= f.submit "Email me when Supportly launches" %>
-  </div>
-<% end %>
+
+  <%= form_for(BetaInvite.new) do |f| %>
+    <p>Stay up to date with helpful:</p>
+    <div class="field">
+      <%= f.text_field :email, :class => "text_field", :placeholder => "Email" %>
+    </div>
+    <div class="actions">
+      <%= f.submit "Submit", :class => "button" %>
+    </div>
+    <p>We take your privacy seriously.</p>
+  <% end %>
+
+</div>

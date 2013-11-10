@@ -1,0 +1,116 @@
+// Beta invites
+
+// Variables
+$color-bg: #CAF7F4;
+$color-primary: #216888;
+$color-secondary: #E5674A;
+
+
+.beta_invites {
+  color: $color-primary;
+  background-color: $color-bg;
+
+  a {
+    color: $color-primary;
+  }
+
+  .content {
+    padding: 4em 0;
+
+    .title {
+      font-weight: 300;
+      position: relative;
+
+      .helpful {
+        font-size: 5em;
+        font-weight: 800;
+        color: $color-secondary;
+      }
+      .hey {
+        top: -0.425em;
+        left: 2.425em;
+        font-size: 1.625em;
+        position: absolute;
+      }
+      .under_construction {
+        display: block;
+        text-align: center;
+        font-size: 1.625em;
+      }
+    }
+    .new_beta_invite {
+      margin: 2em 0;
+
+      p {
+        text-align: center;
+        font-style: italic;
+      }
+      .text_field {
+        width: 90%;
+        padding: 5%;
+        border: none;
+        color: $white;
+        margin: 0.25em 0 1em;
+        background: $color-primary;
+        @include border-radius(5px);
+
+        &::-webkit-input-placeholder {
+          color: $white;
+        }
+        &:-moz-placeholder { /* Firefox 18- */
+          color: $white;
+        }
+        &::-moz-placeholder {  /* Firefox 19+ */
+          color: $white;
+        }
+        &:-ms-input-placeholder {
+          color: $white;
+        }
+      }
+      .actions {
+
+        .button {
+          border: none;
+          color: $white;
+          display: block;
+          margin: 0 auto;
+          font-weight: bold;
+          padding: 0.5em 2em;
+          background: $color-secondary;
+          border-bottom: 3px solid darken($color-secondary, 10%);
+          @include border-radius(5px);
+        }
+      }
+    }
+  }
+
+  .footer_waves {
+    margin-top: 5em;
+    height: 6.9375em;
+    position:relative;
+    @include background-image-retina('footer_wave', 'png', 33px, 111px);
+    background-repeat: repeat-x;
+    z-index: 2;
+
+  }
+  .footer {
+    min-height: 20em;
+    position: relative;
+    background-color: $color-primary;
+
+    .footer_wrapper {
+      width: 31.25em;
+      margin: 0 auto;
+    }
+
+    .life_saver {
+      top: -150px;
+      width: 136px;
+      height: 136px;
+      position: absolute;
+      @include background-image-retina('life_saver', 'png', 136px, 136px);
+      z-index: 1;
+    }
+  }
+
+}

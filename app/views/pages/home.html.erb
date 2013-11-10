@@ -1,13 +1,14 @@
-<div class="navbar">
-  <div class="navbar-right">
-    <ul class="nav navbar-nav">
-      <li><%= link_to('Register', new_account_path) %></li>
-      <li><%= link_to('Login', new_user_session_path) %></li>
-    </ul>
+<div class="beta_invites">
+  <div class="content_wrapper group">
+    <%= render '/beta_invites/new' %>
   </div>
+
+  <div class="footer_waves"></div>
+    <div class="footer">
+      <div class="footer_wrapper">
+        <div class="life_saver"></div>
+      </div>
+    </div>
+  </div>
+
 </div>
-
-<h1>Supportly</h1>
-<p>Made by everyone at <a href="https://assemblymade.com">Assembly</a>.</p>
-
-<%= render '/beta_invites/new' %>
