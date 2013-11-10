@@ -1,0 +1,26 @@
+// Conversations
+
+.conversations {
+  border: solid thin;
+  border-collapse: collapse;
+
+  th,
+  td {
+    border: solid thin;
+    padding: 0.2rem 1rem;
+  }
+
+  td {
+    border-style: none solid;
+  }
+
+  // striping
+  tr:nth-child(even) {
+    background: #F8F8F8;
+  }
+
+  thead th {
+    background: #EEE;
+  }
+
+}

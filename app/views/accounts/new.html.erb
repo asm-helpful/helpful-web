@@ -1,23 +1,27 @@
-<h2>Sign up</h2>
+<div class="content group">
 
-<%= render "/shared/error_messages", :target => @account %>
-<%= render "/shared/error_messages", :target => @new_account_user %>
+  <h2>Sign up</h2>
 
-<%= form_for @account, url: account_path do |f| %>
+  <%= render "/shared/error_messages", :target => @account %>
+  <%= render "/shared/error_messages", :target => @new_account_user %>
 
-  <div><%= f.label :name, "Company name" %><br />
-    <%= f.text_field :name, :autofocus => true %></div>
+  <%= form_for @account, url: account_path do |f| %>
 
-  <%= fields_for @new_account_user do |ff| %>
-    <div><%= ff.label :email %><br />
-      <%= ff.email_field :email %></div>
+    <div><%= f.label :name, "Company name" %><br />
+      <%= f.text_field :name, :autofocus => true %></div>
 
-    <div><%= ff.label :password %><br />
-      <%= ff.password_field :password %></div>
+    <%= fields_for @new_account_user do |ff| %>
+      <div><%= ff.label :email %><br />
+        <%= ff.email_field :email %></div>
 
-    <div><%= ff.label :password_confirmation %><br />
-      <%= ff.password_field :password_confirmation %></div>
+      <div><%= ff.label :password %><br />
+        <%= ff.password_field :password %></div>
+
+      <div><%= ff.label :password_confirmation %><br />
+        <%= ff.password_field :password_confirmation %></div>
+    <% end %>
+
+    <div><%= f.submit "Sign up" %></div>
   <% end %>
 
-  <div><%= f.submit "Sign up" %></div>
-<% end %>
+</div>

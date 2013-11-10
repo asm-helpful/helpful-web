@@ -1,0 +1,68 @@
+// Beta invites
+
+.beta_invites {
+
+  .content {
+    padding: 4em 0;
+
+    .title {
+      width: 16em;
+      position: relative;
+      font-family: 'klinic_slablight', serif;
+
+      .helpful {
+        font-size: 5em;
+        color: $color-secondary;
+        font-family: 'klinic_slabmedium', serif;
+      }
+      .hey {
+        top: -0.625em;
+        left: 1.825em;
+        font-size: 1.625em;
+        position: absolute;
+        font-weight: normal;
+      }
+      .under_construction {
+        display: block;
+        text-align: center;
+        font-size: 1.625em;
+      }
+    }
+    .new_beta_invite {
+      margin: 2em 0;
+
+      p {
+        text-align: center;
+        font-family: 'klinic_slabbook_italic', serif;
+      }
+      .text_field {
+        width: 90%;
+        padding: 5%;
+        border: none;
+        color: $white;
+        background: $color-primary;
+        @include border-radius(5px);
+
+        &::-webkit-input-placeholder {
+          color: $white;
+        }
+        &:-moz-placeholder { /* Firefox 18- */
+          color: $white;
+        }
+        &::-moz-placeholder {  /* Firefox 19+ */
+          color: $white;
+        }
+        &:-ms-input-placeholder {
+          color: $white;
+        }
+      }
+      .actions {
+
+        .button {
+          margin: 0 auto;
+          padding: 0.5em 2em;
+        }
+      }
+    }
+  }
+}

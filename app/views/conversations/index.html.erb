@@ -1,16 +1,22 @@
-<table id="conversations">
-  <thead>
-    <tr>
-      <th>#</th> <th>Preview</th> <th>Participants</th> <th>Last Message</th>
-    </tr>
-  </thead>
-  <tbody>
-    <%= content_tag_for(:tr, @conversations) do |conversation| %>
-      <td><%= conversation.number %></td>
-      <td><%= preview conversation %></td>
-      <td><%= conversation.participants.join(', ') %></td>
-      <td><%= distance_in_time_of_last_message conversation %>
-      </td>
-    <% end %>
-  </tbody>
-</table>
+<div class="content group">
+
+  <h2>Conversations</h2>
+
+  <table class="conversations">
+    <thead>
+      <tr>
+        <th>#</th> <th>Preview</th> <th>Participants</th> <th>Last Message</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= content_tag_for(:tr, @conversations) do |conversation| %>
+        <td><%= conversation.number %></td>
+        <td><%= preview conversation %></td>
+        <td><%= conversation.participants.join(', ') %></td>
+        <td><%= distance_in_time_of_last_message conversation %>
+        </td>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>
