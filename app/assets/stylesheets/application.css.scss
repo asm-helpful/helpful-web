@@ -2,3 +2,8 @@
 //= require_self
 
 @import 'variables';
+@import 'mixins';
+
+@import 'modules/alert',
+        'modules/nav',
+        'modules/navbar';
