@@ -1,60 +1,68 @@
 // Supportly Embed JS
 
 // When somebody with an Account includes a script tag to this file on their own
-// website, it'll embed a simple web popup that posts to Supportly.
+// website, it'll embed a simple web embed that posts to Supportly.
+//
+// It's attached to the DOM with the use of the `data-helpful` attribute:
+//
+//    <a href="#" data-helpful>Click me to show embed</a>
+//
+// TODO This script relies on jQuery being installed on the page. Future
+// versions should get rid of that requirement so more people can install it.
+//
+(function($) {
+  var HelpfulEmbed, EmbedHTML, embed;
 
-var supportFooEmbed = (function() {
-    var supportFooEmbedMethods = {};
-    var body = document.getElementsByTagName('body')[0];
-    var supportButton = document.createElement('button');
-    supportButton.setAttribute('id', 'supportFooButton');
-    supportButton.setAttribute('style', 'background-color: #eaeaea; border: 1px solid #333333; bottom: 15px; cursor: pointer; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; height: 50px; position: fixed; right:15px; width: 150px;');
-    supportButton.setAttribute('onClick', 'supportFooEmbed.popupModal()');
-    var buttonText = document.createTextNode('Help!');
-    supportButton.appendChild(buttonText);
-    body.appendChild(supportButton);
+  // Hack until we figure out how to get the HTML cleanly into this file.
+  EmbedHTML = $('#helpful-embed-html').html();
 
-    supportFooEmbedMethods.popupModal = function() {
-        var body = document.getElementsByTagName('body')[0];
-        var bodyCover = document.createElement('div');
-        bodyCover.setAttribute('id', 'supportFooModalBackground');
-        bodyCover.setAttribute('style', 'background-color: #333333; height: 10000px; left: 0; opacity: 0.4; filter:alpha(opacity=40); overflow: hidden; position: absolute; top: 0; width: 100%;')
-        body.appendChild(bodyCover);
+  // HelpfulEmbed Class
+  HelpfulEmbed = function() {
+    this.el = $('<div></div>').hide().html(EmbedHTML).appendTo(document.body);
+  }
 
-        var modal = document.createElement('div');
-        modal.setAttribute('id', 'supportFooModal');
-        modal.setAttribute('style', 'background-color: #eaeaea; height: 800px; left: 50%; border: 1px solid #333333; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; margin-left: -300px; margin-top: -400px; position: fixed; top: 50%; width: 600px; z-index: 1;');
+  // Opens the embed on top of an element
+  HelpfulEmbed.prototype.open = function(target) {
+    var $target, targetOffset, targetOffsetBottom;
 
-        var modalBody = document.createElement('div');
-        modalBody.setAttribute('id', 'supportFooModalBody');
-        modalBody.setAttribute('style', 'height: 100%; position: relative; width: 100%;');
-        modal.appendChild(modalBody);
+    $target = $(target);
+    targetOffset = $target.offset();
 
-        var modalClose = document.createElement('a');
-        modalClose.setAttribute('id', 'supportFooModalClose');
-        modalClose.setAttribute('style', 'cursor: pointer; position: absolute; right: 5px; top: 5px;');
-        modalClose.setAttribute('onClick', 'supportFooEmbed.closeModal()');
-        var modalCloseText = document.createTextNode('Close (X)');
-        modalClose.appendChild(modalCloseText);
-        modalBody.appendChild(modalClose);
+    targetOffsetBottom = window.innerHeight - targetOffset.top;
 
-        var modalTitle = document.createElement('h1');
-        modalTitle.setAttribute('id', 'supportFooModalBody');
-        modalTitle.setAttribute('style', 'font-size: 30px; text-align: center;');
-        var titleText = document.createTextNode('Acme Support Widget');
-        modalTitle.appendChild(titleText);
-        modalBody.appendChild(modalTitle);
+    this.el.css({
+      bottom:  targetOffsetBottom,
+      left: targetOffset.left,
+      position: 'absolute'
+    });
 
-        body.appendChild(modal);
+    this.el.show();
+  }
 
-    };
+  // Closes the embed popup at the target
+  HelpfulEmbed.prototype.close = function(target) {
+    this.el.hide();
+  }
 
-    supportFooEmbedMethods.closeModal = function() {
-        var body = document.getElementsByTagName('body')[0];
-        body.removeChild(document.getElementById('supportFooModalBackground'));
-        body.removeChild(document.getElementById('supportFooModal'));
+  // Toggles the opening and closing of a popup
+  HelpfulEmbed.prototype.toggle = function(target) {
+    if(!this.el.is(':visible')) {
+      this.open(target);
+    } else {
+      this.close(target);
     }
+  }
 
-    return supportFooEmbedMethods;
+  // TODO This should be store in the DOM on the target element. That will allow
+  // multiple popups to exist on the page. At the moment there's only a singular
+  // popup.
+  embed = new HelpfulEmbed();
 
-})();
+  // Binds the HelpfulEmbed class to the calling elements.
+  $('[data-helpful]').on('click.helpful', function(e) {
+    e.preventDefault();
+    embed.toggle(e.target);
+    return true;
+  });
+
+})(jQuery);
