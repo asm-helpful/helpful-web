@@ -20,7 +20,7 @@ class Conversation < ActiveRecord::Base
   end
 
   def participants
-    ordered_messages.pluck("messages.from").uniq
+    messages.map {|message| message.person }.uniq
   end
 
   def archived?

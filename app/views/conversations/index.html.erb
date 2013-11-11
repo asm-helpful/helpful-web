@@ -6,7 +6,9 @@
     <a class="conversation-heading" href="#">
       <div class="number">#<%= conversation.number %></div>
       <div class="participants">
-        <%= conversation.participants.to_sentence %>
+        <% conversation.participants.each do |person| %>
+          <%= avatar(person) %>
+        <% end %>
       </div>
       <div class="preview">
         <%= preview conversation %>
@@ -21,7 +23,7 @@
       <!-- Previous conversation -->
       <div class="list message-list">
         <%= content_tag_for(:div, conversation.messages, class: ['message', 'list-item']) do |message| %>
-          <div class="from"><%= message.from %></div>
+          <div class="from"><%= avatar(message.person) %></div>
           <div class="created">
             posted <%= time_ago_in_words(message.created_at) %>
           </div>
