@@ -22,7 +22,6 @@ module PeopleHelper
   # Returns a url to the PNG of the user's gravatar.
   def gravatar(person)
     gravatar_id = Digest::MD5::hexdigest(person.email).downcase
-    base_url = "gravatar.com/avatar/#{gravatar_id}.png?s=60&d=retro"
-    (request.ssl? ? "https://" : "http://") + base_url
+    "https://secure.gravatar.com/avatar/#{gravatar_id}.png?s=60&d=retro"
   end
 end
