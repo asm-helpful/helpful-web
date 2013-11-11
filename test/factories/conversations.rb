@@ -14,7 +14,9 @@ FactoryGirl.define do
       end
 
       after(:create) do |conversation, evaluator|
-        FactoryGirl.create_list(:message, evaluator.messages_count, conversation: conversation)
+        FactoryGirl.create_list(:message, evaluator.messages_count,
+          conversation: conversation
+        )
       end
     end
   end

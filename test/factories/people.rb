@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :person do
-    name "Person Name"
-    email Faker::Internet.email
-    twitter "twitterhandle"
+    name    { Faker::Name.name }
+    email   { Faker::Internet.email }
+    twitter { Faker::Internet.user_name }
   end
 end

@@ -4,6 +4,10 @@ require "rails/test_help"
 require "minitest/rails"
 require "minitest/mock"
 
+class ActiveSupport::TestCase
+  include FactoryGirl::Syntax::Methods
+end
+
 class ActionController::TestCase
   include Devise::TestHelpers
 end

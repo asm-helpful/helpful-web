@@ -3,5 +3,6 @@
 FactoryGirl.define do
   factory :message do
     conversation
+    person
   end
 end
