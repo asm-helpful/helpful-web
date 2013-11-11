@@ -31,6 +31,9 @@ GEM
     bourbon (3.1.8)
       sass (>= 3.2.0)
       thor
+    bugsnag (1.6.3)
+      httparty (>= 0.6, < 1.0)
+      multi_json (~> 1.0)
     builder (3.1.4)
     celluloid (0.15.2)
       timers (~> 1.1.0)
@@ -53,6 +56,9 @@ GEM
     friendly_id (5.0.1)
       activerecord (~> 4.0.0)
     hike (1.2.3)
+    httparty (0.12.0)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.6.5)
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
@@ -78,6 +84,7 @@ GEM
       minitest (~> 4.7)
       rails (>= 3.0)
     multi_json (1.8.2)
+    multi_xml (0.5.5)
     orm_adapter (0.4.0)
     pg (0.17.0)
     polyglot (0.3.3)
@@ -162,6 +169,7 @@ PLATFORMS
 
 DEPENDENCIES
   bourbon
+  bugsnag
   devise (~> 3.1)
   factory_girl_rails (~> 4.2.1)
   ffaker (~> 1.20)

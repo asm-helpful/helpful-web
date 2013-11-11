@@ -4,6 +4,7 @@ ruby '2.0.0'
 # Alphabetical list
 
 gem 'bourbon'
+gem 'bugsnag'
 gem 'devise', '~> 3.1'
 gem 'friendly_id', '~> 5.0'
 gem 'jquery-rails'
