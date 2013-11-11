@@ -18,17 +18,27 @@
 
   // HelpfulEmbed Class
   HelpfulEmbed = function() {
-    this.el = $('<div></div>').hide().html(EmbedHTML).appendTo(document.body);
+    this.el = $('<div></div>').hide().html('').appendTo(document.body);
   }
 
   // Opens the embed on top of an element
   HelpfulEmbed.prototype.open = function(target) {
+    this.target = target
+    tempscript = document.createElement("script");
+    tempscript.type = "text/javascript";
+    tempscript.id = "helpful_tempscript";
+    tempscript.src = "//helpful.io/embed.jsonp"
+  }
+  HelpfulEmbed.prototype.jsonpReturned = function(data) {
+    var target = this.target
     var $target, targetOffset, targetOffsetBottom;
 
     $target = $(target);
     targetOffset = $target.offset();
 
     targetOffsetBottom = window.innerHeight - targetOffset.top;
+
+    this.el.innerHTML = data.html
 
     this.el.css({
       bottom:  targetOffsetBottom,
