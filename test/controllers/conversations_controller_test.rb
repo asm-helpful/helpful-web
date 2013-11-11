@@ -16,7 +16,7 @@ describe ConversationsController do
     assert_response :success
     assert_not_nil assigns(:conversations)
 
-    assert_select 'tr.conversation', 1
+    assert_select '.conversation', 1
   end
 
   test "should raise RecordNotFound with no supplied account" do
