@@ -19,7 +19,7 @@ You need [Ruby 2.0.0](https://www.ruby-lang.org), [Postgres](http://www.postgres
     # edit .env
     
     # Setup the database
-    $ cp config/database.yml.example database.yml
+    $ cp config/database.yml.example config/database.yml
     # edit config/database.
     $ bin/rake db:setup
     
