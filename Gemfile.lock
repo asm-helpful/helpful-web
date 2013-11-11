@@ -38,6 +38,7 @@ GEM
     celluloid (0.15.2)
       timers (~> 1.1.0)
     connection_pool (1.1.0)
+    curb (0.8.5)
     devise (3.1.1)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -170,6 +171,7 @@ PLATFORMS
 DEPENDENCIES
   bourbon
   bugsnag
+  curb
   devise (~> 3.1)
   factory_girl_rails (~> 4.2.1)
   ffaker (~> 1.20)

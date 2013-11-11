@@ -1,6 +1,6 @@
 Supportly::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-  
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -78,5 +78,6 @@ Supportly::Application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
-  config.action_mailer.default_url_options = { :host => 'TBD' }
+  config.action_mailer.default_url_options = { :host => 'helpful.io' }
+  config.action_mailer.delivery_method = :mailgun
 end
