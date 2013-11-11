@@ -1,0 +1,43 @@
+@import 'addons/clearfix';
+
+.conversation {
+}
+
+.conversation-heading {
+  @include clearfix;
+
+  color: black;
+  font-size: 14px;
+  line-height: 30px;
+
+  > .number,
+  > .preview,
+  > .participants,
+  > .updated {
+    float: left;
+    padding: 5px;
+  }
+
+  > .number {
+    color: $blue;
+    text-decoration: none;
+    font-weight: 600;
+
+    min-width: 30px;
+    text-align: center;
+  }
+}
+
+a.conversation-heading {
+  display: block;
+}
+
+.conversation-body {
+  display: none;
+  border-top: 1px solid $light-gray;
+
+  > .message-list,
+  > .reply-form {
+    margin: 10px;
+  }
+}

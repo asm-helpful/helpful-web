@@ -1,18 +1,53 @@
 <%= render 'navbar' %>
 
-<table id="conversations">
-  <thead>
-    <tr>
-      <th>#</th> <th>Preview</th> <th>Participants</th> <th>Last Message</th>
-    </tr>
-  </thead>
-  <tbody>
-    <%= content_tag_for(:tr, @conversations) do |conversation| %>
-      <td><%= conversation.number %></td>
-      <td><%= preview conversation %></td>
-      <td><%= conversation.participants.join(', ') %></td>
-      <td><%= distance_in_time_of_last_message conversation %>
-      </td>
-    <% end %>
-  </tbody>
-</table>
+<div class="list converation-list">
+  <%= content_tag_for(:div, @conversations, class: 'list-item') do |conversation| %>
+
+    <a class="conversation-heading" href="#">
+      <div class="number">#<%= conversation.number %></div>
+      <div class="participants">
+        <%= conversation.participants.to_sentence %>
+      </div>
+      <div class="preview">
+        <%= preview conversation %>
+      </div>
+      <div class="updated">
+        <%= distance_in_time_of_last_message conversation %>
+      </div>
+    </a>
+
+    <div class="conversation-body">
+
+      <!-- Previous conversation -->
+      <div class="list message-list">
+        <%= content_tag_for(:div, conversation.messages, class: ['message', 'list-item']) do |message| %>
+          <div class="from"><%= message.from %></div>
+          <div class="created">
+            posted <%= time_ago_in_words(message.created_at) %>
+          </div>
+          <div class="content"><%= message.content %></div>
+        <% end %>
+      </div>
+
+      <!-- Reply -->
+      <%= form_for(conversation.messages.new, html: {class: 'reply-form'}) do |f| %>
+        <%= f.text_area :content %>
+        <div class="form-actions">
+          <%= f.submit 'Send & Archive' %>
+        </div>
+      <% end %>
+
+    </div>
+
+  <% end %>
+</div>
+
+<script>
+  $('.conversation-heading').click(function(e) {
+    var $target;
+    e.preventDefault();
+    $target = $(e.target);
+    $conversation = $target.parents('.conversation');
+    $conversation.find('.conversation-body').toggle();
+  });
+</script>
