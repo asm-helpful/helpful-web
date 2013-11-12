@@ -24,6 +24,7 @@
       <div class="list message-list">
         <%= content_tag_for(:div, conversation.messages, class: ['message', 'list-item']) do |message| %>
           <div class="from"><%= avatar(message.person) %></div>
+          <div class="from-address"><%= message.person.email %></div>
           <div class="created">
             posted <%= time_ago_in_words(message.created_at) %>
           </div>

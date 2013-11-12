@@ -25,13 +25,14 @@ end
 
 group :test do
   gem 'factory_girl_rails', '~> 4.2.1'
-  gem 'ffaker', '~> 1.20'
+  
   gem 'minitest-rails', '~> 0.9.2'
 end
 
 group :development, :test do
   gem 'rake'
   gem 'dotenv-rails'
+  gem 'ffaker', '~> 1.20'
 end
 
 group :production do

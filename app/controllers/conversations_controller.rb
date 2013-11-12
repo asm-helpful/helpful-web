@@ -8,7 +8,7 @@ class ConversationsController < ApplicationController
   private
 
   def load_account
-    @account = Account.where(slug: params[:account]).first!
+    @account = Account.first! # simpfy until for now
   end
 
 end

@@ -32,3 +32,5 @@
 
 # Bower source files
 /vendor/assets/components
+
+Procfile.dev

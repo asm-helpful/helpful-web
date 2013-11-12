@@ -27,6 +27,10 @@ You need [Ruby 2.0.0](https://www.ruby-lang.org), [Postgres](http://www.postgres
     $ foreman start
     # open localhost:5000 in your browser
 
+    # Play with sandbox
+    $ rake seed:message from=some_email@test.com
+    # open localhost:5000/conversations in your browser
+
 ### Experimental IMAP Support
 
 Helpful has an experimental script for fetching email from an IMAP. To use this functionality you will need to .env and enter the details for the following environment variables:
