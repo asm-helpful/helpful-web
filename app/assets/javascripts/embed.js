@@ -11,10 +11,7 @@
 // versions should get rid of that requirement so more people can install it.
 //
 (function($) {
-  var HelpfulEmbed, EmbedHTML, embed;
-
-  // Hack until we figure out how to get the HTML cleanly into this file.
-  EmbedHTML = $('#helpful-embed-html').html();
+  var HelpfulEmbed, embed;
 
   // HelpfulEmbed Class
   HelpfulEmbed = function() {
@@ -23,22 +20,32 @@
 
   // Opens the embed on top of an element
   HelpfulEmbed.prototype.open = function(target) {
-    this.target = target
-    tempscript = document.createElement("script");
+    this.target = target;
+    var domnode = target.get(0);
+    var tempscript = document.createElement("script");
     tempscript.type = "text/javascript";
     tempscript.id = "helpful_tempscript";
-    tempscript.src = "//helpful.io/embed.jsonp"
+    tempscript.src = "//helpful.io/assets/embed_jsonp.js?body=1"
+    tempscript.src = "/assets/embed_jsonp.js?body=1" //DEV
+    this.el.get(0).appendChild(tempscript);
+    var tempcss = document.createElement("link");
+    tempcss.rel = 'stylesheet'
+    tempcss.type = 'text/css'
+    tempcss.href = '//helpful.io/assets/embed.css'
+    tempcss.href = '/assets/embed.css' //DEV
+    tempcss.media = 'all'
+    document.head.appendChild(tempcss);
   }
   HelpfulEmbed.prototype.jsonpReturned = function(data) {
     var target = this.target
     var $target, targetOffset, targetOffsetBottom;
 
-    $target = $(target);
+    $target = $(this.target);
     targetOffset = $target.offset();
 
-    targetOffsetBottom = window.innerHeight - targetOffset.top;
+    targetOffsetBottom = targetOffset.top - window.innerHeight;
 
-    this.el.innerHTML = data.html
+    this.el.html(data.html);
 
     this.el.css({
       bottom:  targetOffsetBottom,
@@ -66,7 +73,7 @@
   // TODO This should be store in the DOM on the target element. That will allow
   // multiple popups to exist on the page. At the moment there's only a singular
   // popup.
-  embed = new HelpfulEmbed();
+  window.helpful_embed = new HelpfulEmbed();
 
   // Binds the HelpfulEmbed class to the calling elements.
   $('[data-helpful]').on('click.helpful', function(e) {
