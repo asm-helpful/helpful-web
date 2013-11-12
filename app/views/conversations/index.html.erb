@@ -37,7 +37,8 @@
         <%= f.text_area :content %>
         <%= f.hidden_field :conversation_id, value: conversation.id %>
         <div class="form-actions">
-          <%= f.submit 'Send & Archive' %>
+          <%= f.submit 'Send', value: "Send" %>
+          <%= f.submit 'Send & Archive', value: "Send & Archive" %>
         </div>
       <% end %>
 
