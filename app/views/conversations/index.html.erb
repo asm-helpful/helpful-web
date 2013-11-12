@@ -35,6 +35,7 @@
       <!-- Reply -->
       <%= form_for(conversation.messages.new, html: {class: 'reply-form'}) do |f| %>
         <%= f.text_area :content %>
+        <%= f.hidden_field :conversation_id, value: conversation.id %>
         <div class="form-actions">
           <%= f.submit 'Send & Archive' %>
         </div>
