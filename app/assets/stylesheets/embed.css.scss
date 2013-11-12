@@ -4,6 +4,8 @@
 .helpful-embed {
   @include box-sizing(border-box);
 
+  z-index: 99999;
+
   background-color: white;
   box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.12);
   border-radius: 4px;
