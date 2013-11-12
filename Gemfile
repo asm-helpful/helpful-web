@@ -31,6 +31,7 @@ end
 
 group :development, :test do
   gem 'rake'
+  gem 'dotenv-rails'
 end
 
 group :production do
