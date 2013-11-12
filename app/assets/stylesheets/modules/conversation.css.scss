@@ -6,6 +6,9 @@
 .conversation-heading {
   @include clearfix;
 
+  &.highlight {
+    background-color: #EFF5B8;
+  }
   color: black;
   font-size: 14px;
   line-height: 30px;
