@@ -40,10 +40,11 @@ Helpful has an experimental script for fetching email from an IMAP. To use this 
     MAILMAN_IMAP_USERNAME
     MAILMAN_IMAP_PASSWORD
     MAILMAN_IMAP_FOLDER
+    MAILMAN_IMAP_POLL (rate at which mailman should poll imap for new emails)
 
-To run this script
+To run this script (using `foreman run` loads settings from .env)
 
-    $ bin/mailman
+    $ foreman run bin/mailman_worker
 
 
 ## Contributing
