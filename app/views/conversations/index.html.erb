@@ -34,9 +34,11 @@
 
       <!-- Reply -->
       <%= form_for(conversation.messages.new, html: {class: 'reply-form'}) do |f| %>
-        <%= f.text_area :content %>
+        <%= f.text_area :content, class: 'response' %>
+        <%= f.hidden_field :conversation_id, value: conversation.id %>
         <div class="form-actions">
-          <%= f.submit 'Send & Archive' %>
+          <%= f.submit 'Send', value: "Send", class: 'send' %>
+          <%= f.submit 'Send & Archive', value: "Send & Archive", class: 'send_archive' %>
         </div>
       <% end %>
 
@@ -46,11 +48,62 @@
 </div>
 
 <script>
-  $('.conversation-heading').click(function(e) {
-    var $target;
-    e.preventDefault();
-    $target = $(e.target);
-    $conversation = $target.parents('.conversation');
-    $conversation.find('.conversation-body').toggle();
+  $(document).ready(function(){
+    var messageIndex = 0;
+    var totalCount = $('.conversation-heading').length;
+
+    var updateHighlight = function(){
+      $($('.conversation-heading')).removeClass('highlight');
+      $($('.conversation-heading')[messageIndex]).addClass('highlight');
+    }
+    var openConversation = function(el){
+      var $el = $(el);
+      $conversation = $el.parents('.conversation');
+      $conversation.find('.conversation-body').toggle();
+      messageIndex = $conversation.index();
+      updateHighlight();
+    }
+
+    //keyboard shortcuts for sending and/or archiving
+    $('.response').keydown(function(e){
+      if(e.ctrlKey){
+        switch(e.keyCode){
+          case 13: //enter
+            if(e.shiftKey){
+              $('.response').parents('form').find('.send').click();
+            }else{
+              $('.response').parents('form').find('.send_archive').click();
+            }
+          break;
+        }
+      }
+
+    });
+
+    //keyboard shortcuts for cycling through conversations
+    $(document).keydown(function(e){
+        if(e.ctrlKey){
+          switch(e.keyCode){
+            case 32: //space
+              openConversation($('.conversation-heading')[messageIndex]);
+            break;
+            case 74: //j
+              messageIndex = (messageIndex + 1) % totalCount;
+            break;
+            case 75: //k
+              messageIndex = (messageIndex + totalCount - 1) % totalCount;
+            break;
+          }
+          updateHighlight();
+
+        }
+    });
+
+    $('.conversation-heading').click(function(e) {
+      e.preventDefault();
+      openConversation(e.target)
+    });
+
   });
+
 </script>
