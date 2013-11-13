@@ -34,11 +34,11 @@
 
       <!-- Reply -->
       <%= form_for(conversation.messages.new, html: {class: 'reply-form'}) do |f| %>
-        <%= f.text_area :content %>
+        <%= f.text_area :content, class: 'response' %>
         <%= f.hidden_field :conversation_id, value: conversation.id %>
         <div class="form-actions">
-          <%= f.submit 'Send', value: "Send" %>
-          <%= f.submit 'Send & Archive', value: "Send & Archive" %>
+          <%= f.submit 'Send', value: "Send", class: 'send' %>
+          <%= f.submit 'Send & Archive', value: "Send & Archive", class: 'send_archive' %>
         </div>
       <% end %>
 
@@ -64,11 +64,25 @@
       updateHighlight();
     }
 
+    //keyboard shortcuts for sending and/or archiving
+    $('.response').keydown(function(e){
+      if(e.ctrlKey){
+        switch(e.keyCode){
+          case 13: //enter
+            if(e.shiftKey){
+              $('.response').parents('form').find('.send').click();
+            }else{
+              $('.response').parents('form').find('.send_archive').click();
+            }
+          break;
+        }
+      }
+
+    });
 
     //keyboard shortcuts for cycling through conversations
     $(document).keydown(function(e){
         if(e.ctrlKey){
-          console.log(e.keyCode);
           switch(e.keyCode){
             case 32: //space
               openConversation($('.conversation-heading')[messageIndex]);
