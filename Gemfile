@@ -27,6 +27,7 @@ group :test do
   gem 'factory_girl_rails', '~> 4.2.1'
   
   gem 'minitest-rails', '~> 0.9.2'
+  gem 'webmock', '~> 1.15'
 end
 
 group :development, :test do

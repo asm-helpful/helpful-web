@@ -29,4 +29,12 @@ class Messages::Email < Message
       in_reply_to: message.in_reply_to || nil
     )
   end
+
+  def webhook_data
+    super.merge({
+      to: self.to,
+      subject: self.subject,
+      message_id: self.message_id
+    })
+  end
 end
