@@ -6,7 +6,6 @@ class MessagesController < ApplicationController
 
   def create
     #TODO: make this an ajax request
-
     if not current_user
         return redirect_to '/users/sign_in', alert: "Need to be logged in to reply"
     end
@@ -16,14 +15,11 @@ class MessagesController < ApplicationController
 
     @new_message = Message.new message_params
 
-
-
     if @new_message.valid? && @new_message.save
         if params['commit'] == "Send & Archive"
             #Set the conversation as archived
             @conversation = Conversation.find(message_params['conversation_id'])
-            @conversation.status = "archived"
-            @conversation.save
+            @conversation.archive
         end
         redirect_to '/helpful', alert: "Response Added"
     else
