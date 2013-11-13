@@ -52,14 +52,21 @@
     var messageIndex = 0;
     var totalCount = $('.conversation-heading').length;
 
+    var updateHighlight = function(){
+      $($('.conversation-heading')).removeClass('highlight');
+      $($('.conversation-heading')[messageIndex]).addClass('highlight');
+    }
     var openConversation = function(el){
       var $el = $(el);
       $conversation = $el.parents('.conversation');
       $conversation.find('.conversation-body').toggle();
+      messageIndex = $conversation.index();
+      updateHighlight();
     }
 
+
+    //keyboard shortcuts for cycling through conversations
     $(document).keydown(function(e){
-      console.log("here", e.ctrlKey)
         if(e.ctrlKey){
           console.log(e.keyCode);
           switch(e.keyCode){
@@ -73,17 +80,14 @@
               messageIndex = (messageIndex + totalCount - 1) % totalCount;
             break;
           }
+          updateHighlight();
+
         }
-        $($('.conversation-heading')).removeClass('highlight');
-        $($('.conversation-heading')[messageIndex]).addClass('highlight');
     });
-
-
 
     $('.conversation-heading').click(function(e) {
       e.preventDefault();
       openConversation(e.target)
-
     });
 
   });
