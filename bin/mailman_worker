@@ -11,7 +11,7 @@ Mailman.config.imap = {
   folder: ENV['MAILMAN_IMAP_FOLDER'] || 'Supportly-Test'
 }
 
-Mailman.config.poll_interval = ENV['MAILMAN_IMAP_POLL'].to_i || 30
+Mailman.config.poll_interval = (ENV['MAILMAN_IMAP_POLL'] || 30).to_i
 Mailman.config.ignore_stdin = true
 
 Mailman::Application.run do
