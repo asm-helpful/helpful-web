@@ -8,8 +8,14 @@ class ConversationsController < ApplicationController
       response = es.search body: { query: { match: { content: @query.to_s } } }
       ids = response['hits']['hits'].map { |x| x["_id"] }
       @conversations = @account.conversations.joins(:messages).where(messages: {:id => ids})
+      if current_user
+        Analytics.track(user_id: current_user.id, event: 'Searched For', properties: { query: @query.to_s })
+      end
     else
       @conversations = @account.conversations.open.includes(:messages)
+      if current_user
+        Analytics.track(user_id: current_user.id, event: 'Read Conversations Index')
+      end
     end
   end
 

@@ -19,8 +19,13 @@ class AccountsController < ApplicationController
     @account.new_account_user = @new_account_user
     @new_account_user.person = @person
 
-
     if @new_account_user.valid? && @account.valid? && @person.valid? && @account.save
+      Analytics.identify(
+          user_id: @new_account_user.id,
+          traits: { email: @new_account_user.email, account_id: @account.id })
+      Analytics.track(
+          user_id: @new_account_user.id,
+          event: 'Signed Up')
       redirect_to root_url, notice: 'You have successfully signed up!  Try logging in!'
     else
       render 'new'

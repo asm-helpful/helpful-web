@@ -53,6 +53,20 @@ To run this script
 
     $ bin/mailman
 
+### Configuring Search (Elastic Search)
+
+On OS X:
+
+    brew install elasticsearch
+    elasticsearch -f
+    rake search:reindex
+    foreman start
+
+### Configuring Analytics (Segment.io)
+
+You can get some analytics from your app by configuring a [Segment.io](https://segment.io/) secret key in .env:
+
+    SEGMENT_SECRET=XXXXXXXXXXXX
 
 ## Contributing
 
