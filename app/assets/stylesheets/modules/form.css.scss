@@ -41,7 +41,7 @@ legend {
     width: 100%;
 }
 
-input[type="text"] {
+#{$all-text-inputs} {
     @extend %form-element;
     font-family: $font;
     font-size: 1rem;
