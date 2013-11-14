@@ -8,6 +8,7 @@ gem 'bugsnag'
 gem 'curb'
 gem 'devise', '~> 3.1'
 gem 'friendly_id', '~> 5.0'
+gem 'elasticsearch', '~> 0.4.1'
 gem 'jquery-rails'
 gem 'mailman', require: false
 gem 'pg'

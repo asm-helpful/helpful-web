@@ -1,8 +1,10 @@
 <div class="navbar">
 
   <div class="navbar-left">
-    <!-- Search box placeholder -->
-    <input type="search" placeholder="Search conversations" />
+    <%= form_tag("/conversations/index", :method => "get", :class => "input-append") do %>
+       <%= text_field_tag :q, @query,:placeholder => 'Search conversations' %>
+	  <button class="btn" type="button" onclick="submit();"><i class="icon-search"></i>Search</button>
+    <% end %>
   </div>
 
   <div class="navbar-right">
