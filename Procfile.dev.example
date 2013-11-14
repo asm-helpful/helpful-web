@@ -1,0 +1,3 @@
+web:           bin/rails server puma --port $PORT
+redis:         redis-server /usr/local/etc/redis.conf
+elasticsearch: elasticsearch -f -D es.config=/usr/local/Cellar/elasticsearch/latest/config/elasticsearch.yml
