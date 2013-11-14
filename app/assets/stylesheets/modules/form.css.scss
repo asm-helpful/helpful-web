@@ -25,7 +25,7 @@ legend {
         @extend legend;
         position: absolute;
         left: .85rem;
-        top: .95rem;
+        top: .55rem;
     }
 }
 
@@ -78,7 +78,7 @@ input[type="text"] {
     content: '';
     display: block;
     position: absolute;
-    top: 1.25em;
+    top: 1.45em;
     left: .75em;
     height: 16px;
     width: 16px;
@@ -91,7 +91,7 @@ input[type="text"] {
     width: 10px;
     height: 10px;
     position: absolute;
-    top: 1.5em;
+    top: 1.7em;
     left: 1em;
 }
 
