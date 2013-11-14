@@ -32,7 +32,7 @@ Supportly::Application.routes.draw do
 
   root to: 'pages#home'
   
-  get '/widget' => 'pages#widget'
+  get '/styleguide' => 'pages#styleguide', :as => :styleguide
 
   scope ':account' do
     #resources :"", controller: 'conversations', as: 'conversations'
