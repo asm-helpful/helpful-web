@@ -59,15 +59,14 @@ On OS X:
 
     brew install elasticsearch
     elasticsearch -f
-    export ELASTICSEARCH_URL=http://localhost:9200
     rake search:reindex
     foreman start
 
 ### Configuring Analytics (Segment.io)
 
-You can get some analytics from your app by configuring a [Segment.io](https://segment.io/) secret key:
+You can get some analytics from your app by configuring a [Segment.io](https://segment.io/) secret key in .env:
 
-    export SEGMENT_SECRET=XXXXXXXXXXXX
+    SEGMENT_SECRET=XXXXXXXXXXXX
 
 There are events for:
 
