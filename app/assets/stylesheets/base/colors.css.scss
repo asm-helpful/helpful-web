@@ -1,0 +1,38 @@
+body {
+    background-color: $white;
+    color: $grey;
+}
+
+a {
+    color: $secondary;
+    border-bottom: 1px solid rgba($secondary, .5);
+    
+    &:hover {
+        color: darken($secondary, 15%);
+        border-bottom-color: darken($secondary, 15%);
+    }
+}
+
+.black {
+    color: $black;
+}
+
+.muted {
+    color: $muted;
+}
+
+.primary {
+    color: $primary;
+}
+
+.secondary {
+    color: $secondary;
+}
+
+h1, h2, h3, h4 {
+    color: $black; 
+}
+
+h5 {
+    color: $primary;
+}

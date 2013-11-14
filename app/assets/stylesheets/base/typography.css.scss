@@ -1,5 +1,80 @@
-@import 'addons/font-family';
-
 body {
-  font-family: "Open Sans", $helvetica;
+    font-family: $font;
+    font-size: 18px;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+    
+    &:first-child {
+        margin-top: 0;
+    }
+}
+
+h1, h3 {
+    font-family: $slab;
+}
+
+h1 {
+    font-size: 4.1em;
+}
+
+h2 {
+    font-size: 1.8em;
+}
+
+h3 {
+    font-size: 1.3em;
+}
+
+h4 {
+    font-size: 1.3em;
+    font-weight: normal;
+}
+
+h5 {
+    font-size: 1.05em;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+h6 {
+    font-size: 1.05em;
+}
+
+p {
+    line-height: 1.45;
+    margin-bottom: .8rem;
+    max-width: 34em;
+    
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+strong {
+    font-weight: 600;
+}
+
+em {
+    font-style: italic;
+}
+
+a {
+    text-decoration: none;
+    border-bottom: 1px solid inherit;
+}
+
+h1 + p {
+    font-size: 1.55rem;
+    font-weight: 200;
+}
+
+.hushed {
+    font-size: .9em;
+    opacity: .8;
 }
