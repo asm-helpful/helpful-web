@@ -25,6 +25,7 @@ GEM
       multi_json (~> 1.3)
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
+    addressable (2.3.5)
     arel (4.0.1)
     atomic (1.1.14)
     bcrypt-ruby (3.1.2)
@@ -38,6 +39,8 @@ GEM
     celluloid (0.15.2)
       timers (~> 1.1.0)
     connection_pool (1.1.0)
+    crack (0.4.1)
+      safe_yaml (~> 0.9.0)
     curb (0.8.5)
     devise (3.1.1)
       bcrypt-ruby (~> 3.0)
@@ -135,6 +138,7 @@ GEM
     redis (3.0.5)
     redis-namespace (1.3.2)
       redis (~> 3.0.4)
+    safe_yaml (0.9.7)
     sass (3.2.12)
     sass-rails (4.0.1)
       railties (>= 4.0.0, < 5.0)
@@ -178,6 +182,9 @@ GEM
       json (>= 1.8.0)
     warden (1.2.3)
       rack (>= 1.0)
+    webmock (1.15.2)
+      addressable (>= 2.2.7)
+      crack (>= 0.3.2)
 
 PLATFORMS
   ruby
@@ -206,3 +213,4 @@ DEPENDENCIES
   sinatra
   slim
   uglifier (>= 1.3.0)
+  webmock (~> 1.15)
