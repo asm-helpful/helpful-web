@@ -4,11 +4,14 @@
 @import 'variables';
 @import 'mixins';
 
-@import 'base/typography';
+@import 'base/typography',
+        'base/colors';
 
 @import 'modules/alert',
         'modules/avatar',
+        'modules/button',
         'modules/conversation',
+        'modules/form',
         'modules/list',
         'modules/message',
         'modules/nav',

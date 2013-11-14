@@ -1,0 +1,171 @@
+form > div,
+fieldset {
+    margin-bottom: 1rem;
+}
+
+legend {
+    color: black;
+    display: block;
+    font-size: .75em;
+    font-weight: 600;
+    margin-bottom: .55rem;
+}
+
+.input-container {
+    position: relative;
+    
+    label {
+        @extend legend;
+        position: absolute;
+        left: .85rem;
+        top: .95rem;
+    }
+}
+
+.input-container--error label span {
+    color: $error; 
+}
+
+%form-element {
+    border: 2px solid $muted;
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding: .5rem .7rem;
+    width: 100%;
+}
+
+input[type="text"] {
+    @extend %form-element;
+    font-family: $font;
+    font-size: 1rem;
+    padding-top: 2rem;
+    -webkit-font-smoothing: antialiased;
+
+    &:focus {
+        border-color: $secondary;
+        outline: 0;
+    }
+    
+    .input-container--valid & {
+        border-color: darken($muted, 15%);
+        
+        &:focus {
+            border-color: $secondary;
+        }
+    }
+    
+    .input-container--error & {
+        border-color: $error;
+        
+        &:focus {
+            border-color: darken($error, 15%);
+        }
+    }
+}
+
+%pseudo-toggle-input-before {
+    background-color: white;
+    @include background-image(linear-gradient(#fff 0%, #fff 30%, #fafafa 70%, #fafafa 100%));
+    border: 1px solid #bfbfbf;
+    box-shadow: 0 0 1px #bfbfbf, 0 0 1px #fff inset;
+    content: '';
+    display: block;
+    position: absolute;
+    top: 1.25em;
+    left: .75em;
+    height: 16px;
+    width: 16px;
+}
+
+%pseudo-toggle-input-after {
+    background-color: #3da1b2;
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: 1.5em;
+    left: 1em;
+}
+
+.option-container {
+    position: relative;
+    width: 100%;
+        
+    input {
+        display: none;
+    }
+    
+    label {
+        @extend %form-element;
+        display: block;
+        font-size: 1rem;
+        padding-top: 1.2rem;
+        padding-bottom: 1.2rem;
+        padding-left: 2.4rem;
+        margin-bottom: .55rem;
+        
+        &:before {
+            @extend %pseudo-toggle-input-before;
+            border-radius: 2px;
+        }
+    }
+    
+    input[type="radio"] + label:before {
+        border-radius: 9px;
+    }
+    
+    &:hover label {
+        background-color: lighten($muted, 15%);
+        cursor: pointer;
+    }
+    
+    &:last-of-type label {
+        margin-bottom: 0;
+    }
+    
+    input:checked + label {
+        border-color: $secondary;
+        
+        &:after {
+            @extend %pseudo-toggle-input-after;
+            border-radius: 1px;
+        }
+    }
+    
+    input[type="radio"]:checked + label:after {
+        border-radius: 6px;
+    }
+
+}
+
+textarea {
+    @extend input[type="text"];
+    display: block;
+    max-width: 100%;
+}
+
+/* Form - Placeholder color */
+input::-webkit-input-placeholder {
+    color: darken($muted, 13%);
+}
+
+input:focus::-webkit-input-placeholder {
+    color: $muted;
+}
+
+input::-moz-placeholder {
+    color: darken($muted, 13%);
+}
+
+input:focus::-moz-placeholder {
+    color: $muted;
+}
+
+input:-ms-input-placeholder {
+    color: darken($muted, 13%);
+}
+
+input:focus:-ms-input-placeholder {
+    color: $muted;
+}

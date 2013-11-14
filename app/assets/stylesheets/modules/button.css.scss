@@ -1,0 +1,54 @@
+.btn {
+    background-color: $primary;
+    border: 0;
+    border-radius: 4px;
+    box-shadow: 0 2px 0 darken($primary, 15%);
+    color: $white;
+    cursor: pointer;
+    display: inline-block;
+    font-family: $font;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 2.2;
+    padding: 0 1em;
+    -webkit-font-smoothing: antialiased;
+
+    &:hover {
+        color: $white;
+    }
+    
+    &:not(.btn-disabled):hover {
+        background-color: darken($primary, 5%);
+    }
+}
+
+.btn-secondary {
+    @extend .btn;
+    background-color: $secondary;
+    box-shadow: 0 2px 0 darken($secondary, 15%);
+    
+    &:not(.btn-disabled):hover {
+        background-color: darken($secondary, 5%);
+    }
+}
+
+.btn-muted {
+    @extend .btn;
+    background-color: $muted;
+    box-shadow: 0 2px 0 darken($muted, 15%);
+    
+    &:not(.btn-disabled):hover {
+        background-color: darken($muted, 5%);
+    }
+}
+
+.btn-disabled {
+    opacity: .5;
+    cursor: default;
+}
+
+.btn-container {
+    li {
+        display: inline-block;
+    }
+}
