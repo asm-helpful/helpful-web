@@ -28,7 +28,7 @@ class MessagesController < ApplicationController
         Analytics.track(user_id: current_user.id,
             event: 'Sent New Message', 
             properties: { action: params['commit'] })
-        redirect_to '/helpful', alert: "Added Response"
+        redirect_to '/helpful', alert: "Response Added"
     else
         Analytics.track(user_id: current_user.id, event: 'Had Message Send Problem')
         redirect_to '/helpful', alert: "Problem"
