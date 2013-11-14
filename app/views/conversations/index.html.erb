@@ -1,6 +1,9 @@
 <%= render 'navbar' %>
 
 <div class="list converation-list">
+  <% if @query and @conversations.empty? %>
+    No results found
+  <% end %>
   <%= content_tag_for(:div, @conversations, class: 'list-item') do |conversation| %>
 
     <a class="conversation-heading" href="#">
