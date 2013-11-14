@@ -14,17 +14,25 @@ You need [Ruby 2.0.0](https://www.ruby-lang.org), [Postgres](http://www.postgres
     # Install dependent gems
     $ bundle install --binstubs
     
-    # Configure the environment
-    $ cp .env.example .env
-    # edit .env
-    
     # Setup the database
     $ cp config/database.yml.example config/database.yml
     # edit config/database.
     $ bin/rake db:setup
     
+    # Install & Setup dependencies (for Mac)
+    $ brew install elasticsearch
+    $ cp -s /usr/local/Cellar/elasticsearch/X.XX.X /usr/local/Cellar/elasticsearch/latest
+    $ brew install redis
+    $ cp -s /usr/local/Cellar/redis/X.XX.X /usr/local/Cellar/elasticsearch/redis
+    
+    # Configure the environment
+    $ cp .env.example .env
+    # edit .env
+    $ cp Procfile.dev.example Procfile.dev
+    # edit Procfile.dev
+    
     # Start the server
-    $ foreman start
+    $ foreman start -f Procfile.dev
     # open localhost:5000 in your browser
 
     # Play with sandbox
