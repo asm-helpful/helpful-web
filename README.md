@@ -53,6 +53,31 @@ To run this script
 
     $ bin/mailman
 
+### Configuring Search (Elastic Search)
+
+On OS X:
+
+    brew install elasticsearch
+    elasticsearch -f
+    export ELASTICSEARCH_URL=http://localhost:9200
+    rake search:reindex
+    foreman start
+
+### Configuring Analytics (Segment.io)
+
+You can get some analytics from your app by configuring a [Segment.io](https://segment.io/) secret key:
+
+    export SEGMENT_SECRET=XXXXXXXXXXXX
+
+There are events for:
+
+* Signed Up 
+* Signed In
+* Signed Out
+* Searched For [query]
+* Read Conversations Index
+* Sent New Message [action]
+* Had Message Send Problem
 
 ## Contributing
 
