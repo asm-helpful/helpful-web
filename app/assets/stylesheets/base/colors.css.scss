@@ -29,6 +29,25 @@ a {
     color: $secondary;
 }
 
+.black-bg {
+    background-color: $black;
+    color: $white;
+}
+
+.muted-bg {
+    background-color: $muted;
+}
+
+.primary-bg {
+    background-color: $primary;
+    color: $white;
+}
+
+.secondary-bg {
+    background-color: $secondary;
+    color: $white;
+}
+
 h1, h2, h3, h4 {
     color: $black; 
 }
