@@ -25,6 +25,7 @@ GEM
       multi_json (~> 1.3)
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
+    addressable (2.3.5)
     arel (4.0.1)
     atomic (1.1.14)
     bcrypt-ruby (3.1.2)
@@ -38,6 +39,8 @@ GEM
     celluloid (0.15.2)
       timers (~> 1.1.0)
     connection_pool (1.1.0)
+    crack (0.4.1)
+      safe_yaml (~> 0.9.0)
     curb (0.8.5)
     devise (3.1.1)
       bcrypt-ruby (~> 3.0)
@@ -48,6 +51,14 @@ GEM
     dotenv (0.9.0)
     dotenv-rails (0.9.0)
       dotenv (= 0.9.0)
+    elasticsearch (0.4.1)
+      elasticsearch-api (= 0.4.1)
+      elasticsearch-transport (= 0.4.1)
+    elasticsearch-api (0.4.1)
+      multi_json
+    elasticsearch-transport (0.4.1)
+      faraday
+      multi_json
     erubis (2.7.0)
     execjs (2.0.2)
     factory_girl (4.2.0)
@@ -55,6 +66,8 @@ GEM
     factory_girl_rails (4.2.1)
       factory_girl (~> 4.2.0)
       railties (>= 3.0.0)
+    faraday (0.8.8)
+      multipart-post (~> 1.2.0)
     ffaker (1.20.0)
     ffi (1.9.3)
     friendly_id (5.0.1)
@@ -89,6 +102,7 @@ GEM
       rails (>= 3.0)
     multi_json (1.8.2)
     multi_xml (0.5.5)
+    multipart-post (1.2.0)
     orm_adapter (0.4.0)
     pg (0.17.0)
     polyglot (0.3.3)
@@ -124,6 +138,7 @@ GEM
     redis (3.0.5)
     redis-namespace (1.3.2)
       redis (~> 3.0.4)
+    safe_yaml (0.9.7)
     sass (3.2.12)
     sass-rails (4.0.1)
       railties (>= 4.0.0, < 5.0)
@@ -167,6 +182,9 @@ GEM
       json (>= 1.8.0)
     warden (1.2.3)
       rack (>= 1.0)
+    webmock (1.15.2)
+      addressable (>= 2.2.7)
+      crack (>= 0.3.2)
 
 PLATFORMS
   ruby
@@ -177,6 +195,7 @@ DEPENDENCIES
   curb
   devise (~> 3.1)
   dotenv-rails
+  elasticsearch (~> 0.4.1)
   factory_girl_rails (~> 4.2.1)
   ffaker (~> 1.20)
   friendly_id (~> 5.0)
@@ -194,3 +213,4 @@ DEPENDENCIES
   sinatra
   slim
   uglifier (>= 1.3.0)
+  webmock (~> 1.15)

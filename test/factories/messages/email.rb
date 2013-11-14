@@ -2,6 +2,7 @@
 
 FactoryGirl.define do
   factory :email, class: Messages::Email do
+    from { Faker::Internet.email }
     conversation 
   end
 end

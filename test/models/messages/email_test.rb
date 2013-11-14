@@ -43,4 +43,13 @@ describe Messages::Email do
   #     assert_equal @message.message_id, @email.message_id
   #   end
   # end
+  
+  it "returns a hash of webhook_data" do
+    @email.save
+    webhook_data = @email.webhook_data
+    webhook_data.each do |k,v|
+      assert v.class.in?([Hash, Array, String, Integer, NilClass, Fixnum]),
+        "Value is an invalid type: #{k} - #{v.class}"
+    end
+  end
 end

@@ -11,14 +11,13 @@ class Messages::Email < Message
   def self.receive(message)
     conversation = Conversation.create(account_id: Account.first) 
     
-
     # TODO: Handle HTML email.
     if message.multipart? 
       content = message.text_part.decoded
     else
       content = message.body.decoded
     end
-
+    
     Messages::Email.create(
       from: message.from[0], 
       content: content, 
@@ -29,4 +28,13 @@ class Messages::Email < Message
       in_reply_to: message.in_reply_to || nil
     )
   end
+
+  def webhook_data
+    super.merge({
+      to: self.to,
+      subject: self.subject,
+      message_id: self.message_id
+    })
+  end
+  
 end

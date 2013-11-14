@@ -8,6 +8,7 @@ gem 'bugsnag'
 gem 'curb'
 gem 'devise', '~> 3.1'
 gem 'friendly_id', '~> 5.0'
+gem 'elasticsearch', '~> 0.4.1'
 gem 'jquery-rails'
 gem 'mailman', require: false
 gem 'pg'
@@ -27,6 +28,7 @@ group :test do
   gem 'factory_girl_rails', '~> 4.2.1'
   
   gem 'minitest-rails', '~> 0.9.2'
+  gem 'webmock', '~> 1.15'
 end
 
 group :development, :test do
