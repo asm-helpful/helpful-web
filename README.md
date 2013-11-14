@@ -68,16 +68,6 @@ You can get some analytics from your app by configuring a [Segment.io](https://s
 
     SEGMENT_SECRET=XXXXXXXXXXXX
 
-There are events for:
-
-* Signed Up 
-* Signed In
-* Signed Out
-* Searched For [query]
-* Read Conversations Index
-* Sent New Message [action]
-* Had Message Send Problem
-
 ## Contributing
 
 There are a couple of steps you need to take before contributing:
