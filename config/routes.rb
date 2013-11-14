@@ -26,6 +26,10 @@ Supportly::Application.routes.draw do
   resource :account, only: [:new, :create]
   resources :messages
 
+  authenticated :user do
+    root :to => 'conversations#index', :as => 'authenticated_root'
+  end
+
   root to: 'pages#home'
   
   get '/widget' => 'pages#widget'

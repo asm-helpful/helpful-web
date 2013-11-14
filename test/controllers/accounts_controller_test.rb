@@ -12,6 +12,9 @@ describe AccountsController do
       account: {
         name: 'MyCompany'
       },
+      person: {
+        name: 'John Doe'
+      },
       user: {
         email: 'user@user.com',
         password: 'password',
@@ -19,7 +22,7 @@ describe AccountsController do
       }
     }
 
-    assert_redirected_to root_url
+    assert_redirected_to conversations_index_path
   end
 
 end

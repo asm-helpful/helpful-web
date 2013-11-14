@@ -21,7 +21,8 @@ class AccountsController < ApplicationController
 
 
     if @new_account_user.valid? && @account.valid? && @person.valid? && @account.save
-      redirect_to root_url, notice: 'You have successfully signed up!  Try logging in!'
+      sign_in(@new_account_user)
+      redirect_to conversations_index_path
     else
       render 'new'
     end
