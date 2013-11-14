@@ -1,8 +1,9 @@
-//= require normalize
-//= require_self
+// *= require_tree .
 
-@import 'variables';
-@import 'mixins';
+@import 'bourbon';
+
+@import '_variables';
+@import '_mixins';
 
 @import 'base/typography',
         'base/colors';
