@@ -1,0 +1,479 @@
+/* Fonts */
+$font: 'Open Sans', sans-serif;
+$slab: 'Roboto Slab', serif;
+
+/* Colors */
+$black: #333;
+$grey: #666;
+$white: #fafafa;
+$muted: #ccc;
+$hushed: #9a9a9a;
+
+$primary: #ff5656;
+$secondary: #46c4d7;
+
+$success: #82c451;
+$error: #ff797c;
+
+/* Logo */
+
+.logo {
+  position: relative;
+  height: 198px;
+  width: 198px;
+  margin: 10% auto; 
+  margin-top: 15%;  
+  background: url(https://dl.dropboxusercontent.com/u/48472210/helpful_logo_1.png) no-repeat center;
+  background-size: 100%;
+  z-index: 1;
+}
+
+/* Styleguide styles - ignore */
+.container {
+  width: 90%;
+  margin: 2em auto;
+  max-width: 830px;
+}
+
+.example {
+  border: 2px solid rgba($muted, .3);
+  border-radius: 4px;
+  padding: 1rem 1.5rem;
+  margin: 1rem -1.5rem;
+}
+
+.colors li {
+  display: inline-block;
+  height: 100px;
+  width: 100px;
+  text-align: center;
+  line-height: 160px;
+  margin-right: 30px;
+  
+  &:nth-child(4n+4) {
+    margin-right: 0; 
+  }
+}
+
+/* Typography */
+body {
+  font-family: $font;
+  font-size: 18px;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+  
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+h1, h3 {
+  font-family: $slab;
+}
+
+h1 {
+  font-size: 4.1em;
+}
+
+h2 {
+  font-size: 1.8em;
+}
+
+h3 {
+  font-size: 1.3em;
+}
+
+h4 {
+  font-size: 1.3em;
+  font-weight: normal;
+}
+
+h5 {
+  font-size: 1.05em;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+h6 {
+  font-size: 1.05em;
+}
+
+p {
+  line-height: 1.45;
+  margin-bottom: .8rem;
+  max-width: 34em;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+strong {
+  font-weight: 600;
+}
+
+em {
+  font-style: italic;
+}
+
+a {
+  text-decoration: none;
+  border-bottom: 1px solid inherit;
+}
+
+h1 + p {
+  font-size: 1.55rem;
+  font-weight: 200;
+}
+
+.hushed {
+  font-size: .9em;
+  opacity: .8;
+}
+
+/* Color */
+body {
+  background-color: $white;
+  color: $grey;
+}
+
+a {
+  color: $secondary;
+  border-bottom: 1px solid rgba($secondary, .5);
+  
+  &:hover {
+    color: darken($secondary, 15%);
+    border-bottom-color: darken($secondary, 15%);
+  }
+}
+
+.c-black {
+  background-color: $black;
+  color: $white;
+}
+
+.c-muted {
+  background-color: $muted;
+  color: $white;
+}
+
+.c-primary {
+  background-color: $primary;
+  color: $white;
+}
+
+.c-secondary {
+  background-color: $secondary;
+  color: $white;
+}
+
+.black {
+  color: $black;
+}
+
+.muted {
+  color: $muted;
+}
+
+.primary {
+  color: $primary;
+}
+
+.secondary {
+  color: $secondary;
+}
+
+h1, h2, h3, h4 {
+  color: $black; 
+}
+
+h5 {
+  color: $primary;
+}
+
+/* Buttons */
+
+input, button{
+  -webkit-appearance: none;
+}
+
+.btn {
+  background-color: $primary;
+  border: 0;
+  border-radius: 4px;
+  box-shadow: 0 2px 0 darken($primary, 15%);
+  color: $white;
+  cursor: pointer;
+  display: inline-block;
+  font-family: $font;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 2.2;
+  padding: 0 1em;
+  -webkit-font-smoothing: antialiased;
+
+  &:hover {
+    color: $white;
+  }
+  
+  &:not(.btn-disabled):hover {
+    background-color: darken($primary, 5%);
+  }
+  
+  &.large {
+    font-size: 1.2rem;
+  }
+}
+
+.btn-secondary {
+  @extend .btn;
+  background-color: $secondary;
+  box-shadow: 0 2px 0 darken($secondary, 15%);
+  
+  &:not(.btn-disabled):hover {
+    background-color: darken($secondary, 5%);
+  }
+}
+
+.btn-muted {
+  @extend .btn;
+  background-color: $muted;
+  box-shadow: 0 2px 0 darken($muted, 15%);
+  
+  &:not(.btn-disabled):hover {
+    background-color: darken($muted, 5%);
+  }
+}
+
+.btn-disabled {
+  opacity: .5;
+  cursor: default;
+}
+
+.btn-container {
+  li {
+    display: inline-block;
+  }
+}
+
+/* Form */
+form > div,
+fieldset {
+  margin-bottom: 1rem;
+}
+
+legend {
+  color: black;
+  display: block;
+  font-size: .75em;
+  font-weight: 600;
+  margin-bottom: .55rem;
+}
+
+.input-container {
+  position: relative;
+  
+  label {
+    @extend legend;
+    position: absolute;
+    left: .85rem;
+    top: .95rem;
+  }
+}
+
+.input-container--error label span {
+  color: $error; 
+}
+
+%form-element {
+  border: 2px solid $muted;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: .5rem .7rem;
+  width: 100%;
+}
+
+input[type="text"], input[type="email"], input[type="password"]{
+  @extend %form-element;
+  font-family: $font;
+  font-size: 1rem;
+  padding-top: 2rem;
+  -webkit-font-smoothing: antialiased;
+
+  &:focus {
+    border-color: $secondary;
+    outline: 0;
+  }
+  
+  .input-container--valid & {
+    border-color: darken($muted, 15%);
+    
+    &:focus {
+      border-color: $secondary;
+    }
+  }
+  
+  .input-container--error & {
+    border-color: $error;
+    
+    &:focus {
+      border-color: darken($error, 15%);
+    }
+  }
+}
+
+%pseudo-toggle-input-before {
+  background-color: white;
+  // @include background-image(linear-gradient(#fff 0%, #fff 30%, #fafafa 70%, #fafafa 100%));
+  border: 1px solid #bfbfbf;
+  box-shadow: 0 0 1px #bfbfbf, 0 0 1px #fff inset;
+  content: '';
+  display: block;
+  position: absolute;
+  top: 1.25em;
+  left: .75em;
+  height: 16px;
+  width: 16px;
+}
+
+%pseudo-toggle-input-after {
+  background-color: #3da1b2;
+  content: '';
+  display: block;
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 1.5em;
+  left: 1em;
+}
+
+.option-container {
+  position: relative;
+  width: 100%;
+    
+  input {
+    display: none;
+  }
+  
+  label {
+    @extend %form-element;
+    display: block;
+    font-size: 1rem;
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
+    padding-left: 2.4rem;
+    margin-bottom: .55rem;
+    
+    &:before {
+      @extend %pseudo-toggle-input-before;
+      border-radius: 2px;
+    }
+  }
+  
+  input[type="radio"] + label:before {
+    border-radius: 9px;
+  }
+  
+  &:hover label {
+    background-color: lighten($muted, 15%);
+    cursor: pointer;
+  }
+  
+  &:last-of-type label {
+    margin-bottom: 0;
+  }
+  
+  input:checked + label {
+    border-color: $secondary;
+    
+    &:after {
+      @extend %pseudo-toggle-input-after;
+      border-radius: 1px;
+    }
+  }
+  
+  input[type="radio"]:checked + label:after {
+    border-radius: 6px;
+  }
+
+}
+
+textarea {
+  @extend input[type="text"];
+  display: block;
+  max-width: 100%;
+}
+
+/* Form - Placeholder color */
+input::-webkit-input-placeholder {
+  color: darken($muted, 13%);
+}
+
+input:focus::-webkit-input-placeholder {
+  color: $muted;
+}
+
+input::-moz-placeholder {
+  color: darken($muted, 13%);
+}
+
+input:focus::-moz-placeholder {
+  color: $muted;
+}
+
+input:-ms-input-placeholder {
+  color: darken($muted, 13%);
+}
+
+input:focus:-ms-input-placeholder {
+  color: $muted;
+}
+
+/* Alerts */
+.alert {
+  border-radius: 4px;
+  background-color: $secondary;
+  color: $white;
+  padding: 1.06rem .9rem 1.22rem;
+  position: relative;
+  max-width: 100%;
+}
+
+.alert-success {
+  background-color: $success;
+}
+
+.alert-error {
+  background-color: $error;
+}
+
+.alert_close {
+  border: 0;
+  border-left: 2px solid rgba(0, 0, 0, .12);
+  color: $white;
+  font-family: 'Open Sans';
+  font-size: 1.8em;
+  font-weight: 800;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  padding: 0 .625em;
+  line-height: 1.85em;
+  
+  &:hover {
+    color: $white;
+  }
+}
+
+.account{
+   width: 60%;
+   min-width: 300px;
+   margin: 0 auto;
+}

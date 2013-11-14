@@ -1,23 +1,41 @@
-<h2>Sign up</h2>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:700' rel='stylesheet' type='text/css'>
 
-<%= render "/shared/error_messages", :target => @account %>
-<%= render "/shared/error_messages", :target => @new_account_user %>
+<div class="container">
+  <div class="account">
+    <div class="logo"></div>
+    <h3>Sign Up for a Free Account</h3>
+    <p>Quick and easy sign up process. No credit card required. If you already have a Helpful account, <%= link_to('sign in', new_user_session_path)  %>.</p>
 
-<%= form_for @account, url: account_path do |f| %>
+    <%= render "/shared/error_messages", :target => @account %>
+    <%= render "/shared/error_messages", :target => @new_account_user %>
 
-  <div><%= f.label :name, "Company name" %><br />
-    <%= f.text_field :name, :autofocus => true %></div>
+    <%= form_for @account, url: account_path do |f| %>
 
-  <%= fields_for @new_account_user do |ff| %>
-    <div><%= ff.label :email %><br />
-      <%= ff.email_field :email %></div>
+      <div class="input-container"><%= f.label :name, "Company name" %>
+        <%= f.text_field :name, :autofocus => true, :placeholder => "Your Company" %></div>
+      
+      <%= fields_for @person do |ff| %>
 
-    <div><%= ff.label :password %><br />
-      <%= ff.password_field :password %></div>
+        <div class="input-container"><%= ff.label :name, "Your name" %>
+          <%= ff.text_field :name, :placeholder => "First Last" %></div>
 
-    <div><%= ff.label :password_confirmation %><br />
-      <%= ff.password_field :password_confirmation %></div>
-  <% end %>
+      <% end %>
 
-  <div><%= f.submit "Sign up" %></div>
-<% end %>
+      <%= fields_for @new_account_user do |ff| %>
+      
+        <div class="input-container"><%= ff.label :email %>
+          <%= ff.email_field :email, :placeholder => "you@domain.com" %></div>
+
+        <div class="input-container"><%= ff.label :password %>
+          <%= ff.password_field :password, :placeholder => "Must meet *these requirements*" %></div>
+
+        <div class="input-container"><%= ff.label :password_confirmation %>
+          <%= ff.password_field :password_confirmation, :placeholder => "Must meet *these requirements*" %></div>
+
+      <% end %>
+
+      <div><%= f.submit "Create My Account", :class => "btn large" %></div>
+    <% end %>
+  </div>
+</div>
