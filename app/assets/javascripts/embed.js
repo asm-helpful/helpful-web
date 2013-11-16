@@ -76,7 +76,7 @@
   // Binds the HelpfulEmbed class to the calling elements.
   $('[data-helpful]').on('click.helpful', function(e) {
     e.preventDefault();
-    embed.toggle(e.target);
+    helpful_embed.toggle($(e.target));
     return true;
   });
 
