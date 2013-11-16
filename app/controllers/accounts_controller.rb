@@ -15,14 +15,22 @@ class AccountsController < ApplicationController
     @person = Person.new person_params
 
     @person.email = @new_account_user.email
-    
+
     @account.new_account_user = @new_account_user
     @new_account_user.person = @person
 
-
     if @new_account_user.valid? && @account.valid? && @person.valid? && @account.save
+
       sign_in(@new_account_user)
-      redirect_to conversations_index_path
+
+      Analytics.identify(
+          user_id: @new_account_user.id,
+          traits: { email: @new_account_user.email, account_id: @account.id })
+      Analytics.track(
+          user_id: @new_account_user.id,
+          event: 'Signed Up')
+
+      redirect_to root_url, notice: 'You have successfully signed up!  Try logging in!'
     else
       render 'new'
     end

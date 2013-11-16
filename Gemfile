@@ -3,6 +3,7 @@ ruby '2.0.0'
 
 # Alphabetical list
 
+gem 'analytics-ruby', '<1.0'
 gem 'bourbon'
 gem 'bugsnag'
 gem 'curb'
