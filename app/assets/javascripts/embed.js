@@ -43,12 +43,10 @@
     $target = $(this.target);
     targetOffset = $target.offset();
 
-    targetOffsetBottom = targetOffset.top - window.innerHeight;
-
     this.el.html(data.html);
 
     this.el.css({
-      bottom:  targetOffsetBottom,
+      bottom: '30px',
       left: targetOffset.left,
       position: 'absolute'
     });
