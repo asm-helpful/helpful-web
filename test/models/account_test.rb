@@ -1,25 +1,17 @@
 require 'test_helper'
 
-describe Account do
-  before do
-    @account = FactoryGirl.build(:account)
+class AccountTest < ActiveSupport::TestCase
+
+  def test_valid
+    assert build(:account).valid?
   end
 
-  it "must be valid" do
-    @account.valid?.must_equal true
-  end
-
-  it "must have a unique slug" do
-    Account.create name: 'unique', slug: 'unique'
-    @account.name = 'unique'
-    @account.slug = 'unique'
-
+  def test_unique_slug
+    create(:account, name: 'unique', slug: 'unique')
+    account = build(:account, name: 'unique', slug: 'unique')
     assert_raises(ActiveRecord::RecordNotUnique) do
-      @account.save
+      account.save
     end
   end
-  
-  it "must have a web_hook_url field" do
-    assert Account.column_names.include?("web_hook_url")
-  end
+
 end

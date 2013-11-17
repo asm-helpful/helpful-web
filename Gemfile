@@ -27,22 +27,14 @@ end
 
 group :test do
   gem 'factory_girl_rails', '~> 4.2.1'
-  gem 'minitest-rails', '~> 0.9.2'
-  gem 'minitest-reporters'
   gem 'webmock', '~> 1.15'
+  gem 'ffaker', '~> 1.20'
 end
 
 group :development, :test do
   gem 'rake'
-  gem 'dotenv-rails'
-  gem 'ffaker', '~> 1.20'
 end
 
 group :production do
   gem 'rails_12factor'
-end
-
-group :autotest do
-  gem 'autotest-standalone'
-  gem 'autotest-fsevent'
 end

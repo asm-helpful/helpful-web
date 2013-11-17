@@ -1,8 +1,10 @@
 require 'test_helper'
 
-describe PagesController do
-  test "home is ok" do
+class PagesControllerTest < ActionController::TestCase
+
+  def test_home_success
     get :home
-    assert_equal response.status, 200
+    assert_response :success
   end
+
 end

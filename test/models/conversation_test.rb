@@ -1,42 +1,38 @@
 require 'test_helper'
 
-describe Conversation do
-  before do
-    @conversation = Conversation.new
+class ConversationTest < ActiveSupport::TestCase
+
+  def test_valid
+    assert build(:conversation).valid?
   end
 
-  it "is valid" do
-    assert @conversation.valid?
+  def test_open_by_default
+    assert build(:conversation).open?
   end
 
-  it "should not be archived by default" do
-    assert !@conversation.archived?
-  end
-
-  it "should be archived after archive" do
-    conversation = FactoryGirl.create :conversation
+  def test_archive
+    conversation = create(:conversation)
     conversation.archive
     assert conversation.archived?
   end
 
-  it "should only return unarchived conversations" do
-    FactoryGirl.create :conversation
-    FactoryGirl.create :archived_conversation
-    Conversation.open.each do |c|
-      assert !c.archived?
-    end
+  def test_class_open
+    create(:conversation)
+    create(:archived_conversation)
+    assert Conversation.open {|conversation| conversation.open? }
   end
 
-  it "adds the correct conversation number on create based on account_id" do
-    @account = FactoryGirl.create(:account)
+  def test_adds_the_correct_conversation_number_on_create_based_on_account_id
+    account = create(:account)
 
-    @conversation_1 = FactoryGirl.create(:conversation, account: @account)
-    assert_equal 1, @conversation_1.number
+    conversation_1 = create(:conversation, account: account)
+    assert_equal 1, conversation_1.number
 
-    @conversation_2 = FactoryGirl.create(:conversation, account: @account)
-    assert_equal 2, @conversation_2.number
+    conversation_2 = create(:conversation, account: account)
+    assert_equal 2, conversation_2.number
 
-    @conversation_3 = FactoryGirl.create(:conversation)
-    assert_equal 1, @conversation_3.number
+    conversation_3 = create(:conversation)
+    assert_equal 1, conversation_3.number
   end
+
 end

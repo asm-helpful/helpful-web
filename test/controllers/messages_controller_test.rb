@@ -1,8 +1,10 @@
 require 'test_helper'
 
-describe MessagesController do
-  test "index is ok" do
+class MessagesControllerTest < ActionController::TestCase
+
+  def test_index_success
     get :index
-    assert_equal response.status, 200
+    assert_response :success
   end
+
 end

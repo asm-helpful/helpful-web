@@ -1,25 +1,23 @@
 ENV["RAILS_ENV"] = "test"
-ENV['ELASTICSEARCH_URL'] = setting_to_nil_to_disable_search_in_test = nil
-
 require File.expand_path("../../config/environment", __FILE__)
 require "rails/test_help"
-require "minitest/rails"
-
-require "minitest/mock"
-require "webmock/minitest"
-
-require "minitest/reporters"
-
-Minitest::Reporters.use! Minitest::Reporters::DefaultReporter.new(color: true)
+require "webmock/test_unit"
 
 class ActiveSupport::TestCase
   include FactoryGirl::Syntax::Methods
+  include WebMock::API
+
+  alias_method :teardown_without_webmock, :teardown
+
+  def teardown_with_webmock
+    teardown_without_webmock
+    WebMock.reset!
+  end
+
+  alias_method :teardown, :teardown_with_webmock
+
 end
 
 class ActionController::TestCase
   include Devise::TestHelpers
-end
-
-Mail.defaults do
-  delivery_method :test
 end
