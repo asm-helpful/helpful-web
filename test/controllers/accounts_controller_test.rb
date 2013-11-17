@@ -1,13 +1,13 @@
 require "test_helper"
 
-describe AccountsController do
+class AccountsControllerTest < ActionController::TestCase
 
-  it "should get new" do
+  def test_new_success
     get :new
     assert_response :success
   end
 
-  it "should post create" do
+  def test_create_redirects_to_root
     post :create, {
       account: {
         name: 'MyCompany'

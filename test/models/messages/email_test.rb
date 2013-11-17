@@ -1,12 +1,9 @@
 require 'test_helper'
 
-describe Messages::Email do
-  before do
-    @email = FactoryGirl.build(:email)
-  end
+class Messages::EmailTest < ActiveSupport::TestCase
 
-  it "is valid" do
-    assert @email.valid?
+  def test_valid
+    assert build(:email).valid?
   end
 
   # These tests are commented out because the're very brittle and the
@@ -43,13 +40,5 @@ describe Messages::Email do
   #     assert_equal @message.message_id, @email.message_id
   #   end
   # end
-  
-  it "returns a hash of webhook_data" do
-    @email.save
-    webhook_data = @email.webhook_data
-    webhook_data.each do |k,v|
-      assert v.class.in?([Hash, Array, String, Integer, NilClass, Fixnum]),
-        "Value is an invalid type: #{k} - #{v.class}"
-    end
-  end
+
 end

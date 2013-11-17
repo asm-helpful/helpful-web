@@ -4,10 +4,9 @@ class Account < ActiveRecord::Base
   include ActiveRecord::UUID
   extend FriendlyId
 
-  friendly_id :account_slug, :use => :slugged
+  friendly_id :name, :use => :slugged
 
   has_many :conversations
-
   has_many :memberships
   has_many :users, through: :memberships
 
@@ -17,11 +16,6 @@ class Account < ActiveRecord::Base
   validates :slug, presence: true
 
   after_create :save_new_user
-
-  # Candidates for how to generate the slug.
-  def account_slug
-    [:name]
-  end
 
   protected
 

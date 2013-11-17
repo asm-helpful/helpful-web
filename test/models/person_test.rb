@@ -1,11 +1,9 @@
 require "test_helper"
 
-describe Person do
-  before do
-    @person = Person.new
+class PersonTest < ActiveSupport::TestCase
+
+  def test_valid
+    assert build(:person).valid?
   end
 
-  it "must be valid" do
-    @person.valid?.must_equal true
-  end
 end

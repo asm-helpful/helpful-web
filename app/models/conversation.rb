@@ -23,6 +23,10 @@ class Conversation < ActiveRecord::Base
     messages.map {|message| message.person }.uniq
   end
 
+  def open?
+    status != STATUS_ARCHIVED
+  end
+
   def archived?
     status == STATUS_ARCHIVED
   end

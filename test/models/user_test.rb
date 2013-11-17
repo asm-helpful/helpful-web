@@ -1,11 +1,9 @@
 require "test_helper"
 
-describe User do
-  before do
-    @user = FactoryGirl.build(:user)
+class UserTest < ActiveSupport::TestCase
+
+  def test_valid
+    assert build(:user).valid?
   end
 
-  it "must be valid" do
-    @user.valid?.must_equal true
-  end
 end

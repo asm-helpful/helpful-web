@@ -1,33 +1,40 @@
 require 'test_helper'
 
-describe BetaInvitesController do
-  test "should create beta_invite" do
+class BetaInvitesControllerTest < ActionController::TestCase
+
+  def test_create_increments_beta_invite
     assert_difference('BetaInvite.count') do
-      post :create, beta_invite: { email: 'supportfoo@example.com' }
+      post :create, beta_invite: attributes_for(:beta_invite)
     end
-
-    assert_redirected_to root_url
-    assert_equal 'Awesome, thanks for your interest!', flash[:notice]
   end
 
-  test "should ignore a duplicate" do
-    email = 'supportfoo@example.com'
-    BetaInvite.create!(email: email)
+  def test_create_redirects_to_root
+    post :create, beta_invite: attributes_for(:beta_invite)
+    assert_redirected_to root_url
+  end
+
+  def test_create_sets_flash_notice
+    post :create, beta_invite: attributes_for(:beta_invite)
+    assert flash[:notice]
+  end
+
+  def test_create_ignores_duplicates
+    email = 'email@example.com'
+    create(:beta_invite, email: email)
     assert_no_difference('BetaInvite.count') do
-      post :create, beta_invite: { email: email }
+      post :create, beta_invite: attributes_for(:beta_invite, email: email)
     end
-
-    assert_redirected_to root_url
-    assert_equal 'Awesome, thanks for your interest!', flash[:notice]
   end
 
-  test "should report a format error in the email" do
-    email = 'supportfoo'
+  def test_create_invalid_doesnt_save
     assert_no_difference('BetaInvite.count') do
-      post :create, beta_invite: { email: email }
+      post :create, beta_invite: attributes_for(:beta_invite, email: 'invalid')
     end
-
-    assert_redirected_to root_url
-    assert_match /Email is invalid/, flash[:alert]
   end
+
+  def test_create_invalid_sets_flash_alert
+    post :create, beta_invite: attributes_for(:beta_invite, email: 'invalid')
+    assert flash[:alert]
+  end
+
 end

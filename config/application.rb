@@ -18,7 +18,7 @@ module Supportly
 
     # Use MiniTest::Spec and FactoryGirl
     config.generators do |g|
-      g.test_framework :mini_test, spec: true, fixture: false
+      g.fixture_replacement :factory_girl
     end
 
 

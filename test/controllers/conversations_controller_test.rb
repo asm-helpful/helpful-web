@@ -1,28 +1,32 @@
 require 'test_helper'
 
-describe ConversationsController do
+class ConversationsControllerTest < ActionController::TestCase
+
   setup do
-    @conversation = FactoryGirl.create(:conversation_with_messages)
+    @account = create(:account)
+    @conversation = create(:conversation_with_messages, account: @account)
   end
 
-  test "should set account" do
-    get :index, account: @conversation.account.slug
+  def test_index_success
+    get :index, account: @account.to_param
     assert_response :success
+  end
+
+  def test_index_assigns_account
+    get :index, account: @account.to_param
     assert_not_nil assigns(:account)
   end
 
-  test "should render conversation for account" do
-    get :index, account: @conversation.account.slug
-    assert_response :success
+  def test_index_assigns_conversations
+    get :index, account: @account.to_param
     assert_not_nil assigns(:conversations)
   end
 
-  test "should raise RecordNotFound with no supplied account" do
+  def test_index_not_found_without_account
     skip "Disabled until multi-account support setup"
     assert_raises(ActiveRecord::RecordNotFound) do
       get :index
     end
   end
-
 
 end
