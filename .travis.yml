@@ -1,11 +1,12 @@
 language: ruby
+bundler_args: --without development production autotest
 rvm:
   - 2.0.0
 
 before_script:
   - gem install foreman
   - cp .env.example .env
-  
+
   - psql -c 'create database supportly_test;' -U postgres
   - cp config/database.yml.example config/database.yml
 
