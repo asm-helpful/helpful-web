@@ -10,7 +10,7 @@ require "webmock/minitest"
 
 require "minitest/reporters"
 
-Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
+Minitest::Reporters.use! Minitest::Reporters::DefaultReporter.new(color: true)
 
 class ActiveSupport::TestCase
   include FactoryGirl::Syntax::Methods

@@ -15,8 +15,6 @@ describe ConversationsController do
     get :index, account: @conversation.account.slug
     assert_response :success
     assert_not_nil assigns(:conversations)
-
-    assert_select '.conversation', 1
   end
 
   test "should raise RecordNotFound with no supplied account" do

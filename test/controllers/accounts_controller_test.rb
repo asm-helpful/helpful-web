@@ -1,7 +1,7 @@
 require "test_helper"
 
 describe AccountsController do
-  
+
   it "should get new" do
     get :new
     assert_response :success
@@ -22,7 +22,7 @@ describe AccountsController do
       }
     }
 
-    assert_redirected_to conversations_index_path
+    assert_redirected_to root_path
   end
 
 end

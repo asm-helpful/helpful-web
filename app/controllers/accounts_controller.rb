@@ -30,7 +30,7 @@ class AccountsController < ApplicationController
           user_id: @new_account_user.id,
           event: 'Signed Up')
 
-      redirect_to root_url, notice: 'You have successfully signed up!  Try logging in!'
+      redirect_to root_path, notice: 'You have successfully signed up!  Try logging in!'
     else
       render 'new'
     end
