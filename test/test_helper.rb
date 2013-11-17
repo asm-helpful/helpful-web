@@ -1,12 +1,16 @@
 ENV["RAILS_ENV"] = "test"
 ENV['ELASTICSEARCH_URL'] = setting_to_nil_to_disable_search_in_test = nil
 
-
 require File.expand_path("../../config/environment", __FILE__)
 require "rails/test_help"
 require "minitest/rails"
+
 require "minitest/mock"
 require "webmock/minitest"
+
+require "minitest/reporters"
+
+Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
 class ActiveSupport::TestCase
   include FactoryGirl::Syntax::Methods

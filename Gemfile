@@ -27,8 +27,8 @@ end
 
 group :test do
   gem 'factory_girl_rails', '~> 4.2.1'
-  
   gem 'minitest-rails', '~> 0.9.2'
+  gem 'minitest-reporters'
   gem 'webmock', '~> 1.15'
 end
 
@@ -40,4 +40,9 @@ end
 
 group :production do
   gem 'rails_12factor'
+end
+
+group :autotest do
+  gem 'autotest-standalone'
+  gem 'autotest-fsevent'
 end
