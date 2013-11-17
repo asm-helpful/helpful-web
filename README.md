@@ -9,28 +9,28 @@ Helpful is an open product that's being build by a fantastic group of people on 
 
 ## Getting started
 
-You need [Ruby 2.0.0](https://www.ruby-lang.org), [Postgres](http://www.postgresql.org), [Redis](http://redis.io) and the [Heroku Toolbelt](https://toolbelt.heroku.com) installed locally to run Helpful. 
-  
+You need [Ruby 2.0.0](https://www.ruby-lang.org), [Postgres](http://www.postgresql.org), [Redis](http://redis.io) and the [Heroku Toolbelt](https://toolbelt.heroku.com) installed locally to run Helpful.
+
     # Install dependent gems
-    $ bundle install --binstubs
-    
+    $ bundle install
+
     # Setup the database
     $ cp config/database.yml.example config/database.yml
     # edit config/database.
     $ bin/rake db:setup
-    
+
     # Install & Setup dependencies (for Mac)
     $ brew install elasticsearch
     $ cp -s /usr/local/Cellar/elasticsearch/X.XX.X /usr/local/Cellar/elasticsearch/latest
     $ brew install redis
     $ cp -s /usr/local/Cellar/redis/X.XX.X /usr/local/Cellar/elasticsearch/redis
-    
+
     # Configure the environment
     $ cp .env.example .env
     # edit .env
     $ cp Procfile.dev.example Procfile.dev
     # edit Procfile.dev
-    
+
     # Start the server
     $ foreman start -f Procfile.dev
     # open localhost:5000 in your browser
