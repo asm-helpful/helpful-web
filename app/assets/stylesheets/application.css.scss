@@ -6,14 +6,8 @@
 @import 'mixins';
 
 @import 'base/typography',
-        'base/colors';
-
-//@import 'base/general';
-/* TODO: Move into general.css.css file when I can figure out why its not linking*/
-.hidden {
-  display: none !important;
-}
-/****************/
+        'base/colors',
+        'base/general';
 
 @import 'modules/alert',
         'modules/avatar',
