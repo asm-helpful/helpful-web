@@ -127,6 +127,8 @@ GEM
       hashie (>= 1.1.0)
     puma (2.6.0)
       rack (>= 1.1, < 2.0)
+    quiet_assets (1.0.2)
+      railties (>= 3.1, < 5.0)
     rack (1.5.2)
     rack-protection (1.5.1)
       rack
@@ -229,8 +231,10 @@ DEPENDENCIES
   minitest-reporters
   pg
   puma
+  quiet_assets
   rails (= 4.0.1)
   rails_12factor
+  rails_stdout_logging
   rake
   sass-rails (~> 4.0.0)
   sequential (>= 0.0.3)

@@ -1,7 +1,7 @@
 <div class="navbar">
 
   <div class="navbar-left">
-    <%= form_tag("/conversations/index", :method => "get", :class => "input-append") do %>
+    <%= form_tag(conversations_path(current_account), :method => "get", :class => "input-append") do %>
        <%= text_field_tag :q, @query,:placeholder => 'Search conversations' %>
 	  <button class="btn" type="button" onclick="submit();"><i class="icon-search"></i>Search</button>
     <% end %>

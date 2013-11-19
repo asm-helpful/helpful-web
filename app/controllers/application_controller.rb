@@ -5,6 +5,12 @@ class ApplicationController < ActionController::Base
 
   # Devise: Where to redirect users once they have logged in
   def after_sign_in_path_for(resource)
-    conversations_index_path
+    conversations_path
   end
+
+  def current_account
+    # TODO this should probably be the last account you were using
+    @current_account ||= current_user.accounts.first if signed_in?
+  end
+  helper_method :current_account
 end
