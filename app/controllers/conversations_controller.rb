@@ -33,7 +33,6 @@ class ConversationsController < ApplicationController
   end
 
   def load_account
-    @account = Account.first! # simpfy until for now
+    @account = Account.find_by_slug!(params['account'])
   end
-
 end
