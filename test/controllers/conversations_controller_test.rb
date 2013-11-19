@@ -8,7 +8,6 @@ describe ConversationsController do
   end
 
   test "should set account" do
-    puts "!!!#{@conversation.account.slug}  #{@conversation.account.inspect}"
     get :index, account: @conversation.account.slug
     assert_response :success
     assert_not_nil assigns(:account)
