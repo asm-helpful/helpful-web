@@ -1,6 +1,21 @@
 <div class="navbar">
 
   <div class="navbar-left">
+    <span>Filter</span>
+    <ul>
+        <li>
+            <button class="btn" type="button">New</button>
+        </li>
+        <li>
+            <button class="btn" type="button">Open</button>
+        </li>
+        <li>
+            <button class="btn" type="button">Archived</button>
+        </li>
+    </ul>
+  </div>
+
+  <div class="navbar-right">
     <%= form_tag("/conversations/index", :method => "get", :class => "input-append") do %>
        <%= text_field_tag :q, @query,:placeholder => 'Search conversations' %>
 	  <button class="btn" type="button" onclick="submit();"><i class="icon-search"></i>Search</button>

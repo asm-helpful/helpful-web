@@ -1,39 +1,50 @@
 <%= render 'navbar' %>
 
-<div class="list converation-list">
+<ul class="list converation-list">
   <% if @query and @conversations.empty? %>
-    No results found
+    <li>No results found</li>
   <% end %>
-  <%= content_tag_for(:div, @conversations, class: 'list-item') do |conversation| %>
+  <%= content_tag_for(:li, @conversations, class: 'list-item') do |conversation| %>
 
     <a class="conversation-heading" href="#">
-      <div class="number">#<%= conversation.number %></div>
-      <div class="participants">
-        <% conversation.participants.each do |person| %>
-          <%= avatar(person) %>
-        <% end %>
+      <div>
+        <div class="preview">
+          <%= preview conversation %>
+        </div>
+        <div class='info'>
+          <span class="number">#<%= conversation.number %></span>
+          <span>
+            <span class="message-count"><%=pluralize(conversation.messages.length, 'message', 'messages') %></span>
+            <span class="messages-new">(<%= conversation.messages.length %> new)</span>
+          </span>
+        </div>
       </div>
-      <div class="preview">
-        <%= preview conversation %>
-      </div>
-      <div class="updated">
-        <%= distance_in_time_of_last_message conversation %>
+      <div>
+        <div class="updated">
+          <%= distance_in_time_of_last_message conversation %>
+        </div>
+        <button class="btn hidden" type="button">Archive</button>
+        <button class="btn hidden" type="button">Resolve</button>
       </div>
     </a>
 
     <div class="conversation-body">
 
       <!-- Previous conversation -->
-      <div class="list message-list">
-        <%= content_tag_for(:div, conversation.messages, class: ['message', 'list-item']) do |message| %>
+      <ul class="list message-list">
+        <%= content_tag_for(:li, conversation.messages, class: ['message', 'list-item']) do |message| %>
           <div class="from"><%= avatar(message.person) %></div>
-          <div class="from-address"><%= message.person.email %></div>
-          <div class="created">
-            posted <%= time_ago_in_words(message.created_at) %>
+          <div>
+            <div>
+              <span class="from-address"><%= message.person.email %></span>
+              <span class="created">
+                posted <%= time_ago_in_words(message.created_at) %>
+              </span>
+            </div>
+            <div class="content"><%= message.content %></div>
           </div>
-          <div class="content"><%= message.content %></div>
         <% end %>
-      </div>
+      </ul>
 
       <!-- Reply -->
       <%= form_for(conversation.messages.new, html: {class: 'reply-form'}) do |f| %>
@@ -41,7 +52,7 @@
         <%= f.hidden_field :conversation_id, value: conversation.id %>
         <div class="form-actions">
           <%= f.submit 'Send', value: "Send", class: 'send' %>
-          <%= f.submit 'Send & Archive', value: "Send & Archive", class: 'send_archive' %>
+          <%= f.submit 'Send & Archive', value: "Send & Archive", class: 'hidden send_archive' %>
         </div>
       <% end %>
 
