@@ -9,6 +9,8 @@ class Message < ActiveRecord::Base
 
   belongs_to :conversation, touch: true
   delegate   :account, to: :conversation
+
+  attr_accessor :from
   belongs_to :person
 
   after_create  :send_webhook, unless: Proc.new { |m| m.conversation.account.web_hook_url.nil? }
@@ -18,7 +20,7 @@ class Message < ActiveRecord::Base
       id: self.id,
       conversation_id: self.conversation_id,
       content: self.content,
-      from: self.from,
+      person: self.person.attributes,
       created_at: self.created_at.utc.iso8601,
       updated_at: self.updated_at.utc.iso8601
     }}

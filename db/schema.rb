@@ -71,7 +71,6 @@ ActiveRecord::Schema.define(version: 20131119150942) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.uuid     "person_id",       null: false
-    t.string   "from"
   end
 
   add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
