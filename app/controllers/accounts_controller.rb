@@ -15,6 +15,7 @@ class AccountsController < ApplicationController
     @person = Person.new person_params
 
     @person.email = @new_account_user.email
+    @person.account = @account
 
     @account.new_account_user = @new_account_user
     @new_account_user.person = @person
