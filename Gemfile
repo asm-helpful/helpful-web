@@ -3,6 +3,7 @@ ruby '2.0.0'
 
 # Alphabetical list
 
+gem 'active_model_serializers'
 gem 'analytics-ruby', '<1.0'
 gem 'bourbon'
 gem 'bugsnag'
