@@ -33,7 +33,12 @@ class ConversationsController < ApplicationController
   end
 
   def load_account
-    @account = Account.first! # simpfy until for now
+    @account = Account.find_by_slug!(params['account'])
+  end
+
+  rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
+  def record_not_found
+    raise ActionController::RoutingError.new('Not Found')
   end
 
 end
