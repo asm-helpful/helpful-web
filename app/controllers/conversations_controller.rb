@@ -1,4 +1,5 @@
 class ConversationsController < ApplicationController
+  before_action :ensure_account
   before_action :load_account
 
   def index
@@ -30,6 +31,12 @@ class ConversationsController < ApplicationController
 
   def elasticsearch
     @es ||= Elasticsearch::Client.new hosts: [ ENV['ELASTICSEARCH_URL'] ]
+  end
+
+  def ensure_account
+    if signed_in? && params[:account].blank?
+      return redirect_to conversations_path(current_account)
+    end
   end
 
   def load_account

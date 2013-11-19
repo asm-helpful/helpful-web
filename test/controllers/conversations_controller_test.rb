@@ -2,10 +2,13 @@ require 'test_helper'
 
 describe ConversationsController do
   setup do
+    @current_user = FactoryGirl.create(:user)
+    sign_in @current_user
     @conversation = FactoryGirl.create(:conversation_with_messages)
   end
 
   test "should set account" do
+    puts "!!!#{@conversation.account.slug}  #{@conversation.account.inspect}"
     get :index, account: @conversation.account.slug
     assert_response :success
     assert_not_nil assigns(:account)
@@ -16,12 +19,4 @@ describe ConversationsController do
     assert_response :success
     assert_not_nil assigns(:conversations)
   end
-
-  test "should raise RecordNotFound with no supplied account" do
-    assert_raises(ActiveRecord::RecordNotFound) do
-      get :index
-    end
-  end
-
-
 end
