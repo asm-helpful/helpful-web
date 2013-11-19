@@ -13,7 +13,7 @@ class Message < ActiveRecord::Base
   attr_accessor :from
   belongs_to :person
 
-  after_create  :send_webhook, unless: Proc.new { |m| m.conversation.account.web_hook_url.nil? }
+  after_create  :send_webhook, unless: Proc.new { |m| m.conversation.account.webhook_url.nil? }
 
   def webhook_data
     { message: {

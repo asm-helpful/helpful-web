@@ -19,7 +19,7 @@ class Webhook < ActiveRecord::Base
       headers: {'X-Helpful-Webhook-Signature' => signature}
     }
 
-    response = HTTParty.post(account.web_hook_url, options)
+    response = HTTParty.post(account.webhook_url, options)
 
     self.update_attributes(
       response_code: response.code,

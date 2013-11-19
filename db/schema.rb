@@ -18,12 +18,12 @@ ActiveRecord::Schema.define(version: 20131119225136) do
   enable_extension "hstore"
 
   create_table "accounts", id: false, force: true do |t|
-    t.uuid     "id",           null: false
+    t.uuid     "id",             null: false
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "slug",         null: false
-    t.string   "web_hook_url"
+    t.string   "slug",           null: false
+    t.string   "webhook_url"
     t.string   "webhook_secret"
   end
 
