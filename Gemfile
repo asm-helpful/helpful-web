@@ -44,8 +44,3 @@ end
 group :production do
   gem 'rails_12factor'
 end
-
-group :autotest do
-  gem 'autotest-standalone'
-  gem 'autotest-fsevent'
-end
