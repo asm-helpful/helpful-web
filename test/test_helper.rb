@@ -23,3 +23,6 @@ end
 Mail.defaults do
   delivery_method :test
 end
+
+require 'sidekiq/testing'
+Sidekiq::Testing.fake!
