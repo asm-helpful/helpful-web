@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   # Devise: Where to redirect users once they have logged in
   def after_sign_in_path_for(resource)
-    conversations_path
+    conversations_path(current_account)
   end
 
   def current_account
