@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20131119225136) do
     t.datetime "updated_at"
     t.string   "slug",         null: false
     t.string   "web_hook_url"
+    t.string   "webhook_secret"
   end
 
   add_index "accounts", ["slug"], name: "index_accounts_on_slug", unique: true, using: :btree
@@ -70,7 +71,6 @@ ActiveRecord::Schema.define(version: 20131119225136) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.uuid     "person_id",       null: false
-    t.string   "from"
   end
 
   add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
@@ -127,5 +127,20 @@ ActiveRecord::Schema.define(version: 20131119225136) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
+
+  create_table "webhooks", id: false, force: true do |t|
+    t.uuid     "id",            null: false
+    t.uuid     "account_id",    null: false
+    t.string   "event",         null: false
+    t.text     "body"
+    t.string   "response_code"
+    t.text     "response_body"
+    t.datetime "response_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "webhooks", ["account_id"], name: "index_webhooks_on_account_id", using: :btree
+  add_index "webhooks", ["response_code", "response_at"], name: "index_webhooks_on_response_code_and_response_at", using: :btree
 
 end

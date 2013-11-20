@@ -6,28 +6,28 @@ class Message < ActiveRecord::Base
 
   before_create :populate_person
   after_save :update_search_index
+
   belongs_to :conversation, touch: true
+  delegate   :account, to: :conversation
+
+  attr_accessor :from
   belongs_to :person
 
   after_create  :send_webhook, unless: Proc.new { |m| m.conversation.account.web_hook_url.nil? }
 
   def webhook_data
-    {
+    { message: {
       id: self.id,
       conversation_id: self.conversation_id,
       content: self.content,
-      from: self.from,
-      created_at: self.created_at.utc.to_i,
-      updated_at: self.updated_at.utc.to_i
-    }
+      person: self.person.attributes,
+      created_at: self.created_at.utc.iso8601,
+      updated_at: self.updated_at.utc.iso8601
+    }}
   end
 
   def send_webhook
-    WebhookWorker.perform_async(
-      self.conversation.account.id,
-      "message.new",
-      self.webhook_data
-    )
+    Webhook.create(account: self.account, event: 'message.new', data: self.webhook_data)
   end
   
   def update_search_index
