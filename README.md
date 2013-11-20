@@ -28,6 +28,13 @@ You need [Ruby 2.0.0](https://www.ruby-lang.org), [Postgres](http://www.postgres
     # Configure the environment
     $ cp .env.example .env
     # edit .env
+
+### If you are running redis and elasticsearch already:
+
+    $ foreman start
+
+### If you are not running redis and elasticsearch seperately and would like to run them in the same session:
+
     $ cp Procfile.dev.example Procfile.dev
     # edit Procfile.dev
 
@@ -35,9 +42,10 @@ You need [Ruby 2.0.0](https://www.ruby-lang.org), [Postgres](http://www.postgres
     $ foreman start -f Procfile.dev
     # open localhost:5000 in your browser
 
-    # Play with sandbox
+### Send a test message to the app
+
     $ rake seed:message from=some_email@test.com
-    # open localhost:5000/conversations in your browser
+    # open localhost:5000 in your browser
 
 ### Experimental IMAP Support
 
