@@ -22,7 +22,6 @@ class Api::MessagesController < ApplicationController
  def create
     #:callback => params[:callback]
     #TODO: currently there's a database constraint that every message needs a conversation_id, remove first below
-    puts params
     @message = Message.new
     @message.conversation_id = Conversation.first.id unless defined? title['conversation_id']
     @message.from = params['email']
