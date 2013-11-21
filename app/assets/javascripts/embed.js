@@ -32,7 +32,7 @@
     tempcss.rel = 'stylesheet'
     tempcss.type = 'text/css'
     tempcss.href = '//helpful.io/assets/embed.css'
-    tempcss.href = '/assets/embed.css?temp=1' //DEV
+    tempcss.href = '/assets/embed.css' //DEV
     tempcss.media = 'all'
     document.head.appendChild(tempcss);
   }
