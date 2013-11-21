@@ -19,18 +19,17 @@ class Api::MessagesController < ApplicationController
     end
   end
 
- def create
-    #:callback => params[:callback]
+  def create
     #TODO: currently there's a database constraint that every message needs a conversation_id, remove first below
     @message = Message.new
-    @message.conversation_id = Conversation.first.id unless defined? title['conversation_id']
+    @message.conversation_id = params.fetch(:conversation_id, Conversation.first.id)
     @message.from = params['email']
     @message.content = params['content']
     respond_to do |format|
       if @message.save
-        format.json { render json: @message, status: :created }
+        format.json { render json: @message, status: :created, callback: params.fetch(:callback, nil)}
       else
-        format.json { render json: @message.error, status: :unprocessable_entity }
+        format.json { render json: @message.error, status: :unprocessable_entity, callback: params.fetch(:callback, nil)}
       end
     end
   end
