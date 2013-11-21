@@ -32,7 +32,7 @@
     tempcss.rel = 'stylesheet'
     tempcss.type = 'text/css'
     tempcss.href = '//helpful.io/assets/embed.css'
-    tempcss.href = '/assets/embed.css' //DEV
+    tempcss.href = '/assets/embed.css?temp=1' //DEV
     tempcss.media = 'all'
     document.head.appendChild(tempcss);
   }
@@ -52,6 +52,31 @@
     });
 
     this.el.show();
+
+    //give the page time to index the nodes
+    var that = this;
+    setTimeout(function(){
+      console.log(that.el[0].getElementsByTagName('form')[0]);
+      that.el[0].getElementsByTagName('form')[0].onsubmit = function(e){
+        //TODO: pass through conversation_id as well
+
+        window.HelpfulEmbedJsonpCallback = function(){
+          that.el.hide();
+        }
+        var params = "content="+encodeURIComponent(that.el[0].querySelector("#question").value);
+        params += "&email="+encodeURIComponent(that.el[0].querySelector("#email").value)
+        params += "&callback=HelpfulEmbedJsonpCallback"
+        var tempscript = document.createElement("script");
+        tempscript.type = "text/javascript";
+        tempscript.id = "helpful_tempscript_message";
+        tempscript.src = "//helpful.io/api/api/messages/create?"+params
+        tempscript.src = "/api/messages/create?"+params //DEV
+        that.el[0].appendChild(tempscript);
+
+        e.preventDefault();
+        return false;
+      }
+    }, 0)
   }
 
   // Closes the embed popup at the target

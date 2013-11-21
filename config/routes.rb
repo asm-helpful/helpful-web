@@ -28,6 +28,7 @@ Supportly::Application.routes.draw do
   resources :messages
 
   namespace :api do
+   match 'messages/create' => 'messages#create', :via => ["get", "post"], :defaults => { :format => 'json' }
    resources :messages, :defaults => { :format => 'json' }
   end
 

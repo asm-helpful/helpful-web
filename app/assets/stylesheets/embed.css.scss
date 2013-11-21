@@ -71,7 +71,12 @@
   > header {
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
     overflow: hidden;
-    margin-bottom: 2.5em;
+  }
+
+  .email-container {
+    > input {
+      padding: 4px;
+    }
   }
 
   .user-image {
