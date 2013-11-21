@@ -49,17 +49,18 @@ You need [Ruby 2.0.0](https://www.ruby-lang.org), [Postgres](http://www.postgres
 
 ### Experimental IMAP Support
 
-Helpful has an experimental script for fetching email from an IMAP. To use this functionality you will need to .env and enter the details for the following environment variables:
+Helpful has an experimental script for fetching email from an IMAP mailbox. To use this functionality you will need to edit .env and enter the details for the following environment variables:
 
     MAILMAN_IMAP_SERVER
     MAILMAN_IMAP_PORT
     MAILMAN_IMAP_USERNAME
     MAILMAN_IMAP_PASSWORD
-    MAILMAN_IMAP_FOLDER
+    MAILMAN_IMAP_FOLDER (optional, default: Helpful-Test)
+    MAILMAN_IMAP_POLL (optional, default: 30 sec)
 
-To run this script
+To run this script:
 
-    $ bin/mailman
+    $ foreman run bin/mailman_worker
 
 ### Configuring Search (Elastic Search)
 
