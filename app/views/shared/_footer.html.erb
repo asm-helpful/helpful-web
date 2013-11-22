@@ -1,9 +1,13 @@
+</div> <!-- Close .app-container -->
+
 <footer class="app-footer">
     <div class="app-footer_container">
         <div class="app-footer_list-container">
             <h3>Conversations</h3>
             <ul class="list--no-bullets">
-              <li><%= link_to('Open conversations', conversations_path) %></li>
+              <!-- Can't get this to work in other pages than /:account/conversations -->
+              <li><%# link_to('Current conversations', conversations_path) %></li>
+              <li><a href="#">Current conversations</a></li>
             </ul>
         </div>
         <div class="app-footer_list-container">

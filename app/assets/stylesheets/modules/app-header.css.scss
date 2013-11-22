@@ -4,6 +4,15 @@
     height: 5.7rem;
     margin-bottom: 2rem;
 
+    a {
+        border: 0;
+        color: darken($muted, 15%);
+
+        &:hover {
+            color: $gray;
+        }
+    }
+
     > div {
         border-left: 2px solid $muted;
         @include box-sizing(border-box);
@@ -19,8 +28,13 @@
 
 .app-header_logo {
     .logo {
+        color: $gray;
         top: .1rem;
         position: relative;
+
+        &:hover {
+            color: $gray;
+        }
     }
 }
 
@@ -29,8 +43,9 @@
 }
 
 .app-header_user-info {
-    width: 7.8rem;
     float: right;
+    text-align: center;
+    width: 7.8rem;
 
     span {
         display: block;
