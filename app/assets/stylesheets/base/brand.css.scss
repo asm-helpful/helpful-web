@@ -2,3 +2,16 @@
     background: url('/assets/logo.png') no-repeat center;
     @include background-size(100%);
 }
+
+.logo--wordmark {
+    @include background-size(auto 100%);
+    background-position: left center;
+    border: 0;
+    @include box-sizing(border-box);
+    color: $black;
+    font-family: $slab;
+    font-size: 1.4rem;
+    font-weight: bold;
+    height: 3.8rem;
+    padding: 1.4rem 0 1.4rem 6rem;
+}
