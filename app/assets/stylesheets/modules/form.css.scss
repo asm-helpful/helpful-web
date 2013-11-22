@@ -48,6 +48,10 @@ legend {
     padding-top: 2rem;
     -webkit-font-smoothing: antialiased;
 
+    &.input--no-label {
+        padding-top: .5rem;
+    }
+
     &:focus {
         border-color: $secondary;
         outline: 0;
