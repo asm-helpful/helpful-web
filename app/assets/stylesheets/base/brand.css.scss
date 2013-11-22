@@ -15,3 +15,15 @@
     height: 3.8rem;
     padding: 1.4rem 0 1.4rem 6rem;
 }
+
+.tagline {
+    font-size: .8rem;
+    opacity: .35;
+    text-align: center;
+
+    a {
+        border: 0;
+        color: $white;
+        font-weight: bold;
+    }
+}
