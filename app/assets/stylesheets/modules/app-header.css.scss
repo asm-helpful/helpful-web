@@ -1,0 +1,39 @@
+.app-header {
+    background-color: #ddd;
+    @include clearfix;
+    height: 5.7rem;
+    margin-bottom: 2rem;
+
+    > div {
+        border-left: 2px solid $muted;
+        @include box-sizing(border-box);
+        display: inline-block;
+        height: 100%;
+        padding: 1.5rem 1.5rem;
+
+        &:first-child {
+            border: 0;
+        }
+    }
+}
+
+.app-header_logo {
+    .logo {
+        top: .1rem;
+        position: relative;
+    }
+}
+
+.app-header_search {
+    width: 65%;
+}
+
+.app-header_user-info {
+    width: 7.8rem;
+    float: right;
+
+    span {
+        display: block;
+        padding-top: .5rem;
+    }
+}

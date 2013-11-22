@@ -1,0 +1,17 @@
+<header class="app-header">
+  <div class="app-header_logo">
+    <a href="#" class="logo logo--wordmark">Helpful</a>
+  </div>
+
+  <div class="app-header_search">
+    <input type="search" class="input--no-label" name="conversation-search" placeholder="Search through conversations" />
+  </div>
+
+  <div class="app-header_user-info">
+    <% if user_signed_in? %>
+      <span><%= link_to('Log out?', destroy_user_session_path, method: :delete) %></span>
+    <% else %>
+      <span><%= link_to('Log in', new_user_session_path)  %></span>
+    <% end %>
+  </div>
+</header>
