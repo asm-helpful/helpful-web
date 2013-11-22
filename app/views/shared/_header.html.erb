@@ -4,7 +4,10 @@
   </div>
 
   <div class="app-header_search">
-    <input type="search" class="input--no-label" name="conversation-search" placeholder="Search through conversations" />
+    <%= form_tag(conversations_path(current_account), :method => "get") do %>
+      <%= text_field_tag :q, @query, :placeholder => 'Search through conversations', :class => "input--no-label" %>
+      <%= submit_tag "Search", class: "hide" %>
+    <% end %>
   </div>
 
   <div class="app-header_user-info">
