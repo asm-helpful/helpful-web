@@ -13,6 +13,7 @@
 @import 'modules/alert',
         'modules/app-footer',
         'modules/app-header',
+        'modules/app-container',
         'modules/avatar',
         'modules/button',
         'modules/conversation',
@@ -26,3 +27,7 @@
 // Partials
 @import "partials/beta_invites";
 @import "partials/conversations";
+
+body {
+    background-color: #eee;
+}
