@@ -1,0 +1,4 @@
+.logo {
+    background: url('/assets/logo.png') no-repeat center;
+    @include background-size(100%);
+}
