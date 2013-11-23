@@ -76,6 +76,23 @@ You can get some analytics from your app by configuring a [Segment.io](https://s
 
     SEGMENT_SECRET=XXXXXXXXXXXX
 
+### Configuring Message Mailing
+
+#### Gmail
+
+In development.rb, add:
+
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+        address:              'smtp.gmail.com',
+        port:                 587,
+        domain:               'example.com',
+        user_name:            'your_gmail_username',
+        password:             'your_gmail_password',
+        authentication:       'plain',
+        enable_starttls_auto: true
+    }
+
 ## Contributing
 
 There are a couple of steps you need to take before contributing:
