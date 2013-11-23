@@ -19,7 +19,7 @@ describe Account do
     end
   end
   
-  it "must have a web_hook_url field" do
-    assert Account.column_names.include?("web_hook_url")
+  it "must have a webhook_url field" do
+    assert Account.column_names.include?("webhook_url")
   end
 end
