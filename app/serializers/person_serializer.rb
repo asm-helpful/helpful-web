@@ -1,14 +1,6 @@
 class PersonSerializer < ActiveModel::Serializer
+  include TimestampedSerializer
 
   attributes :id
-  attributes :name, :email, :twitter, :created, :updated
-
-  def created
-    object.created_at.iso8601
-  end
-
-  def updated
-    object.updated_at.iso8601
-  end
-
+  attributes :name, :email, :twitter
 end
