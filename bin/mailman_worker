@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+require 'bundler/setup'
+require 'mailman'
+
+Mailman.config.imap = {
+  server: ENV['MAILMAN_IMAP_SERVER'],
+  port: ENV['MAILMAN_IMAP_PORT'] || 993,  # usually 995, 993 for gmail
+  ssl: true,
+  username: ENV['MAILMAN_IMAP_USERNAME'],
+  password: ENV['MAILMAN_IMAP_PASSWORD'],
+  folder: ENV['MAILMAN_IMAP_FOLDER'] || 'Helpful-Test'
+}
+
+Mailman.config.poll_interval = (ENV['MAILMAN_IMAP_POLL'] || 30).to_i
+Mailman.config.ignore_stdin = true
+
+Mailman::Application.run do
+  default do
+    Messages::Email.receive(message)
+  end
+end
+
