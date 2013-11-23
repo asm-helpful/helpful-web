@@ -24,7 +24,12 @@ Supportly::Application.routes.draw do
 
   resource :beta_invites, only: [:create]
   resource :account, only: [:new, :create]
+
   resources :messages
+
+  namespace :api do
+   resources :messages, :defaults => { :format => 'json' }
+  end
 
   authenticated :user do
     root :to => 'conversations#index', :as => 'authenticated_root'
