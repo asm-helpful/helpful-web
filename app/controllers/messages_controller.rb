@@ -1,14 +1,6 @@
 class MessagesController < ApplicationController
   before_action :authenticate_user!, :only => [:create]
 
-  def index
-    @messages = Message.all
-
-    if current_user
-      Analytics.track(user_id: current_user.id, event: 'Listed Messages')
-    end
-  end
-
   def create
     @message = Message.new message_params
     conversation = Conversation.find(message_params['conversation_id'])
