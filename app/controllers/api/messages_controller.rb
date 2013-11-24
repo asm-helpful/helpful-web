@@ -1,4 +1,5 @@
 class Api::MessagesController < ApplicationController
+  skip_before_filter :verify_authenticity_token
   before_filter :fetch_message, :except => [:index, :create]
   respond_to :json
 
@@ -20,16 +21,26 @@ class Api::MessagesController < ApplicationController
   end
 
   def create
-    #TODO: currently there's a database constraint that every message needs a conversation_id, remove first below
+
+    @account = Account.where(slug: params.fetch(:account)).first
+
     @message = Message.new
-    @message.conversation_id = params.fetch(:conversation_id, Conversation.first.id)
+
+    # If the client passed a conversation_id use the conversation, otherwise
+    # create a new conversation on the specified account
+    if conversation_id = params.fetch(:conversation_id, false)
+      @message.conversation = Conversation.find(conversation_id)
+    else
+      @message.conversation_attributes = { account: @account }
+    end
+
     @message.from = params['email']
     @message.content = params['content']
     respond_to do |format|
       if @message.save
         format.json { render json: @message, status: :created, callback: params.fetch(:callback, nil)}
       else
-        format.json { render json: @message.error, status: :unprocessable_entity, callback: params.fetch(:callback, nil)}
+        format.json { render json: @message.errors, status: :unprocessable_entity, callback: params.fetch(:callback, nil)}
       end
     end
   end
