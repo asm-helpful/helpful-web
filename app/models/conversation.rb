@@ -10,6 +10,8 @@ class Conversation < ActiveRecord::Base
 
   sequential column: :number, scope: :account_id
 
+  validates :account, presence: true
+
   default_scope -> { order(:updated_at => :asc) }
 
   scope :open, -> { where.not(status: STATUS_ARCHIVED) }
