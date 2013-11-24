@@ -18,6 +18,7 @@
         'modules/button',
         'modules/conversation',
         'modules/form',
+        'modules/landing-page',
         'modules/list',
         'modules/message',
         'modules/nav',
@@ -26,7 +27,3 @@
 
 // Partials
 @import "partials/conversations";
-
-body {
-    background-color: #eee;
-}

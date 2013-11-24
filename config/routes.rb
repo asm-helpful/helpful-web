@@ -5,6 +5,8 @@ Supportly::Application.routes.draw do
     mount Sidekiq::Web, at: "/sidekiq"
   end
 
+  get '/styleguide' => 'pages#styleguide', :as => :styleguide
+
   get "conversations/index"
   devise_for :users, skip: :registrations
 
@@ -37,8 +39,6 @@ Supportly::Application.routes.draw do
   end
 
   root to: 'pages#home'
-
-  get '/styleguide' => 'pages#styleguide', :as => :styleguide
 
   scope ':account' do
     resources :conversations
