@@ -23,9 +23,12 @@ helpful_embed.jsonpReturned(
               </p>\
           </header>\
           <form action="">\
+              <div class="email-container">\
+                <input type="email" id="email" name="email" placeholder="email address"  required="required" />\
+              </div>\
               <div class="question-container">\
                   <label for="question" class="hidden">Your question</label>\
-                  <textarea name="question" id="question" cols="10" rows="3" placeholder="Write your question or feedback here"></textarea>\
+                  <textarea name="question" id="question" required="required" cols="10" rows="3" placeholder="Write your question or feedback here"></textarea>\
               </div>\
               <div class="button-container">\
                   <input type="submit" class="btn" value="Next" />\
