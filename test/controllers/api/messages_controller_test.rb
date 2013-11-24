@@ -35,6 +35,13 @@ describe Api::MessagesController do
       assert Message.find_by_id(@res_body[:id]).valid?
     end
 
+    it 'creates a web message' do
+      create_post
+      @res_body = parse_body
+      
+      assert_equal "Messages::Web", Message.find_by_id(@res_body[:id]).type
+    end
+    
     it 'persists the correct content' do
       create_post
       @res_body = parse_body

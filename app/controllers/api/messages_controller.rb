@@ -24,7 +24,7 @@ class Api::MessagesController < ApplicationController
 
     @account = Account.where(slug: params.fetch(:account)).first
 
-    @message = Message.new
+    @message = Messages::Web.new
 
     # If the client passed a conversation_id use the conversation, otherwise
     # create a new conversation on the specified account
