@@ -230,7 +230,6 @@ DEPENDENCIES
   quiet_assets
   rails (= 4.0.1)
   rails_12factor
-  rails_stdout_logging
   rake
   sass-rails (~> 4.0.0)
   sequential (>= 0.0.3)

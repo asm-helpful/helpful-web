@@ -16,7 +16,6 @@ gem 'mailman', require: false
 gem 'pg'
 gem 'puma'
 gem 'rails', '4.0.1'
-gem 'rails_stdout_logging', group: [:development, :production]
 gem 'sass-rails', '~> 4.0.0'
 gem 'sequential', '>= 0.0.3'
 gem 'sidekiq'
@@ -41,6 +40,6 @@ group :development, :test do
   gem 'ffaker', '~> 1.20'
 end
 
-group :production do
+group :development, :production do
   gem 'rails_12factor'
 end
