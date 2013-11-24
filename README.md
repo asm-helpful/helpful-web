@@ -47,20 +47,6 @@ You need [Ruby 2.0.0](https://www.ruby-lang.org), [Postgres](http://www.postgres
     $ rake seed:message from=some_email@test.com
     # open localhost:5000 in your browser
 
-### Experimental IMAP Support
-
-Helpful has an experimental script for fetching email from an IMAP. To use this functionality you will need to .env and enter the details for the following environment variables:
-
-    MAILMAN_IMAP_SERVER
-    MAILMAN_IMAP_PORT
-    MAILMAN_IMAP_USERNAME
-    MAILMAN_IMAP_PASSWORD
-    MAILMAN_IMAP_FOLDER
-
-To run this script
-
-    $ bin/mailman
-
 ### Configuring Search (Elastic Search)
 
 On OS X:
