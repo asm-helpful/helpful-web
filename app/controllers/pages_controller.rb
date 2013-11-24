@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
 
   def home
+    render :action => params[:page], :layout => (params[:layout] || 'landing-page')
   end
 
   def show

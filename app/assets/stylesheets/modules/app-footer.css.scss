@@ -1,0 +1,39 @@
+.app-footer {
+    background-color: $black;
+    color: $white;
+    @include clearfix;
+    margin-top: 2rem;
+    padding: 2rem 0;
+
+    h3 {
+        color: $white;
+    }
+
+    a {
+        border: 0;
+        color: rgba($white, .7);
+
+        &:hover {
+            color: $white;
+        }
+    }
+
+    .tagline {
+        clear: both;
+        display: block;
+        width: 100%;
+        padding: 3rem 0 1rem;
+    }
+
+}
+
+.app-footer_container {
+    width: 726px;
+    margin: 0 auto 2rem;
+}
+
+.app-footer_list-container {
+    float: left;
+    margin-right: 1rem;
+    width: 230px;
+}

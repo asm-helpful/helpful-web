@@ -1,4 +1,4 @@
-<%= render 'navbar' %>
+<%= render 'shared/header' %>
 
 <div class="list converation-list">
   <% if @query and @conversations.empty? %>
@@ -49,6 +49,8 @@
 
   <% end %>
 </div>
+
+<%= render 'shared/footer' %>
 
 <script>
   $(document).ready(function(){
