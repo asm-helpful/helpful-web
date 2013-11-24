@@ -1,7 +1,7 @@
-// Supportly Embed JS
+// Helpful Embed JS
 
 // When somebody with an Account includes a script tag to this file on their own
-// website, it'll embed a simple web embed that posts to Supportly.
+// website, it'll embed a simple web embed that posts to Helpful.
 //
 // It's attached to the DOM with the use of the `data-helpful` attribute:
 //
