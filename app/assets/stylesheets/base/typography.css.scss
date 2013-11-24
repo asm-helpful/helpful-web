@@ -78,3 +78,16 @@ h1 + p {
     font-size: .9em;
     opacity: .8;
 }
+
+ul {
+    margin: 0 0 1rem;
+}
+
+.list--no-bullets {
+    list-style-type: none;
+    padding: 0;
+
+    li {
+        margin-bottom: .35rem;
+    }
+}
