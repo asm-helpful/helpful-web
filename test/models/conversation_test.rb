@@ -2,7 +2,7 @@ require 'test_helper'
 
 describe Conversation do
   before do
-    @conversation = Conversation.new
+    @conversation = FactoryGirl.build(:conversation)
   end
 
   it "is valid" do

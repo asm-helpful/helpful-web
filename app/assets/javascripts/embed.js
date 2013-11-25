@@ -1,11 +1,14 @@
-// Supportly Embed JS
+// Helpful Embed JS
 
 // When somebody with an Account includes a script tag to this file on their own
-// website, it'll embed a simple web embed that posts to Supportly.
+// website, it'll embed a simple web embed that posts to Helpful.
 //
 // It's attached to the DOM with the use of the `data-helpful` attribute:
 //
-//    <a href="#" data-helpful>Click me to show embed</a>
+//    <a href="#" data-helpful="my-account-slug">Click me to show embed</a>
+//
+// The value of `data-helpful` should be the account slug of the Helpful account
+// where the new message should be created.
 //
 // TODO This script relies on jQuery being installed on the page. Future
 // versions should get rid of that requirement so more people can install it.
@@ -57,6 +60,7 @@
     var that = this;
     setTimeout(function(){
       console.log(that.el[0].getElementsByTagName('form')[0]);
+      console.log(target.data('helpful'));
       that.el[0].getElementsByTagName('form')[0].onsubmit = function(e){
         //TODO: pass through conversation_id as well
 
@@ -65,6 +69,7 @@
         }
         var params = "content="+encodeURIComponent(that.el[0].querySelector("#question").value);
         params += "&email="+encodeURIComponent(that.el[0].querySelector("#email").value)
+        params += "&account="+encodeURIComponent(target.data('helpful'))
         params += "&callback=HelpfulEmbedJsonpCallback"
         var tempscript = document.createElement("script");
         tempscript.type = "text/javascript";

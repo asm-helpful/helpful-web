@@ -12,6 +12,7 @@ class Message < ActiveRecord::Base
 
   attr_accessor :from
   belongs_to :person
+  accepts_nested_attributes_for :conversation
 
   after_create  :send_webhook, unless: Proc.new { |m| m.conversation.account.webhook_url.nil? }
 
