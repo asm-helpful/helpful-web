@@ -7,11 +7,13 @@ class Message < ActiveRecord::Base
   before_create :populate_person
   after_save :update_search_index
 
+  attr_accessor :from
+
   belongs_to :conversation, touch: true
   delegate   :account, to: :conversation
 
-  attr_accessor :from
   belongs_to :person
+  has_many :read_receipts
 
   after_create  :send_webhook, unless: Proc.new { |m| m.conversation.account.webhook_url.nil? }
 
