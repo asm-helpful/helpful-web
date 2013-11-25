@@ -7,11 +7,13 @@ class Message < ActiveRecord::Base
   before_create :populate_person
   after_save :update_search_index
 
+  attr_accessor :from
+
   belongs_to :conversation, touch: true
   delegate   :account, to: :conversation
 
-  attr_accessor :from
   belongs_to :person
+  has_many :read_receipts
 
   after_create  :send_webhook, unless: Proc.new { |m| m.conversation.account.webhook_url.nil? }
 
@@ -43,6 +45,17 @@ class Message < ActiveRecord::Base
       person = Person.find_or_create_by!(email: from.to_s.strip)
       self.person_id = person.id
     end
+  end
+
+  # Public: Create a read receipt for this message.
+  #
+  # person -  the Person which the read receipt should be created for
+  #           (default: self.person).
+  #
+  # Returns true if the ReadReceipt was created successfully.
+  def mark_read(person = self.person)
+    rr = ReadReceipt.create(person: person, message: self)
+    return rr.valid?
   end
 
 end
