@@ -16,7 +16,7 @@ gem 'pg'
 gem 'puma'
 gem 'rails', '4.0.1'
 gem 'sass-rails', '~> 4.0.0'
-gem 'sequential', '>= 0.0.3'
+gem 'sequential', '>= 0.1'
 gem 'sidekiq'
 gem 'uglifier', '>= 1.3.0'
 
