@@ -6,6 +6,7 @@ class Person < ActiveRecord::Base
   belongs_to :user
   belongs_to :account
   has_many :messages
+  has_many :read_receipts
 
   validates :email, allow_blank: true, format: /\A[^@]+@[^@]+\z/
 end

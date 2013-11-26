@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131119225136) do
+ActiveRecord::Schema.define(version: 20131125023516) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,6 +89,16 @@ ActiveRecord::Schema.define(version: 20131119225136) do
   add_index "people", ["email"], name: "index_people_on_email", unique: true, using: :btree
   add_index "people", ["twitter"], name: "index_people_on_twitter", unique: true, using: :btree
   add_index "people", ["user_id"], name: "index_people_on_user_id", unique: true, using: :btree
+
+  create_table "read_receipts", id: false, force: true do |t|
+    t.uuid     "id",         null: false
+    t.uuid     "person_id"
+    t.uuid     "message_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "read_receipts", ["person_id", "message_id"], name: "index_read_receipts_on_person_id_and_message_id", unique: true, using: :btree
 
   create_table "sequential", force: true do |t|
     t.string   "model"
