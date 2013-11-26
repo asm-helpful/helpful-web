@@ -16,7 +16,7 @@ class Message < ActiveRecord::Base
   accepts_nested_attributes_for :conversation
   has_many :read_receipts
 
-  after_create  :send_webhook, unless: Proc.new { |m| m.conversation.account.webhook_url.nil? }
+  after_save  :send_webhook, unless: Proc.new { |m| m.conversation.account.webhook_url.nil? }
 
   def webhook_data
     { message: {
@@ -30,7 +30,9 @@ class Message < ActiveRecord::Base
   end
 
   def send_webhook
-    Webhook.create(account: self.account, event: 'message.created', data: self.webhook_data)
+    # If the changed flag is set we know this is an update
+    action = self.changed? ? 'updated' : 'created'
+    Webhook.create(account: self.account, event: "message.#{action}", data: self.webhook_data)
   end
 
   def update_search_index
