@@ -30,7 +30,7 @@ class Message < ActiveRecord::Base
   end
 
   def send_webhook
-    Webhook.create(account: self.account, event: 'message.new', data: self.webhook_data)
+    Webhook.create(account: self.account, event: 'message.created', data: self.webhook_data)
   end
 
   def update_search_index
