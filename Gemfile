@@ -31,6 +31,7 @@ group :test do
   gem 'minitest-rails', '~> 0.9.2'
   gem 'minitest-reporters'
   gem 'webmock', '~> 1.15'
+  gem "flexmock"
 end
 
 group :development, :test do

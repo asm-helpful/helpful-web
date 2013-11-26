@@ -10,6 +10,8 @@ require "webmock/minitest"
 
 require "minitest/reporters"
 
+require 'flexmock/test_unit'
+
 Minitest::Reporters.use! Minitest::Reporters::DefaultReporter.new(color: true)
 
 class ActiveSupport::TestCase
