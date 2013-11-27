@@ -43,7 +43,7 @@ legend {
 
 #{$all-text-inputs} {
     @extend %form-element;
-    font-family: $font;
+    font-family: $font-body;
     font-size: 1rem;
     padding-top: 2rem;
     -webkit-font-smoothing: antialiased;
