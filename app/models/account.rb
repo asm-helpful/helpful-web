@@ -20,9 +20,27 @@ class Account < ActiveRecord::Base
   before_create :generate_webhook_secret
   after_create :save_new_user
 
+  # Regex to extract account slug from a mailbox address
+  MAILBOX_REGEX = Regexp.new(/^(?<slug>(\w|-)+)(\+\w+)?@.+$/).freeze
+
   # Candidates for how to generate the slug.
   def account_slug
     [:name]
+  end
+
+  # Public: Customer specific email address for incoming email.
+  #
+  # Returns the email address customers should send email to.
+  def mailbox
+    [slug, '@', ENV['INCOMING_EMAIL_DOMAIN']].join.to_s
+  end
+
+  # Public: Given an email address try to match to an account.
+  #
+  # Returns one Account or nil.
+  def self.match_mailbox(email)
+    slug = MAILBOX_REGEX.match(email)[:slug]
+    self.where(slug: slug).first
   end
 
   protected
