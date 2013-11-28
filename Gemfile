@@ -21,6 +21,8 @@ gem 'sidekiq'
 gem 'uglifier', '>= 1.3.0'
 
 group :development do
+  gem 'rest-client', require: false
+  gem 'multimap', require: false
   gem 'quiet_assets'
   gem 'sinatra', require: false
   gem 'slim', require: false

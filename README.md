@@ -62,9 +62,9 @@ You can get some analytics from your app by configuring a [Segment.io](https://s
 
     SEGMENT_SECRET=XXXXXXXXXXXX
 
-### Configuring Message Mailing
+### Configuring Email
 
-#### Gmail
+#### Sending with Gmail
 
 In development.rb, add:
 
@@ -78,6 +78,27 @@ In development.rb, add:
         authentication:       'plain',
         enable_starttls_auto: true
     }
+
+#### Recieving with Mailgun (optional)
+
+Setting up Mailgun in development takes a little work but allows you to use the
+actual email workflow used in production.
+
+1. Register for a free account at https://mailgun.com.
+2. Get your Mailgun API key from https://mailgun.com/cp it starts with "key-"
+and add it to your .env file as MAILGUN_API_KEY.
+4. Get your Mailgun test subdomain from the same page and add it to your .env
+file as INCOMING_EMAIL_DOMAIN.
+5. In order to recieve webhooks from Mailgun we need to expose our development
+instance to the outside world. We can use a tool called
+[Ngrok](http://ngrok.com) for this. Download and setup Ngrok by following the
+instructions on the [Ngrok](http://ngrok.com) site.
+6. Run rake mailgun to make sure everything is setup right. It should prompt you
+to create a route using `rake mailgun:create_route`.
+7. Run `rake mailgun:create_route` and when prompted enter your Ngrok address
+as the domain name.
+8. Send a test email to helpful@INCOMING_EMAIL_DOMAIN and you should see it
+appear in the helpful account.
 
 ## Contributing
 
