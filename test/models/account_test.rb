@@ -2,6 +2,7 @@ require 'test_helper'
 
 describe Account do
   before do
+    ENV['INCOMING_EMAIL_DOMAIN'] = 'example.com'
     @account = FactoryGirl.build(:account)
   end
 
