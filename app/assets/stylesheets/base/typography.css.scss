@@ -1,5 +1,5 @@
 body {
-    font-family: $font;
+    font-family: $font-body;
     font-size: 18px;
     -webkit-font-smoothing: antialiased;
 }
@@ -15,8 +15,9 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
-h1, h3 {
-    font-family: $slab;
+h1, h2, h3 {
+    font-family: $font-headline;
+    text-transform: uppercase;
 }
 
 h1 {

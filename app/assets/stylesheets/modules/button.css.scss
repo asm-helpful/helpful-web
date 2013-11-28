@@ -3,15 +3,15 @@
     background-color: $primary;
     border: 0;
     border-radius: 4px;
-    box-shadow: 0 2px 0 darken($primary, 15%);
     color: $white;
     cursor: pointer;
     display: inline-block;
-    font-family: $font;
+    font-family: $font-body;
     font-size: 1rem;
     font-weight: 600;
-    line-height: 2.2;
+    line-height: 2.4;
     padding: 0 1em;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .15);
     -webkit-font-smoothing: antialiased;
 
     &:hover {
@@ -26,7 +26,6 @@
 .btn-secondary {
     @extend .btn;
     background-color: $secondary;
-    box-shadow: 0 2px 0 darken($secondary, 15%);
     
     &:not(.btn-disabled):hover {
         background-color: darken($secondary, 5%);
@@ -36,10 +35,27 @@
 .btn-muted {
     @extend .btn;
     background-color: $muted;
-    box-shadow: 0 2px 0 darken($muted, 15%);
     
     &:not(.btn-disabled):hover {
         background-color: darken($muted, 5%);
+    }
+}
+
+.btn-positive {
+    @extend .btn;
+    background-color: $success;
+
+    &:not(.btn-disabled):hover {
+        background-color: darken($success, 5%);
+    }
+}
+
+.btn-negative {
+    @extend .btn;
+    background-color: $error;
+
+    &:not(.btn-disabled):hover {
+        background-color: darken($error, 5%);
     }
 }
 
@@ -54,5 +70,27 @@
 
     li {
         display: inline-block;
+    }
+}
+
+.btn-container--append {
+    @include clearfix;
+
+    li {
+        float: left;
+
+        &:first-child .btn {
+            border-top-left-radius: 4px;
+            border-bottom-left-radius: 4px;
+        }
+
+        &:last-child .btn {
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+        }
+    }
+
+    .btn {
+        border-radius: 0;
     }
 }
