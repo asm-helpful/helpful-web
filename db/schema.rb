@@ -11,11 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131126175058) do
+ActiveRecord::Schema.define(version: 20131203032648) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
+  enable_extension "uuid-ossp"
 
   create_table "accounts", id: false, force: true do |t|
     t.uuid     "id",             null: false
@@ -86,9 +87,9 @@ ActiveRecord::Schema.define(version: 20131126175058) do
     t.uuid     "account_id"
   end
 
-  add_index "people", ["email"], name: "index_people_on_email", unique: true, using: :btree
-  add_index "people", ["twitter"], name: "index_people_on_twitter", unique: true, using: :btree
-  add_index "people", ["user_id"], name: "index_people_on_user_id", unique: true, using: :btree
+  add_index "people", ["email"], name: "index_people_on_email", using: :btree
+  add_index "people", ["twitter"], name: "index_people_on_twitter", using: :btree
+  add_index "people", ["user_id"], name: "index_people_on_user_id", using: :btree
 
   create_table "read_receipts", id: false, force: true do |t|
     t.uuid     "id",         null: false
