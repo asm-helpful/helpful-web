@@ -1,16 +1,2 @@
-@import 'addons/clearfix';
-
 .navbar {
-  @include clearfix;
-  padding: 5px;
-  background-color: white;
-  box-shadow: 0 0 3px $light-gray;
-}
-
-.navbar-left {
-  @include pull-left;
-}
-
-.navbar-right {
-  @include pull-right;
 }

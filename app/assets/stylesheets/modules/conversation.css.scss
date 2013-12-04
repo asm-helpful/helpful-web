@@ -4,43 +4,110 @@
 }
 
 .conversation-heading {
-  @include clearfix;
+  padding-top: 30px;
+  padding-left: 45px;
+  padding-right: 45px;
+  border-bottom: 1px solid #e6e6e6;
 
-  &.highlight {
-    background-color: #EFF5B8;
+  > .actions {
+    float: right;
+    margin-left: 30px;
   }
-  color: black;
-  font-size: 14px;
-  line-height: 30px;
 
-  > .number,
-  > .preview,
-  > .participants,
-  > .updated {
-    float: left;
-    padding: 5px;
+  > .summary {
+    color: #333;
+    font-size: 23px;
+    line-height: 30px;
   }
 
   > .number {
-    color: $blue;
-    text-decoration: none;
-    font-weight: 600;
-
-    min-width: 30px;
-    text-align: center;
+    font-weight: light;
+    color: #b2b2b2;
+    font-size: 16px;
+    line-height: 30px;
   }
-}
 
-a.conversation-heading {
-  display: block;
+  > .meta {
+    @include clearfix;
+    margin-top: 30px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+
+    border-top: 1px dotted #d9d9d9;
+
+    color: #e6e6e6;
+    font-size: 14px;
+    line-height: 21px;
+    color: #4d4d4d;
+
+    > .participants {
+      float: left;
+    }
+
+    > .last-update {
+      float: right;
+    }
+  }
+
 }
 
 .conversation-body {
-  display: none;
-  border-top: 1px solid $light-gray;
+  padding: 45px;
+}
 
-  > .message-list,
-  > .reply-form {
-    margin: 10px;
+
+.conversation-row {
+  padding: 20px 60px;
+
+  > input[type=checkbox] {
+    float: left;
+    margin-left: -30px;
+
+    height: 16px;
+    margin-top: (24px - 16px) / 2;
+    margin-bottom: (24px - 16px) / 2;
   }
+
+
+  > .updated {
+    float: right;
+    margin-left: 30px;
+    margin-right: -30px;
+
+    color: #B2B2B2;
+    font-size: 13px;
+    line-height: 24px;
+  }
+
+  > .summary {
+    color: #333;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  > .meta {
+    color: #B2B2B2;
+    font-size: 13px;
+    line-height: 24px;
+
+    > .meta-divider:before {
+      color: #E6E6E6;
+      content: "|";
+    }
+  }
+
+  &[data-selected] {
+    background-color: #F8FBFD;
+    border-left: $column-border-width solid $primary;
+    margin-left: -$column-border-width;
+
+    > .summary {
+      color: $primary;
+    }
+  }
+}
+
+a.conversation-row {
+  display: block;
+  border-bottom: none;
 }

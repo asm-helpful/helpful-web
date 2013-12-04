@@ -1,0 +1,17 @@
+<a href="<%= conversation_path(conversation.account, conversation) %>" class="conversation-row">
+
+  <input type="checkbox" />
+
+  <div class="time updated">
+    <%= time_ago_in_words(conversation.updated_at) %>
+  </div>
+
+  <div class="summary"><%= summary(conversation) %></div>
+
+  <div class="meta">
+    <%= conversation.participants.map {|person| nickname(person) }.to_sentence %>
+    <span class="meta-divider"></span>
+    <%= pluralize(conversation.messages.count, 'message') %>
+  </div>
+
+</a>

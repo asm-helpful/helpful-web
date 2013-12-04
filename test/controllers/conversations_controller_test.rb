@@ -1,19 +1,21 @@
 require 'test_helper'
 
-describe ConversationsController do
+describe ConversationsController, :index do
   setup do
-    @current_user = FactoryGirl.create(:user)
-    sign_in @current_user
-    @conversation = FactoryGirl.create(:conversation_with_messages)
+    @current_user = create(:user)
+    sign_in(@current_user)
+    @conversation = create(:conversation_with_messages)
   end
 
-  test "should set account" do
+  test "finds the account" do
     get :index, account: @conversation.account.slug
-    assert_response :success
     assert_not_nil assigns(:account)
   end
 
-  test "should render conversation for account" do
+  test "finds the concersations" do
+  end
+
+  test "renders the accounts conversations" do
     get :index, account: @conversation.account.slug
     assert_response :success
     assert_not_nil assigns(:conversations)

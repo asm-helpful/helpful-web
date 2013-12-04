@@ -6,7 +6,7 @@
   <div class="app-header_search">
     <%= form_tag(conversations_path(current_account), :method => "get") do %>
       <%= text_field_tag :q, @query, :placeholder => 'Search through conversations', :class => "input--no-label" %>
-      <%= submit_tag "Search", class: "hide" %>
+      <%= submit_tag "Search" %>
     <% end %>
   </div>
 

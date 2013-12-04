@@ -1,0 +1,46 @@
+<div class="conversation">
+
+  <div class="conversation-heading">
+    <div class="actions">
+      <div class="btn btn-success">Archive</div>
+    </div>
+    <div class="summary"><%= summary(conversation) %></div>
+    <div class="number">#<%= conversation.number %></div>
+    <div class="meta">
+      <div class="participants">
+        <span class="text-muted">With</span>
+        <%= conversation.participants.map {|person| nickname(person) }.to_sentence %>
+      </div>
+
+      <div class="last-update">
+        <span class="text-muted">Last update</span>
+        <%= time_ago_in_words(conversation.updated_at) %> ago
+      </div>
+
+    </div>
+  </div>
+
+  <div class="conversation-body">
+    <div class="list list-timeline">
+      <div class="list-item">
+
+        <form class="form-reply">
+          <div class="person">
+            <%= avatar(OpenStruct.new(email: 'christopher.lloyd@gmail.com'), 45) %>
+          </div>
+
+          <label>
+            <input type="text" placeholder="Reply to this conversation…" />
+          </label>
+        </form>
+
+      </div>
+
+      <% conversation.messages.each do |message| %>
+        <div class="list-item">
+          <%= render 'messages/message', message: message %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

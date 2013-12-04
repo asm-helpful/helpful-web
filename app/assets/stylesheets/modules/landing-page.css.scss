@@ -1,5 +1,4 @@
 .landing-page {
-    background-color: $white;
 
     .logo {
         width: 10rem;
@@ -33,7 +32,7 @@
 }
 
 .landing-page--alternate {
-    background-color: $secondary;
+    background-color: $primary;
     padding: 2rem 0;
 
     h3 {

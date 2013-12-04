@@ -1,41 +1,27 @@
 class Api::MessagesController < ApplicationController
   skip_before_filter :verify_authenticity_token
-  before_filter :fetch_message, :except => [:index, :create]
+  before_filter :fetch_message, :only => [:show, :update, :destroy]
   respond_to :json
-
-  def fetch_message
-    @message = Message.find_by_id(params[:id])
-  end
 
   def index
     @messages = Message.all
-    respond_to do |format|
-      format.json { render json: @messages }
-    end
+    render json: @messages
   end
 
   def show
-    respond_to do |format|
-      format.json { render json: @message }
-    end
+    render json: @message
   end
 
   def create
+    account = Account.where(slug: params.fetch(:account)).first
 
-    @account = Account.where(slug: params.fetch(:account)).first
+    conversation = Concierge.new(account, params).find_conversation
 
-    @message = Messages::Web.new
+    @message = conversation.messages.new
 
-    # If the client passed a conversation_id use the conversation, otherwise
-    # create a new conversation on the specified account
-    if conversation_id = params.fetch(:conversation_id, false)
-      @message.conversation = Conversation.find(conversation_id)
-    else
-      @message.conversation_attributes = { account: @account }
-    end
+    @message.person = account.people.find_or_create_by(email: params.fetch(:email))
+    @message.content = params.fetch('content')
 
-    @message.from = params['email']
-    @message.content = params['content']
     respond_to do |format|
       if @message.save
         format.json { render json: @message, status: :created, callback: params.fetch(:callback, nil)}
@@ -63,6 +49,12 @@ class Api::MessagesController < ApplicationController
     #else
       format.json { render json: "Figure out destroy permissions", status: :unprocessable_entity }
     end
+  end
+
+  protected
+
+  def fetch_message
+    @message = Message.find(params.fetch(:id))
   end
 
 end

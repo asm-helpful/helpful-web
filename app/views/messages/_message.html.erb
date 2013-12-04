@@ -1,0 +1,15 @@
+<div class="message">
+  <div class="person">
+    <%= avatar(message.person, 45) %>
+  </div>
+
+  <div class="content">
+    <%= message.content %>
+  </div>
+
+  <div class="meta">
+    Posted <%= time_ago_in_words(message.created_at) %> ago
+    by <%= nickname(message.person) %>
+  </div>
+
+</div>

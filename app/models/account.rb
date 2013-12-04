@@ -6,11 +6,13 @@ class Account < ActiveRecord::Base
 
   friendly_id :account_slug, :use => :slugged
 
-  has_many :conversations
+  has_many :conversations, :dependent => :destroy
+  has_many :people, :dependent => :destroy
 
-  has_many :memberships
+  has_many :memberships, :dependent => :destroy
   has_many :users, through: :memberships
-  has_many :webhooks
+
+  has_many :webhooks, :dependent => :destroy
 
   attr_accessor :new_account_user
 

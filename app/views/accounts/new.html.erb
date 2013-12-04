@@ -1,41 +1,50 @@
-<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:700' rel='stylesheet' type='text/css'>
+<div class="l-signup">
+  <div class="container">
 
-<div class="container">
-  <div class="account">
-    <div class="logo"></div>
+    <div class="logo logo-default"></div>
+
     <h3>Sign Up for a Free Account</h3>
-    <p>Quick and easy sign up process. No credit card required. If you already have a Helpful account, <%= link_to('sign in', new_user_session_path)  %>.</p>
+
+    <p>Quick and easy sign up process. No credit card is required. If you already have a Helpful account, <%= link_to('please sign in', new_user_session_path)  %>.</p>
 
     <%= render "/shared/error_messages", :target => @account %>
     <%= render "/shared/error_messages", :target => @new_account_user %>
 
-    <%= form_for @account, url: account_path do |f| %>
+    <%= form_for @account, url: account_path, html: {class: 'form'} do |f| %>
 
-      <div class="input-container"><%= f.label :name, "Company name" %>
-        <%= f.text_field :name, :autofocus => true, :placeholder => "Your Company" %></div>
-      
+      <div class="form-group">
+        <%= f.label :name, 'Company name', class: 'form-label' %>
+        <%= f.text_field :name, autofocus: true, placeholder: 'Acme Corp', class: 'form-control' %>
+      </div>
+
       <%= fields_for @person do |ff| %>
-
-        <div class="input-container"><%= ff.label :name, "Your name" %>
-          <%= ff.text_field :name, :placeholder => "First Last" %></div>
-
+        <div class="form-group">
+          <%= ff.label :name, 'Your name', class: 'form-label' %>
+          <%= ff.text_field :name, placeholder: 'Jane Doe', class: 'form-control' %>
+        </div>
       <% end %>
 
       <%= fields_for @new_account_user do |ff| %>
-      
-        <div class="input-container"><%= ff.label :email %>
-          <%= ff.email_field :email, :placeholder => "you@domain.com" %></div>
+        <div class="form-group">
+          <%= ff.label :email, class: 'form-label' %>
+          <%= ff.email_field :email, placeholder: 'you@example.com', class: 'form-control' %>
+        </div>
 
-        <div class="input-container"><%= ff.label :password %>
-          <%= ff.password_field :password, :placeholder => "Must meet *these requirements*" %></div>
+        <div class="form-group">
+          <%= ff.label :password, class: 'form-label' %>
+          <%= ff.password_field :password, placeholder: 'Must meet *these requirements*', class: 'form-control' %>
+        </div>
 
-        <div class="input-container"><%= ff.label :password_confirmation %>
-          <%= ff.password_field :password_confirmation, :placeholder => "Must meet *these requirements*" %></div>
-
+        <div class="form-group">
+          <%= ff.label :password_confirmation, class: 'form-label' %>
+          <%= ff.password_field :password_confirmation, placeholder: 'Must meet *these requirements*', class: 'form-control' %>
+        </div>
       <% end %>
 
-      <div><%= f.submit "Create My Account", :class => "btn large" %></div>
+      <div class="form-actions">
+        <%= f.submit 'Create my account', :class => "btn btn-primary" %>
+      </div>
     <% end %>
+    </div>
   </div>
 </div>

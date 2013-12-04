@@ -8,5 +8,13 @@ class Person < ActiveRecord::Base
   has_many :messages
   has_many :read_receipts
 
-  validates :email, allow_blank: true, format: /\A[^@]+@[^@]+\z/
+  validates :email,
+    allow_blank: true,
+    format: /\A[^@]+@[^@]+\z/,
+    uniqueness: {:scope => :account}
+
+  validates :twitter,
+    allow_blank: true,
+    uniqueness: {:scope => :account}
+
 end

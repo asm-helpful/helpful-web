@@ -4,9 +4,12 @@ class Conversation < ActiveRecord::Base
   include ActiveRecord::UUID
 
   STATUS_ARCHIVED = 'archived'
+  STATUS_OPEN = 'open'
 
   belongs_to :account
-  has_many :messages
+  has_many :messages,
+    :after_add => :open_with_new_message,
+    :dependent => :destroy
 
   sequential column: :number, scope: :account_id
 
@@ -35,6 +38,14 @@ class Conversation < ActiveRecord::Base
 
   def archive
     update_attribute(:status, STATUS_ARCHIVED)
+  end
+
+  def open_with_new_message(message)
+    update_attribute(:status, STATUS_OPEN)
+  end
+
+  def to_param
+    number.to_param
   end
 
 end

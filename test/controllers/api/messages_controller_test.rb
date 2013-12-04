@@ -1,104 +1,77 @@
 require 'test_helper'
 
-describe Api::MessagesController do
-  def create_post(args = {})
-    post :create,
-      content:  args[:content] || 'test',
-      account:  args[:account] || @account.slug,
-      email:    args[:email] || 'test@example.com',
-      conversation_id: args[:conversation_id] || nil,
-      format: :json
+describe(Api::MessagesController, :create) do
+
+  def create_post(account, args = {})
+    post :create, :content      => args[:content] || 'test',
+                  :account      => args[:account] || account.slug,
+                  :email        => args[:email] || 'test@example.com',
+                  :conversation => args[:conversation] || nil,
+                  :format       => :json
   end
 
-  def parse_body
-    JSON::parse(@response.body).symbolize_keys
+  def parse_json_response(response)
+    JSON.parse(response.body).symbolize_keys
   end
+
+  def find_message_from_response(response)
+    Message.find(parse_json_response(response)[:id])
+  end
+
 
   before do
-    @account = FactoryGirl.create(:account)
+    @controller = Api::MessagesController.new
+    @account = create(:account)
   end
 
-  describe :create do
 
-    # Message Attributes
+  # Messages
 
-    it 'persists a new message' do
-      assert_difference('Message.count') do
-        create_post
-      end
-    end
+  it 'persists a new message' do
+    create_post(@account)
+    message = find_message_from_response(@response)
+    assert_not_nil message
+  end
 
-    it 'returns a valid message_id' do
-      create_post
-      @res_body = parse_body
+  it 'persists the correct content' do
+    create_post(@account, content: 'I need halp!')
+    message = find_message_from_response(@response)
+    assert_equal 'I need halp!', message.content
+  end
 
-      assert Message.find_by_id(@res_body[:id]).valid?
-    end
+  it 'persists the correct account' do
+    create_post(@account)
+    message = find_message_from_response(@response)
+    assert_equal @account, message.account
+  end
 
-    it 'creates a web message' do
-      create_post
-      @res_body = parse_body
-      
-      assert_equal "Messages::Web", Message.find_by_id(@res_body[:id]).type
-    end
-    
-    it 'persists the correct content' do
-      create_post
-      @res_body = parse_body
+  it 'persists the correct email via a person object' do
+    create_post(@account, email: 'chris@example.com')
+    message = find_message_from_response(@response)
+    assert_equal 'chris@example.com', message.person.email
+  end
 
-      @message = Message.find_by_id(@res_body[:id])
-      assert_equal @request.params[:content], @message.content
-    end
 
-    it 'persists the correct account' do
-      create_post
-      @res_body = parse_body
+  # Conversations
 
-      @message = Message.find_by_id(@res_body[:id])
-      assert_equal @request.params[:account], @message.account.slug
-    end
-
-    it 'persists the correct email via a person object' do
-      create_post
-      @res_body = parse_body
-
-      @message = Message.find_by_id(@res_body[:id])
-      assert_equal @request.params[:email], @message.person.email
-    end
-
-    # Conversation Attributes
-
-    it 'persists a new conversation when no conversation_id is present' do
-      assert_difference('Conversation.count') do
-        create_post
-      end
-    end
-
-    it 'does not persist a new conversation when conversation_id is passed' do
-      conversation = FactoryGirl.create(:conversation, account: @account)
-      assert_no_difference('Conversation.count') do
-        create_post(
-          conversation_id: conversation.id
-        )
-      end
-    end
-
-    it 'links to the correct conversation when conversation_id is passed' do
-      conversation = FactoryGirl.create(:conversation, account: @account)
-      create_post(
-        conversation_id: conversation.id
-      )
-      @res_body = parse_body
-
-      message = Message.find_by_id(@res_body[:id])
-      assert Conversation.find_by_id(conversation.id).messages.include?(message)
-    end
-
-    it 'returns a valid conversation_id' do
-      create_post
-      @res_body = parse_body
-
-      assert Conversation.find_by_id(@res_body[:conversation_id]).valid?
+  it 'persists a new conversation when no conversation_id is present' do
+    assert_difference(-> { Conversation.count }, 1) do
+      create_post(@account)
     end
   end
+
+  it 'does not persist a new conversation when conversation_id is passed' do
+    conversation = create(:conversation, account: @account)
+    assert_no_difference(-> { Conversation.count }) do
+      create_post(@account, conversation: conversation.number)
+    end
+  end
+
+  it 'links to the correct conversation when conversation_id is passed' do
+    conversation = create(:conversation, account: @account)
+    create_post(@account, conversation: conversation.number)
+    message = find_message_from_response(@response)
+    assert_equal conversation, message.conversation
+  end
+
 end

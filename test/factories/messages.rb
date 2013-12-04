@@ -4,5 +4,6 @@ FactoryGirl.define do
   factory :message do
     conversation
     person
+    content { Faker::Lorem.paragraph(3) }
   end
 end

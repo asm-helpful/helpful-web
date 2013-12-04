@@ -4,54 +4,77 @@ body {
 }
 
 a {
-    color: $secondary;
-    border-bottom: 1px solid rgba($secondary, .5);
-    
-    &:hover {
-        color: darken($secondary, 15%);
-        border-bottom-color: darken($secondary, 15%);
-    }
-}
+  color: $primary;
+  border-bottom-color: rgba($primary, .5);
 
-.black {
-    color: $black;
-}
-
-.muted {
-    color: $muted;
-}
-
-.primary {
-    color: $primary;
-}
-
-.secondary {
-    color: $secondary;
-}
-
-.black-bg {
-    background-color: $black;
-    color: $white;
-}
-
-.muted-bg {
-    background-color: $muted;
-}
-
-.primary-bg {
-    background-color: $primary;
-    color: $white;
-}
-
-.secondary-bg {
-    background-color: $secondary;
-    color: $white;
+  &:hover {
+    color: darken($primary, 15%);
+    border-bottom-color: darken($primary, 15%);
+  }
 }
 
 h1, h2, h3, h4 {
-    color: $black; 
+    color: $black;
 }
 
 h5 {
     color: $primary;
+}
+
+
+// Text Colors
+
+.text-white {
+  color: $white;
+}
+
+.text-black {
+  color: $black;
+}
+
+.text-muted {
+  color: $muted;
+}
+
+.text-primary {
+  color: $primary;
+}
+
+.text-success {
+  color: $success;
+}
+
+.text-warning {
+  color: $warning;
+}
+
+.text-danger {
+  color: $danger;
+}
+
+
+// Background Colors
+
+.bg-black {
+    background-color: $black;
+}
+
+.bg-muted {
+    background-color: $muted;
+}
+
+.bg-primary {
+    background-color: $primary;
+}
+
+.bg-success {
+    background-color: $success;
+}
+
+.bg-warning {
+    background-color: $warning;
+}
+
+.bg-danger {
+    background-color: $danger;
 }

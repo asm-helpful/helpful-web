@@ -7,6 +7,10 @@
     <div class="column-heading">Inbox</div>
     <%= render 'conversations/inbox', conversations: @conversations %>
   </div>
+
+  <div class="column column-detail">
+    <%= render 'conversations/conversation', conversation: @conversation %>
+  </div>
 </div>
 
 

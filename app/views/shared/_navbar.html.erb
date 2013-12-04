@@ -1,0 +1,5 @@
+<div class="navbar">
+  <%= avatar(OpenStruct.new(email: 'christopher.lloyd@gmail.com'), 64) %>
+  <%= link_to 'Inbox', conversations_path(@account, @conversations) %>
+  <a>Archive</a>
+</div>

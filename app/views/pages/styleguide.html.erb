@@ -1,180 +1,200 @@
-<style>
-  .container {
-    width: 90%;
-    margin: 2em auto;
-    max-width: 830px;
-  }
+<div class="l-styleguide">
 
-  .example {
-    border: 2px solid rgba(200,200,200, .3);
-    border-radius: 4px;
-    padding: 1rem 1.5rem;
-    margin: 1rem -1.5rem;
-  }
+  <h1>A Helpful Styleguide</h1>
 
-  .colors li {
-    display: inline-block;
-    height: 100px;
-    width: 100px;
-    text-align: center;
-    line-height: 160px;
-    margin-right: 30px;
-  }
 
-  .colors li:nth-child(4n+4) {
-    margin-right: 0; 
-  }
+  <h2>Brand</h2>
+  <a href="https://github.com/asm-helpful/helpful-web/blob/master/app/assets/stylesheets/base/brand.css.scss">app/assets/stylesheets/base/brand.css.scss</a>
 
-</style>
+  <div class="example">
+    <p>
+      <div class="logo logo-default">
+        <%= image_tag('logo.png', width: 60, height: 60) %>
+      </div>
+    </p>
 
-<div class="container">
-  
-  <h1>Helpful</h1>
+    <p>
+      <div class="logo logo-wordmark">Helpful</div>
+    </p>
+  </div>
 
-  <p>Hi, this is a basic setup for the Helpful style guide. Please feel free to fork this code pen as seen neccessary. <a href="https://assemblymade.com/support-foo/wips/97">Check out the WIP #97 on Assembly.</a></p> 
 
-  <!-- Typography -->
-  
   <h2>Typography</h2>
+  <a href="https://github.com/asm-helpful/helpful-web/blob/master/app/assets/stylesheets/base/typography.css.scss">app/assets/stylesheets/base/typography.css.scss</a>
 
-  <p>All text is set in <strong>Lato</strong> with font-smoothing: antialised.</p>
-  
-  <p>Some headings are set in uppercase <strong>Montserrat</strong>, also antialised.</p>
+  <p>All text is set in <strong>Lato</strong>. Some headings are set in uppercase <strong>Montserrat</strong>.</p>
 
-  <p>The base font-size is 18px, with a line-height of 1.45.</p>
-  
+  <p>The base font-size is 18px, with a line-height of 1.5.</p>
+
   <p>Links don't have a text-decoration: underline, but a border-bottom instead, with a slightly more transparent version of the color of the text (see color section).</p>
 
   <div class="example">
     <h1>Heading One</h1>
     <p>An example paragraph with <strong>strong text</strong>, <em>emphasized text</em> and <a href="#">a link</a>, spanning multiple lines so you can see the line-height.</p>
-  
+
     <h2>Heading Two</h2>
     <p>An example paragraph with <strong>strong text</strong> and <em>emphasized text</em>, spanning multiple lines so you can see the line-height.</p>
-  
+
     <h3>Heading Three</h3>
-    <p class="hushed">An example paragraph with the muted class. It has <strong>strong text</strong> and <em>emphasized text</em>, spanning multiple lines so you can see the line-height.</p>
-  
+    <p>An example paragraph with <strong>strong text</strong> and <em>emphasized text</em>, spanning multiple lines so you can see the line-height.</p>
+
     <h4>Heading Four</h4>
     <p>An example paragraph with <strong>strong text</strong> and <em>emphasized text</em>, spanning multiple lines so you can see the line-height.</p>
-  
+
     <h5>Heading Five</h5>
     <p>An example paragraph with <strong>strong text</strong> and <em>emphasized text</em>, spanning multiple lines so you can see the line-height.</p>
-  
+
     <h6>Heading Six</h6>
-    <p>An example paragraph with <strong>strong text</strong> and <em>emphasized text</em>, spanning multiple lines so you can see the line-height.</p>
+    <p>
+      An example paragraph with <strong>strong text</strong> and <em>emphasized text</em>, spanning multiple lines so you can see the line-height.
+    </p>
   </div>
-  
-  <!-- Color -->
-  
-  <h2>Color</h2>
-  <p>Never use full black, instead opt for #333 or maybe even a tinted grey. There are two accent colors: <span class="primary">primary for main actions</span> and <span class="secondary">secondary for other actions</span>.</p>
-  <p>Basic <a href="#">text links</a> use the secondary color.</p>
-  <p>If you need a tinted version (like for drop shadows, see buttons section), use SASS darken($color, <strong>15%</strong>).</p>
+
+
+  <h2>Colors</h2>
+  <a href="https://github.com/asm-helpful/helpful-web/blob/master/app/assets/stylesheets/base/colors.css.scss">app/assets/stylesheets/base/colors.css.scss</a>
+
+  <p>
+    Never use full black, instead opt for <code class="text-black">$black</code> or maybe even <code class="text-muted">$muted</code> gray. There is a <code class="text-primary">$primary</code> color for main actions. Other colors indicate the mood of the action such as <code class="text-success">$success</code>, <code class="text-warning">$warning</code> and <code class="text-danger">$danger</code>.
+  </p>
+
+  <p>Basic <a href="#">text links</a> use the <code>$primary</code> color.</p>
+
+  <p>If you need a tinted version (like for drop shadows, see buttons section), use SCSS <code>darken($color, <strong>15%</strong>)</code>.</p>
+
   <div class="example">
-    <ul class="colors">
-      <li class="black-bg">Black</li>
-      <li class="muted-bg">Muted</li>
-      <li class="primary-bg">Primary</li>
-      <li class="secondary-bg">Secondary</li>
+    <ul class="color-swatch">
+      <li class="bg-white text-black">White</li>
+      <li class="bg-black text-white">Black</li>
+      <li class="bg-primary text-white">Primary</li>
+      <li class="bg-success text-white">Success</li>
+      <li class="bg-warning text-white">Warning</li>
+      <li class="bg-danger text-white">Danger</li>
+      <li class="bg-muted">Muted</li>
     </ul>
   </div>
- 
-  <!-- Buttons -->
-  
+
+
   <h2>Buttons</h2>
+  <a href="https://github.com/asm-helpful/helpful-web/blob/master/app/assets/stylesheets/modules/btn.css.scss">app/assets/stylesheets/modules/btn.css.scss</a>
+
   <p>All buttons have a disabled (opacity: .5) state.</p>
   <p>Buttons get a little offset look with a 2px box-shadow on the y-axis in 15% darkened background-color.</p>
+
   <div class="example">
-    <p><a href="#" class="btn">Default button</a></p>
-    <p><a href="#" class="btn btn-disabled">Default disabled button</a></p>
-    <p><a href="#" class="btn-secondary">Secondary button</a></p>
-    <p><a href="#" class="btn-secondary btn-disabled">Secondary button disabled</a></p>
-    <p><a href="#" class="btn-muted">Muted button</a></p>
-    <p><a href="#" class="btn-muted btn-disabled">Muted button disabled</a></p>
-    <p><a href="#" class="btn-positive">Positive button</a></p>
-    <p><a href="#" class="btn-positive btn-disabled">Positive button disabled</a></p>
-    <p><a href="#" class="btn-negative">Negative button</a></p>
-    <p><a href="#" class="btn-negative btn-disabled">Negative button disabled</a></p>
-    <h3>.btn-container</h3>
-    <ul class="btn-container">
-      <li>
-        <div class="btn">Example</div>
-      </li>
-      <li>
-        <div class="btn">Example</div>
-      </li>
-      <li>
-        <div class="btn">Example</div>
-      </li>
-    </ul>
-    <h3>.btn-container.btn-container--append</h3>
-    <ul class="btn-container btn-container--append">
-      <li>
-        <div class="btn-muted">Example</div>
-      </li>
-      <li>
-        <div class="btn-positive">Example</div>
-      </li>
-    </ul>
-  </div>
-  
-  <!-- Form -->
-  <h2>Form elements</h2>
-<form action="#" class="example">
-  <div class="input-container">
-    <label for="text1">Label</label>
-    <input type="text" name="name" id="text1" placeholder="Placeholder" />
-  </div>
-  <div class="input-container input-container--valid">
-    <label for="text2">Label for valid input</label>
-    <input type="text" name="name" id="text2" placeholder="Placeholder" />
-  </div>
-    <div class="input-container input-container--error">
-      <label for="text3">Label <span>for invalid input</span></label>
-    <input type="text" name="name" id="text3" placeholder="Placeholder" />
+    <p><a href="#" class="btn btn-default">Default button</a></p>
+    <p><a href="#" class="btn btn-default btn-disabled">Default disabled button</a></p>
+    <p><a href="#" class="btn btn-primary">Primary button</a></p>
+    <p><a href="#" class="btn btn-primary btn-disabled">Primary button disabled</a></p>
+    <p><a href="#" class="btn btn-success">Positive button</a></p>
+    <p><a href="#" class="btn btn-success btn-disabled">Positive button disabled</a></p>
+    <p><a href="#" class="btn btn-warning">Warning button</a></p>
+    <p><a href="#" class="btn btn-warning btn-disabled">Warning button disabled</a></p>
+    <p><a href="#" class="btn btn-danger">Danger button</a></p>
+    <p><a href="#" class="btn btn-danger btn-disabled">Danger button disabled</a></p>
   </div>
 
-  <fieldset>
-    <legend>Radio Label (legend in html)</legend>
-    <div class="option-container">
-      <input type="radio" name="radio" id="radio1" />
-      <label for="radio1">Option one</label>
-    </div>
-    <div class="option-container">
-      <input type="radio" name="radio" id="radio2" />
-      <label for="radio2">Option two</label>
-    </div>
-  </fieldset>
-  
-  <fieldset>
-    <legend>Checkbox Label (legend in html)</legend>
-    <div class="option-container">
-      <input type="checkbox" name="option[]" id="option1" />
-      <label for="option1">Option one</label>
-    </div>
-    <div class="option-container">
-      <input type="checkbox" name="option[]" id="option2" />
-      <label for="option2">Option two</label>
-    </div>
-  </fieldset>
 
-  <ul class="btn-container">
-    <li>
-      <input type="submit" class="btn" value="Multiple buttons?" />
-    </li>
-    <li>
-      <input type="submit" class="btn btn-muted" value="Hell yeah!" />
-    </li>
-  </ul>
-  
-</form>
-  
+  <h3>Button Groups</h3>
+  <a href="https://github.com/asm-helpful/helpful-web/blob/master/app/assets/stylesheets/modules/btn_group.css.scss">app/assets/stylesheets/modules/btn_group.css.scss</a>
+
+  <p>Logically grouped buttons. Usually used when a user can take an exclusive action.</p>
+
+  <div class="example">
+    <div class="btn-group">
+      <div class="btn">Example</div>
+      <div class="btn">Example</div>
+      <div class="btn">Example</div>
+    </div>
+  </div>
+
+
+  <h2>Forms</h2>
+  <a href="https://github.com/asm-helpful/helpful-web/blob/master/app/assets/stylesheets/modules/form.css.scss">app/assets/stylesheets/modules/form.css.scss</a>
+
+
+  <div class="example">
+
+    <form class="form">
+      <div class="form-group">
+        <label for="text1" class="form-label">Label</label>
+        <input type="text" class="form-control" id="text1" placeholder="Placeholder" />
+      </div>
+
+      <div class="form-group" data-form-valid>
+        <label for="text2" class="form-label">Label for valid input</label>
+        <input type="text" class="form-control"  id="text2" placeholder="Placeholder" />
+      </div>
+
+      <div class="form-group" data-form-danger>
+        <label for="text3" class="form-label">Label <span>for invalid input</span></label>
+        <input type="text" class="form-control" id="text3" placeholder="Placeholder" />
+      </div>
+
+      <fieldset>
+        <legend>Radio Label (legend in html)</legend>
+        <div class="radio">
+          <label class="form-label">
+            <input type="radio" class="form-control" />
+            Option one
+          </label>
+        </div>
+
+        <div class="radio">
+          <label class="form-label">
+            <input type="radio" class="form-control"/>
+            Option two
+          </label>
+        </div>
+
+      </fieldset>
+
+      <fieldset>
+        <legend>Checkbox Label (legend in html)</legend>
+
+        <div class="checkbox">
+          <label class="form-label">
+            <input type="checkbox" class="form-control" />
+            Option one
+          </label>
+        </div>
+
+        <div class="checkbox">
+          <label class="form-label">
+            <input type="checkbox" class="form-control" />
+            Option two
+          </label>
+        </div>
+      </fieldset>
+
+    </form>
+  </div>
+
+
   <h2>Alerts</h2>
+  <a href="https://github.com/asm-helpful/helpful-web/blob/master/app/assets/stylesheets/modules/alert.css.scss">app/assets/stylesheets/modules/alert.css.scss</a>
   <p>Alerts are used for system messages to the user.</p>
+
   <div class="example">
-    <p class="alert">This is a <strong>neutral alert</strong>, wow! <a href="#" class="alert_close">&times;</a></p>
-    <p class="alert alert-success">This is a <strong>success alert</strong>. <a href="#" class="alert_close">&times;</a></p>
-    <p class="alert alert-error">This is a <strong>error alert</strong>. <a href="#" class="alert_close">&times;</a></p>
+    <p>
+      <div class="alert alert-default">
+        <a href="#" class="alert-close">&times;</a>
+        This is a <strong>default alert</strong>.
+      </div>
+    </p>
+
+    <p>
+      <div class="alert alert-success">
+        <a href="#" class="alert-close">&times;</a>
+        This is a <strong>success alert</strong>.
+      </div>
+    </p>
+
+    <p>
+      <div class="alert alert-error">
+        <a href="#" class="alert-close">&times;</a>
+        This is a <strong>error alert</strong>.
+      </div>
+    </p>
   </div>
 </div>

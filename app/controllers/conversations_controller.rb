@@ -1,6 +1,10 @@
 class ConversationsController < ApplicationController
+
   before_action :ensure_account
-  before_action :load_account
+
+  before_action :find_account
+  before_action :find_conversation, only: [:show]
+
 
   def index
     if params['q'].blank?
@@ -20,7 +24,32 @@ class ConversationsController < ApplicationController
         Analytics.track(user_id: current_user.id, event: 'Searched For', properties: { query: @query.to_s })
       end
     end
+
+    @conversation = @conversations.first
   end
+
+  def show
+    @conversations = @account.conversations.open.includes(:messages)
+    @conversation
+  end
+
+
+  protected
+
+  def ensure_account
+    if signed_in? && params[:account].blank?
+      redirect_to conversations_path(current_account)
+    end
+  end
+
+  def find_account
+    @account = Account.find_by_slug!(params.fetch(:account))
+  end
+
+  def find_conversation
+    @conversation = @account.conversations.where(number: params.fetch(:id)).first!
+  end
+
 
   private
 
@@ -33,13 +62,4 @@ class ConversationsController < ApplicationController
     @es ||= Elasticsearch::Client.new hosts: [ ENV['ELASTICSEARCH_URL'] ]
   end
 
-  def ensure_account
-    if signed_in? && params[:account].blank?
-      return redirect_to conversations_path(current_account)
-    end
-  end
-
-  def load_account
-    @account = Account.find_by_slug!(params['account'])
-  end
 end

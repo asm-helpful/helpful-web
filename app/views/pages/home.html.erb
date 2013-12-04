@@ -1,44 +1,49 @@
-<div class="landing-page">
-  <div class="landing-page_container">
-    <div class="logo"></div>
-    <h1><span class="muted">Just be</span> Helpful</h1>
-    <p>
-      This is not a novel idea, but lived out, it can turn your frustrated Frowny-Town customer into a Happy Mc-word-of-mouth (your product here) lover.
-    </p>
-  </div>
+<div class="l-home">
+  <div class="fold fold-center">
+    <div class="container">
+      <center>
+        <div class="logo logo-default"></div>
+      </center>
 
-  <div class="landing-page_container">
-    <%= render '/layouts/flash' %>
+      <h1 class="text-black">Helpful</h1>
+      <p class="text-muted">Help that doesn't hurt</p>
 
-    <%= form_for(BetaInvite.new) do |f| %>
-      <div class="input-container">
-        <label for="beta_invite_email">Request Access to Helpful</label>
-        <%= f.text_field :email, :placeholder => "Your Email Address" %>
-      </div>
-      <div class="btn-container">
-        <%= f.submit "Get Helpful", :class => "btn" %>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="landing-page--alternate">
-    <div class="landing-page_container">
-      <h3>The cost of support should only grow as you need it more. So that’s how we charge.</h3>
-      <p>
-        We believe that the best way to support your product is by connecting the right person with the customer.
-      </p>
-      <p>
-        Everyone on your team helps out with support, so the customer gets the help he deserves.
-      </p>
-      <p>
-        Helpful doesn’t charge per user, so everyone can jump right in. As your product and support needs grow, Helpful grows with you.
-      </p>
+      <a href="<%= new_account_path %>" class="btn btn-success">Sign Up</a>
+      <a href="<%= new_user_session_path %>" class="btn btn-default">Sign In</a>
     </div>
   </div>
 
-  <footer>
-    <span class="tagline">
-      <a href="http://helpful.io">Helpful</a> by <a href="http://assemblymade.com">Assembly</a>
-    </span>
-  </footer>
+  <div class="fold fold-center">
+    <div class="container">
+      <h4>Unique billing</h4>
+      <p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pellentesque accumsan nulla. Morbi posuere diam turpis, non cursus neque elementum id. Donec ut nisi id mauris viverra faucibus. Mauris laoreet libero in elit pulvinar ullamcorper. Nam a posuere elit, vel convallis lorem. Sed vel urna at purus tristique porttitor.
+      </p>
+
+      <h4>Open source</h4>
+      <p>
+        Donec pharetra erat et eros eleifend dictum. Aliquam non porta risus. Suspendisse nec commodo dui. Donec ut mollis erat, in tincidunt lorem. Nam vitae augue ante. Quisque elit velit, feugiat id tincidunt quis, lobortis nec turpis. Suspendisse mollis facilisis elit vel convallis. Cras sed metus felis.
+      </p>
+
+      <h4>Small teams</h4>
+      <p>
+        Ut viverra nulla metus, vel tincidunt nisl posuere ut. Sed pretium est et imperdiet dapibus. Nulla vitae feugiat lectus. Aliquam est lectus, venenatis sit amet tincidunt ut, varius in orci. Duis vestibulum nisl ac sagittis rutrum. Sed blandit libero pulvinar tortor congue pretium. Ut commodo volutpat sem, ac luctus neque vestibulum non. Duis fermentum fringilla purus nec semper.
+      </p>
+
+      <h4>Enterprise</h4>
+      <p>
+        Maecenas vitae sapien ante. Pellentesque ut nunc euismod, porttitor justo ac, semper nibh. Vivamus eu fermentum ligula. Phasellus suscipit massa eget convallis cursus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla facilisi. Duis quis mi ut lorem gravida laoreet. Sed vel felis nec lectus tempor ultrices. Proin ac dui varius, interdum dolor nec, rutrum est.
+      </p>
+
+    </div>
+  </div>
+
+
+  <div class="fold fold-center">
+    <div class="container">
+      <a href="<%= root_path %>">Helpful</a>.
+      By <a href="https://assemblymade.com/helpful">Assembly</a>.
+    </div>
+  </div>
+
 </div>

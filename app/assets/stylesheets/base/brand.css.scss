@@ -1,29 +1,26 @@
 .logo {
-    background: url(image-path('logo.png')) no-repeat center;
-    @include background-size(100%);
+  @include background-size(100%);
+  background-image: url(image-path('logo.png'));
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-.logo--wordmark {
-    @include background-size(auto 100%);
-    background-position: left center;
-    border: 0;
-    @include box-sizing(border-box);
-    color: $black;
-    font-family: $font-headline;
-    font-size: 1.4rem;
-    font-weight: bold;
-    height: 3.8rem;
-    padding: 1.4rem 0 1.4rem 6rem;
+.logo-default {
+  width: 60px;
+  height: 60px;
 }
 
-.tagline {
-    font-size: .8rem;
-    opacity: .35;
-    text-align: center;
+.logo-wordmark {
+  @include background-size(auto 100%);
+  background-image: url(image-path('logo.png'));
+  background-repeat: no-repeat;
+  background-position: left center;
 
-    a {
-        border: 0;
-        color: $white;
-        font-weight: bold;
-    }
+  padding-left: (24px * 1.5) + 30px;
+
+  color: $black;
+  font-family: $font-headline;
+  font-size: 24px;
+  font-weight: 800;
+  text-transform: uppercase;
 }
