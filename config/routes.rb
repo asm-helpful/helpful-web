@@ -5,6 +5,7 @@ Supportly::Application.routes.draw do
     mount Sidekiq::Web, at: "/sidekiq"
   end
 
+  get '/embed.js' => 'pages#embed', :as => :embed
   get '/styleguide' => 'pages#styleguide', :as => :styleguide
 
   devise_for :users, skip: :registrations
@@ -24,7 +25,7 @@ Supportly::Application.routes.draw do
   end
 
   resource :beta_invites, only: [:create]
-  resource :account, only: [:new, :create]
+  resource :account, only: [:new, :create, :edit]
 
   resources :messages
 

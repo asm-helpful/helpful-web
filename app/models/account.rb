@@ -42,7 +42,7 @@ class Account < ActiveRecord::Base
   # Returns one Account or nil.
   def self.match_mailbox(email)
     slug = MAILBOX_REGEX.match(email)[:slug]
-    self.where(slug: slug).first
+    self.where(slug: slug).first!
   end
 
   protected

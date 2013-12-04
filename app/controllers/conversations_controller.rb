@@ -1,5 +1,6 @@
 class ConversationsController < ApplicationController
 
+  before_action :authenticate_user!
   before_action :ensure_account
 
   before_action :find_account

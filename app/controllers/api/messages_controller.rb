@@ -1,6 +1,7 @@
 class Api::MessagesController < ApplicationController
-  skip_before_filter :verify_authenticity_token
-  before_filter :fetch_message, :only => [:show, :update, :destroy]
+  skip_before_action :verify_authenticity_token
+  before_action :authenticate_user!, except: [:create]
+
   respond_to :json
 
   def index
@@ -9,52 +10,35 @@ class Api::MessagesController < ApplicationController
   end
 
   def show
+    @message = Message.find(params.fetch(:id))
     render json: @message
   end
 
   def create
     account = Account.where(slug: params.fetch(:account)).first
-
     conversation = Concierge.new(account, params).find_conversation
+    person = account.people.find_or_create_by(email: params.fetch(:email))
 
-    @message = conversation.messages.new
+    @message = conversation.messages.new(
+      content: params.fetch(:content),
+      person:  person
+    )
 
-    @message.person = account.people.find_or_create_by(email: params.fetch(:email))
-    @message.content = params.fetch('content')
+    if @message.valid? && @message.save
 
-    respond_to do |format|
-      if @message.save
-        format.json { render json: @message, status: :created, callback: params.fetch(:callback, nil)}
-      else
-        format.json { render json: @message.errors, status: :unprocessable_entity, callback: params.fetch(:callback, nil)}
+      recipients = @message.conversation.participants - [@message.person]
+      recipients.each do |recipient|
+        MessageMailer.created(@message.id, recipient.id).deliver
       end
+
+      render :json => @message,
+             :status => :created,
+             :callback => params[:callback]
+    else
+      render :json => @message.errors,
+             :status => :unprocessable_entity,
+             :callback => params[:callback]
     end
-  end
-
-  def update
-    #TODO: implement
-    respond_to do |format|
-    #if @message.update_attributes(params[:user])
-    #  format.json { head :no_content, status: :ok }
-    #else
-      format.json { render json: "Figure out update permissions", status: :unprocessable_entity }
-    end
-  end
-
-  def destroy
-    #TODO: implement
-    respond_to do |format|
-    #if @message.destroy
-    #  format.json { head :no_content, status: :ok }
-    #else
-      format.json { render json: "Figure out destroy permissions", status: :unprocessable_entity }
-    end
-  end
-
-  protected
-
-  def fetch_message
-    @message = Message.find(params.fetch(:id))
   end
 
 end

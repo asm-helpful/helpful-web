@@ -1,8 +1,12 @@
 class MessageMailer < ActionMailer::Base
-  default from: "from@example.com"
 
-  def support_message(recipients, message)
-    @message = message
-    mail(to: recipients, from: message.person.email, subject: 'Helpful Message')
+  def created(message_id, recipient_id)
+    @message = Message.find(message_id)
+    @recipient = Person.find(recipient_id)
+
+    mail to: @recipient.email,
+         from: @message.person.email,
+         subject: 'New Helpful Message'
   end
+
 end

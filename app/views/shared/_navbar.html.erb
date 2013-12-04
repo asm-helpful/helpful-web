@@ -1,5 +1,10 @@
+<script src="http://localhost:5000/embed.js"></script>
+
 <div class="navbar">
-  <%= avatar(OpenStruct.new(email: 'christopher.lloyd@gmail.com'), 64) %>
-  <%= link_to 'Inbox', conversations_path(@account, @conversations) %>
-  <a>Archive</a>
+  <%= avatar(current_user, 64) %>
+  <%= link_to 'Inbox', conversations_path(@account) %>
+  <a href="<%= edit_account_path %>">Settings</a>
+
+  <a href="#" data-helpful="helpful">Help!</a>
+  <%= link_to 'Logout', destroy_user_session_path, :method => :delete %>
 </div>

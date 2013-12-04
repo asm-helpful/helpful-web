@@ -4,19 +4,24 @@ require 'elasticsearch'
 class Message < ActiveRecord::Base
   include ActiveRecord::UUID
 
-  before_create :populate_person
-  after_save :update_search_index
-
-  attr_accessor :from
-
-  belongs_to :conversation, touch: true
-  delegate   :account, to: :conversation
-
   belongs_to :person
-  accepts_nested_attributes_for :conversation
+  belongs_to :conversation, touch: true
+
   has_many :read_receipts
 
-  after_save  :send_webhook, unless: Proc.new { |m| m.conversation.account.webhook_url.nil? }
+  delegate :account, :to => :conversation
+
+  validates :person,       presence: true
+  validates :conversation, presence: true
+  validates :content,      presence: {
+                             allow_nil: false,
+                             allow_blank: false
+                           }
+
+  after_save :update_search_index
+  after_save :send_webhook, if: ->(message) {
+    message.conversation.account.webhook_url?
+  }
 
   def webhook_data
     { message: {
@@ -35,18 +40,12 @@ class Message < ActiveRecord::Base
     Webhook.create(account: self.account, event: "message.#{action}", data: self.webhook_data)
   end
 
+  # TODO: Support testing search in test environment
+  # TODO: Move to an async job
   def update_search_index
-    # TODO: Support testing search in test environment
     if ENV['ELASTICSEARCH_URL'] && !Rails.env.test?
       es = Elasticsearch::Client.new hosts: [ ENV['ELASTICSEARCH_URL'] ]
       es.index( { index: 'helpful', type:  'message', id: self.id, body: { content: self.content} } )
-    end
-  end
-
-  def populate_person
-    if person_id.blank?
-      person = Person.find_or_create_by!(email: from.to_s.strip)
-      self.person_id = person.id
     end
   end
 

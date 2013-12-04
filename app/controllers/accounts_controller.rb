@@ -1,4 +1,6 @@
 class AccountsController < ApplicationController
+  before_action :authenticate_user!, only: [:edit]
+
   def new
     @account = Account.new
     @new_account_user = User.new
@@ -36,4 +38,9 @@ class AccountsController < ApplicationController
       render 'new'
     end
   end
+
+  def edit
+    @account = current_user.accounts.first
+  end
+
 end

@@ -1,0 +1,21 @@
+<div class="column-wrapper l-app">
+  <div class="column column-navbar">
+    <%= render 'shared/navbar' %>
+  </div>
+
+  <div class="column column-detail">
+    <div class="column-heading">Settings</div>
+
+    <p>To try out Helpful website, run this command from your terminal:</p>
+
+    <pre>
+      <code>
+        curl -X POST http://helpful.io/api/messages \
+          --data "account=<%= @account.slug %>" \
+          --data "email=user@example.com" \
+          --data "content=I need help please."
+      </code>
+    </pre>
+
+  </div>
+</div>

@@ -24,10 +24,6 @@ class Conversation < ActiveRecord::Base
     messages.order(:created_at => :asc)
   end
 
-  def participant_emails
-    participants.map {|person| person.email }.uniq
-  end
-
   def participants
     messages.map {|message| message.person }.uniq
   end

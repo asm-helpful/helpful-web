@@ -4,22 +4,28 @@ class IncomingEmails::MailgunController < ApplicationController
   skip_before_filter :verify_authenticity_token
   before_filter :verify_webhook
 
-  rescue_from 'ActionController::ParameterMissing' do |exception|
+  rescue_from ActionController::ParameterMissing, ActiveRecord::RecordNotFound do |exception|
     head :not_acceptable
   end
 
+  # TODO This method should create a job that posts to the API otherwise it's
+  #      duplicating a bunch of logic.
   def create
-
     mailgun_params
+
     @account = Account.match_mailbox(params.fetch(:recipient))
 
-    @message = Messages::Email.new(
-      headers:    JSON.parse(params.fetch('message-headers').to_s),
-      content:    params.fetch('body-plain'),
-      from:       params.fetch(:from),
-      subject:    params.fetch(:subject),
-      recipient:  params.fetch(:recipient),
-      conversation_attributes: { account_id: @account.try(:id) }
+    # See comment above. Should use the Concierge
+    @conversation = @account.conversations.new
+    @person = Person.find_or_create_by(email: params.fetch(:from))
+
+    @message = @conversation.messages.new(
+      type: 'Messages::Email',
+      person: @person,
+      recipient: params.fetch(:recipient),
+      subject:   params.fetch(:subject),
+      content:   params.fetch('body-plain'),
+      headers:   JSON.parse(params.fetch('message-headers').to_s)
     )
 
     if @message.save
