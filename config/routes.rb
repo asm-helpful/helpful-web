@@ -7,7 +7,6 @@ Supportly::Application.routes.draw do
 
   get '/styleguide' => 'pages#styleguide', :as => :styleguide
 
-  get "conversations/index"
   devise_for :users, skip: :registrations
 
   # This is the normal user registrations but NO new/create - That is handled by either:
