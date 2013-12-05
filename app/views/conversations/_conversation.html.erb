@@ -2,7 +2,18 @@
 
   <div class="conversation-heading">
     <div class="actions">
-      <div class="btn btn-success">Archive</div>
+      <%= button_to 'Archive', { action: :update, id: @conversation.id, :conversation => { :archive => true } }, :method => :put, data: { confirm: "Are you sure?" }, remote: true, class: ['btn', 'btn-success'], form: { id: 'archive', 'data-type' => 'json' } %>
+      <script>
+        $(document).ready(function(){
+          $('#archive')
+            .bind('ajax:success', function(){
+              window.location.href = "./";
+            })
+            .bind("ajax:error", function (xhr, status, error) {
+              console.log('AJAX Error (#archive): ' + error);
+            });
+        });
+      </script>
     </div>
     <div class="summary"><%= summary(conversation) %></div>
     <div class="number">#<%= conversation.number %></div>
