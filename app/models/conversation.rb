@@ -36,6 +36,18 @@ class Conversation < ActiveRecord::Base
     update_attribute(:status, STATUS_ARCHIVED)
   end
 
+  def un_archive
+    update_attribute(:status, STATUS_OPEN)
+  end
+
+  def archive=(flag)
+    if flag
+      archive
+    else
+      un_archive
+    end
+  end
+
   def open_with_new_message(message)
     update_attribute(:status, STATUS_OPEN)
   end
