@@ -16,16 +16,16 @@ class IncomingEmails::MailgunController < ApplicationController
     @account = Account.match_mailbox(params.fetch(:recipient))
 
     # See comment above. Should use the Concierge
-    @conversation = @account.conversations.new
+    @conversation = Concierge.new(@account, params).find_conversation
     @person = Person.find_or_create_by(email: params.fetch(:from))
 
     @message = @conversation.messages.new(
-      type: 'Messages::Email',
-      person: @person,
-      recipient: params.fetch(:recipient),
-      subject:   params.fetch(:subject),
-      content:   params.fetch('body-plain'),
-      headers:   JSON.parse(params.fetch('message-headers').to_s)
+      type:       'Messages::Email',
+      person:     @person,
+      recipient:  params.fetch(:recipient),
+      subject:    params.fetch(:subject),
+      content:    params.fetch('body-plain'),
+      headers:    JSON.parse(params.fetch('message-headers').to_s)
     )
 
     if @message.save
