@@ -34,6 +34,16 @@ class ConversationsController < ApplicationController
     @conversation
   end
 
+  def update
+    @conversation = Conversation.find(params[:id])
+    respond_to do |format|
+      if @conversation.update_attributes(conversation_params)
+        format.json { head :no_content }
+      else
+        format.json { render json: @conversation.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   protected
 
@@ -51,8 +61,11 @@ class ConversationsController < ApplicationController
     @conversation = @account.conversations.where(number: params.fetch(:id)).first!
   end
 
-
   private
+
+  def conversation_params
+    params.require(:conversation).permit(:archive, :id)
+  end
 
   def query_messages(query)
     response = elasticsearch.search body: { query: { match: { content: query } } }
@@ -62,5 +75,4 @@ class ConversationsController < ApplicationController
   def elasticsearch
     @es ||= Elasticsearch::Client.new hosts: [ ENV['ELASTICSEARCH_URL'] ]
   end
-
 end

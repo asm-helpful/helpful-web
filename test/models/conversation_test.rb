@@ -19,12 +19,36 @@ describe Conversation do
     assert conversation.archived?
   end
 
+  it "should not be archived after un_archive" do
+    @conversation.archive
+    @conversation.save
+
+    @conversation.un_archive
+    refute Conversation.find(@conversation.id).archived?
+  end
+
   it "should only return unarchived conversations" do
     FactoryGirl.create :conversation
     FactoryGirl.create :archived_conversation
     Conversation.open.each do |c|
       assert !c.archived?
     end
+  end
+
+  it "supports the archive attribute for setting archive status" do
+    @conversation.archive = true
+    @conversation.save
+
+    assert Conversation.find(@conversation.id).archived?
+  end
+
+  it "supports the archive attribute for setting archive status" do
+    @conversation.archive
+    @conversation.save
+
+    @conversation.archive = false
+    @conversation.save
+    refute Conversation.find(@conversation.id).archived?
   end
 
   it "adds the correct conversation number on create based on account_id" do
