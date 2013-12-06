@@ -11,15 +11,12 @@ class MessagesController < ApplicationController
       end
 
       Analytics.track(user_id: current_user.id,
-          event: 'Sent New Message',
+          event: 'New Message',
           properties: { action: params['commit'] })
-
-      recipients = conversation.participant_emails - [current_user.email]
-      MessageMailer.support_message(recipients, @message).deliver
 
       redirect_to conversations_path(current_account), alert: "Response Added"
     else
-      Analytics.track(user_id: current_user.id, event: 'Had Message Send Problem')
+      Analytics.track(user_id: current_user.id, event: 'Message Save Problem')
       redirect_to conversations_path(current_account), alert: "Problem"
     end
   end

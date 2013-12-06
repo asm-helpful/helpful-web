@@ -8,7 +8,7 @@ class Conversation < ActiveRecord::Base
 
   belongs_to :account
   has_many :messages,
-    :after_add => :open_with_new_message,
+    :after_add => :new_message,
     :dependent => :destroy
 
   sequential column: :number, scope: :account_id
@@ -25,7 +25,7 @@ class Conversation < ActiveRecord::Base
   end
 
   def participants
-    messages.map {|message| message.person }.uniq
+    messages.collect(&:person).uniq
   end
 
   def archived?
@@ -48,8 +48,15 @@ class Conversation < ActiveRecord::Base
     end
   end
 
-  def open_with_new_message(message)
+  def new_message(message)
     update_attribute(:status, STATUS_OPEN)
+    if messages.count == 1
+      ConversationMailer.new_conversation(id, message.person.id).deliver
+    else
+      (participants - [message.person]).each do |person|
+        ConversationMailer.new_reply(id, person.id).deliver
+      end
+    end
   end
 
   def to_param

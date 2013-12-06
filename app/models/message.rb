@@ -22,6 +22,7 @@ class Message < ActiveRecord::Base
   after_save :send_webhook, if: ->(message) {
     message.conversation.account.webhook_url?
   }
+  after_save ->(m) { m.conversation.new_message(m) }
 
   def webhook_data
     { message: {
