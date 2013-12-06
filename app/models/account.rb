@@ -32,9 +32,14 @@ class Account < ActiveRecord::Base
 
   # Public: Customer specific email address for incoming email.
   #
+  # conversation_number - Conversation number to include in the email address
+  #                       for creating a reply-to address. (default: nil)
+  #
   # Returns the email address customers should send email to.
-  def mailbox
-    [slug, '@', ENV['INCOMING_EMAIL_DOMAIN']].join.to_s
+  def mailbox(conversation_number = nil)
+    address = [ slug, '@', ENV['INCOMING_EMAIL_DOMAIN'] ]
+    address.insert(1, "+#{conversation_number}") if conversation_number
+    return address.join.to_s
   end
 
   # Public: Given an email address try to match to an account.

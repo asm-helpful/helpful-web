@@ -36,6 +36,12 @@ describe Account do
       assert_equal @account.slug, @account.mailbox.split("@")[0]
     end
 
+    it "must have the correct local part with conversation number" do
+      @account.save
+      address = @account.mailbox("123")
+      assert_equal @account.slug+"+123", address.split("@")[0]
+    end
+
     it "must have the correct domain part" do
       @account.save
       assert_equal ENV['INCOMING_EMAIL_DOMAIN'], @account.mailbox.split("@")[1]
