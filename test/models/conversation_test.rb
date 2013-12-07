@@ -2,7 +2,7 @@ require 'test_helper'
 
 describe Conversation do
   before do
-    @conversation = FactoryGirl.build(:conversation)
+    @conversation = build(:conversation)
   end
 
   it "is valid" do
@@ -14,7 +14,7 @@ describe Conversation do
   end
 
   it "should be archived after archive" do
-    conversation = FactoryGirl.create :conversation
+    conversation = create(:conversation)
     conversation.archive
     assert conversation.archived?
   end
@@ -28,8 +28,8 @@ describe Conversation do
   end
 
   it "should only return unarchived conversations" do
-    FactoryGirl.create :conversation
-    FactoryGirl.create :archived_conversation
+    create(:conversation)
+    create(:archived_conversation)
     Conversation.open.each do |c|
       assert !c.archived?
     end
@@ -52,15 +52,15 @@ describe Conversation do
   end
 
   it "adds the correct conversation number on create based on account_id" do
-    @account = FactoryGirl.create(:account)
+    @account = create(:account)
 
-    @conversation_1 = FactoryGirl.create(:conversation, account: @account)
+    @conversation_1 = create(:conversation, account: @account)
     assert_equal 1, @conversation_1.number
 
-    @conversation_2 = FactoryGirl.create(:conversation, account: @account)
+    @conversation_2 = create(:conversation, account: @account)
     assert_equal 2, @conversation_2.number
 
-    @conversation_3 = FactoryGirl.create(:conversation)
+    @conversation_3 = create(:conversation)
     assert_equal 1, @conversation_3.number
   end
 end
