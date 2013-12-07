@@ -13,7 +13,7 @@ class IncomingEmails::MailgunController < ApplicationController
   def create
     mailgun_params
 
-    @account = Account.match_mailbox(params.fetch(:recipient))
+    @account = Account.match_mailbox!(params.fetch(:recipient))
 
     # See comment above. Should use the Concierge
     @conversation = Concierge.new(@account, params).find_conversation

@@ -8,10 +8,10 @@ class ConversationMailer < ActionMailer::Base
     to = Mail::Address.new @recipient.email
     to.display_name = @recipient.name
 
-    from = Mail::Address.new @conversation.account.mailbox
+    from = @conversation.account.mailbox
     from.display_name = @conversation.account.name
 
-    reply_to = Mail::Address.new @conversation.account.mailbox(@conversation.to_param)
+    reply_to = @conversation.mailbox
     reply_to.display_name = @conversation.account.name
 
     subject = ConversationSummarizer.new(@conversation).summary
@@ -29,10 +29,10 @@ class ConversationMailer < ActionMailer::Base
     to = Mail::Address.new @recipient.email
     to.display_name = @recipient.name
 
-    from = Mail::Address.new @conversation.account.mailbox
+    from = @conversation.account.mailbox
     from.display_name = @conversation.account.name
 
-    reply_to = Mail::Address.new @conversation.account.mailbox(@conversation.to_param)
+    reply_to = @conversation.mailbox
     reply_to.display_name = @conversation.account.name
 
     subject = ConversationSummarizer.new(@conversation).summary

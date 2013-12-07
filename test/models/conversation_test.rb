@@ -63,4 +63,40 @@ describe Conversation do
     @conversation_3 = create(:conversation)
     assert_equal 1, @conversation_3.number
   end
+
+  describe "#mailbox" do
+
+    it "must return a valid email" do
+      @conversation.save
+      refute @conversation.mailbox.address.empty?
+    end
+
+    it "must have the correct local part" do
+      @conversation.save
+      expected = [@conversation.account.slug, "+", @conversation.number].join.to_s
+      assert_equal expected, @conversation.mailbox.local
+    end
+
+    it "must have the correct domain part" do
+      @conversation.save
+      assert_equal ENV['INCOMING_EMAIL_DOMAIN'], @conversation.mailbox.domain
+    end
+  end
+
+  describe ".match_mailbox" do
+
+    it "matches a mailbox email to a conversation" do
+      @conversation.save
+      assert_equal @conversation, Conversation.match_mailbox(@conversation.mailbox.to_s)
+    end
+
+    it "raises an exception if a converstion is not found" do
+      @conversation.save
+      address = @conversation.mailbox.to_s
+      @conversation.delete
+      assert_raise ActiveRecord::RecordNotFound do
+        Conversation.match_mailbox!(address)
+      end
+    end
+  end
 end
