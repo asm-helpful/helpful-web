@@ -14,10 +14,10 @@ class MessagesController < ApplicationController
           event: 'New Message',
           properties: { action: params['commit'] })
 
-      redirect_to conversations_path(current_account), alert: "Response Added"
+      redirect_to conversation_path(current_account, @message.conversation), alert: "Response Added"
     else
       Analytics.track(user_id: current_user.id, event: 'Message Save Problem')
-      redirect_to conversations_path(current_account), alert: "Problem"
+      redirect_to conversation_path(current_account, @message.conversation), alert: "Problem"
     end
   end
 
