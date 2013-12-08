@@ -1,6 +1,6 @@
 class Api::MessagesController < ApplicationController
   skip_before_action :verify_authenticity_token
-  before_action :authenticate_user!, except: [:create]
+  doorkeeper_for :all
 
   respond_to :json
 

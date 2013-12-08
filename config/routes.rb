@@ -1,5 +1,9 @@
 Supportly::Application.routes.draw do
 
+  use_doorkeeper do
+    controllers :applications => 'oauth/applications'
+  end
+
   if Rails.env.development?
     require 'sidekiq/web'
     mount Sidekiq::Web, at: "/sidekiq"

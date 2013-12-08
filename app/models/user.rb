@@ -13,4 +13,6 @@ class User < ActiveRecord::Base
   has_many :accounts, through: :memberships
 
   has_one :person
+
+  has_many :oauth_applications, class_name: 'Doorkeeper::Application', as: :owner
 end

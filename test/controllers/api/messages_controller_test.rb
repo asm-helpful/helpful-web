@@ -17,10 +17,11 @@ describe(Api::MessagesController, :create) do
   def find_message_from_response(response)
     Message.find(parse_json_response(response)[:id])
   end
-
-
+  
   before do
+    token = flexmock('Mocked Doorkeeper Token', :accessible? => true)
     @controller = Api::MessagesController.new
+    flexmock(@controller, doorkeeper_token: token )
     @account = create(:account)
   end
 
