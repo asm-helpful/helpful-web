@@ -16,10 +16,10 @@ class Concierge
   # Returns a Conversation.
   def find_conversation
     # If we have an explicit conversation number try that first
-    conversation = @conversations.where(number: @params.fetch(:conversation, nil)).first
+    conversation = @conversations.where(number: @params[:conversation]).first
 
     # If that didn't work, match on the recipient email address, looking for replies
-    conversation ||= Conversation.match_mailbox(@params.fetch(:recipient, nil))
+    conversation ||= Conversation.match_mailbox(@params[:recipient])
 
     # If that didn't work, create a new conversation
     conversation ||= @conversations.create
