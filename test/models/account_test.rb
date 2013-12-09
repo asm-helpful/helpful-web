@@ -39,6 +39,11 @@ describe Account do
       @account.save
       assert_equal Supportly.incoming_email_domain, @account.mailbox.domain
     end
+
+    it "must have the correct display_name" do
+      @account.save
+      assert_equal @account.name, @account.mailbox.display_name
+    end
   end
 
   describe ".match_mailbox" do

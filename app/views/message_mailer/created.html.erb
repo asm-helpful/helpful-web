@@ -6,11 +6,11 @@
   <body>
     <h2>A new message was added to your support request:</h2>
     <div class="list-item">
-      <%= render 'messages/message', message: @conversation.messages.last %>
+      <%= render 'messages/message', message: @message %>
     </div>
 
     <h2>Conversation history</h2>
-    <% @conversation.messages[0..-2].each do |message| %>
+    <% (@conversation.messages - [@message]).each do |message| %>
       <div class="list-item">
         <%= render 'messages/message', message: message %>
       </div>

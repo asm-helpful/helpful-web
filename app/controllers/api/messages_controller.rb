@@ -30,11 +30,6 @@ class Api::MessagesController < ApplicationController
 
     if @message.valid? && @message.save
 
-      recipients = @message.conversation.participants - [@message.person]
-      recipients.each do |recipient|
-        MessageMailer.created(@message.id, recipient.id).deliver
-      end
-
       render :json => @message,
              :status => :created,
              :callback => params[:callback]

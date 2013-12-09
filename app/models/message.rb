@@ -22,7 +22,7 @@ class Message < ActiveRecord::Base
   after_save :send_webhook, if: ->(message) {
     message.conversation.account.webhook_url?
   }
-  after_save ->(m) { m.conversation.new_message(m) }
+  after_create :send_email
 
   def webhook_data
     { message: {
@@ -47,6 +47,15 @@ class Message < ActiveRecord::Base
     if ENV['ELASTICSEARCH_URL'] && !Rails.env.test?
       es = Elasticsearch::Client.new hosts: [ ENV['ELASTICSEARCH_URL'] ]
       es.index( { index: 'helpful', type:  'message', id: self.id, body: { content: self.content} } )
+    end
+  end
+
+  # Public: Trigger MessageMailer.created when a new message is created.
+  #
+  # Returns nothing.
+  def send_email
+    (conversation.participants - [person]).each do |person|
+      MessageMailer.created(id, person.id).deliver
     end
   end
 

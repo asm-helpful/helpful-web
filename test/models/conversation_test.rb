@@ -81,6 +81,11 @@ describe Conversation do
       @conversation.save
       assert_equal Supportly.incoming_email_domain, @conversation.mailbox.domain
     end
+
+    it "must have the correct display name" do
+      @conversation.save
+      assert_equal @conversation.account.name, @conversation.mailbox.display_name
+    end
   end
 
   describe ".match_mailbox" do
