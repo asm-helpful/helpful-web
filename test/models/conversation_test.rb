@@ -2,7 +2,7 @@ require 'test_helper'
 
 describe Conversation do
   before do
-    @conversation = FactoryGirl.build(:conversation)
+    @conversation = build(:conversation)
   end
 
   it "is valid" do
@@ -14,7 +14,7 @@ describe Conversation do
   end
 
   it "should be archived after archive" do
-    conversation = FactoryGirl.create :conversation
+    conversation = create(:conversation)
     conversation.archive
     assert conversation.archived?
   end
@@ -28,8 +28,8 @@ describe Conversation do
   end
 
   it "should only return unarchived conversations" do
-    FactoryGirl.create :conversation
-    FactoryGirl.create :archived_conversation
+    create(:conversation)
+    create(:archived_conversation)
     Conversation.open.each do |c|
       assert !c.archived?
     end
@@ -52,15 +52,51 @@ describe Conversation do
   end
 
   it "adds the correct conversation number on create based on account_id" do
-    @account = FactoryGirl.create(:account)
+    @account = create(:account)
 
-    @conversation_1 = FactoryGirl.create(:conversation, account: @account)
+    @conversation_1 = create(:conversation, account: @account)
     assert_equal 1, @conversation_1.number
 
-    @conversation_2 = FactoryGirl.create(:conversation, account: @account)
+    @conversation_2 = create(:conversation, account: @account)
     assert_equal 2, @conversation_2.number
 
-    @conversation_3 = FactoryGirl.create(:conversation)
+    @conversation_3 = create(:conversation)
     assert_equal 1, @conversation_3.number
+  end
+
+  describe "#mailbox" do
+
+    it "must return a valid email" do
+      @conversation.save
+      refute @conversation.mailbox.address.empty?
+    end
+
+    it "must have the correct local part" do
+      @conversation.save
+      expected = [@conversation.account.slug, "+", @conversation.number].join.to_s
+      assert_equal expected, @conversation.mailbox.local
+    end
+
+    it "must have the correct domain part" do
+      @conversation.save
+      assert_equal ENV['INCOMING_EMAIL_DOMAIN'], @conversation.mailbox.domain
+    end
+  end
+
+  describe ".match_mailbox" do
+
+    it "matches a mailbox email to a conversation" do
+      @conversation.save
+      assert_equal @conversation, Conversation.match_mailbox(@conversation.mailbox.to_s)
+    end
+
+    it "raises an exception if a converstion is not found" do
+      @conversation.save
+      address = @conversation.mailbox.to_s
+      @conversation.delete
+      assert_raise ActiveRecord::RecordNotFound do
+        Conversation.match_mailbox!(address)
+      end
+    end
   end
 end

@@ -2,8 +2,7 @@ require 'test_helper'
 
 describe Account do
   before do
-    ENV['INCOMING_EMAIL_DOMAIN'] = 'example.com'
-    @account = FactoryGirl.build(:account)
+    @account = build(:account)
   end
 
   it "must be valid" do
@@ -28,17 +27,17 @@ describe Account do
 
     it "must return a valid email" do
       @account.save
-      assert @account.mailbox.include?("@")
+      refute @account.mailbox.address.empty?
     end
 
     it "must have the correct local part" do
       @account.save
-      assert_equal @account.slug, @account.mailbox.split("@")[0]
+      assert_equal @account.slug, @account.mailbox.local
     end
 
     it "must have the correct domain part" do
       @account.save
-      assert_equal ENV['INCOMING_EMAIL_DOMAIN'], @account.mailbox.split("@")[1]
+      assert_equal ENV['INCOMING_EMAIL_DOMAIN'], @account.mailbox.domain
     end
   end
 
@@ -46,7 +45,24 @@ describe Account do
 
     it "matches a mailbox email to an account" do
       @account.save
-      assert_equal @account, Account.match_mailbox(@account.mailbox)
+      assert_equal @account, Account.match_mailbox(@account.mailbox.to_s)
+    end
+  end
+
+  describe ".match_mailbox!" do
+
+    it "matches a mailbox email to an account" do
+      @account.save
+      assert_equal @account, Account.match_mailbox(@account.mailbox.to_s)
+    end
+
+    it "raises an exception if an account is not found" do
+      @account.save
+      address = @account.mailbox.to_s
+      @account.delete
+      assert_raise ActiveRecord::RecordNotFound do
+        Account.match_mailbox!(address)
+      end
     end
   end
 end

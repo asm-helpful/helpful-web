@@ -51,6 +51,17 @@ describe(Api::MessagesController, :create) do
     assert_equal 'chris@example.com', message.person.email
   end
 
+  it 'persists the correct email via a person object' do
+    create_post(@account, email: 'Chris <chris@example.com>')
+    message = find_message_from_response(@response)
+    assert_equal 'chris@example.com', message.person.email
+  end
+
+  it 'persists the correct name from the email via a person object' do
+    create_post(@account, email: 'Chris <chris@example.com>')
+    message = find_message_from_response(@response)
+    assert_equal 'Chris', message.person.name
+  end
 
   # Conversations
 
