@@ -15,7 +15,7 @@ class Conversation < ActiveRecord::Base
 
   validates :account, presence: true
 
-  default_scope -> { order(:updated_at => :asc) }
+  default_scope -> { order(:updated_at => :desc) }
 
   scope :open, -> { where.not(status: STATUS_ARCHIVED) }
   scope :archived, -> { where(status: STATUS_ARCHIVED) }
