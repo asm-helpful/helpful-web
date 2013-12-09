@@ -34,7 +34,7 @@ class Account < ActiveRecord::Base
   #
   # Returns the email address customers should send email to.
   def mailbox
-    Mail::Address.new([ slug, '@', ENV['INCOMING_EMAIL_DOMAIN'] ].join.to_s)
+    Mail::Address.new([ slug, '@', Supportly.incoming_email_domain ].join.to_s)
   end
 
   # Public: Given an email address try to match to an account.

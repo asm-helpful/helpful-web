@@ -73,7 +73,7 @@ class Conversation < ActiveRecord::Base
       account.slug,
       "+#{number}",
       '@',
-      ENV['INCOMING_EMAIL_DOMAIN']
+      Supportly.incoming_email_domain
     ].join.to_s)
   end
 

@@ -37,7 +37,7 @@ describe Account do
 
     it "must have the correct domain part" do
       @account.save
-      assert_equal ENV['INCOMING_EMAIL_DOMAIN'], @account.mailbox.domain
+      assert_equal Supportly.incoming_email_domain, @account.mailbox.domain
     end
   end
 
