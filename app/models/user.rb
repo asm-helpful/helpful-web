@@ -12,5 +12,15 @@ class User < ActiveRecord::Base
   has_many :memberships
   has_many :accounts, through: :memberships
 
+  has_many :owner_memberships, -> { where(role: 'owner') }, class_name: 'Membership'
+  has_many :owned_accounts, class_name: 'Account', through: :owner_memberships, source: :account
+
   has_one :person
+
+  # Returns the first owned account
+  # Later we need to better support a user who owns multiple accounts (or is a member of multiple accounts)
+  # But for now let's just assume there is either zero or one
+  def primary_owned_account
+    self.owned_accounts.first
+  end
 end
