@@ -21,6 +21,7 @@ gem 'sass-rails', '~> 4.0.0'
 gem 'sequential', '>= 0.1'
 gem 'sidekiq'
 gem 'uglifier', '>= 1.3.0'
+gem 'redcarpet'
 
 group :development do
   gem 'rest-client', require: false

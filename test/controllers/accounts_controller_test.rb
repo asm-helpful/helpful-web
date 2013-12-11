@@ -2,12 +2,12 @@ require "test_helper"
 
 describe AccountsController do
 
-  it "should get new" do
+  test "GET new" do
     get :new
     assert_response :success
   end
 
-  it "should post create" do
+  test "POST create" do
     post :create, {
       account: {
         name: 'MyCompany'
@@ -23,6 +23,23 @@ describe AccountsController do
     }
 
     assert_redirected_to root_path
+  end
+
+  test "PATCH update" do
+    m = FactoryGirl.create(:membership)
+
+    @account = m.account
+    sign_in(m.user)
+
+    patch :update, {
+      id: @account.id,
+      account: {
+        name: 'MyCompany2'
+      }
+    }
+
+    assert_redirected_to edit_account_url
+    assert_equal "MyCompany2", @account.reload.name
   end
 
 end

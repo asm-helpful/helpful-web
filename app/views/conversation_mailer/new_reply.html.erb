@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h2>A new message was added to your support request:</h2>
+    <div class="list-item">
+      <%= render 'messages/message', message: @conversation.messages.last %>
+    </div>
+
+    <h2>Conversation history</h2>
+    <% @conversation.messages[0..-2].each do |message| %>
+      <div class="list-item">
+        <%= render 'messages/message', message: message %>
+      </div>
+    <% end %>
+  </body>
+</html>

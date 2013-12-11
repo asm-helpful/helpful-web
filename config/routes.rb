@@ -30,7 +30,7 @@ Supportly::Application.routes.draw do
   end
 
   resource :beta_invites, only: [:create]
-  resource :account, only: [:new, :create, :edit]
+  resource :account, only: [:new, :create, :edit, :update]
 
   resources :messages
 

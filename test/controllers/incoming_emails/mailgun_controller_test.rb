@@ -85,6 +85,12 @@ describe IncomingEmails::MailgunController do
         post_webhook
         assert_equal @account, Messages::Email.last.account
       end
+
+      it "associates the message with the correct conversation" do
+        conversation = create(:conversation)
+        post_webhook(recipient: conversation.mailbox.to_s)
+        assert_equal conversation, Messages::Email.last.conversation
+      end
     end
 
     describe "invalid webhook" do
