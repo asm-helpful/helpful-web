@@ -17,5 +17,40 @@
       </code>
     </pre>
 
+
+    <%= form_for @account, url: account_path, html: {class: 'form'} do |f| %>
+
+      <div class="form-group">
+        <%= f.label :name, 'Company name', class: 'form-label' %>
+        <%= f.text_field :name, autofocus: true, placeholder: 'Acme Corp', class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :website_url, 'Website', class: 'form-label' %>
+        <%= f.text_field :website_url, autofocus: true, placeholder: 'https://www.example.com', class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :webhook_url, 'Webhook URL', class: 'form-label' %>
+        <%= f.text_field :webhook_url, autofocus: true, placeholder: 'https://www.example.com/webhooks/helpful', class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :webhook_secret, "Webhook Secret", class: 'form-label' %>
+        <br />
+        <pre><%= @account.webhook_secret %></pre>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :mailbox, "Incoming e-mail address", class: 'form-label' %>
+        <br />
+        <pre><%= @account.mailbox %></pre>
+      </div>
+
+      <div class="form-actions">
+        <%= f.submit 'Update my account settings', :class => "btn btn-primary" %>
+      </div>
+    <% end %>
+
   </div>
 </div>

@@ -3,7 +3,9 @@
 <div class="navbar">
   <%= avatar(current_user, 64) %>
   <%= link_to 'Inbox', conversations_path(@account) %>
-  <a href="<%= edit_account_path %>">Settings</a>
+  <% if current_user.primary_owned_account -%>
+    <a href="<%= edit_account_path %>">Settings</a>
+  <% end -%>
 
   <a href="#" data-helpful="helpful">Help!</a>
   <%= link_to 'Logout', destroy_user_session_path, :method => :delete %>

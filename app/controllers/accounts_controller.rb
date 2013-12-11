@@ -1,5 +1,5 @@
 class AccountsController < ApplicationController
-  before_action :authenticate_user!, only: [:edit]
+  before_action :authenticate_user!, only: [:edit, :update]
 
   def new
     @account = Account.new
@@ -40,7 +40,25 @@ class AccountsController < ApplicationController
   end
 
   def edit
-    @account = current_user.accounts.first
+    @account = current_user.primary_owned_account
+  end
+
+  def update
+    @account = current_user.primary_owned_account
+
+    respond_to do |format|
+      if @account.update_attributes(account_params)
+        format.html { redirect_to edit_account_url, notice: "Account settings updated" }
+      else
+        format.html { render 'edit' }
+      end
+    end
+  end
+
+  private
+
+  def account_params
+    params.require(:account).permit(:name, :website_url, :webhook_url)
   end
 
 end
