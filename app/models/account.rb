@@ -4,6 +4,8 @@ class Account < ActiveRecord::Base
   include ActiveRecord::UUID
   extend FriendlyId
 
+  belongs_to :billing_plan
+
   friendly_id :account_slug, :use => :slugged
 
   has_many :conversations, :dependent => :destroy
