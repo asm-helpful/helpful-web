@@ -1,0 +1,16 @@
+<h1>Billing Info</h1>
+
+<% if @account.billing_plan -%>
+  <p>You're currently on the <%= @account.billing_plan.name %> plan.</p>
+  <p>Your account is currently <%= (@account.billing_status || 'active').humanize %></p>
+
+  <p><a href="<%= @account.chargify_portal_url %>">View statements & make changes to your subscription</a></p>
+<% else -%>
+  <% BillingPlan.ordered.each do |plan| -%>
+    <p><%= chargify_signup_link("Sign up for #{number_to_currency plan.price} plan", plan.chargify_product_id) %></p>
+  <% end -%>
+
+  <% if Rails.env.development? -%>
+    <p>Use credit card number of "1" with any valid expiration/CVV to sign up.  Make sure to use a real e-mail address or you won't be able to use the Billing Portal login link</p>
+  <% end -%>
+<% end -%>

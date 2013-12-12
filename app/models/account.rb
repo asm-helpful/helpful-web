@@ -56,6 +56,40 @@ class Account < ActiveRecord::Base
     self.match_mailbox(email) || raise(ActiveRecord::RecordNotFound)
   end
 
+  # Overrides the portal url attribute to regenerate every few days with a newly valid link
+  def chargify_portal_url
+
+    if self[:chargify_portal_url].blank? || chargify_portal_valid_until < Time.zone.now
+      if self.chargify_customer_id.to_i > 0 # In dev it's possibly we 'faked' it.  If so, we don't want to hit Chargify with an invalid request
+
+        new_url, expiration = Chargify.management_url(self.chargify_customer_id)
+        if new_url
+          self.update_attributes({chargify_portal_url: new_url, chargify_portal_valid_until: expiration})
+        end
+
+      end
+    end
+
+    self[:chargify_portal_url] || ''
+  end
+
+  # Retrieves the latest subscription info and saves it to the account
+  def get_update_from_chargify!
+    self.chargify_subscription_id ||= Chargify.subscription_id_from_customer_reference(self.id)
+
+    if chargify_subscription_id
+      r = Chargify.subscription_status(chargify_subscription_id)
+
+      if r
+        self.billing_status = r['subscription']['state']
+        self.billing_plan   = BillingPlan.find_by_slug r['subscription']['product']['handle']
+        self.chargify_customer_id = r['subscription']['customer']['id']
+
+        self.save!
+      end
+    end
+  end
+
   protected
 
   def save_new_user

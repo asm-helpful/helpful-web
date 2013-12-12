@@ -8,5 +8,6 @@ class AddBillingToAccount < ActiveRecord::Migration
     add_column :accounts, :chargify_portal_valid_until, :datetime
 
     add_index  :accounts, :billing_plan_id
+    add_index  :accounts, :chargify_subscription_id
   end
 end

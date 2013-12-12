@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20131212133643) do
   end
 
   add_index "accounts", ["billing_plan_id"], name: "index_accounts_on_billing_plan_id", using: :btree
+  add_index "accounts", ["chargify_subscription_id"], name: "index_accounts_on_chargify_subscription_id", using: :btree
   add_index "accounts", ["slug"], name: "index_accounts_on_slug", unique: true, using: :btree
 
   create_table "beta_invites", force: true do |t|
