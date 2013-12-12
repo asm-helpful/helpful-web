@@ -56,25 +56,22 @@ class Conversation < ActiveRecord::Base
 
   def new_message(message)
     update_attribute(:status, STATUS_OPEN)
-    if messages.count == 1
-      ConversationMailer.new_conversation(id, message.person.id).deliver
-    else
-      (participants - [message.person]).each do |person|
-        ConversationMailer.new_reply(id, person.id).deliver
-      end
-    end
   end
 
   # Public: Conversation specific email address for incoming email replies.
   #
   # Returns the Mail::Address customers should send email replies to.
   def mailbox
-    Mail::Address.new([
+    email = Mail::Address.new([
       account.slug,
       "+#{number}",
       '@',
       Supportly.incoming_email_domain
     ].join.to_s)
+
+    email.display_name = account.name
+
+    return email
   end
 
   # Public: Given an email address try to match to a conversation.
