@@ -4,7 +4,7 @@ describe WebhookSerializer do
 
   before do
     @webhook = Webhook.new(
-      id: 'foo id',
+      id: 'fooid',
       account_id: 'foo account_id',
       event: 'foo event',
       body:  'foo body',
@@ -16,13 +16,27 @@ describe WebhookSerializer do
     )
     @webhook = flexmock(@webhook, signature: 'foo signature')
 
-    @expected = %{{"webhook":{"id":"foo id","account_id":"foo account_id","event":"foo event","body":"foo body","signature":"foo signature","response":{"code":"foo response_code","body":"foo response_body","received":"2014-02-03T04:05:06Z"},"created":"2012-02-03T04:05:06Z","updated":"2013-02-03T04:05:06Z"}}}
+    @expected = {
+      id: "fooid",
+      account_id: "foo account_id",
+      event: "foo event",
+      body: "foo body",
+      signature: "foo signature",
+      response: {
+          code: "foo response_code",
+          body: "foo response_body",
+          received: "2014-02-03T04:05:06Z"
+      },
+      created: "2012-02-03T04:05:06Z",
+      updated: "2013-02-03T04:05:06Z",
+      _links: { self: { href: "/webhooks/fooid" } }
+    }.to_json
 
     @serializer = WebhookSerializer.new(@webhook)
   end
 
   it 'has generates the json we expect' do
-    @expected.must_equal @serializer.to_json
+    @serializer.to_json.must_equal @expected
   end
 
 end
