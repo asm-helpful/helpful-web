@@ -31,6 +31,10 @@ Supportly::Application.routes.draw do
 
   resource :beta_invites, only: [:create]
   resource :account, only: [:new, :create, :edit, :update]
+  resource :billing, only: [:show] do
+    get :return
+    post :webhook
+  end
 
   resources :messages
 
