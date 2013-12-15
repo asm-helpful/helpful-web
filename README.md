@@ -9,25 +9,31 @@ Helpful is an open product that's being build by a fantastic group of people on 
 
 ## Getting started
 
-You need [Ruby 2.0.0](https://www.ruby-lang.org), [Postgres](http://www.postgresql.org), [Redis](http://redis.io) and the [Heroku Toolbelt](https://toolbelt.heroku.com) installed locally to run Helpful.
+You need these installed locally to run Helpful:
+
+* [Ruby 2.0.0](https://www.ruby-lang.org)
+* [Postgres](http://www.postgresql.org)
+* [Redis](http://redis.io)
+* [ElasticSearch]()
+* [Heroku Toolbelt](https://toolbelt.heroku.com)
 
     # Install dependent gems
-    $ bundle install
+    bundle install
 
     # Setup the database
-    $ cp config/database.yml.example config/database.yml
+    cp config/database.yml.example config/database.yml
     # edit config/database.
-    $ bin/rake db:setup
+    rake db:setup
 
     # Install & Setup dependencies (for Mac)
-    $ brew install elasticsearch
-    $ cp -s /usr/local/Cellar/elasticsearch/X.XX.X /usr/local/Cellar/elasticsearch/latest
-    $ brew install redis
-    $ cp -s /usr/local/Cellar/redis/X.XX.X /usr/local/Cellar/elasticsearch/redis
+    brew install elasticsearch
+    cp -s /usr/local/Cellar/elasticsearch/X.XX.X /usr/local/Cellar/elasticsearch/latest
+    brew install redis
+    cp -s /usr/local/Cellar/redis/X.XX.X /usr/local/Cellar/elasticsearch/redis
 
     # Configure the environment
-    $ cp .env.example .env
-    # edit .env
+    cp .env.example .env
+    # Edit the .env file to customize the options in there (the defaults are pretty sane if you followed this guide, but you should check)
 
 ### If you are running redis and elasticsearch already:
 
