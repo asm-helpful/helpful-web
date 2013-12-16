@@ -50,8 +50,12 @@ You need these installed locally to run Helpful:
 
 ### Send a test message to the app
 
-    $ rake seed:message from=some_email@test.com
-    # open localhost:5000 in your browser
+Once you've created an account you can send it test messages using the API:
+
+    curl -X POST http://helpful.io/api/messages \
+             --data "account=helpful" \
+             --data "email=user@example.com" \
+             --data "content=I need help please."
 
 ### Configuring Search (Elastic Search)
 
