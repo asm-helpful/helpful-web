@@ -38,12 +38,15 @@ Supportly::Application.routes.draw do
 
   resources :messages
 
-  namespace :incoming_emails do
+  namespace :webhooks do
     resources :mailgun, only: :create
   end
 
   namespace :api do
-   match 'messages/create' => 'messages#create', :via => ["get", "post"], :defaults => { :format => 'json' }
+    match 'messages/create' => 'messages#create',
+          :via => ["get", "post"],
+          :defaults => { :format => 'json' }
+
    resources :messages, :defaults => { :format => 'json' }
   end
 

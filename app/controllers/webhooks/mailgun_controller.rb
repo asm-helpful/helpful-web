@@ -1,6 +1,6 @@
 require 'openssl'
 
-class IncomingEmails::MailgunController < ApplicationController
+class Webhooks::MailgunController < ApplicationController
   skip_before_filter :verify_authenticity_token
   before_filter :verify_webhook
 

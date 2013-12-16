@@ -1,7 +1,7 @@
 require 'test_helper'
 require 'openssl'
 
-describe IncomingEmails::MailgunController do
+describe Webhooks::MailgunController do
   def post_webhook(args = {})
 
     # The mailgun API only uses timestamp and token as the inputs to HMAC
