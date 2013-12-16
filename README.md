@@ -6,7 +6,6 @@ Support that makes you better at support.
 
 Helpful is an open product that's being build by a fantastic group of people on [Assembly](https://assemblymade.com/support-foo). Anybody can join in building this product and earn a stake of the profit.
 
-
 ## Getting started
 
 You need these installed locally to run Helpful:
@@ -14,65 +13,86 @@ You need these installed locally to run Helpful:
 * [Ruby 2.0.0](https://www.ruby-lang.org)
 * [Postgres](http://www.postgresql.org)
 * [Redis](http://redis.io)
-* [ElasticSearch]()
+* [ElasticSearch](http://www.elasticsearch.org/)
 * [Heroku Toolbelt](https://toolbelt.heroku.com)
 
-    # Install dependent gems
-    bundle install
+The following instructions are designed for Mac OS and assume you already have
+[Homebrew](http://brew.sh/) installed.
 
-    # Setup the database
-    cp config/database.yml.example config/database.yml
-    # edit config/database.
-    rake db:setup
+### Install Helpful's dependencies (skip as needed)
 
-    # Install & Setup dependencies (for Mac)
+#### Update Homebrew's Formulas
+    brew update
+
+#### Install rbenv (alternatively use RVM)
+    brew install rbenv
+    brew install ruby-build
+
+#### Install Ruby 2.0.0
+    rbenv install 2.0.0-p0
+
+#### Install ElasticSearch
     brew install elasticsearch
     cp -s /usr/local/Cellar/elasticsearch/X.XX.X /usr/local/Cellar/elasticsearch/latest
+
+#### Install Redis
     brew install redis
     cp -s /usr/local/Cellar/redis/X.XX.X /usr/local/Cellar/elasticsearch/redis
 
-    # Configure the environment
+#### Install Postgres.app
+1. Visit http://postgresapp.com/
+2. Follow the instructions to install
+
+### Setup Helpful
+
+#### Get the code
+    git clone https://github.com/asm-helpful/helpful-web.git
+    cd helpful-web
+
+#### Install the requied gems
+    bundle install
+
+#### Setup the databse
+    cp config/database.yml.example config/database.yml
+
+If you are using Postgres.app you don't need to edit anything, otherwise adjust database.yml as needed.
+
+Once you're ready run:
+
+    rake db:setup
+
+#### Configure enviroment variables
+Helpful uses enviroment variables to manage configuration.
+
+To get started lets use the example .env which contains some good defaults:
+
     cp .env.example .env
-    # Edit the .env file to customize the options in there (the defaults are pretty sane if you followed this guide, but you should check)
 
-### If you are running redis and elasticsearch already:
+It's probably a good idea to take a look at the contents of .env now.
 
-    $ foreman start
+### Starting Helpful
 
-### If you are not running redis and elasticsearch seperately and would like to run them in the same session:
+#### If you are running redis and elasticsearch already:
 
-    $ cp Procfile.dev.example Procfile.dev
-    # edit Procfile.dev
-
-    # Start the server
-    $ foreman start -f Procfile.dev
-    # open localhost:5000 in your browser
-
-### Send a test message to the app
-
-Once you've created an account you can send it test messages using the API:
-
-    curl -X POST http://helpful.io/api/messages \
-             --data "account=helpful" \
-             --data "email=user@example.com" \
-             --data "content=I need help please."
-
-### Configuring Search (Elastic Search)
-
-On OS X:
-
-    brew install elasticsearch
-    elasticsearch -f
     rake search:reindex
     foreman start
 
-### Configuring Analytics (Segment.io)
+#### If you are not running redis and elasticsearch and want them to run under foreman:
+    cp Procfile.dev.example Procfile.dev
+    # edit Procfile.dev as needed
 
-You can get some analytics from your app by configuring a [Segment.io](https://segment.io/) secret key in .env:
+    foreman start -f Procfile.dev
+    rake search:reindex
 
-    SEGMENT_SECRET=XXXXXXXXXXXX
+### Using Helpful
 
-### Configuring Email
+1. Open up http://localhost:5000 in your web browser. You should see the Helpful.io landing page.
+2. To get started click "Sign Up" and follow the instructions.
+3. Enjoy!
+
+## Advanced Configuration
+
+### Email
 
 #### Sending with Gmail
 
