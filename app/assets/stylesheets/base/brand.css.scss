@@ -1,8 +1,8 @@
 .logo {
-  @include background-size(100%);
   background-image: url(image-path('logo.png'));
   background-repeat: no-repeat;
   background-position: center;
+  background-size: 100%;
 }
 
 .logo-default {
@@ -11,10 +11,10 @@
 }
 
 .logo-wordmark {
-  @include background-size(auto 100%);
   background-image: url(image-path('logo.png'));
   background-repeat: no-repeat;
   background-position: left center;
+  background-size: auto 100%;
 
   padding-left: (24px * 1.5) + 30px;
 
