@@ -2,6 +2,9 @@
   <div class="logo logo-default"></div>
 
     <h3>Welcome Back!</h3>
+
+    <%= render '/layouts/flash' %>
+
     <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form'}) do |f| %>
 
       <div class="form-group">

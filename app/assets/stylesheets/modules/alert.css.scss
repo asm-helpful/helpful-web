@@ -21,6 +21,11 @@
   background-color: $error;
 }
 
+.alert-alert {
+  @extend .alert;
+  background-color: $error;
+}
+
 .alert-close {
   color: white;
   border-left: 2px solid rgba(black, .1);
