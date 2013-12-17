@@ -1,6 +1,6 @@
 class Api::MessagesController < ApplicationController
   skip_before_action :verify_authenticity_token
-  doorkeeper_for :all
+  doorkeeper_for :all, except: [ :create ]
 
   respond_to :json
 
@@ -15,6 +15,10 @@ class Api::MessagesController < ApplicationController
   end
 
   def create
+    # HACK: This validates the oauth token if it is passed in.
+    methods = Doorkeeper.configuration.access_token_methods
+    @token ||= Doorkeeper::OAuth::Token.authenticate request, *methods
+
     account = Account.where(slug: params.fetch(:account)).first
     conversation = Concierge.new(account, params).find_conversation
 
