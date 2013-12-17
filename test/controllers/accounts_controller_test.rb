@@ -32,14 +32,13 @@ describe AccountsController do
     sign_in(m.user)
 
     patch :update, {
-      id: @account.id,
       account: {
         name: 'MyCompany2'
       }
     }
 
     assert_redirected_to edit_account_url
-    assert_equal "MyCompany2", @account.reload.name
+    assert_equal 'MyCompany2', @account.reload.name
   end
 
 end
