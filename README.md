@@ -4,86 +4,91 @@ Support that makes you better at support.
 [![Build Status](https://travis-ci.org/asm-helpful/helpful-web.png?branch=master)](https://travis-ci.org/asm-helpful/helpful-web)
 [![Code Climate](https://codeclimate.com/github/support-foo/web.png)](https://codeclimate.com/github/support-foo/web)
 
-Helpful is an open product that's being build by a fantastic group of people on [Assembly](https://assemblymade.com/support-foo). Anybody can join in building this product and earn a stake of the profit.
+Helpful is an open product that's being build by a fantastic group of people on [Assembly](https://assemblymade.com/helpful). Anybody can join in building this product and earn a stake of the profit.
 
-## Getting Started with Vagrant
+## Getting Started
+NOTE: These directions are targeted at Mac Users.
+
+### Vagrant
 [Vagrant](http://vagrantup.com) is a great way to quickly get started on Helpful.
 
-If you don't already have Vagrant installed download it here: http://www.vagrantup.com/downloads before continuing.
+Pre-requisites:
 
-Once you have Vagrant installed you can run:
+* [Vagrant](http://www.vagrantup.com/) - Download from http://vagrantup.com/downloads
 
-		vagrant up
-		
-This will take a while to run so you may want to grab some coffee. Once Vagrant finishes follow the onscreen instructions to finish the install process. That's it.
+Once you have Vagrant installed run:
 
-Welcome to Helpful.
+    vagrant up
 
-## Getting started
-You need these installed locally to run Helpful:
+This will take a while to run so you may want to grab some coffee.
 
-* [Ruby 2.0.0](https://www.ruby-lang.org)
-* [Postgres](http://www.postgresql.org)
+Once Vagrant finishes follow the onscreen instructions to finish the install process. That's it.
+
+**Welcome to Helpful.**
+
+<<<<<<< HEAD
+### Bootstrap.sh
+If you prefer a local (non VM) install you can use the included `bootstrap.sh` script to help you get everything setup.
+
+Pre-requisites:
+
+* [Ruby 2.0](https://www.ruby-lang.org) - Install via [rbenv](http://rbenv.org/) or [RVM](https://rvm.io/‎)
+* [PostgreSQL](http://www.postgresql.org) - Install via [Postgres.app](http://postgresapp.com)
+
+Once you have the pre-requisites installed:
+
+    ./boostrap.sh
+
+Once `bootstrap.sh` finishes follow the onscreen instructions to finish the install process. That's it.
+
+**Welcome to Helpful.**
+
+### Manual
+
+If you prefer to install everything manually (or you're not on a Mac) here is what you will need:
+
+* [Git](http://git-scm.com)
+* [Ruby 2.0](https://www.ruby-lang.org)
+* [Bundler](http://bundler.io/)
+* [PostgreSQL](http://www.postgresql.org)
+* [ElasticSearch](http://elasticsearch.org)
 * [Redis](http://redis.io)
-* [ElasticSearch]()
-* [Heroku Toolbelt](https://toolbelt.heroku.com)
 
-    # Install dependent gems
+Once you have everything installed:
+
+    # Get the Source Code
+    git clone https://github.com/asm-helpful/helpful-web.git
+    cd helpful-web
+
+    # Install Gems
     bundle install
 
-    # Setup the database
+    # Create a database config (edit as needed)
     cp config/database.yml.example config/database.yml
-    # edit config/database.
     rake db:setup
 
-    # Install & Setup dependencies (for Mac)
-    brew install elasticsearch
-    cp -s /usr/local/Cellar/elasticsearch/X.XX.X /usr/local/Cellar/elasticsearch/latest
-    brew install redis
-    cp -s /usr/local/Cellar/redis/X.XX.X /usr/local/Cellar/elasticsearch/redis
-
-    # Configure the environment
+    # Create an environment config (edit as needed)
     cp .env.example .env
-    # Edit the .env file to customize the options in there (the defaults are pretty sane if you followed this guide, but you should check)
 
-### If you are running redis and elasticsearch already:
-
-    $ foreman start
-
-### If you are not running redis and elasticsearch seperately and would like to run them in the same session:
-
-    $ cp Procfile.dev.example Procfile.dev
-    # edit Procfile.dev
-
-    # Start the server
-    $ foreman start -f Procfile.dev
-    # open localhost:5000 in your browser
-
-### Send a test message to the app
-
-Once you've created an account you can send it test messages using the API:
-
-    curl -X POST http://helpful.io/api/messages \
-             --data "account=helpful" \
-             --data "email=user@example.com" \
-             --data "content=I need help please."
-
-### Configuring Search (Elastic Search)
-
-On OS X:
-
-    brew install elasticsearch
-    elasticsearch -f
+    # Re-index ElasticSearch
     rake search:reindex
+
+    # Start the server (assumes you have redis and elasticsearch already running)
     foreman start
 
-### Configuring Analytics (Segment.io)
+Open up http://localhost:5000 in your web browser.
 
-You can get some analytics from your app by configuring a [Segment.io](https://segment.io/) secret key in .env:
+**Welcome to Helpful.**
 
-    SEGMENT_SECRET=XXXXXXXXXXXX
+### Using Helpful
 
-### Configuring Email
+1. Open up http://localhost:5000 in your web browser. You should see the Helpful.io landing page.
+2. To get started click "Sign Up" and follow the instructions.
+3. Enjoy!
+
+## Advanced Configuration
+
+### Email
 
 #### Sending with Gmail
 
@@ -102,7 +107,7 @@ In development.rb, add:
 
 #### Recieving with Mailgun (optional)
 
-Setting up Mailgun in development takes a little work but allows you to use the
+Setting up [Mailgun](http://mailgun.com) in development takes a little work but allows you to use the
 actual email workflow used in production.
 
 1. Register for a free account at https://mailgun.com.
@@ -127,6 +132,6 @@ There are a couple of steps you need to take before contributing:
 
 1. Go to https://assemblymade.com and sign up.
 2. Link your GitHub account to your Assembly account
-3. Create a new WIP at https://assemblymade.com/support-foo/wips. Think of WIPs as GitHub issues.
+3. Create a new WIP at https://assemblymade.com/helpful/wips. Think of WIPs as GitHub issues.
 
 Then just go ahead, fork the repo & issue a pull request. You're on your way to having a stake in Helpful.
