@@ -33,13 +33,13 @@ Supportly::Application.routes.draw do
   resource :account, only: [:new, :create, :edit, :update]
   resource :billing, only: [:show] do
     get :return
-    post :webhook
   end
 
   resources :messages
 
   namespace :webhooks do
     resources :mailgun, only: :create
+    post '/chargify' => 'billings#webhook', :as => :webhook_billing
   end
 
   namespace :api do
