@@ -6,9 +6,20 @@ Support that makes you better at support.
 
 Helpful is an open product that's being build by a fantastic group of people on [Assembly](https://assemblymade.com/support-foo). Anybody can join in building this product and earn a stake of the profit.
 
+## Getting Started with Vagrant
+[Vagrant](http://vagrantup.com) is a great way to quickly get started on Helpful.
+
+If you don't already have Vagrant installed download it here: http://www.vagrantup.com/downloads before continuing.
+
+Once you have Vagrant installed you can run:
+
+		vagrant up
+		
+This will take a while to run so you may want to grab some coffee. Once Vagrant finishes follow the onscreen instructions to finish the install process. That's it.
+
+Welcome to Helpful.
 
 ## Getting started
-
 You need these installed locally to run Helpful:
 
 * [Ruby 2.0.0](https://www.ruby-lang.org)
