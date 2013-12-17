@@ -33,11 +33,9 @@ The following instructions are designed for Mac OS and assume you already have
 
 #### Install ElasticSearch
     brew install elasticsearch
-    cp -s /usr/local/Cellar/elasticsearch/X.XX.X /usr/local/Cellar/elasticsearch/latest
 
 #### Install Redis
     brew install redis
-    cp -s /usr/local/Cellar/redis/X.XX.X /usr/local/Cellar/elasticsearch/redis
 
 #### Install Postgres.app
 1. Visit http://postgresapp.com/
