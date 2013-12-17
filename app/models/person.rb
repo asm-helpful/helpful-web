@@ -17,4 +17,15 @@ class Person < ActiveRecord::Base
     allow_blank: true,
     uniqueness: {:scope => :account}
 
+  before_save :parse_email
+
+  private
+
+  # Private: Make sure we only save the address portion of an email address.
+  #
+  # Returns nothing.
+  def parse_email
+    mail = Mail::Address.new(self.email)
+    self.email = mail.address
+  end
 end
