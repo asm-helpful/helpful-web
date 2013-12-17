@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Supportly::Application.load_tasks
+Helpful::Application.load_tasks

@@ -39,7 +39,7 @@ class Account < ActiveRecord::Base
     email = Mail::Address.new([
       slug,
       '@',
-      Supportly.incoming_email_domain
+      Helpful.incoming_email_domain
     ].join.to_s)
 
     email.display_name = name

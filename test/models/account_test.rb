@@ -37,7 +37,7 @@ describe Account do
 
     it "must have the correct domain part" do
       @account.save
-      assert_equal Supportly.incoming_email_domain, @account.mailbox.domain
+      assert_equal Helpful.incoming_email_domain, @account.mailbox.domain
     end
 
     it "must have the correct display_name" do

@@ -1,4 +1,4 @@
-Supportly::Application.routes.draw do
+Helpful::Application.routes.draw do
 
   use_doorkeeper do
     controllers :applications => 'oauth/applications'
