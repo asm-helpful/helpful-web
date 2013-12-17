@@ -6,7 +6,6 @@ Support that makes you better at support.
 
 Helpful is an open product that's being build by a fantastic group of people on [Assembly](https://assemblymade.com/support-foo). Anybody can join in building this product and earn a stake of the profit.
 
-
 ## Getting started
 
 You need these installed locally to run Helpful:
@@ -14,65 +13,84 @@ You need these installed locally to run Helpful:
 * [Ruby 2.0.0](https://www.ruby-lang.org)
 * [Postgres](http://www.postgresql.org)
 * [Redis](http://redis.io)
-* [ElasticSearch]()
+* [ElasticSearch](http://www.elasticsearch.org/)
 * [Heroku Toolbelt](https://toolbelt.heroku.com)
 
-    # Install dependent gems
+The following instructions are designed for Mac OS and assume you already have
+[Homebrew](http://brew.sh/) installed.
+
+### Install Helpful's dependencies (skip as needed)
+
+#### Update Homebrew's Formulas
+    brew update
+
+#### Install rbenv (alternatively use RVM)
+    brew install rbenv
+    brew install ruby-build
+
+#### Install Ruby 2.0.0
+    rbenv install 2.0.0-p0
+
+#### Install ElasticSearch
+    brew install elasticsearch
+
+#### Install Redis
+    brew install redis
+
+#### Install Postgres.app
+1. Visit http://postgresapp.com/
+2. Follow the instructions to install
+
+### Setup Helpful
+
+#### Get the code
+    git clone https://github.com/asm-helpful/helpful-web.git
+    cd helpful-web
+
+#### Install the requied gems
     bundle install
 
-    # Setup the database
+#### Setup the databse
     cp config/database.yml.example config/database.yml
-    # edit config/database.
+
+If you are using Postgres.app you don't need to edit anything, otherwise adjust database.yml as needed.
+
+Once you're ready run:
+
     rake db:setup
 
-    # Install & Setup dependencies (for Mac)
-    brew install elasticsearch
-    cp -s /usr/local/Cellar/elasticsearch/X.XX.X /usr/local/Cellar/elasticsearch/latest
-    brew install redis
-    cp -s /usr/local/Cellar/redis/X.XX.X /usr/local/Cellar/elasticsearch/redis
+#### Configure enviroment variables
+Helpful uses enviroment variables to manage configuration.
 
-    # Configure the environment
+To get started lets use the example .env which contains some good defaults:
+
     cp .env.example .env
-    # Edit the .env file to customize the options in there (the defaults are pretty sane if you followed this guide, but you should check)
 
-### If you are running redis and elasticsearch already:
+It's probably a good idea to take a look at the contents of .env now.
 
-    $ foreman start
+### Starting Helpful
 
-### If you are not running redis and elasticsearch seperately and would like to run them in the same session:
+#### If you are running redis and elasticsearch already:
 
-    $ cp Procfile.dev.example Procfile.dev
-    # edit Procfile.dev
-
-    # Start the server
-    $ foreman start -f Procfile.dev
-    # open localhost:5000 in your browser
-
-### Send a test message to the app
-
-Once you've created an account you can send it test messages using the API:
-
-    curl -X POST http://helpful.io/api/messages \
-             --data "account=helpful" \
-             --data "email=user@example.com" \
-             --data "content=I need help please."
-
-### Configuring Search (Elastic Search)
-
-On OS X:
-
-    brew install elasticsearch
-    elasticsearch -f
     rake search:reindex
     foreman start
 
-### Configuring Analytics (Segment.io)
+#### If you are not running redis and elasticsearch and want them to run under foreman:
+    cp Procfile.dev.example Procfile.dev
+    # edit Procfile.dev as needed
 
-You can get some analytics from your app by configuring a [Segment.io](https://segment.io/) secret key in .env:
+    foreman start -f Procfile.dev
+    rake search:reindex
 
-    SEGMENT_SECRET=XXXXXXXXXXXX
+### Using Helpful
 
-### Configuring Email
+1. Open up http://localhost:5000 in your web browser. You should see the Helpful.io landing page.
+2. To get started click "Sign Up" and follow the instructions.
+3. Enjoy!
+
+## Advanced Configuration
+
+### Email
 
 #### Sending with Gmail
 
@@ -109,55 +127,6 @@ to create a route using `rake mailgun:create_route`.
 as the domain name.
 8. Send a test email to helpful@INCOMING_EMAIL_DOMAIN and you should see it
 appear in the helpful account.
-
-## OAuth2
-
-API authentication is done using OAuth2.  Helpful acts as an OAuth2 provider.  In order to develop an API client against
-Helpful, your app will need to be registered.
-
-More details here:
-
-* https://github.com/applicake/doorkeeper/wiki/Authorization-Code-Flow
-* http://tools.ietf.org/html/rfc6749#section-4.1
-
-Roughly, as a Helpful user, you can:
-
-* Create your own 'applications' (OAuth clients) that can then participate in the OAuth flow.  Use the "/oauth/applications" URL.
-* Authorize other applications (or your own) to "act" on your behalf (make API calls to resources you control).  Use the "/oauth/authorized_applications" URL.
-
-Here's how to do it in development:
-
-1. Log in as normal
-2. Visit http://localhost:3000/oauth/applications
-3. Create a new application (use `urn:ietf:wg:oauth:2.0:oob` as the callback URL)
-4. Copy the application_id and secret key
-
-When your app/client code wants to access Helpful as a user, it must request an auth_code.  That is done by having the user you want to act on behalf of visit the authorize_url:
-
-```ruby
-callback = "urn:ietf:wg:oauth:2.0:oob"
-app_id = "f9682933bb81c9a76cc4dc6d7b2f4ba7a1db006cc986fa5e8e28d05fafde6dd9"
-secret = "23c7ebff714494e3871cf0ab163bb4e9b87bd4ad201521a3ce9e2e1ca984feda"
-
-client = OAuth2::Client.new(app_id, secret, site: "http://localhost:3000/")
-
-client.auth_code.authorize_url(redirect_uri: callback)
- # => "http://localhost:3000/oauth/authorize?response_type=code&client_id=f9682933bb81c9a76cc4dc6d7b2f4ba7a1db006cc986fa5e8e28d05fafde6dd9&redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob"
-```
-
-5. This URL will prompt the browser user if they want to allow the app and will return to you an auth_code (via callback or in the browser window).
-6. Your app should remember this auth_code!
-7. Then "trade-in" the auth_code for an access_token (Access tokens are short lived (2 hours).  Whenever it expires, you'll have to get a new one.
-
-```
-auth_code = "b789332903d1a6e3ec07f1831c8c4e3d20031f576e19ff2ae24dcbb26285b205"
-access = client.auth_code.get_token auth_code, redirect_uri: callback
-token = access.token
-# => "fd7958b3d3d17ba9130718096b3a4cd4a4d8088cb29d41e4d74513fc9aeff5a8"
-
-access.get '/api/messages'
-# => #<OAuth2::Response:0x000000027c2778 .... (Normal HTTP Response stuff from the API call here)
-```
 
 ## Contributing
 
