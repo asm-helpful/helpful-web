@@ -66,7 +66,7 @@ class Conversation < ActiveRecord::Base
       account.slug,
       "+#{number}",
       '@',
-      Supportly.incoming_email_domain
+      Helpful.incoming_email_domain
     ].join.to_s)
 
     email.display_name = account.name

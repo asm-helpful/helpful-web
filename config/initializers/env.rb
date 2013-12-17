@@ -1,4 +1,4 @@
-module Supportly
+module Helpful
   extend self
 
   def incoming_email_domain

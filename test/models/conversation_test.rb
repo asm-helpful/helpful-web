@@ -79,7 +79,7 @@ describe Conversation do
 
     it "must have the correct domain part" do
       @conversation.save
-      assert_equal Supportly.incoming_email_domain, @conversation.mailbox.domain
+      assert_equal Helpful.incoming_email_domain, @conversation.mailbox.domain
     end
 
     it "must have the correct display name" do

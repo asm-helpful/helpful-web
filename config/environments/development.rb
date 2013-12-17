@@ -1,4 +1,4 @@
-Supportly::Application.configure do
+Helpful::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on
@@ -28,6 +28,6 @@ Supportly::Application.configure do
   config.assets.debug = true
 
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-  
+
   ActiveRecord::Base.logger = ActiveSupport::TaggedLogging.new(Logger.new(STDOUT))
 end
