@@ -5,8 +5,10 @@ FactoryGirl.define do
     email    Faker::Internet.email
     password 'password'
 
-    after(:create) do |user, evaluator|
-      FactoryGirl.create_list(:membership, 1, user: user)
+    factory :user_with_membership do
+      after(:create) do |user, evaluator|
+        FactoryGirl.create_list(:membership, 1, user: user)
+      end
     end
   end
 end

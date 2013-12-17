@@ -39,8 +39,9 @@ Supportly::Application.routes.draw do
 
   namespace :webhooks do
     resources :mailgun, only: :create
-    post '/chargify' => 'billings#webhook', :as => :webhook_billing
   end
+
+  post 'webhooks/chargify' => 'billings#webhook', :as => :webhook_billing
 
   namespace :api do
     match 'messages/create' => 'messages#create',
