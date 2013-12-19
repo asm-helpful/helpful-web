@@ -48,7 +48,7 @@ su vagrant -lc "cd /vagrant && sudo foreman export upstart /etc/init \
   --app helpful \
   --user vagrant \
   --log /vagrant/log \
-  --template /vagrant/vagrant/foreman/export_templates/upstart"
+  --template /vagrant/config/vagrant/foreman/export_templates/upstart"
 
 start helpful
 

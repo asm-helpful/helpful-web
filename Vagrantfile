@@ -12,7 +12,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "heroku"
   config.vm.box_url = "https://dl.dropboxusercontent.com/s/auq7ipsbwgzmp9a/heroku.box"
-  config.vm.provision :shell, :path => "vagrant/bootstrap.sh"
+  config.vm.provision :shell, :path => "vagrant/config/bootstrap.sh"
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
