@@ -4,28 +4,24 @@ log () {
   echo -e "\n\e[35m-----> $1\n"
 }
 
-log "Updating Aptitude and installing the basics"
+log "Updating Aptitude and Installing the Basics"
 apt-get update
 apt-get install curl python-software-properties -y
 
-log "Installing Redis"
+log "Installing and Starting Redis"
 /usr/bin/add-apt-repository ppa:chris-lea/redis-server
 apt-get update
 apt-get install redis-server -y
 
-log "Starting Redis"
-service redis-server start
-
-log "Installing ElasticSearch"
 if dpkg -s elasticsearch > /dev/null 2>&1; then
-  log "ElasticSearch is already installed. Trying to start it."
+  log "Detected ElasticSearch"
+  log "Starting ElasticSearch"
   service elasticsearch start
 else
+  log "Installing and Starting ElasticSearch"
   apt-get install openjdk-6-jre-headless -y
   wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.90.7.deb
   dpkg -i elasticsearch-0.90.7.deb
-  log "Starting ElasticSearch"
-  service elasticsearch start
 fi
 
 
@@ -51,7 +47,8 @@ log "Starting Helpful"
 su vagrant -lc "cd /vagrant && sudo foreman export upstart /etc/init \
   --app helpful \
   --user vagrant \
-  --log /vagrant/log"
+  --log /vagrant/log \
+  --template /vagrant/vagrant/foreman/export_templates/upstart"
 
 start helpful
 
@@ -64,7 +61,5 @@ Thanks for installing Helpful.
 
 Open up http://localhost:5000 in your browser to get started.
 
-
-Problems? Please contact us at helpful@helpful.io.
 -------------------------------------------------------------------------------
 EOF
