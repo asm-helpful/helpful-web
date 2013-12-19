@@ -7,10 +7,9 @@ Support that makes you better at support.
 Helpful is an open product that's being build by a fantastic group of people on [Assembly](https://assemblymade.com/helpful). Anybody can join in building this product and earn a stake of the profit.
 
 ## Getting Started
-NOTE: These directions are targeted at Mac Users.
 
 ### Vagrant
-[Vagrant](http://vagrantup.com) is a great way to quickly get started on Helpful.
+[Vagrant](http://vagrantup.com) is the fastest way to get started with Helpful.
 
 Pre-requisites:
 
@@ -20,26 +19,8 @@ Once you have Vagrant installed run:
 
     vagrant up
 
-This will take a while to run so you may want to grab some coffee.
-
-Once Vagrant finishes follow the onscreen instructions to finish the install process. That's it.
-
-**Welcome to Helpful.**
-
-<<<<<<< HEAD
-### Bootstrap.sh
-If you prefer a local (non VM) install you can use the included `bootstrap.sh` script to help you get everything setup.
-
-Pre-requisites:
-
-* [Ruby 2.0](https://www.ruby-lang.org) - Install via [rbenv](http://rbenv.org/) or [RVM](https://rvm.io/‎)
-* [PostgreSQL](http://www.postgresql.org) - Install via [Postgres.app](http://postgresapp.com)
-
-Once you have the pre-requisites installed:
-
-    ./boostrap.sh
-
-Once `bootstrap.sh` finishes follow the onscreen instructions to finish the install process. That's it.
+This will take a while to run so you may want to grab some coffee. Once it's
+finished you're good to go.
 
 **Welcome to Helpful.**
 
