@@ -17,4 +17,6 @@ class Person < ActiveRecord::Base
     allow_blank: true,
     uniqueness: {:scope => :account}
 
+  delegate :agent_or_higher?, to: :user, allow_nil: true
+
 end
