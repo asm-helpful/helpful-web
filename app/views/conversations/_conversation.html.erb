@@ -36,8 +36,6 @@
       <div class="list-item">
 
         <%= form_tag messages_path, method: 'post', class: 'form-reply' do %>
-          <%= hidden_field :message, :account, value: conversation.account.to_param %>
-          <%= hidden_field :message, :email, value: current_user.person.email %>
           <%= hidden_field :message, :conversation_id, value: conversation.id %>
 
           <div class="person">
