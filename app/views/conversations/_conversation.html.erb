@@ -42,13 +42,22 @@
             <%= avatar(current_user.person, 45) %>
           </div>
 
+          <div class="onoffswitch">
+            <input type="hidden" name="message[internal]" value="0">
+            <input type="checkbox" name="message[internal]" class="onoffswitch-checkbox" id="myonoffswitch" value="1">
+            <label class="onoffswitch-label" for="myonoffswitch">
+              <div class="onoffswitch-inner"></div>
+              <div class="onoffswitch-switch"></div>
+            </label>
+          </div>
+
           <label>
             <%= text_field :message, :content, placeholder: 'Reply to this conversation…' %>
           </label>
         <% end %>
       </div>
 
-      <% conversation.messages.each do |message| %>
+      <% conversation.messages_visible_for(current_user).each do |message| %>
         <div class="list-item">
           <%= render 'messages/message', message: message %>
         </div>

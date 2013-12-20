@@ -39,4 +39,7 @@ class Person < ActiveRecord::Base
     mail = Mail::Address.new(self.email)
     self.email = mail.address
   end
+
+  delegate :agent_or_higher?, to: :user, allow_nil: true
+
 end
