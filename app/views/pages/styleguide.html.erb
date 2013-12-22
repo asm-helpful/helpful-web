@@ -78,20 +78,20 @@
   <h2>Buttons</h2>
   <a href="https://github.com/asm-helpful/helpful-web/blob/master/app/assets/stylesheets/modules/btn.css.scss">app/assets/stylesheets/modules/btn.css.scss</a>
 
-  <p>All buttons have a disabled (opacity: .5) state.</p>
+  <p>All buttons have a disabled (opacity: .5) state, assigned with <code>disabled="disabled"</code></p>
   <p>Buttons get a little offset look with a 2px box-shadow on the y-axis in 15% darkened background-color.</p>
 
   <div class="example">
     <p><a href="#" class="btn btn-default">Default button</a></p>
-    <p><a href="#" class="btn btn-default btn-disabled">Default disabled button</a></p>
+    <p><a href="#" class="btn btn-default" disabled="disabled">Default disabled button</a></p>
     <p><a href="#" class="btn btn-primary">Primary button</a></p>
-    <p><a href="#" class="btn btn-primary btn-disabled">Primary button disabled</a></p>
+    <p><a href="#" class="btn btn-primary" disabled="disabled">Primary button disabled</a></p>
     <p><a href="#" class="btn btn-success">Positive button</a></p>
-    <p><a href="#" class="btn btn-success btn-disabled">Positive button disabled</a></p>
+    <p><a href="#" class="btn btn-success" disabled="disabled">Positive button disabled</a></p>
     <p><a href="#" class="btn btn-warning">Warning button</a></p>
-    <p><a href="#" class="btn btn-warning btn-disabled">Warning button disabled</a></p>
+    <p><a href="#" class="btn btn-warning" disabled="disabled">Warning button disabled</a></p>
     <p><a href="#" class="btn btn-danger">Danger button</a></p>
-    <p><a href="#" class="btn btn-danger btn-disabled">Danger button disabled</a></p>
+    <p><a href="#" class="btn btn-danger" disabled="disabled">Danger button disabled</a></p>
   </div>
 
 
@@ -115,7 +115,7 @@
 
   <div class="example">
 
-    <form class="form">
+    <form class="form" role="form">
       <div class="form-group">
         <label for="text1" class="form-label">Label</label>
         <input type="text" class="form-control" id="text1" placeholder="Placeholder" />
@@ -131,41 +131,40 @@
         <input type="text" class="form-control" id="text3" placeholder="Placeholder" />
       </div>
 
-      <fieldset>
-        <legend>Radio Label (legend in html)</legend>
+      <div class="form-group">
+        <span class="form-group-label">Radio Label (<code>.form-group-label</code>)</legend>
         <div class="radio">
           <label class="form-label">
-            <input type="radio" class="form-control" />
+            <input type="radio" name="styleguide-radio" />
             Option one
           </label>
         </div>
 
         <div class="radio">
           <label class="form-label">
-            <input type="radio" class="form-control"/>
+            <input type="radio" name="styleguide-radio" />
             Option two
           </label>
         </div>
+      </div>
 
-      </fieldset>
-
-      <fieldset>
-        <legend>Checkbox Label (legend in html)</legend>
+      <div class="form-group">
+        <span class="form-group-label">Checkbox Label (<code>.form-group-label</code>)</legend>
 
         <div class="checkbox">
           <label class="form-label">
-            <input type="checkbox" class="form-control" />
+            <input type="checkbox" />
             Option one
           </label>
         </div>
 
         <div class="checkbox">
           <label class="form-label">
-            <input type="checkbox" class="form-control" />
+            <input type="checkbox" />
             Option two
           </label>
         </div>
-      </fieldset>
+      </div>
 
     </form>
   </div>
@@ -177,22 +176,22 @@
 
   <div class="example">
     <p>
-      <div class="alert alert-default">
-        <a href="#" class="alert-close">&times;</a>
-        This is a <strong>default alert</strong>.
+      <div class="alert alert-info alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        This is a <strong>info alert</strong>.
       </div>
     </p>
 
     <p>
-      <div class="alert alert-success">
-        <a href="#" class="alert-close">&times;</a>
+      <div class="alert alert-success alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         This is a <strong>success alert</strong>.
       </div>
     </p>
 
     <p>
-      <div class="alert alert-error">
-        <a href="#" class="alert-close">&times;</a>
+      <div class="alert alert-error alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         This is a <strong>error alert</strong>.
       </div>
     </p>
