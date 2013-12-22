@@ -1,4 +1,4 @@
-<div class="message">
+<div class="message <%= 'bg-highlight' if message.internal? %>">
   <div class="person">
     <%= avatar(message.person, 45) %>
   </div>

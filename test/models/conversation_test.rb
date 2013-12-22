@@ -51,6 +51,26 @@ describe Conversation do
     refute Conversation.find(@conversation.id).archived?
   end
 
+  it "returns only messages the customer can see" do
+    user = flexmock(:agent_or_higher? => false)
+    message_relation = flexmock()
+    message_relation.should_receive(:not_internal).once
+
+    flexmock(@conversation, messages: message_relation)
+
+    @conversation.messages_visible_for(user)
+  end
+
+  it "returns only messages the agent can see" do
+    user = flexmock(:agent_or_higher? => true)
+    message_relation = flexmock()
+    message_relation.should_receive(:not_internal).never
+
+    flexmock(@conversation, messages: message_relation)
+
+    @conversation.messages_visible_for(user)
+  end
+
   it "adds the correct conversation number on create based on account_id" do
     @account = create(:account)
 

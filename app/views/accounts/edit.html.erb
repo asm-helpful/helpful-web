@@ -10,7 +10,7 @@
 
     <pre>
       <code>
-        curl -X POST http://helpful.io/api/messages \
+        curl -X POST <%= root_url %>api/messages \
           --data "account=<%= @account.slug %>" \
           --data "email=user@example.com" \
           --data "content=I need help please."

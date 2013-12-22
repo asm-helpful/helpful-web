@@ -17,6 +17,8 @@ class Conversation < ActiveRecord::Base
     :after_add => :new_message,
     :dependent => :destroy
 
+  has_many :participants, -> { uniq }, through: :messages, source: :person
+
   sequential column: :number, scope: :account_id
 
   validates :account, presence: true
@@ -30,8 +32,9 @@ class Conversation < ActiveRecord::Base
     messages.order(:created_at => :asc)
   end
 
-  def participants
-    messages.collect(&:person).uniq
+  def messages_visible_for(user)
+    m = messages
+    user.agent_or_higher?(account_id) ? m : m.not_internal
   end
 
   def archived?
