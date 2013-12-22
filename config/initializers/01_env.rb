@@ -5,4 +5,7 @@ module Helpful
     ENV['INCOMING_EMAIL_DOMAIN'] || 'helpful.io'
   end
 
+  def outgoing_email_domain
+    ENV['OUTGOING_EMAIL_DOMAIN'] || 'helpful.io'
+  end
 end
