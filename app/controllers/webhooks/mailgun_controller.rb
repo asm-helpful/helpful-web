@@ -24,7 +24,8 @@ class Webhooks::MailgunController < ApplicationController
       person:     @person,
       recipient:  params.fetch(:recipient),
       subject:    params.fetch(:subject),
-      content:    params.fetch('body-plain'),
+      content:    params.fetch('stripped-text'),
+      body:       params.fetch('body-plain'),
       headers:    JSON.parse(params.fetch('message-headers').to_s)
     )
 
@@ -62,6 +63,7 @@ class Webhooks::MailgunController < ApplicationController
     params.require(:from)
     params.require(:recipient)
     params.require('body-plain')
+    params.require('stripped-text')
     params.require('message-headers')
     params.require(:token)
     params.require(:signature)
