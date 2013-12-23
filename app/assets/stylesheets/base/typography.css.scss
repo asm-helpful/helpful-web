@@ -26,6 +26,12 @@ h3 {
   font-family: $font-headline;
 }
 
+h4,
+h5,
+h6 {
+  font-family: $font-body;
+}
+
 h1 {
   font-size: 4.1em;
   text-transform: uppercase;
@@ -71,13 +77,19 @@ em {
 }
 
 a {
+  color: $primary;
   text-decoration: none;
   border-bottom-width: 1px;
   border-bottom-style: solid;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
 }
 
 h1 + p {
-  font-size: 1.55rem;
+  font-size: 1.55em;
   font-weight: 200;
 }
 

@@ -1,49 +1,54 @@
 .alert {
-    border-radius: 4px;
-    color: $white;
-    padding: 1.06rem .9rem 1.22rem;
-    position: relative;
-    max-width: 100%;
+  color: $white;
 }
 
+.alert-info,
 .alert-default {
-  @extend .alert;
   background-color: $primary;
+  border-color: $primary;
 }
 
 .alert-success {
-  @extend .alert;
   background-color: $success;
+  border-color: $success;
 }
 
-.alert-error {
-  @extend .alert;
-  background-color: $error;
-}
-
+.alert-danger,
+.alert-error,
 .alert-alert {
-  @extend .alert;
   background-color: $error;
+  border-color: $error;
 }
 
-.alert-close {
-  color: white;
-  border-left: 2px solid rgba(black, .1);
-  font-size: 1.8em;
-  font-weight: 800;
-  position: absolute;
-  right: 0px;
-  top: 0px;
-  bottom: 0px;
-  padding: 0 .625em;
-  line-height: 1.85em;
+.close {
+  color: #fff;
+  opacity: 1;
+  text-shadow: none;
 
-  &:hover {
-    color: $white;
+  .alert-dismissable & {
+    top: 1px;
+    right: -14px;
   }
 }
 
-a.alert-close {
-  display: block;
-  border-bottom: none;
-}
+// .alert-close {
+//   color: white;
+//   border-left: 2px solid rgba(black, .1);
+//   font-size: 1.8em;
+//   font-weight: 800;
+//   position: absolute;
+//   right: 0px;
+//   top: 0px;
+//   bottom: 0px;
+//   padding: 0 .625em;
+//   line-height: 1.85em;
+
+//   &:hover {
+//     color: $white;
+//   }
+// }
+
+// a.alert-close {
+//   display: block;
+//   border-bottom: none;
+// }

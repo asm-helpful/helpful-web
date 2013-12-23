@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+source 'https://rails-assets.org'
 ruby '2.0.0'
 
 # Alphabetical list
@@ -22,6 +23,7 @@ gem 'sequential', '>= 0.1'
 gem 'sidekiq'
 gem 'uglifier', '>= 1.3.0'
 gem 'redcarpet'
+gem 'rails-assets-bootstrap'
 
 group :development do
   gem 'rest-client', require: false

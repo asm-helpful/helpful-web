@@ -36,13 +36,16 @@
   @include box-sizing(border-box);
   border: 2px solid $muted;
   border-radius: 4px;
-  padding: 10px 15px;
+  padding: 10px 15px 17px;
   width: 100%;
   padding-top: 10px + (14px * 1.5) + 10px;
   outline: none;
+  box-shadow: none;
 
   &:focus {
-    border-color: $success;
+    border-color: $primary;
+    box-shadow: none;
+    outline: 0;
   }
 }
 
@@ -74,14 +77,15 @@
   @include clearfix;
 
   .form-control {
-    position: absolute;
-    top: 10px;
-    margin-left: -30px;
+    position: relative;
+    top: auto;
+    margin-left: 0;
   }
 
   .form-label {
     position: relative;
-    padding-left: 30px;
+    top: -5px;
+    padding: 5px;
   }
 }
 
