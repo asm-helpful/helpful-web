@@ -1,12 +1,25 @@
-<h2>Resend unlock instructions</h2>
+<%= render "devise/shared/brand" %>
 
-<%= form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <h4>Resend unlock instructions</h4>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+    <hr />
 
-  <div><%= f.submit "Resend unlock instructions" %></div>
-<% end %>
+    <%= form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :method => :post }) do |f| %>
+      <%= devise_error_messages! %>
 
-<%= render "devise/shared/links" %>
+      <div class="form-group">
+        <%= f.label :email, :class => "form-label" %>
+        <%= f.email_field :email, :autofocus => true, :class => "form-control", :placeholder => 'you@example.com' %>
+      </div>
+
+      <div>
+        <%= f.submit "Resend instructions", :class => "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+  <div class="panel-footer">
+    <%= render "devise/shared/links" %>
+  </div>
+</div>

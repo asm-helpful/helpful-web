@@ -36,9 +36,10 @@
   @include box-sizing(border-box);
   border: 2px solid $muted;
   border-radius: 4px;
-  padding: 10px 15px 17px;
+  font-size: .9em;
+  padding: 33px 13px 9px;
+  height: auto;
   width: 100%;
-  padding-top: 10px + (14px * 1.5) + 10px;
   outline: none;
   box-shadow: none;
 
