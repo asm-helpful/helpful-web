@@ -23,3 +23,24 @@
   font-size: 0.825em;
   padding: 1.5em;
 }
+
+@media only all and (min-width: 1024px) {
+  .panel-fixed {
+    position: fixed;
+    top: 2em;
+    left: 50%;
+    margin-left: -250px;
+    z-index: 999;
+  }
+
+  .panel-overlay {
+    content: " ";
+    display: block;
+    background-color: rgba(0, 0, 0, .55);
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+}
