@@ -27,7 +27,7 @@ class Api::MessagesController < ApplicationController
     conversation = Concierge.new(account, params).find_conversation
     @message = author.compose_message(conversation, params.fetch(:content))
 
-    if @message.valid? && @message.save
+    if @message.save
 
       render :json => @message,
              :status => :created,
