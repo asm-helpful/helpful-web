@@ -28,7 +28,6 @@ class Api::MessagesController < ApplicationController
     @message = author.compose_message(conversation, params.fetch(:content))
 
     if @message.save
-
       render :json => @message,
              :status => :created,
              :callback => params[:callback]
