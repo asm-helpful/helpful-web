@@ -20,7 +20,7 @@ class Api::MessagesController < ApplicationController
     methods = Doorkeeper.configuration.access_token_methods
     @token ||= Doorkeeper::OAuth::Token.authenticate request, *methods
 
-    account = Account.where(slug: params.fetch(:account)).first
+    account = Account.find_by(slug: params.fetch(:account))
     email = Mail::Address.new params.fetch(:email)
     author = MessageAuthor.new(account, email)
 
