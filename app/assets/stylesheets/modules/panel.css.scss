@@ -1,0 +1,46 @@
+.panel-outside {
+  @extend .small-container;
+  max-width: 450px;
+  width: 44%;
+}
+
+.panel {
+  @extend .small-container;
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, .15);
+  border-radius: 11px;
+  margin-top: 2em;
+  margin-bottom: 0;
+}
+
+.panel-body {
+  padding: 1.5em;
+}
+
+.panel-footer {
+  background-color: #fafafa;
+  border-bottom-left-radius: 11px;
+  border-bottom-right-radius: 11px;
+  font-size: 0.825em;
+  padding: 1.5em;
+}
+
+@media only all and (min-width: 1024px) {
+  .panel-fixed {
+    position: fixed;
+    top: 2em;
+    left: 50%;
+    margin-left: -250px;
+    z-index: 999;
+  }
+
+  .panel-overlay {
+    content: " ";
+    display: block;
+    background-color: rgba(0, 0, 0, .55);
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+}
