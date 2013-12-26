@@ -31,7 +31,7 @@ class ConversationsController < ApplicationController
 
   def show
     @conversations = @account.conversations.open.includes(:messages)
-    @conversation
+    @conversation_stream = ConversationStream.new(@conversation)
   end
 
   def update

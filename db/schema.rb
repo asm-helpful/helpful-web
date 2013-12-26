@@ -83,14 +83,14 @@ ActiveRecord::Schema.define(version: 20131218143730) do
   add_index "memberships", ["user_id"], name: "index_memberships_on_user_id", using: :btree
 
   create_table "messages", id: false, force: true do |t|
-    t.uuid     "id",              null: false
+    t.uuid     "id",                              null: false
     t.string   "type"
-    t.uuid     "conversation_id", null: false
+    t.uuid     "conversation_id",                 null: false
     t.text     "content"
     t.hstore   "data"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.uuid     "person_id",       null: false
+    t.uuid     "person_id",                       null: false
     t.boolean  "internal",        default: false
   end
 

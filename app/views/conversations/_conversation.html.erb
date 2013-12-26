@@ -57,7 +57,7 @@
         <% end %>
       </div>
 
-      <% conversation.messages_visible_for(current_user).each do |message| %>
+      <% ConversationStream.new(conversation).each do |message| %>
         <div class="list-item">
           <%= render 'messages/message', message: message %>
         </div>
