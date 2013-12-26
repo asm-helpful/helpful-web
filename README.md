@@ -1,77 +1,34 @@
 # [Helpful](http://helpful.io)
-Support that makes you better at support.
+Help shouldn't hurt.
 
 [![Build Status](https://travis-ci.org/asm-helpful/helpful-web.png?branch=master)](https://travis-ci.org/asm-helpful/helpful-web)
 [![Code Climate](https://codeclimate.com/github/support-foo/web.png)](https://codeclimate.com/github/support-foo/web)
 
-Helpful is an open product that's being build by a fantastic group of people on [Assembly](https://assemblymade.com/helpful). Anybody can join in building this product and earn a stake of the profit.
+Helpful is an open product that's being built by a fantastic group of people on [Assembly](https://assemblymade.com/helpful). Anybody can join in building this product and earn a stake of the profit.
+
 
 ## Getting Started
 
-### Vagrant
-[Vagrant](http://vagrantup.com) is the fastest way to get started with Helpful.
+[Vagrant](http://vagrantup.com) is the reccomended way to run Helpful on your
+[own machine. You need to download and install
+[Vagrant](http://vagrantup.com/downloads) before you can continue. Once
 
-Pre-requisites:
-
-* [Vagrant](http://www.vagrantup.com/) - Download from http://vagrantup.com/downloads
-
-Once you have Vagrant installed run:
-
+    git clone https://github.com/asm-helpful/helpful-web.git helpful-web
+    cd helpful-web
     vagrant up
 
 This will take a while to run so you may want to grab some coffee. Once it's
-finished you're good to go.
+finished open up [http://localhost:5000](http://localhost:5000) in your web browser to check out Helpful.
 
-**Welcome to Helpful.**
-
-### Manual
-
-If you prefer to install everything manually (or you're not on a Mac) here is what you will need:
-
-* [Git](http://git-scm.com)
-* [Ruby 2.0](https://www.ruby-lang.org)
-* [Bundler](http://bundler.io/)
-* [PostgreSQL](http://www.postgresql.org)
-* [ElasticSearch](http://elasticsearch.org)
-* [Redis](http://redis.io)
-
-Once you have everything installed:
-
-    # Get the Source Code
-    git clone https://github.com/asm-helpful/helpful-web.git
-    cd helpful-web
-
-    # Install Gems
-    bundle install
-
-    # Create a database config (edit as needed)
-    cp config/database.yml.example config/database.yml
-    rake db:setup
-
-    # Create an environment config (edit as needed)
-    cp .env.example .env
-
-    # Re-index ElasticSearch
-    rake search:reindex
-
-    # Start the server (assumes you have redis and elasticsearch already running)
-    foreman start
-
-Open up http://localhost:5000 in your web browser.
-
-**Welcome to Helpful.**
 
 ### Using Helpful
 
-1. Open up http://localhost:5000 in your web browser. You should see the Helpful.io landing page.
-2. To get started click "Sign Up" and follow the instructions.
-3. Enjoy!
+To create a new account for Helpful, click "Sign Up" on the homepage.
 
-## Advanced Configuration
 
-### Email
+## Advanced Email Configuration
 
-#### Sending with Gmail
+### Sending with Gmail
 
 In development.rb, add:
 
@@ -86,7 +43,7 @@ In development.rb, add:
         enable_starttls_auto: true
     }
 
-#### Recieving with Mailgun (optional)
+### Recieving with Mailgun (optional)
 
 Setting up [Mailgun](http://mailgun.com) in development takes a little work but allows you to use the
 actual email workflow used in production.
@@ -106,6 +63,7 @@ to create a route using `rake mailgun:create_route`.
 as the domain name.
 8. Send a test email to helpful@INCOMING_EMAIL_DOMAIN and you should see it
 appear in the helpful account.
+
 
 ## Contributing
 
