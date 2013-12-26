@@ -13,9 +13,9 @@ class Conversation < ActiveRecord::Base
                   ).freeze
 
   belongs_to :account
-  has_many :messages,
-    :after_add => :new_message,
-    :dependent => :destroy
+  has_many :messages, :after_add => :new_message,
+                      :dependent => :destroy
+  has_many :notes, :dependent => :destroy
 
   has_many :participants, -> { uniq }, through: :messages, source: :person
 
