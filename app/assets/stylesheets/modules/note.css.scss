@@ -1,7 +1,8 @@
-.message {
+.note {
   padding-left: $avatar-default-size + 30px;
+  background-color: $highlight;
 
-  color: $black;
+  color: $gray;
   font-size: 16px;
   line-height: 24px;
 

@@ -1,0 +1,14 @@
+<div class="note">
+  <div class="person conversation-stream-person">
+    <%= avatar_default(note.user.person) %>
+  </div>
+
+  <div class="content">
+    <%= note.content %>
+  </div>
+
+  <div class="meta">
+    Noted <%= time_ago_in_words(note.created_at) %> ago
+    by <%= nickname(note.user.person) %>
+  </div>
+</div>

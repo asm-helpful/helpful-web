@@ -1,6 +1,6 @@
-<div class="message <%= 'bg-highlight' if message.internal? %>">
+<div class="message">
   <div class="person">
-    <%= avatar(message.person, 45) %>
+    <%= avatar_default(message.person) %>
   </div>
 
   <div class="content">
@@ -11,5 +11,4 @@
     Posted <%= time_ago_in_words(message.created_at) %> ago
     by <%= nickname(message.person) %>
   </div>
-
 </div>

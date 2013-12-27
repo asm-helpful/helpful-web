@@ -32,14 +32,14 @@
   </div>
 
   <div class="conversation-body">
-    <div class="list list-timeline">
-      <div class="list-item">
+    <div class="conversation-stream">
+      <div class="conversation-stream-item">
 
         <%= form_tag messages_path, method: 'post', class: 'form-reply' do %>
           <%= hidden_field :message, :conversation_id, value: conversation.id %>
 
-          <div class="person">
-            <%= avatar(current_user.person, 45) %>
+          <div class="person conversation-stream-item-person">
+            <%= avatar_default(current_user.person) %>
           </div>
 
           <div class="onoffswitch">
@@ -57,9 +57,14 @@
         <% end %>
       </div>
 
-      <% ConversationStream.new(conversation).each do |message| %>
-        <div class="list-item">
-          <%= render 'messages/message', message: message %>
+      <% ConversationStream.new(conversation).each do |item| %>
+        <div class="conversation-stream-item">
+          <% case item %>
+          <% when Message %>
+            <%= render 'messages/message', message: item %>
+          <% when Note %>
+            <%= render 'notes/note', note: item %>
+          <% end %>
         </div>
       <% end %>
     </div>

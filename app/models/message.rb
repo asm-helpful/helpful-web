@@ -24,9 +24,6 @@ class Message < ActiveRecord::Base
   }
   after_create :send_email
 
-  scope :internal,     -> { where(internal: true) }
-  scope :not_internal, -> { where(internal: false) }
-
   def webhook_data
     { message: {
       id: self.id,
@@ -63,13 +60,7 @@ class Message < ActiveRecord::Base
   end
 
   def mail_recipients
-    if internal?
-      # There's an N+1 here because for every person we must retrieve the exact membership that matches the account of this conversation.
-      # There shouldn't be more than ~10 participants on a conversation though, so it's probably acceptable for now
-      (conversation.participants.includes(:user => :memberships) - [person]).select {|p| p.agent_or_higher?(conversation.account_id) }
-    else
-      (conversation.participants - [person])
-    end
+    conversation.participants - [person]
   end
 
   # Public: Create a read receipt for this message.
