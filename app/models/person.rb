@@ -5,6 +5,7 @@ class Person < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :account
+  has_many :memberships, through: :user
   has_many :messages
   has_many :read_receipts
 
