@@ -3,28 +3,43 @@
 $font-body: 'Lato', $helvetica;
 $font-headline: 'Montserrat', $helvetica;
 
+
 // Base Colors
 
-$muted      : #CCC;
-$primary    : #3782BA;
-$success    : #82C451;
-$danger     : #FF5656;
-$warning    : #FFB305;
+$black:      #333;
+$white:      #FEFEFE;
+$gray:       #666;
+$light-gray: #CCC;
 
-$black      : #333;
-$white      : #FEFEFE;
-$gray       : #666;
+$blue:   #3782BA;
+$green:  #82C451;
+$yellow: #FFB305;
+$red:    #FF5656;
+
+
+// Logical Colors
+
+$muted      : $gray;
+$primary    : $blue;
+$success    : $green;
+$warning    : $yellow;
+$danger     : $red;
+$highlight  : #FEA;
+
 $grey       : $gray;
 $secondary  : $success;
 $error      : $danger;
-$light-gray : $gray;
-$highlight  : #FEA;
 
+
+// Avatar
+
+$avatar-default-size: 45px;
 
 
 // Btn
 
 $btn-border-radius: 4px;
+
 
 // Column
 
