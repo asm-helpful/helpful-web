@@ -12,11 +12,7 @@ class MessageAuthor
   #
   # Returns a Message.
   def compose_message(conversation, content)
-    Message.new(
-      conversation: conversation,
-      content: content,
-      person: person_with_updated_name
-    )
+    MessageComposer.new(person_with_updated_name, conversation).compose(content)
   end
 
   # Public: Finds the relavant person and updates their name based on the email
