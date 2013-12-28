@@ -44,6 +44,7 @@ end
 group :development, :test do
   gem 'rake'
   gem 'ffaker', '~> 1.20'
+  gem 'dotenv-rails'
 end
 
 group :development, :production do
