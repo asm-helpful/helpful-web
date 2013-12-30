@@ -2,7 +2,7 @@ FORMAT: 1A
 HOST: https://helpful.io
 
 # Helpful API
-Helpful API is a service to interact with helpful.io  It provides API access to all the resources in the app.
+
 
 ## Authentication
 
@@ -23,171 +23,200 @@ Roughly, as a Helpful user, you can:
 Here's how to do it in development:
 
 1. Log in as normal
-2. Visit http://localhost:3000/oauth/applications
+2. Visit http://localhost:5000/oauth/applications
 3. Create a new application (use `urn:ietf:wg:oauth:2.0:oob` as the callback URL)
 4. Copy the application_id and secret key
 
 When your app/client code wants to access Helpful as a user, it must request an auth_code.  That is done by having the user you want to act on behalf of visit the authorize_url:
 
-    ```ruby
-    callback = "urn:ietf:wg:oauth:2.0:oob"
-    app_id = "f9682933bb81c9a76cc4dc6d7b2f4ba7a1db006cc986fa5e8e28d05fafde6dd9"
-    secret = "23c7ebff714494e3871cf0ab163bb4e9b87bd4ad201521a3ce9e2e1ca984feda"
+```
+callback = "urn:ietf:wg:oauth:2.0:oob"
+app_id = "f9682933bb81c9a76cc4dc6d7b2f4ba7a1db006cc986fa5e8e28d05fafde6dd9"
+secret = "23c7ebff714494e3871cf0ab163bb4e9b87bd4ad201521a3ce9e2e1ca984feda"
 
-    client = OAuth2::Client.new(app_id, secret, site: "http://localhost:3000/")
+client = OAuth2::Client.new(app_id, secret, site: "http://localhost:3000/")
 
-    client.auth_code.authorize_url(redirect_uri: callback)
-    # => "http://localhost:3000/oauth/authorize?response_type=code&client_id=f9682933bb81c9a76cc4dc6d7b2f4ba7a1db006cc986fa5e8e28d05fafde6dd9&redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob"
-    ```
+client.auth_code.authorize_url(redirect_uri: callback)
+# => "http://localhost:3000/oauth/authorize?response_type=code&client_id=f9682933bb81c9a76cc4dc6d7b2f4ba7a1db006cc986fa5e8e28d05fafde6dd9&redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob"
+10ce24de-23f6-433f-9a71-255cffffa96
+```
 
 5. This URL will prompt the browser user if they want to allow the app and will return to you an auth_code (via callback or in the browser window).
 6. Your app should remember this auth_code!
 7. Then "trade-in" the auth_code for an access_token (Access tokens are short lived (2 hours).  Whenever it expires, you'll have to get a new one.
 
-    ```
-    auth_code = "b789332903d1a6e3ec07f1831c8c4e3d20031f576e19ff2ae24dcbb26285b205"
-    access = client.auth_code.get_token auth_code, redirect_uri: callback
-    token = access.token
-    # => "fd7958b3d3d17ba9130718096b3a4cd4a4d8088cb29d41e4d74513fc9aeff5a8"
+```
+auth_code = "b789332903d1a6e3ec07f1831c8c4e3d20031f576e19ff2ae24dcbb26285b205"
+access = client.auth_code.get_token auth_code, redirect_uri: callback
+token = access.token
+# => "fd7958b3d3d17ba9130718096b3a4cd4a4d8088cb29d41e4d74513fc9aeff5a8"
 
-    access.get '/api/messages'
-    # => #<OAuth2::Response:0x000000027c2778 .... (Normal HTTP Response stuff from the API call here)
-    ```
+access.get '/api/messages'f"
+# => #<OAuth2::Response:0x000000027c2778 .... (Normal HTTP Response stuff from the API call here)
+```
 
-# Helpful API Root [/api]
-NOT IMPLEMENTED - BUT LEFT FOR FUTURE REFERENCE Helpful API entry point.
+# Group Messages
 
-This resource does not have any attributes. Instead it offers the initial API affordances in the form of the HTTP Link header and HAL links.
-
-## Retrieve Entry Point [GET]
-
-+ Response 200 (application/json)
-    + Headers
-
-            Link: <https://helpful.io/api/>;rel="self",<https://helpful.io/api/messages>;rel="conversations"
-
-    + Body
-
-            {
-                "_links": {
-                    "self": { "href": "/" },
-                    "messages": { "href": "/messages?{since}", "templated": true }
-                }
-            }
-
-
-# Messages
-Messages are a fundamental model in Helpful.
-
-## Message [/message/{id}]
-A single Message object. The Message resource represents a single message that is part of a conversation.
+A single Message object. The Message resource is a central resource in the Helpful API. It represents one message between People (either support agents or customers). Messages are logically grouped into Conversations.
 
 The Message resource has the following attributes:
 
 - id
-- conversation_id
-- person_id
+- type
 - content
 - data
 - created
 - updated
 
-The states *id* and *created_at* are assigned by the Helpful API at the moment of creation.
+The states `id`, `type` and `created` are assigned by the Helpful API at when the Message is created. The `updated` state is assigned by the Helpful API when a Message is created and when it's updated.
 
+The `data` attribute is a key value object with strings for keys and values. It is used to attach extra information about the message and the context that it was created in.
+
+## POST /api/messages{?person_id,conversation_id}
 
 + Parameters
-    + id (UUID) ... ID of the Message
+    + person_id (required UUID `10ce24de-23f6-433f-9a71-255cffffa96f`)
+    + conversation_id (optional UUID `10ce24de-23f6-433f-9a71-255cffffa96f`)
 
-+ Model (application/hal+json)
++ Request
+    + Headers
 
-    JSON representation of Message Resource. In addition to representing its state in the JSON form it offers affordances in the form of the HTTP Link header and HAL links.
+            Accept: application/hal+json
 
     + Body
 
             {
-                "id":"d06a5c13-0981-435d-9510-67e05277191b",
-                "conversation_id":"b9df99ba-ce31-4cc1-827d-a8c900a879ee",
-                "person_id":"81b303ca-258e-453c-bc84-5eafba8cef87",
-                "content":"Voluptatem ab. Ipsum quo.",
-                "data":null,
-                "created_at":"2013-12-08T13:08:14.758Z",
-                "updated_at":"2013-12-08T13:08:14.758Z"
+                "content": "Hello World!",
+                "data": {
+                    "foo": "bar"
+                }
             }
 
-### Retrieve a Single Message [GET]
-+ Response 200
++ Response 201 (application/hal+json)
+    + Headers
 
-    [Message][]
+            Location: https://helpful.io/api/messages/bb7aae7e-c560-4b3d-b235-71e4305952b8
+            Link: <https://helpful.io/api/messages/bb7aae7e-c560-4b3d-b235-71e4305952b8>;rel="self",<https://helpful.io/api/people/10ce24de-23f6-433f-9a71-255cffffa96f>;rel="author",<https://helpful.io/api/conversations/9aedccd5-0261-4158-bc1c-0e377b306f02>;rel="conversation"
+
+    + Body
+
+            {
+                "id": "bb7aae7e-c560-4b3d-b235-71e4305952b8",
+                "type": "message",
+                "content": "Hello World!",
+                "created": "2013-12-08T13:08:14.758Z",
+                "updated": "2013-12-08T13:08:14.758Z",
+                "data": {
+                    "foo": "bar"
+                },
+                "_links": {
+                    "self": {
+                        "href": "https://helpful.io/api/messages/bb7aae7e-c560-4b3d-b235-71e4305952b8"
+                    },
+                    "author": {
+                        "href": "https://helpful.io/api/people/
+                    },
+                    "conversation": {
+                        "href": "https://helpful.io/api/conversations/9aedccd5-0261-4158-bc1c-0e377b306f02"
+                    }
+                }
+            }
+
+## GET /api/messages/{id}
+
++ Parameters
+    + id (required, UUID, `bb7aae7e-c560-4b3d-b235-71e4305952b8`) ... ID of the Message
+
++ Request
+    + Headers
+
+            Accept: application/hal+json
+
++ Response 200 (application/hal+json)
+    + Headers
+
+            Location: https://helpful.io/api/messages/bb7aae7e-c560-4b3d-b235-71e4305952b8
+            Link: <https://helpful.io/api/messages/bb7aae7e-c560-4b3d-b235-71e4305952b8>;rel="self",<https://helpful.io/api/people/10ce24de-23f6-433f-9a71-255cffffa96f>;rel="author",<https://helpful.io/api/conversations/9aedccd5-0261-4158-bc1c-0e377b306f02>;rel="conversation"
+
+    + Body
+
+            {
+                "id": "bb7aae7e-c560-4b3d-b235-71e4305952b8",
+                "type": "message",
+                "content": "Hello World!",
+                "created": "2013-12-08T13:08:14.758Z",
+                "updated": "2013-12-08T13:08:14.758Z",
+                "data": {
+                    "foo": "bar"
+                },
+                "_links": {
+                    "self": {
+                        "href": "https://helpful.io/api/messages/bb7aae7e-c560-4b3d-b235-71e4305952b8"
+                    },
+                    "author": {
+                        "href": "https://helpful.io/api/people/10ce24de-23f6-433f-9a71-255cffffa96f"
+                    },
+                    "conversation": {
+                        "href": "https://helpful.io/api/conversations/9aedccd5-0261-4158-bc1c-0e377b306f02"
+                    }
+                }
+            }
 
 
-## Messages Collection [/messages{?since}]
-Collection of all Messages.
+## GET /api/messages{?since}
++ Parameters
+    + since (optional, string) ... Timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ` Only Messages updated at or after this time are returned.
 
-The Message Collection resource has the following attribute:
++ Request
+    + Headers
 
-- total
+            Accept: application/hal+json
 
-In addition it **embeds** *Message Resources* in the Helpful API.
-
-
-+ Model (application/json)
-
-    JSON representation of Message Collection Resource. The Message resources in collections are embedded. Note the embedded Messages resource are incomplete representations of the Message in question. Use the respective Message link to retrieve its full representation.
++ Response 200 (application/hal+json)
 
     + Headers
 
+            Location: https://helpful.io/api/messages
             Link: <https://helpful.io/api/messages>;rel="self"
 
     + Body
 
             {
-                "messages": [
-                    {
-                        "id":"d06a5c13-0981-435d-9510-67e05277191b",
-                        "conversation_id":"b9df99ba-ce31-4cc1-827d-a8c900a879ee",
-                        "person_id":"81b303ca-258e-453c-bc84-5eafba8cef87",
-                        "content":"Voluptatem ab. Ipsum quo.",
-                        "data":null,
-                        "created_at":"2013-12-08T13:08:14.758Z",
-                        "updated_at":"2013-12-08T13:08:14.758Z"
+                "items": [
+                    "id": "bb7aae7e-c560-4b3d-b235-71e4305952b8",
+                    "type": "message",
+                    "content": "Hello World!",
+                    "created": "2013-12-08T13:08:14.758Z",
+                    "updated": "2013-12-08T13:08:14.758Z",
+                    "data": {
+                        "foo": "bar"
+                    },
+                    "_links": {
+                        "self": {
+                            "href": "https://helpful.io/api/messages/bb7aae7e-c560-4b3d-b235-71e4305952b8"
+                        },
+                        "author": {
+                            "href": "https://helpful.io/api/people/10ce24de-23f6-433f-9a71-255cffffa96f"
+                        },
+                        "conversation": {
+                            "href": "https://helpful.io/api/conversations/9aedccd5-0261-4158-bc1c-0e377b306f02"
+                        }
                     }
-                ]
+                ],
+                "count": 1
             }
 
-### List All Messages [GET]
-+ Parameters
-    + since (optional, string) ... Timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ` Only Messages updated at or after this time are returned.
-
-+ Response 200
-
-    [Messages Collection][]
-
-### Create a Message [POST]
-TODO
 
 
-
-# Group Message
-
-## Message [/messages/{id}]
-A single Message object. The Message resource is a central resource in the Helpful API. It represents one message between People (either support agents or customers).
-
-The Gist resource has the following attributes:
+## Read Receipt [/messages/{message_id}/read-receipts/{id}]
 
 - id
-- content
 - person
-- conversation
-- data
+- message
 - created
-- updated
-
-The states `id` and `created` are assigned by the Helpful API at when the Message is created. The `updated` state is assigned by the Helpful API when a Message is created and when it's updated.
-
-### Create a Message [POST]
 
 
-
+# Group Conversations
 
 ## Conversation [/conversations/{id}]
 
@@ -196,6 +225,31 @@ The states `id` and `created` are assigned by the Helpful API at when the Messag
 - account
 - created
 - updated
+
+
+### Retrieve a Conversation [GET]
+
++ Request
+    + Headers
+
+            Accept: application/hal+json
+
++ Response 200 (application/hal+json)
+    + Body
+
+            nil
+
+## Note Collection [/conversations/{conversation_id}/notes]
+
+- id
+- user
+- content
+
+### Create a Note
+
++ Response 201
+
+
 
 ## Person [/people/{id}]
 
@@ -207,13 +261,6 @@ The states `id` and `created` are assigned by the Helpful API at when the Messag
 - account
 - created
 - updated
-
-## Read Receipt [/messages/{message_id}/read-receipts/{id}]
-
-- id
-- person
-- message
-- created
 
 ## User [/users/{id}]
 
