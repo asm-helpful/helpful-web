@@ -3,6 +3,29 @@ HOST: https://helpful.io
 
 # Helpful API
 
+## Versioning
+
+TODO
+
+## Schema
+
+TODO
+
+## Parameters
+
+TODO
+
+## Client Errors
+
+TODO
+
+## HTTP Redirects
+
+TODO
+
+## HTTP Verbs
+
+TODO
 
 ## Authentication
 
@@ -55,6 +78,30 @@ access.get '/api/messages'f"
 # => #<OAuth2::Response:0x000000027c2778 .... (Normal HTTP Response stuff from the API call here)
 ```
 
+## Hypermedia
+
+TODO
+
+## Pagination
+
+TODO
+
+## Rate Limiting
+
+TODO
+
+## User Agents
+
+TODO
+
+## Conditional Requests
+
+TODO
+
+## JSON-P Callbacks
+
+TODO
+
 # Group Messages
 
 A single Message object. The Message resource is a central resource in the Helpful API. It represents one message between People (either support agents or customers). Messages are logically grouped into Conversations.
@@ -72,24 +119,26 @@ The states `id`, `type` and `created` are assigned by the Helpful API at when th
 
 The `data` attribute is a key value object with strings for keys and values. It is used to attach extra information about the message and the context that it was created in.
 
-## POST /api/messages{?person_id,conversation_id}
+*TODO* The values of the data object determine special properties of the message.
 
-+ Parameters
-    + person_id (required UUID `10ce24de-23f6-433f-9a71-255cffffa96f`)
-    + conversation_id (optional UUID `10ce24de-23f6-433f-9a71-255cffffa96f`)
+
+## POST /api/messages
 
 + Request
     + Headers
 
             Accept: application/hal+json
+            Content-Type: application/x-www-form-urlencoded
 
     + Body
 
             {
                 "content": "Hello World!",
+                "conversation_id": "10ce24de-23f6-433f-9a71-255cffffa96f",
                 "data": {
                     "foo": "bar"
-                }
+                },
+                "person_id": "10ce24de-23f6-433f-9a71-255cffffa96f"
             }
 
 + Response 201 (application/hal+json)
@@ -135,7 +184,6 @@ The `data` attribute is a key value object with strings for keys and values. It 
 + Response 200 (application/hal+json)
     + Headers
 
-            Location: https://helpful.io/api/messages/bb7aae7e-c560-4b3d-b235-71e4305952b8
             Link: <https://helpful.io/api/messages/bb7aae7e-c560-4b3d-b235-71e4305952b8>;rel="self",<https://helpful.io/api/people/10ce24de-23f6-433f-9a71-255cffffa96f>;rel="author",<https://helpful.io/api/conversations/9aedccd5-0261-4158-bc1c-0e377b306f02>;rel="conversation"
 
     + Body
@@ -176,7 +224,6 @@ The `data` attribute is a key value object with strings for keys and values. It 
 
     + Headers
 
-            Location: https://helpful.io/api/messages
             Link: <https://helpful.io/api/messages>;rel="self"
 
     + Body
@@ -206,28 +253,65 @@ The `data` attribute is a key value object with strings for keys and values. It 
                 "count": 1
             }
 
-
-
-## Read Receipt [/messages/{message_id}/read-receipts/{id}]
+## POST /api/messages/{message_id}/read-receipts
 
 - id
 - person
 - message
 - created
 
++ Request
+
+    + Headers
+
+            Accept: application/hal+json
+
++ Response 200 (application/hal+json)
+
+    + Body
+
+            {
+                "items": [
+                    {
+                        "id": "abc-123",
+                        "person_id": "10ce24de-23f6-433f-9a71-255cffffa96f",
+                        "created": "2013-12-30 14:29:14 -0500",
+                        "_links": {
+                            "person": {
+                                "href": "https://helpful.io/api/people/10ce24de-23f6-433f-9a71-255cffffa96f"
+                            }
+                        }
+                    }
+                ]
+            }
 
 # Group Conversations
 
-## Conversation [/conversations/{id}]
+## GET /api/conversations{?since,archived}
+### List all conversations
+
++ Parameters
+    + since (optional Timestamp 12345)
+    + archived (optional Boolean false)
+
++ Response 200
+
+    + Body
+
+            {
+                "items": [],
+                "count": 0
+            }
+
+## GET /api/conversations/{id}
+### Retrieve a conversation
 
 - id
 - number
+- status
 - account
 - created
 - updated
-
-
-### Retrieve a Conversation [GET]
 
 + Request
     + Headers
@@ -237,21 +321,83 @@ The `data` attribute is a key value object with strings for keys and values. It 
 + Response 200 (application/hal+json)
     + Body
 
-            nil
+            {
+            }
 
-## Note Collection [/conversations/{conversation_id}/notes]
+## PATCH /api/conversations/{id}
+### Update a conversation
+
++ Request
+    + Headers
+
+            Accept: application/hal+json
+
+    + Body
+
+            {
+                "status": "archived"
+            }
+
++ Response 200 (application/hal+json)
+    + Body
+
+            {
+            }
+
+## POST /api/conversations/{conversation_id}/notes
+### Create a new note
+
++ Response 201
+    + Headers
+
+            Location: <>
+
+    + Body
+
+            {
+                "items": [],
+                "count": 0
+            }
+
+## GET /api/conversations/{conversation_id}/notes
+### Retrieve all notes
+
++ Response 201
+    + Headers
+
+            Location: <>
+
+    + Body
+
+            {
+                "items": [],
+                "count": 0
+            }
+
+## GET /api/conversations/{conversation_id}/notes/{id}
+### Retrieve a note
 
 - id
 - user
 - content
 
-### Create a Note
++ Response 200
 
-+ Response 201
+    + Body
 
+            {
+                "id":
+                "user_id":
+                "content":
+                "created":
+                "updated":
+            }
 
+## DELETE /api/conversations/{conversation_id}/notes/{id}
+### Delete a note
++ Response 204
 
-## Person [/people/{id}]
+# Group People
 
 - id
 - name
@@ -262,7 +408,44 @@ The `data` attribute is a key value object with strings for keys and values. It 
 - created
 - updated
 
-## User [/users/{id}]
+## POST  /api/people
++ Response 201
+    + Headers
+
+            Location: <>
+
+    + Body
+
+            {
+            }
+
+## GET   /api/people
++ Response 200
+
+    + Body
+
+            {
+                "items": [],
+                "count": 0
+            }
+
+## GET   /api/people/{id}
++ Response 200
+
+    + Body
+
+            {
+            }
+
+## PATCH /api/people/{id}
++ Response 200
+
+    + Body
+
+            {
+            }
+
+# Group Users
 
 - id
 - email
@@ -271,7 +454,78 @@ The `data` attribute is a key value object with strings for keys and values. It 
 - created
 - updated
 
-## Account [/accounts/{id}]
+## GET   /api/user
++ Response 200
+
+    + Body
+
+            {
+            }
+
+
+## GET   /api/users
++ Response 200
+
+    + Body
+
+            {
+                "items": [],
+                "count": 0
+            }
+
+
+## GET   /api/users/{id}
++ Response 200
+
+    + Body
+
+            {
+            }
+
+
+## PATCH /api/users/{id}
++ Response 200
+
+    + Body
+
+            {
+            }
+
+
+# Group Accounts
+
+## GET /api/accounts
+
+All the accounts the user has access to.
+
++ Response 200 (application/hal+json)
+
+    + Body
+
+            {
+                "items": [
+                    {
+                        "id": "a25f7939-b39e-4a6a-8329-abd4a3e9ee26",
+                        "type": "account",
+                        "name": "Helpful",
+                        "slug": "helpful",
+                        "billing_status": "active",
+                        "created": "2013-12-30 13:50:55 -0500",
+                        "updated": "2013-12-30 13:50:55 -0500",
+                        "_links": {
+                            "self: {
+                                "href": "https://helpful.io/api/accounts/a25f7939-b39e-4a6a-8329-abd4a3e9ee26"
+                            },
+                            "billing_plan": {
+                                "href": "https://helpful.io/api/billing-plans/d54d1c5a-9727-46ad-91f4-aee18202ca0a"
+                            }
+                        }
+                    }
+                ],
+                "count": 1
+            }
+
+## Account [/api/accounts/{id}]
 
 - id
 - name
@@ -281,7 +535,67 @@ The `data` attribute is a key value object with strings for keys and values. It 
 - created
 - updated
 
-## Membership [/memberships/{id}]
++ Model
+
+    + Body
+
+            {
+                "id": "XXX"
+            }
+
+### Fetch an account [GET]
+
++ Response 200
+
+    [Account][]
+
+### Update an account [PATCH]
+
++ Request
+
+    + Body
+
+            {
+                "name": ""
+            }
+
++ Response 200
+
+    [Account][]
+
+
+## POST /api/accounts/{account_id}/memberships
+
++ Request
+
+    + Headers
+
+            Accept: application/hal+json
+
+    + Body
+
+            {
+                "role": "admin",
+                "user_id": "XXX",
+            }
+
++ Response 201 (application/hal+json)
+
+    + Headers
+
+            Location: <>
+
+    + Body
+
+            {
+                "id": "XXX",
+                "type": "membership",
+                "role": "admin"
+                "user_id": "XXX",
+            }
+
+
+## Membership [/api/accounts/{account_id}/memberships/{id}]
 
 - id
 - role
@@ -290,7 +604,62 @@ The `data` attribute is a key value object with strings for keys and values. It 
 - created
 - updated
 
-## Billing Plan [/billing-plans/{id}]
+### Create a new membership [GET]
+
++ Request
+
+    + Headers
+
+            Accept: application/hal+json
+
++ Response 200 (application/hal+json)
+
+    + Headers
+
+            Link: <>;rel="self",<>;rel="user",<>;rel="account"
+
+    + Body
+
+            {
+                "id": "abc",
+                "type": "membership",
+                "role": "admin"
+                "user_id": "abc123",
+                "_links": {
+                    "self": {
+                        "href": <>
+                    },
+                    "user": {
+                        "href": <>
+                    },
+                    "account": {
+                        "href": <>
+                    }
+                }
+            }
+
+### Update a Membership [PATCH]
+
++ Request
+
+    + Body
+
+            {
+                "role": "admin"
+            }
+
++ Response 200
+
+    + Body
+
+            {
+            }
+
+### Delete a membership [DELETE]
+
++ Response 204
+
+# Group Billing Plans
 
 - id
 - name
@@ -299,4 +668,81 @@ The `data` attribute is a key value object with strings for keys and values. It 
 - price
 - created
 - updated
+
+## GET /api/billing-plans
+
++ Request
+
+    + Headers
+
+            Accept: application/hal+json
+
++ Response 200 (application/hal+json)
+
+    + Headers
+
+            Link: <https://helpful.io/api/billing-plans>;rel="self"
+
+    + Body
+
+            {
+                "items": [
+                    {
+                        "id": "d54d1c5a-9727-46ad-91f4-aee18202ca0a",
+                        "type": "billing_plan",
+                        "name": "Bronze",
+                        "slug": "bronze",
+                        "max_conversations": 25,
+                        "price": 3900,
+                        "created": "2013-12-30 13:44:37 -0500",
+                        "updated": "2013-12-30 13:44:37 -0500",
+                        "_links": {
+                            "self": {
+                                "href": "https://helpful.io/api/billing-plans/d54d1c5a-9727-46ad-91f4-aee18202ca0a"
+                            }
+                        }
+                    }
+                ],
+                "count": 1,
+                "_links": {
+                    "self": {
+                        "href": "https://helpful.io/api/billing-plans"
+                    }
+                }
+            }
+
+## GET /api/billing-plans/{id}
+
++ Parameters
+    + id (required UUID `d54d1c5a-9727-46ad-91f4-aee18202ca0a`)
+
++ Request
+
+    + Headers
+
+            Accept: application/hal+json
+
++ Response 200 (application/hal+json)
+
+    + Headers
+
+            Link: <https://helpful.io/api/billing-plans/d54d1c5a-9727-46ad-91f4-aee18202ca0a>;rel="self"
+
+    + Body
+
+            {
+                "id": "d54d1c5a-9727-46ad-91f4-aee18202ca0a",
+                "type": "billing_plan",
+                "name": "Bronze",
+                "slug": "bronze",
+                "max_conversations": 25,
+                "price": 3900,
+                "created": "2013-12-30 13:44:37 -0500",
+                "updated": "2013-12-30 13:44:37 -0500",
+                "_links": {
+                    "self": {
+                        "href": "https://helpful.io/api/billing-plans/d54d1c5a-9727-46ad-91f4-aee18202ca0a"
+                    }
+                }
+            }
 
