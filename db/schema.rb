@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131212133643) do
+ActiveRecord::Schema.define(version: 20131225220937) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,16 +83,18 @@ ActiveRecord::Schema.define(version: 20131212133643) do
   add_index "memberships", ["user_id"], name: "index_memberships_on_user_id", using: :btree
 
   create_table "messages", id: false, force: true do |t|
-    t.uuid     "id",              null: false
+    t.uuid     "id",                 null: false
     t.string   "type"
-    t.uuid     "conversation_id", null: false
+    t.uuid     "conversation_id",    null: false
     t.text     "content"
     t.hstore   "data"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.uuid     "person_id",       null: false
+    t.uuid     "person_id",          null: false
+    t.datetime "agent_responded_at"
   end
 
+  add_index "messages", ["agent_responded_at"], name: "index_messages_on_agent_responded_at", using: :btree
   add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
 
   create_table "oauth_access_grants", force: true do |t|

@@ -26,4 +26,24 @@ describe Person do
       assert_equal "jsmith@example.com", @person.email
     end
   end
+
+  describe "role helpers for account membership" do
+    before do
+      @user = FactoryGirl.create(:user)
+      @person = FactoryGirl.create(:person, user: @user)
+      @account = FactoryGirl.create(:account)
+      @membership = FactoryGirl.create(:membership, account: @account)
+    end
+
+    it "returns true if the membership has the matching role for the given account" do
+      @membership.update(role: 'owner')
+      assert @membership.owner?
+
+      @membership.update(role: 'agent')
+      assert @membership.agent?
+
+      @membership.update(role: 'customer')
+      assert @membership.customer?
+    end
+  end
 end

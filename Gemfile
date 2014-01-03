@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 source 'https://rails-assets.org'
-ruby '2.0.0'
+ruby '2.1.0'
 
 # Alphabetical list
 
@@ -44,6 +44,7 @@ end
 group :development, :test do
   gem 'rake'
   gem 'ffaker', '~> 1.20'
+  gem 'dotenv-rails'
 end
 
 group :development, :production do

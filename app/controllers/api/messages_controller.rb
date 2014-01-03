@@ -20,21 +20,14 @@ class Api::MessagesController < ApplicationController
     methods = Doorkeeper.configuration.access_token_methods
     @token ||= Doorkeeper::OAuth::Token.authenticate request, *methods
 
-    account = Account.where(slug: params.fetch(:account)).first
-    conversation = Concierge.new(account, params).find_conversation
-
+    account = Account.find_by(slug: params.fetch(:account))
     email = Mail::Address.new params.fetch(:email)
-    person = account.people.find_or_create_by(email: email.address) do |p|
-      p.name = email.display_name
-    end
+    author = MessageAuthor.new(account, email)
 
-    @message = conversation.messages.new(
-      content: params.fetch(:content),
-      person:  person
-    )
+    conversation = Concierge.new(account, params).find_conversation
+    @message = author.compose_message(conversation, params.fetch(:content))
 
-    if @message.valid? && @message.save
-
+    if @message.save
       render :json => @message,
              :status => :created,
              :callback => params[:callback]
