@@ -122,14 +122,48 @@ The `data` attribute is a key value object with strings for keys and values. It 
 *TODO* The values of the data object determine special properties of the message.
 
 
-## POST /api/messages
+## Messages [/api/messages]
+
++ Model (application/vnd.helpful.v1+hal+json)
+
+    + Headers
+
+            Link: <https://helpful.io/api/messages/bb7aae7e-c560-4b3d-b235-71e4305952b8>;rel="self", <https://helpful.io/api/people/10ce24de-23f6-433f-9a71-255cffffa96f>;rel="author", <https://helpful.io/api/conversations/9aedccd5-0261-4158-bc1c-0e377b306f02>;rel="conversation"
+
+    + Body
+
+            [
+                {
+                    "id": "bb7aae7e-c560-4b3d-b235-71e4305952b8",
+                    "type": "message",
+                    "content": "Hello World!",
+                    "created": "2013-12-08T13:08:14.758Z",
+                    "updated": "2013-12-08T13:08:14.758Z",
+                    "data": {
+                        "foo": "bar"
+                    },
+                    "_links": {
+                        "self": {
+                            "href": "https://helpful.io/api/messages/bb7aae7e-c560-4b3d-b235-71e4305952b8"
+                        },
+                        "author": {
+                            "href": "https://helpful.io/api/people/10ce24de-23f6-433f-9a71-255cffffa96f"
+                        },
+                        "conversation": {
+                            "href": "https://helpful.io/api/conversations/9aedccd5-0261-4158-bc1c-0e377b306f02"
+                        }
+                    }
+                }
+            ]
+
+## Create a new message [POST]
 
 + Request
 
     + Headers
 
-            Accept: application/hal+json
-            Content-Type: application/hal+json
+            Accept: application/vnd.helpful.v1+hal+json
+            Content-Type: application/json
 
     + Body
 
@@ -142,11 +176,11 @@ The `data` attribute is a key value object with strings for keys and values. It 
                 "person_id": "10ce24de-23f6-433f-9a71-255cffffa96f"
             }
 
-+ Response 201 (application/hal+json)
++ Response 201
     + Headers
 
             Location: https://helpful.io/api/messages/bb7aae7e-c560-4b3d-b235-71e4305952b8
-            Link: <https://helpful.io/api/messages/bb7aae7e-c560-4b3d-b235-71e4305952b8>;rel="self",<https://helpful.io/api/people/10ce24de-23f6-433f-9a71-255cffffa96f>;rel="author",<https://helpful.io/api/conversations/9aedccd5-0261-4158-bc1c-0e377b306f02>;rel="conversation"
+            Link: <https://helpful.io/api/messages/bb7aae7e-c560-4b3d-b235-71e4305952b8>;rel="self", <https://helpful.io/api/people/10ce24de-23f6-433f-9a71-255cffffa96f>;rel="author", <https://helpful.io/api/conversations/9aedccd5-0261-4158-bc1c-0e377b306f02>;rel="conversation"
 
     + Body
 
@@ -172,22 +206,31 @@ The `data` attribute is a key value object with strings for keys and values. It 
                 }
             }
 
-## GET /api/messages/{id}
-
+## List messages [GET]
 + Parameters
-    + id (required, UUID, `bb7aae7e-c560-4b3d-b235-71e4305952b8`) ... ID of the Message
+    + since (optional, string) ... Timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ` Only Messages updated at or after this time are returned.
 
 + Request
 
     + Headers
 
-            Accept: application/hal+json
+            Accept: application/vnd.helpful.v1+hal+json
 
 + Response 200 (application/hal+json)
 
+    [Messages][]
+
+
+## Message [/api/messages/{id}]
+
++ Parameters
+    + id (Required String `bb7aae7e-c560-4b3d-b235-71e4305952b8`)
+
++ Model (application/vnd.helpful.v1+hal+json)
+
     + Headers
 
-            Link: <https://helpful.io/api/messages/bb7aae7e-c560-4b3d-b235-71e4305952b8>;rel="self",<https://helpful.io/api/people/10ce24de-23f6-433f-9a71-255cffffa96f>;rel="author",<https://helpful.io/api/conversations/9aedccd5-0261-4158-bc1c-0e377b306f02>;rel="conversation"
+            Link: <https://helpful.io/api/messages/bb7aae7e-c560-4b3d-b235-71e4305952b8>;rel="self", <https://helpful.io/api/people/10ce24de-23f6-433f-9a71-255cffffa96f>;rel="author", <https://helpful.io/api/conversations/9aedccd5-0261-4158-bc1c-0e377b306f02>;rel="conversation"
 
     + Body
 
@@ -213,49 +256,18 @@ The `data` attribute is a key value object with strings for keys and values. It 
                 }
             }
 
-
-## GET /api/messages{?since}
-+ Parameters
-    + since (optional, string) ... Timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ` Only Messages updated at or after this time are returned.
+## Fetch a message [GET]
 
 + Request
-
     + Headers
 
-            Accept: application/hal+json
+            Accept: application/vnd.helpful.v1+hal+json
 
-+ Response 200 (application/hal+json)
++ Response 200
 
-    + Headers
+    [Message][]
 
-            Link: <https://helpful.io/api/messages>;rel="self"
 
-    + Body
-
-            {
-                "items": [
-                    "id": "bb7aae7e-c560-4b3d-b235-71e4305952b8",
-                    "type": "message",
-                    "content": "Hello World!",
-                    "created": "2013-12-08T13:08:14.758Z",
-                    "updated": "2013-12-08T13:08:14.758Z",
-                    "data": {
-                        "foo": "bar"
-                    },
-                    "_links": {
-                        "self": {
-                            "href": "https://helpful.io/api/messages/bb7aae7e-c560-4b3d-b235-71e4305952b8"
-                        },
-                        "author": {
-                            "href": "https://helpful.io/api/people/10ce24de-23f6-433f-9a71-255cffffa96f"
-                        },
-                        "conversation": {
-                            "href": "https://helpful.io/api/conversations/9aedccd5-0261-4158-bc1c-0e377b306f02"
-                        }
-                    }
-                ],
-                "count": 1
-            }
 
 ## POST /api/messages/{message_id}/read-receipts
 
@@ -268,8 +280,8 @@ The `data` attribute is a key value object with strings for keys and values. It 
 
     + Headers
 
-            Accept: application/hal+json
-            Content-Type: application/hal+json
+            Accept: application/vnd.helpful.v1+hal+json
+            Content-Type: application/json
 
     + Body
 
@@ -329,7 +341,7 @@ The `data` attribute is a key value object with strings for keys and values. It 
 + Request
     + Headers
 
-            Accept: application/hal+json
+            Accept: application/vnd.helpful.v1+hal+json
 
 + Response 200 (application/hal+json)
     + Body
@@ -343,7 +355,7 @@ The `data` attribute is a key value object with strings for keys and values. It 
 + Request
     + Headers
 
-            Accept: application/hal+json
+            Accept: application/vnd.helpful.v1+hal+json
 
     + Body
 
@@ -360,6 +372,11 @@ The `data` attribute is a key value object with strings for keys and values. It 
 ## POST /api/conversations/{conversation_id}/notes
 ### Create a new note
 
++ Request
+    + Headers
+
+            Accept: application/vnd.helpful.v1+hal+json
+
 + Response 201
     + Headers
 
@@ -374,6 +391,11 @@ The `data` attribute is a key value object with strings for keys and values. It 
 
 ## GET /api/conversations/{conversation_id}/notes
 ### Retrieve all notes
+
++ Request
+    + Headers
+
+            Accept: application/vnd.helpful.v1+hal+json
 
 + Response 201
     + Headers
@@ -394,6 +416,11 @@ The `data` attribute is a key value object with strings for keys and values. It 
 - user
 - content
 
++ Request
+    + Headers
+
+            Accept: application/vnd.helpful.v1+hal+json
+
 + Response 200
 
     + Body
@@ -410,30 +437,76 @@ The `data` attribute is a key value object with strings for keys and values. It 
 ### Delete a note
 + Response 204
 
+
 # Group People
 
-- id
-- name
-- email
-- twitter
-- user
-- account
-- created
-- updated
+## Person [/api/people/{id}]
 
-## POST  /api/people
-+ Response 201
-    + Headers
+The `user_id` field is only present if the person belongs to an operator in Helpful.
 
-            Location: <>
++ Parameters
+    + id (Required String `a2f27bf5-9f07-4745-891a-481d9ef6c887`)
+
++ Model (application/vnd.helpful.v1+hal+json)
 
     + Body
 
             {
+                "id": "a2f27bf5-9f07-4745-891a-481d9ef6c887",
+                "type": "person",
+                "name": "Jane Doe",
+                "email: "janedoe@example.com",
+                "twitter": "janedoe",
+                "user_id": <>,
+                "account_id": "2014-01-02 16:52:18 -0800",
+                "created": "2014-01-02 16:52:18 -0800",
+                "_links": {
+                    ...
+                }
             }
 
-## GET   /api/people
+### Fetch a person [GET]
+
++ Request
+    + Headers
+
+            Accept: application/vnd.helpful.v1+hal+json
+
 + Response 200
+
+    [Person][]
+
+
+### Update a person's details [PATCH]
+
++ Request
+    + Headers
+
+            Accept: application/vnd.helpful.v1+hal+json
+            Content-Type: application/json
+
+    + Body
+
+            {
+                "name": "John Smith",
+                "email": "johnsmith@example.com",
+                "twitter": "johnsmith",
+                "user_id": "51173272-f670-4705-8eac-f60e0c73202c"
+            }
+
++ Response 200
+
+    [Person][]
+
+
+## GET /api/people
+
++ Request
+    + Headers
+
+            Accept: application/vnd.helpful.v1+hal+json
+
++ Response 200 (application/vnd.helpful.v1+hal+json)
 
     + Body
 
@@ -442,21 +515,26 @@ The `data` attribute is a key value object with strings for keys and values. It 
                 "count": 0
             }
 
-## GET   /api/people/{id}
-+ Response 200
+## POST  /api/people
+
++ Request
+    + Headers
+
+            Accept: application/vnd.helpful.v1+hal+json
+            Content-Type: application/json
 
     + Body
 
             {
+                "name": "John Smith",
+                "email": "johnsmith@example.com",
+                "twitter": "johnsmith",
+                "user_id": "51173272-f670-4705-8eac-f60e0c73202c"
             }
 
-## PATCH /api/people/{id}
-+ Response 200
++ Response 201 (application/vnd.helpful.v1+hal+json)
 
-    + Body
-
-            {
-            }
+    [Person][]
 
 # Group Users
 
@@ -583,7 +661,7 @@ All the accounts the user has access to.
 
     + Headers
 
-            Accept: application/hal+json
+            Accept: application/vnd.helpful.v1+hal+json
 
     + Body
 
@@ -758,4 +836,3 @@ All the accounts the user has access to.
                     }
                 }
             }
-
