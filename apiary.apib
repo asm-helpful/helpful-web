@@ -125,10 +125,11 @@ The `data` attribute is a key value object with strings for keys and values. It 
 ## POST /api/messages
 
 + Request
+
     + Headers
 
             Accept: application/hal+json
-            Content-Type: application/x-www-form-urlencoded
+            Content-Type: application/hal+json
 
     + Body
 
@@ -177,11 +178,13 @@ The `data` attribute is a key value object with strings for keys and values. It 
     + id (required, UUID, `bb7aae7e-c560-4b3d-b235-71e4305952b8`) ... ID of the Message
 
 + Request
+
     + Headers
 
             Accept: application/hal+json
 
 + Response 200 (application/hal+json)
+
     + Headers
 
             Link: <https://helpful.io/api/messages/bb7aae7e-c560-4b3d-b235-71e4305952b8>;rel="self",<https://helpful.io/api/people/10ce24de-23f6-433f-9a71-255cffffa96f>;rel="author",<https://helpful.io/api/conversations/9aedccd5-0261-4158-bc1c-0e377b306f02>;rel="conversation"
@@ -216,6 +219,7 @@ The `data` attribute is a key value object with strings for keys and values. It 
     + since (optional, string) ... Timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ` Only Messages updated at or after this time are returned.
 
 + Request
+
     + Headers
 
             Accept: application/hal+json
@@ -265,6 +269,14 @@ The `data` attribute is a key value object with strings for keys and values. It 
     + Headers
 
             Accept: application/hal+json
+            Content-Type: application/hal+json
+
+    + Body
+
+            {
+
+
+            }
 
 + Response 200 (application/hal+json)
 
@@ -282,7 +294,8 @@ The `data` attribute is a key value object with strings for keys and values. It 
                             }
                         }
                     }
-                ]
+                ],
+                "count": 1
             }
 
 # Group Conversations
