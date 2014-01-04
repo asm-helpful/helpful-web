@@ -3,6 +3,9 @@ bundler_args: --without development production autotest
 rvm:
   - 2.1.0
 
+before_install:
+  - gem install bundler -v '>= 1.5.1'
+
 before_script:
   - gem install foreman
   - cp .env.example .env
