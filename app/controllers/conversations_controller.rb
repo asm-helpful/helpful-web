@@ -4,33 +4,26 @@ class ConversationsController < ApplicationController
   before_action :ensure_account
 
   before_action :find_account
-  before_action :find_conversation, only: [:show]
 
 
   def index
-    if params['q'].blank?
-      @conversations = @account.conversations.open.includes(:messages).most_stale.to_a.uniq
+    inbox = ConversationsInbox.new(@account, params['q'])
+    @conversations = inbox.conversations
+    @conversation = @conversations.first
 
-      # TODO move analytics to javascript?
-      # TODO standardise analytics event names
-      Analytics.track(user_id: current_user.id, event: 'Read Conversations Index') if signed_in?
-
-    else
-      @query = params['q'].to_s.strip
-
-      message_ids = query_messages(@query)
-      @conversations = @account.conversations.joins(:messages).where(messages: { id: message_ids }).most_stale.to_a.uniq
-
-      if signed_in?
-        Analytics.track(user_id: current_user.id, event: 'Searched For', properties: { query: @query.to_s })
+    if signed_in?
+      if inbox.search?
+        Analytics.track(user_id: current_user.id, event: 'Read Conversations Index')
+      else
+        Analytics.track(user_id: current_user.id, event: 'Searched For', properties: { query: inbox.query })
       end
     end
-
-    @conversation = @conversations.first
   end
 
   def show
-    @conversations = @account.conversations.open.most_stale.includes(:messages).to_a.uniq
+    inbox = ConversationsInbox.new(@account)
+    @conversations = inbox.conversations
+    @conversation = inbox.open_conversations.find_by!(number: params.fetch(:id))
     @conversation_stream = ConversationStream.new(@conversation)
   end
 
@@ -57,22 +50,9 @@ class ConversationsController < ApplicationController
     @account = Account.find_by_slug!(params.fetch(:account))
   end
 
-  def find_conversation
-    @conversation = @account.conversations.where(number: params.fetch(:id)).first!
-  end
-
   private
 
   def conversation_params
     params.require(:conversation).permit(:archive, :id)
-  end
-
-  def query_messages(query)
-    response = elasticsearch.search body: { query: { match: { content: query } } }
-    response['hits']['hits'].map { |x| x["_id"] }
-  end
-
-  def elasticsearch
-    @es ||= Elasticsearch::Client.new hosts: [ ENV['ELASTICSEARCH_URL'] ]
   end
 end
