@@ -100,6 +100,10 @@ class Conversation < ActiveRecord::Base
     self.match_mailbox(email) || raise(ActiveRecord::RecordNotFound)
   end
 
+  def most_recent_message
+    messages.most_recent.first
+  end
+
   def to_param
     number.to_param
   end

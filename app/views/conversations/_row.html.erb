@@ -3,7 +3,7 @@
   <input type="checkbox" />
 
   <div class="time updated">
-    <%= time_ago_in_words(conversation.updated_at) %>
+    <%= time_ago_in_words(conversation.most_recent_message.updated_at) %>
   </div>
 
   <div class="summary"><%= summary(conversation) %></div>
