@@ -23,10 +23,9 @@ class Conversation < ActiveRecord::Base
 
   validates :account, presence: true
 
-  default_scope -> { order(:updated_at => :desc) }
-
   scope :open, -> { where.not(status: STATUS_ARCHIVED) }
   scope :archived, -> { where(status: STATUS_ARCHIVED) }
+  scope :most_stale, -> { joins(:messages).order('messages.updated_at ASC') }
 
   def ordered_messages
     messages.order(:created_at => :asc)

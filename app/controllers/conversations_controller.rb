@@ -9,7 +9,7 @@ class ConversationsController < ApplicationController
 
   def index
     if params['q'].blank?
-      @conversations = @account.conversations.open.includes(:messages)
+      @conversations = @account.conversations.open.includes(:messages).most_stale.to_a.uniq
 
       # TODO move analytics to javascript?
       # TODO standardise analytics event names
@@ -19,7 +19,7 @@ class ConversationsController < ApplicationController
       @query = params['q'].to_s.strip
 
       message_ids = query_messages(@query)
-      @conversations = @account.conversations.joins(:messages).where(messages: { id: message_ids })
+      @conversations = @account.conversations.joins(:messages).where(messages: { id: message_ids }).most_stale.to_a.uniq
 
       if signed_in?
         Analytics.track(user_id: current_user.id, event: 'Searched For', properties: { query: @query.to_s })
@@ -30,7 +30,7 @@ class ConversationsController < ApplicationController
   end
 
   def show
-    @conversations = @account.conversations.open.includes(:messages)
+    @conversations = @account.conversations.open.most_stale.includes(:messages).to_a.uniq
     @conversation_stream = ConversationStream.new(@conversation)
   end
 
