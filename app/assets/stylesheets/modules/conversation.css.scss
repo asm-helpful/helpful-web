@@ -77,6 +77,20 @@
     color: #B2B2B2;
     font-size: 13px;
     line-height: 24px;
+
+    &.recent {
+      color: $muted;
+    }
+
+    &.normal {
+      color: $warning;
+      font-weight: bold;
+    }
+
+    &.stale {
+      color: $danger;
+      font-weight: bold;
+    }
   }
 
   > .summary {
