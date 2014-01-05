@@ -13,4 +13,4 @@ before_script:
   - psql -c 'create database supportly_test;' -U postgres
   - cp config/database.yml.example config/database.yml
 
-script: foreman run rake
+script: foreman run bin/rake
