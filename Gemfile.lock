@@ -101,6 +101,8 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    mail_view (1.0.3)
+      tilt
     mime-types (1.25.1)
     minitest (4.7.5)
     minitest-rails (0.9.2)
@@ -231,6 +233,7 @@ DEPENDENCIES
   flexmock
   friendly_id (~> 5.0)
   jquery-rails
+  mail_view (~> 1.0.3)
   minitest-rails (~> 0.9.2)
   minitest-reporters
   multimap

@@ -1,5 +1,8 @@
 class MessageMailer < ActionMailer::Base
-  helper :avatar, :nickname
+  include SummaryHelper
+  helper :avatar, :nickname, :markdown
+
+  layout 'email'
 
   # Public: Triggered on Message create
   #
@@ -9,8 +12,10 @@ class MessageMailer < ActionMailer::Base
     @recipient = Person.find(recipient_id)
 
     @conversation = @message.conversation
+    @previous_messages = @conversation.messages - [@message]
 
-    subject = ConversationSummarizer.new(@conversation).summary
+    subject = summary(@conversation)
+
     mail to: @recipient.email,
          from: @message.account.mailbox,
          reply_to: @conversation.mailbox,
