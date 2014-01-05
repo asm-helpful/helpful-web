@@ -14,6 +14,10 @@ require 'flexmock/test_unit'
 
 Minitest::Reporters.use! Minitest::Reporters::DefaultReporter.new(color: true)
 
+class MiniTest::Spec
+  include FlexMock::TestCase
+end
+
 class ActiveSupport::TestCase
   include FactoryGirl::Syntax::Methods
 end
