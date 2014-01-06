@@ -24,6 +24,8 @@ class Message < ActiveRecord::Base
   }
   after_create :send_email
 
+  scope :most_recent, -> { order('updated_at DESC') }
+
   def webhook_data
     { message: {
       id: self.id,

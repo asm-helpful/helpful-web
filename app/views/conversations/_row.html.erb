@@ -2,8 +2,8 @@
 
   <input type="checkbox" />
 
-  <div class="time updated">
-    <%= time_ago_in_words(conversation.updated_at) %>
+  <div class="time updated <%= most_recent_message_class(conversation) %>">
+    <%= time_ago_in_words(conversation.most_recent_message.updated_at) %>
   </div>
 
   <div class="summary"><%= summary(conversation) %></div>

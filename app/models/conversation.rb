@@ -23,10 +23,9 @@ class Conversation < ActiveRecord::Base
 
   validates :account, presence: true
 
-  default_scope -> { order(:updated_at => :desc) }
-
   scope :open, -> { where.not(status: STATUS_ARCHIVED) }
   scope :archived, -> { where(status: STATUS_ARCHIVED) }
+  scope :most_stale, -> { joins(:messages).order('messages.updated_at ASC') }
 
   def ordered_messages
     messages.order(:created_at => :asc)
@@ -98,6 +97,10 @@ class Conversation < ActiveRecord::Base
   # Returns a Conversation or raises ActiveRecord::RecordNotFound.
   def self.match_mailbox!(email)
     self.match_mailbox(email) || raise(ActiveRecord::RecordNotFound)
+  end
+
+  def most_recent_message
+    messages.most_recent.first
   end
 
   def to_param

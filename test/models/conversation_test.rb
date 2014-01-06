@@ -124,4 +124,14 @@ describe Conversation do
       end
     end
   end
+
+  describe "#most_recent_message" do
+    it "returns the most recently updated message" do
+      @conversation.save
+      old_message = FactoryGirl.create(:message, conversation: @conversation, updated_at: 10.minutes.ago)
+      new_message = FactoryGirl.create(:message, conversation: @conversation, updated_at: 1.minute.ago)
+
+      assert_equal @conversation.most_recent_message, new_message
+    end
+  end
 end

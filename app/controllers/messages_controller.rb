@@ -2,9 +2,8 @@ class MessagesController < ApplicationController
   before_action :authenticate_user!, :only => [:create]
 
   def create
+    @message = Message.new(message_params)
     conversation = Conversation.find(message_params['conversation_id'])
-    message_composer = MessageComposer.new(current_user, conversation)
-    @message = message_composer.compose(message_params.fetch(:content))
 
     if @message.save
       if params['commit'] == "Send & Archive"

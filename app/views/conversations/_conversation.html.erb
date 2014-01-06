@@ -24,8 +24,8 @@
       </div>
 
       <div class="last-update">
-        <span class="text-muted">Last update</span>
-        <%= time_ago_in_words(conversation.updated_at) %> ago
+        <span class="text-muted">Most recent message</span>
+        <%= time_ago_in_words(conversation.most_recent_message.updated_at) %> ago
       </div>
 
     </div>
