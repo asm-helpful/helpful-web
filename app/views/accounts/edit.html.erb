@@ -54,6 +54,17 @@
 
     <h2><%= t "devise.invitations.new.header" %></h2>
 
+    <ul>
+      <% @account.memberships.each do |membership| %>
+        <li>
+          <strong><%= membership.user.email %></strong> (<%= membership.role %>)
+          <% if !membership.user.accepted_or_not_invited? %>
+            <small class="bg-highlight">Invitation sent <%= time_ago_in_words(membership.user.invitation_sent_at) %> ago</small>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+
     <%= form_for @user, :url => invitation_path(:user), :html => {:method => :post} do |f| %>
 
     <% User.invite_key_fields.each do |field| -%>
@@ -61,6 +72,7 @@
       <%= f.text_field field %></p>
     <% end -%>
     <p>
+      <%= select_tag :membership_role, options_for_select(Membership::ROLES) %>
     </p>
 
       <p><%= f.submit t("devise.invitations.new.submit_button") %></p>

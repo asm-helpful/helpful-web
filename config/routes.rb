@@ -14,7 +14,7 @@ Helpful::Application.routes.draw do
   get '/styleguide' => 'pages#styleguide', :as => :styleguide
   get '/docs' => 'pages#docs', :as => :docs
 
-  devise_for :users, skip: :registrations
+  devise_for :users, skip: :registrations, :controllers => { :invitations => 'users/invitations' }
 
   # This is the normal user registrations but NO new/create - That is handled by either:
   # * Account#new (for a new account and the first user)
