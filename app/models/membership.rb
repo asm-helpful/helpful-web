@@ -3,7 +3,7 @@ require 'activerecord/uuid'
 class Membership < ActiveRecord::Base
   include ActiveRecord::UUID
 
-  ROLES = ['owner', 'agent', 'customer']
+  ROLES = ['owner', 'agent']
 
   belongs_to :account
   belongs_to :user

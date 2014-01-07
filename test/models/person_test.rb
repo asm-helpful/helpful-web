@@ -41,9 +41,6 @@ describe Person do
 
       @membership.update(role: 'agent')
       assert @membership.agent?
-
-      @membership.update(role: 'customer')
-      assert @membership.customer?
     end
   end
 end

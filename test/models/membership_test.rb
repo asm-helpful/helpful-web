@@ -16,9 +16,6 @@ describe Membership do
 
       @membership.role = 'agent'
       assert @membership.agent?
-
-      @membership.role = 'customer'
-      assert @membership.customer?
     end
   end
 end
