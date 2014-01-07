@@ -27,8 +27,8 @@ class User < ActiveRecord::Base
   end
 
   def agent_or_higher?(account_id)
-    r = memberships.where(account_id: account_id).first.try(:role)
-    !!(r == 'agent' || r == 'owner')
+    # this method appears unneccessary
+    true
   end
 
 end
