@@ -17,7 +17,6 @@ Helpful::Application.routes.draw do
   devise_for :users, skip: :registrations
 
   # This is the normal user registrations but NO new/create - That is handled by either:
-  # * Users#new (for new users to an existing acct) or
   # * Account#new (for a new account and the first user)
   devise_scope :user do
     resource :registration,

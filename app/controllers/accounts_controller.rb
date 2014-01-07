@@ -41,6 +41,7 @@ class AccountsController < ApplicationController
 
   def edit
     @account = current_user.primary_owned_account
+    @user = @account.users.new
   end
 
   def update
