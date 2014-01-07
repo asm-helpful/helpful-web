@@ -25,4 +25,5 @@ describe User do
       assert @user.agent_or_higher?(@membership.account_id)
     end
   end
+
 end

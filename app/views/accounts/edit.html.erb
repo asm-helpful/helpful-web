@@ -52,5 +52,19 @@
       </div>
     <% end %>
 
+    <h2><%= t "devise.invitations.new.header" %></h2>
+
+    <%= form_for @user, :url => invitation_path(:user), :html => {:method => :post} do |f| %>
+
+    <% User.invite_key_fields.each do |field| -%>
+      <p><%= f.label field %><br />
+      <%= f.text_field field %></p>
+    <% end -%>
+    <p>
+    </p>
+
+      <p><%= f.submit t("devise.invitations.new.submit_button") %></p>
+    <% end %>
+
   </div>
 </div>
