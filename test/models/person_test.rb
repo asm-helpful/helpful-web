@@ -25,6 +25,13 @@ describe Person do
 
       assert_equal "jsmith@example.com", @person.email
     end
+
+    it "parses out the email address from email even with extended characters" do
+      @person.email = "Nícolas Iensen <nicolas@example.com>"
+      @person.save
+
+      assert_equal "nicolas@example.com", @person.email
+    end
   end
 
   describe "role helpers for account membership" do
