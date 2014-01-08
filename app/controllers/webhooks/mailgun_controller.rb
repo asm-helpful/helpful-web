@@ -32,9 +32,9 @@ class Webhooks::MailgunController < ApplicationController
     if @message.save
       count = params['attachment-count'].to_i
       count.times do |i|
-        stream = params["attachment-#{i+1}"]
+        attachment = params["attachment-#{i+1}"]
         #filename = stream.original_filename
-        @message.attachment.create(file: stream.read())
+        @message.attachments.create(file: attachment)
         logger.info "Added attachment to message"
       end
       head :accepted

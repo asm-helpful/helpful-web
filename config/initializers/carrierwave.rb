@@ -1,4 +1,5 @@
 CarrierWave.configure do |config|
+  config.cache_dir = "#{Rails.root}/tmp/uploads" #Heroku fix
   config.fog_credentials = {
     :provider               => 'AWS',
     :aws_access_key_id      => ENV["AWS_ACCESS_KEY_ID"],
