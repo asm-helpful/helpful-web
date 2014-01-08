@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140107002302) do
+ActiveRecord::Schema.define(version: 20140108105433) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,13 @@ ActiveRecord::Schema.define(version: 20140107002302) do
   add_index "accounts", ["billing_plan_id"], name: "index_accounts_on_billing_plan_id", using: :btree
   add_index "accounts", ["chargify_subscription_id"], name: "index_accounts_on_chargify_subscription_id", using: :btree
   add_index "accounts", ["slug"], name: "index_accounts_on_slug", unique: true, using: :btree
+
+  create_table "attachments", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
+    t.uuid     "message_id", null: false
+    t.string   "file",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "beta_invites", force: true do |t|
     t.string   "email"
