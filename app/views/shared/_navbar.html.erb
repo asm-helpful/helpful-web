@@ -1,10 +1,14 @@
 <div class="navbar">
-  <%= avatar(current_user, 64) %>
-  <%= link_to 'Inbox', conversations_path(@account) %>
+  <%= avatar(current_user, 61) %>
+
+  <%= link_to image_tag('icons/helpful-inbox.svg', :width => "44", :height => "44"), conversations_path(@account) %>
+
   <% if current_user.primary_owned_account -%>
-    <a href="<%= edit_account_path %>">Settings</a>
+    <a href="<%= edit_account_path %>">
+      <%= image_tag('icons/helpful-settings.svg', :width => "44", :height => "44") %>
+    </a>
   <% end -%>
 
-  <a href="mailto:helpful@helpful.io">Help!</a>
-  <%= link_to 'Logout', destroy_user_session_path, :method => :delete %>
+  <a href="mailto:helpful@helpful.io" class="text-smaller">Help!</a>
+  <%= link_to 'Logout', destroy_user_session_path, :method => :delete, :class => 'text-smaller' %>
 </div>
