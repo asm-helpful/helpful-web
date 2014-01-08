@@ -7,7 +7,7 @@ describe(Api::MessagesController, :create) do
                   :account      => args[:account] || account.slug,
                   :email        => args[:email] || 'test@example.com',
                   :conversation => args[:conversation] || nil,
-                  :attachment  => args[:attachment] || nil,
+                  :attachment   => args[:attachment] || nil,
                   :format       => :json
   end
 
