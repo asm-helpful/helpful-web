@@ -5,5 +5,9 @@
     border: 0;
     display: inline-block;
     margin-top: 10px;
+
+    &:hover {
+      color: $black;
+    }
   }
 }
