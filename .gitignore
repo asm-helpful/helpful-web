@@ -33,4 +33,7 @@
 # Bower source files
 /vendor/assets/components
 
+# VI swp files
+*.swp
+
 Procfile.dev
