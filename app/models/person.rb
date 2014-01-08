@@ -36,7 +36,7 @@ class Person < ActiveRecord::Base
   #
   # Returns nothing.
   def parse_email
-    mail = Mail::Address.new(self.email)
+    mail = Mail::Address.new(self.email.to_ascii)
     self.email = mail.address
   end
 

@@ -26,6 +26,7 @@ gem 'sidekiq'
 gem 'uglifier', '>= 1.3.0'
 gem 'redcarpet'
 gem 'rails-assets-bootstrap'
+gem "stringex"
 
 group :development do
   gem 'rest-client', require: false
