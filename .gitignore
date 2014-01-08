@@ -34,3 +34,5 @@
 /vendor/assets/components
 
 Procfile.dev
+
+/public/uploads

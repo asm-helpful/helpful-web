@@ -7,6 +7,7 @@ describe(Api::MessagesController, :create) do
                   :account      => args[:account] || account.slug,
                   :email        => args[:email] || 'test@example.com',
                   :conversation => args[:conversation] || nil,
+                  :attachment   => args[:attachment] || nil,
                   :format       => :json
   end
 
@@ -84,6 +85,13 @@ describe(Api::MessagesController, :create) do
     create_post(@account, conversation: conversation.number)
     message = find_message_from_response(@response)
     assert_equal conversation, message.conversation
+  end
+
+  it 'add attachments to messages' do
+    conversation = create(:conversation, account: @account)
+    create_post(@account, conversation: conversation.number, attachment: File.new(File.join(Rails.root, "app", "assets", "images", "logo.png")))
+    message = find_message_from_response(@response)
+    assert_equal message.attachments.count, 1
   end
 
   # Mailer

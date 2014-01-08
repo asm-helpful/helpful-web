@@ -1,0 +1,3 @@
+<div class="attachments">
+ <%= raw attachments.map {|a| link_to("#{File.basename(a.file.to_s)} (#{number_to_human_size(a.file_size)})", a.file.url, target: "_blank")}.join(", ") %>
+</div>

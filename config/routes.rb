@@ -48,7 +48,9 @@ Helpful::Application.routes.draw do
           :via => ["get", "post"],
           :defaults => { :format => 'json' }
 
-   resources :messages, :defaults => { :format => 'json' }
+   resources :messages, :defaults => { :format => 'json' } do
+    resources :attachments, default: {format: 'json'}
+   end
   end
 
   authenticated :user do
