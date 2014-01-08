@@ -8,6 +8,7 @@ class Message < ActiveRecord::Base
   belongs_to :conversation, touch: true
 
   has_many :read_receipts
+  has_many :attachments
 
   delegate :account, :to => :conversation
 
