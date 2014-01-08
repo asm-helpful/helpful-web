@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
 
   def home
+    @billing_plans = BillingPlan.all
   end
 
   def embed

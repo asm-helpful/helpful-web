@@ -15,29 +15,84 @@
 
   <div class="fold fold-center">
     <div class="container">
-      <h4>Unique billing</h4>
+      <h4>Easier than Email</h4>
       <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pellentesque accumsan nulla. Morbi posuere diam turpis, non cursus neque elementum id. Donec ut nisi id mauris viverra faucibus. Mauris laoreet libero in elit pulvinar ullamcorper. Nam a posuere elit, vel convallis lorem. Sed vel urna at purus tristique porttitor.
+        You won’t need help using Helpful. Our simple interface lets you and your company quickly respond and deal with confused customers.
       </p>
 
-      <h4>Open source</h4>
+      <h4>Grows with your company</h4>
       <p>
-        Donec pharetra erat et eros eleifend dictum. Aliquam non porta risus. Suspendisse nec commodo dui. Donec ut mollis erat, in tincidunt lorem. Nam vitae augue ante. Quisque elit velit, feugiat id tincidunt quis, lobortis nec turpis. Suspendisse mollis facilisis elit vel convallis. Cras sed metus felis.
+        With Helpful.io, you pay for the number of open support conversations you have. Everybody can (and should) answer support.
       </p>
 
-      <h4>Small teams</h4>
+      <h4>Whitelabel Support</h4>
       <p>
-        Ut viverra nulla metus, vel tincidunt nisl posuere ut. Sed pretium est et imperdiet dapibus. Nulla vitae feugiat lectus. Aliquam est lectus, venenatis sit amet tincidunt ut, varius in orci. Duis vestibulum nisl ac sagittis rutrum. Sed blandit libero pulvinar tortor congue pretium. Ut commodo volutpat sem, ac luctus neque vestibulum non. Duis fermentum fringilla purus nec semper.
+        Want to bring Helpful.io in house? Helpful is fully customizable. Add your own branding and integrate your workflow with our powerful API.
       </p>
 
-      <h4>Enterprise</h4>
+      <h4>Open Source</h4>
       <p>
-        Maecenas vitae sapien ante. Pellentesque ut nunc euismod, porttitor justo ac, semper nibh. Vivamus eu fermentum ligula. Phasellus suscipit massa eget convallis cursus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla facilisi. Duis quis mi ut lorem gravida laoreet. Sed vel felis nec lectus tempor ultrices. Proin ac dui varius, interdum dolor nec, rutrum est.
+        Fork and build Helpful on Assembly. Want a feature? Add it yourself and receive a share of Helpful's profit.
       </p>
+    </div>
+  </div>
+
+  <div class="fold fold-center">
+    <div class="container">
+      <h6>Pricing</h6>
+      <br/>
+      <table class="billing-plan-table">
+        <thead>
+          <tr>
+            <% @billing_plans.each do |plan| %>
+              <th class="billing-plan-table-header <%= plan.slug %>">
+                <%= plan.name %>
+              </th>
+            <% end %>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <% @billing_plans.each do |plan| %>
+              <td class="billing-plan-table-description">
+                <%= pluralize(plan.max_conversations, 'conversation') %>
+              </td>
+            <% end %>
+          </tr>
+          <tr>
+            <% @billing_plans.each do |plan| %>
+              <td class="billing-plan-table-price">
+                <%= number_to_currency(plan.price) %> / m
+              </td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+
+      <br/>
+
+      <small class="text-muted">
+        Helpful is <i>free</i> for up to 5 conversations.
+        <br/>
+        There are no contracts and plans can be cancelled at any time.
+      </small>
+
+      <br/>
+      <br/>
+
+      <p>
+        <strong>Enterprise</strong>. More conversations? Firewall? Whitelabeling? <a href="helpful@helpful.io">Please contact us</a>.
+      </p>
+
 
     </div>
   </div>
 
+  <center class="container">
+    <a class="btn btn-lg btn-success btn-block" href="<%= new_account_path %>">
+      Sign up
+    </a>
+  </center>
 
   <div class="fold fold-center">
     <div class="container">
