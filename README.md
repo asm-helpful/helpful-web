@@ -9,16 +9,13 @@ Helpful is an open product that's being built by a fantastic group of people on 
 
 ## Getting Started
 
-[Vagrant](http://vagrantup.com) is the reccomended way to run Helpful on your
-[own machine. You need to download and install
-[Vagrant](http://vagrantup.com/downloads) before you can continue. Once
+[Vagrant](http://vagrantup.com) is the reccomended way to run Helpful on your own machine. You need to download and install [Vagrant](http://vagrantup.com/downloads) before you can continue (this will take a while to run so you may want to grab some coffee).
 
     git clone https://github.com/asm-helpful/helpful-web.git helpful-web
     cd helpful-web
     vagrant up
 
-This will take a while to run so you may want to grab some coffee. Once it's
-finished open up [http://localhost:5000](http://localhost:5000) in your web browser to check out Helpful.
+Once it's finished open up [http://localhost:5000](http://localhost:5000) in your web browser to check out Helpful.
 
 
 ### Using Helpful
