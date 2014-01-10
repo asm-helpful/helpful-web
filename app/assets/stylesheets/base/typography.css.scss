@@ -3,7 +3,6 @@ body {
   font-size: 18px;
   line-height: 1.5;
 }
-
 h1,
 h2,
 h3,
@@ -19,47 +18,33 @@ h6 {
     margin-top: 0;
   }
 }
-
 h1,
 h2,
 h3 {
   font-family: $font-headline;
 }
-
 h4,
 h5,
 h6 {
   font-family: $font-body;
 }
-
 h1 {
   font-size: 4.1em;
   text-transform: uppercase;
-}
-
-h2 {
+} h2 {
   font-size: 1.8em;
-}
-
-h3 {
+} h3 {
   font-size: 1.3em;
-}
-
-h4 {
+} h4 {
   font-size: 1.3em;
   font-weight: normal;
-}
-
-h5 {
+} h5 {
   font-size: 1.05em;
   letter-spacing: 1px;
   text-transform: uppercase;
-}
-
-h6 {
+} h6 {
   font-size: 1.05em;
 }
-
 p {
   margin-bottom: .8rem;
   max-width: 34em;
@@ -67,15 +52,12 @@ p {
     margin-bottom: 0;
   }
 }
-
 strong {
   font-weight: 600;
 }
-
 em {
   font-style: italic;
 }
-
 a {
   color: $primary;
   text-decoration: none;
@@ -87,20 +69,16 @@ a {
     text-decoration: none;
   }
 }
-
 h1 + p {
   font-size: 1.55em;
   font-weight: 200;
 }
-
 ul {
   margin: 0 0 1rem;
 }
-
 hr {
   margin: 1.5em 0 2em;
 }
-
 .text-smaller {
   font-size: .85em;
 }
