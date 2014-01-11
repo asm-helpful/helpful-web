@@ -27,6 +27,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'redcarpet'
 gem 'rails-assets-bootstrap'
 gem 'stringex'
+gem 'unf'
 gem 'carrierwave'
 gem 'fog'
 
