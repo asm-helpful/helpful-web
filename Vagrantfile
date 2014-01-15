@@ -6,7 +6,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = 'heroku'
+  # The box name and SHA should be updated if the box itself changes.
+  config.vm.box = 'joncalhoun/vagrant-heroku#38a258277a'
   config.vm.box_url = 'https://dl.dropboxusercontent.com/s/tvxwobc83q4hlf5/heroku.box'
   config.vm.provision :shell, path: 'config/vagrant/bootstrap.sh'
 
