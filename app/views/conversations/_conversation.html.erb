@@ -51,9 +51,11 @@
             </label>
           </div>
 
-          <label>
-            <%= text_field :message, :content, placeholder: 'Reply to this conversation…' %>
-          </label>
+          <%= text_area :message, :content, placeholder: 'Reply to this conversation…', rows: 1 %>
+
+          <div class="form-actions">
+            <input class="btn btn-primary" type="submit" name="action" value="Send" />
+          </div>
         <% end %>
       </div>
 
