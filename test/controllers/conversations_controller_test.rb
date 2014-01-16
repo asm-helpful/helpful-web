@@ -12,9 +12,6 @@ describe ConversationsController, :index do
     assert_not_nil assigns(:account)
   end
 
-  test "finds the concersations" do
-  end
-
   test "renders the accounts conversations" do
     get :index, account: @conversation.account.slug
     assert_response :success
