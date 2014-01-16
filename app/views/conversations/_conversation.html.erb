@@ -54,7 +54,10 @@
           <%= text_area :message, :content, placeholder: 'Reply to this conversation…', rows: 1 %>
 
           <div class="form-actions">
-            <input class="btn btn-primary" type="submit" name="action" value="Send" />
+            <div class="btn-group">
+              <input class="btn btn-primary" type="submit" name="commit" value="Send &amp; Archive" />
+              <input class="btn" type="submit" name="commit" value="Send" />
+            </div>
           </div>
         <% end %>
       </div>

@@ -6,15 +6,20 @@ class MessagesController < ApplicationController
     conversation = Conversation.find(message_params['conversation_id'])
 
     if @message.save
+      Analytics.track(
+        user_id: current_user.id,
+        event: 'New Message',
+        properties: { action: params['commit'] }
+      )
+
       if params['commit'] == "Send & Archive"
         conversation.archive
+        redirect_to conversations_path(current_account)
+      else
+        redirect_to conversation_path(current_account, @message.conversation)
       end
 
-      Analytics.track(user_id: current_user.id,
-          event: 'New Message',
-          properties: { action: params['commit'] })
 
-      redirect_to conversation_path(current_account, @message.conversation), alert: "Response Added"
     else
       Analytics.track(user_id: current_user.id, event: 'Message Save Problem')
       redirect_to conversation_path(current_account, @message.conversation), alert: "Problem"
