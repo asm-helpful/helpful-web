@@ -13,6 +13,11 @@ class Conversation < ActiveRecord::Base
                   ).freeze
 
   belongs_to :account
+
+  belongs_to :agent,
+    class_name: "User",
+    foreign_key: "user_id"
+
   has_many :messages, :after_add => :new_message,
                       :dependent => :destroy
   has_many :notes, :dependent => :destroy
