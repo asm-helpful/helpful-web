@@ -1,0 +1,71 @@
+%docs-subnav-has-border {
+    border-bottom: 1px solid $pale-gray;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.l-docs-sidebar {
+    background-color: $white;
+    position: fixed;
+    border-right: 2px solid $pale-gray;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 9;
+}
+
+.l-docs-sidebar-helpful {
+    border-right: 2px solid $pale-gray;
+    background-color: darken($white, 6%);
+    float: left;
+    padding: .5em;
+    height: 100%;
+    width: 65px;
+
+    .logo {
+        margin: 0 auto;
+    }
+}
+
+.l-docs-subnav {
+    background-color: $white;
+    float: right;
+    width: 260px;
+}
+.l-docs-subnav-title {
+    @extend %docs-subnav-has-border;
+    color: $red;
+    padding: .5em 1.5em;
+}
+
+.l-docs-subnav-subtitle {
+    @extend %docs-subnav-has-border;
+    background-color: darken($white, 3%);
+    color: $gray;
+    font-size: .75em;
+    padding: .75em 2.7em;
+    text-transform: uppercase;
+}
+
+.l-docs-subnav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    a {
+        @extend %docs-subnav-has-border;
+        color: $gray;
+        display: block;
+        padding: 0 2em .1em;
+        line-height: 2.6em;
+
+        &:hover {
+            color: $black;
+        }
+    }
+}
+
+.l-docs-content {
+    margin: 2em 0 0 400px;
+    width: 60%;
+}
