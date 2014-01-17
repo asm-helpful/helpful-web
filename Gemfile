@@ -29,7 +29,7 @@ gem 'rails-assets-bootstrap'
 gem 'stringex'
 gem 'unf'
 gem 'carrierwave'
-gem 'fog'
+gem 'fog', '>=1.19.0'
 
 group :development do
   gem 'rest-client', require: false
