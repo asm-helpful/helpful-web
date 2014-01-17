@@ -59,7 +59,7 @@ class Webhooks::MailgunController < ApplicationController
   end
 
   def valid_signature?(api_key, token, timestamp, signature)
-    digest = OpenSSL::Digest::Digest.new('sha256')
+    digest = OpenSSL::Digest.new('sha256')
     data = [timestamp, token].join
     signature == OpenSSL::HMAC.hexdigest(digest, api_key, data)
   end

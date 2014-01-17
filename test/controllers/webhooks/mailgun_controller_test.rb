@@ -35,7 +35,7 @@ describe Webhooks::MailgunController do
     token     = "3fb7496d2e8761c4ca99e2b8265df4df61ba886dc27224a9b2"
 
     signature = OpenSSL::HMAC.hexdigest(
-      OpenSSL::Digest::Digest.new('sha256'),
+      OpenSSL::Digest.new('sha256'),
       api_key,
       '%s%s' % [timestamp, token])
 
