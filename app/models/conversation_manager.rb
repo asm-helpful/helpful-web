@@ -7,10 +7,10 @@ class ConversationManager
   end
 
   def assign_agent(agent)
-    conversation.update(agent: agent) unless agent_assigned?
+    conversation.update(agent: agent) unless conversation_assigned?
   end
 
-  def agent_assigned?
-    conversation.agent.present?
+  def conversation_assigned?
+    conversation.assigned?
   end
 end

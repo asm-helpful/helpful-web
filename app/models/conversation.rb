@@ -108,6 +108,10 @@ class Conversation < ActiveRecord::Base
     messages.most_recent.first
   end
 
+  def assigned?
+    agent.present?
+  end
+
   def to_param
     number.to_param
   end
