@@ -16,7 +16,17 @@
       </script>
     </div>
     <div class="summary"><%= summary(conversation) %></div>
-    <div class="number">#<%= conversation.number %></div>
+    <div class="detail">
+      #<%= conversation.number %>
+      <span class="detail-divider"></span>
+      <% if conversation.assigned? %>
+        Assigned to
+        <%= conversation.agent.person.name %>
+      <% else %>
+        Unassigned
+      <% end %>
+    </div>
+
     <div class="meta">
       <div class="participants">
         <span class="text-muted">With</span>
