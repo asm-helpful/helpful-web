@@ -62,15 +62,16 @@ h6 {
   font-size: 1.05em;
 }
 
-/* Extends headings to be a bar */
+/* Extends headings to be a bar that spans across it's container */
 
 .heading-bar {
-  background-color: $off-white;
-  border-top: 1px $column-border-color solid;
-  border-bottom: 1px $column-border-color solid;
   padding-top: 8px;
   padding-bottom: 8px;
   margin: 0;
+
+  background-color: $off-white;
+  border-top: 1px $column-border-color solid;
+  border-bottom: 1px $column-border-color solid;
 }
 
 p {
