@@ -21,6 +21,7 @@ class ConversationsController < ApplicationController
     inbox = ConversationsInbox.new(@account)
     @conversations = inbox.conversations
     @conversation = inbox.open_conversations.find_by!(number: params.fetch(:id))
+    ConversationManager.new(@conversation).assign_agent(current_user)
     @conversation_stream = ConversationStream.new(@conversation)
   end
 

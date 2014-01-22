@@ -134,4 +134,16 @@ describe Conversation do
       assert_equal @conversation.most_recent_message, new_message
     end
   end
+
+  describe "#assigned?" do
+    it "returns true if an agent has been assigned" do
+      @conversation.agent = FactoryGirl.build(:user)
+      assert @conversation.assigned?
+    end
+
+    it "returns false if an agent has not been assigned" do
+      @conversation.agent = nil
+      refute @conversation.assigned?
+    end
+  end
 end

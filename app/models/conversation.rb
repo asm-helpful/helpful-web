@@ -13,6 +13,11 @@ class Conversation < ActiveRecord::Base
                   ).freeze
 
   belongs_to :account
+
+  belongs_to :agent,
+    class_name: "User",
+    foreign_key: "user_id"
+
   has_many :messages, :after_add => :new_message,
                       :dependent => :destroy
   has_many :notes, :dependent => :destroy
@@ -101,6 +106,10 @@ class Conversation < ActiveRecord::Base
 
   def most_recent_message
     messages.most_recent.first
+  end
+
+  def assigned?
+    agent.present?
   end
 
   def to_param

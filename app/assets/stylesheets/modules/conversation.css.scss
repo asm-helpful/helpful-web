@@ -20,11 +20,16 @@
     line-height: 30px;
   }
 
-  > .number {
+  > .detail {
     font-weight: light;
     color: #b2b2b2;
     font-size: 16px;
     line-height: 30px;
+
+    > .detail-divider:before {
+      color: #E6E6E6;
+      content: "|";
+    }
   }
 
   > .meta {
