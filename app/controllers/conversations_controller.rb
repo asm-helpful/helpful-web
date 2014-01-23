@@ -4,9 +4,14 @@ class ConversationsController < ApplicationController
   before_action :find_account
 
   def index
-    inbox = ConversationsInbox.new(@account, params['q'])
+    inbox = ConversationsInbox.new(@account, params[:q])
     @conversations = inbox.conversations
     @conversation = @conversations.first
+
+    # If there was a query (q) passed, use it for the search field value
+    if params[:q]
+      @query = params[:q]
+    end
 
     if signed_in?
       if inbox.search?
