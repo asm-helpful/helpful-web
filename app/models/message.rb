@@ -19,7 +19,7 @@ class Message < ActiveRecord::Base
                              allow_blank: false
                            }
 
-  after_save :update_search_index
+  after_save :enqueue_to_update_search_index
   after_save :send_webhook, if: ->(message) {
     message.conversation.account.webhook_url?
   }
@@ -44,12 +44,19 @@ class Message < ActiveRecord::Base
     Webhook.create(account: self.account, event: "message.#{action}", data: self.webhook_data)
   end
 
+  def enqueue_to_update_search_index
+    ElasticsearchMessageIndexWorker.perform_async(self.id)
+  end
+
+  def elasticsearch_index_data
+    {index: 'helpful', type: 'message', id: self.id, body: {content: self.content}}
+  end
+
   # TODO: Support testing search in test environment
-  # TODO: Move to an async job
   def update_search_index
     if ENV['ELASTICSEARCH_URL'] && !Rails.env.test?
-      es = Elasticsearch::Client.new hosts: [ ENV['ELASTICSEARCH_URL'] ]
-      es.index( { index: 'helpful', type:  'message', id: self.id, body: { content: self.content} } )
+      elasticsearch_client = Elasticsearch::Client.new hosts: [ENV['ELASTICSEARCH_URL']]
+      elasticsearch_client.index(elasticsearch_index_data)
     end
   end
 
