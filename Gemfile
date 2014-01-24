@@ -30,6 +30,7 @@ gem 'redcarpet'
 gem 'rails-assets-bootstrap'
 gem 'stringex'
 gem 'unf'
+gem 'backbone-on-rails'
 
 group :development do
   gem 'rest-client', require: false
