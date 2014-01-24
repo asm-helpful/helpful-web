@@ -1,6 +1,6 @@
 class Messages::Email < Message
 
-  store_accessor :data, :recipient, :subject, :headers, :raw, :body
+  store_accessor :data, :recipient, :headers, :raw, :body
 
   # def webhook_data
   #   super.merge({

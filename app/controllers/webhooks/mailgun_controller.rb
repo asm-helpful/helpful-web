@@ -17,13 +17,13 @@ class Webhooks::MailgunController < ApplicationController
 
     # See comment above. Should use the Concierge
     @conversation = Concierge.new(@account, params).find_conversation
+
     @person = Person.find_or_create_by(email: params.fetch(:from))
 
     @message = @conversation.messages.new(
       type:       'Messages::Email',
       person:     @person,
       recipient:  params.fetch(:recipient),
-      subject:    params.fetch(:subject),
       content:    params.fetch('stripped-text'),
       body:       params.fetch('body-plain'),
       headers:    JSON.parse(params.fetch('message-headers').to_s)
