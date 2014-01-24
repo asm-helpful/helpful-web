@@ -36,6 +36,11 @@ GEM
     ansi (1.4.3)
     arel (4.0.1)
     atomic (1.1.14)
+    backbone-on-rails (1.1.0.0)
+      eco
+      ejs
+      jquery-rails
+      rails (>= 3.1)
     bcrypt-ruby (3.1.2)
     bourbon (3.1.8)
       sass (>= 3.2.0)
@@ -50,6 +55,10 @@ GEM
       json (>= 1.7)
     celluloid (0.15.2)
       timers (~> 1.1.0)
+    coffee-script (2.2.0)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.6.3)
     connection_pool (1.1.0)
     crack (0.4.1)
       safe_yaml (~> 0.9.0)
@@ -69,6 +78,12 @@ GEM
     dotenv (0.9.0)
     dotenv-rails (0.9.0)
       dotenv (= 0.9.0)
+    eco (1.0.0)
+      coffee-script
+      eco-source
+      execjs
+    eco-source (1.1.0.rc.1)
+    ejs (1.1.1)
     elasticsearch (0.4.1)
       elasticsearch-api (= 0.4.1)
       elasticsearch-transport (= 0.4.1)
@@ -251,6 +266,7 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers
   analytics-ruby (< 1.0)
+  backbone-on-rails
   bourbon
   bugsnag
   carrierwave
