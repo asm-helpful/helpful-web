@@ -61,7 +61,6 @@ Helpful::Application.routes.draw do
 
   scope ':account' do
     resources :conversations
-    # get 'archive' => 'conversations/archived#index', as: 'archived_conversations'
     resources :archive,
               only: [:index, :show, :update],
               controller: 'conversations/archived',
