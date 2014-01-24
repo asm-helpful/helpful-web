@@ -5,6 +5,10 @@
       <i class="icon-inbox icon-xlarge"></i>
   <% end %>
 
+  <%= link_to archived_conversations_path(@account), :class => 'text-weak' do %>
+      <i class="icon-archive icon-xlarge"></i>
+  <% end %>
+
   <% if current_user.primary_owned_account -%>
     <a href="<%= edit_account_path %>" class="text-weak">
       <i class="icon-settings icon-xlarge"></i>
