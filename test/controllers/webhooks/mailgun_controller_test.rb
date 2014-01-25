@@ -3,15 +3,21 @@ require 'openssl'
 
 describe Webhooks::MailgunController do
 
-  def post_webhook(args = {})
-    post :create, default_body.merge(args)
+  def account
+    @account ||= FactoryGirl.create(:account)
   end
 
+  def post_webhook(args = {})
+    post(:create, default_body.merge(args))
+  end
+
+  def find_message_from_response
+    message_id = JSON.parse(response.body)['id']
+    Message.find(message_id)
+  end
 
   # Construct the default request body including a signature
   def default_body
-    account = FactoryGirl.create(:account)
-
     {
       from:             "test@test.com",
       subject:          "test email",
@@ -27,9 +33,8 @@ describe Webhooks::MailgunController do
     }.merge(generate_signature)
   end
 
+  # The Mailgun API only uses timestamp and token as the inputs to HMAC.
   def generate_signature
-    # The mailgun API only uses timestamp and token as the inputs to HMAC.
-
     api_key   = "key-bb8ef21a0c161b2f9b0950fee7a52ab1"
     timestamp = Time.now.utc.to_i
     token     = "3fb7496d2e8761c4ca99e2b8265df4df61ba886dc27224a9b2"
@@ -37,7 +42,8 @@ describe Webhooks::MailgunController do
     signature = OpenSSL::HMAC.hexdigest(
       OpenSSL::Digest.new('sha256'),
       api_key,
-      '%s%s' % [timestamp, token])
+      '%s%s' % [timestamp, token]
+    )
 
     ENV['MAILGUN_API_KEY'] = api_key
 
@@ -58,7 +64,7 @@ describe Webhooks::MailgunController do
   describe "#create" do
     describe "valid webhook" do
       it "creates a new email message" do
-        assert_difference("Messages::Email.count") do
+        assert_difference(->{ Message.count }, 1) do
           post_webhook
         end
       end
@@ -70,34 +76,42 @@ describe Webhooks::MailgunController do
 
       it "persists the correct content" do
         content = "This is a test email.\n Thanks."
-        post_webhook('stripped-text' => content, 'body-plain' => 'Other Text')
-        assert_equal content, Messages::Email.last.content
+        post_webhook(
+          'stripped-text' => content,
+          'body-plain' => 'Other Text'
+        )
+        message = find_message_from_response
+
+        assert_equal content, message.content
       end
 
       it "associates the message with the correct person" do
         email = "test-person@example.com"
         post_webhook(from: email)
-        assert_equal email, Messages::Email.last.person.email
+        message = find_message_from_response
+        assert_equal email, message.person.email
       end
 
       it "associates the message with the correct person" do
         email = "test-person@example.com"
         person = FactoryGirl.create(:person, email: email)
-
         post_webhook(from: email)
-        assert_equal person, Messages::Email.last.person
+        message = find_message_from_response
+        assert_equal person, message.person
       end
 
       it "associates the message with the correct account" do
         account = create(:account)
         post_webhook(recipient: "#{account.slug}@helpful.io")
-        assert_equal account, Messages::Email.last.account
+        message = find_message_from_response
+        assert_equal account, message.account
       end
 
       it "associates the message with the correct conversation" do
         conversation = create(:conversation)
         post_webhook(recipient: conversation.mailbox.to_s)
-        assert_equal conversation, Messages::Email.last.conversation
+        message = find_message_from_response
+        assert_equal conversation, message.conversation
       end
     end
 

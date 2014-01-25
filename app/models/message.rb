@@ -12,6 +12,8 @@ class Message < ActiveRecord::Base
 
   delegate :account, :to => :conversation
 
+  store_accessor :data, :recipient, :headers, :raw, :body
+
   validates :person,       presence: true
   validates :conversation, presence: true
   validates :content,      presence: {

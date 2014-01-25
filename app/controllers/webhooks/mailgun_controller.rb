@@ -21,7 +21,6 @@ class Webhooks::MailgunController < ApplicationController
     @person = Person.find_or_create_by(email: params.fetch(:from))
 
     @message = @conversation.messages.new(
-      type:       'Messages::Email',
       person:     @person,
       recipient:  params.fetch(:recipient),
       content:    params.fetch('stripped-text'),
@@ -37,9 +36,9 @@ class Webhooks::MailgunController < ApplicationController
         @message.attachments.create(file: attachment)
         logger.info "Added attachment to message"
       end
-      head :accepted
+      render :status => :accepted, json: {id: @message.id}
     else
-      render status: :not_acceptable, json: @message.errors
+      render :status => :not_acceptable, json: @message.errors
     end
   end
 
