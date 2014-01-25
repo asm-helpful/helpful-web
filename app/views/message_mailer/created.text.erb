@@ -1,6 +1,3 @@
-A new message was added to your support request:
-===============================================
-
 <%= word_wrap(@message.content).gsub(/\n/, "\n>") %>
 Posted <%= time_ago_in_words(@message.created_at) %> ago by <%= nickname(@message.person) %>
 
@@ -10,3 +7,6 @@ Conversation history
   <%= word_wrap(message.content).gsub(/\n/, "\n>") %>
   Posted <%= time_ago_in_words(message.created_at) %> ago by <%= nickname(message.person) %>
 <% end %>
+
+--
+Reply to this email to continue the conversation.

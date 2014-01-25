@@ -32,6 +32,14 @@ class Conversation < ActiveRecord::Base
   scope :archived, -> { where(status: STATUS_ARCHIVED) }
   scope :most_stale, -> { joins(:messages).order('messages.updated_at ASC') }
 
+  def mailing_list
+    if assigned?
+      participants + [agent.person]
+    else
+      participants + account.people
+    end
+  end
+
   def ordered_messages
     messages.order(:created_at => :asc)
   end
