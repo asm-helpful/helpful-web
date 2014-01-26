@@ -128,7 +128,7 @@ describe Conversation do
   describe "#most_recent_message" do
     it "returns the most recently updated message" do
       @conversation.save
-      old_message = FactoryGirl.create(:message, conversation: @conversation, updated_at: 10.minutes.ago)
+      _old_message = FactoryGirl.create(:message, conversation: @conversation, updated_at: 10.minutes.ago)
       new_message = FactoryGirl.create(:message, conversation: @conversation, updated_at: 1.minute.ago)
 
       assert_equal @conversation.most_recent_message, new_message
@@ -144,6 +144,22 @@ describe Conversation do
     it "returns false if an agent has not been assigned" do
       @conversation.agent = nil
       refute @conversation.assigned?
+    end
+  end
+
+  describe "#mailing_list" do
+    it "includes the agent if assigned" do
+      user = FactoryGirl.create(:user)
+      @conversation.agent = user
+      assert @conversation.mailing_list.include?(user.person)
+    end
+
+    it "includes the team if not assigned" do
+      @conversation.agent = nil
+      account = FactoryGirl.create(:account_with_users)
+      account.people.each do |person|
+        assert @conversation.mailing_list.include? person
+      end
     end
   end
 end

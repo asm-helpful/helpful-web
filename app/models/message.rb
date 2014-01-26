@@ -72,7 +72,7 @@ class Message < ActiveRecord::Base
   end
 
   def mail_recipients
-    conversation.participants - [person]
+    conversation.mailing_list - [person]
   end
 
   # Public: Create a read receipt for this message.
