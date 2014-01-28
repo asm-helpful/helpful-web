@@ -3,7 +3,9 @@ window.Helpful =
   Collections: {}
   Views: {}
   Routers: {}
-  initialize: -> alert 'Hello from Backbone!'
+  initialize: ->
+    new Helpful.Routers.Conversations()
+    Backbone.history.start(pushState: true)
 
 $(document).ready ->
   Helpful.initialize()

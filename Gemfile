@@ -14,11 +14,13 @@ gem 'curb'
 gem 'devise', '~> 3.1'
 gem 'devise_invitable', '~> 1.3'
 gem 'doorkeeper'
+gem 'eco'
 gem 'fog', '>=1.19.0'
 gem 'friendly_id', '~> 5.0'
 gem 'elasticsearch', '~> 0.4.1'
 gem 'jquery-rails'
 gem 'mail_view', '~> 1.0.3'
+gem 'rails-assets-momentjs'
 gem 'oauth2'
 gem 'pg'
 gem 'puma'
@@ -35,6 +37,8 @@ gem 'stringex'
 gem 'unf'
 
 group :development do
+  gem 'better_errors', '>= 0.7.2'
+  gem 'binding_of_caller', '>= 0.7.1'
   gem 'rest-client', require: false
   gem 'multimap', require: false
   gem 'quiet_assets'

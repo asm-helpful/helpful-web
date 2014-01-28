@@ -1,0 +1,17 @@
+<a href="conversation_path(conversation.account, conversation)" class="conversation-row">
+
+  <input type="checkbox" />
+
+  <div class="time updated most_recent_message_class(conversation)">
+    <%= moment(@conversation.get('updated')).fromNow() %>
+  </div>
+
+  <div class="summary"><%= @conversation.get('messages')[0].content %></div>
+
+  <div class="meta">
+    person_id
+    <span class="meta-divider"></span>
+    <%= @conversation.get('messages').length %> messages
+  </div>
+
+</a>

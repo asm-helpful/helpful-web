@@ -2,6 +2,7 @@ class WebhookSerializer < ActiveModel::HalSerializer
   attributes :id
   attributes :account_id, :event, :body, :signature
   attributes :response
+
   include TimestampedSerializer
 
   link :self do |webhook|
