@@ -1,0 +1,42 @@
+@import 'bourbon';
+@import 'variables';
+@import 'mixins';
+
+body {
+  font-family: $font-body;
+}
+
+td.header, td.content {
+  padding: 20px;
+}
+
+td.header {
+  img {
+    width: 50px;
+  }
+}
+
+td.content {
+  border: 3px solid $light-gray;
+}
+
+hr {
+  border: 0;
+  border-bottom: 2px solid $light-gray;
+}
+
+p {
+  color: $light-gray;
+}
+
+strong, h1 {
+  color: $black;
+}
+
+strong {
+  font-weight: normal;
+}
+
+a {
+  color: $blue;
+}
