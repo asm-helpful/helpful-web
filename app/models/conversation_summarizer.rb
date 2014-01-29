@@ -10,6 +10,10 @@ class ConversationSummarizer
   end
 
   def summary
+    @conversation.subject || tweet_sized_snippet_from_first_message
+  end
+
+  def tweet_sized_snippet_from_first_message
     @conversation.messages.first.content[0...LENGTH]
   end
 

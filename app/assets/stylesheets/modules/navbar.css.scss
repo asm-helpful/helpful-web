@@ -1,4 +1,5 @@
 .navbar {
+  position: static;
   text-align: center;
 
   a {
@@ -10,4 +11,9 @@
       color: $muted;
     }
   }
+}
+
+.navbar-secondary {
+  position: absolute;
+  bottom: 0;
 }

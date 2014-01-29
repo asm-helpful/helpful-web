@@ -1,11 +1,11 @@
-class ConversationsController < ApplicationController
+class Conversations::ArchivedController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_account
   before_action :find_account
 
   def index
-    inbox = ConversationsInbox.new(@account, params[:q])
-    @conversations = inbox.conversations
+    archive = ConversationsArchive.new(@account, params[:q])
+    @conversations = archive.conversations
     @conversation = @conversations.first
 
     # If there was a query (q) passed, use it for the search field value
@@ -14,18 +14,18 @@ class ConversationsController < ApplicationController
     end
 
     if signed_in?
-      if inbox.search?
-        Analytics.track(user_id: current_user.id, event: 'Read Conversations Index')
+      if archive.search?
+        Analytics.track(user_id: current_user.id, event: 'Read Archived Conversations Index')
       else
-        Analytics.track(user_id: current_user.id, event: 'Searched For', properties: { query: inbox.query })
+        Analytics.track(user_id: current_user.id, event: 'Searched For', properties: { query: archive.query })
       end
     end
   end
 
   def show
-    inbox = ConversationsInbox.new(@account)
-    @conversations = inbox.conversations
-    @conversation = inbox.open_conversations.find_by!(number: params.fetch(:id))
+    archive = ConversationsArchive.new(@account)
+    @conversations = archive.conversations
+    @conversation = archive.archived_conversations.find_by!(number: params.fetch(:id))
     ConversationManager.new(@conversation).assign_agent(current_user)
     @conversation_stream = ConversationStream.new(@conversation)
   end
