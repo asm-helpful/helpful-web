@@ -8,6 +8,10 @@
     margin: 20px -30px;
     margin-bottom: 60px;
   }
+  
+  ul {
+    list-style: none;
+  }
 
   .color-swatch {
     @include clearfix;
