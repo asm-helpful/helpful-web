@@ -7,6 +7,7 @@
     <orderEntry type="library" scope="PROVIDED" name="elasticsearch-api (v0.4.1, RVM: ruby-2.1.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="httparty (v0.12.0, RVM: ruby-2.1.0) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="multi_xml (v0.5.5, RVM: ruby-2.1.0) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="redcarpet (v3.0.0, RVM: ruby-2.1.0) [gem]" level="application" />
   </component>
 </module>
 
