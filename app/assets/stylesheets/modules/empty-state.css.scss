@@ -1,0 +1,26 @@
+.empty-state-smiley {
+  background-image: url(inbox-empty-state.png);
+  @include background-size(100%);
+  background-repeat: no-repeat;
+  display: block;
+  height: 60px;
+  margin: 0 auto 1em;
+  width: 60px;
+}
+
+.empty-state-quote {
+  border: none;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+  width: 80%;
+
+  p {
+    color: $muted;
+    font-size: 1.35em;
+  }
+
+  cite {
+    color: rgba($muted, .35);
+  }
+}

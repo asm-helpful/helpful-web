@@ -7,6 +7,13 @@
     <h2 class="column-heading">Inbox</h2>
     <%= render 'conversations/inbox', conversations: @conversations %>
   </div>
+
+  <% if @conversations.empty? %>
+    <div class="column column-detail">
+      <%= render 'conversations/empty' %>
+    </div>
+  <% end %>
+
 </div>
 
 
