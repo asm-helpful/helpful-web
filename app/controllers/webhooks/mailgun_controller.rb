@@ -17,22 +17,28 @@ class Webhooks::MailgunController < ApplicationController
 
     # See comment above. Should use the Concierge
     @conversation = Concierge.new(@account, params).find_conversation
+
     @person = Person.find_or_create_by(email: params.fetch(:from))
 
     @message = @conversation.messages.new(
-      type:       'Messages::Email',
       person:     @person,
       recipient:  params.fetch(:recipient),
-      subject:    params.fetch(:subject),
       content:    params.fetch('stripped-text'),
       body:       params.fetch('body-plain'),
       headers:    JSON.parse(params.fetch('message-headers').to_s)
     )
 
     if @message.save
-      head :accepted
+      count = params['attachment-count'].to_i
+      count.times do |i|
+        attachment = params["attachment-#{i+1}"]
+        #filename = stream.original_filename
+        @message.attachments.create(file: attachment)
+        logger.info "Added attachment to message"
+      end
+      render :status => :accepted, json: {id: @message.id}
     else
-      render status: :not_acceptable, json: @message.errors
+      render :status => :not_acceptable, json: @message.errors
     end
   end
 
@@ -52,7 +58,7 @@ class Webhooks::MailgunController < ApplicationController
   end
 
   def valid_signature?(api_key, token, timestamp, signature)
-    digest = OpenSSL::Digest::Digest.new('sha256')
+    digest = OpenSSL::Digest.new('sha256')
     data = [timestamp, token].join
     signature == OpenSSL::HMAC.hexdigest(digest, api_key, data)
   end

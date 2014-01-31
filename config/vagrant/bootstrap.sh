@@ -8,6 +8,23 @@ log "Updating Aptitude and Installing the Basics"
 apt-get update
 apt-get install curl python-software-properties -y
 
+log "Installing Reqs for UUID"
+add-apt-repository ppa:pitti/postgresql
+apt-get update
+apt-get install postgresql-contrib-9.2 -y
+
+# For whatever reason the files exist in /9.2/extensions but not /extensions. Copying them seems to work.
+sudo cp /usr/share/postgresql/9.2/extension/* /usr/share/postgresql/extension/
+
+# extensions/uuid-ossp.control points to $libdir/uuid-ossp which doesn't appear to exist, so we update it with another file locaiton that does exist.
+sed 's:$libdir/uuid-ossp:/usr/lib/postgresql/9.2/lib/uuid-ossp.so:' < /usr/share/postgresql/extension/uuid-ossp.control > uuid-ossp.control
+sudo mv uuid-ossp.control /usr/share/postgresql/extension/uuid-ossp.control
+
+# Restart postgresql
+sudo /etc/init.d/postgresql restart
+
+
+
 log "Installing and Starting Redis"
 /usr/bin/add-apt-repository ppa:chris-lea/redis-server
 apt-get update

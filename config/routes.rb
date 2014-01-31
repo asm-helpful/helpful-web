@@ -49,7 +49,9 @@ Helpful::Application.routes.draw do
           :via => ["get", "post"],
           :defaults => { :format => 'json' }
 
-   resources :messages, :defaults => { :format => 'json' }
+    resources :messages, :defaults => { :format => 'json' } do
+      resources :attachments, default: {format: 'json'}
+    end
   end
 
   authenticated :user do
@@ -60,5 +62,9 @@ Helpful::Application.routes.draw do
 
   scope ':account' do
     resources :conversations
+    resources :archive,
+              only: [:index, :show, :update],
+              controller: 'conversations/archived',
+              as: 'archived_conversations'
   end
 end

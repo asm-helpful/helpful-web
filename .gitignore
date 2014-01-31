@@ -36,4 +36,5 @@
 # VI swp files
 *.swp
 
-Procfile.dev
+# Uploaded attachments
+/public/uploads

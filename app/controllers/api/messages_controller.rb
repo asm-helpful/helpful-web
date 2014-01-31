@@ -11,8 +11,8 @@ class Api::MessagesController < ApplicationController
   end
 
   def show
-    @message = Message.find(params.fetch(:id))
-    render json: @message
+    @message = Message.includes(:attachments).find(params.fetch(:id))
+    render :json => @message, include: :attachments
   end
 
   def create
@@ -28,6 +28,13 @@ class Api::MessagesController < ApplicationController
     @message = author.compose_message(conversation, params.fetch(:content))
 
     if @message.save
+
+      if !params[:attachment].nil?
+        # TODO: Should handle error here if attachment is not saved? Attachment need a record to be saved so relation can be mapped.
+        @message.attachments.create(file: params.fetch(:attachment))
+        logger.info "Created attachment"
+      end
+
       render :json => @message,
              :status => :created,
              :callback => params[:callback]

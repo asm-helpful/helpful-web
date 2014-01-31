@@ -3,11 +3,22 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;
+  display: inline-block;
 }
 
 .logo-default {
   width: 60px;
   height: 60px;
+}
+
+.logo-s {
+  width: 48px;
+  height: 48px;
+}
+
+.logo-xs {
+  width: 32px;
+  height: 32px;
 }
 
 .logo-wordmark {

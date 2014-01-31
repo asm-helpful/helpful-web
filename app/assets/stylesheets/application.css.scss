@@ -9,11 +9,12 @@
 
 @import 'base/brand',
         'base/colors',
+        'base/fonts',
         'base/grid',
+        'base/icons',
         'base/typography';
 
-@import 'layouts/app',
-        'layouts/home',
+@import 'layouts/home',
         'layouts/signup',
         'layouts/styleguide';
 

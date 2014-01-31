@@ -13,6 +13,11 @@ class Conversation < ActiveRecord::Base
                   ).freeze
 
   belongs_to :account
+
+  belongs_to :agent,
+    class_name: "User",
+    foreign_key: "user_id"
+
   has_many :messages, :after_add => :new_message,
                       :dependent => :destroy
   has_many :notes, :dependent => :destroy
@@ -26,6 +31,14 @@ class Conversation < ActiveRecord::Base
   scope :open, -> { where.not(status: STATUS_ARCHIVED) }
   scope :archived, -> { where(status: STATUS_ARCHIVED) }
   scope :most_stale, -> { joins(:messages).order('messages.updated_at ASC') }
+
+  def mailing_list
+    if assigned?
+      participants + [agent.person]
+    else
+      participants + account.people
+    end
+  end
 
   def ordered_messages
     messages.order(:created_at => :asc)
@@ -101,6 +114,10 @@ class Conversation < ActiveRecord::Base
 
   def most_recent_message
     messages.most_recent.first
+  end
+
+  def assigned?
+    agent.present?
   end
 
   def to_param

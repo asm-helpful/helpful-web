@@ -6,8 +6,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = 'heroku'
-  config.vm.box_url = 'https://dl.dropboxusercontent.com/s/auq7ipsbwgzmp9a/heroku.box'
+  # The box name and SHA should be updated if the box itself changes.
+  config.vm.box = 'vagrant-heroku-38a258277a'
+  config.vm.box_url = 'https://helpful-assets.s3.amazonaws.com/vagrant-boxes/vagrant-heroku-38a258277a.box'
   config.vm.provision :shell, path: 'config/vagrant/bootstrap.sh'
 
   # Create a forwarded port mapping which allows access to a specific port

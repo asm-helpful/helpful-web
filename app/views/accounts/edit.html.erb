@@ -1,82 +1,105 @@
-<div class="column-wrapper l-app">
+<div class="column-wrapper">
   <div class="column column-navbar">
     <%= render 'shared/navbar' %>
   </div>
 
-  <div class="column column-detail">
-    <div class="column-heading">Settings</div>
+  <div class="column column-subnav">
+    <h2 class="column-heading">Settings</h2>
 
-    <p>To try out Helpful website, run this command from your terminal:</p>
+    <h5 class="heading-bar column-heading">Personal Settings</h5>
 
-    <pre>
-      <code>
-        curl -X POST <%= root_url %>api/messages \
-          --data "account=<%= @account.slug %>" \
-          --data "email=user@example.com" \
-          --data "content=I need help please."
-      </code>
-    </pre>
-
-
-    <%= form_for @account, url: account_path, html: {class: 'form'} do |f| %>
-
-      <div class="form-group">
-        <%= f.label :name, 'Company name', class: 'form-label' %>
-        <%= f.text_field :name, autofocus: true, placeholder: 'Acme Corp', class: 'form-control' %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :website_url, 'Website', class: 'form-label' %>
-        <%= f.text_field :website_url, autofocus: true, placeholder: 'https://www.example.com', class: 'form-control' %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :webhook_url, 'Webhook URL', class: 'form-label' %>
-        <%= f.text_field :webhook_url, autofocus: true, placeholder: 'https://www.example.com/webhooks/helpful', class: 'form-control' %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :webhook_secret, "Webhook Secret", class: 'form-label' %>
-        <br />
-        <pre><%= @account.webhook_secret %></pre>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :mailbox, "Incoming e-mail address", class: 'form-label' %>
-        <br />
-        <pre><%= @account.mailbox %></pre>
-      </div>
-
-      <div class="form-actions">
-        <%= f.submit 'Update my account settings', :class => "btn btn-primary" %>
-      </div>
-    <% end %>
-
-    <h2><%= t "devise.invitations.new.header" %></h2>
-
-    <ul>
-      <% @account.memberships.each do |membership| %>
-        <li>
-          <strong><%= membership.user.email %></strong> (<%= membership.role %>)
-          <% if !membership.user.accepted_or_not_invited? %>
-            <small class="bg-highlight">Invitation sent <%= time_ago_in_words(membership.user.invitation_sent_at) %> ago</small>
-          <% end %>
-        </li>
-      <% end %>
+    <ul class="column-navigation">
+      <li>
+        <a href="#" class="text-muted">
+          Your Personal Information <br />
+          <span class="text-weak text-smaller">Name, email, avatar</span>
+        </a>
+      </li>
     </ul>
+  </div>
 
-    <%= form_for @user, :url => invitation_path(:user), :html => {:method => :post} do |f| %>
+  <div class="column column-detail">
 
-    <% User.invite_key_fields.each do |field| -%>
-      <p><%= f.label field %><br />
-      <%= f.text_field field %></p>
-    <% end -%>
-    <p>
-      <%= select_tag :membership_role, options_for_select(Membership::ROLES) %>
-    </p>
+    <header class="column-heading">
+      <h2 class="text-black">Personal Information</h2>
+      <p class="text-weak text-smaller">
+        This is the information that makes you unique inside. Treasure your inner animal.
+      </p>
+    </header>
 
-      <p><%= f.submit t("devise.invitations.new.submit_button") %></p>
-    <% end %>
+    <div class="column-content">
 
+      <p>To try out Helpful website, run this command from your terminal:</p>
+
+      <pre>
+        <code>
+          curl -X POST <%= root_url %>api/messages \
+            --data "account=<%= @account.slug %>" \
+            --data "email=user@example.com" \
+            --data "content=I need help please."
+        </code>
+      </pre>
+
+
+      <%= form_for @account, url: account_path, html: {class: 'form'} do |f| %>
+
+        <div class="form-group">
+          <%= f.label :name, 'Company name', class: 'form-label' %>
+          <%= f.text_field :name, autofocus: true, placeholder: 'Acme Corp', class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :website_url, 'Website', class: 'form-label' %>
+          <%= f.text_field :website_url, autofocus: true, placeholder: 'https://www.example.com', class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :webhook_url, 'Webhook URL', class: 'form-label' %>
+          <%= f.text_field :webhook_url, autofocus: true, placeholder: 'https://www.example.com/webhooks/helpful', class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :webhook_secret, "Webhook Secret", class: 'form-label' %>
+          <br />
+          <pre><%= @account.webhook_secret %></pre>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :mailbox, "Incoming e-mail address", class: 'form-label' %>
+          <br />
+          <pre><%= @account.mailbox %></pre>
+        </div>
+
+        <div class="form-actions">
+          <%= f.submit 'Update my account settings', :class => "btn btn-primary" %>
+        </div>
+      <% end %>
+
+      <h2><%= t "devise.invitations.new.header" %></h2>
+
+      <ul>
+        <% @account.memberships.each do |membership| %>
+          <li>
+            <strong><%= membership.user.email %></strong> (<%= membership.role %>)
+            <% if !membership.user.accepted_or_not_invited? %>
+              <small class="bg-highlight">Invitation sent <%= time_ago_in_words(membership.user.invitation_sent_at) %> ago</small>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+
+      <%= form_for @user, :url => invitation_path(:user), :html => {:method => :post} do |f| %>
+
+      <% User.invite_key_fields.each do |field| -%>
+        <p><%= f.label field %><br />
+        <%= f.text_field field %></p>
+      <% end -%>
+      <p>
+        <%= select_tag :membership_role, options_for_select(Membership::ROLES) %>
+      </p>
+
+        <p><%= f.submit t("devise.invitations.new.submit_button") %></p>
+      <% end %>
+    </div>
   </div>
 </div>

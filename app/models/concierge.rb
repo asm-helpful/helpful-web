@@ -22,6 +22,6 @@ class Concierge
     conversation ||= Conversation.match_mailbox(@params[:recipient])
 
     # If that didn't work, create a new conversation
-    conversation ||= @conversations.create
+    conversation ||= @conversations.create(subject: @params[:subject])
   end
 end

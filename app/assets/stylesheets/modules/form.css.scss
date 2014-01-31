@@ -124,11 +124,10 @@
     margin-left: - (45px + 30px);
   }
 
-  input[type=text] {
+  textarea {
     border: none;
     border-bottom: 1px dotted #CCC;
 
-    font-style: italic;
     font-size: 16px;
 
     padding-top: 10.5px;
@@ -138,6 +137,8 @@
     width: 100%;
 
     outline: none;
+
+    resize: vertical;
   }
 }
 

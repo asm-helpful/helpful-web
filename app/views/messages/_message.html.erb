@@ -4,8 +4,12 @@
   </div>
 
   <div class="content">
-    <%= message.content %>
+    <%== markdown(message.content) %>
   </div>
+
+  <% if message.attachments.count > 0 %>
+    <%= render 'messages/attachments', attachments: message.attachments %>
+  <% end %>
 
   <div class="meta">
     Posted <%= time_ago_in_words(message.updated_at) %> ago

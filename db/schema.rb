@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140107002302) do
+ActiveRecord::Schema.define(version: 20140124224538) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,15 @@ ActiveRecord::Schema.define(version: 20140107002302) do
   add_index "accounts", ["billing_plan_id"], name: "index_accounts_on_billing_plan_id", using: :btree
   add_index "accounts", ["chargify_subscription_id"], name: "index_accounts_on_chargify_subscription_id", using: :btree
   add_index "accounts", ["slug"], name: "index_accounts_on_slug", unique: true, using: :btree
+
+  create_table "attachments", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
+    t.uuid     "message_id",   null: false
+    t.string   "file",         null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "content_type"
+    t.string   "file_size"
+  end
 
   create_table "beta_invites", force: true do |t|
     t.string   "email"
@@ -67,9 +76,12 @@ ActiveRecord::Schema.define(version: 20140107002302) do
     t.datetime "updated_at"
     t.uuid     "account_id",                 null: false
     t.string   "status",     default: "new", null: false
+    t.uuid     "user_id"
+    t.text     "subject"
   end
 
   add_index "conversations", ["account_id"], name: "index_conversations_on_account_id", using: :btree
+  add_index "conversations", ["user_id"], name: "index_conversations_on_user_id", using: :btree
 
   create_table "memberships", id: false, force: true do |t|
     t.uuid     "id",         null: false
@@ -85,7 +97,6 @@ ActiveRecord::Schema.define(version: 20140107002302) do
 
   create_table "messages", id: false, force: true do |t|
     t.uuid     "id",                              null: false
-    t.string   "type"
     t.uuid     "conversation_id",                 null: false
     t.text     "content"
     t.hstore   "data"

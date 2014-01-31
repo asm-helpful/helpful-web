@@ -1,8 +1,9 @@
-<form class="form-search">
+<%= form_tag conversations_path, method: 'get', class: 'form-search' do %>
   <label for="search-query">
-    <input type="search" id="search-query" placeholder="Search Conversations" />
+    <%= search_field_tag :q, @query, placeholder: 'Search conversations',
+      id: 'search-query' %>
   </label>
-</form>
+<% end %>
 
 <div class="list">
   <% conversations.each do |conversation| %>
