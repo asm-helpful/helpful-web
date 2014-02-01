@@ -2,31 +2,30 @@
 @import 'variables';
 @import 'mixins';
 
-body {
+h1, p, a {
   font-family: $font-body;
 }
 
-td.header, td.content {
-  padding: 20px;
-}
-
-td.header {
+table.header {
   img {
     width: 50px;
   }
 }
 
-td.content {
-  border: 3px solid $light-gray;
-}
-
 hr {
   border: 0;
-  border-bottom: 2px solid $light-gray;
+  background-color: transparent;
+  border-bottom: 1px solid $light-gray;
 }
 
 p {
   color: $light-gray;
+}
+
+h1 {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: .5em;
 }
 
 strong, h1 {
