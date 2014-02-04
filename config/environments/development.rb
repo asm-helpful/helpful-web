@@ -27,7 +27,7 @@ Helpful::Application.configure do
   # number of complex assets.
   config.assets.debug = true
 
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { :host => 'localhost:5000' }
 
   ActiveRecord::Base.logger = ActiveSupport::TaggedLogging.new(Logger.new(STDOUT))
 end
