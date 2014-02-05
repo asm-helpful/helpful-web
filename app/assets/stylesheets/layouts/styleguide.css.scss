@@ -9,12 +9,16 @@
     margin-bottom: 60px;
   }
 
+ ul {
+    list-style: none;
+  }
+
   .color-swatch {
     @include clearfix;
     margin: 0;
     padding: 0;
     margin-left: -15px;
-
+  
     > li {
       list-style-type: none;
       float: left;
