@@ -87,17 +87,10 @@ describe Webhooks::MailgunController do
 
       it "associates the message with the correct person" do
         email = "test-person@example.com"
-        post_webhook(from: email)
+        person = FactoryGirl.build(:person, email: email)
+        post_webhook(from: person.email)
         message = find_message_from_response
-        assert_equal email, message.person.email
-      end
-
-      it "associates the message with the correct person" do
-        email = "test-person@example.com"
-        person = FactoryGirl.create(:person, email: email)
-        post_webhook(from: email)
-        message = find_message_from_response
-        assert_equal person, message.person
+        assert_equal person.email, message.person.email
       end
 
       it "associates the message with the correct account" do

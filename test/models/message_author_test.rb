@@ -33,6 +33,15 @@ describe MessageAuthor do
       message = message_author.compose_message(@conversation, @content)
       assert_equal message.person, @person
     end
+
+    it "creates a new message with extra attributes" do
+      message_author = MessageAuthor.new(@account, @email)
+      raw_content = 'raw content'
+      message = message_author.compose_message(@conversation, @content,
+          raw: raw_content
+        )
+      assert_equal message.raw, raw_content
+    end
   end
 
   describe "#person_with_updated_name" do

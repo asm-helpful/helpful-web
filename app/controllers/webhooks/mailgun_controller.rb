@@ -11,34 +11,35 @@ class Webhooks::MailgunController < ApplicationController
   # TODO This method should create a job that posts to the API otherwise it's
   #      duplicating a bunch of logic.
   def create
-    mailgun_params
+    require_mailgun_params!
 
-    @account = Account.match_mailbox!(params.fetch(:recipient))
+    account = Account.match_mailbox!(params.fetch(:recipient))
+    email = Mail::Address.new(params.fetch(:from))
+    author = MessageAuthor.new(account, email)
+    conversation = Concierge.new(account, params).find_conversation
 
-    # See comment above. Should use the Concierge
-    @conversation = Concierge.new(@account, params).find_conversation
-
-    @person = Person.find_or_create_by(email: params.fetch(:from))
-
-    @message = @conversation.messages.new(
-      person:     @person,
-      recipient:  params.fetch(:recipient),
-      content:    params.fetch('stripped-text'),
-      body:       params.fetch('body-plain'),
-      headers:    JSON.parse(params.fetch('message-headers').to_s)
+    message = author.compose_message(
+      conversation,
+      params.fetch('stripped-text'),
+      {
+        recipient: params.fetch(:recipient),
+        body:      params.fetch('body-plain'),
+        headers:   JSON.parse(params.fetch('message-headers').to_s)
+      }
     )
 
-    if @message.save
+    if message.save
       count = params['attachment-count'].to_i
       count.times do |i|
         attachment = params["attachment-#{i+1}"]
         #filename = stream.original_filename
-        @message.attachments.create(file: attachment)
-        logger.info "Added attachment to message"
+        message.attachments.create(file: attachment)
+        # logger.info "Added attachment to message"
       end
-      render :status => :accepted, json: {id: @message.id}
+
+      render :status => :accepted, json: {id: message.id}
     else
-      render :status => :not_acceptable, json: @message.errors
+      render :status => :not_acceptable, json: message.errors
     end
   end
 
@@ -65,7 +66,7 @@ class Webhooks::MailgunController < ApplicationController
 
   private
 
-  def mailgun_params
+  def require_mailgun_params!
     params.require(:from)
     params.require(:recipient)
     params.require('body-plain')
