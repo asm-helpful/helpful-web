@@ -1,0 +1,18 @@
+<<<<<<< HEAD
+x<form class="form-search">
+=======
+<%= form_tag conversations_path, method: 'get', class: 'form-search' do %>
+>>>>>>> 0a1a25999cb1e7e42072255cbcac467d98bfb34a
+  <label for="search-query">
+    <%= search_field_tag :q, @query, placeholder: 'Search conversations',
+      id: 'search-query' %>
+  </label>
+<% end %>
+
+<div class="list">
+  <% conversations.each do |conversation| %>
+    <div class="list-item">
+      <%= render 'conversations/row', conversation: conversation %>
+    </div>
+  <% end %>
+</div>
