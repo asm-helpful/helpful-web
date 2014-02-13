@@ -40,5 +40,8 @@ module Helpful
     config.assets.precompile << 'embed.css'
     config.assets.precompile << 'embed.js'
 
+    config.to_prepare do
+      Devise::Mailer.layout "email"
+    end
   end
 end
