@@ -31,7 +31,7 @@ Helpful::Application.routes.draw do
   end
 
   resource :beta_invites, only: [:create]
-  resource :account, only: [:new, :create, :edit, :update]
+  resource :account, only: [:new, :create]
   resource :billing, only: [:show] do
     get :return
   end
@@ -66,5 +66,11 @@ Helpful::Application.routes.draw do
               only: [:index, :show, :update],
               controller: 'conversations/archived',
               as: 'archived_conversations'
+  end
+
+  namespace 'settings' do
+    resource :personal, only: [:edit, :update], controller: 'personal'
+    resource :admin, only: [:edit, :update], controller: 'admin'
+    resource :payment, only: [:edit, :update]
   end
 end
