@@ -60,6 +60,8 @@ Helpful::Application.routes.draw do
   root to: 'pages#home'
 
   scope ':account' do
+    get '/' => redirect('/%{account}/conversations')
+
     resources :conversations
     resources :archive,
               only: [:index, :show, :update],

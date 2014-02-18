@@ -1,7 +1,6 @@
 class ConversationsController < ApplicationController
   before_action :authenticate_user!
-  before_action :ensure_account
-  before_action :find_account
+  before_action :find_account!
 
   def index
     inbox = ConversationsInbox.new(@account, params[:q])
@@ -43,13 +42,7 @@ class ConversationsController < ApplicationController
 
   protected
 
-  def ensure_account
-    if signed_in? && params[:account].blank?
-      redirect_to conversations_path(current_account)
-    end
-  end
-
-  def find_account
+  def find_account!
     @account = Account.find_by_slug!(params.fetch(:account))
   end
 
@@ -58,4 +51,5 @@ class ConversationsController < ApplicationController
   def conversation_params
     params.require(:conversation).permit(:archive, :id)
   end
+
 end
