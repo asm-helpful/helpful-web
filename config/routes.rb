@@ -48,7 +48,7 @@ Helpful::Application.routes.draw do
   end
 
   authenticated :user do
-    root :to => 'conversations#index', :as => 'authenticated_root'
+    root :to => 'dashboard#show', :as => 'authenticated_root'
   end
 
   root to: 'pages#home'
