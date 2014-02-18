@@ -5,7 +5,7 @@ class BillingsController < ApplicationController
   skip_before_filter :verify_authenticity_token, only: [:webhook]
 
   def show
-    @account = current_user.primary_owned_account
+    @account = Account.find_by_slug!(params.fetch(:account_id))
   end
 
   # Receives a user after they've returned from signing up at Chargify

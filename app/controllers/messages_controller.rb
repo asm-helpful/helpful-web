@@ -2,6 +2,8 @@ class MessagesController < ApplicationController
   before_action :authenticate_user!, :only => [:create]
 
   def create
+    find_account!
+
     @message = Message.new(message_params)
     conversation = Conversation.find(message_params['conversation_id'])
 
@@ -14,9 +16,9 @@ class MessagesController < ApplicationController
 
       if params['commit'] == "Send & Archive"
         conversation.archive
-        redirect_to conversations_path(current_account)
+        redirect_to inbox_account_conversations_path(@account)
       else
-        redirect_to conversation_path(current_account, @message.conversation)
+        redirect_to account_conversation_path(@account, @message.conversation)
       end
 
 
@@ -24,6 +26,12 @@ class MessagesController < ApplicationController
       Analytics.track(user_id: current_user.id, event: 'Message Save Problem')
       redirect_to conversation_path(current_account, @message.conversation), alert: "Problem"
     end
+  end
+
+  private
+
+  def find_account!
+    @account = Account.find_by_slug!(params.fetch(:account_id))
   end
 
   def message_params

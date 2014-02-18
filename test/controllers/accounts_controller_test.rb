@@ -22,7 +22,7 @@ describe AccountsController do
       }
     }
 
-    assert_redirected_to root_path
+    assert_redirected_to inbox_account_conversations_path('mycompany')
   end
 
   test "PATCH update" do
@@ -31,13 +31,12 @@ describe AccountsController do
     @account = m.account
     sign_in(m.user)
 
-    patch :update, {
+    patch :update, id: @account.slug,
       account: {
         name: 'MyCompany2'
       }
-    }
 
-    assert_redirected_to edit_account_url
+    assert_redirected_to edit_account_url(@account)
     assert_equal 'MyCompany2', @account.reload.name
   end
 

@@ -1,4 +1,4 @@
-<%= form_tag conversations_path, method: 'get', class: 'form-search' do %>
+<%= form_tag search_account_conversations_path(@account), method: 'get', class: 'form-search' do %>
   <label for="search-query">
     <%= search_field_tag :q, @query, placeholder: 'Search conversations',
       id: 'search-query' %>

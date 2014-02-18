@@ -31,12 +31,6 @@ Helpful::Application.routes.draw do
   end
 
   resource :beta_invites, only: [:create]
-  resource :account, only: [:new, :create, :edit, :update]
-  resource :billing, only: [:show] do
-    get :return
-  end
-
-  resources :messages
 
   namespace :webhooks do
     resources :mailgun, only: :create
@@ -59,13 +53,21 @@ Helpful::Application.routes.draw do
 
   root to: 'pages#home'
 
-  scope ':account' do
-    get '/' => redirect('/%{account}/conversations')
+  resources :accounts, only: [:new, :create, :show, :edit, :update]
 
-    resources :conversations
-    resources :archive,
-              only: [:index, :show, :update],
-              controller: 'conversations/archived',
-              as: 'archived_conversations'
+  get '/:account_id' => redirect('/%{account_id}/inbox')
+
+  scope '/:account_id', as: :account do
+    resource :billing, only: [:show] do
+      get :return
+    end
+
+    resources :messages, only: [:create]
+    resources :conversations, path: '/', except: [:index, :new, :create, :edit, :destroy] do
+      get :archived, on: :collection
+      get :inbox, on: :collection
+      get :search, on: :collection
+    end
   end
+
 end
