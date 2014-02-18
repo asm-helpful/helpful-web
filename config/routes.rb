@@ -44,13 +44,12 @@ Helpful::Application.routes.draw do
 
   post 'webhooks/chargify' => 'billings#webhook', :as => :webhook_billing
 
-  namespace :api do
-    match 'messages/create' => 'messages#create',
-          :via => ["get", "post"],
-          :defaults => { :format => 'json' }
+  EXCLUDED_API_METHODS = [:new, :edit, :destroy]
 
-    resources :messages, :defaults => { :format => 'json' } do
-      resources :attachments, default: {format: 'json'}
+  namespace :api, format: 'json' do
+    resources :conversations, except: EXCLUDED_API_METHODS
+    resources :messages, except: EXCLUDED_API_METHODS do
+      resources :attachments, shallow: true, except: EXCLUDED_API_METHODS
     end
   end
 
