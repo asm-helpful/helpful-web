@@ -39,23 +39,6 @@ class AccountsController < ApplicationController
     end
   end
 
-  def edit
-    @account = current_user.primary_owned_account
-    @user = @account.users.new
-  end
-
-  def update
-    @account = current_user.primary_owned_account
-
-    respond_to do |format|
-      if @account.update_attributes(account_params)
-        format.html { redirect_to edit_account_url, notice: "Account settings updated" }
-      else
-        format.html { render 'edit' }
-      end
-    end
-  end
-
   private
 
   def account_params
