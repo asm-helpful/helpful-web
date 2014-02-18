@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
 
   has_many :oauth_applications, class_name: 'Doorkeeper::Application', as: :owner
 
-  validates :username, uniqueness: { case_sensitive: false }
+  accepts_nested_attributes_for :person
 
   # Returns the first owned account
   # Later we need to better support a user who owns multiple accounts (or is a member of multiple accounts)
