@@ -31,12 +31,6 @@ Helpful::Application.routes.draw do
   end
 
   resource :beta_invites, only: [:create]
-  resource :account, only: [:new, :create]
-  resource :billing, only: [:show] do
-    get :return
-  end
-
-  resources :messages
 
   namespace :webhooks do
     resources :mailgun, only: :create
@@ -44,33 +38,42 @@ Helpful::Application.routes.draw do
 
   post 'webhooks/chargify' => 'billings#webhook', :as => :webhook_billing
 
-  namespace :api do
-    match 'messages/create' => 'messages#create',
-          :via => ["get", "post"],
-          :defaults => { :format => 'json' }
+  EXCLUDED_API_METHODS = [:new, :edit, :destroy]
 
-    resources :messages, :defaults => { :format => 'json' } do
-      resources :attachments, default: {format: 'json'}
+  namespace :api, format: 'json' do
+    resources :conversations, except: EXCLUDED_API_METHODS
+    resources :messages, except: EXCLUDED_API_METHODS do
+      resources :attachments, shallow: true, except: EXCLUDED_API_METHODS
     end
   end
 
   authenticated :user do
-    root :to => 'conversations#index', :as => 'authenticated_root'
+    root :to => 'dashboard#show', :as => 'authenticated_root'
   end
 
   root to: 'pages#home'
 
-  scope ':account' do
-    resources :conversations
-    resources :archive,
-              only: [:index, :show, :update],
-              controller: 'conversations/archived',
-              as: 'archived_conversations'
-  end
+  resources :accounts, only: [:new, :create, :show, :edit, :update]
 
   namespace 'settings' do
     resource :personal, only: [:edit, :update], controller: 'personal'
     resource :admin, only: [:edit, :update], controller: 'admin'
     resource :payment, only: [:edit, :update]
   end
+
+  get '/:account_id' => redirect('/%{account_id}/inbox')
+
+  scope '/:account_id', as: :account do
+    resource :billing, only: [:show] do
+      get :return
+    end
+
+    resources :messages, only: [:create]
+    resources :conversations, path: '/', except: [:index, :new, :create, :edit, :destroy] do
+      get :archived, on: :collection
+      get :inbox, on: :collection
+      get :search, on: :collection
+    end
+  end
+
 end

@@ -21,6 +21,7 @@ describe AccountsController do
       }
     }
 
-    assert_redirected_to root_path
+    assert_redirected_to inbox_account_conversations_path('mycompany')
   end
+
 end

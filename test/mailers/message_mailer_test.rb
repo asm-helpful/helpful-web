@@ -25,8 +25,8 @@ describe MessageMailer, :created do
 
   it "has the correct reply_to display_name" do
     email = MessageMailer.created(@message.id, @recipient.id)
-    assert_equal @message.conversation.mailbox.to_s,
-      email[:reply_to].addrs.first.to_s
+    assert_equal @message.person.name,
+      email[:reply_to].addrs.first.display_name.to_s
   end
 
   it "has the correct from address" do
@@ -36,6 +36,7 @@ describe MessageMailer, :created do
 
   it "has the correct from display_name" do
     email = MessageMailer.created(@message.id, @recipient.id)
-    assert_equal @message.account.mailbox.to_s, email[:from].addrs.first.to_s
+    assert_equal @message.person.name,
+      email[:from].addrs.first.display_name.to_s
   end
 end

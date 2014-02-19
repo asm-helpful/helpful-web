@@ -9,12 +9,12 @@ describe ConversationsController, :index do
   end
 
   test "finds the account" do
-    get :index, account: @conversation.account.slug
+    get :inbox, account_id: @conversation.account.slug
     assert_not_nil assigns(:account)
   end
 
-  test "renders the accounts conversations" do
-    get :index, account: @conversation.account.slug
+  test "renders the accounts inbox" do
+    get :inbox, account_id: @conversation.account.slug
     assert_response :success
     assert_not_nil assigns(:conversations)
   end
@@ -22,7 +22,7 @@ describe ConversationsController, :index do
   test "assigns an agent to an unread conversation" do
     get :show,
       id: @conversation.number,
-      account: @conversation.account.slug
+      account_id: @conversation.account.slug
 
     assert_response :success
     assert_equal @conversation.reload.agent, @current_user

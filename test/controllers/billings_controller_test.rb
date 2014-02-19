@@ -4,7 +4,7 @@ require 'openssl'
 describe BillingsController do
   test "GET show" do
     sign_in_as_admin
-    get :show
+    get :show, account_id: @account.slug
     assert_response :success
   end
 

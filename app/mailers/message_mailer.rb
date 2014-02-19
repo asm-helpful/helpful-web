@@ -16,9 +16,16 @@ class MessageMailer < ActionMailer::Base
 
     subject = summary(@conversation)
 
+    from = @message.account.mailbox
+    reply_to = @conversation.mailbox
+    # Override the default display name with the name of the person who sent
+    # the message.
+    from.display_name = @message.person.name
+    reply_to.display_name = @message.person.name
+
     mail to: @recipient.email,
-         from: @message.account.mailbox,
-         reply_to: @conversation.mailbox,
+         from: from,
+         reply_to: reply_to,
          subject: "[#{@message.account.slug}] #{subject}"
   end
 end

@@ -1,20 +1,18 @@
 <div class="navbar">
   <%= avatar(current_user, 61) %>
 
-  <%= link_to conversations_path(@account), :class => 'text-weak' do %>
+  <%= link_to inbox_account_conversations_path(@account), :class => 'text-weak' do %>
       <i class="icon-inbox icon-xlarge"></i>
   <% end %>
 
-  <%= link_to archived_conversations_path(@account), :class => 'text-weak' do %>
+  <%= link_to archived_account_conversations_path(@account), :class => 'text-weak' do %>
       <i class="icon-archive icon-xlarge"></i>
   <% end %>
 
   <div class="navbar-secondary">
-    <% if current_user.primary_owned_account -%>
-      <a href="<%= edit_settings_personal_path %>" class="text-weak">
-        <i class="icon-settings icon-xlarge"></i>
-      </a>
-    <% end -%>
+    <a href="<%= edit_settings_personal_path %>" class="text-weak">
+      <i class="icon-settings icon-xlarge"></i>
+    </a>
 
     <a class="logo logo-xs" href="mailto:helpful@helpful.io"></a>
     <%= link_to 'Logout', destroy_user_session_path, :method => :delete, :class => 'text-smaller text-weak' %>

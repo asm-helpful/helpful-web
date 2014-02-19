@@ -2,7 +2,7 @@
 
   <div class="conversation-heading">
     <div class="actions">
-      <%= button_to 'Archive', { action: :update, id: @conversation.id, :conversation => { :archive => true } }, :method => :put, data: { confirm: "Are you sure?" }, remote: true, class: ['btn', 'btn-success'], form: { id: 'archive', 'data-type' => 'json' } %>
+      <%= button_to 'Archive', account_conversation_path(@account, @conversation, conversation: {archive: true}), method: :patch, data: { confirm: "Are you sure?" }, class: %w(btn btn-success), form: { id: 'archive' } %>
       <script>
         $(document).ready(function(){
           $('#archive')
@@ -45,7 +45,7 @@
     <div class="conversation-stream">
       <div class="conversation-stream-item">
 
-        <%= form_tag messages_path, method: 'post', class: 'form-reply' do %>
+        <%= form_tag account_messages_path(@account), method: 'post', class: 'form-reply' do %>
           <%= hidden_field :message, :conversation_id, value: conversation.id %>
 
           <div class="person conversation-stream-item-person">

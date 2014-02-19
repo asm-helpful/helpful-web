@@ -1,11 +1,26 @@
 class ConversationsController < ApplicationController
-  before_action :authenticate_user!
-  before_action :ensure_account
-  before_action :find_account
 
-  def index
+  before_action :authenticate_user!
+  before_action :find_account!
+
+  def archived
+    archive = ConversationsArchive.new(@account, params[:q])
+    @conversations = archive.conversations
+    @conversation = @conversations.first
+
+    Analytics.track(user_id: current_user.id, event: 'Read Archived Conversations Index')
+  end
+
+  def inbox
     inbox = ConversationsInbox.new(@account, params[:q])
     @conversations = inbox.conversations
+    @conversation = @conversations.first
+    Analytics.track(user_id: current_user.id, event: 'Read Conversations Index')
+  end
+
+  def search
+    archive = ConversationsArchive.new(@account, params[:q])
+    @conversations = archive.conversations
     @conversation = @conversations.first
 
     # If there was a query (q) passed, use it for the search field value
@@ -13,49 +28,33 @@ class ConversationsController < ApplicationController
       @query = params[:q]
     end
 
-    if signed_in?
-      if inbox.search?
-        Analytics.track(user_id: current_user.id, event: 'Read Conversations Index')
-      else
-        Analytics.track(user_id: current_user.id, event: 'Searched For', properties: { query: inbox.query })
-      end
-    end
+    Analytics.track(user_id: current_user.id, event: 'Searched For', properties: { query: archive.query })
   end
 
   def show
-    inbox = ConversationsInbox.new(@account)
-    @conversations = inbox.conversations
-    @conversation = inbox.open_conversations.find_by!(number: params.fetch(:id))
+    find_conversation!
     ConversationManager.new(@conversation).assign_agent(current_user)
     @conversation_stream = ConversationStream.new(@conversation)
   end
 
   def update
-    @conversation = Conversation.find(params[:id])
-    respond_to do |format|
-      if @conversation.update_attributes(conversation_params)
-        format.json { head :no_content }
-      else
-        format.json { render json: @conversation.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  protected
-
-  def ensure_account
-    if signed_in? && params[:account].blank?
-      redirect_to conversations_path(current_account)
-    end
-  end
-
-  def find_account
-    @account = Account.find_by_slug!(params.fetch(:account))
+    find_conversation!
+    @conversation.update_attributes(conversation_params)
+    redirect_to account_conversation_path(@account, @conversation)
   end
 
   private
 
+  def find_conversation!
+    @conversation = @account.conversations.find_by!(number: params.fetch(:id))
+  end
+
+  def find_account!
+    @account = Account.friendly.find(params.fetch(:account_id))
+  end
+
   def conversation_params
     params.require(:conversation).permit(:archive, :id)
   end
+
 end

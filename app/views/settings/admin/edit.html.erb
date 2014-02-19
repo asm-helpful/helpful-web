@@ -58,7 +58,7 @@
       </pre>
 
 
-      <%= form_for @account, url: account_path, html: {class: 'form'} do |f| %>
+      <%= form_for @account, url: settings_admin_path, method: :patch, html: {class: 'form'} do |f| %>
 
         <div class="form-group">
           <%= f.label :name, 'Company name', class: 'form-label' %>
