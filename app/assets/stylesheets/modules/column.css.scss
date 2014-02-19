@@ -22,9 +22,11 @@
 }
 
 .column-subnav {
-  padding-top: 18px;
   padding-left: 64px;
   width: 400px;
+  h2 {
+    margin-top: 18px;
+  }
 }
 
 .column-heading {

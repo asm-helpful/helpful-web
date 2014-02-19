@@ -14,7 +14,7 @@ class Webhooks::MailgunController < ApplicationController
     require_mailgun_params!
 
     account = Account.match_mailbox!(params.fetch(:recipient))
-    email = Mail::Address.new(params.fetch(:from))
+    email = Mail::Address.new(params.fetch(:from).to_ascii)
     author = MessageAuthor.new(account, email)
     conversation = Concierge.new(account, params).find_conversation
 
