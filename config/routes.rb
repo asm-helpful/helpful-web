@@ -7,8 +7,6 @@ Helpful::Application.routes.draw do
   if Rails.env.development?
     require 'sidekiq/web'
     mount Sidekiq::Web, at: "/sidekiq"
-    mount MessageMailerPreview, at: '/mail_view'
-    mount DeviseMailerPreview, at: '/devise_mail_view'
   end
 
   get '/embed.js' => 'pages#embed', :as => :embed

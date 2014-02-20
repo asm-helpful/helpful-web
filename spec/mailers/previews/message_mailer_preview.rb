@@ -1,7 +1,7 @@
-class MessageMailerPreview < MailView
+class MessageMailerPreview < ActionMailer::Preview
 
   def created
-    message = Message.first
+    message = Message.last
     recipient = Person.first
     MessageMailer.created(message.id, recipient.id)
   end

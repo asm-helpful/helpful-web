@@ -44,7 +44,7 @@ class Account < ActiveRecord::Base
 
     email.display_name = name
 
-    return email
+    email
   end
 
   # Public: Given an email address try to match to an account.

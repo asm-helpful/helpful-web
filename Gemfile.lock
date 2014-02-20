@@ -119,8 +119,6 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    mail_view (1.0.3)
-      tilt
     mime-types (1.25.1)
     mini_portile (0.5.2)
     minitest (5.2.3)
@@ -279,7 +277,6 @@ DEPENDENCIES
   ffaker (~> 1.20)
   friendly_id (~> 5.0)
   jquery-rails
-  mail_view (~> 1.0.3)
   multimap
   oauth2
   pg

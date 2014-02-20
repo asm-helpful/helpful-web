@@ -23,6 +23,7 @@ module Helpful
       g.test_framework :rspec, spec: true, fixture: false
     end
 
+    config.action_mailer.preview_path = Rails.root.join('spec', 'mailers', 'previews')
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.

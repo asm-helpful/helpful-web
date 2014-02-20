@@ -1,8 +1,6 @@
 class MessageMailer < ActionMailer::Base
   include SummaryHelper
-  helper :avatar, :nickname, :markdown
-
-  layout 'email'
+  include NicknameHelper
 
   # Public: Triggered on Message create
   #
@@ -12,20 +10,31 @@ class MessageMailer < ActionMailer::Base
     @recipient = Person.find(recipient_id)
 
     @conversation = @message.conversation
-    @previous_messages = @conversation.messages - [@message]
+    @account = @conversation.account
 
     subject = summary(@conversation)
 
-    from = @message.account.mailbox
-    reply_to = @conversation.mailbox
-    # Override the default display name with the name of the person who sent
-    # the message.
-    from.display_name = @message.person.name
-    reply_to.display_name = @message.person.name
+    to = Mail::Address.new(@recipient.email)
+    to.display_name = @recipient.name
 
-    mail to: @recipient.email,
+    from = Mail::Address.new(
+      "notifications@#{Helpful.incoming_email_domain}"
+    )
+    from.display_name = nickname(@message.person)
+
+    reply_to = @conversation.mailbox.dup
+
+    headers(
+      'List-ID' => "#{@account.slug}##{@conversation.number} <#{@conversation.number}.#{@account.slug}.helpful.io",
+      'List-Archive' => account_conversation_url(@account, @conversation),
+      'List-Post' => "<mailto:#{reply_to}>"
+      # TODO List Unsubscribe
+    )
+
+    mail to: to,
+         # FIXME: CC recipient instead
          from: from,
          reply_to: reply_to,
-         subject: "[#{@message.account.slug}] #{subject}"
+         subject: subject
   end
 end
