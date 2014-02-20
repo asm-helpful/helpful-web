@@ -1,16 +1,23 @@
 language: ruby
-bundler_args: --without development production autotest
+bundler_args: "--without development production autotest"
 rvm:
-  - 2.1.0
-
+- 2.1.0
 before_install:
-  - gem install bundler -v '>= 1.5.1'
-
+- gem install bundler -v '>= 1.5.1'
 before_script:
-  - gem install foreman
-  - cp .env.example .env
-
-  - cp config/database.yml.example config/database.yml
-  - bin/rake db:create db:migrate RAILS_ENV=test
-
+- gem install foreman
+- cp .env.example .env
+- cp config/database.yml.example config/database.yml
+- bin/rake db:create db:migrate RAILS_ENV=test
 script: foreman run bin/rake
+deploy:
+  provider: heroku
+  api_key:
+    secure: amPyN3WHIef60hgcQxTPFzf4KOnX5ihfiJ7yFxEHe0mOLVYtv6qN+0Ac46hSNJg1qR3ndG8jlVuE36FMwhBaqgdi26pNHnJpv/yfEiqV+7w26M8khF1e4WURbEWun/SoZZZxOU/E/DIGKo1LLOlreH35rjkJMWJjnKD6791aWY0=
+  app: helpful-production
+  on:
+    repo: asm-helpful/helpful-web
+  run:
+    - "rake db:migrate"
+    - restart
+    - "rake cleanup"
