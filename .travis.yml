@@ -10,8 +10,7 @@ before_script:
   - gem install foreman
   - cp .env.example .env
 
-  - psql -c 'create database supportly_test;' -U postgres
   - cp config/database.yml.example config/database.yml
-  - bin/rake db:migrate RAILS_ENV=test
+  - bin/rake db:create db:migrate RAILS_ENV=test
 
-script: foreman run bin/rake rspec
+script: foreman run bin/rake
