@@ -12,6 +12,7 @@ before_script:
 script: foreman run bin/rake
 deploy:
   provider: heroku
+  strategy: git
   api_key:
     secure: amPyN3WHIef60hgcQxTPFzf4KOnX5ihfiJ7yFxEHe0mOLVYtv6qN+0Ac46hSNJg1qR3ndG8jlVuE36FMwhBaqgdi26pNHnJpv/yfEiqV+7w26M8khF1e4WURbEWun/SoZZZxOU/E/DIGKo1LLOlreH35rjkJMWJjnKD6791aWY0=
   app: helpful-production
