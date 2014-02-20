@@ -6,6 +6,7 @@ class Message < ActiveRecord::Base
 
   belongs_to :person
   belongs_to :conversation, touch: true
+  has_one :account, through: :conversation
 
   has_many :read_receipts
   has_many :attachments
@@ -26,6 +27,7 @@ class Message < ActiveRecord::Base
     message.conversation.account.webhook_url?
   }
   after_create :send_email
+  after_create :trigger_pusher_new_message
 
   scope :most_recent, -> { order('updated_at DESC') }
 
@@ -84,6 +86,11 @@ class Message < ActiveRecord::Base
   def mark_read(person = self.person)
     rr = ReadReceipt.create(person: person, message: self)
     return rr.valid?
+  end
+
+  def trigger_pusher_new_message
+    Pusher.url = "http://#{ENV["PUSHER_KEY"]}:#{ENV["PUSHER_SECRET"]}@api.pusherapp.com/apps/#{ENV["PUSHER_APP_ID"]}"
+    Pusher[self.account.slug].trigger('new_message', {})
   end
 
 end

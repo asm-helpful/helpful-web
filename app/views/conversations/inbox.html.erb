@@ -5,10 +5,17 @@
 
   <div class="column column-subnav">
     <h2 class="column-heading">Inbox</h2>
-    <%= render 'conversations/inbox', conversations: @conversations %>
+
+    <%= form_tag search_account_conversations_path(@account), method: 'get', class: 'form-search' do %>
+      <label for="search-query">
+        <%= search_field_tag :q, @query, placeholder: 'Search conversations', id: 'search-query' %>
+      </label>
+    <% end %>
+
+    <div class="list" data-url=<%= list_account_conversations_url(@account) %> data-pusher-channel=<%= @account.slug %> data-pusher-key=<%= ENV["PUSHER_KEY"] %>></div>    
   </div>
 
-  <% if @conversations.empty? %>
+  <% if false #@conversations.empty? %>
     <div class="column column-detail">
       <%= render 'conversations/empty' %>
     </div>

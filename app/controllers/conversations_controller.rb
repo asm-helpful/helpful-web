@@ -12,9 +12,6 @@ class ConversationsController < ApplicationController
   end
 
   def inbox
-    inbox = ConversationsInbox.new(@account, params[:q])
-    @conversations = inbox.conversations
-    @conversation = @conversations.first
     Analytics.track(user_id: current_user.id, event: 'Read Conversations Index')
   end
 
@@ -41,6 +38,12 @@ class ConversationsController < ApplicationController
     find_conversation!
     @conversation.update_attributes(conversation_params)
     redirect_to account_conversation_path(@account, @conversation)
+  end
+
+  def list
+    inbox = ConversationsInbox.new(@account, params[:q])
+    @conversations = inbox.conversations
+    render partial: "list"
   end
 
   private
