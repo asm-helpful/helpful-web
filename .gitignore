@@ -30,8 +30,8 @@
 # Mac .DS_Store files
 .DS_Store
 
-# Bower source files
-/vendor/assets/components
+# RSpec configuration
+/.rspec
 
 # VI swp files
 *.swp
