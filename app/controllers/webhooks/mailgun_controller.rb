@@ -2,7 +2,7 @@ require 'openssl'
 
 class Webhooks::MailgunController < ApplicationController
   skip_before_filter :verify_authenticity_token
-  before_filter :verify_webhook
+  #before_filter :verify_webhook
 
   rescue_from ActionController::ParameterMissing, ActiveRecord::RecordNotFound do |exception|
     head :not_acceptable
@@ -14,7 +14,7 @@ class Webhooks::MailgunController < ApplicationController
     require_mailgun_params!
 
     account = Account.match_mailbox!(params.fetch(:recipient))
-    email = Mail::Address.new(params.fetch(:from))
+    email = Mail::Address.new(params.fetch(:from).to_ascii)
     author = MessageAuthor.new(account, email)
     conversation = Concierge.new(account, params).find_conversation
 
