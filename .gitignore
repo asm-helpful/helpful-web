@@ -38,3 +38,6 @@
 
 # Uploaded attachments
 /public/uploads
+
+# When people accidentally put images in /public
+/public/images

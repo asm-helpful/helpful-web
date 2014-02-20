@@ -1,5 +1,5 @@
 .empty-state-smiley {
-  background-image: url(inbox-empty-state.png);
+  background-image: url(image-path('inbox-empty-state.png'));
   @include background-size(100%);
   background-repeat: no-repeat;
   display: block;
