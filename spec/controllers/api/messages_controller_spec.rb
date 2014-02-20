@@ -32,7 +32,7 @@ describe(Api::MessagesController, :create) do
   it 'persists a new message' do
     create_post(@account)
     message = find_message_from_response(@response)
-    assert_not_nil message
+    expect(message).to_not be_nil
   end
 
   it 'persists the correct content' do

@@ -14,9 +14,7 @@ describe Account do
     @account.name = 'unique'
     @account.slug = 'unique'
 
-    assert_raises(ActiveRecord::RecordNotUnique) do
-      @account.save
-    end
+    expect { @account.save }.to raise_error(ActiveRecord::RecordNotUnique)
   end
 
   it "must have a webhook_url field" do
@@ -66,9 +64,9 @@ describe Account do
       @account.save
       address = @account.mailbox.to_s
       @account.delete
-      assert_raise ActiveRecord::RecordNotFound do
+      expect {
         Account.match_mailbox!(address)
-      end
+      }.to raise_error(ActiveRecord::RecordNotFound)
     end
   end
 end

@@ -99,9 +99,9 @@ describe Conversation do
       @conversation.save
       address = @conversation.mailbox.to_s
       @conversation.delete
-      assert_raise ActiveRecord::RecordNotFound do
+      expect {
         Conversation.match_mailbox!(address)
-      end
+      }.to raise_error(ActiveRecord::RecordNotFound)
     end
   end
 
