@@ -96,15 +96,17 @@ describe(Api::MessagesController, :create) do
 
   # Mailer
 
-  it 'sends an email if reply from a new person' do
+  it "sends an email if reply from a new person" do
     conversation = create(:conversation, account: @account)
     create(:message, conversation: conversation)
     person = create(:person)
 
-   assert_difference "ActionMailer::Base.deliveries.length" do
-      create_post(@account,
-                  conversation: conversation.number,
-                  email: person.email)
-   end
+    Sidekiq::Testing.inline! do
+      assert_difference "ActionMailer::Base.deliveries.length" do
+        create_post(@account,
+                    conversation: conversation.number,
+                    email: person.email)
+      end
+    end
   end
 end
