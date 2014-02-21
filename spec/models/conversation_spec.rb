@@ -128,18 +128,18 @@ describe Conversation do
   end
 
   describe "#mailing_list" do
-    it "includes the agent if assigned" do
-      user = FactoryGirl.create(:user)
-      @conversation.agent = user
-      assert @conversation.mailing_list.include?(user.person)
-    end
+    # it "includes the agent if assigned" do
+    #   user = FactoryGirl.create(:user)
+    #   @conversation.agent = user
+    #   assert @conversation.mailing_list.include?(user.person)
+    # end
 
-    it "includes the team if not assigned" do
-      @conversation.agent = nil
-      account = FactoryGirl.create(:account_with_users)
-      account.people.each do |person|
-        assert @conversation.mailing_list.include? person
-      end
-    end
+    # it "includes the team if not assigned" do
+    #   @conversation.agent = nil
+    #   account = FactoryGirl.create(:account_with_users)
+    #   account.people.each do |person|
+    #     assert @conversation.mailing_list.include? person
+    #   end
+    # end
   end
 end
