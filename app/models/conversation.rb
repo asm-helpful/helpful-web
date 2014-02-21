@@ -33,11 +33,7 @@ class Conversation < ActiveRecord::Base
   scope :most_stale, -> { joins(:messages).order('messages.updated_at ASC') }
 
   def mailing_list
-    if assigned?
-      participants + [agent.person]
-    else
-      participants + account.people
-    end
+    participants + account.users.map {|u| u.person }
   end
 
   def ordered_messages

@@ -57,7 +57,7 @@ describe Account do
 
     it "matches a mailbox email to an account" do
       @account.save
-      expect(Account.match_mailbox(@account.mailbox.to_s)).to eq(@account)
+      expect(Account.match_mailbox!(@account.mailbox.to_s)).to eq(@account)
     end
 
     it "raises an exception if an account is not found" do
