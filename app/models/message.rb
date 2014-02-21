@@ -75,15 +75,4 @@ class Message < ActiveRecord::Base
     conversation.mailing_list - [person]
   end
 
-  # Public: Create a read receipt for this message.
-  #
-  # person -  the Person which the read receipt should be created for
-  #           (default: self.person).
-  #
-  # Returns true if the ReadReceipt was created successfully.
-  def mark_read(person = self.person)
-    rr = ReadReceipt.create(person: person, message: self)
-    return rr.valid?
-  end
-
 end
