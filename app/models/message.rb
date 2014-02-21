@@ -67,12 +67,12 @@ class Message < ActiveRecord::Base
   # Returns nothing.
   def send_email
     mail_recipients.each do |person|
-      MessageMailer.created(id, person.id).deliver
+      MessageMailer.delay.created(id, person.id)
     end
   end
 
   def mail_recipients
-    conversation.mailing_list - [person]
+    conversation.participants - [self.person]
   end
 
 end
