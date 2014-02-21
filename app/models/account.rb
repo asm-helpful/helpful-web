@@ -6,7 +6,7 @@ class Account < ActiveRecord::Base
 
   belongs_to :billing_plan
 
-  friendly_id :account_slug, :use => :slugged
+  friendly_id :name, use: :slugged
 
   has_many :conversations, :dependent => :destroy
   has_many :people, :dependent => :destroy
@@ -26,11 +26,6 @@ class Account < ActiveRecord::Base
 
   # Internal: Regex to extract an account slug from a Account#mailbox address
   MAILBOX_REGEX = Regexp.new(/^(?<slug>(\w|-)+)(\+\w+)?@.+$/).freeze
-
-  # Candidates for how to generate the slug.
-  def account_slug
-    [:name]
-  end
 
   # Public: Customer specific email address for incoming email.
   #
