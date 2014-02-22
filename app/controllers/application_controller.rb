@@ -9,4 +9,10 @@ class ApplicationController < ActionController::Base
     inbox_account_conversations_path(resource.accounts.first)
   end
 
+  # private
+
+  def restrict!(policy)
+    policy.access? || raise(ActiveRecord::RecordNotFound)
+  end
+
 end
