@@ -33,7 +33,6 @@ class ConversationsController < ApplicationController
 
   def show
     find_conversation!
-    ConversationManager.new(@conversation).assign_agent(current_user)
     @conversation_stream = ConversationStream.new(@conversation)
   end
 

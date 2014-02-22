@@ -115,18 +115,6 @@ describe Conversation do
     end
   end
 
-  describe "#assigned?" do
-    it "returns true if an agent has been assigned" do
-      @conversation.agent = FactoryGirl.build(:user)
-      assert @conversation.assigned?
-    end
-
-    it "returns false if an agent has not been assigned" do
-      @conversation.agent = nil
-      refute @conversation.assigned?
-    end
-  end
-
   describe "#mailing_list" do
     # it "includes the agent if assigned" do
     #   user = FactoryGirl.create(:user)
