@@ -45,15 +45,6 @@
             <%= avatar_default(current_user.person) %>
           </div>
 
-          <div class="onoffswitch">
-            <input type="hidden" name="message[internal]" value="0">
-            <input type="checkbox" name="message[internal]" class="onoffswitch-checkbox" id="myonoffswitch" value="1">
-            <label class="onoffswitch-label" for="myonoffswitch">
-              <div class="onoffswitch-inner"></div>
-              <div class="onoffswitch-switch"></div>
-            </label>
-          </div>
-
           <%= text_area :message, :content, placeholder: 'Reply to this conversation…', rows: 1 %>
 
           <div class="form-actions">
