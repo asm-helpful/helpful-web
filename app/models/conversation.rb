@@ -14,23 +14,19 @@ class Conversation < ActiveRecord::Base
 
   belongs_to :account
 
-  belongs_to :agent,
-    class_name: "User",
-    foreign_key: "user_id"
-
   has_many :messages, :after_add => :new_message,
                       :dependent => :destroy
   has_many :notes, :dependent => :destroy
 
   has_many :participants, -> { uniq }, through: :messages, source: :person
 
-  sequential column: :number, scope: :account_id
-
   validates :account, presence: true
 
   scope :open, -> { where.not(status: STATUS_ARCHIVED) }
   scope :archived, -> { where(status: STATUS_ARCHIVED) }
   scope :most_stale, -> { joins(:messages).order('messages.updated_at ASC') }
+
+  sequential column: :number, scope: :account_id
 
   def mailing_list
     participants + account.users.map {|u| u.person }
