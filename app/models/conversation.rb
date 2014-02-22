@@ -36,11 +36,6 @@ class Conversation < ActiveRecord::Base
     messages.order(:created_at => :asc)
   end
 
-  def messages_visible_for(user)
-    m = messages
-    user.agent_or_higher?(account_id) ? m : m.not_internal
-  end
-
   def archived?
     status == STATUS_ARCHIVED
   end
