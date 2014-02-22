@@ -14,7 +14,7 @@ module Helpful
     # -- all .rb files in that directory are automatically loaded.
 
     config.autoload_paths << File.join(config.root, 'lib')
-
+    config.autoload_paths << File.join(config.root, 'app', 'policies')
 
     # Use MiniTest::Spec and FactoryGirl
     config.generators do |g|
