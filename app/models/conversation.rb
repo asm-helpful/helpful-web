@@ -3,9 +3,6 @@ require 'activerecord/uuid'
 class Conversation < ActiveRecord::Base
   include ActiveRecord::UUID
 
-  STATUS_ARCHIVED = 'archived'
-  STATUS_OPEN = 'open'
-
   # Internal: Regex to extract account slug and conversation number from
   # Conversation#mailbox addresses.
   MAILBOX_REGEX = Regexp.new(
@@ -14,16 +11,15 @@ class Conversation < ActiveRecord::Base
 
   belongs_to :account
 
-  has_many :messages, :after_add => :new_message,
-                      :dependent => :destroy
-  has_many :notes, :dependent => :destroy
-
-  has_many :participants, -> { uniq }, through: :messages, source: :person
+  has_many :messages, after_add: :message_added_callback,
+                      dependent: :destroy
+  has_many :notes, dependent: :destroy
+  has_many :participants, -> { uniq }, through: :messages,
+                                       source: :person
 
   validates :account, presence: true
 
-  scope :open, -> { where.not(status: STATUS_ARCHIVED) }
-  scope :archived, -> { where(status: STATUS_ARCHIVED) }
+  scope :archived, -> { where(archived: true) }
   scope :most_stale, -> { joins(:messages).order('messages.updated_at ASC') }
 
   sequential column: :number, scope: :account_id
@@ -36,29 +32,14 @@ class Conversation < ActiveRecord::Base
     messages.order(:created_at => :asc)
   end
 
-  def archived?
-    status == STATUS_ARCHIVED
+  def archive!
+    update_attribute(:archived, true)
   end
 
-  def archive
-    update_attribute(:status, STATUS_ARCHIVED)
+  def unarchive!
+    update_attribute(:archived, false)
   end
 
-  def un_archive
-    update_attribute(:status, STATUS_OPEN)
-  end
-
-  def archive=(flag)
-    if flag
-      archive
-    else
-      un_archive
-    end
-  end
-
-  def new_message(message)
-    update_attribute(:status, STATUS_OPEN)
-  end
 
   # Public: Conversation specific email address for incoming email replies.
   #
@@ -73,7 +54,7 @@ class Conversation < ActiveRecord::Base
 
     email.display_name = account.name
 
-    return email
+    email
   end
 
   # Public: Given an email address try to match to a conversation.
@@ -106,4 +87,11 @@ class Conversation < ActiveRecord::Base
   def to_param
     number.to_param
   end
+
+private
+
+  def message_added_callback(message)
+    unarchive!
+  end
+
 end

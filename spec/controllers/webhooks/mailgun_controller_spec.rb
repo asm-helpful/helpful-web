@@ -4,7 +4,7 @@ require 'openssl'
 describe Webhooks::MailgunController do
 
   def account
-    @account ||= FactoryGirl.create(:account)
+    @account ||= create(:account)
   end
 
   def post_webhook(args = {})

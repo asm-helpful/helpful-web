@@ -5,7 +5,7 @@ FactoryGirl.define do
     account
 
     factory :archived_conversation do
-      status :archived
+      archived true
     end
 
     factory :conversation_with_messages do

@@ -48,7 +48,7 @@ class Account < ActiveRecord::Base
   def self.match_mailbox(email)
     address = Mail::Address.new(email).address
     slug = MAILBOX_REGEX.match(address)[:slug]
-    self.where(slug: slug).first
+    find_by!(slug: slug)
   end
 
   # Public: Given an email address try to match to an account or raise

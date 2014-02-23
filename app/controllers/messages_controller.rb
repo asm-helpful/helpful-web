@@ -15,7 +15,7 @@ class MessagesController < ApplicationController
       )
 
       if params['commit'] == "Send & Archive"
-        conversation.archive
+        conversation.archive!
         redirect_to inbox_account_conversations_path(@account)
       else
         redirect_to account_conversation_path(@account, @message.conversation)

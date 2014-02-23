@@ -54,7 +54,7 @@ class ConversationsController < ApplicationController
   end
 
   def conversation_params
-    params.require(:conversation).permit(:archive, :id)
+    params.require(:conversation).permit(:archived, :id)
   end
 
 end
