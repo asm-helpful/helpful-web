@@ -28,8 +28,6 @@ Helpful::Application.routes.draw do
     end
   end
 
-  resource :beta_invites, only: [:create]
-
   namespace :webhooks do
     resources :mailgun, only: :create
   end
