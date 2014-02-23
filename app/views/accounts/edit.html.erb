@@ -21,15 +21,9 @@
 
     <ul class="column-navigation">
       <li>
-        <a href="<%= edit_settings_admin_path %>" class="text-muted">
+        <a href="<%= edit_account_path(@account) %>" class="text-muted">
           Admin <br />
           <span class="text-weak text-smaller">Company Settings etc.</span>
-        </a>
-      </li>
-      <li>
-        <a href="<%= edit_settings_payment_path %>" class="text-muted">
-          Payment <br />
-          <span class="text-weak text-smaller">Pay the bills babies</span>
         </a>
       </li>
     </ul>
@@ -58,7 +52,7 @@
       </pre>
 
 
-      <%= form_for @account, url: settings_admin_path, method: :patch, html: {class: 'form'} do |f| %>
+      <%= form_for @account, method: :patch, html: {class: 'form'} do |f| %>
 
         <div class="form-group">
           <%= f.label :name, 'Company name', class: 'form-label' %>

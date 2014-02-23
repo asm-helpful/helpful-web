@@ -1,16 +1,18 @@
 <div class="navbar">
   <%= avatar(current_user, 61) %>
 
-  <%= link_to inbox_account_conversations_path(@account), :class => 'text-weak' do %>
-      <i class="icon-inbox icon-xlarge"></i>
-  <% end %>
+  <% if @account %>
+    <%= link_to inbox_account_conversations_path(@account), :class => 'text-weak' do %>
+        <i class="icon-inbox icon-xlarge"></i>
+    <% end %>
 
-  <%= link_to archived_account_conversations_path(@account), :class => 'text-weak' do %>
-      <i class="icon-archive icon-xlarge"></i>
+    <%= link_to archived_account_conversations_path(@account), :class => 'text-weak' do %>
+        <i class="icon-archive icon-xlarge"></i>
+    <% end %>
   <% end %>
 
   <div class="navbar-secondary">
-    <a href="<%= edit_settings_personal_path %>" class="text-weak">
+    <a href="<%= edit_user_path %>" class="text-weak">
       <i class="icon-settings icon-xlarge"></i>
     </a>
 
