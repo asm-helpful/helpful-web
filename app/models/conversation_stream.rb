@@ -27,7 +27,7 @@ class ConversationStream
   end
 
   def sorted_items
-    items.sort_by {|i| i.created_at }.reverse
+    items.sort_by {|i| i.created_at }
   end
 
 end
