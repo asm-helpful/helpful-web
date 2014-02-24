@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe PersonSerializer do
+describe MessageSerializer do
 
-  let(:person) { create(:person) }
-  subject { described_class.new(person) }
+  let(:message) { create(:message) }
+  subject { described_class.new(message) }
 
   it "builds" do
     expect {

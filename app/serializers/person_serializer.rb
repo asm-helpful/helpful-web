@@ -1,10 +1,7 @@
-class PersonSerializer < ActiveModel::HalSerializer
+class PersonSerializer < ActiveModel::Serializer
   include TimestampedSerializer
 
   attributes :id
-  attributes :name, :email, :twitter
+  attributes :name, :email
 
-  link :self do |person|
-    { href: "/people/#{person.id}" }
-  end
 end
