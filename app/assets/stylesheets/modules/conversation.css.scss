@@ -105,8 +105,8 @@
 
   &[data-selected] {
     background-color: #F8FBFD;
-    border-left: $column-border-width solid $primary;
-    margin-left: -$column-border-width;
+    border-left: 2px solid $primary;
+    margin-left: -2px;
 
     > .summary {
       color: $primary;

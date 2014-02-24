@@ -4,7 +4,6 @@ module AvatarHelper
     avatar(person, 45, 'avatar-default')
   end
 
-
   # Public: View helper to provide an avatar div & img for a given user.
   #
   # person       - a Person or User object. Must have an email method.

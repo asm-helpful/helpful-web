@@ -1,7 +1,5 @@
 body {
   font-family: $font-body;
-  font-size: 18px;
-  line-height: 1.5;
 }
 
 h1,
@@ -31,11 +29,6 @@ h6 {
   font-family: $font-body;
 }
 
-h1 {
-  font-size: 4.1em;
-  text-transform: uppercase;
-}
-
 h2 {
   font-size: 1.2em;
   color: $red;
@@ -60,18 +53,6 @@ h5 {
 
 h6 {
   font-size: 1.05em;
-}
-
-/* Extends headings to be a bar that spans across it's container */
-
-.heading-bar {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  margin: 0;
-
-  background-color: $off-white;
-  border-top: 1px $column-border-color solid;
-  border-bottom: 1px $column-border-color solid;
 }
 
 p {

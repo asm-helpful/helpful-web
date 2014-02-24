@@ -1,19 +1,15 @@
-<div class="column-wrapper l-app">
-  <div class="column column-navbar">
-    <%= render 'shared/navbar' %>
+<%= render 'shared/navbar' %>
+
+<div class="container">
+  <div class="page-header">
+    <h1>Inbox</h1>
   </div>
 
-  <div class="column column-subnav">
-    <h2 class="column-heading">Inbox</h2>
+  <% if @conversations.any? %>
     <%= render 'conversations/inbox', conversations: @conversations %>
-  </div>
-
-  <% if @conversations.empty? %>
-    <div class="column column-detail">
-      <%= render 'conversations/empty' %>
-    </div>
+  <% else %>
+    <%= render 'conversations/empty' %>
   <% end %>
-
 </div>
 
 
