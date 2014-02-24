@@ -28,9 +28,4 @@ class User < ActiveRecord::Base
     self.owned_accounts.first
   end
 
-  def agent_or_higher?(account_id)
-    # this method appears unneccessary
-    true
-  end
-
 end
