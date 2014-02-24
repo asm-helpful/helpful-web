@@ -1,9 +1,5 @@
-class Api::MessagesController < ApplicationController
-  skip_before_action :verify_authenticity_token
+class Api::MessagesController < ApiController
   doorkeeper_for :all, except: [ :create ]
-  rescue_from ActionController::ParameterMissing, with: :parameter_missing
-
-  respond_to :json
 
   def index
     @messages = Message.all
@@ -44,12 +40,5 @@ class Api::MessagesController < ApplicationController
              :callback => params[:callback]
     end
   end
-
-  protected
-    def parameter_missing(exception)
-      render :json => {:error => exception.message},
-             :status => :bad_request,
-             :callback => params[:callback]
-    end
 
 end
