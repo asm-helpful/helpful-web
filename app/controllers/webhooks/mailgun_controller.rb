@@ -1,7 +1,6 @@
 require 'openssl'
 
-class Webhooks::MailgunController < ApplicationController
-  skip_before_filter :verify_authenticity_token
+class Webhooks::MailgunController < WebhooksController
   before_filter :verify_webhook
 
   rescue_from ActionController::ParameterMissing, ActiveRecord::RecordNotFound do |exception|
