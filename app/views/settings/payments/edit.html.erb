@@ -45,6 +45,72 @@
     </header>
 
     <div class="column-content">
+    <div class="pricing">
+          <h2 class="text-black">Pricing plan</h2>
+          <p class="text-weak text-smaller">This is the information that makes you unique inside. Treasure your inner animal.</p>
+
+          <table class="pricing-table">
+              <colgroup>
+                <!-- there probably is a better way to add bg to current_plan column, or just add a CSS class -->
+                <col>
+                <col style="background-color:#f1f1f1">
+              </colgroup>
+              <tr>
+                <!-- left this <tr> so CSS selectors work properly without rewriting original pricing table CSS -->
+              </tr>
+              <tr>
+                <td>
+                  Starter Kit
+                  <div></div>
+                </td>
+                <td>
+                  Growing
+                  <div></div>
+                </td>
+                <td>
+                  Premium
+                  <div></div>
+                </td>
+                <td>
+                  Super
+                  <div></div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <h1>25</h1>
+                  <h2>threads per month</h2>
+                  <h3>$0</h3>
+                  <h4>per month</h4>
+                  <a href="<%= new_account_path %>">Change</a>
+                </td>
+                <td>
+                  <h1>50</h1>
+                  <h2>threads per month</h2>
+                  <h3>$29</h3>
+                  <h4>per month</h4>
+                  <a href="<%= new_account_path %>">Current plan</a>
+                </td>
+                <td>
+                  <h1>150</h1>
+                  <h2>threads per month</h2>
+                  <h3>$59</h3>
+                  <h4>per month</h4>
+                  <a href="<%= new_account_path %>">Change</a>
+                </td>
+                <td>
+                  <h1>300</h1>
+                  <h2>threads per month</h2>
+                  <h3>$199</h3>
+                  <h4>per month</h4>
+                  <a href="<%= new_account_path %>">Change</a>
+                </td>
+              </tr>
+            </table>
+
+      </div>
+
+     
 
     </div>
   </div>

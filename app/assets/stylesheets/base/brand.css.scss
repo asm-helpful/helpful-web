@@ -35,3 +35,33 @@
   font-weight: 800;
   text-transform: uppercase;
 }
+
+/*--------------*/
+
+.column-content  .pricing-table { 
+  max-width: 710px !important;
+  margin-left: -10px;
+}
+// removing green column bg
+.column-content .pricing-table tr:nth-child(n + 2) td:nth-child(2) {
+  background: none !important;
+}
+// font sizes
+.column-content .pricing-table tr:nth-child(2) td {
+  font-size: 21px;
+}
+.column-content .pricing-table tr:nth-child(3) h2 {
+  font-size: 26px;
+}
+// line
+.column-content .pricing-table tr:nth-child(2) td div {
+  background-color: #ccc !important;
+}
+// button
+.column-content .pricing-table tr:nth-child(3) a {
+  width: 140px;
+  height: 50px;
+  background: #666 !important;
+  font-size: 18px;
+  line-height: 48px;
+}
