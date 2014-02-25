@@ -5,10 +5,10 @@ describe MessageSerializer do
   let(:message) { create(:message) }
   subject { described_class.new(message) }
 
-  it "builds" do
-    expect {
-      subject.to_json
-    }.to_not raise_error
+  it_behaves_like "a serializer"
+
+  it "#type is message" do
+    expect(subject.type).to eq('message')
   end
 
 end

@@ -1,11 +1,10 @@
-class MessageSerializer < ActiveModel::Serializer
-  include TimestampedSerializer
-
-  attributes :id
+class MessageSerializer < BaseSerializer
   attributes :body, :body_html
 
   has_one :conversation, embed: :ids
   has_one :person
+
+  has_many :attachments
 
   def body
     object.content

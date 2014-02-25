@@ -1,7 +1,3 @@
-class PersonSerializer < ActiveModel::Serializer
-  include TimestampedSerializer
-
-  attributes :id
+class PersonSerializer < BaseSerializer
   attributes :name, :email
-
 end
