@@ -1,4 +1,4 @@
 class ConversationSerializer < BaseSerializer
-  attributes :number, :subject
+  attributes :number, :subject, :tags
   has_many :messages
 end

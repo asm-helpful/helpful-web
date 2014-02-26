@@ -26,7 +26,7 @@ class Api::ConversationsController < ApiController
   end
 
   def conversation_params
-    params.permit(:subject)
+    params.permit(subject: :string, tags: [])
   end
 
 end
