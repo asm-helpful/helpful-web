@@ -46,7 +46,7 @@ class Webhooks::MailgunController < WebhooksController
 
       # Find or create Conversation
       conversation = if conversation_number
-        account.conversations.find(conversation_number)
+        account.conversations.find_by!(number: conversation_number)
       else
         account.conversations.create!(
           subject: params.fetch(:subject)
