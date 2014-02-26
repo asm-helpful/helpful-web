@@ -13,6 +13,7 @@ class Conversation < ActiveRecord::Base
 
   has_many :messages, after_add: :message_added_callback,
                       dependent: :destroy
+
   has_many :notes, dependent: :destroy
   has_many :participants, -> { uniq }, through: :messages,
                                        source: :person

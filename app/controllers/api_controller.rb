@@ -1,6 +1,9 @@
 class ApiController < ApplicationController
-  skip_before_action :verify_authenticity_token
+
   respond_to :json
+
+  before_action :authenticate_user!
+  skip_before_action :verify_authenticity_token
 
   rescue_from ActionController::ParameterMissing, with: :parameter_missing
 

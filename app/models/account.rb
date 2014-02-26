@@ -93,6 +93,20 @@ class Account < ActiveRecord::Base
     end
   end
 
+  def add_owner(owner)
+    memberships.create(
+      user: owner,
+      role: 'owner'
+    )
+  end
+
+  def add_agent(agent)
+    memberships.create(
+      user: agent,
+      role: 'agent'
+    )
+  end
+
   protected
 
   def save_new_user

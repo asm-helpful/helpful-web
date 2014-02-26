@@ -8,11 +8,11 @@ class Message < ActiveRecord::Base
   belongs_to :conversation, touch: true
 
   has_many :read_receipts
-  has_many :attachments
+  has_many :attachments, inverse_of: :message
 
   delegate :account, :to => :conversation
 
-  store_accessor :data, :recipient, :headers, :raw, :body
+  store_accessor :data, :recipient, :headers, :raw, :body, :subject
 
   validates :person,       presence: true
   validates :conversation, presence: true
@@ -28,6 +28,8 @@ class Message < ActiveRecord::Base
   after_create :send_email
 
   scope :most_recent, -> { order('updated_at DESC') }
+
+  accepts_nested_attributes_for :attachments
 
   def webhook_data
     { message: {
