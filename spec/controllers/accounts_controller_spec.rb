@@ -30,6 +30,13 @@ describe AccountsController do
     assert_redirected_to inbox_account_conversations_path('mycompany')
   end
 
+  describe "GET #show" do
+    it "redirects to the inbox" do
+      get :show, id: account.slug
+      expect(response).to redirect_to(inbox_account_conversations_path(account))
+    end
+  end
+
   describe "GET #edit" do
     it "requires authentication" do
       get :edit, id: account.slug

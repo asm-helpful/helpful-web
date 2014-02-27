@@ -51,9 +51,6 @@ Helpful::Application.routes.draw do
 
   root to: 'pages#home'
 
-  # Redirect to the inbox because there's no dashboard yet
-  get '/:account_id' => redirect('/%{account_id}/inbox')
-
   resources :accounts, only: [:new, :create, :show, :edit, :update],
                        path: '/'
 

@@ -1,5 +1,5 @@
 class AccountsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :edit, :update]
+  before_action :authenticate_user!, only: [:edit, :update]
   respond_to :html
 
   def new
@@ -38,6 +38,11 @@ class AccountsController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def show
+    find_account!
+    redirect_to inbox_account_conversations_path(@account)
   end
 
   def edit
