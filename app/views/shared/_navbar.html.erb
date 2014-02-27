@@ -2,11 +2,31 @@
   <div class="container-fluid">
     <div class="navbar-left">
       <ul class="nav navbar-nav">
-        <li>
-          <a href="<%= edit_account_path(@account) %>">
-            <%= @account.name %>
-          </a>
-        </li>
+
+        <% other_accounts = current_user.accounts.reject {|a| a == @account } %>
+        <% if other_accounts.any? %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <%= @account.name %> <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <% other_accounts.each do |account| %>
+                <li>
+                  <a href="<%= inbox_account_conversations_path(account) %>">
+                    <%= account.name %>
+                  </a>
+                </li>
+              <% end %>
+            </ul>
+          </li>
+        <% else %>
+          <li>
+            <a href="<%= edit_account_path(@account) %>">
+              <%= @account.name %>
+            </a>
+          </li>
+        <% end %>
+
         <li>
           <a href="<%= inbox_account_conversations_path(@account) %>">
             Inbox
