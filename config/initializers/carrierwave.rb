@@ -1,12 +1,20 @@
 CarrierWave.configure do |config|
-  config.cache_dir = "#{Rails.root}/tmp/uploads" #Heroku fix
-  config.fog_credentials = {
-    :provider               => 'AWS',
-    :aws_access_key_id      => ENV["AWS_ACCESS_KEY_ID"],
-    :aws_secret_access_key  => ENV["AWS_SECRET_ACCESS_KEY"],
-    #:region                 => 'eu-west-1' #Set this to speed up uploading if bucket is located outside of US region.
+  # Heroku fix
+  config.cache_dir = Rails.root.join('tmp', 'uploads')
+
+  config.storage = if Rails.env.production?
+      :aws
+    else
+      :file
+    end
+
+  config.aws_bucket = ENV['S3_BUCKET']
+  config.asset_host = ENV['ASSET_HOST']
+  config.aws_acl    = :public_read
+  config.aws_authenticated_url_expiration = 60 * 60 * 24 * 365
+
+  config.aws_credentials = {
+    access_key_id:     ENV['AWS_ACCESS_KEY_ID'],
+    secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
   }
-  config.fog_directory  = ENV["FOG_DIRECTORY"]
-  config.fog_attributes = {'Cache-Control'=>'max-age=315576000'}
-  config.storage = Rails.env.production? ? :fog : :file
 end

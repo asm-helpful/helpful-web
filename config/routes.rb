@@ -7,8 +7,6 @@ Helpful::Application.routes.draw do
   if Rails.env.development?
     require 'sidekiq/web'
     mount Sidekiq::Web, at: "/sidekiq"
-    mount MessageMailerPreview, at: '/mail_view'
-    mount DeviseMailerPreview, at: '/devise_mail_view'
   end
 
   get '/embed.js' => 'pages#embed', :as => :embed
@@ -30,38 +28,34 @@ Helpful::Application.routes.draw do
     end
   end
 
-  resource :beta_invites, only: [:create]
-
   namespace :webhooks do
     resources :mailgun, only: :create
   end
 
   post 'webhooks/chargify' => 'billings#webhook', :as => :webhook_billing
 
-  EXCLUDED_API_METHODS = [:new, :edit, :destroy]
-
   namespace :api, format: 'json' do
-    resources :conversations, except: EXCLUDED_API_METHODS
-    resources :messages, except: EXCLUDED_API_METHODS do
-      resources :attachments, shallow: true, except: EXCLUDED_API_METHODS
+    resources :accounts
+    resources :people
+    resources :conversations, except: [:new, :edit, :destroy]
+    resources :messages, except: [:new, :edit, :destroy] do
+      resources :attachments, shallow: true, except: [:new, :edit, :destroy]
     end
   end
 
   authenticated :user do
     root :to => 'dashboard#show', :as => 'authenticated_root'
+    get '/settings' => 'users#edit', as: :edit_user
+    resources :users, only: [:update]
   end
 
   root to: 'pages#home'
 
-  resources :accounts, only: [:new, :create, :show, :edit, :update]
-
-  namespace 'settings' do
-    resource :personal, only: [:edit, :update], controller: 'personal'
-    resource :admin, only: [:edit, :update], controller: 'admin'
-    resource :payment, only: [:edit, :update]
-  end
-
+  # Redirect to the inbox because there's no dashboard yet
   get '/:account_id' => redirect('/%{account_id}/inbox')
+
+  resources :accounts, only: [:new, :create, :show, :edit, :update],
+                       path: '/'
 
   scope '/:account_id', as: :account do
     resource :billing, only: [:show] do

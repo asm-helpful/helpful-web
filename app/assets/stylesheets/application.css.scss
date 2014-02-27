@@ -1,42 +1,10 @@
-/*
- *= require bootstrap
- */
+//= require bootstrap
 
 @import 'bourbon';
 
 @import 'variables';
 @import 'mixins';
 
-@import 'base/brand',
-        'base/colors',
-        'base/fonts',
-        'base/grid',
-        'base/icons',
-        'base/typography';
-
-@import 'layouts/home',
-        'layouts/signup',
-        'layouts/styleguide';
-
-@import 'modules/alert',
-        'modules/app-footer',
-        'modules/app-header',
-        'modules/app-container',
-        'modules/avatar',
-        'modules/btn_group',
-        'modules/btn',
-        'modules/column',
-        'modules/conversation',
-        'modules/conversation_stream',
-        'modules/empty-state',
-        'modules/fold',
-        'modules/form',
-        'modules/landing-page',
-        'modules/list',
-        'modules/message',
-        'modules/nav',
-        'modules/navbar',
-        'modules/panel',
-        'modules/note',
-        'modules/switch',
-        'modules/pricing_table';
+@import 'base/*';
+@import 'layouts/*';
+@import 'modules/*';

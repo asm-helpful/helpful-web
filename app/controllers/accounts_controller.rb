@@ -1,5 +1,6 @@
 class AccountsController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update]
+  respond_to :html
 
   def new
     @account = Account.new
@@ -39,7 +40,22 @@ class AccountsController < ApplicationController
     end
   end
 
+  def edit
+    find_account!
+    @user = User.new
+  end
+
+  def update
+    find_account!
+    @account.update(account_params)
+    respond_with(@account)
+  end
+
   private
+
+  def find_account!
+    @account = Account.find_by!(slug: params.fetch(:id))
+  end
 
   def account_params
     params.require(:account).permit(:name, :website_url, :webhook_url)

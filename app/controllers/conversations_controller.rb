@@ -30,7 +30,6 @@ class ConversationsController < ApplicationController
 
   def show
     find_conversation!
-    ConversationManager.new(@conversation).assign_agent(current_user)
     @conversation_stream = ConversationStream.new(@conversation)
   end
 
@@ -53,11 +52,12 @@ class ConversationsController < ApplicationController
   end
 
   def find_account!
-    @account = Account.friendly.find(params.fetch(:account_id))
+    @account = Account.friendly.find_by!(slug: params.fetch(:account_id))
+    authorize! AccountReadPolicy.new(@account, current_user)
   end
 
   def conversation_params
-    params.require(:conversation).permit(:archive, :id)
+    params.require(:conversation).permit(:archived, :id)
   end
 
 end

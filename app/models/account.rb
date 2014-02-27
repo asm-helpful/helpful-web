@@ -6,7 +6,7 @@ class Account < ActiveRecord::Base
 
   belongs_to :billing_plan
 
-  friendly_id :account_slug, :use => :slugged
+  friendly_id :name, use: :slugged
 
   has_many :conversations, :dependent => :destroy
   has_many :people, :dependent => :destroy
@@ -27,11 +27,6 @@ class Account < ActiveRecord::Base
   # Internal: Regex to extract an account slug from a Account#mailbox address
   MAILBOX_REGEX = Regexp.new(/^(?<slug>(\w|-)+)(\+\w+)?@.+$/).freeze
 
-  # Candidates for how to generate the slug.
-  def account_slug
-    [:name]
-  end
-
   # Public: Customer specific email address for incoming email.
   #
   # Returns the email address customers should send email to.
@@ -44,7 +39,7 @@ class Account < ActiveRecord::Base
 
     email.display_name = name
 
-    return email
+    email
   end
 
   # Public: Given an email address try to match to an account.
@@ -53,7 +48,7 @@ class Account < ActiveRecord::Base
   def self.match_mailbox(email)
     address = Mail::Address.new(email).address
     slug = MAILBOX_REGEX.match(address)[:slug]
-    self.where(slug: slug).first
+    find_by!(slug: slug)
   end
 
   # Public: Given an email address try to match to an account or raise
@@ -96,6 +91,20 @@ class Account < ActiveRecord::Base
         self.save!
       end
     end
+  end
+
+  def add_owner(owner)
+    memberships.create(
+      user: owner,
+      role: 'owner'
+    )
+  end
+
+  def add_agent(agent)
+    memberships.create(
+      user: agent,
+      role: 'agent'
+    )
   end
 
   protected

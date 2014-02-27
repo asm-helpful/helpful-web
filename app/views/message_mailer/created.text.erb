@@ -1,12 +1,1 @@
 <%= word_wrap(@message.content).gsub(/\n/, "\n>") %>
-Posted <%= time_ago_in_words(@message.created_at) %> ago by <%= nickname(@message.person) %>
-
-Conversation history
-===============================================
-<% (@conversation.messages - [@message]).each do |message| %>
-  <%= word_wrap(message.content).gsub(/\n/, "\n>") %>
-  Posted <%= time_ago_in_words(message.created_at) %> ago by <%= nickname(message.person) %>
-<% end %>
-
---
-Reply to this email to continue the conversation.

@@ -1,7 +1,5 @@
 <a href="<%= account_conversation_path(conversation.account, conversation) %>" class="conversation-row">
 
-  <input type="checkbox" />
-
   <div class="time updated <%= most_recent_message_class(conversation) %>">
     <%= time_ago_in_words(conversation.most_recent_message.updated_at) %>
   </div>

@@ -62,22 +62,10 @@
 
 
 .conversation-row {
-  padding: 20px 60px;
-
-  > input[type=checkbox] {
-    float: left;
-    margin-left: -30px;
-
-    height: 16px;
-    margin-top: (24px - 16px) / 2;
-    margin-bottom: (24px - 16px) / 2;
-  }
-
+  padding: 20px 20px;
 
   > .updated {
     float: right;
-    margin-left: 30px;
-    margin-right: -30px;
 
     color: #B2B2B2;
     font-size: 13px;
@@ -117,8 +105,8 @@
 
   &[data-selected] {
     background-color: #F8FBFD;
-    border-left: $column-border-width solid $primary;
-    margin-left: -$column-border-width;
+    border-left: 2px solid $primary;
+    margin-left: -2px;
 
     > .summary {
       color: $primary;

@@ -15,7 +15,7 @@ class MessagesController < ApplicationController
       )
 
       if params['commit'] == "Send & Archive"
-        conversation.archive
+        conversation.archive!
         redirect_to inbox_account_conversations_path(@account)
       else
         redirect_to account_conversation_path(@account, @message.conversation)
@@ -35,6 +35,10 @@ class MessagesController < ApplicationController
   end
 
   def message_params
-    params.require(:message).permit(:content, :conversation_id, :internal).merge(person_id: current_user.person.id)
+    params.require(:message).permit(
+      :content, :conversation_id
+    ).merge(
+      person_id: current_user.person.id
+    )
   end
 end

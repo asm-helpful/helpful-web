@@ -14,15 +14,16 @@ module Helpful
     # -- all .rb files in that directory are automatically loaded.
 
     config.autoload_paths << File.join(config.root, 'lib')
-
+    config.autoload_paths << File.join(config.root, 'app', 'policies')
 
     # Use MiniTest::Spec and FactoryGirl
     config.generators do |g|
       g.assets false
       g.helper false
-      g.test_framework :mini_test, spec: true, fixture: false
+      g.test_framework :rspec, spec: true, fixture: false
     end
 
+    config.action_mailer.preview_path = Rails.root.join('spec', 'mailers', 'previews')
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.

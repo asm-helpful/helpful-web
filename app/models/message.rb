@@ -9,11 +9,11 @@ class Message < ActiveRecord::Base
   has_one :account, through: :conversation
 
   has_many :read_receipts
-  has_many :attachments
+  has_many :attachments, inverse_of: :message
 
   delegate :account, :to => :conversation
 
-  store_accessor :data, :recipient, :headers, :raw, :body
+  store_accessor :data, :recipient, :headers, :raw, :body, :subject
 
   validates :person,       presence: true
   validates :conversation, presence: true
@@ -30,6 +30,8 @@ class Message < ActiveRecord::Base
   after_create :trigger_pusher_new_message
 
   scope :most_recent, -> { order('updated_at DESC') }
+
+  accepts_nested_attributes_for :attachments
 
   def webhook_data
     { message: {
@@ -69,23 +71,12 @@ class Message < ActiveRecord::Base
   # Returns nothing.
   def send_email
     mail_recipients.each do |person|
-      MessageMailer.created(id, person.id).deliver
+      MessageMailer.delay.created(id, person.id)
     end
   end
 
   def mail_recipients
-    conversation.mailing_list - [person]
-  end
-
-  # Public: Create a read receipt for this message.
-  #
-  # person -  the Person which the read receipt should be created for
-  #           (default: self.person).
-  #
-  # Returns true if the ReadReceipt was created successfully.
-  def mark_read(person = self.person)
-    rr = ReadReceipt.create(person: person, message: self)
-    return rr.valid?
+    conversation.participants - [self.person]
   end
 
   def trigger_pusher_new_message
