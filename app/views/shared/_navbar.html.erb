@@ -21,9 +21,7 @@
           </li>
         <% else %>
           <li>
-            <a href="<%= edit_account_path(@account) %>">
-              <%= @account.name %>
-            </a>
+            <span class="navbar-text"><%= @account.name %></span>
           </li>
         <% end %>
 
@@ -38,6 +36,12 @@
             Archive
           </a>
         </li>
+
+        <li>
+          <a href="<%= edit_account_path(@account) %>">
+            Settings
+          </a>
+        </a>
       </ul>
 
     </div>
