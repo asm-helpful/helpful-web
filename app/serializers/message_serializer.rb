@@ -2,7 +2,7 @@ class MessageSerializer < BaseSerializer
   attributes :body, :body_html
 
   has_one :conversation, embed: :ids
-  has_one :person
+  has_one :person, embed: :ids
 
   has_many :attachments
 
@@ -12,6 +12,10 @@ class MessageSerializer < BaseSerializer
 
   def body_html
     object.body
+  end
+
+  def include_attachments?
+    object.attachments.any?
   end
 
 end
