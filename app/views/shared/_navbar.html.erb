@@ -45,13 +45,21 @@
     <div class="navbar-right">
       <ul class="nav navbar-nav">
         <li>
-          <a href="<%= edit_user_path %>">Settings</a>
-        </li>
-        <li>
           <a href="mailto:helpful@helpful.io">Help</a>
         </li>
-        <li>
-          <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-text' %>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+            <span class="glyphicon glyphicon-cog"></span> <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="<%= edit_user_path %>">Settings</a>
+            </li>
+            <li>
+              <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-text' %>
+            </li>
+          </ul>
         </li>
       </ul>
     </div>
