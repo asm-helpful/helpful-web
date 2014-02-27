@@ -1,17 +1,21 @@
 class Api::MessagesController < ApiController
 
   def index
-    @messages = Message.all
-    render json: @messages
+    @account = Account.find(params.fetch(:account))
+    authorize_account_read!(@account)
+    @messages = account.messages
+    respond_with(@messages)
   end
 
   def show
     @message = Message.includes(:attachments).find(params.fetch(:id))
+    authorize_account_read!(@message.account)
     respond_with(@message)
   end
 
   def create
-    find_conversation!
+    @conversation = Conversation.find(message_params.fetch(:conversation))
+    authorize_account_read!(@conversation.account)
 
     @message = @conversation.messages.create!(
       person_id: message_params.fetch(:person),
@@ -27,13 +31,8 @@ class Api::MessagesController < ApiController
 
   protected
 
-  def find_conversation!
-    id = message_params.fetch(:conversation)
-    @conversation = Conversation.find(id)
-  end
-
-  def find_person!
-    @person = @conversation.account.people.find(message_params.fetch(:id))
+  def authorize_account_read!(account)
+    authorize!(AccountReadPolicy.new(account, current_user))
   end
 
   def message_params
