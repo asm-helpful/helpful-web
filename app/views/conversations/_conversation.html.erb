@@ -36,8 +36,18 @@
 
   <div class="conversation-body">
     <div class="conversation-stream">
-      <div class="conversation-stream-item">
+      <% ConversationStream.new(conversation).each do |item| %>
+        <div class="conversation-stream-item">
+          <% case item %>
+          <% when Message %>
+            <%= render 'messages/message', message: item %>
+          <% when Note %>
+            <%= render 'notes/note', note: item %>
+          <% end %>
+        </div>
+      <% end %>
 
+      <div class="conversation-stream-item">
         <%= form_tag account_messages_path(@account), method: 'post', class: 'form-reply' do %>
           <%= hidden_field :message, :conversation_id, value: conversation.id %>
 
@@ -55,17 +65,6 @@
           </div>
         <% end %>
       </div>
-
-      <% ConversationStream.new(conversation).each do |item| %>
-        <div class="conversation-stream-item">
-          <% case item %>
-          <% when Message %>
-            <%= render 'messages/message', message: item %>
-          <% when Note %>
-            <%= render 'notes/note', note: item %>
-          <% end %>
-        </div>
-      <% end %>
     </div>
   </div>
 </div>

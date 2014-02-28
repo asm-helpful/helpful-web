@@ -1,55 +1,46 @@
-class Api::MessagesController < ApplicationController
-  skip_before_action :verify_authenticity_token
-  doorkeeper_for :all, except: [ :create ]
-  rescue_from ActionController::ParameterMissing, with: :parameter_missing
-
-  respond_to :json
+class Api::MessagesController < ApiController
 
   def index
-    @messages = Message.all
-    render json: @messages
+    @account = Account.find(params.fetch(:account))
+    authorize_account_read!(@account)
+    @messages = account.messages
+    respond_with(@messages)
   end
 
   def show
     @message = Message.includes(:attachments).find(params.fetch(:id))
-    render :json => @message, include: :attachments
+    authorize_account_read!(@message.account)
+    respond_with(@message)
   end
 
   def create
-    # HACK: This validates the oauth token if it is passed in.
-    methods = Doorkeeper.configuration.access_token_methods
-    @token ||= Doorkeeper::OAuth::Token.authenticate request, *methods
+    @conversation = Conversation.find(message_params.fetch(:conversation))
+    authorize_account_read!(@conversation.account)
 
-    account = Account.find_by(slug: params.fetch(:account))
-    email = Mail::Address.new params.fetch(:email)
-    author = MessageAuthor.new(account, email)
+    @message = @conversation.messages.create!(
+      person_id: message_params.fetch(:person),
+      content:   message_params.fetch(:body),
+      body:      message_params[:body_html],
+      subject:   message_params[:subject],
+      raw:       message_params[:raw],
+      attachments_attributes: message_params.fetch(:attachments, [])
+    )
 
-    conversation = Concierge.new(account, params).find_conversation
-    @message = author.compose_message(conversation, params.fetch(:content))
-
-    if @message.save
-
-      if !params[:attachment].nil?
-        # TODO: Should handle error here if attachment is not saved? Attachment need a record to be saved so relation can be mapped.
-        @message.attachments.create(file: params.fetch(:attachment))
-        logger.info "Created attachment"
-      end
-
-      render :json => @message,
-             :status => :created,
-             :callback => params[:callback]
-    else
-      render :json => @message.errors,
-             :status => :unprocessable_entity,
-             :callback => params[:callback]
-    end
+    render json: @message, status: :created
   end
 
   protected
-    def parameter_missing(exception)
-      render :json => {:error => exception.message},
-             :status => :bad_request,
-             :callback => params[:callback]
-    end
+
+  def authorize_account_read!(account)
+    authorize!(AccountReadPolicy.new(account, current_user))
+  end
+
+  def message_params
+    params.permit(
+      :conversation, :person,
+      :body, :body_html, :subject, :raw,
+      attachments: [:file]
+    )
+  end
 
 end

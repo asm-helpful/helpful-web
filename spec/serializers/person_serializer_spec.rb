@@ -2,21 +2,13 @@ require 'spec_helper'
 
 describe PersonSerializer do
 
-  before do
-    @person = Struct.new(:created_at, :updated_at).new(
-      Time.now,
-      Time.now
-    )
-  end
+  let(:person) { create(:person) }
+  subject { described_class.new(person) }
 
-  it "created" do
-    serializer = PersonSerializer.new(@person)
-    assert Time.iso8601(serializer.created)
-  end
+  it_behaves_like "a serializer"
 
-  it "updated" do
-    serializer = PersonSerializer.new(@person)
-    assert Time.iso8601(serializer.updated)
+  it "#type is person" do
+    expect(subject.type).to eq('person')
   end
 
 end

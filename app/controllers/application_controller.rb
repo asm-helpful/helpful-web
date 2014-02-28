@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 
   # private
 
-  def restrict!(policy)
+  def authorize!(policy)
     policy.access? || raise(ActiveRecord::RecordNotFound)
   end
 

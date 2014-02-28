@@ -1,9 +1,15 @@
 require "spec_helper"
 
 describe AccountsController do
-  it "GET new" do
-    get :new
-    assert_response :success
+
+  let(:owner) { create(:user) }
+  let(:account) { create(:account) }
+
+  describe "GET #new" do
+    it "is successful" do
+      get :new
+      expect(response).to be_successful
+    end
   end
 
   it "POST create" do
@@ -22,6 +28,52 @@ describe AccountsController do
     }
 
     assert_redirected_to inbox_account_conversations_path('mycompany')
+  end
+
+  describe "GET #show" do
+    it "redirects to the inbox" do
+      get :show, id: account.slug
+      expect(response).to redirect_to(inbox_account_conversations_path(account))
+    end
+  end
+
+  describe "GET #edit" do
+    it "requires authentication" do
+      get :edit, id: account.slug
+      # FIXME: Extract into custom matcher
+      expect(request.env['action_controller.instance']).to be_a(Devise::FailureApp)
+    end
+
+    it "is successful" do
+      sign_in(owner)
+      get :edit, id: account.slug
+      expect(response).to be_successful
+    end
+  end
+
+  describe "PATCH #update" do
+    it "requires authentication" do
+      patch :update, id: account.slug
+      expect(request.env['action_controller.instance']).to be_a(Devise::FailureApp)
+    end
+
+    it "redirects" do
+      sign_in(owner)
+      patch :update, id: account.slug, account: {name: 'Foo'}
+      expect(response).to be_redirect
+    end
+
+    it "updates account" do
+      sign_in(owner)
+      expect {
+        patch :update, id: account.slug, account: {
+          name: 'foo',
+          website_url: 'https://foo.com',
+          webhook_url: 'https://foo.com/webhook'
+        }
+        account.reload
+      }.to change { account.attributes }
+    end
   end
 
 end

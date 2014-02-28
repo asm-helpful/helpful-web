@@ -1,46 +1,74 @@
 require 'openssl'
 
-class Webhooks::MailgunController < ApplicationController
-  skip_before_filter :verify_authenticity_token
+class Webhooks::MailgunController < WebhooksController
   before_filter :verify_webhook
 
-  rescue_from ActionController::ParameterMissing, ActiveRecord::RecordNotFound do |exception|
-    head :not_acceptable
-  end
+  rescue_from ActionController::ParameterMissing, with: :stop_webhook
+  rescue_from ActiveRecord::Rollback, with: :retry_webhook
 
-  # TODO This method should create a job that posts to the API otherwise it's
-  #      duplicating a bunch of logic.
+  EMAIL_REGEXP = Regexp.new(
+                   /^(?<account_slug>(\w|-)+)(\+(?<conversation_number>\d+))?$/
+                 ).freeze
+
   def create
     require_mailgun_params!
 
-    account = Account.match_mailbox!(params.fetch(:recipient))
-    email = Mail::Address.new(params.fetch(:from).to_ascii)
-    author = MessageAuthor.new(account, email)
-    conversation = Concierge.new(account, params).find_conversation
+    to = Mail::Address.new(params.fetch(:recipient).to_ascii)
+    from = Mail::Address.new(params.fetch(:from).to_ascii)
 
-    message = author.compose_message(
-      conversation,
-      params.fetch('stripped-text'),
-      {
-        recipient: params.fetch(:recipient),
-        body:      params.fetch('body-plain'),
-        headers:   JSON.parse(params.fetch('message-headers').to_s)
-      }
-    )
+    # Extracts data from recipient address
+    matches = to.local.match(EMAIL_REGEXP)
+    account_slug = matches[:account_slug]
+    conversation_number = matches[:conversation_number]
 
-    if message.save
-      count = params['attachment-count'].to_i
-      count.times do |i|
-        attachment = params["attachment-#{i+1}"]
-        #filename = stream.original_filename
-        message.attachments.create(file: attachment)
-        # logger.info "Added attachment to message"
+    if account_slug.nil?
+      stop_webhook
+      return
+    end
+
+    ActiveRecord::Base.transaction do
+      # Finds Account
+      # GET /api/accounts/acme-corp
+      account = Account.find_by!(slug: account_slug)
+
+      # Create the person
+      # curl /api/people?email=<from.address>&account=<account.id>
+      #
+      # curl /api/people \
+      #      -d email=<from.address>
+      #      -d name=<from.name>
+      #      -d account=<account.id>
+      person = account.people.find_or_initialize_by(email: from.address)
+      # If there's no name for the person, update, otherwise we don't want to
+      # override an explicitly set name.
+      person.name ||= from.name
+      person.save
+
+      # Find or create Conversation
+      conversation = if conversation_number
+        account.conversations.find_by!(number: conversation_number)
+      else
+        account.conversations.create!(
+          subject: params.fetch(:subject)
+        )
       end
 
-      render :status => :accepted, json: {id: message.id}
-    else
-      render :status => :not_acceptable, json: message.errors
+      # Extract attachments
+      attachments = params.fetch('attachment-count', 0).to_i.times.map do |i|
+        attachment = "attachment-#{i+1}"
+        {file: params.fetch(attachment)}
+      end
+
+      message = conversation.messages.create!(
+        person:  person,
+        content: params.fetch('stripped-text'),
+        body:    params['stripped-html'],
+        subject: params['subject'],
+        attachments_attributes: attachments
+      )
     end
+
+    head :accepted
   end
 
   protected
@@ -63,6 +91,15 @@ class Webhooks::MailgunController < ApplicationController
     data = [timestamp, token].join
     signature == OpenSSL::HMAC.hexdigest(digest, api_key, data)
   end
+
+  def retry_webhook
+    head :not_acceptable
+  end
+
+  def stop_webhook
+    head :unprocessable_entity
+  end
+
 
   private
 

@@ -24,13 +24,6 @@ class MessageMailer < ActionMailer::Base
 
     reply_to = @conversation.mailbox.dup
 
-    headers(
-      'List-ID' => "#{@account.slug}##{@conversation.number} <#{@conversation.number}.#{@account.slug}.helpful.io",
-      'List-Archive' => account_conversation_url(@account, @conversation),
-      'List-Post' => "<mailto:#{reply_to}>"
-      # TODO List Unsubscribe
-    )
-
     mail to: to,
          # FIXME: CC recipient instead
          from: from,
