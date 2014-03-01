@@ -6,8 +6,13 @@ div {
   font-family: $font-body;
 }
 
-.l-home {
+@media only screen and (max-width: 980px) {
+  body {
+    position: absolute;
+  }
+}
 
+.l-home {
   .header-wrapper {
     background-color: #ffffff;
     height: 130px;
@@ -302,6 +307,5 @@ div {
       letter-spacing: 4px;
     }
   }
-
 }
 
