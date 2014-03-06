@@ -23,6 +23,8 @@ Sidekiq::Logging.logger = nil
 
 RSpec.configure do |config|
 
+  config.render_views
+
   config.include FactoryGirl::Syntax::Methods
   config.include Devise::TestHelpers, type: :controller
   config.include AdminAuth
