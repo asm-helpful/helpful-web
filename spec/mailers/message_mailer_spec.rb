@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe MessageMailer, :created do
-
   before do
     @message = create(:message)
     @recipient = create(:person)
@@ -39,5 +38,11 @@ describe MessageMailer, :created do
     email = MessageMailer.created(@message.id, @recipient.id)
     assert_equal @message.person.name,
       email[:from].addrs.first.display_name.to_s
+  end
+
+  it "includes a link to the conversation" do
+    email = MessageMailer.created(@message.id, @recipient.id)
+    conversation_path = account_conversation_path(@message.account, @message.conversation)
+    assert email.body.encoded.include?(conversation_path)
   end
 end
