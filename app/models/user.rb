@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
 
   has_many :memberships
   has_many :accounts, through: :memberships
+  has_many :conversations
 
   has_many :owner_memberships, -> { where(role: 'owner') }, class_name: 'Membership'
   has_many :owned_accounts, class_name: 'Account', through: :owner_memberships, source: :account
