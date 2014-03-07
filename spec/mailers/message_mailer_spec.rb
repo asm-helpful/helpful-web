@@ -1,43 +1,44 @@
 require 'spec_helper'
 
 describe MessageMailer, :created do
-
-  before do
-    @message = create(:message)
-    @recipient = create(:person)
-  end
+  let(:message) { create(:message) }
+  let(:recipient) { create(:person) }
 
   it "delivers" do
-    MessageMailer.created(@message.id, @recipient.id).deliver
-    assert_equal true, ActionMailer::Base.deliveries.any?
+    MessageMailer.created(message.id, recipient.id).deliver
+    expect(ActionMailer::Base.deliveries).to be_present
   end
 
   it "has the correct recipient" do
-    email = MessageMailer.created(@message.id, @recipient.id)
-    assert_equal true, email.to.include?(@recipient.email)
+    email = MessageMailer.created(message.id, recipient.id)
+    expect(email.to).to include(recipient.email)
   end
 
   it "has the correct reply_to address" do
-    email = MessageMailer.created(@message.id, @recipient.id)
-    assert_equal @message.conversation.mailbox.address.to_s,
-      email.reply_to.first
+    email = MessageMailer.created(message.id, recipient.id)
+    expect(email.reply_to.first).to eq(message.conversation.mailbox.address.to_s)
   end
 
   it "has the correct reply_to display_name" do
-    email = MessageMailer.created(@message.id, @recipient.id)
-    expect(email[:reply_to].addrs.first.display_name.to_s).to(
-      eq(@message.conversation.account.name)
-    )
+    email = MessageMailer.created(message.id, recipient.id)
+    reply_to_display_name = email[:reply_to].addrs.first.display_name.to_s
+    expect(reply_to_display_name).to eq(message.conversation.account.name)
   end
 
   it "has the correct from address" do
-    email = MessageMailer.created(@message.id, @recipient.id)
-    assert_equal "notifications@helpful.io", email.from.first
+    email = MessageMailer.created(message.id, recipient.id)
+    expect(email.from.first).to eq("notifications@helpful.io")
   end
 
   it "has the correct from display_name" do
-    email = MessageMailer.created(@message.id, @recipient.id)
-    assert_equal @message.person.name,
-      email[:from].addrs.first.display_name.to_s
+    email = MessageMailer.created(message.id, recipient.id)
+    display_name = email[:from].addrs.first.display_name.to_s
+    expect(display_name).to eq(message.person.name)
+  end
+
+  it "includes a link to the conversation" do
+    email = MessageMailer.created(message.id, recipient.id)
+    conversation_path = account_conversation_path(message.account, message.conversation)
+    expect(email.body.encoded).to include(conversation_path)
   end
 end
