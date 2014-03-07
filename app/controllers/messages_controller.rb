@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
   def create
     find_account!
 
-    @message = Message.new(message_params)
+    @message = CommandBarAction.new(message_params)
 
     if @message.save
       Analytics.track(
