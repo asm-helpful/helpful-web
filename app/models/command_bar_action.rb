@@ -19,7 +19,7 @@ class CommandBarAction
   end
 
   def tag
-    message
+    @tag ||= Tag.new(params)
   end
 
   def message
