@@ -10,7 +10,7 @@
     <%= render "/shared/error_messages", :target => @account %>
     <%= render "/shared/error_messages", :target => @new_account_user %>
 
-    <%= form_for @account, html: {class: 'form'} do |f| %>
+    <%= form_for @account, url: account_path, html: {class: 'form'} do |f| %>
 
       <div class="form-group">
         <%= f.label :name, 'Company name', class: 'form-label' %>

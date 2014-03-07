@@ -43,28 +43,35 @@ Helpful::Application.routes.draw do
     end
   end
 
+  resource :incoming_message, only: [:create]
+
   authenticated :user do
     root :to => 'dashboard#show', :as => 'authenticated_root'
     get '/settings' => 'users#edit', as: :edit_user
     resources :users, only: [:update]
   end
 
-  root to: 'pages#home'
+  resource :account, only: [:new, :create]
 
-  resources :accounts, only: [:new, :create, :show, :edit, :update],
-                       path: '/'
+  scope '/:id' do
+    resource :account, path: '/', only: [:show, :edit, :update] do
+      get :web_form
+    end
+  end
 
   scope '/:account_id', as: :account do
-    resource :billing, only: [:show] do
-      get :return
-    end
 
-    resources :messages, only: [:create]
-    resources :conversations, path: '/', except: [:index, :new, :create, :edit, :destroy] do
+    resources :conversations, path: '/', only: [:show] do
       get :archived, on: :collection
       get :inbox, on: :collection
       get :search, on: :collection
     end
+
+    resources :messages, only: [:create]
+    resource :billing, only: [:show] do
+      get :return
+    end
   end
 
+  root to: 'pages#home'
 end
