@@ -1,27 +1,33 @@
 class CommandBarAction
   attr_accessor :action, :content, :params
 
-  def initialize(content, params = {})
-    self.content = content
+  def initialize(params = {})
+    self.content = params.fetch(:content)
     self.params = params
   end
 
-  # TODO: Call `action.save` once other action types are implemented.
   def save
-    message.save && message
+    action.save
   end
 
   def assignment
+    @assignment ||= Assignment.new(params)
   end
 
   def canned_response
+    message
   end
 
   def tag
+    message
   end
 
   def message
-    Message.new(params.merge(content: content))
+    @message ||= Message.new(params)
+  end
+
+  def conversation
+    action.conversation
   end
 
   def action

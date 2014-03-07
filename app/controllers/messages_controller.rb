@@ -4,9 +4,9 @@ class MessagesController < ApplicationController
   def create
     find_account!
 
-    @message = CommandBarAction.new(message_params)
+    action = CommandBarAction.new(message_params)
 
-    if @message.save
+    if action.save
       Analytics.track(
         user_id: current_user.id,
         event: 'New Message',
@@ -14,16 +14,16 @@ class MessagesController < ApplicationController
       )
 
       if params['commit'] == "Send & Archive"
-        @message.conversation.archive!
+        action.conversation.archive!
         redirect_to inbox_account_conversations_path(@account)
       else
-        redirect_to account_conversation_path(@account, @message.conversation)
+        redirect_to account_conversation_path(@account, action.conversation)
       end
 
 
     else
       Analytics.track(user_id: current_user.id, event: 'Message Save Problem')
-      redirect_to conversation_path(current_account, @message.conversation), alert: "Problem"
+      redirect_to conversation_path(@account, action.conversation), alert: "Problem"
     end
   end
 
