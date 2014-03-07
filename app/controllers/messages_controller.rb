@@ -5,7 +5,6 @@ class MessagesController < ApplicationController
     find_account!
 
     @message = Message.new(message_params)
-    conversation = Conversation.find(message_params['conversation_id'])
 
     if @message.save
       Analytics.track(
@@ -15,7 +14,7 @@ class MessagesController < ApplicationController
       )
 
       if params['commit'] == "Send & Archive"
-        conversation.archive!
+        @message.conversation.archive!
         redirect_to inbox_account_conversations_path(@account)
       else
         redirect_to account_conversation_path(@account, @message.conversation)
