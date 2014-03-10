@@ -60,6 +60,7 @@ Helpful::Application.routes.draw do
   end
 
   scope '/:account_id', as: :account do
+    resources :canned_responses
 
     resources :conversations, path: '/', only: [:show] do
       get :archived, on: :collection

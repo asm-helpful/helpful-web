@@ -1,0 +1,9 @@
+<%= render 'shared/navbar' %>
+
+<div class="container">
+  <div class="page-header">
+    <%= button_to 'Delete', [@account, @canned_response], method: :delete, class: 'btn btn-danger pull-right' %>
+    <h1>Canned Response</h1>
+  </div>
+  <%= render 'form' %>
+</div>
