@@ -31,10 +31,10 @@ class CommandBarAction
   end
 
   def action
-    public_send(classify_content)
+    public_send(action_type)
   end
 
-  def classify_content
+  def action_type
     case content[0]
     when '@' then :assignment
     when ':' then :canned_response

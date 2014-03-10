@@ -1,11 +1,11 @@
 require 'spec_helper'
 
 describe CommandBarAction do
-  it 'classifies the content' do
-    expect(CommandBarAction.new(content: ':cancel').classify_content).to eq(:canned_response)
-    expect(CommandBarAction.new(content: '@Chris Lloyd').classify_content).to eq(:assignment)
-    expect(CommandBarAction.new(content: '#billing').classify_content).to eq(:tag)
-    expect(CommandBarAction.new(content: 'I need help please.').classify_content).to eq(:message)
+  it 'knows the type of action to process' do
+    expect(CommandBarAction.new(content: ':cancel').action_type).to eq(:canned_response)
+    expect(CommandBarAction.new(content: '@Chris Lloyd').action_type).to eq(:assignment)
+    expect(CommandBarAction.new(content: '#billing').action_type).to eq(:tag)
+    expect(CommandBarAction.new(content: 'I need help please.').action_type).to eq(:message)
   end
 
   context 'when the action is an assigment' do
