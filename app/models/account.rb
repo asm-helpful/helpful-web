@@ -8,6 +8,7 @@ class Account < ActiveRecord::Base
 
   belongs_to :billing_plan
 
+  has_many :canned_responses, dependent: :destroy
   has_many :conversations, dependent: :destroy
   has_many :messages, through: :conversations
   has_many :people, dependent: :destroy
