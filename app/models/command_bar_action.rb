@@ -15,7 +15,7 @@ class CommandBarAction
   end
 
   def canned_response
-    message
+    @canned_response_message ||= CannedResponseMessage.new(params)
   end
 
   def tag
@@ -28,6 +28,10 @@ class CommandBarAction
 
   def conversation
     action.conversation
+  end
+
+  def account
+    conversation.account
   end
 
   def action

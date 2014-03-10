@@ -20,6 +20,18 @@ describe CommandBarAction do
     end
   end
 
+  context 'when the action is an assigment' do
+    let!(:conversation) { create(:conversation) }
+    let!(:person) { create(:person) }
+    let!(:params) { { person_id: person.id, conversation_id: conversation.id } }
+    let!(:canned_response) { create(:canned_response, key: 'refund', message: 'We will refund you for last month', account: conversation.account) }
+
+    it 'assigns the conversation to a user' do
+      CommandBarAction.new(params.merge(content: ':refund')).save
+      expect(conversation.messages.order('created_at DESC').last.content).to eq('We will refund you for last month')
+    end
+  end
+
   context 'when the action is a tag' do
     let!(:conversation) { create(:conversation) }
     let!(:params) { { conversation_id: conversation.id } }
