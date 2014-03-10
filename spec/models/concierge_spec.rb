@@ -16,7 +16,7 @@ describe Concierge do
 
     it "should find a conversation based on params[:recipient]" do
       @conversation.save
-      params = { recipient: @conversation.mailbox.to_s }
+      params = { recipient: @conversation.mailbox_email.to_s }
       assert_equal @conversation.id, Concierge.new(@account, params).find_conversation.id
     end
 
@@ -25,7 +25,7 @@ describe Concierge do
       @conversation_2 = FactoryGirl.create(:conversation)
       params = {
         conversation: @conversation.number,
-        recipient:    @conversation_2.mailbox.to_s
+        recipient:    @conversation_2.mailbox_email.to_s
       }
       assert_equal @conversation.id, Concierge.new(@account, params).find_conversation.id
     end
@@ -40,7 +40,7 @@ describe Concierge do
 
     it "should create a new conversation when one cannot be found" do
       @conversation.save
-      params = { recipient: @conversation.mailbox.to_s }
+      params = { recipient: @conversation.mailbox_email.to_s }
       @conversation.delete
       assert_difference "@account.conversations.count" do
         Concierge.new(@account, params).find_conversation

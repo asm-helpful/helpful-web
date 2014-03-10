@@ -29,7 +29,7 @@ class Account < ActiveRecord::Base
   # Public: Customer specific email address for incoming email.
   #
   # Returns the email address customers should send email to.
-  def mailbox
+  def mailbox_email
     email = Mail::Address.new([
       slug,
       '@',

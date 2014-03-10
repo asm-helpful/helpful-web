@@ -21,7 +21,7 @@ class Message < ActiveRecord::Base
                              allow_blank: false
                            }
 
-  after_save :enqueue_to_update_search_index
+  after_commit :enqueue_to_update_search_index
   after_save :send_webhook, if: ->(message) {
     message.conversation.account.webhook_url?
   }

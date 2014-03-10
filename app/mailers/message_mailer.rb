@@ -22,7 +22,7 @@ class MessageMailer < ActionMailer::Base
     )
     from.display_name = nickname(@message.person)
 
-    reply_to = @conversation.mailbox.dup
+    reply_to = @conversation.mailbox_email.dup
 
     mail to: to,
          # FIXME: CC recipient instead
