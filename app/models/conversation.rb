@@ -6,7 +6,6 @@ class Conversation < ActiveRecord::Base
   belongs_to :account
   belongs_to :user
 
-  has_one :conversation_mailbox
   has_many :messages, after_add: :message_added_callback,
                       dependent: :destroy
 
@@ -20,8 +19,6 @@ class Conversation < ActiveRecord::Base
   scope :most_stale, -> { joins(:messages).order('messages.updated_at ASC') }
 
   sequential column: :number, scope: :account_id
-
-  after_create :create_mailbox
 
   def mailing_list
     participants + account.users.map {|u| u.person }
@@ -39,12 +36,11 @@ class Conversation < ActiveRecord::Base
     update_attribute(:archived, false)
   end
 
-
   # Public: Conversation specific email address for incoming email replies.
   #
   # Returns the Mail::Address customers should send email replies to.
   def mailbox_email
-    email = conversation_mailbox.address
+    email = Mail::Address.new("#{self.id}@#{Helpful.incoming_email_domain}")
     email.display_name = account.name
     email
   end
@@ -54,8 +50,7 @@ class Conversation < ActiveRecord::Base
   # Returns a Conversation or nil.
   def self.match_mailbox(email)
     address = Mail::Address.new(email)
-    mailbox = ConversationMailbox.find_by_id(address.local)
-    mailbox.try(:conversation)
+    Conversation.find_by_id(address.local)
   end
 
   # Public: Given an email address try to match to a conversation or raise
@@ -74,18 +69,16 @@ class Conversation < ActiveRecord::Base
     number.to_param
   end
 
-private
+  def to_mailbox_hash
+    {
+      account_slug: self.account.slug,
+      conversation_number: self.number
+    }
+  end
+
+  private
 
   def message_added_callback(message)
     unarchive!
   end
-
-  def create_mailbox
-    self.create_conversation_mailbox(id: mailbox_identifier, account: self.account)
-  end
-
-  def mailbox_identifier
-    Digest::SHA1.hexdigest("#{ENV['DEVISE_SECRET_KEY']}:#{self.account.id}:#{self.number}")
-  end
-
 end

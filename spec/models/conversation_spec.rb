@@ -26,11 +26,6 @@ describe Conversation do
     expect(subject).to_not be_archived
   end
 
-  it "calls create_mailbox after creation" do
-    expect(subject).to receive(:create_mailbox)
-    subject.save
-  end
-
   describe "#mailbox_email" do
     before { subject.save }
     
@@ -40,8 +35,7 @@ describe Conversation do
 
     it "must have the correct local part" do
       subject.save
-      expected = subject.send(:mailbox_identifier)
-      expect(expected).to eq(subject.mailbox_email.local)
+      expect(subject.mailbox_email.local).to eq(subject.id)
     end
 
     it "must have the correct domain part" do
@@ -82,20 +76,15 @@ describe Conversation do
     end
   end
 
-  describe "#create_mailbox" do
-    let(:sha_value) { Digest::SHA1.hexdigest("#{ENV['DEVISE_SECRET_KEY']}:#{subject.account.id}:#{subject.number}") }
-    
-    before do
-      subject.save
-      subject.send(:create_mailbox)
-    end
+  describe "#to_mailbox_hash" do
 
-    it "builds a conversation_mailbox with an id that is a sha1 of salt, account_id and conversation_id" do
-      expect(subject.conversation_mailbox.id).to eq(sha_value)
-    end
-    
-    it "sets the mailboxes account id to be the same as the conversation" do
-      expect(subject.conversation_mailbox.account.id).to eq(subject.account.id)
+    before { subject.save }
+
+    it "returns a hash containing the account_slug and the conversation_id" do
+      expect(subject.to_mailbox_hash).to include(
+        { account_slug: subject.account.slug }, 
+        { conversation_number: subject.number }
+      )
     end
   end
 
