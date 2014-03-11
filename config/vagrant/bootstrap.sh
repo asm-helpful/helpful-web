@@ -31,6 +31,10 @@ log "Setting up Helpful"
 # Get in the right directory
 cd /vagrant
 
+# TODO: Make sure this happen in the vbox
+sudo chmod -R g+ws /opt/ruby
+sudo chown -R root:admin /opt/ruby
+
 # Bundle
 su vagrant -lc "cd /vagrant && bundle install"
 
