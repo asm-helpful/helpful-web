@@ -96,7 +96,7 @@ describe Webhooks::MailgunController do
       end
 
       context "abc123sha@helpful.io type email" do
-        let(:email) { conversation.mailbox_email }
+        let(:email) { "#{conversation.id}@helpful.io" }
 
         it "is accepted" do
           post_create(recipient: email)

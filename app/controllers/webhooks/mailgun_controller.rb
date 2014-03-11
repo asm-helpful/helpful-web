@@ -79,9 +79,10 @@ class Webhooks::MailgunController < WebhooksController
   def parse_identifiers(recipient_address)
     to_email = Mail::Address.new(recipient_address)
     local = to_email.local
+    uuid_regex = /^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$/
     
-    if local.match(/^[0-9a-fA-F]{40}$/)
-      ConversationMailbox.find_by(id: local).to_h
+    if local.match(uuid_regex)
+      Conversation.find_by(id: local).to_mailbox_hash
     else
       local.match(EMAIL_REGEXP)
     end
