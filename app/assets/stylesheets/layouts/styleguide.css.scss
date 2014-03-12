@@ -9,6 +9,10 @@
     margin-bottom: 60px;
   }
 
+ul {
+    list-style: none;
+}
+
   .color-swatch {
     @include clearfix;
     margin: 0;
