@@ -40,7 +40,7 @@ class ConversationsInbox
   #
   # Returns an ActiveRecord::Relation of Conversation models.
   def open_conversations
-    preloaded_conversations
+    preloaded_conversations.unresolved
   end
 
   # Public: Executes a search with the query

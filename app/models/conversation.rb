@@ -21,6 +21,7 @@ class Conversation < ActiveRecord::Base
 
   validates :account, presence: true
 
+  scope :unresolved, -> { where(archived: false) }
   scope :archived, -> { where(archived: true) }
   scope :most_stale, -> { joins(:messages).order('messages.updated_at ASC') }
 
