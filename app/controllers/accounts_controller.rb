@@ -40,6 +40,11 @@ class AccountsController < ApplicationController
     end
   end
 
+  def show
+    find_account!
+    redirect_to inbox_account_conversations_path(@account)
+  end
+
   def edit
     find_account!
     @user = User.new
@@ -49,6 +54,10 @@ class AccountsController < ApplicationController
     find_account!
     @account.update(account_params)
     respond_with(@account)
+  end
+
+  def web_form
+    find_account!
   end
 
   private

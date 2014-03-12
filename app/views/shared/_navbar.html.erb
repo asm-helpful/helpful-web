@@ -2,11 +2,29 @@
   <div class="container-fluid">
     <div class="navbar-left">
       <ul class="nav navbar-nav">
-        <li>
-          <a href="<%= edit_account_path(@account) %>">
-            <%= @account.name %>
-          </a>
-        </li>
+
+        <% other_accounts = current_user.accounts.reject {|a| a == @account } %>
+        <% if other_accounts.any? %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <%= @account.name %> <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <% other_accounts.each do |account| %>
+                <li>
+                  <a href="<%= inbox_account_conversations_path(account) %>">
+                    <%= account.name %>
+                  </a>
+                </li>
+              <% end %>
+            </ul>
+          </li>
+        <% else %>
+          <li>
+            <span class="navbar-text"><%= @account.name %></span>
+          </li>
+        <% end %>
+
         <li>
           <a href="<%= inbox_account_conversations_path(@account) %>">
             Inbox
@@ -18,6 +36,12 @@
             Archive
           </a>
         </li>
+
+        <li>
+          <a href="<%= edit_account_path(@account) %>">
+            Settings
+          </a>
+        </a>
       </ul>
 
     </div>
@@ -25,13 +49,21 @@
     <div class="navbar-right">
       <ul class="nav navbar-nav">
         <li>
-          <a href="<%= edit_user_path %>">Settings</a>
-        </li>
-        <li>
           <a href="mailto:helpful@helpful.io">Help</a>
         </li>
-        <li>
-          <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-text' %>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+            <span class="glyphicon glyphicon-cog"></span> <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="<%= edit_user_path %>">Settings</a>
+            </li>
+            <li>
+              <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-text' %>
+            </li>
+          </ul>
         </li>
       </ul>
     </div>

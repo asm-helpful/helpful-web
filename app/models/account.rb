@@ -4,25 +4,24 @@ class Account < ActiveRecord::Base
   include ActiveRecord::UUID
   extend FriendlyId
 
+  attr_accessor :new_account_user
+
   belongs_to :billing_plan
 
-  friendly_id :name, use: :slugged
-
-  has_many :conversations, :dependent => :destroy
-  has_many :people, :dependent => :destroy
-
-  has_many :memberships, :dependent => :destroy
+  has_many :conversations, dependent: :destroy
+  has_many :messages, through: :conversations
+  has_many :people, dependent: :destroy
+  has_many :memberships, dependent: :destroy
   has_many :users, through: :memberships
-
-  has_many :webhooks, :dependent => :destroy
-
-  attr_accessor :new_account_user
+  has_many :webhooks, dependent: :destroy
 
   validates :name, presence: true
   validates :slug, presence: true
 
   before_create :generate_webhook_secret
   after_create :save_new_user
+
+  friendly_id :name, use: :slugged
 
   # Internal: Regex to extract an account slug from a Account#mailbox address
   MAILBOX_REGEX = Regexp.new(/^(?<slug>(\w|-)+)(\+\w+)?@.+$/).freeze
@@ -94,17 +93,11 @@ class Account < ActiveRecord::Base
   end
 
   def add_owner(owner)
-    memberships.create(
-      user: owner,
-      role: 'owner'
-    )
+    memberships.create(user: owner, role: 'owner')
   end
 
   def add_agent(agent)
-    memberships.create(
-      user: agent,
-      role: 'agent'
-    )
+    memberships.create(user: agent, role: 'agent')
   end
 
   protected
@@ -112,11 +105,12 @@ class Account < ActiveRecord::Base
   def save_new_user
     if new_account_user
       new_account_user.save || raise(ActiveRecord::Rollback)
-      Membership.create(account: self, user: new_account_user, role: 'owner') || raise(ActiveRecord::Rollback)
+      add_owner(new_account_user) || raise(ActiveRecord::Rollback)
     end
   end
 
   def generate_webhook_secret
     self.webhook_secret = SecureRandom.hex(16)
   end
+
 end

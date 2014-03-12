@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="column-content">
+    <% if @message.persisted? -%>
+      <p>Your message as been sent successfully!  You'll receive a reply shortly.  Thanks very much for your time.</p>
+    <% else -%>
+      <p>We're sorry, there was a problem submitting your message.</p>
+
+      <%= render '/shared/error_messages', target: @message %>
+    <% end -%>
+  </div>
+</div>

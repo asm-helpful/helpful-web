@@ -10,6 +10,7 @@ class Conversation < ActiveRecord::Base
                   ).freeze
 
   belongs_to :account
+  belongs_to :user
 
   has_many :messages, after_add: :message_added_callback,
                       dependent: :destroy

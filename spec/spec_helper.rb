@@ -1,5 +1,6 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
+ENV["INCOMING_EMAIL_DOMAIN"] = 'helpful.io'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'webmock/rspec'
@@ -21,6 +22,8 @@ ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 Sidekiq::Logging.logger = nil
 
 RSpec.configure do |config|
+
+  config.render_views
 
   config.include FactoryGirl::Syntax::Methods
   config.include Devise::TestHelpers, type: :controller
