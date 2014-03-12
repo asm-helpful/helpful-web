@@ -82,6 +82,7 @@ class Message < ActiveRecord::Base
   # TODO: Perhaps we should mock Pusher call
   def trigger_pusher_new_message
     if !Rails.env.test?
+      # TODO: Move the Pusher url line to an init file
       Pusher.url = "http://#{ENV["PUSHER_KEY"]}:#{ENV["PUSHER_SECRET"]}@api.pusherapp.com/apps/#{ENV["PUSHER_APP_ID"]}"
       Pusher[self.account.slug].trigger('new_message', {})
     end
