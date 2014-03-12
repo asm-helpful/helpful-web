@@ -13,13 +13,12 @@ class Webhooks::MailgunController < WebhooksController
   def create
     require_mailgun_params!
 
-    to = Mail::Address.new(params.fetch(:recipient).to_ascii)
     from = Mail::Address.new(params.fetch(:from).to_ascii)
 
-    # Extracts data from recipient address
-    matches = to.local.match(EMAIL_REGEXP)
-    account_slug = matches[:account_slug]
-    conversation_number = matches[:conversation_number]
+    identifiers = parse_identifiers(params.fetch(:recipient).to_ascii)
+    
+    account_slug = identifiers[:account_slug]
+    conversation_number = identifiers[:conversation_number]
 
     if account_slug.nil?
       stop_webhook
@@ -73,6 +72,22 @@ class Webhooks::MailgunController < WebhooksController
 
   protected
 
+  # FIXME: In the future we will need to make it so that we don't accept
+  # the old style of emails which is slug+3@helpful.io for now
+  # this should gracefully work for the old style and the new style
+
+  def parse_identifiers(recipient_address)
+    to_email = Mail::Address.new(recipient_address)
+    local = to_email.local
+    uuid_regex = /^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$/
+    
+    if local.match(uuid_regex)
+      Conversation.find_by(id: local).to_mailbox_hash
+    else
+      local.match(EMAIL_REGEXP)
+    end
+  end
+
   def verify_webhook
     signature_status = valid_signature?(
       ENV['MAILGUN_API_KEY'],
@@ -99,7 +114,6 @@ class Webhooks::MailgunController < WebhooksController
   def stop_webhook
     head :unprocessable_entity
   end
-
 
   private
 

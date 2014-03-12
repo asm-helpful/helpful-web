@@ -46,7 +46,7 @@ namespace :mailgun do
     puts "This task will create a new route in your mailgun account to forward
     messages to helpful via webhook. Check README.md for more instructions."
 
-    print "Domain helpful is running on (http://DOMAIN/incoming_emails/mailgun):  "
+    print "Domain helpful is running on (http://DOMAIN/webhooks/mailgun):  "
     domain = STDIN.gets.chomp
     if domain.length < 2
       puts "Invalid Domain"
@@ -59,7 +59,7 @@ namespace :mailgun do
     " http://#{domain}/incoming_emails/mailgun (#{Time.now.utc.to_s})"
 
     data[:expression] = "match_recipient('.*@#{ENV['INCOMING_EMAIL_DOMAIN']}')"
-    data[:action] = "forward('http://#{domain}/incoming_emails/mailgun')"
+    data[:action] = "forward('http://#{domain}/webhooks/mailgun')"
     data[:action] = "stop()"
 
     puts "Will create the following rule:"

@@ -3,12 +3,6 @@ require 'activerecord/uuid'
 class Conversation < ActiveRecord::Base
   include ActiveRecord::UUID
 
-  # Internal: Regex to extract account slug and conversation number from
-  # Conversation#mailbox addresses.
-  MAILBOX_REGEX = Regexp.new(
-                    /^(?<slug>(\w|-)+)(\+\S+)?\+(?<number>\d+)?@.+$/
-                  ).freeze
-
   belongs_to :account
   belongs_to :user
 
@@ -42,20 +36,12 @@ class Conversation < ActiveRecord::Base
     update_attribute(:archived, false)
   end
 
-
   # Public: Conversation specific email address for incoming email replies.
   #
   # Returns the Mail::Address customers should send email replies to.
-  def mailbox
-    email = Mail::Address.new([
-      account.slug,
-      "+#{number}",
-      '@',
-      Helpful.incoming_email_domain
-    ].join.to_s)
-
+  def mailbox_email
+    email = Mail::Address.new("#{self.id}@#{Helpful.incoming_email_domain}")
     email.display_name = account.name
-
     email
   end
 
@@ -63,15 +49,8 @@ class Conversation < ActiveRecord::Base
   #
   # Returns a Conversation or nil.
   def self.match_mailbox(email)
-    address = Mail::Address.new(email).address
-
-    match = MAILBOX_REGEX.match(address)
-    if match
-      account = Account.where(slug: match[:slug]).first
-      return Conversation.where(account: account, number: match[:number]).first
-    else
-      return nil
-    end
+    address = Mail::Address.new(email)
+    Conversation.find_by_id(address.local)
   end
 
   # Public: Given an email address try to match to a conversation or raise
@@ -90,10 +69,16 @@ class Conversation < ActiveRecord::Base
     number.to_param
   end
 
-private
+  def to_mailbox_hash
+    {
+      account_slug: self.account.slug,
+      conversation_number: self.number
+    }
+  end
+
+  private
 
   def message_added_callback(message)
     unarchive!
   end
-
 end
