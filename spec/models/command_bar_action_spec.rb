@@ -1,11 +1,11 @@
 require 'spec_helper'
 
 describe CommandBarAction do
-  it 'classifies the content' do
-    expect(CommandBarAction.new(content: ':cancel').classify_content).to eq(:canned_response)
-    expect(CommandBarAction.new(content: '@Chris Lloyd').classify_content).to eq(:assignment)
-    expect(CommandBarAction.new(content: '#billing').classify_content).to eq(:tag)
-    expect(CommandBarAction.new(content: 'I need help please.').classify_content).to eq(:message)
+  it 'knows the type of action to process' do
+    expect(CommandBarAction.new(content: ':cancel').action_type).to eq(:canned_response)
+    expect(CommandBarAction.new(content: '@Chris Lloyd').action_type).to eq(:assignment)
+    expect(CommandBarAction.new(content: '#billing').action_type).to eq(:tag)
+    expect(CommandBarAction.new(content: 'I need help please.').action_type).to eq(:message)
   end
 
   context 'when the action is an assigment' do
@@ -17,6 +17,18 @@ describe CommandBarAction do
     it 'assigns the conversation to a user' do
       CommandBarAction.new(params.merge(content: '@Patrick Van Stee')).save
       expect(conversation.reload.user).to eq(user)
+    end
+  end
+
+  context 'when the action is an assigment' do
+    let!(:conversation) { create(:conversation) }
+    let!(:person) { create(:person) }
+    let!(:params) { { person_id: person.id, conversation_id: conversation.id } }
+    let!(:canned_response) { create(:canned_response, key: 'refund', message: 'We will refund you for last month', account: conversation.account) }
+
+    it 'assigns the conversation to a user' do
+      CommandBarAction.new(params.merge(content: ':refund')).save
+      expect(conversation.messages.order('created_at DESC').last.content).to eq('We will refund you for last month')
     end
   end
 

@@ -1,0 +1,27 @@
+<%= render 'shared/navbar' %>
+
+<div class="container">
+  <div class="page-header">
+    <a class="btn btn-primary pull-right" href="<%= new_account_canned_response_path %>">
+      Create canned response
+    </a>
+    <h1>Canned Responses</h1>
+  </div>
+
+  <% if @canned_responses.any? %>
+    <div class="list">
+      <% @canned_responses.each do |canned_response| %>
+        <div class="list-item">
+          <div class="canned-response-row">
+            <a href="<%= edit_account_canned_response_path(canned_response.account, canned_response) %>">
+              <div class="canned-response-key"><%= canned_response.key %></div>
+              <div class="canned-response-message"><%= canned_response.message %></div>
+            </a>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p class="text-muted">No one has created a canned response yet.</p>
+  <% end %>
+</div>
