@@ -2,7 +2,7 @@
 
   <div class="conversation-heading">
     <div class="actions">
-      <%= button_to 'Archive', account_conversation_path(@account, @conversation, conversation: {archive: true}), method: :patch, data: { confirm: "Are you sure?" }, class: %w(btn btn-success), form: { id: 'archive' } %>
+      <%= button_to 'Archive', account_conversation_path(@account, @conversation, conversation: { archived: true }), method: :patch, data: { confirm: "Are you sure?" }, class: %w(btn btn-success), form: { id: 'archive' } %>
       <script>
         $(document).ready(function(){
           $('#archive')
