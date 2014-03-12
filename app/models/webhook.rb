@@ -11,7 +11,7 @@ class Webhook < ActiveRecord::Base
   attr_accessor :data
 
   after_create :fill_in_body
-  after_create :enqueue_to_send, on: create
+  after_commit :enqueue_to_send, on: :create
 
   def dispatch!
     options = {
