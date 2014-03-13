@@ -18,15 +18,12 @@ class Conversation < ActiveRecord::Base
   scope :unresolved, -> { where(archived: false) }
   scope :archived, -> { where(archived: true) }
   scope :most_stale, -> { joins(:messages).order('messages.updated_at ASC') }
+  scope :queue, -> { order('updated_at ASC') }
 
   sequential column: :number, scope: :account_id
 
   def mailing_list
     participants + account.users.map {|u| u.person }
-  end
-
-  def ordered_messages
-    messages.order(:created_at => :asc)
   end
 
   def archive!
@@ -35,6 +32,10 @@ class Conversation < ActiveRecord::Base
 
   def unarchive!
     update_attribute(:archived, false)
+  end
+
+  def respond_later!
+    touch
   end
 
   # Public: Conversation specific email address for incoming email replies.

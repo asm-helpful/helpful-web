@@ -64,9 +64,7 @@
 .conversation-row {
   padding: 20px 20px;
 
-  > .updated {
-    float: right;
-
+  .updated {
     color: #B2B2B2;
     font-size: 13px;
     line-height: 24px;
@@ -111,6 +109,17 @@
     > .summary {
       color: $primary;
     }
+  }
+
+  .respond-later {
+    visibility: hidden;
+  }
+
+  &:hover {
+    .respond-later {
+      visibility: visible;
+    }
+
   }
 }
 

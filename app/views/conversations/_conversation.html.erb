@@ -2,10 +2,10 @@
 
   <div class="conversation-heading">
     <div class="actions">
-      <% if conversation.archived %>
-      <%= button_to 'Unarchive', account_conversation_path(@account, @conversation, conversation: { archived: false }), method: :patch, data: { confirm: "Are you sure you want to unarchive the conversation?" }, class: %w(btn btn-warning), form: { id: 'archive' } %>
+      <% if conversation.archived? %>
+        <%= button_to 'Unarchive', account_conversation_path(@account, @conversation, conversation: { unarchive: true }), method: :patch, class: %w(btn btn-success), form: { id: 'unarchive' } %>
       <% else %>
-        <%= button_to 'Archive', account_conversation_path(@account, @conversation, conversation: { archived: true }), method: :patch, data: { confirm: "Are you sure you want to archive the conversation?" }, class: %w(btn btn-success), form: { id: 'archive' } %>
+        <%= button_to 'Archive', account_conversation_path(@account, @conversation, conversation: { archive: true }), method: :patch, class: %w(btn btn-danger), form: { id: 'archive' } %>
       <% end %>
     </div>
     <div class="summary"><%= summary(conversation) %></div>

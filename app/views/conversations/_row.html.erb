@@ -1,7 +1,9 @@
 <a href="<%= account_conversation_path(conversation.account, conversation) %>" class="conversation-row">
 
-  <div class="time updated <%= most_recent_message_class(conversation) %>">
-    <%= time_ago_in_words(conversation.most_recent_message.updated_at) %>
+  <div class="pull-right">
+    <button href="#" data-account-conversation-path="<%= account_conversation_path(@account, conversation, conversation: { respond_later: true }) %>" class="btn btn-primary respond-later">
+      Respond Later
+    </button>
   </div>
 
   <div class="summary"><%= summary(conversation) %></div>
@@ -10,6 +12,10 @@
     <%= conversation.participants.map {|person| nickname(person) }.to_sentence %>
     <span class="meta-divider"></span>
     <%= pluralize(conversation.messages.count, 'message') %>
+    <span class="meta-divider"></span>
+    <span class="time updated <%= most_recent_message_class(conversation) %>">
+      <%= time_ago_in_words(conversation.most_recent_message.updated_at) %>
+    </span>
   </div>
 
 </a>
