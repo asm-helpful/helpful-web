@@ -1,7 +1,7 @@
 <a href="<%= account_conversation_path(conversation.account, conversation) %>" class="conversation-row">
 
   <div class="pull-right">
-    <button href="#" data-account-conversation-path="<%= account_conversation_path(@account, @conversation, conversation: { respond_later: true }) %>" class="btn btn-primary respond-later">
+    <button href="#" data-account-conversation-path="<%= account_conversation_path(@account, conversation, conversation: { respond_later: true }) %>" class="btn btn-primary respond-later">
       Respond Later
     </button>
   </div>
@@ -19,21 +19,3 @@
   </div>
 
 </a>
-
-<script>
-  $(document).ready(function() {
-    $('.respond-later').click(function() {
-      var $listItem = $(this).parents('.conversation-row').parent();
-      var path = $(this).attr('data-account-conversation-path');
-
-      var pushToEndOfQueue = function() {
-        var $list = $listItem.parent();
-        $listItem.remove().appendTo($list);
-      }
-
-      $.post(path, { conversation: { respond_later: true }, _method: 'patch' }, pushToEndOfQueue);
-
-      return false;
-    });
-  });
-</script>
