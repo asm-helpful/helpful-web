@@ -20,8 +20,7 @@ class ConversationManager
   end
 
   def take_action(action)
-    conversation.respond_to?(action) &&
-      conversation.public_send(action)
+    conversation.try(action)
   end
 
   def update_conversation(params)

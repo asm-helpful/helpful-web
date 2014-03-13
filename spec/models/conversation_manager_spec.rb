@@ -8,7 +8,7 @@ describe ConversationManager do
   it 'takes an action if needed' do
     expect(conversation_manager).to receive(:lookup_action) { :archive! }
 
-    expect(conversation).to receive(:archive!)
+    expect(conversation).to receive(:try).with(:archive!)
 
     conversation_manager.manage(params)
   end
