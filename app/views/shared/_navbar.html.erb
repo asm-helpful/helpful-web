@@ -12,9 +12,7 @@
             <ul class="dropdown-menu">
               <% other_accounts.each do |account| %>
                 <li>
-                  <a href="<%= inbox_account_conversations_path(account) %>">
-                    <%= account.name %>
-                  </a>
+                  <%= link_to account.name, inbox_account_conversations_path(account) %>
                 </li>
               <% end %>
             </ul>
@@ -24,29 +22,18 @@
             <span class="navbar-text"><%= @account.name %></span>
           </li>
         <% end %>
-
-        <li>
-          <a href="<%= inbox_account_conversations_path(@account) %>">
-            Inbox
-          </a>
+        <li class="<%= current_page?(inbox_account_conversations_path(@account)) ? 'active' : '' %>"> 
+          <%= link_to "Inbox", inbox_account_conversations_path(@account) %>
         </li>
-
-        <li>
-          <a href="<%= archived_account_conversations_path(@account) %>">
-            Archive
-          </a>
+        <li class="<%= current_page?(archived_account_conversations_path(@account)) ? 'active' : '' %>"> 
+          <%= link_to "Archive", archived_account_conversations_path(@account) %>
         </li>
-
-        <li>
-          <a href="<%= account_canned_responses_path(@account) %>">
-            Canned Responses
-          </a>
+        <li class="<%= current_page?(account_canned_responses_path(@account)) ? 'active' : '' %>"> 
+          <%= link_to "Canned Responses", account_canned_responses_path(@account) %>
         </li>
-        <li>
-          <a href="<%= edit_account_path(@account) %>">
-            Settings
-          </a>
-        </a>
+        <li class="<%= current_page?(edit_account_path(@account)) ? 'active' : '' %>"> 
+          <%= link_to "Settings", edit_account_path(@account) %>
+        </li>
       </ul>
 
     </div>
