@@ -25,10 +25,6 @@ class Conversation < ActiveRecord::Base
     participants + account.users.map {|u| u.person }
   end
 
-  def ordered_messages
-    messages.order(:created_at => :asc)
-  end
-
   def archive!
     update_attribute(:archived, true)
   end
