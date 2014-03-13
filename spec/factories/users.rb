@@ -10,5 +10,15 @@ FactoryGirl.define do
         FactoryGirl.create_list(:membership, 1, user: user)
       end
     end
+
+    factory :user_with_account do
+      ignore do
+        account { create(:account) }
+      end
+
+      after(:create) do |user, evaluator|
+        create(:membership, user: user, account: evaluator.account)
+      end
+    end
   end
 end
