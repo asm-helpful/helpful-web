@@ -33,6 +33,10 @@ class Conversation < ActiveRecord::Base
     update_attribute(:archived, false)
   end
 
+  def respond_later!
+    touch
+  end
+
   # Public: Conversation specific email address for incoming email replies.
   #
   # Returns the Mail::Address customers should send email replies to.
