@@ -111,12 +111,14 @@
     }
   }
 
-  .respond-later {
+  .respond-later,
+  .archive {
     visibility: hidden;
   }
 
   &:hover {
-    .respond-later {
+    .respond-later,
+    .archive {
       visibility: visible;
     }
 
