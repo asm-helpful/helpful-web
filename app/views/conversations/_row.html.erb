@@ -2,9 +2,15 @@
 
   <% if current_page?(inbox_account_conversations_path(@account)) %>
     <div class="pull-right">
-      <button href="#" data-account-conversation-path="<%= account_conversation_path(@account, conversation, conversation: { respond_later: true }) %>" class="btn btn-primary respond-later">
-        Respond Later
-      </button>
+      <div class="btn-group">
+        <button href="#" data-account-conversation-path="<%= account_conversation_path(@account, conversation, conversation: { respond_later: true }) %>" class="btn btn-primary respond-later">
+          Respond Later
+        </button>
+
+        <button href="#" data-account-conversation-path="<%= account_conversation_path(@account, conversation, conversation: { archive: true }) %>" class="btn btn-danger archive">
+          Archive
+        </button>
+      </div>
     </div>
   <% end %>
 

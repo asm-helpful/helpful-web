@@ -12,4 +12,17 @@ $(document).ready(function() {
 
     return false;
   });
+
+  $('.archive').click(function() {
+    var $listItem = $(this).parents('.conversation-row').parent();
+    var path = $(this).attr('data-account-conversation-path');
+
+    var removeFromQueue = function() {
+      $listItem.remove();
+    }
+
+    $.post(path, { conversation: { archive: true }, _method: 'patch' }, removeFromQueue);
+
+    return false;
+  });
 });
