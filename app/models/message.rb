@@ -79,13 +79,14 @@ class Message < ActiveRecord::Base
     conversation.participants - [self.person]
   end
 
-  # TODO: Perhaps we should mock Pusher call
   def trigger_pusher_new_message
+    # TODO: Perhaps we should mock Pusher call
     if !Rails.env.test?
-      # TODO: Move the Pusher url line to an init file
-      Pusher.url = "http://#{ENV["PUSHER_KEY"]}:#{ENV["PUSHER_SECRET"]}@api.pusherapp.com/apps/#{ENV["PUSHER_APP_ID"]}"
-      Pusher[self.account.slug].trigger('new_message', {})
+      begin
+        Pusher[self.account.slug].trigger('new_message', {})
+      rescue Pusher::Error => e
+        logger.error e.message
+      end
     end
   end
-
 end
