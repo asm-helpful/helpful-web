@@ -16,7 +16,7 @@ describe MessageMailer, :created do
 
   it "has the correct reply_to address" do
     email = MessageMailer.created(message.id, recipient.id)
-    expect(email.reply_to.first).to eq(message.conversation.mailbox.address.to_s)
+    expect(email.reply_to.first).to eq(message.conversation.mailbox_email.address.to_s)
   end
 
   it "has the correct reply_to display_name" do

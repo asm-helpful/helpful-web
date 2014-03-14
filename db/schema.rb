@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140307182913) do
+ActiveRecord::Schema.define(version: 20140313195537) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,16 @@ ActiveRecord::Schema.define(version: 20140307182913) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "canned_responses", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
+    t.string   "key",        null: false
+    t.text     "message",    null: false
+    t.uuid     "account_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "canned_responses", ["key", "account_id"], name: "index_canned_responses_on_key_and_account_id", unique: true, using: :btree
 
   create_table "conversations", id: false, force: true do |t|
     t.uuid     "id",                         null: false
@@ -223,6 +233,7 @@ ActiveRecord::Schema.define(version: 20140307182913) do
     t.integer  "invitation_limit"
     t.uuid     "invited_by_id"
     t.string   "invited_by_type"
+    t.integer  "invitations_count",      default: 0
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 source 'https://rails-assets.org'
-ruby '2.1.0'
+ruby '2.1.1'
 
 # Alphabetical list
 
@@ -23,7 +23,7 @@ gem 'premailer-rails'
 gem 'puma'
 gem 'pusher'
 gem 'rails', '~> 4.1.0.rc1'
-gem 'rails-assets-bootstrap'
+gem 'bootstrap-sass'
 gem 'redcarpet'
 gem 'sass-rails', '~> 4.0.0'
 gem 'sequential', '>= 0.1'
@@ -46,6 +46,8 @@ group :development, :test do
   gem 'ffaker', '~> 1.20'
   gem 'rake'
   gem 'rspec-rails', '~> 3.0.0.beta2'
+  gem 'pry'
+  gem 'timecop'
 end
 
 group :test do

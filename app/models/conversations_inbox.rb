@@ -16,7 +16,7 @@ class ConversationsInbox
     if search?
       search_conversations
     else
-      most_stale_conversations
+      conversations_queue
     end
   end
 
@@ -32,15 +32,15 @@ class ConversationsInbox
   # recent message.
   #
   # Returns an Array of Conversation models.
-  def most_stale_conversations
-    open_conversations.most_stale.to_a.uniq
+  def conversations_queue
+    open_conversations.queue
   end
 
   # Public: Finds all the open conversations associated with the account.
   #
   # Returns an ActiveRecord::Relation of Conversation models.
   def open_conversations
-    preloaded_conversations
+    preloaded_conversations.unresolved
   end
 
   # Public: Executes a search with the query

@@ -35,7 +35,7 @@ class ConversationsController < ApplicationController
 
   def update
     find_conversation!
-    @conversation.update_attributes(conversation_params)
+    ConversationManager.manage(@conversation, conversation_params)
     redirect_to account_conversation_path(@account, @conversation)
   end
 
@@ -57,7 +57,7 @@ class ConversationsController < ApplicationController
   end
 
   def conversation_params
-    params.require(:conversation).permit(:archived, :id)
+    params.require(:conversation).permit(:archive, :unarchive, :respond_later, :id)
   end
 
 end

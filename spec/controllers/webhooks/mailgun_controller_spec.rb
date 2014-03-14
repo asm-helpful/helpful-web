@@ -4,7 +4,7 @@ require 'openssl'
 describe Webhooks::MailgunController do
 
   let(:account) { create(:account) }
-
+  let(:conversation) { create(:conversation, account: account) }
     # The Mailgun API only uses timestamp and token as the inputs to HMAC.
   def mailgun_webhook_signature
     api_key   = "key-bb8ef21a0c161b2f9b0950fee7a52ab1"
@@ -60,29 +60,67 @@ describe Webhooks::MailgunController do
       end
     end
 
-    context "valid a valid signature" do
+    # FIXME: would be nicer to reuse the tests in some way instead of 
+    # copying and pasting them and having seperate contexts
+    # I tried meta programming but there were some weird issues
+    # maybe its a rspec beta issue. For now it works for testing the 
+    # seperate email address types
+    context "with a valid signature" do
+      context "accountslug@helpful.io type email" do
+        
+        let(:email) { "#{account.slug}@helpful.io" }
+        
+        it "is accepted" do
+          post_create(recipient: email)
+          expect(response).to be_success
+        end
 
-      it "is accepted" do
-        post_create
-        expect(response).to be_success
+        it "persists a message" do
+          expect {
+            post_create(recipient: email)
+          }.to change { Message.count }.by(1)
+        end
+
+        it "persists attachments" do
+          file = Rack::Test::UploadedFile.new(
+            Rails.root.join('LICENSE'),
+            'text/plain'
+          )
+
+          expect {
+            post_create 'recipient' => email,
+                        'attachment-count' => 1,
+                        'attachment-1' => file
+          }.to change { Attachment.count }.by(1)
+        end
       end
 
-      it "persists a message" do
-        expect {
-          post_create
-        }.to change { Message.count }.by(1)
-      end
+      context "abc123sha@helpful.io type email" do
+        let(:email) { "#{conversation.id}@helpful.io" }
 
-      it "persists attachments" do
-        file = Rack::Test::UploadedFile.new(
-          Rails.root.join('LICENSE'),
-          'text/plain'
-        )
+        it "is accepted" do
+          post_create(recipient: email)
+          expect(response).to be_success
+        end
 
-        expect {
-          post_create 'attachment-count' => 1,
-                      'attachment-1' => file
-        }.to change { Attachment.count }.by(1)
+        it "persists a message" do
+          expect {
+            post_create(recipient: email)
+          }.to change { Message.count }.by(1)
+        end
+
+        it "persists attachments" do
+          file = Rack::Test::UploadedFile.new(
+            Rails.root.join('LICENSE'),
+            'text/plain'
+          )
+
+          expect {
+            post_create 'recipient' => email,
+                        'attachment-count' => 1,
+                        'attachment-1' => file
+          }.to change { Attachment.count }.by(1)
+        end
       end
 
     #   it "associates the message with the correct person" do
@@ -101,7 +139,7 @@ describe Webhooks::MailgunController do
 
     #   it "associates the message with the correct conversation" do
     #     conversation = create(:conversation)
-    #     post_webhook(recipient: conversation.mailbox.to_s)
+    #     post_webhook(recipient: conversation.mailbox_email.to_s)
     #     message = find_message_from_response
     #     assert_equal conversation, message.conversation
     #   end
@@ -118,5 +156,41 @@ describe Webhooks::MailgunController do
     #     assert_response :not_acceptable
     #   end
     # end
+  end
+
+  describe "#parse_identifiers" do
+    context "abc123sha@helpful.io email format" do
+      
+      let(:to_address) { conversation.mailbox_email.to_s }
+
+      before do
+        @hash = controller.send(:parse_identifiers, to_address)
+      end
+
+      it "returns a hash containing the account_slug" do
+        expect(@hash[:account_slug]).to eq(account.slug)
+      end
+
+      it "returns a hash containing the conversation number" do
+        expect(@hash[:conversation_number]).to eq(conversation.number)
+      end
+    end
+
+    context "accountslug@helpful.io email format" do
+      
+      let(:to_address) { "#{account.slug}@helpful.io" }
+
+      before do
+        @hash = controller.send(:parse_identifiers, to_address)
+      end
+      
+      it "returns a hash containing the account_slug" do
+        expect(@hash[:account_slug]).to eq(account.slug)
+      end
+      
+      it "returns a hash that has a nil conversation_number" do
+        expect(@hash[:conversation_number]).to be_nil
+      end
+    end
   end
 end

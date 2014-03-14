@@ -3,13 +3,14 @@ Help shouldn't hurt.
 
 [![Build Status](https://travis-ci.org/asm-helpful/helpful-web.png?branch=master)](https://travis-ci.org/asm-helpful/helpful-web)
 [![Code Climate](https://codeclimate.com/github/support-foo/web.png)](https://codeclimate.com/github/support-foo/web)
+[![Inline docs](http://inch-pages.github.io/github/asm-helpful/helpful-web.png)](http://inch-pages.github.io/github/asm-helpful/helpful-web)
 
 Helpful is an open product that's being built by a fantastic group of people on [Assembly](https://assemblymade.com/helpful). Anybody can join in building this product and earn a stake of the profit.
 
 
 ## Getting Started
 
-[Vagrant](http://vagrantup.com) is the reccomended way to run Helpful on your own machine. You need to download and install [Vagrant](http://vagrantup.com/downloads) before you can continue (this will take a while to run so you may want to grab some coffee).
+[Vagrant](http://vagrantup.com) is the recommended way to run Helpful on your own machine. You need to download and install [Vagrant](http://vagrantup.com/downloads) before you can continue (this will take a while to run so you may want to grab some coffee).
 
     git clone https://github.com/asm-helpful/helpful-web.git helpful-web
     cd helpful-web

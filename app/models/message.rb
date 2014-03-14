@@ -22,12 +22,13 @@ class Message < ActiveRecord::Base
                              allow_blank: false
                            }
 
-  after_save :enqueue_to_update_search_index
   after_save :send_webhook, if: ->(message) {
     message.conversation.account.webhook_url?
   }
-  after_create :send_email
+
   after_create :trigger_pusher_new_message
+  after_commit :enqueue_to_update_search_index, on: [:create, :update]
+  after_commit :send_email, on: :create
 
   scope :most_recent, -> { order('updated_at DESC') }
 

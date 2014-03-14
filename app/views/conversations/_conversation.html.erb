@@ -2,18 +2,11 @@
 
   <div class="conversation-heading">
     <div class="actions">
-      <%= button_to 'Archive', account_conversation_path(@account, @conversation, conversation: {archive: true}), method: :patch, data: { confirm: "Are you sure?" }, class: %w(btn btn-success), form: { id: 'archive' } %>
-      <script>
-        $(document).ready(function(){
-          $('#archive')
-            .bind('ajax:success', function(){
-              window.location.href = "./";
-            })
-            .bind("ajax:error", function (xhr, status, error) {
-              console.log('AJAX Error (#archive): ' + error);
-            });
-        });
-      </script>
+      <% if conversation.archived? %>
+        <%= button_to 'Unarchive', account_conversation_path(@account, @conversation, conversation: { unarchive: true }), method: :patch, class: %w(btn btn-success), form: { id: 'unarchive' } %>
+      <% else %>
+        <%= button_to 'Archive', account_conversation_path(@account, @conversation, conversation: { archive: true }), method: :patch, class: %w(btn btn-danger), form: { id: 'archive' } %>
+      <% end %>
     </div>
     <div class="summary"><%= summary(conversation) %></div>
     <div class="detail">

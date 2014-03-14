@@ -15,7 +15,7 @@ class CommandBarAction
   end
 
   def canned_response
-    message
+    @canned_response_message ||= CannedResponseMessage.new(params)
   end
 
   def tag
@@ -30,11 +30,15 @@ class CommandBarAction
     action.conversation
   end
 
-  def action
-    public_send(classify_content)
+  def account
+    conversation.account
   end
 
-  def classify_content
+  def action
+    public_send(action_type)
+  end
+
+  def action_type
     case content[0]
     when '@' then :assignment
     when ':' then :canned_response

@@ -8,6 +8,7 @@ class Account < ActiveRecord::Base
 
   belongs_to :billing_plan
 
+  has_many :canned_responses, dependent: :destroy
   has_many :conversations, dependent: :destroy
   has_many :messages, through: :conversations
   has_many :people, dependent: :destroy
@@ -29,7 +30,7 @@ class Account < ActiveRecord::Base
   # Public: Customer specific email address for incoming email.
   #
   # Returns the email address customers should send email to.
-  def mailbox
+  def mailbox_email
     email = Mail::Address.new([
       slug,
       '@',
