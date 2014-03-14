@@ -125,11 +125,12 @@
   }
 
   textarea {
-    border: none;
-    border-bottom: 1px dotted #CCC;
+    border-radius: 3px;
+    border: 1px solid #CCC;
 
     font-size: 16px;
 
+    padding: 10px;
     padding-top: 10.5px;
     padding-bottom: 10.5px;
 
