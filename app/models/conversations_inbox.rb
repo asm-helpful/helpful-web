@@ -36,6 +36,15 @@ class ConversationsInbox
     open_conversations.queue
   end
 
+  # Public: Finds the next conversation in the queue after the
+  # conversation argument
+  #
+  # Returns a Conversation model or nil if the argument is the last
+  # conversation in the inbox
+  def next_after(conversation)
+    conversations_queue.where('updated_at > ?', conversation.updated_at).first
+  end
+
   # Public: Finds all the open conversations associated with the account.
   #
   # Returns an ActiveRecord::Relation of Conversation models.

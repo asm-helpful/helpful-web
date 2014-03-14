@@ -60,4 +60,18 @@
       </div>
     </div>
   </div>
+
+  <hr>
+
+  <div class="conversation-next">
+    <% if @next_conversation %>
+      <p class="text-muted text-uppercase">Next Conversation</p>
+
+      <%= render 'row', conversation: @next_conversation %>
+    <% else %>
+      <p>You made it to the last message!</p>
+
+      <a class="btn btn-primary" href="<%= inbox_account_conversations_path(@account) %>">Back to the Inbox</a>
+    <% end %>
+  </div>
 </div>
