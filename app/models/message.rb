@@ -82,12 +82,12 @@ class Message < ActiveRecord::Base
 
   def trigger_pusher_new_message
     # TODO: Perhaps we should mock Pusher call
-    if !Rails.env.test?
-      begin
-        Pusher[self.account.slug].trigger('new_message', {})
-      rescue Pusher::Error => e
-        logger.error e.message
-      end
+    return if Rails.env.test?
+
+    begin
+      Pusher[self.account.slug].trigger('new_message', {})
+    rescue Pusher::Error => e
+      logger.error e.message
     end
   end
 end
