@@ -22,16 +22,20 @@ class Conversation < ActiveRecord::Base
 
   sequential column: :number, scope: :account_id
 
+  attr_accessor :flash_notice
+
   def mailing_list
     participants + account.users.map {|u| u.person }
   end
 
   def archive!
     update_attribute(:archived, true)
+    self.flash_notice = "The conversation has been archived."
   end
 
   def unarchive!
     update_attribute(:archived, false)
+    self.flash_notice = "The conversation has been moved to the inbox."
   end
 
   def respond_later!

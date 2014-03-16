@@ -2,6 +2,7 @@ class ConversationsController < ApplicationController
 
   before_action :authenticate_user!
   before_action :find_account!
+  after_filter :flash_notice, only: :update
 
   def archived
     archive = ConversationsArchive.new(@account, params[:q])
@@ -39,7 +40,7 @@ class ConversationsController < ApplicationController
   def update
     find_conversation!
     ConversationManager.manage(@conversation, conversation_params)
-    redirect_to account_conversation_path(@account, @conversation)
+    redirect_to inbox_account_conversations_path(@account)
   end
 
   private
@@ -56,5 +57,11 @@ class ConversationsController < ApplicationController
   def conversation_params
     params.require(:conversation).permit(:archive, :unarchive, :respond_later, :id)
   end
+
+  def flash_notice
+    if @conversation.flash_notice.present?
+      flash[:notice] = @conversation.flash_notice
+    end
+  end 
 
 end

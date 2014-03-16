@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   before_action :authenticate_user!, :only => [:create]
-
+  
   def create
     find_account!
 
@@ -15,11 +15,11 @@ class MessagesController < ApplicationController
 
       if params['commit'] == "Send & Archive"
         action.conversation.archive!
+        flash[:notice] = "The conversation has been archived and the message sent."
         redirect_to inbox_account_conversations_path(@account)
       else
         redirect_to account_conversation_path(@account, action.conversation)
       end
-
 
     else
       Analytics.track(user_id: current_user.id, event: 'Message Save Problem')
