@@ -20,6 +20,8 @@ describe ConversationsController do
     conversation.reload
 
     expect(conversation).to be_archived
+    expect(response).to redirect_to inbox_account_conversations_path(account)
+    expect(flash[:notice]).to eq("The conversation has been archived.")
   end
 
   it 'unarchives a conversation' do
@@ -37,6 +39,8 @@ describe ConversationsController do
     conversation.reload
 
     expect(conversation).not_to be_archived
+    expect(response).to redirect_to inbox_account_conversations_path(account)
+    expect(flash[:notice]).to eq("The conversation has been moved to the inbox.")
   end
 
   it 'moves a conversation to the bottom of the queue' do
