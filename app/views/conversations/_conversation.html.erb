@@ -48,12 +48,17 @@
             <%= avatar_default(current_user.person) %>
           </div>
 
-          <%= text_area :message, :content, placeholder: 'Reply to this conversation…', rows: 4 %>
+          <div class="conversation-reply">
+            <%= text_area :message, :content, placeholder: 'Reply to this conversation…', rows: 4 %>
+            <div class="command-bar">
+              <button class="btn btn-light" name="assign">@Assign</button>
+              <button class="btn btn-light" name="tag">#Tag</button>
+              <button class="btn btn-light" name="canned_response">:Canned Response</button>
 
-          <div class="form-actions">
-            <div class="btn-group">
-              <input class="btn btn-primary" type="submit" name="commit" value="Send &amp; Archive" />
-              <input class="btn" type="submit" name="commit" value="Send" />
+              <div class="pull-right">
+                <input class="btn btn-danger" type="submit" name="commit" value="Archive">
+                <input class="btn btn-primary" type="submit" name="commit" value="Send">
+              </div>
             </div>
           </div>
         <% end %>
