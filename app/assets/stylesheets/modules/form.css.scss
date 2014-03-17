@@ -111,17 +111,3 @@
 
   }
 }
-
-.form-reply {
-  @include clearfix;
-  padding-left: 45px + 30px;
-  padding-right: 45px + 30px;
-
-  margin-bottom: 30px;
-
-  > .person {
-    float: left;
-    margin-left: - (45px + 30px);
-  }
-}
-

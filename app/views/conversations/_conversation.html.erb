@@ -1,28 +1,23 @@
 <div class="conversation">
 
   <div class="conversation-heading">
-    <div class="actions">
-      <% if conversation.archived? %>
-        <%= button_to 'Unarchive', account_conversation_path(@account, @conversation, conversation: { unarchive: true }), method: :patch, class: %w(btn btn-success), form: { id: 'unarchive' } %>
-      <% else %>
-        <%= button_to 'Archive', account_conversation_path(@account, @conversation, conversation: { archive: true }), method: :patch, class: %w(btn btn-danger), form: { id: 'archive' } %>
-      <% end %>
-    </div>
-    <div class="summary"><%= summary(conversation) %></div>
     <div class="detail">
       #<%= conversation.number %>
     </div>
 
-    <div class="meta">
-      <div class="participants">
-        <span class="text-muted">With</span>
-        <%= conversation.participants.map {|person| nickname(person) }.to_sentence %>
-      </div>
+    <div class="summary">
+      <%= summary(conversation) %>
+    </div>
 
-      <div class="last-update">
-        <span class="text-muted">Most recent message</span>
-        <%= time_ago_in_words(conversation.most_recent_message.updated_at) %> ago
-      </div>
+    <div class="meta">
+
+      <ul class="participants">
+        <% conversation.participants.each do |participant| %>
+          <li>
+            <%= nickname(participant) %>
+          </li>
+        <% end %>
+      </ul>
 
     </div>
   </div>
@@ -40,13 +35,9 @@
         </div>
       <% end %>
 
-      <div class="conversation-stream-item">
-        <%= form_tag account_messages_path(@account), method: 'post', class: 'form-reply' do %>
+      <div class="conversation-stream-item conversation-stream-item-attached">
+        <%= form_tag account_messages_path(@account), method: 'post' do %>
           <%= hidden_field :message, :conversation_id, value: conversation.id %>
-
-          <div class="person conversation-stream-item-person">
-            <%= avatar_default(current_user.person) %>
-          </div>
 
           <div class="conversation-reply">
             <%= text_area :message, :content, placeholder: 'Reply to this conversation…', rows: 4 %>
@@ -68,11 +59,33 @@
 
   <hr>
 
-  <div class="conversation-next">
+  <div class="conversation conversation-next">
     <% if @next_conversation %>
-      <p class="text-muted text-uppercase">Next Conversation</p>
+      <a href="<%= account_conversation_path(@account, @next_conversation) %>">
+        <p class="conversation-next-heading text-muted text-uppercase">Next Conversation</p>
 
-      <%= render 'row', conversation: @next_conversation %>
+        <div class="conversation-heading">
+          <div class="detail">
+            #<%= @next_conversation.number %>
+          </div>
+
+          <div class="summary">
+            <%= summary(@next_conversation) %>
+          </div>
+
+          <div class="meta">
+
+            <ul class="participants">
+              <% @next_conversation.participants.each do |participant| %>
+                <li>
+                  <%= nickname(participant) %>
+                </li>
+              <% end %>
+            </ul>
+
+          </div>
+        </div>
+      </a>
     <% else %>
       <p>You made it to the last message!</p>
 

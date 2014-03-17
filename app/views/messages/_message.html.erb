@@ -1,6 +1,7 @@
 <div class="message">
   <div class="person">
     <%= avatar_default(message.person) %>
+    <%= nickname(message.person) %>
   </div>
 
   <div class="content">
@@ -11,8 +12,10 @@
     <%= render 'messages/attachments', attachments: message.attachments %>
   <% end %>
 
+  <!--
   <div class="meta">
     Posted <%= time_ago_in_words(message.updated_at) %> ago
     by <%= nickname(message.person) %>
   </div>
+  -->
 </div>

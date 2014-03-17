@@ -3,5 +3,16 @@
 
 .conversation-stream-item {
   @include clearfix;
-  margin-bottom: 20px;
+
+  border-top: 1px solid #e6e6e6;
+  padding: 30px;
+
+  &:first-child {
+    border-top: none;
+  }
+}
+
+.conversation-stream-item-attached {
+  border-top: none;
+  padding-top: 10px;
 }
