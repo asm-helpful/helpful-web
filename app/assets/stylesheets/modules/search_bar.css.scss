@@ -1,0 +1,33 @@
+.search-bar {
+  width: 930px;
+
+  input {
+    border: none;
+    outline: none;
+    font-size: 16px;
+    font-weight: lighter;
+    padding: 10px 20px;
+    height: 50px;
+    width: 100%;
+  }
+}
+
+.search-bar-container {
+  margin-left: auto;
+  margin-right: auto;
+  min-height: 1px;
+  position: relative;
+  width: 930px;
+
+  .hang-left {
+    position: absolute;
+    margin-left: -233px;
+    width: 233px;
+  }
+
+  .hang-right {
+    position: absolute;
+    margin-left: 100%;
+    width: 180px;
+  }
+}

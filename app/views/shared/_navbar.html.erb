@@ -1,8 +1,8 @@
 <div class="navbar navbar-static-top navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-left">
-      <ul class="nav navbar-nav">
+  <div class="search-bar-container">
 
+    <div class="hang-left">
+      <ul class="nav navbar-nav">
         <% other_accounts = current_user.accounts.reject {|a| a == @account } %>
         <% if other_accounts.any? %>
           <li class="dropdown">
@@ -25,20 +25,21 @@
         <li class="<%= current_page?(inbox_account_conversations_path(@account)) ? 'active' : '' %>"> 
           <%= link_to "Inbox", inbox_account_conversations_path(@account) %>
         </li>
-        <li class="<%= current_page?(archived_account_conversations_path(@account)) ? 'active' : '' %>"> 
+        <li class="<%= current_page?(archived_account_conversations_path(@account)) ? 'active' : '' %>">
           <%= link_to "Archive", archived_account_conversations_path(@account) %>
         </li>
-        <li class="<%= current_page?(account_canned_responses_path(@account)) ? 'active' : '' %>"> 
-          <%= link_to "Canned Responses", account_canned_responses_path(@account) %>
-        </li>
-        <li class="<%= current_page?(edit_account_path(@account)) ? 'active' : '' %>"> 
-          <%= link_to "Settings", edit_account_path(@account) %>
-        </li>
       </ul>
-
     </div>
 
-    <div class="navbar-right">
+    <ul class="nav navbar-nav">
+      <div class="search-bar">
+        <%= form_tag search_account_conversations_path(@account), method: 'get' do %>
+          <%= search_field_tag :q, @query, placeholder: 'Search', id: 'search-query' %>
+        <% end %>
+      </div>
+    </ul>
+
+    <div class="hang-right">
       <ul class="nav navbar-nav">
         <li>
           <a href="mailto:helpful@helpful.io">Help</a>
@@ -59,5 +60,7 @@
         </li>
       </ul>
     </div>
+
   </div>
+
 </div>
