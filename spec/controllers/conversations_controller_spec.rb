@@ -44,8 +44,6 @@ describe ConversationsController do
   end
 
   it 'moves a conversation to the bottom of the queue' do
-    Timecop.travel(5.minutes.from_now)
-
     post :update,
       {
         account_id: account.slug,
@@ -57,6 +55,6 @@ describe ConversationsController do
 
     conversation.reload
 
-    expect(conversation.updated_at).to be > conversation.created_at
+    expect(conversation.respond_laters).not_to be_empty
   end
 end

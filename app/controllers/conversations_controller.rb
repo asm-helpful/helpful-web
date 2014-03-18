@@ -13,7 +13,7 @@ class ConversationsController < ApplicationController
   end
 
   def inbox
-    inbox = ConversationsInbox.new(@account, params[:q])
+    inbox = ConversationsInbox.new(@account, current_user, params[:q])
     @conversations = inbox.conversations
     @conversation = @conversations.first
     Analytics.track(user_id: current_user.id, event: 'Read Conversations Index')
