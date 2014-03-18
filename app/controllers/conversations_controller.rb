@@ -39,7 +39,7 @@ class ConversationsController < ApplicationController
 
   def update
     find_conversation!
-    ConversationManager.manage(@conversation, conversation_params)
+    ConversationManager.manage(@conversation, current_user, conversation_params)
     redirect_to inbox_account_conversations_path(@account)
   end
 
