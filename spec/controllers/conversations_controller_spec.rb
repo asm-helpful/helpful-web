@@ -2,7 +2,8 @@ require 'spec_helper'
 
 describe ConversationsController do
   let!(:account) { create(:account) }
-  let!(:conversation) { create(:conversation, account: account) }
+  let!(:next_conversation) { create(:conversation_with_messages, account: account) }
+  let!(:conversation) { create(:conversation_with_messages, account: account) }
   let!(:user) { create(:user_with_account, account: account) }
 
   before { sign_in(user) }
@@ -56,5 +57,16 @@ describe ConversationsController do
     conversation.reload
 
     expect(conversation.respond_laters).not_to be_empty
+  end
+
+  it 'shows a conversation' do
+    get :show,
+      {
+        account_id: account.slug,
+        id: conversation.number
+      }
+
+    expect(assigns(:conversation)).to eq(conversation)
+    expect(assigns(:next_conversation)).to eq(next_conversation)
   end
 end
