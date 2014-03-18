@@ -26,12 +26,7 @@
     <div class="conversation-stream">
       <% ConversationStream.new(conversation).each do |item| %>
         <div class="conversation-stream-item">
-          <% case item %>
-          <% when Message %>
-            <%= render 'messages/message', message: item %>
-          <% when Note %>
-            <%= render 'notes/note', note: item %>
-          <% end %>
+          <%= render 'messages/message', message: item %>
         </div>
       <% end %>
 
