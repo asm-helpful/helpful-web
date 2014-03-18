@@ -13,6 +13,8 @@ class Conversation < ActiveRecord::Base
   has_many :participants, -> { uniq }, through: :messages,
                                        source: :person
 
+  has_many :respond_laters
+
   validates :account, presence: true
 
   scope :unresolved, -> { where(archived: false) }
