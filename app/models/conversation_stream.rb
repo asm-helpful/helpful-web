@@ -23,7 +23,7 @@ class ConversationStream
   # protected
 
   def items
-    conversation.messages + conversation.notes
+    conversation.messages
   end
 
   def sorted_items
