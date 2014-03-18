@@ -1,5 +1,5 @@
 .search-bar {
-  width: 930px;
+  width: $container-width - 30px;
 
   input {
     border: none;
@@ -17,7 +17,7 @@
   margin-right: auto;
   min-height: 1px;
   position: relative;
-  width: 930px;
+  width: $container-width - 30px;
 
   .hang-left {
     position: absolute;
