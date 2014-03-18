@@ -118,14 +118,6 @@ ActiveRecord::Schema.define(version: 20140318155304) do
 
   add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
 
-  create_table "notes", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
-    t.text     "content"
-    t.uuid     "user_id",         null: false
-    t.uuid     "conversation_id", null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "oauth_access_grants", force: true do |t|
     t.integer  "resource_owner_id",              null: false
     t.integer  "application_id",                 null: false
