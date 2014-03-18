@@ -1,12 +1,13 @@
 class ConversationManager
-  attr_accessor :conversation
+  attr_accessor :conversation, :user
 
-  def self.manage(conversation, params)
-    new(conversation).manage(params)
+  def self.manage(conversation, user, params)
+    new(conversation, user).manage(params)
   end
 
-  def initialize(conversation)
+  def initialize(conversation, user)
     self.conversation = conversation
+    self.user = user
   end
 
   def manage(params)
@@ -20,11 +21,23 @@ class ConversationManager
   end
 
   def take_action(action)
-    conversation.try(action)
+    public_send(action)
   end
 
   def update_conversation(params)
     conversation.update(params)
+  end
+
+  def archive!
+    conversation.archive!
+  end
+
+  def unarchive!
+    conversation.unarchive!
+  end
+
+  def respond_later!
+    conversation.respond_later!(user)
   end
 
   def lookup_action(params)

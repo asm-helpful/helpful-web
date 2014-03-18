@@ -13,6 +13,8 @@ class Conversation < ActiveRecord::Base
   has_many :participants, -> { uniq }, through: :messages,
                                        source: :person
 
+  has_many :respond_laters
+
   validates :account, presence: true
 
   scope :unresolved, -> { where(archived: false) }
@@ -38,8 +40,9 @@ class Conversation < ActiveRecord::Base
     self.flash_notice = "The conversation has been moved to the inbox."
   end
 
-  def respond_later!
-    touch
+  def respond_later!(user)
+    respond_later = respond_laters.find_or_create_by(user: user)
+    respond_later.touch
   end
 
   # Public: Conversation specific email address for incoming email replies.

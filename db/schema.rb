@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140313195537) do
+ActiveRecord::Schema.define(version: 20140318155304) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -192,6 +192,13 @@ ActiveRecord::Schema.define(version: 20140313195537) do
   end
 
   add_index "read_receipts", ["person_id", "message_id"], name: "index_read_receipts_on_person_id_and_message_id", unique: true, using: :btree
+
+  create_table "respond_laters", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
+    t.uuid     "conversation_id", null: false
+    t.uuid     "user_id",         null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "sequential", force: true do |t|
     t.string   "model"

@@ -50,6 +50,18 @@ describe Conversation do
     end
   end
 
+  describe "#respond_later!" do
+    let!(:user) { create(:user) }
+
+    before { subject.save }
+
+    it "creates a respond later record" do
+      subject.respond_later!(user)
+
+      expect(subject.respond_laters).not_to be_empty
+    end
+  end
+
   describe "#mailbox_email" do
     before { subject.save }
     
