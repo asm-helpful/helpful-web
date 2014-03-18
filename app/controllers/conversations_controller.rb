@@ -34,6 +34,7 @@ class ConversationsController < ApplicationController
 
   def show
     find_conversation!
+    @next_conversation = ConversationsInbox.new(@account).next_after(@conversation)
     @conversation_stream = ConversationStream.new(@conversation)
   end
 

@@ -1,0 +1,25 @@
+.conversation-reply {
+  textarea {
+    border: 1px solid #dddddd;
+    margin: 0;
+    outline: none;
+    padding: 10px;
+    width: 100%;
+  }
+
+  .command-bar {
+    @include clearfix();
+
+    border: 1px solid #dddddd;
+    margin-top: -6px;
+
+    .btn {
+      border-radius: 0;
+      margin-left: -3px;
+    }
+
+    .btn:first-child {
+      margin-left: 0;
+    }
+  }
+}

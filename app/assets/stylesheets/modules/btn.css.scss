@@ -69,6 +69,20 @@
   }
 }
 
+.btn-light {
+  background-color: $white;
+  outline: 1px solid #dddddd;
+  text-shadow: none;
+  box-shadow: none;
+  color: $black;
+  margin: 0;
+
+  &:hover {
+    background-color: $white !important;
+    color: $black;
+  }
+}
+
 .btn[disabled] {
   opacity: .5;
   cursor: default;
