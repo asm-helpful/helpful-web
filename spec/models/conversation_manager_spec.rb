@@ -2,13 +2,14 @@ require 'spec_helper'
 
 describe ConversationManager do
   let(:conversation) { double('Conversation') }
-  let(:conversation_manager) { ConversationManager.new(conversation) }
+  let(:user) { double('User') }
+  let(:conversation_manager) { ConversationManager.new(conversation, user) }
   let(:params) { double('params') }
 
   it 'takes an action if needed' do
     expect(conversation_manager).to receive(:lookup_action) { :archive! }
 
-    expect(conversation).to receive(:try).with(:archive!)
+    expect(conversation).to receive(:archive!)
 
     conversation_manager.manage(params)
   end

@@ -1,10 +1,11 @@
 # Searches or queries for conversations associated with the account and query
 # if present.
 class ConversationsInbox
-  attr_accessor :account, :query
+  attr_accessor :account, :user, :query
 
-  def initialize(account, query = nil)
+  def initialize(account, user, query = nil)
     self.account = account
+    self.user = user
     self.query = clean_query(query)
   end
 
@@ -33,7 +34,18 @@ class ConversationsInbox
   #
   # Returns an Array of Conversation models.
   def conversations_queue
-    open_conversations.queue
+    @conversations_queue ||= open_conversations.joins("LEFT OUTER JOIN respond_laters ON conversations.id = respond_laters.conversation_id AND respond_laters.user_id = '#{user.id}'").
+      order('respond_laters.updated_at ASC NULLS FIRST, conversations.updated_at DESC')
+  end
+
+  # Public: Finds the next conversation in the queue after the
+  # conversation argument
+  #
+  # Returns a Conversation model or nil if the argument is the last
+  # conversation in the inbox
+  def next_after(conversation)
+    index = conversations_queue.index { |c| c == conversation }
+    conversations_queue[index + 1]
   end
 
   # Public: Finds all the open conversations associated with the account.

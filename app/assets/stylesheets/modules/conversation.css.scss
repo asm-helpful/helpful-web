@@ -4,9 +4,10 @@
 }
 
 .conversation-heading {
-  padding-top: 30px;
-  padding-left: 45px;
-  padding-right: 45px;
+  padding-top: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 30px;
   border-bottom: 1px solid #e6e6e6;
 
   > .actions {
@@ -16,37 +17,36 @@
 
   > .summary {
     color: #333;
-    font-size: 23px;
-    line-height: 30px;
+    font-size: 26px;
   }
 
   > .detail {
-    font-weight: light;
     color: #b2b2b2;
     font-size: 16px;
-    line-height: 30px;
-
-    > .detail-divider:before {
-      color: #E6E6E6;
-      content: "|";
-    }
+    font-weight: light;
+    line-height: 36px;
+    margin-left: - (30px + 30px);
+    position: absolute;
   }
 
   > .meta {
     @include clearfix;
-    margin-top: 30px;
-    padding-top: 12px;
-    padding-bottom: 12px;
-
-    border-top: 1px dotted #d9d9d9;
+    margin-top: 20px;
 
     color: #e6e6e6;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 21px;
     color: #4d4d4d;
 
     > .participants {
+      list-style: none;
+      padding-left: 0;
       float: left;
+
+      > li {
+        display: inline-block;
+        margin-right: 10px;
+      }
     }
 
     > .last-update {
@@ -57,9 +57,8 @@
 }
 
 .conversation-body {
-  padding: 45px;
+  margin-bottom: 70px;
 }
-
 
 .conversation-row {
   padding: 20px 20px;
@@ -128,4 +127,12 @@
 a.conversation-row {
   display: block;
   border-bottom: none;
+}
+
+.conversation-next {
+  margin-bottom: 30px;
+
+  .conversation-next-heading {
+    margin-left: 30px;
+  }
 }

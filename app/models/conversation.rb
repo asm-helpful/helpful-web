@@ -9,9 +9,10 @@ class Conversation < ActiveRecord::Base
   has_many :messages, after_add: :message_added_callback,
                       dependent: :destroy
 
-  has_many :notes, dependent: :destroy
   has_many :participants, -> { uniq }, through: :messages,
                                        source: :person
+
+  has_many :respond_laters
 
   validates :account, presence: true
 
@@ -22,20 +23,25 @@ class Conversation < ActiveRecord::Base
 
   sequential column: :number, scope: :account_id
 
+  attr_accessor :flash_notice
+
   def mailing_list
     participants + account.users.map {|u| u.person }
   end
 
   def archive!
     update_attribute(:archived, true)
+    self.flash_notice = "The conversation has been archived."
   end
 
   def unarchive!
     update_attribute(:archived, false)
+    self.flash_notice = "The conversation has been moved to the inbox."
   end
 
-  def respond_later!
-    touch
+  def respond_later!(user)
+    respond_later = respond_laters.find_or_create_by(user: user)
+    respond_later.touch
   end
 
   # Public: Conversation specific email address for incoming email replies.

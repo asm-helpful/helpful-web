@@ -7,9 +7,7 @@ describe ConversationStream do
   let(:item_3) { double('Item', created_at: Time.at(3)) }
 
   let(:conversation) do
-    double('Conversation', messages: [item_1, item_3],
-                           notes: [item_2]
-    )
+    double('Conversation', messages: [item_1, item_2, item_3])
   end
 
   subject { described_class.new(conversation) }
