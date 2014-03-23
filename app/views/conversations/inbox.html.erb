@@ -7,7 +7,6 @@
   </div>
   <% if @conversations.any? %>
     <%= render 'conversations/inbox', conversations: @conversations %>
-  <% else %>
-    <%= render 'conversations/empty' %>
   <% end %>
+  <%= render 'conversations/empty', hide: @conversations.any? %>
 </div>
