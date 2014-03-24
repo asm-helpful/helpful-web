@@ -29,6 +29,6 @@ var conversations = {
 
 
 $(document).ready(function() {
-  $('.respond-later').click(conversations.onRespondLaterClick);
-  $('.archive').click(conversations.onArchiveClick);
+  $('.list').delegate('.respond-later', 'click', conversations.onRespondLaterClick);
+  $('.list').delegate('.archive', 'click', conversations.onArchiveClick);
 });
