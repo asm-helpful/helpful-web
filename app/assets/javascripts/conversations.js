@@ -1,5 +1,5 @@
-$(document).ready(function() {
-  $('.respond-later').click(function() {
+var conversations = {
+  onRespondLaterClick: function() {
     var $listItem = $(this).parents('.conversation-row').parent();
     var path = $(this).attr('data-account-conversation-path');
 
@@ -11,9 +11,9 @@ $(document).ready(function() {
     $.post(path, { conversation: { respond_later: true }, _method: 'patch' }, pushToEndOfQueue);
 
     return false;
-  });
+  },
 
-  $('.archive').click(function() {
+  onArchiveClick: function() {
     var $listItem = $(this).parents('.conversation-row').parent();
     var path = $(this).attr('data-account-conversation-path');
 
@@ -24,5 +24,11 @@ $(document).ready(function() {
     $.post(path, { conversation: { archive: true }, _method: 'patch' }, removeFromQueue);
 
     return false;
-  });
+  }
+}
+
+
+$(document).ready(function() {
+  $('.respond-later').click(conversations.onRespondLaterClick);
+  $('.archive').click(conversations.onArchiveClick);
 });
