@@ -22,7 +22,7 @@
     <%= pluralize(conversation.messages.count, 'message') %>
     <span class="meta-divider"></span>
     <span class="time updated <%= most_recent_message_class(conversation) %>">
-      <%= time_ago_in_words(conversation.most_recent_message.updated_at) %>
+      <%= time_ago_in_words(conversation.last_activity_at) %>
     </span>
   </div>
 
