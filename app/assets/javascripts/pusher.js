@@ -1,6 +1,6 @@
 $(function(){
   // Pusher global vars
-  var pusher = new Pusher($(".list").data("pusher-key"));
+  var pusher = new Pusher($("meta[name='pusher-key']").attr("content"));
   var listUrl = $(".list").data("url");
   var channel = pusher.subscribe($(".list").data("pusher-channel"));
 

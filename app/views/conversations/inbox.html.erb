@@ -6,6 +6,6 @@
     <h1>Inbox</h1>
   </div>
 
-  <div class="list" data-url=<%= list_account_conversations_url(@account) %> data-pusher-channel=<%= @account.slug %> data-pusher-key=<%= ENV["PUSHER_KEY"] %>></div>
+  <div class="list" data-url=<%= list_account_conversations_url(@account) %> data-pusher-channel=<%= @account.slug %>></div>
   <%= render 'conversations/empty' %>
 </div>
