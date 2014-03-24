@@ -6,7 +6,7 @@ describe MostRecentMessageHelper do
       message = double("message", updated_at: time)
       conversation = double("conversation", most_recent_message: message)
 
-      assert_equal most_recent_message_class(conversation), description
+      expect(most_recent_message_class(conversation)).to eq(description)
     end
   end
 end
