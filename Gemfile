@@ -2,6 +2,10 @@ source 'https://rubygems.org'
 source 'https://rails-assets.org'
 ruby '2.1.1'
 
+# Load environment variables first
+
+gem 'dotenv-rails', groups: [:development, :test]
+
 # Alphabetical list
 
 gem 'active_model_serializers'
@@ -41,7 +45,6 @@ group :development do
 end
 
 group :development, :test do
-  gem 'dotenv-rails'
   gem 'factory_girl_rails', '~> 4.2.1'
   gem 'ffaker', '~> 1.20'
   gem 'rake'
