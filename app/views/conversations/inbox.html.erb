@@ -5,9 +5,7 @@
   <div class="page-header">
     <h1>Inbox</h1>
   </div>
-  <% if @conversations.any? %>
-    <%= render 'conversations/inbox', conversations: @conversations %>
-  <% else %>
-    <%= render 'conversations/empty' %>
-  <% end %>
+
+  <div class="list" data-url=<%= list_account_conversations_url(@account) %> data-pusher-channel=<%= @account.slug %> data-pusher-key=<%= ENV["PUSHER_KEY"] %>></div>
+  <%= render 'conversations/empty' %>
 </div>

@@ -1,0 +1,5 @@
+<% @conversations.each do |conversation| %>
+  <div class="list-item">
+    <%= render 'conversations/row', conversation: conversation %>
+  </div>
+<% end %>

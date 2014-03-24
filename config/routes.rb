@@ -66,6 +66,7 @@ Helpful::Application.routes.draw do
       get :archived, on: :collection
       get :inbox, on: :collection
       get :search, on: :collection
+      get :list, on: :collection
     end
 
     resources :messages, only: [:create]
