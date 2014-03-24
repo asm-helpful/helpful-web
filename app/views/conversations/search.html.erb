@@ -1,0 +1,13 @@
+<%= render 'shared/navbar' %>
+
+<div class="container">
+  <%= render "layouts/flash" %>
+  <div class="page-header">
+    <h1>Search results for "<%= params[:q] %>"</h1>
+  </div>
+  <% if @conversations.any? %>
+    <%= render 'conversations/inbox', conversations: @conversations %>
+  <% else %>
+	<h3>No results to show.</h3>
+  <% end %>
+</div>
