@@ -21,6 +21,11 @@ ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
 Sidekiq::Logging.logger = nil
 
+VCR.configure do |c|
+  c.cassette_library_dir = Rails.root.join('spec', 'vcr')
+  c.hook_into :webmock
+end
+
 RSpec.configure do |config|
 
   config.render_views
