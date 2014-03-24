@@ -25,7 +25,7 @@ class ConversationsArchive
   #
   # Returns an ActiveRecord::Relation of Conversation models.
   def search_conversations
-    preloaded_conversations.joins(:messages).where(messages: { id: search_messages })
+    preloaded_conversations.joins(:messages).where(messages: { id: search_messages }).order(updated_at: :desc)
   end
 
   # Public: Finds all the archived conversations and sorts them in order of least
