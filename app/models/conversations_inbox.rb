@@ -59,7 +59,7 @@ class ConversationsInbox
   #
   # Returns ids of matching models
   def search_messages
-    response = search_client.search(body: { query: { match: { content: query } } })
+    response = search_client.search(index: 'helpful', body: { query: { match: { content: query } } })
     response['hits']['hits'].map { |x| x['_id'] }
   end
 
