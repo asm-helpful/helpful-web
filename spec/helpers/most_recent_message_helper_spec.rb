@@ -9,4 +9,10 @@ describe MostRecentMessageHelper do
       expect(most_recent_message_class(conversation)).to eq(description)
     end
   end
+
+  it "defaults to using the last updated timestamp of the conversation if a message is not found" do
+    conversation = double("conversation", most_recent_message: nil, updated_at: 5.days.ago)
+
+    expect(most_recent_message_class(conversation)).to eq('stale')
+  end
 end
