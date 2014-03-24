@@ -18,6 +18,9 @@ var conversations = {
     var path = $(this).attr('data-account-conversation-path');
 
     var removeFromQueue = function() {
+      if ($listItem.siblings().length == 0) {
+        $('.empty-state').show();
+      }
       $listItem.remove();
     }
 
