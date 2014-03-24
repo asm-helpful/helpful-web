@@ -1,6 +1,8 @@
 # Searches or queries for conversations associated with the account and query
 # if present.
 class ConversationsInbox
+  include ConversationsMethods
+
   attr_accessor :account, :user, :query
 
   def initialize(account, user, query = nil)
@@ -19,14 +21,6 @@ class ConversationsInbox
     else
       conversations_queue
     end
-  end
-
-  # Public: Returns all conversations with messages returned in the search
-  # results
-  #
-  # Returns an ActiveRecord::Relation of Conversation models.
-  def search_conversations
-    preloaded_conversations.joins(:messages).where(messages: { id: search_messages }).order(updated_at: :desc)
   end
 
   # Public: Finds all the open conversations and sorts them in order of least
@@ -53,33 +47,5 @@ class ConversationsInbox
   # Returns an ActiveRecord::Relation of Conversation models.
   def open_conversations
     preloaded_conversations.unresolved
-  end
-
-  # Public: Executes a search with the query
-  #
-  # Returns ids of matching models
-  def search_messages
-    response = search_client.search(index: 'helpful', body: { query: { match: { content: query } } })
-    response['hits']['hits'].map { |x| x['_id'] }
-  end
-
-  def preloaded_conversations
-    account_conversations.includes(:messages)
-  end
-
-  def account_conversations
-    account.conversations
-  end
-
-  def search?
-    query.present?
-  end
-
-  def clean_query(uncleaned_query)
-    uncleaned_query.to_s.strip
-  end
-
-  def search_client
-    Elasticsearch::Client.new(hosts: [ENV['ELASTICSEARCH_URL']])
   end
 end
