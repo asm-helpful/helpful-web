@@ -10,7 +10,7 @@ module ConversationsMethods
   def search_conversations
     search_messages.map do |message_id| 
       search_conversations_unsorted.find { |c| c.contains_message_id?(message_id) }
-    end.uniq
+    end.compact.uniq
   end
 
   # Public: Executes a search with the query
