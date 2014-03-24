@@ -42,7 +42,7 @@ class ConversationsController < ApplicationController
   end
 
   def list
-    inbox = ConversationsInbox.new(@account, params[:q])
+    inbox = ConversationsInbox.new(@account, current_user, params[:q])
     @conversations = inbox.conversations
     render partial: "list"
   end
