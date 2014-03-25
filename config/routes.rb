@@ -75,5 +75,7 @@ Helpful::Application.routes.draw do
     end
   end
 
-  root to: 'pages#home'
+  unauthenticated :user do
+    root to: 'pages#home'
+  end
 end
