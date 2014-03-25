@@ -1,0 +1,163 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://127.0.0.1:9200/helpful/_search
+    body:
+      encoding: UTF-8
+      string: '{"query":{"match":{"content":"test"}}}'
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '556'
+    body:
+      encoding: UTF-8
+      string: '{"took":1,"timed_out":false,"_shards":{"total":5,"successful":5,"failed":0},"hits":{"total":3,"max_score":0.19178301,"hits":[{"_index":"helpful","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e82","_score":0.19178301,
+        "_source" : {"content":"test 2"}},{"_index":"helpful","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e81","_score":0.19178301,
+        "_source" : {"content":"test 1"}},{"_index":"helpful","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e80","_score":0.19178301,
+        "_source" : {"content":"test 0"}}]}}'
+    http_version: 
+  recorded_at: Mon, 24 Mar 2014 23:45:41 GMT
+- request:
+    method: get
+    uri: http://127.0.0.1:9200/helpful/_search
+    body:
+      encoding: UTF-8
+      string: '{"query":{"match":{"content":"test"}}}'
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '556'
+    body:
+      encoding: UTF-8
+      string: '{"took":2,"timed_out":false,"_shards":{"total":5,"successful":5,"failed":0},"hits":{"total":3,"max_score":0.19178301,"hits":[{"_index":"helpful","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e82","_score":0.19178301,
+        "_source" : {"content":"test 2"}},{"_index":"helpful","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e81","_score":0.19178301,
+        "_source" : {"content":"test 1"}},{"_index":"helpful","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e80","_score":0.19178301,
+        "_source" : {"content":"test 0"}}]}}'
+    http_version: 
+  recorded_at: Mon, 24 Mar 2014 23:45:41 GMT
+- request:
+    method: get
+    uri: http://127.0.0.1:9200/helpful/_search
+    body:
+      encoding: UTF-8
+      string: '{"query":{"match":{"content":"test"}}}'
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '556'
+    body:
+      encoding: UTF-8
+      string: '{"took":1,"timed_out":false,"_shards":{"total":5,"successful":5,"failed":0},"hits":{"total":3,"max_score":0.19178301,"hits":[{"_index":"helpful","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e82","_score":0.19178301,
+        "_source" : {"content":"test 2"}},{"_index":"helpful","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e81","_score":0.19178301,
+        "_source" : {"content":"test 1"}},{"_index":"helpful","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e80","_score":0.19178301,
+        "_source" : {"content":"test 0"}}]}}'
+    http_version: 
+  recorded_at: Mon, 24 Mar 2014 23:45:41 GMT
+- request:
+    method: get
+    uri: http://127.0.0.1:9200/helpful/_search
+    body:
+      encoding: UTF-8
+      string: '{"query":{"match":{"content":"test"}}}'
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '556'
+    body:
+      encoding: UTF-8
+      string: '{"took":1,"timed_out":false,"_shards":{"total":5,"successful":5,"failed":0},"hits":{"total":3,"max_score":0.19178301,"hits":[{"_index":"helpful","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e82","_score":0.19178301,
+        "_source" : {"content":"test 2"}},{"_index":"helpful","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e81","_score":0.19178301,
+        "_source" : {"content":"test 1"}},{"_index":"helpful","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e80","_score":0.19178301,
+        "_source" : {"content":"test 0"}}]}}'
+    http_version: 
+  recorded_at: Mon, 24 Mar 2014 23:45:41 GMT
+- request:
+    method: get
+    uri: http://127.0.0.1:9200/helpful/_search
+    body:
+      encoding: UTF-8
+      string: '{"query":{"match":{"content":"test"}}}'
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '556'
+    body:
+      encoding: UTF-8
+      string: '{"took":1,"timed_out":false,"_shards":{"total":5,"successful":5,"failed":0},"hits":{"total":3,"max_score":0.19178301,"hits":[{"_index":"helpful","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e82","_score":0.19178301,
+        "_source" : {"content":"test 2"}},{"_index":"helpful","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e81","_score":0.19178301,
+        "_source" : {"content":"test 1"}},{"_index":"helpful","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e80","_score":0.19178301,
+        "_source" : {"content":"test 0"}}]}}'
+    http_version: 
+  recorded_at: Mon, 24 Mar 2014 23:45:41 GMT
+recorded_with: VCR 2.8.0

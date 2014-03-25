@@ -54,7 +54,7 @@ class Message < ActiveRecord::Base
   end
 
   def elasticsearch_index_data
-    {index: Rails.env.test? ? 'helpful-test' : 'helpful', type: 'message', id: self.id, body: {content: self.content}}
+    {index: 'helpful', type: 'message', id: self.id, body: {content: self.content}}
   end
 
   # TODO: Support testing search in test environment
