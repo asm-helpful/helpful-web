@@ -2,6 +2,7 @@
 # if present.
 class ConversationsInbox
   include ConversationsMethods
+  include ConversationsSearch
 
   attr_accessor :account, :user, :query
 

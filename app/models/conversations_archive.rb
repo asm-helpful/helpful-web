@@ -2,6 +2,7 @@
 # if present.
 class ConversationsArchive
   include ConversationsMethods
+  include ConversationsSearch
   
   attr_accessor :account, :query
 
