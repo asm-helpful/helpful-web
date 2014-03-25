@@ -38,7 +38,7 @@ describe ConversationsArchive do
     it "should get specific conversations by message content" do
       @archive = ConversationsArchive.new(@account, '0')
       VCR.use_cassette('search_specific') do
-        # Test for messages/conversations in order of most recently updated
+        # Test for messages/conversations that match the query term
         assert_equal @archive.search_messages, [@messages.first.id]
         assert_equal @archive.conversations, [@conversations.first]
       end
