@@ -13,7 +13,7 @@ class MessagesController < ApplicationController
         properties: { action: params['commit'] }
       )
 
-      if params['commit'] == "Send & Archive"
+      if params['commit'] == "Archive"
         action.conversation.archive!
         flash[:notice] = "The conversation has been archived and the message sent."
         redirect_to inbox_account_conversations_path(@account)
