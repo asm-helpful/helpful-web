@@ -92,6 +92,10 @@ class Conversation < ActiveRecord::Base
     }
   end
 
+  def contains_message_id?(message_id)
+    messages.detect { |message| message.id == message_id }
+  end
+
   private
 
   def message_added_callback(message)

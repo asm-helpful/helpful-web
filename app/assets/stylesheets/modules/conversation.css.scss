@@ -122,6 +122,21 @@
     }
 
   }
+
+  .glyphicon {
+    float: right;
+    font-size: 20px;
+    top: 50%;
+    -webkit-transform: translate(0, 50%);
+
+    &.glyphicon-inbox {
+      color: #3782ba;
+    }
+
+    &.glyphicon-check {
+      color: #009900;
+    }
+  }
 }
 
 a.conversation-row {
