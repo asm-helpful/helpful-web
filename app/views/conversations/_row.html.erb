@@ -1,6 +1,6 @@
 <a class="conversation-row" href="<%= account_conversation_path(conversation.account, conversation) %>">
 
-  <% if current_page?(inbox_account_conversations_path(@account)) %>
+  <% if current_page?(list_account_conversations_path(@account)) %>
     <div class="pull-right">
       <div class="btn-group">
         <button class="btn btn-primary respond-later" data-account-conversation-path="<%= account_conversation_path(@account, conversation, conversation: { respond_later: true }) %>">
@@ -30,7 +30,7 @@
     <%= pluralize(conversation.messages.count, 'message') %>
     <span class="meta-divider"></span>
     <span class="time updated <%= most_recent_message_class(conversation) %>">
-      <%= time_ago_in_words(conversation.most_recent_message.updated_at) %>
+      <%= time_ago_in_words(conversation.last_activity_at) %>
     </span>
   </div>
 

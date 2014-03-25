@@ -112,6 +112,23 @@ describe Conversation do
     end
   end
 
+  describe "#last_activity_at" do
+    it "returns the updated at timestamp of the most recent message" do
+      most_recent_message = double("Message", updated_at: Time.utc(2014, 3, 24, 12, 0, 0))
+
+      allow(subject).to receive(:most_recent_message) { most_recent_message }
+
+      expect(subject.last_activity_at).to eq(Time.utc(2014, 3, 24, 12, 0, 0))
+    end
+
+    it "uses the conversation updated at timestamp if there are no messages" do
+      allow(subject).to receive(:most_recent_message) { nil }
+      allow(subject).to receive(:updated_at) { Time.utc(2014, 3, 24, 12, 0, 0) }
+
+      expect(subject.last_activity_at).to eq(Time.utc(2014, 3, 24, 12, 0, 0))
+    end
+  end
+
   describe "#to_mailbox_hash" do
 
     before { subject.save }

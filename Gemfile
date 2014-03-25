@@ -2,6 +2,10 @@ source 'https://rubygems.org'
 source 'https://rails-assets.org'
 ruby '2.1.1'
 
+# Load environment variables first
+
+gem 'dotenv-rails', groups: [:development, :test]
+
 # Alphabetical list
 
 gem 'active_model_serializers'
@@ -21,6 +25,7 @@ gem 'oauth2'
 gem 'pg'
 gem 'premailer-rails'
 gem 'puma'
+gem 'pusher'
 gem 'rails', '~> 4.1.0.rc1'
 gem 'bootstrap-sass'
 gem 'redcarpet'
@@ -40,13 +45,13 @@ group :development do
 end
 
 group :development, :test do
-  gem 'dotenv-rails'
   gem 'factory_girl_rails', '~> 4.2.1'
   gem 'ffaker', '~> 1.20'
   gem 'rake'
   gem 'rspec-rails', '~> 3.0.0.beta2'
   gem 'pry'
   gem 'timecop'
+  gem 'jasmine', github: 'pivotal/jasmine-gem'
 end
 
 group :test do

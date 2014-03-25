@@ -1,5 +1,5 @@
-$(document).ready(function() {
-  $('.respond-later').click(function() {
+var conversations = {
+  onRespondLaterClick: function() {
     var $listItem = $(this).parents('.conversation-row').parent();
     var path = $(this).attr('data-account-conversation-path');
 
@@ -11,18 +11,27 @@ $(document).ready(function() {
     $.post(path, { conversation: { respond_later: true }, _method: 'patch' }, pushToEndOfQueue);
 
     return false;
-  });
+  },
 
-  $('.archive').click(function() {
+  onArchiveClick: function() {
     var $listItem = $(this).parents('.conversation-row').parent();
     var path = $(this).attr('data-account-conversation-path');
 
     var removeFromQueue = function() {
+      if ($listItem.siblings().length == 0) {
+        $('.empty-state').show();
+      }
       $listItem.remove();
     }
 
     $.post(path, { conversation: { archive: true }, _method: 'patch' }, removeFromQueue);
 
     return false;
-  });
+  }
+}
+
+
+$(document).ready(function() {
+  $('.list').delegate('.respond-later', 'click', conversations.onRespondLaterClick);
+  $('.list').delegate('.archive', 'click', conversations.onArchiveClick);
 });

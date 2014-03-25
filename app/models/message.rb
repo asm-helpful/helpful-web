@@ -6,6 +6,7 @@ class Message < ActiveRecord::Base
 
   belongs_to :person
   belongs_to :conversation, touch: true
+  has_one :account, through: :conversation
 
   has_many :read_receipts
   has_many :attachments, inverse_of: :message
@@ -25,6 +26,7 @@ class Message < ActiveRecord::Base
     message.conversation.account.webhook_url?
   }
 
+  after_create :trigger_pusher_new_message
   after_commit :enqueue_to_update_search_index, on: [:create, :update]
   after_commit :send_email, on: :create
 
@@ -78,4 +80,14 @@ class Message < ActiveRecord::Base
     conversation.participants - [self.person]
   end
 
+  def trigger_pusher_new_message
+    # TODO: Perhaps we should mock Pusher call
+    return if Rails.env.test?
+
+    begin
+      Pusher[self.account.slug].trigger('new_message', {})
+    rescue Pusher::Error => e
+      logger.error e.message
+    end
+  end
 end

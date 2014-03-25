@@ -39,7 +39,7 @@ sudo chown -R root:admin /opt/ruby
 su vagrant -lc "cd /vagrant && bundle install"
 
 # Setup .env
-cp .env.example .env
+cp .env.example .env -n
 
 log "Setting up the Database"
 cp config/database.yml.example config/database.yml &&
@@ -55,7 +55,7 @@ su vagrant -lc "cd /vagrant && sudo foreman export upstart /etc/init \
   --log /vagrant/log \
   --template /vagrant/config/vagrant/foreman/export_templates/upstart"
 
-start helpful
+restart helpful
 
 cat <<EOF
 -------------------------------------------------------------------------------

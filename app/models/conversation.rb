@@ -73,6 +73,14 @@ class Conversation < ActiveRecord::Base
     messages.most_recent.first
   end
 
+  def last_activity_at
+    if most_recent_message
+      most_recent_message.updated_at
+    else
+      updated_at
+    end
+  end
+
   def to_param
     number.to_param
   end
