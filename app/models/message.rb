@@ -56,12 +56,11 @@ class Message < ActiveRecord::Base
   end
 
   def elasticsearch_index_data
-    {index: 'helpful', type: 'message', id: self.id, body: {content: self.content}}
+    {index: Rails.env.test? ? 'helpful-test' : 'helpful', type: 'message', id: self.id, body: {content: self.content}}
   end
 
-  # TODO: Support testing search in test environment
   def update_search_index
-    if ENV['ELASTICSEARCH_URL'] && !Rails.env.test?
+    if ENV['ELASTICSEARCH_URL']
       elasticsearch_client = Elasticsearch::Client.new hosts: [ENV['ELASTICSEARCH_URL']]
       elasticsearch_client.index(elasticsearch_index_data)
     end
