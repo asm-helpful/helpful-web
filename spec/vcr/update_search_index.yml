@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: put
-    uri: http://127.0.0.1:9200/helpful/message/c91d36fb-c406-4a06-a9b0-808c64b80e80
+    uri: http://127.0.0.1:9200/helpful-test/message/c91d36fb-c406-4a06-a9b0-808c64b80e80
     body:
       encoding: UTF-8
       string: '{"content":"test 0"}'
@@ -23,15 +23,15 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Content-Length:
-      - '106'
+      - '112'
     body:
       encoding: UTF-8
-      string: '{"ok":true,"_index":"helpful","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e80","_version":2}'
+      string: '{"ok":true,"_index":"helpful-test","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e80","_version":14}'
     http_version: 
-  recorded_at: Tue, 25 Mar 2014 00:04:14 GMT
+  recorded_at: Tue, 25 Mar 2014 15:16:48 GMT
 - request:
     method: put
-    uri: http://127.0.0.1:9200/helpful/message/c91d36fb-c406-4a06-a9b0-808c64b80e81
+    uri: http://127.0.0.1:9200/helpful-test/message/c91d36fb-c406-4a06-a9b0-808c64b80e81
     body:
       encoding: UTF-8
       string: '{"content":"test 1"}'
@@ -52,15 +52,15 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Content-Length:
-      - '106'
+      - '112'
     body:
       encoding: UTF-8
-      string: '{"ok":true,"_index":"helpful","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e81","_version":2}'
+      string: '{"ok":true,"_index":"helpful-test","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e81","_version":14}'
     http_version: 
-  recorded_at: Tue, 25 Mar 2014 00:04:14 GMT
+  recorded_at: Tue, 25 Mar 2014 15:16:48 GMT
 - request:
     method: put
-    uri: http://127.0.0.1:9200/helpful/message/c91d36fb-c406-4a06-a9b0-808c64b80e82
+    uri: http://127.0.0.1:9200/helpful-test/message/c91d36fb-c406-4a06-a9b0-808c64b80e82
     body:
       encoding: UTF-8
       string: '{"content":"test 2"}'
@@ -81,10 +81,10 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Content-Length:
-      - '106'
+      - '112'
     body:
       encoding: UTF-8
-      string: '{"ok":true,"_index":"helpful","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e82","_version":2}'
+      string: '{"ok":true,"_index":"helpful-test","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e82","_version":14}'
     http_version: 
-  recorded_at: Tue, 25 Mar 2014 00:04:14 GMT
+  recorded_at: Tue, 25 Mar 2014 15:16:48 GMT
 recorded_with: VCR 2.8.0
