@@ -32,7 +32,7 @@ describe MessagesController do
     post :create,
       {
         account_id: account.slug,
-        commit: 'Send & Archive',
+        commit: 'Archive',
         message: {
           content: 'I need help please.',
           conversation_id: conversation.id
