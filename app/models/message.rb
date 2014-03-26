@@ -66,9 +66,6 @@ class Message < ActiveRecord::Base
     end
   end
 
-  # Public: Trigger MessageMailer.created when a new message is created.
-  #
-  # Returns nothing.
   def send_email
     MessageMailman.deliver(self, mail_recipients)
   end
