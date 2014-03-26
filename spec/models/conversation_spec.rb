@@ -141,4 +141,18 @@ describe Conversation do
     end
   end
 
+  describe '#notify_account_people' do
+    it 'delivers the most recent message to account members' do
+      message = double('Message')
+      account_people = [double('Person')]
+
+      allow(subject).to receive(:most_recent_message) { message }
+      allow(subject).to receive(:account_people) { account_people }
+
+      expect(MessageMailman).to receive(:deliver).with(message, account_people)
+
+      subject.notify_account_people
+    end
+  end
+
 end

@@ -14,6 +14,7 @@ class Account < ActiveRecord::Base
   has_many :people, dependent: :destroy
   has_many :memberships, dependent: :destroy
   has_many :users, through: :memberships
+  has_many :user_people, through: :users, source: :person
   has_many :webhooks, dependent: :destroy
 
   validates :name, presence: true

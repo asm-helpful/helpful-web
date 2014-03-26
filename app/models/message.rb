@@ -66,13 +66,8 @@ class Message < ActiveRecord::Base
     end
   end
 
-  # Public: Trigger MessageMailer.created when a new message is created.
-  #
-  # Returns nothing.
   def send_email
-    mail_recipients.each do |person|
-      MessageMailer.delay.created(id, person.id)
-    end
+    MessageMailman.deliver(self, mail_recipients)
   end
 
   def mail_recipients

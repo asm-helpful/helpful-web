@@ -4,30 +4,41 @@ class Conversation < ActiveRecord::Base
   include ActiveRecord::UUID
 
   belongs_to :account
+
   belongs_to :user
 
-  has_many :messages, after_add: :message_added_callback,
-                      dependent: :destroy
+  has_many :account_people,
+    through: :account,
+    source: :user_people
 
-  has_many :participants, -> { uniq }, through: :messages,
-                                       source: :person
+  has_many :messages,
+    after_add: :message_added_callback,
+    dependent: :destroy
+
+  has_many :participants,
+    -> { uniq },
+    through: :messages,
+    source: :person
 
   has_many :respond_laters
 
   validates :account, presence: true
 
   scope :unresolved, -> { where(archived: false) }
+
   scope :archived, -> { where(archived: true) }
+
   scope :most_stale, -> { joins(:messages).order('messages.updated_at ASC') }
+
   scope :queue, -> { order('updated_at ASC') }
 
-  sequential column: :number, scope: :account_id
+  sequential column: :number,
+    scope: :account_id
 
   attr_accessor :flash_notice
 
-  def mailing_list
-    participants + account.users.map {|u| u.person }
-  end
+  after_commit :notify_agents,
+    on: :create
 
   def archive!
     update_attribute(:archived, true)
@@ -94,6 +105,11 @@ class Conversation < ActiveRecord::Base
 
   def contains_message_id?(message_id)
     messages.detect { |message| message.id == message_id }
+  end
+
+  def notify_account_people
+    return unless most_recent_message
+    MessageMailman.deliver(most_recent_message, account_people)
   end
 
   private
