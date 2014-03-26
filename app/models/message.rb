@@ -1,8 +1,9 @@
 require 'activerecord/uuid'
-require 'elasticsearch'
+require 'elasticsearch/model'
 
 class Message < ActiveRecord::Base
   include ActiveRecord::UUID
+  include Elasticsearch::Model
 
   belongs_to :person
   belongs_to :conversation, touch: true
@@ -34,6 +35,10 @@ class Message < ActiveRecord::Base
 
   accepts_nested_attributes_for :attachments
 
+  mapping do
+    indexes :content
+  end
+
   def webhook_data
     { message: {
       id: self.id,
@@ -53,17 +58,6 @@ class Message < ActiveRecord::Base
 
   def enqueue_to_update_search_index
     ElasticsearchMessageIndexWorker.perform_async(self.id)
-  end
-
-  def elasticsearch_index_data
-    {index: Rails.env.test? ? 'helpful-test' : 'helpful', type: 'message', id: self.id, body: {content: self.content}}
-  end
-
-  def update_search_index
-    if ENV['ELASTICSEARCH_URL']
-      elasticsearch_client = Elasticsearch::Client.new hosts: [ENV['ELASTICSEARCH_URL']]
-      elasticsearch_client.index(elasticsearch_index_data)
-    end
   end
 
   def send_email

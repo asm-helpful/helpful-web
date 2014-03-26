@@ -20,7 +20,7 @@ describe ConversationsArchive do
     # Create indices in Elasticsearch if not provided from VCR
     if !File.exists? Rails.root.join('spec', 'vcr', 'update_search_index.yml')
       VCR.use_cassette('update_search_index') do
-        @messages.each { |message| message.update_search_index }
+        @messages.each { |message| message.__elasticsearch__.index_document }
       end
     end
   end
@@ -30,7 +30,7 @@ describe ConversationsArchive do
       @archive = ConversationsArchive.new(@account, 'test')
       VCR.use_cassette('search_all') do
         # Test for messages/conversations in order of most recently updated
-        assert_equal @archive.search_messages, @messages.sort { |a,b| b.updated_at <=> a.updated_at }.map { |m| m.id }
+        assert_equal @archive.search_messages.to_a, @messages.sort { |a,b| b.updated_at <=> a.updated_at }
         assert_equal @archive.conversations, @conversations.sort { |a,b| b.updated_at <=> a.updated_at }
       end
     end
@@ -39,7 +39,7 @@ describe ConversationsArchive do
       @archive = ConversationsArchive.new(@account, '0')
       VCR.use_cassette('search_specific') do
         # Test for messages/conversations that match the query term
-        assert_equal @archive.search_messages, [@messages.first.id]
+        assert_equal @archive.search_messages.to_a, [@messages.first]
         assert_equal @archive.conversations, [@conversations.first]
       end
     end
