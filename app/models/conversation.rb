@@ -37,7 +37,7 @@ class Conversation < ActiveRecord::Base
 
   attr_accessor :flash_notice
 
-  after_commit :notify_agents,
+  after_commit :notify_account_people,
     on: :create
 
   def archive!
