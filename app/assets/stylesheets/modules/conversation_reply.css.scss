@@ -21,5 +21,49 @@
     .btn:first-child {
       margin-left: 0;
     }
+
+    .markdown { 
+      float: left;
+      padding-right: 15px;
+      border-right: 1px solid #cdcdcd;
+      cursor: pointer;
+
+      &.open {
+        background-color: #EEE;
+      }
+      img {
+        margin: 8px;
+      }
+
+      .dropdown-menu {
+        width: 550px;
+        padding: 10px;
+        
+        h3 {
+          margin-bottom: 15px;
+        }
+
+        .docs {
+          table {
+            margin: 0;
+
+            .bold {
+              font-weight: bold;
+            }
+
+            .italic {
+              font-style: italic;
+            }
+          }
+        }
+
+        .btn.btn-sm {
+          font-size: 12px;
+          line-height: 24px;
+          float: right;
+          color: #FFF;
+        }
+      }
+    }
   }
 }
