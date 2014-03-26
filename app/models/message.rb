@@ -70,9 +70,7 @@ class Message < ActiveRecord::Base
   #
   # Returns nothing.
   def send_email
-    mail_recipients.each do |person|
-      MessageMailer.delay.created(id, person.id)
-    end
+    MessageMailman.deliver(self, mail_recipients)
   end
 
   def mail_recipients
