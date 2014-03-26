@@ -26,7 +26,7 @@ describe ConversationsArchive do
 
   before { Message.import(force: true, refresh: true) }
 
-  describe "search" do
+  describe "search", vcr: true do
     it "receives multiple messages and conversations" do
       archive = ConversationsArchive.new(account, 'test')
 
