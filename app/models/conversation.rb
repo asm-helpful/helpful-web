@@ -4,24 +4,32 @@ class Conversation < ActiveRecord::Base
   include ActiveRecord::UUID
 
   belongs_to :account
+
   belongs_to :user
 
-  has_many :messages, after_add: :message_added_callback,
-                      dependent: :destroy
+  has_many :messages,
+    after_add: :message_added_callback,
+    dependent: :destroy
 
-  has_many :participants, -> { uniq }, through: :messages,
-                                       source: :person
+  has_many :participants,
+    -> { uniq },
+    through: :messages,
+    source: :person
 
   has_many :respond_laters
 
   validates :account, presence: true
 
   scope :unresolved, -> { where(archived: false) }
+
   scope :archived, -> { where(archived: true) }
+
   scope :most_stale, -> { joins(:messages).order('messages.updated_at ASC') }
+
   scope :queue, -> { order('updated_at ASC') }
 
-  sequential column: :number, scope: :account_id
+  sequential column: :number,
+    scope: :account_id
 
   attr_accessor :flash_notice
 
