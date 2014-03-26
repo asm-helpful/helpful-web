@@ -3,7 +3,6 @@ ENV["RAILS_ENV"] ||= 'test'
 ENV["INCOMING_EMAIL_DOMAIN"] = 'helpful.io'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
-require 'webmock/rspec'
 require 'sidekiq/testing'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -23,7 +22,6 @@ Sidekiq::Logging.logger = nil
 
 VCR.configure do |c|
   c.cassette_library_dir = Rails.root.join('spec', 'vcr')
-  c.hook_into :webmock
 end
 
 RSpec.configure do |config|
