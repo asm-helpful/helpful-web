@@ -25,10 +25,6 @@ class Conversation < ActiveRecord::Base
 
   attr_accessor :flash_notice
 
-  def mailing_list
-    participants + account.users.map {|u| u.person }
-  end
-
   def archive!
     update_attribute(:archived, true)
     self.flash_notice = "The conversation has been archived."
