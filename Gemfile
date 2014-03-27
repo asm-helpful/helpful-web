@@ -18,7 +18,7 @@ gem 'curb'
 gem 'devise', '~> 3.1'
 gem 'devise_invitable', '~> 1.3'
 gem 'doorkeeper'
-gem 'elasticsearch', '~> 0.4.1'
+gem 'elasticsearch-model'
 gem 'friendly_id', '~> 5.0'
 gem 'jquery-rails'
 gem 'oauth2'
@@ -52,11 +52,8 @@ group :development, :test do
   gem 'pry'
   gem 'timecop'
   gem 'jasmine', github: 'pivotal/jasmine-gem'
-end
-
-group :test do
-  gem 'webmock', '~> 1.15'
   gem 'vcr'
+  gem 'fakeweb'
 end
 
 group :development, :production do

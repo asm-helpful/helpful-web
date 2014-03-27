@@ -112,7 +112,7 @@ class Account < ActiveRecord::Base
   end
 
   def generate_webhook_secret
-    self.webhook_secret = SecureRandom.hex(16)
+    self.webhook_secret ||= SecureRandom.hex(16)
   end
 
 end

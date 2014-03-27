@@ -14,18 +14,22 @@ class Webhook < ActiveRecord::Base
   after_commit :enqueue_to_send, on: :create
 
   def dispatch!
-    options = {
-      body: body,
-      headers: {'X-Helpful-Webhook-Signature' => signature}
-    }
-
-    response = HTTParty.post(account.webhook_url, options)
+    response = HTTParty.post(account.webhook_url, request_options)
 
     self.update_attributes(
       response_code: response.code,
       response_body: response.body,
       response_at:   Time.zone.now.utc
     )
+  end
+
+  def request_options
+    {
+      body: body,
+      headers: {
+        'X-Helpful-Webhook-Signature' => signature
+      }
+    }
   end
 
   def signature

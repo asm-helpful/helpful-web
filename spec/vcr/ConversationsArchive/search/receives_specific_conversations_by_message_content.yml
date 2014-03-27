@@ -1,0 +1,202 @@
+---
+http_interactions:
+- request:
+    method: delete
+    uri: http://127.0.0.1:9200/messages
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      user-agent:
+      - Faraday v0.8.9
+      accept-encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - application/json; charset=UTF-8
+      content-length:
+      - '31'
+    body:
+      encoding: UTF-8
+      string: '{"ok":true,"acknowledged":true}'
+    http_version: '1.1'
+  recorded_at: Thu, 27 Mar 2014 20:22:08 GMT
+- request:
+    method: head
+    uri: http://127.0.0.1:9200/messages
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      user-agent:
+      - Faraday v0.8.9
+      accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      content-type:
+      - text/plain; charset=UTF-8
+      content-length:
+      - '0'
+    body:
+      encoding: US-ASCII
+      string: ''
+    http_version: '1.1'
+  recorded_at: Thu, 27 Mar 2014 20:22:08 GMT
+- request:
+    method: put
+    uri: http://127.0.0.1:9200/messages
+    body:
+      encoding: UTF-8
+      string: '{"settings":{},"mappings":{"message":{"properties":{"content":{"type":"string"}}}}}'
+    headers:
+      user-agent:
+      - Faraday v0.8.9
+      accept-encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - application/json; charset=UTF-8
+      content-length:
+      - '31'
+    body:
+      encoding: UTF-8
+      string: '{"ok":true,"acknowledged":true}'
+    http_version: '1.1'
+  recorded_at: Thu, 27 Mar 2014 20:22:08 GMT
+- request:
+    method: post
+    uri: http://127.0.0.1:9200/messages/message/_bulk?type=message
+    body:
+      encoding: UTF-8
+      string: |
+        {"index":{"_id":"c91d36fb-c406-4a06-a9b0-808c64b80e80"}}
+        {"id":"c91d36fb-c406-4a06-a9b0-808c64b80e80","conversation_id":"214d5168-7b25-42ac-a191-06c33d07b8d4","content":"test 0","data":null,"created_at":"2014-03-27T20:22:08.807Z","updated_at":"2014-03-27T20:22:08.814Z","person_id":"c91f927f-3d88-445c-9bc1-f95402e9aa1c"}
+        {"index":{"_id":"c91d36fb-c406-4a06-a9b0-808c64b80e81"}}
+        {"id":"c91d36fb-c406-4a06-a9b0-808c64b80e81","conversation_id":"e94c2032-035e-4fd7-bac2-af410f137aed","content":"test 1","data":null,"created_at":"2014-03-27T20:22:08.825Z","updated_at":"2014-03-27T20:22:08.829Z","person_id":"9500c08e-c20b-47be-adc9-aeb68610d0d7"}
+        {"index":{"_id":"c91d36fb-c406-4a06-a9b0-808c64b80e82"}}
+        {"id":"c91d36fb-c406-4a06-a9b0-808c64b80e82","conversation_id":"972c0b81-1f76-4219-9531-5389c5ee1259","content":"test 2","data":null,"created_at":"2014-03-27T20:22:08.836Z","updated_at":"2014-03-27T20:22:08.840Z","person_id":"e1fd8f39-dec9-4082-b047-74faf16e5db2"}
+    headers:
+      user-agent:
+      - Faraday v0.8.9
+      accept-encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - application/json; charset=UTF-8
+      content-length:
+      - '375'
+    body:
+      encoding: UTF-8
+      string: '{"took":21,"items":[{"index":{"_index":"messages","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e80","_version":1,"ok":true}},{"index":{"_index":"messages","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e81","_version":1,"ok":true}},{"index":{"_index":"messages","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e82","_version":1,"ok":true}}]}'
+    http_version: '1.1'
+  recorded_at: Thu, 27 Mar 2014 20:22:08 GMT
+- request:
+    method: post
+    uri: http://127.0.0.1:9200/messages/_refresh
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      user-agent:
+      - Faraday v0.8.9
+      content-length:
+      - '0'
+      accept-encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - application/json; charset=UTF-8
+      content-length:
+      - '60'
+    body:
+      encoding: UTF-8
+      string: '{"ok":true,"_shards":{"total":10,"successful":5,"failed":0}}'
+    http_version: '1.1'
+  recorded_at: Thu, 27 Mar 2014 20:22:08 GMT
+- request:
+    method: get
+    uri: http://127.0.0.1:9200/messages/message/_search
+    body:
+      encoding: UTF-8
+      string: '{"query":{"match":{"content":"0"}}}'
+    headers:
+      user-agent:
+      - Faraday v0.8.9
+      accept-encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - application/json; charset=UTF-8
+      content-length:
+      - '510'
+    body:
+      encoding: UTF-8
+      string: '{"took":4,"timed_out":false,"_shards":{"total":5,"successful":5,"failed":0},"hits":{"total":1,"max_score":0.19178301,"hits":[{"_index":"messages","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e80","_score":0.19178301,
+        "_source" : {"id":"c91d36fb-c406-4a06-a9b0-808c64b80e80","conversation_id":"214d5168-7b25-42ac-a191-06c33d07b8d4","content":"test
+        0","data":null,"created_at":"2014-03-27T20:22:08.807Z","updated_at":"2014-03-27T20:22:08.814Z","person_id":"c91f927f-3d88-445c-9bc1-f95402e9aa1c"}}]}}'
+    http_version: '1.1'
+  recorded_at: Thu, 27 Mar 2014 20:22:09 GMT
+- request:
+    method: get
+    uri: http://127.0.0.1:9200/messages/message/_search
+    body:
+      encoding: UTF-8
+      string: '{"query":{"match":{"content":"0"}}}'
+    headers:
+      user-agent:
+      - Faraday v0.8.9
+      accept-encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - application/json; charset=UTF-8
+      content-length:
+      - '510'
+    body:
+      encoding: UTF-8
+      string: '{"took":2,"timed_out":false,"_shards":{"total":5,"successful":5,"failed":0},"hits":{"total":1,"max_score":0.19178301,"hits":[{"_index":"messages","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e80","_score":0.19178301,
+        "_source" : {"id":"c91d36fb-c406-4a06-a9b0-808c64b80e80","conversation_id":"214d5168-7b25-42ac-a191-06c33d07b8d4","content":"test
+        0","data":null,"created_at":"2014-03-27T20:22:08.807Z","updated_at":"2014-03-27T20:22:08.814Z","person_id":"c91f927f-3d88-445c-9bc1-f95402e9aa1c"}}]}}'
+    http_version: '1.1'
+  recorded_at: Thu, 27 Mar 2014 20:22:09 GMT
+recorded_with: VCR 2.8.0
