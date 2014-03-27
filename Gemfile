@@ -52,10 +52,8 @@ group :development, :test do
   gem 'pry'
   gem 'timecop'
   gem 'jasmine', github: 'pivotal/jasmine-gem'
-end
-
-group :test do
   gem 'vcr'
+  gem 'fakeweb'
 end
 
 group :development, :production do

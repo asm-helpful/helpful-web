@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe Webhook do
+describe Webhook, vcr: true do
   it "must be valid" do
     expect(build(:webhook)).to be_valid
   end
