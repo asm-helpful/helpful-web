@@ -1,71 +1,74 @@
 <div class="navbar navbar-static-top navbar-inverse">
-  <div class="search-bar-container">
+  <div class="container">
+    <div class="row">
 
-    <div class="hang-left">
-      <ul class="nav navbar-nav">
-        <% other_accounts = current_user.accounts.reject {|a| a == @account } %>
-        <% if other_accounts.any? %>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <%= @account.name %> <b class="caret"></b>
+      <div class="col-md-2">
+        <ul class="nav navbar-nav">
+          <% other_accounts = current_user.accounts.reject {|a| a == @account } %>
+          <% if other_accounts.any? %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <%= @account.name %> <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <% other_accounts.each do |account| %>
+                  <li>
+                    <%= link_to account.name, inbox_account_conversations_path(account) %>
+                  </li>
+                <% end %>
+              </ul>
+            </li>
+          <% else %>
+            <li>
+              <span class="navbar-text"><%= @account.name %></span>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div class="col-md-8">
+        <ul class="nav navbar-nav pull-left">
+          <li class="<%= current_page?(inbox_account_conversations_path(@account)) ? 'active' : '' %>"> 
+            <%= link_to "Inbox", inbox_account_conversations_path(@account) %>
+          </li>
+          <li class="<%= current_page?(archived_account_conversations_path(@account)) ? 'active' : '' %>">
+            <%= link_to "Archive", archived_account_conversations_path(@account) %>
+          </li>
+        </ul>
+        <div class="search-bar">
+          <%= form_tag search_account_conversations_path(@account), method: 'get' do %>
+            <%= search_field_tag :q, @query, placeholder: 'Search', id: 'search-query' %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="col-md-2">
+        <ul class="nav navbar-nav">
+          <li>
+            <a href="mailto:helpful@helpful.io">Help</a>
+          </li>
+
+          <li class="dropdown avatar">
+            <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+              <%= avatar(current_user, 30, 'navbar-avatar') %>
+              <span class="username"><%= current_user.name %></span>
+              <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
-              <% other_accounts.each do |account| %>
-                <li>
-                  <%= link_to account.name, inbox_account_conversations_path(account) %>
-                </li>
-              <% end %>
+              <li>
+                <a href="<%= edit_user_path %>">Personal Settings</a>
+              </li>
+              <li>
+                <a href="<%= edit_account_path(@account) %>"><%= @account.name %> Settings</a>
+              </li>
+              <li>
+                <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-text' %>
+              </li>
             </ul>
           </li>
-        <% else %>
-          <li>
-            <span class="navbar-text"><%= @account.name %></span>
-          </li>
-        <% end %>
-        <li class="<%= current_page?(inbox_account_conversations_path(@account)) ? 'active' : '' %>"> 
-          <%= link_to "Inbox", inbox_account_conversations_path(@account) %>
-        </li>
-        <li class="<%= current_page?(archived_account_conversations_path(@account)) ? 'active' : '' %>">
-          <%= link_to "Archive", archived_account_conversations_path(@account) %>
-        </li>
-      </ul>
-    </div>
-
-    <ul class="nav navbar-nav">
-      <div class="search-bar">
-        <%= form_tag search_account_conversations_path(@account), method: 'get' do %>
-          <%= search_field_tag :q, @query, placeholder: 'Search', id: 'search-query' %>
-        <% end %>
+        </ul>
       </div>
-    </ul>
 
-    <div class="hang-right">
-      <ul class="nav navbar-nav">
-        <li>
-          <a href="mailto:helpful@helpful.io">Help</a>
-        </li>
-
-        <li class="dropdown avatar">
-          <a class="dropdown-toggle" href="#" data-toggle="dropdown">
-            <%= avatar(current_user, 30, 'navbar-avatar') %> 
-            <span class="username"><%= current_user.name %></span>
-            <b class="caret"></b>
-          </a>
-          <ul class="dropdown-menu">
-            <li>
-              <a href="<%= edit_user_path %>">Personal Settings</a>
-            </li>
-            <li>
-              <a href="<%= edit_account_path(@account) %>"><%= @account.name %> Settings</a>
-            </li>
-            <li>
-              <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-text' %>
-            </li>
-          </ul>
-        </li>
-      </ul>
     </div>
-
   </div>
-
 </div>

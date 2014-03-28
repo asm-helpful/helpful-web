@@ -1,11 +1,15 @@
 <%= render 'shared/navbar' %>
 
 <div class="container">
-  <%= render "layouts/flash" %>
-  <div class="page-header">
-    <h1>Inbox</h1>
-  </div>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <%= render "layouts/flash" %>
+      <div class="page-header">
+        <h1>Inbox</h1>
+      </div>
 
-  <div class="list" data-url=<%= list_account_conversations_url(@account) %> data-pusher-channel=<%= @account.slug %>></div>
-  <%= render 'conversations/empty' %>
+      <div class="list" data-url=<%= list_account_conversations_url(@account) %> data-pusher-channel=<%= @account.slug %>></div>
+      <%= render 'conversations/empty' %>
+    </div>
+  </div>
 </div>
