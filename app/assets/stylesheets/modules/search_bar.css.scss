@@ -11,23 +11,3 @@
     width: 100%;
   }
 }
-
-.search-bar-container {
-  margin-left: auto;
-  margin-right: auto;
-  min-height: 1px;
-  position: relative;
-  width: $container-width - 30px;
-
-  .hang-left {
-    position: absolute;
-    margin-left: -233px;
-    width: 233px;
-  }
-
-  .hang-right {
-    position: absolute;
-    margin-left: 100%;
-    width: 180px;
-  }
-}
