@@ -51,7 +51,10 @@
           </a>
           <ul class="dropdown-menu">
             <li>
-              <a href="<%= edit_user_path %>">Settings</a>
+              <a href="<%= edit_user_path %>">Personal Settings</a>
+            </li>
+            <li>
+              <a href="<%= edit_account_path(@account) %>"><%= @account.name %> Settings</a>
             </li>
             <li>
               <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-text' %>
