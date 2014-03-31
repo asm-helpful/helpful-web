@@ -9,10 +9,15 @@ class UsersController < ApplicationController
   def update
     find_account!
 
-    if current_user.update(user_params)
+    begin
+      current_user.transaction do
+        current_user.update!(user_params)
+        current_user.person.update!(person_params)
+      end
+
       flash[:notice] = 'Your settings were updated successfully!'
       redirect_to edit_user_path
-    else
+    rescue ActiveRecord::RecordInvalid
       render :edit
     end
   end
@@ -23,8 +28,11 @@ class UsersController < ApplicationController
     @account = current_user.accounts.first
   end
 
+  def person_params
+    params.require(:user).permit(:name, :email)
+  end
+
   def user_params
-    person_params = params.require(:user).permit(:name, person_attributes: [:name, :email])
-    person_params.merge(email: person_params[:person_attributes][:email])
+    { email: person_params[:email] }
   end
 end

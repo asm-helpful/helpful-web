@@ -11,24 +11,20 @@
     <h1>User Settings</h1>
   </div>
 
-  <%= form_for current_user, html: {class: 'form'} do |form| %>
+  <%= form_for current_user, html: {class: 'form'} do |f| %>
 
-    <%= form.fields_for :person do |person_form| %>
+    <div class="form-group">
+      <%= f.label :name, 'Name', class: 'form-label' %>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
 
-      <div class="form-group">
-        <%= person_form.label :name, 'Name', class: 'form-label' %>
-        <%= person_form.text_field :name, class: 'form-control' %>
-      </div>
-
-      <div class="form-group">
-        <%= person_form.label :email, 'Email', class: 'form-label' %>
-        <%= person_form.text_field :email, class: 'form-control' %>
-      </div>
-
-    <% end %>
+    <div class="form-group">
+      <%= f.label :email, 'Email', class: 'form-label' %>
+      <%= f.text_field :email, class: 'form-control' %>
+    </div>
 
     <div class="form-actions">
-      <%= form.submit 'Update my personal settings', class: %W(btn btn-primary), rel: 'submit' %>
+      <%= f.submit 'Update my personal settings', class: %W(btn btn-primary), rel: 'submit' %>
     </div>
 
   <% end %>
