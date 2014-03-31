@@ -20,6 +20,8 @@ describe UsersController do
 
       user.reload
 
+      expect(response).to redirect_to(edit_user_path)
+
       expect(user.email).to eq('jimmy@helpful.io')
       expect(user.person.email).to eq('jimmy@helpful.io')
       expect(user.person.name).to eq('Jimmy Hoffa')

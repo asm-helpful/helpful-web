@@ -1,6 +1,12 @@
 <%= render 'shared/navbar' %>
 
 <div class="container">
+  <%= render 'layouts/flash' %>
+
+  <% if current_user.invalid? %>
+    <%= render '/shared/error_messages', target: current_user %>
+  <% end %>
+
   <div class="page-header">
     <h1>User Settings</h1>
   </div>
