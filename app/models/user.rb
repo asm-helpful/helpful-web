@@ -20,6 +20,10 @@ class User < ActiveRecord::Base
 
   has_many :oauth_applications, class_name: 'Doorkeeper::Application', as: :owner
 
+  delegate :name,
+    to: :person,
+    allow_nil: true
+
   accepts_nested_attributes_for :person
 
   # Returns the first owned account
