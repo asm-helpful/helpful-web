@@ -1,53 +1,57 @@
 require "spec_helper"
 
 describe Person do
-  before do
-    @person = Person.new
-  end
+  let(:person) { Person.new }
 
   it "must be valid" do
-    expect(@person).to be_valid
+    expect(person).to be_valid
   end
 
   describe "Person#parse_email" do
 
     it "handles email addresses without display names" do
       email = "jsmith@example.com"
-      @person.email = email
-      @person.save
+      person.email = email
+      person.save
 
-      assert_equal email, @person.email
+      expect(person.email).to eq(email)
     end
 
     it "parses out the email address from email" do
-      @person.email = "John Smith <jsmith@example.com>"
-      @person.save
+      person.email = "John Smith <jsmith@example.com>"
+      person.save
 
-      assert_equal "jsmith@example.com", @person.email
+      expect(person.email).to eq('jsmith@example.com')
     end
 
     it "parses out the email address from email even with extended characters" do
-      @person.email = "Nícolas Iensen <nicolas@example.com>"
-      @person.save
+      person.email = "Nícolas Iensen <nicolas@example.com>"
+      person.save
 
-      assert_equal "nicolas@example.com", @person.email
+      expect(person.email).to eq('nicolas@example.com')
     end
   end
 
-  describe "role helpers for account membership" do
-    before do
-      @user = FactoryGirl.create(:user)
-      @person = FactoryGirl.create(:person, user: @user)
-      @account = FactoryGirl.create(:account)
-      @membership = FactoryGirl.create(:membership, account: @account)
+  context 'with memberships' do
+    let!(:user) { create(:user) }
+    let!(:person) { create(:person, user: user) }
+    let!(:account) { create(:account) }
+    let!(:membership) { create(:membership, account: account, user: user) }
+
+    describe "role helpers for account membership" do
+      it "returns true if the membership has the matching role for the given account" do
+        membership.update(role: 'owner')
+        expect(person).to be_account_owner(account)
+
+        membership.update(role: 'agent')
+        expect(person).to be_account_agent(account)
+      end
     end
 
-    it "returns true if the membership has the matching role for the given account" do
-      @membership.update(role: 'owner')
-      assert @membership.owner?
-
-      @membership.update(role: 'agent')
-      assert @membership.agent?
+    describe "account membership" do
+      it "returns true if the person is a member of the given account" do
+        expect(person).to be_member(account)
+      end
     end
   end
 end

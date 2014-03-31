@@ -20,6 +20,10 @@ class Person < ActiveRecord::Base
 
   before_save :parse_email
 
+  def member?(account)
+    memberships.where(account_id: account.id).exists?
+  end
+
   Membership::ROLES.each do |role_name|
     define_method("account_#{role_name}?") do |account|
       account_member_role?(account, role_name)
