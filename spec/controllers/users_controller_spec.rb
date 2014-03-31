@@ -11,10 +11,8 @@ describe UsersController do
       put :update, {
         id: user.id,
         user: {
-          person_attributes: {
-            name: 'Jimmy Hoffa',
-            email: 'jimmy@helpful.io'
-          }
+          name: 'Jimmy Hoffa',
+          email: 'jimmy@helpful.io'
         }
       }
 
