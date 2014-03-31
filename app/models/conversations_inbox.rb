@@ -40,7 +40,7 @@ class ConversationsInbox
   # conversation in the inbox
   def next_after(conversation)
     index = conversations_queue.index { |c| c == conversation }
-    conversations_queue[index + 1]
+    conversations_queue[index + 1] if index
   end
 
   # Public: Finds all the open conversations associated with the account.
