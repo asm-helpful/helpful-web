@@ -1,7 +1,7 @@
 // Base Typography
 
-$font-body: 'Lato', $helvetica;
-$font-headline: 'Montserrat', $helvetica;
+$font-body: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$font-headline: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
 // Base Colors
 
@@ -47,3 +47,7 @@ $avatar-default-size: 45px;
 // Btn
 
 $btn-border-radius: 4px;
+
+// Navbar
+
+$navbar-margin-bottom: 0;
