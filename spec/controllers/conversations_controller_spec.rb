@@ -4,6 +4,7 @@ describe ConversationsController do
   let!(:account) { create(:account) }
   let!(:next_conversation) { create(:conversation_with_messages, account: account) }
   let!(:conversation) { create(:conversation_with_messages, account: account) }
+  let!(:archived_conversation) { create(:conversation_with_messages, account: account, archived: true) }
   let!(:user) { create(:user_with_account, account: account) }
 
   before { sign_in(user) }
@@ -68,5 +69,28 @@ describe ConversationsController do
 
     expect(assigns(:conversation)).to eq(conversation)
     expect(assigns(:next_conversation)).to eq(next_conversation)
+  end
+
+  it 'shows an archived conversation' do
+    get :show,
+      {
+        account_id: account.slug,
+        id: archived_conversation.number
+      }
+
+    expect(response).to be_successful
+    expect(assigns(:conversation)).to eq(archived_conversation)
+    expect(assigns(:next_conversation)).to be_nil
+  end
+
+  it 'shows all archived conversations' do
+    get :archived,
+      {
+        account_id: account.slug
+      }
+
+    expect(response).to be_successful
+    expect(assigns(:conversations)).to eq([archived_conversation])
+    expect(assigns(:conversation)).to eq(archived_conversation)
   end
 end
