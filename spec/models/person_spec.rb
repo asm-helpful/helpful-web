@@ -50,4 +50,17 @@ describe Person do
       assert @membership.agent?
     end
   end
+
+  describe "account memebership" do
+    before do
+      @user = FactoryGirl.create(:user)
+      @person = FactoryGirl.create(:person, user: @user)
+      @account = FactoryGirl.create(:account)
+      @membership = FactoryGirl.create(:membership, account: @account, user: @user)
+    end
+
+    it "returns true if the person is a member of the given account" do
+      assert @person.member?(@account)
+    end
+  end
 end

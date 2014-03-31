@@ -1,10 +1,12 @@
 <%= @message.content %>
 
-<p style="font-size:small;-webkit-text-size-adjust:none;color:#666;">
-  &mdash;
-  <br>
-  Reply to this email or
-  <a href="<%= account_conversation_url(@message.account, @message.conversation) %>">
-    view Conversation on Helpful
-  </a>
-</p>
+<% if @recipient.member?(@account) %>
+  <p style="font-size:small;-webkit-text-size-adjust:none;color:#666;">
+    &mdash;
+    <br>
+    Reply to this email or
+    <a href="<%= account_conversation_url(@message.account, @message.conversation) %>">
+      view Conversation on Helpful
+    </a>
+  </p>
+<% end %>

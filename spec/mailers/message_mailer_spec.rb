@@ -1,8 +1,9 @@
 require 'spec_helper'
 
 describe MessageMailer, :created do
-  let(:message) { create(:message) }
-  let(:recipient) { create(:person) }
+  let!(:user) { create(:user_with_account) }
+  let!(:recipient) { create(:person, user: user) }
+  let!(:message) { create(:message, account: user.accounts.first) }
 
   it "delivers" do
     MessageMailer.created(message.id, recipient.id).deliver
