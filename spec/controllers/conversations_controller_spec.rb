@@ -9,88 +9,94 @@ describe ConversationsController do
 
   before { sign_in(user) }
 
-  it 'archives a conversation' do
-    post :update,
-      {
-        account_id: account.slug,
-        id: conversation.number,
-        conversation: {
-          archive: true
+  describe '#archived' do
+    it 'shows all archived conversations' do
+      get :archived,
+        {
+          account_id: account.slug
         }
-      }
 
-    conversation.reload
-
-    expect(conversation).to be_archived
-    expect(response).to redirect_to inbox_account_conversations_path(account)
-    expect(flash[:notice]).to eq("The conversation has been archived.")
+      expect(response).to be_successful
+      expect(assigns(:conversations)).to eq([archived_conversation])
+      expect(assigns(:conversation)).to eq(archived_conversation)
+    end
   end
 
-  it 'unarchives a conversation' do
-    conversation.archive!
-
-    post :update,
-      {
-        account_id: account.slug,
-        id: conversation.number,
-        conversation: {
-          unarchive: true
+  describe '#show' do
+    it 'shows a conversation' do
+      get :show,
+        {
+          account_id: account.slug,
+          id: conversation.number
         }
-      }
 
-    conversation.reload
+      expect(assigns(:conversation)).to eq(conversation)
+      expect(assigns(:next_conversation)).to eq(next_conversation)
+    end
 
-    expect(conversation).not_to be_archived
-    expect(response).to redirect_to inbox_account_conversations_path(account)
-    expect(flash[:notice]).to eq("The conversation has been moved to the inbox.")
-  end
-
-  it 'moves a conversation to the bottom of the queue' do
-    post :update,
-      {
-        account_id: account.slug,
-        id: conversation.number,
-        conversation: {
-          respond_later: true
+    it 'shows an archived conversation' do
+      get :show,
+        {
+          account_id: account.slug,
+          id: archived_conversation.number
         }
-      }
 
-    conversation.reload
-
-    expect(conversation.respond_laters).not_to be_empty
+      expect(response).to be_successful
+      expect(assigns(:conversation)).to eq(archived_conversation)
+      expect(assigns(:next_conversation)).to be_nil
+    end
   end
 
-  it 'shows a conversation' do
-    get :show,
-      {
-        account_id: account.slug,
-        id: conversation.number
-      }
+  describe '#update' do
+    it 'archives a conversation' do
+      post :update,
+        {
+          account_id: account.slug,
+          id: conversation.number,
+          conversation: {
+            archive: true
+          }
+        }
 
-    expect(assigns(:conversation)).to eq(conversation)
-    expect(assigns(:next_conversation)).to eq(next_conversation)
-  end
+      conversation.reload
 
-  it 'shows an archived conversation' do
-    get :show,
-      {
-        account_id: account.slug,
-        id: archived_conversation.number
-      }
+      expect(conversation).to be_archived
+      expect(response).to redirect_to inbox_account_conversations_path(account)
+      expect(flash[:notice]).to eq("The conversation has been archived.")
+    end
 
-    expect(response).to be_successful
-    expect(assigns(:conversation)).to eq(archived_conversation)
-    expect(assigns(:next_conversation)).to be_nil
-  end
+    it 'unarchives a conversation' do
+      conversation.archive!
 
-  it 'shows all archived conversations' do
-    get :archived,
-      {
-        account_id: account.slug
-      }
+      post :update,
+        {
+          account_id: account.slug,
+          id: conversation.number,
+          conversation: {
+            unarchive: true
+          }
+        }
 
-    expect(response).to be_successful
-    expect(assigns(:conversations)).to eq([archived_conversation])
-    expect(assigns(:conversation)).to eq(archived_conversation)
+      conversation.reload
+
+      expect(conversation).not_to be_archived
+      expect(response).to redirect_to inbox_account_conversations_path(account)
+      expect(flash[:notice]).to eq("The conversation has been moved to the inbox.")
+    end
+
+    it 'moves a conversation to the bottom of the queue' do
+      post :update,
+        {
+          account_id: account.slug,
+          id: conversation.number,
+          conversation: {
+            respond_later: true
+          }
+        }
+
+      conversation.reload
+
+      expect(conversation.respond_laters).not_to be_empty
+    end
   end
 end
