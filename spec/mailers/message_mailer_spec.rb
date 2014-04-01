@@ -52,4 +52,13 @@ describe MessageMailer, :created do
     end
   end
 
+  context "when forwarding an incoming message" do
+    let(:data){ {"body" => "<b>bold</b>"} }
+    let!(:message) { create(:message, account: user.accounts.first, content: "### Heading", data: data) }
+
+    it 'formats the body in html' do
+      email = MessageMailer.created(message.id, recipient.id)
+      expect(email.body.encoded).to match "<b>bold</b>"
+    end
+  end
 end

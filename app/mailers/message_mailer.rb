@@ -2,6 +2,7 @@ class MessageMailer < ActionMailer::Base
   include SummaryHelper
   include NicknameHelper
   include MarkdownHelper
+  include ConversationHelper
 
   # Public: Triggered on Message create
   #
@@ -9,7 +10,7 @@ class MessageMailer < ActionMailer::Base
   def created(message_id, recipient_id)
     @message = Message.find(message_id)
     @recipient = Person.find(recipient_id)
-    @message_body = markdown(@message.content)
+    @message_body = message_body(@message)
 
     @conversation = @message.conversation
     @account = @conversation.account
