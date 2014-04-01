@@ -3,6 +3,7 @@
 //= require pusher
 //= require bootstrap
 //= require conversations
+//= require turbolinks
 
 $(document).ready(function() {
 
