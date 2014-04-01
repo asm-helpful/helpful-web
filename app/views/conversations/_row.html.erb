@@ -14,15 +14,15 @@
     </div>
   <% end %>
 
-  <% if current_page?(search_account_conversations_path(@account)) %>
-    <% if conversation.archived? %>
-      <span class="glyphicon glyphicon-check"></span>
-    <% else %>
-      <span class="glyphicon glyphicon-inbox"></span>
-    <% end %>
-  <% end %>
-  
-  <div class="summary"><%= summary(conversation) %></div>
+  <div class="conversation-summary">
+    <div class="last-update">
+    </div>
+
+    <%= avatar_default(conversation.creator_person) %>
+
+    <div class="title">
+      <%= summary(conversation) %>
+    </div>
 
   <div class="meta">
     <%= conversation.participants.map {|person| nickname(person) }.to_sentence %>

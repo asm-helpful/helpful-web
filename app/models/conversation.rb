@@ -55,6 +55,14 @@ class Conversation < ActiveRecord::Base
     respond_later.touch
   end
 
+  def creator_person
+    first_message.person
+  end
+
+  def first_message
+    messages.order('created_at DESC').first
+  end
+
   # Public: Conversation specific email address for incoming email replies.
   #
   # Returns the Mail::Address customers should send email replies to.
