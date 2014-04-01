@@ -1,8 +1,9 @@
-//= require bootstrap
+@import 'variables';
+
+@import 'bootstrap';
 
 @import 'bourbon';
 
-@import 'variables';
 @import 'mixins';
 
 @import 'base/*';
