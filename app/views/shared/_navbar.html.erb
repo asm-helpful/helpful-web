@@ -47,7 +47,9 @@
 
         <li class="dropdown avatar">
           <a class="dropdown-toggle" href="#" data-toggle="dropdown">
-            <%= avatar(current_user, 30, 'navbar-avatar') %> <b class="caret"></b>
+            <%= avatar(current_user, 30, 'navbar-avatar') %> 
+            <span class="username"><%= current_user.name %></span>
+            <b class="caret"></b>
           </a>
           <ul class="dropdown-menu">
             <li>
