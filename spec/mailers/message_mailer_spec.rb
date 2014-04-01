@@ -42,4 +42,14 @@ describe MessageMailer, :created do
     conversation_path = account_conversation_path(message.account, message.conversation)
     expect(email.body.encoded).to include(conversation_path)
   end
+
+  context "when using markdown to reply" do
+    let!(:message) { create(:message, account: user.accounts.first, content: "### Heading") }
+
+    it 'formats the body in html' do
+      email = MessageMailer.created(message.id, recipient.id)
+      expect(email.body.encoded).to match "<h3>Heading</h3>"
+    end
+  end
+
 end
