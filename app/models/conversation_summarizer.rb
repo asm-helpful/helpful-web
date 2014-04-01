@@ -5,16 +5,22 @@ class ConversationSummarizer
 
   LENGTH = 140
 
+  attr_accessor :conversation
+
   def initialize(conversation)
-    @conversation = conversation
+    self.conversation = conversation
   end
 
   def summary
-    @conversation.subject || tweet_sized_snippet_from_first_message
+    self.conversation.subject || tweet_sized_snippet_from_first_message
   end
 
   def tweet_sized_snippet_from_first_message
-    @conversation.messages.first.content[0...LENGTH]
+    first_message.content[0...LENGTH]
+  end
+
+  def first_message
+    self.conversation.messages.order('created_at DESC').first
   end
 
 end

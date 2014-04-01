@@ -9,7 +9,7 @@ describe ConversationSummarizer do
     conversation.messages << message
 
     summarizer = ConversationSummarizer.new(conversation)
-    assert_equal 'Tweet sized summary', summarizer.summary
+    expect(summarizer.summary).to eq('Tweet sized summary')
   end
 
 end
