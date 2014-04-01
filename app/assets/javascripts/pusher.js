@@ -1,4 +1,4 @@
-$(function(){
+function pusherStart() {
   // Pusher global vars
   var pusher = new Pusher($("meta[name='pusher-key']").attr("content"));
   var listUrl = $(".list").data("url");
@@ -27,4 +27,8 @@ $(function(){
       }
     });
   }
-});
+}
+
+$(document).on("ready page:change", function(){
+  pusherStart();
+})
