@@ -10,3 +10,14 @@
   width: $avatar-default-size;
   height: $avatar-default-size;
 }
+
+.navbar .navbar-avatar {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.dropdown.avatar a {
+  padding-top: 0;
+  padding-bottom: 0;
+  line-height: 50px;
+}
