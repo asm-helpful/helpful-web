@@ -28,34 +28,29 @@
   </div>
 
   <div class="conversation-body">
-    <div class="conversation-stream">
-      <% ConversationStream.new(conversation).each do |item| %>
-        <div class="conversation-stream-item">
-          <%= render 'messages/message', message: item %>
-        </div>
-      <% end %>
+    <% @conversation.messages.each do |message| %>
+      <%= render 'messages/message', message: message %>
+    <% end %>
+    <div class="message-form">
+      <%= form_tag account_messages_path(@account), method: 'post' do %>
+        <%= hidden_field :message, :conversation_id, value: conversation.id %>
 
-      <div class="conversation-stream-item conversation-stream-item-attached">
-        <%= form_tag account_messages_path(@account), method: 'post' do %>
-          <%= hidden_field :message, :conversation_id, value: conversation.id %>
-
-          <div class="conversation-reply">
-            <%= text_area :message, :content, placeholder: 'Reply to this conversation…', rows: 4 %>
-            <div class="command-bar">
-              <!-- Display these once we have more UI designed
-              <button class="btn btn-light" name="assign">@Assign</button>
-              <button class="btn btn-light" name="tag">#Tag</button>
-              <button class="btn btn-light" name="canned_response">:Canned Response</button>
-              -->
-              <%= render 'conversations/markdown' %>
-              <div class="pull-right">
-                <input class="btn btn-danger" type="submit" name="commit" value="Archive">
-                <input class="btn btn-primary" type="submit" name="commit" value="Send">
-              </div>
+        <div class="conversation-reply">
+          <%= text_area :message, :content, placeholder: 'Reply to this conversation…', rows: 4 %>
+          <div class="command-bar">
+            <!-- Display these once we have more UI designed
+            <button class="btn btn-light" name="assign">@Assign</button>
+            <button class="btn btn-light" name="tag">#Tag</button>
+            <button class="btn btn-light" name="canned_response">:Canned Response</button>
+            -->
+            <%= render 'conversations/markdown' %>
+            <div class="pull-right">
+              <input class="btn btn-danger" type="submit" name="commit" value="Archive">
+              <input class="btn btn-primary" type="submit" name="commit" value="Send">
             </div>
           </div>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
   </div>
 
