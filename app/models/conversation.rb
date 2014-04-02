@@ -60,7 +60,11 @@ class Conversation < ActiveRecord::Base
   end
 
   def first_message
-    messages.order('created_at DESC').first
+    messages.order('created_at ASC').first
+  end
+
+  def subsequent_messages
+    messages.order('created_at ASC').offset(1)
   end
 
   # Public: Conversation specific email address for incoming email replies.

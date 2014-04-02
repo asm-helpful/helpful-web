@@ -1,25 +1,31 @@
 @import 'addons/clearfix';
 
 .conversation {
-  border-bottom: 1px solid $gray;
-  background-color: $white;
   display: block;
-  padding: 40px;
 }
 
-.conversation-actions {
+.conversation-row {
+  background-color: $white;
+  border-bottom: 1px solid $gray;
+}
+
+.actions {
   position: absolute;
   margin-left: 700px;
 }
 
-.conversation-heading,
-.conversation-summary {
+.summary {
   color: $dark-gray;
+  padding: 30px 40px;
 
-  > .last-update {
+  > .last-update,
+  .timestamp {
+    color: $black;
     line-height: 45px;
-    margin-left: -110px;
+    margin-left: -300px;
     position: absolute;
+    text-align: right;
+    width: 200px;
   }
 
   > .avatar {
@@ -29,26 +35,17 @@
 
   > .title {
     color: #333;
-    font-size: 26px;
-    margin-bottom: 20px;
-  }
-
-  > .detail {
-    color: $gray;
-    font-size: 20px;
-    font-weight: light;
-    line-height: 36px;
-    margin-left: - (30px + 30px);
-    position: absolute;
+    font-size: 24px;
+    margin-bottom: 5px;
   }
 
   > .participants {
     display: inline-block;
     list-style: none;
     padding-left: 0;
+    margin-bottom: 0;
 
     > li {
-      color: $black;
       display: inline-block;
       margin-right: 10px;
     }
@@ -57,99 +54,20 @@
   > .number {
     display: inline-block;
   }
-}
 
-.conversation-body {
-  margin-bottom: 70px;
-}
-
-.conversation-row {
-  background-color: $white;
-  padding: 20px 20px;
-
-  .updated {
-    color: #B2B2B2;
-    font-size: 13px;
-    line-height: 24px;
-
-    &.recent {
-      color: $muted;
-    }
-
-    &.normal {
-      color: $warning;
-      font-weight: bold;
-    }
-
-    &.stale {
-      color: $danger;
-      font-weight: bold;
-    }
+  > .message {
+    padding-top: 20px;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
   }
-
-  > .summary {
-    color: #333;
-    font-size: 16px;
-    line-height: 24px;
-  }
-
-  > .meta {
-    color: #B2B2B2;
-    font-size: 13px;
-    line-height: 24px;
-
-    > .meta-divider:before {
-      color: #E6E6E6;
-      content: "|";
-    }
-  }
-
-  &[data-selected] {
-    background-color: #F8FBFD;
-    border-left: 2px solid $primary;
-    margin-left: -2px;
-
-    > .summary {
-      color: $primary;
-    }
-  }
-
-  .respond-later,
-  .archive {
-    visibility: hidden;
-  }
-
-  &:hover {
-    .respond-later,
-    .archive {
-      visibility: visible;
-    }
-
-  }
-
-  .glyphicon {
-    float: right;
-    font-size: 20px;
-    top: 50%;
-    -webkit-transform: translate(0, 50%);
-
-    &.glyphicon-inbox {
-      color: #3782ba;
-    }
-
-    &.glyphicon-check {
-      color: #009900;
-    }
-  }
-}
-
-a.conversation-row {
-  display: block;
-  border-bottom: none;
 }
 
 .conversation-next {
+  border-top: 2px solid $gray;
   margin-bottom: 30px;
+  margin-top: 160px;
+  padding-top: 20px;
 
   .conversation-next-heading {
     margin-left: 30px;

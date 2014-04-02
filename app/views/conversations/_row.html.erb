@@ -1,6 +1,6 @@
-<a class="conversation" href="<%= account_conversation_path(conversation.account, conversation) %>">
+<a class="conversation conversation-row" href="<%= account_conversation_path(conversation.account, conversation) %>">
   <% if current_page?(list_account_conversations_path(@account)) %>
-    <div class="conversation-actions">
+    <div class="actions">
       <button class="btn btn-primary respond-later" data-account-conversation-path="<%= account_conversation_path(@account, conversation, conversation: { respond_later: true }) %>">
         Later
       </button>
@@ -11,15 +11,18 @@
     </div>
   <% end %>
 
-  <div class="conversation-summary">
+  <div class="summary">
     <div class="last-update">
-      <%= time_ago_in_words(conversation.last_activity_at) %>
+      <%= time_ago_in_words(conversation.last_activity_at) %> ago
     </div>
 
     <%= avatar_default(conversation.creator_person) %>
 
     <div class="title">
       <%= summary(conversation) %>
+    </div>
+
+    <div class="message-count">
     </div>
 
     <ul class="participants">

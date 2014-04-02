@@ -31,6 +31,7 @@ class ConversationsController < ApplicationController
 
   def show
     find_conversation!
+    @messages = @conversation.messages
     @next_conversation = ConversationsInbox.new(@account, current_user).next_after(@conversation)
   end
 
