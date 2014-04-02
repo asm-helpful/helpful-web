@@ -1,19 +1,21 @@
 function pusherStart() {
   // Pusher global vars
+  var list = $(".list");
   var pusher = new Pusher($("meta[name='pusher-key']").attr("content"));
-  var listUrl = $(".list").data("url");
-  var channel = pusher.subscribe($(".list").data("pusher-channel"));
+  var listUrl = list.data("url");
+  var listChannel = list.data("pusher-channel");
 
-  // Pusher logger
-  Pusher.log = function(message) {
-    if (window.console && window.console.log) {
-      window.console.log(message);
-    }
-  };
+  if (typeof listChannel == "undefined") {
+    return;
+  }
+
+  var channel = pusher.subscribe(listChannel);
 
   // Pusher event bind
-  if($(".list").length){
-    channel.bind('new_message', function(data) { loadList(); });
+  if(list.length){
+    channel.bind('new_message', function(data) {
+        loadList();
+    });
     loadList();
   }
 
@@ -31,4 +33,4 @@ function pusherStart() {
 
 $(document).on("ready page:change", function(){
   pusherStart();
-})
+});
