@@ -1,6 +1,7 @@
 .conversation-reply {
   textarea {
     border: 1px solid #dddddd;
+    color: $black;
     margin: 0;
     outline: none;
     padding: 10px;
@@ -10,6 +11,7 @@
   .command-bar {
     @include clearfix();
 
+    background-color: $white;
     border: 1px solid #dddddd;
     margin-top: -6px;
 
@@ -27,9 +29,11 @@
       padding-right: 15px;
       border-right: 1px solid #cdcdcd;
       cursor: pointer;
+      color: $dark-gray;
 
       &.open {
         background-color: #EEE;
+        color: $black;
       }
       img {
         margin: 8px;
