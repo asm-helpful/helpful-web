@@ -1,6 +1,6 @@
 <div class="navbar navbar-static-top navbar-inverse">
 
-  <ul class="nav navbar-nav pull-right">
+  <ul class="nav navbar-nav navbar-right">
     <li>
       <a href="mailto:helpful@helpful.io">Help</a>
     </li>
@@ -25,7 +25,7 @@
     </li>
   </ul>
 
-  <ul class="nav navbar-nav pull-left">
+  <ul class="nav navbar-nav navbar-left">
     <% other_accounts = current_user.accounts.reject {|a| a == @account } %>
     <% if other_accounts.any? %>
       <li class="dropdown">
