@@ -28,7 +28,7 @@ class Conversation < ActiveRecord::Base
 
   scope :archived, -> { where(archived: true) }
 
-  scope :most_stale, -> { joins(:messages).order('messages.updated_at ASC') }
+  scope :most_recent, -> { order('updated_at DESC') }
 
   scope :queue, -> { order('updated_at ASC') }
 

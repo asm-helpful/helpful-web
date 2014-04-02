@@ -19,7 +19,7 @@ class ConversationsArchive
     if search?
       search_conversations
     else
-      most_stale_conversations
+      most_recent_conversations
     end
   end
 
@@ -27,8 +27,8 @@ class ConversationsArchive
   # recent message.
   #
   # Returns an Array of Conversation models.
-  def most_stale_conversations
-    archived_conversations.most_stale.to_a.uniq
+  def most_recent_conversations
+    archived_conversations.most_recent.to_a.uniq
   end
 
   # Public: Finds all the archived conversations associated with the account.
