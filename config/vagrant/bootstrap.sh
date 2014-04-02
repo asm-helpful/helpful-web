@@ -55,7 +55,9 @@ su vagrant -lc "cd /vagrant && sudo foreman export upstart /etc/init \
   --log /vagrant/log \
   --template /vagrant/config/vagrant/foreman/export_templates/upstart"
 
-restart helpful
+if ! restart helpful 2> /dev/null ; then
+   start helpful;
+fi
 
 cat <<EOF
 -------------------------------------------------------------------------------
