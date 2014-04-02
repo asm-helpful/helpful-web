@@ -1,24 +1,29 @@
 <div class="conversation">
 
   <div class="conversation-heading">
-    <div class="detail">
-      #<%= conversation.number %>
+    <div class="last-update">
+      <%= time_ago_in_words(conversation.last_activity_at) %>
     </div>
 
-    <div class="summary">
+    <%= avatar_default(conversation.creator_person) %>
+
+    <div class="title">
       <%= summary(conversation) %>
     </div>
 
-    <div class="meta">
+    <ul class="participants">
+      <% conversation.participants.each do |participant| %>
+        <li>
+          <%= nickname(participant) %>
+        </li>
+      <% end %>
+    </ul>
 
-      <ul class="participants">
-        <% conversation.participants.each do |participant| %>
-          <li>
-            <%= nickname(participant) %>
-          </li>
-        <% end %>
-      </ul>
+    <div class="number">
+      #<%= conversation.number %>
+    </div>
 
+    <div class="icons">
     </div>
   </div>
 

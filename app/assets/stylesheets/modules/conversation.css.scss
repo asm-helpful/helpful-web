@@ -1,59 +1,62 @@
 @import 'addons/clearfix';
 
 .conversation {
+  border-bottom: 1px solid $gray;
+  background-color: $white;
+  display: block;
+  padding: 40px;
 }
 
-.conversation-heading {
-  padding-top: 20px;
-  padding-left: 30px;
-  padding-right: 30px;
-  padding-bottom: 30px;
-  border-bottom: 1px solid #e6e6e6;
+.conversation-actions {
+  position: absolute;
+  margin-left: 700px;
+}
 
-  > .actions {
-    float: right;
-    margin-left: 30px;
+.conversation-heading,
+.conversation-summary {
+  color: $dark-gray;
+
+  > .last-update {
+    line-height: 45px;
+    margin-left: -110px;
+    position: absolute;
   }
 
-  > .summary {
+  > .avatar {
+    position: absolute;
+    margin-left: -(40px + (45px / 2));
+  }
+
+  > .title {
     color: #333;
     font-size: 26px;
+    margin-bottom: 20px;
   }
 
   > .detail {
-    color: #b2b2b2;
-    font-size: 16px;
+    color: $gray;
+    font-size: 20px;
     font-weight: light;
     line-height: 36px;
     margin-left: - (30px + 30px);
     position: absolute;
   }
 
-  > .meta {
-    @include clearfix;
-    margin-top: 20px;
+  > .participants {
+    display: inline-block;
+    list-style: none;
+    padding-left: 0;
 
-    color: #e6e6e6;
-    font-size: 16px;
-    line-height: 21px;
-    color: #4d4d4d;
-
-    > .participants {
-      list-style: none;
-      padding-left: 0;
-      float: left;
-
-      > li {
-        display: inline-block;
-        margin-right: 10px;
-      }
-    }
-
-    > .last-update {
-      float: right;
+    > li {
+      color: $black;
+      display: inline-block;
+      margin-right: 10px;
     }
   }
 
+  > .number {
+    display: inline-block;
+  }
 }
 
 .conversation-body {

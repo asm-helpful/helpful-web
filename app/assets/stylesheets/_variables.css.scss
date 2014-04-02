@@ -8,6 +8,7 @@ $font-headline: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $white:        #FFFFFF;
 $light-gray:   #F2F7F8;
 $gray:         #DBE8EB;
+$dark-gray:    #8F9799;
 $black:        #333333;
 
 $light-red:    #FF6C6C;
@@ -51,3 +52,8 @@ $btn-border-radius: 4px;
 // Navbar
 
 $navbar-margin-bottom: 0;
+
+// Container
+
+$container-md: 540px;
+$container-lg: 740px;

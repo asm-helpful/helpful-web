@@ -1,21 +1,19 @@
-<a class="conversation-row" href="<%= account_conversation_path(conversation.account, conversation) %>">
-
+<a class="conversation" href="<%= account_conversation_path(conversation.account, conversation) %>">
   <% if current_page?(list_account_conversations_path(@account)) %>
-    <div class="pull-right">
-      <div class="btn-group">
-        <button class="btn btn-primary respond-later" data-account-conversation-path="<%= account_conversation_path(@account, conversation, conversation: { respond_later: true }) %>">
-          Respond Later
-        </button>
+    <div class="conversation-actions">
+      <button class="btn btn-primary respond-later" data-account-conversation-path="<%= account_conversation_path(@account, conversation, conversation: { respond_later: true }) %>">
+        Later
+      </button>
 
-        <button class="btn btn-danger archive" data-account-conversation-path="<%= account_conversation_path(@account, conversation, conversation: { archive: true }) %>">
-          Archive
-        </button>
-      </div>
+      <button class="btn btn-danger archive" data-account-conversation-path="<%= account_conversation_path(@account, conversation, conversation: { archive: true }) %>">
+        Archive
+      </button>
     </div>
   <% end %>
 
   <div class="conversation-summary">
     <div class="last-update">
+      <%= time_ago_in_words(conversation.last_activity_at) %>
     </div>
 
     <%= avatar_default(conversation.creator_person) %>
@@ -24,14 +22,19 @@
       <%= summary(conversation) %>
     </div>
 
-  <div class="meta">
-    <%= conversation.participants.map {|person| nickname(person) }.to_sentence %>
-    <span class="meta-divider"></span>
-    <%= pluralize(conversation.messages.count, 'message') %>
-    <span class="meta-divider"></span>
-    <span class="time updated <%= most_recent_message_class(conversation) %>">
-      <%= time_ago_in_words(conversation.last_activity_at) %>
-    </span>
-  </div>
+    <ul class="participants">
+      <% conversation.participants.each do |participant| %>
+        <li>
+          <%= nickname(participant) %>
+        </li>
+      <% end %>
+    </ul>
 
+    <div class="number">
+      #<%= conversation.number %>
+    </div>
+
+    <div class="icons">
+    </div>
+  </div>
 </a>
