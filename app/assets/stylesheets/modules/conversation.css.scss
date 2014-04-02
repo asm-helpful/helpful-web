@@ -1,152 +1,88 @@
 @import 'addons/clearfix';
 
 .conversation {
-}
-
-.conversation-heading {
-  padding-top: 20px;
-  padding-left: 30px;
-  padding-right: 30px;
-  padding-bottom: 30px;
-  border-bottom: 1px solid #e6e6e6;
-
-  > .actions {
-    float: right;
-    margin-left: 30px;
-  }
-
-  > .summary {
-    color: #333;
-    font-size: 26px;
-  }
-
-  > .detail {
-    color: #b2b2b2;
-    font-size: 16px;
-    font-weight: light;
-    line-height: 36px;
-    margin-left: - (30px + 30px);
-    position: absolute;
-  }
-
-  > .meta {
-    @include clearfix;
-    margin-top: 20px;
-
-    color: #e6e6e6;
-    font-size: 16px;
-    line-height: 21px;
-    color: #4d4d4d;
-
-    > .participants {
-      list-style: none;
-      padding-left: 0;
-      float: left;
-
-      > li {
-        display: inline-block;
-        margin-right: 10px;
-      }
-    }
-
-    > .last-update {
-      float: right;
-    }
-  }
-
-}
-
-.conversation-body {
-  margin-bottom: 70px;
+  display: block;
 }
 
 .conversation-row {
   background-color: $white;
-  padding: 20px 20px;
-
-  .updated {
-    color: #B2B2B2;
-    font-size: 13px;
-    line-height: 24px;
-
-    &.recent {
-      color: $muted;
-    }
-
-    &.normal {
-      color: $warning;
-      font-weight: bold;
-    }
-
-    &.stale {
-      color: $danger;
-      font-weight: bold;
-    }
-  }
-
-  > .summary {
-    color: #333;
-    font-size: 16px;
-    line-height: 24px;
-  }
-
-  > .meta {
-    color: #B2B2B2;
-    font-size: 13px;
-    line-height: 24px;
-
-    > .meta-divider:before {
-      color: #E6E6E6;
-      content: "|";
-    }
-  }
-
-  &[data-selected] {
-    background-color: #F8FBFD;
-    border-left: 2px solid $primary;
-    margin-left: -2px;
-
-    > .summary {
-      color: $primary;
-    }
-  }
-
-  .respond-later,
-  .archive {
-    visibility: hidden;
-  }
+  border-bottom: 1px solid $gray;
 
   &:hover {
-    .respond-later,
-    .archive {
-      visibility: visible;
-    }
-
-  }
-
-  .glyphicon {
-    float: right;
-    font-size: 20px;
-    top: 50%;
-    -webkit-transform: translate(0, 50%);
-
-    &.glyphicon-inbox {
-      color: #3782ba;
-    }
-
-    &.glyphicon-check {
-      color: #009900;
+    .actions {
+      opacity: 1;
     }
   }
 }
 
-a.conversation-row {
-  display: block;
-  border-bottom: none;
+.actions {
+  opacity: 0;
+  margin-left: 700px;
+  padding-top: 30px;
+  padding-right: 40px;
+  padding-bottom: 30px;
+  padding-left: 40px;
+  position: absolute;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.summary {
+  color: $dark-gray;
+  padding: 30px 40px;
+
+  > .last-update,
+  .timestamp {
+    color: $black;
+    line-height: 45px;
+    margin-left: -300px;
+    position: absolute;
+    text-align: right;
+    width: 200px;
+  }
+
+  > .avatar {
+    position: absolute;
+    margin-left: -(40px + (45px / 2));
+  }
+
+  > .title {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 5px;
+  }
+
+  > .participants {
+    display: inline-block;
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+
+    > li {
+      display: inline-block;
+      margin-right: 10px;
+    }
+  }
+
+  > .number {
+    display: inline-block;
+  }
+
+  > .message {
+    padding-top: 20px;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+  }
 }
 
 .conversation-next {
+  border-top: 2px solid $gray;
   margin-bottom: 30px;
+  margin-top: 160px;
+  padding-top: 20px;
 
   .conversation-next-heading {
     margin-left: 30px;

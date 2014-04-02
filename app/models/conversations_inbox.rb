@@ -30,7 +30,8 @@ class ConversationsInbox
   # Returns an Array of Conversation models.
   def conversations_queue
     @conversations_queue ||= open_conversations.joins("LEFT OUTER JOIN respond_laters ON conversations.id = respond_laters.conversation_id AND respond_laters.user_id = '#{user.id}'").
-      order('respond_laters.updated_at ASC NULLS FIRST, conversations.updated_at DESC')
+      order('respond_laters.updated_at ASC NULLS FIRST').
+      order('conversations.updated_at DESC')
   end
 
   # Public: Finds the next conversation in the queue after the

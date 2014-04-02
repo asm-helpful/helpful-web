@@ -1,92 +1,100 @@
 <div class="conversation">
-
-  <div class="conversation-heading">
-    <div class="detail">
-      #<%= conversation.number %>
+  <div class="summary">
+    <div class="timestamp">
+      <%= time_ago_in_words(conversation.created_at) %> ago
     </div>
 
-    <div class="summary">
+    <%= avatar_default(conversation.creator_person) %>
+
+    <div class="title">
       <%= summary(conversation) %>
     </div>
 
-    <div class="meta">
+    <ul class="participants">
+      <% conversation.participants.each do |participant| %>
+        <li>
+          <%= nickname(participant) %>
+        </li>
+      <% end %>
+    </ul>
+
+    <div class="number">
+      #<%= conversation.number %>
+    </div>
+
+    <div class="icons">
+    </div>
+
+    <div class="message">
+      <div class="content">
+        <%== message_body(conversation.first_message) %>
+      </div>
+
+      <% if conversation.first_message.attachments.present? %>
+        <div class="attachments">
+          <%= render 'messages/attachments', attachments: conversation.first_message.attachments %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <% conversation.subsequent_messages.each do |message| %>
+    <%= render 'messages/message', message: message %>
+  <% end %>
+
+  <div class="conversation-reply">
+    <%= form_tag account_messages_path(@account), method: 'post' do %>
+      <%= hidden_field :message, :conversation_id, value: conversation.id %>
+      <%= text_area :message, :content, placeholder: 'Reply to this conversation…', rows: 4 %>
+
+      <div class="command-bar">
+        <!-- Display these once we have more UI designed
+        <button class="btn btn-light" name="assign">@Assign</button>
+        <button class="btn btn-light" name="tag">#Tag</button>
+        <button class="btn btn-light" name="canned_response">:Canned Response</button>
+        -->
+        <%= render 'conversations/markdown' %>
+        <div class="pull-right">
+          <input class="btn btn-danger" type="submit" name="commit" value="Archive">
+          <input class="btn btn-primary" type="submit" name="commit" value="Send">
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<% if @next_conversation %>
+  <a class="conversation conversation-next" href="<%= account_conversation_path(@account, @next_conversation) %>">
+    <p class="text-muted text-uppercase">Next Conversation</p>
+
+    <div class="summary">
+      <div class="timestamp">
+        <%= time_ago_in_words(@next_conversation.created_at) %> ago
+      </div>
+
+      <%= avatar_default(@next_conversation.creator_person) %>
+
+      <div class="title">
+        <%= summary(@next_conversation) %>
+      </div>
 
       <ul class="participants">
-        <% conversation.participants.each do |participant| %>
+        <% @next_conversation.participants.each do |participant| %>
           <li>
             <%= nickname(participant) %>
           </li>
         <% end %>
       </ul>
 
-    </div>
-  </div>
-
-  <div class="conversation-body">
-    <div class="conversation-stream">
-      <% ConversationStream.new(conversation).each do |item| %>
-        <div class="conversation-stream-item">
-          <%= render 'messages/message', message: item %>
-        </div>
-      <% end %>
-
-      <div class="conversation-stream-item conversation-stream-item-attached">
-        <%= form_tag account_messages_path(@account), method: 'post' do %>
-          <%= hidden_field :message, :conversation_id, value: conversation.id %>
-
-          <div class="conversation-reply">
-            <%= text_area :message, :content, placeholder: 'Reply to this conversation…', rows: 4 %>
-            <div class="command-bar">
-              <!-- Display these once we have more UI designed
-              <button class="btn btn-light" name="assign">@Assign</button>
-              <button class="btn btn-light" name="tag">#Tag</button>
-              <button class="btn btn-light" name="canned_response">:Canned Response</button>
-              -->
-              <%= render 'conversations/markdown' %>
-              <div class="pull-right">
-                <input class="btn btn-danger" type="submit" name="commit" value="Archive">
-                <input class="btn btn-primary" type="submit" name="commit" value="Send">
-              </div>
-            </div>
-          </div>
-        <% end %>
+      <div class="number">
+        #<%= @next_conversation.number %>
       </div>
     </div>
-  </div>
-
-  <hr>
-
+  </a>
+<% else %>
   <div class="conversation conversation-next">
-    <% if @next_conversation %>
-      <a href="<%= account_conversation_path(@account, @next_conversation) %>">
-        <p class="conversation-next-heading text-muted text-uppercase">Next Conversation</p>
+    <p>You made it to the last message!</p>
 
-        <div class="conversation-heading">
-          <div class="detail">
-            #<%= @next_conversation.number %>
-          </div>
-
-          <div class="summary">
-            <%= summary(@next_conversation) %>
-          </div>
-
-          <div class="meta">
-
-            <ul class="participants">
-              <% @next_conversation.participants.each do |participant| %>
-                <li>
-                  <%= nickname(participant) %>
-                </li>
-              <% end %>
-            </ul>
-
-          </div>
-        </div>
-      </a>
-    <% else %>
-      <p>You made it to the last message!</p>
-
-      <a class="btn btn-primary" href="<%= inbox_account_conversations_path(@account) %>">Back to the Inbox</a>
-    <% end %>
+    <a class="btn btn-primary" href="<%= inbox_account_conversations_path(@account) %>">Back to the Inbox</a>
   </div>
-</div>
+<% end %>

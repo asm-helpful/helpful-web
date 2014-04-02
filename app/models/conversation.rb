@@ -28,7 +28,7 @@ class Conversation < ActiveRecord::Base
 
   scope :archived, -> { where(archived: true) }
 
-  scope :most_stale, -> { joins(:messages).order('messages.updated_at ASC') }
+  scope :most_recent, -> { order('updated_at DESC') }
 
   scope :queue, -> { order('updated_at ASC') }
 
@@ -53,6 +53,18 @@ class Conversation < ActiveRecord::Base
   def respond_later!(user)
     respond_later = respond_laters.find_or_create_by(user: user)
     respond_later.touch
+  end
+
+  def creator_person
+    first_message.person
+  end
+
+  def first_message
+    messages.order('created_at ASC').first
+  end
+
+  def subsequent_messages
+    messages.order('created_at ASC').offset(1)
   end
 
   # Public: Conversation specific email address for incoming email replies.

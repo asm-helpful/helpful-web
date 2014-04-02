@@ -36,6 +36,7 @@
   @include box-sizing(border-box);
   border: 2px solid $muted;
   border-radius: 4px;
+  color: $black;
   font-size: .9em;
   padding: 33px 13px 9px;
   height: auto;
@@ -51,12 +52,12 @@
 }
 
 .form-label {
-  position: absolute;
-  top: 0;
-  padding: 10px 15px;
-
+  color: $dark-gray;
   font-size: 14px;
   font-weight: 600;
+  padding: 10px 15px;
+  position: absolute;
+  top: 0;
 }
 
 

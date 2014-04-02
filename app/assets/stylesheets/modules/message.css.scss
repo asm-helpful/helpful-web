@@ -1,8 +1,21 @@
 .message {
-  color: $black;
-  font-size: 16px;
+  color: $dark-gray;
   line-height: 24px;
-  padding-left: $avatar-default-size + 30px;
+  padding: 40px;
+
+  > .timestamp {
+    color: $black;
+    line-height: 45px;
+    margin-left: -300px;
+    position: absolute;
+    text-align: right;
+    width: 200px;
+  }
+
+  > .avatar {
+    position: absolute;
+    margin-left: -(40px + (45px / 2));
+  }
 
   > .person {
     line-height: $avatar-default-size;
@@ -16,6 +29,7 @@
 
   > .content {
     font-weight: light;
+    font-size: 16px;
     padding-top: 10.5px;
     padding-bottom: 10.5px;
   }
@@ -26,11 +40,5 @@
       font-size: 14px;
     }
     padding-bottom: 10.5px;
-  }
-
-  > .meta {
-    color: $light-gray;
-    font-size: 14px;
-    line-height: 21px;
   }
 }

@@ -20,7 +20,7 @@ class ConversationSummarizer
   end
 
   def first_message
-    self.conversation.messages.order('created_at DESC').first
+    conversation.first_message
   end
 
 end
