@@ -63,8 +63,8 @@
   </div>
 </div>
 
-<a class="conversation conversation-next" href="<%= account_conversation_path(@account, @next_conversation) %>">
-  <% if @next_conversation %>
+<% if @next_conversation %>
+  <a class="conversation conversation-next" href="<%= account_conversation_path(@account, @next_conversation) %>">
     <p class="text-muted text-uppercase">Next Conversation</p>
 
     <div class="summary">
@@ -90,9 +90,11 @@
         #<%= @next_conversation.number %>
       </div>
     </div>
-  <% else %>
+  </a>
+<% else %>
+  <div class="conversation conversation-next">
     <p>You made it to the last message!</p>
 
     <a class="btn btn-primary" href="<%= inbox_account_conversations_path(@account) %>">Back to the Inbox</a>
-  <% end %>
-</a>
+  </div>
+<% end %>
