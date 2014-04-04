@@ -1,4 +1,5 @@
 require 'redcarpet'
+require 'redcarpet/render_strip'
 
 module MarkdownHelper
 
@@ -12,4 +13,8 @@ module MarkdownHelper
     md.render(str)
   end
 
+  def stripdown(str)
+    renderer = Redcarpet::Markdown.new(Redcarpet::Render::StripDown)
+    renderer.render(str)
+  end
 end

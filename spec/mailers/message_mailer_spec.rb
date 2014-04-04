@@ -51,14 +51,4 @@ describe MessageMailer, :created do
       expect(email.body.encoded).to match "<h3>Heading</h3>"
     end
   end
-
-  context "when forwarding an incoming message" do
-    let(:data){ {"body" => "<b>bold</b>"} }
-    let!(:message) { create(:message, account: user.accounts.first, content: "### Heading", data: data) }
-
-    it 'formats the body in html' do
-      email = MessageMailer.created(message.id, recipient.id)
-      expect(email.body.encoded).to match "<b>bold</b>"
-    end
-  end
 end

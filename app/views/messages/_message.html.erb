@@ -10,7 +10,7 @@
   </div>
 
   <div class="content">
-    <%== message_body(message) %>
+    <%== markdown(message.content) %>
   </div>
 
   <% if message.attachments.count > 0 %>
