@@ -15,23 +15,12 @@
   }
 }
 
-// Backend / App Navbar
-// This should be removed when proper styling of backend takes place
+.nav-separated {
+  li {
+    border-right: 1px solid $gray;
 
-.navbar-inverse {
-  background-color: rgb(214, 232, 235);
-  border: none;
-
-  .navbar-nav > .active > a, {
-    background: transparent;
-    color: $black;
-  }
-
-  #search-query {
-    background-color: rgb(214, 232, 235);
-  }
-
-  span.username {
-    margin: 0 .5em;
+    &:first-child {
+      border-left: 1px solid $gray;
+    }
   }
 }

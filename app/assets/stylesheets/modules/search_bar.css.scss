@@ -1,13 +1,32 @@
 .search-bar {
+  border-right: 1px solid $gray;
   overflow: hidden;
+  position: relative;
 
   input {
+    background-color: $light-gray;
     border: none;
-    outline: none;
-    font-size: 16px;
-    font-weight: lighter;
-    padding: 10px 20px;
+    color: $black;
     height: 50px;
+    outline: none;
+    padding: 10px 20px;
     width: 100%;
+
+    &:focus {
+      background-color: $white;
+
+      + .search-bar-icon {
+        color: $black;
+      }
+    }
+  }
+
+  .search-bar-icon {
+    font-size: 20px;
+    margin-top: 14px;
+    margin-right: 14px;
+    pointer-events: none;
+    position: absolute;
+    right: 0px;
   }
 }
