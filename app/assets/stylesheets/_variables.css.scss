@@ -8,8 +8,8 @@ $font-headline: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $white:         #FFFFFF;
 $lightest-gray: #F2F7F8;
 $light-gray:    #DBE8EB;
-$gray:          #DBE8EB;
-$dark-gray:     #8F9799;
+$gray:          #C6D1D4;
+$dark-gray:     #393C41;
 $black:         #333333;
 
 $light-red:     #FF6C6C;
@@ -31,16 +31,17 @@ $dark-yellow:   #CF9F2B;
 // Logical Colors
 
 $muted      : $light-gray;
-$weak       : $light-gray;
+$weak       : $lightest-gray;
 $primary    : $blue;
 $success    : $green;
 $warning    : $yellow;
 $danger     : $red;
 $highlight  : #FEA;
 
-$grey       : $gray;
 $secondary  : $success;
 $error      : $danger;
+
+$text-color: $black;
 
 // Avatar
 
@@ -53,6 +54,11 @@ $btn-border-radius: 4px;
 
 // Navbar
 
+$navbar-default-color: $black;
+$navbar-default-bg: $light-gray;
+$navbar-default-border: none;
+$navbar-default-link-hover-bg: lighten($light-gray, 3%);
+$navbar-default-link-color: $dark-gray;
 $navbar-margin-bottom: 0;
 
 // Container
