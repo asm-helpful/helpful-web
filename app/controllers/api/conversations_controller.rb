@@ -2,7 +2,17 @@ class Api::ConversationsController < ApiController
 
   def index
     find_account!
-    @conversations = @account.conversations
+
+    if params[:archived]
+      if params[:archived] == "true"
+        @conversations = @account.conversations.archived
+      else
+        @conversations = @account.conversations.unresolved
+      end
+    else
+      @conversations = @account.conversations
+    end
+
     respond_with(@conversations)
   end
 
