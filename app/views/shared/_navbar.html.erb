@@ -1,10 +1,6 @@
 <div class="navbar navbar-default navbar-static-top">
 
   <ul class="nav navbar-nav navbar-right">
-    <li>
-      <a href="mailto:helpful@helpful.io">Help</a>
-    </li>
-
     <li class="dropdown avatar">
       <a class="dropdown-toggle" href="#" data-toggle="dropdown">
         <%= avatar(current_user, 30, 'navbar-avatar') %>
@@ -17,6 +13,9 @@
         </li>
         <li>
           <a href="<%= edit_account_path(@account) %>"><%= @account.name %> Settings</a>
+        </li>
+        <li>
+          <a href="mailto:helpful@helpful.io">Help</a>
         </li>
         <li>
           <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-text' %>
