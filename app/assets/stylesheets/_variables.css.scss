@@ -8,7 +8,7 @@ $font-headline: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $white:         #FFFFFF;
 $lightest-gray: #F2F7F8;
 $light-gray:    #DBE8EB;
-$gray:          #DBE8EB;
+$gray:          #C6D1D4;
 $dark-gray:     #8F9799;
 $black:         #333333;
 
@@ -41,6 +41,8 @@ $highlight  : #FEA;
 $secondary  : $success;
 $error      : $danger;
 
+$text-color: $black;
+
 // Avatar
 
 $avatar-default-size: 45px;
@@ -51,6 +53,9 @@ $btn-border-radius: 4px;
 
 // Navbar
 
+$navbar-default-color: $black;
+$navbar-default-bg: $light-gray;
+$navbar-default-border: none;
 $navbar-margin-bottom: 0;
 
 // Container
