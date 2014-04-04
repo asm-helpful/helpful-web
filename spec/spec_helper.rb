@@ -20,12 +20,9 @@ ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
 Sidekiq::Logging.logger = nil
 
-FakeWeb.allow_net_connect = false
-
 VCR.configure do |config|
   config.cassette_library_dir = Rails.root.join('spec', 'vcr')
   config.configure_rspec_metadata!
-  config.hook_into :fakeweb
 end
 
 RSpec.configure do |config|

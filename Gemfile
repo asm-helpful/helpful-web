@@ -53,7 +53,6 @@ group :development, :test do
   gem 'timecop'
   gem 'jasmine', github: 'pivotal/jasmine-gem'
   gem 'vcr'
-  gem 'fakeweb'
 end
 
 group :development, :production do
