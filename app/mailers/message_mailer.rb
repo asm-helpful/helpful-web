@@ -11,6 +11,7 @@ class MessageMailer < ActionMailer::Base
     @message = Message.find(message_id)
     @recipient = Person.find(recipient_id)
     @message_markdown = markdown(@message.content)
+    @message_text = stripdown(@message.content)
 
     @conversation = @message.conversation
     @account = @conversation.account
