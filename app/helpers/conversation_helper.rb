@@ -7,12 +7,4 @@ module ConversationHelper
       when :alert then "alert alert-error"
     end
   end
-
-  def message_body(message)
-    if message.data.present?
-      message.data["body"]
-    else
-      markdown(message.content)
-    end
-  end
 end

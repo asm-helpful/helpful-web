@@ -27,7 +27,7 @@
 
     <div class="message">
       <div class="content">
-        <%== message_body(conversation.first_message) %>
+        <%== markdown(conversation.first_message.content) %>
       </div>
 
       <% if conversation.first_message.attachments.present? %>

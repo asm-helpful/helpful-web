@@ -1,4 +1,4 @@
-<%== @message_body %>
+<%== markdown(@message.content) %>
 
 <% if @recipient.member?(@account) %>
   <p style="font-size:small;-webkit-text-size-adjust:none;color:#666;">
