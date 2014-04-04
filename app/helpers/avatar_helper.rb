@@ -15,7 +15,14 @@ module AvatarHelper
   # Returns a img tag wraped in a div with the class of avatar.
   def avatar(person, size, *html_classes)
     content_tag(:div, class: ['avatar', *html_classes]) do
-      image_tag gravatar_url(person.email, size), width: size, height: size
+      concat avatar_initials(person, size)
+      concat image_tag gravatar_url(person.email, size), width: size, height: size, onerror: "this.style.display = 'none'; this.previousSibling.style.display='block';"
+    end
+  end
+
+  def avatar_initials(person, size)
+    content_tag(:div, class: 'avatar-initials', style: 'width: ' + size.to_s + 'px; height: ' + size.to_s + 'px; line-height: ' + size.to_s + 'px;') do
+      person.get_initials
     end
   end
 
@@ -26,7 +33,7 @@ module AvatarHelper
   # Returns a url to the PNG of the user's gravatar.
   def gravatar_url(email, size)
     id = gravatar_id(email)
-    "https://secure.gravatar.com/avatar/#{id}.png?s=#{size}"
+    "https://secure.gravatar.com/avatar/#{id}.png?s=#{size}&d=404"
   end
 
   # Internal: Helper that generates a gravatar id for an email

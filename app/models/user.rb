@@ -33,4 +33,11 @@ class User < ActiveRecord::Base
     self.owned_accounts.first
   end
 
+  # Returns the initial(s) for this user (used in avatars)
+  def get_initials
+    if self.person
+      self.person.get_initials
+    end
+  end
+
 end

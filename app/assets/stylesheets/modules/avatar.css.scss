@@ -4,11 +4,24 @@
     width: 100%;
     border-radius: 50%;
   }
+
+  .avatar-initials {
+    display: none;
+    background-color: $dark-gray;
+    border-radius: 50%;
+    color: $white;
+    text-align: center;
+    text-transform: uppercase;
+  }
 }
 
 .avatar-default {
   width: $avatar-default-size;
   height: $avatar-default-size;
+
+  .avatar-initials {
+    font-size: $avatar-default-font-size;
+  }
 }
 
 .navbar .navbar-avatar {
