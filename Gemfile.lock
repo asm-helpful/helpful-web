@@ -148,7 +148,6 @@ GEM
     minitest (5.2.3)
     multi_json (1.8.4)
     multi_xml (0.5.5)
-    multimap (1.1.2)
     multipart-post (1.2.0)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
@@ -311,7 +310,6 @@ DEPENDENCIES
   friendly_id (~> 5.0)
   jasmine!
   jquery-rails
-  multimap
   oauth2
   pg
   premailer-rails

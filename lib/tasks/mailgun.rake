@@ -1,6 +1,5 @@
 if Rails.env.development?
   require 'rest-client'
-  require 'multimap'
 end
 
 task :mailgun => ['mailgun:before']
@@ -53,14 +52,13 @@ namespace :mailgun do
       exit
     end
 
-    data = Multimap.new
+    data = Hash.new
     data[:priority] = 1
     data[:description] = "[helpful] .*@#{ENV['INCOMING_EMAIL_DOMAIN']} ->"\
     " http://#{domain}/incoming_emails/mailgun (#{Time.now.utc.to_s})"
 
     data[:expression] = "match_recipient('.*@#{ENV['INCOMING_EMAIL_DOMAIN']}')"
-    data[:action] = "forward('http://#{domain}/webhooks/mailgun')"
-    data[:action] = "stop()"
+    data[:action] = ["forward('http://#{domain}/webhooks/mailgun')", "stop()"]
 
     puts "Will create the following rule:"
     %w(priority description expression action).each do |key|

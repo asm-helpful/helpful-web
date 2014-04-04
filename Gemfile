@@ -38,7 +38,6 @@ gem 'uglifier', '>= 1.3.0'
 gem 'unf'
 
 group :development do
-  gem 'multimap', require: false
   gem 'quiet_assets'
   gem 'rest-client', require: false
   gem 'sinatra', require: false
