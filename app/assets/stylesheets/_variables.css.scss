@@ -9,7 +9,7 @@ $white:         #FFFFFF;
 $lightest-gray: #F2F7F8;
 $light-gray:    #DBE8EB;
 $gray:          #C6D1D4;
-$dark-gray:     #8F9799;
+$dark-gray:     #393C41;
 $black:         #333333;
 
 $light-red:     #FF6C6C;
@@ -57,6 +57,7 @@ $navbar-default-color: $black;
 $navbar-default-bg: $light-gray;
 $navbar-default-border: none;
 $navbar-default-link-hover-bg: lighten($light-gray, 3%);
+$navbar-default-link-color: $dark-gray;
 $navbar-margin-bottom: 0;
 
 // Container
