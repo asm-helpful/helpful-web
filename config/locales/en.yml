@@ -20,4 +20,35 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  shared:
+    navbar:
+      personal_settings: "Personal Settings"
+      settings: "Settings"
+      help: "Help"
+      logout: "Logout"
+      inbox: "Inbox"
+      archive: "Archive"
+      search: "Search"
+
+  users:
+   edit:
+     user_settings: "User settings"
+     name: "Name"
+     email: "Email"
+     update_personal_settings: "Update my personal settings"
+
+  accounts:
+    edit:
+      try_out_command: "To try out Helpful website, run this command from your terminal:"
+      embed_form: "Want to embed a help form on your site?"
+      get_code: "Get the code"
+      company_name: "Company name"
+      company_name_placeholder: "Acme Corp"
+      website: "Website"
+      website_placeholder: "https://www.example.com"
+      webhook_url: "Webhook URL"
+      webhook_url_placeholder: "https://www.example.com/webhooks/helpful"
+      webhook_secret: "Webhook Secret"
+      incoming_email: "Incoming e-mail address"
+      update_account_settings: "Update my account settings"
+      invitation_sent: "Invitation sent"
