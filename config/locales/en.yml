@@ -80,3 +80,16 @@ en:
       image_description: "Image description"
       image_example_url: "http://image_link.com/here.png"
       advanced_guide: "Advanced Guide"
+    navbar:
+      search_conversations: "Search conversations"
+      search: "Search"
+    row:
+      later: "Later"
+      archive: "Archive"
+    search:
+      search_results_for: "Search results for"
+      no_results: "No results to show."
+    empty:
+      inbox_zero: "Inbox Zero"
+      no_open_conversations: "No open conversations, nice work!"
+      customer_support_quote: "Be the customer support you wish to see in the world"
