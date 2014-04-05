@@ -34,6 +34,16 @@ class Person < ActiveRecord::Base
     memberships.where(account_id: account.id, role: role).exists?
   end
 
+  # Returns the initial(s) for this person (used in avatars)
+  def get_initials
+    if self.name
+      parts = self.name.split(' ')
+      return parts.first[0] + parts.last[0]
+    else
+      return self.email[0]
+    end
+  end
+
   private
 
   # Private: Make sure we only save the address portion of an email address.
