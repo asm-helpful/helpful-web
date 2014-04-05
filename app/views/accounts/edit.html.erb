@@ -58,7 +58,7 @@
         <li>
           <strong><%= membership.user.email %></strong> (<%= membership.role %>)
           <% if !membership.user.accepted_or_not_invited? %>
-            <small class="bg-highlight"><%=t '.invitation_sent' %> <%= time_ago_in_words(membership.user.invitation_sent_at) %> ago</small>
+            <small class="bg-highlight"><%=t '.invitation_sent' %> <%= time_ago_in_words(membership.user.invitation_sent_at) %> <%=t 'general.ago' %></small>
           <% end %>
         </li>
       <% end %>

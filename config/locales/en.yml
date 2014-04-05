@@ -20,6 +20,8 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  general:
+    ago: "ago"
   shared:
     navbar:
       personal_settings: "Personal Settings"
@@ -52,3 +54,29 @@ en:
       incoming_email: "Incoming e-mail address"
       update_account_settings: "Update my account settings"
       invitation_sent: "Invitation sent"
+
+  conversations:
+    conversation:
+      reply_to_conversation: "Reply to this conversation…"
+      assign: "Assign"
+      tag: "Tag"
+      canned_response: "Canned Response"
+      archive: "Archive"
+      send: "Send"
+      next_conversation: "Next Conversation"
+      made_last_message: "You made it to the last message!"
+      back_to_inbox: "Back to the Inbox"
+    markdown:
+      we_use_markdown: "We use Markdown!"
+      tool_to_format_text: "Markdown is a tool to format your text."
+      text_here: "text here"
+      bold: "Bold"
+      bolded: "Bolded"
+      italic: "Italic"
+      link: "Link"
+      linked: "Linked"
+      link_example_url: "http://link_url.com/?test"
+      image: "Image"
+      image_description: "Image description"
+      image_example_url: "http://image_link.com/here.png"
+      advanced_guide: "Advanced Guide"
