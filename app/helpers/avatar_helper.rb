@@ -15,15 +15,21 @@ module AvatarHelper
   # Returns a img tag wraped in a div with the class of avatar.
   def avatar(person, size, *html_classes)
     content_tag(:div, class: ['avatar', *html_classes]) do
-      concat avatar_initials(person, size)
-      concat image_tag gravatar_url(person.email, size), width: size, height: size, onerror: "this.style.display = 'none'; this.previousSibling.style.display='block';"
+      [avatar_initials(person, size), avatar_image(person, size)].reduce(:+)
     end
   end
 
   def avatar_initials(person, size)
-    content_tag(:div, class: 'avatar-initials', style: 'width: ' + size.to_s + 'px; height: ' + size.to_s + 'px; line-height: ' + size.to_s + 'px;') do
+    content_tag(:div, class: 'avatar-initials', style: "width: #{size}px; height: #{size}px; line-height: #{size}px") do
       person.get_initials
     end
+  end
+
+  def avatar_image(person, size)
+    image_tag gravatar_url(person.email, size),
+      width: size,
+      height: size,
+      onerror: "this.style.display = 'none'; this.previousSibling.style.display = 'block';"
   end
 
   # Internal: Helper to provide the gravatar_url for a given person.
