@@ -147,3 +147,26 @@ en:
       in_house: "In-House"
       in_house_text: "If you prefer to make software your own, you can take Helpful indoors and whitelabel it for your own purposes."
       contact_us: "Contact Us"
+
+  canned_responses:
+    general:
+      canned_response: "Canned Response"
+    index:
+      create_canned_response: "Create canned response"
+      canned_responses: "Canned Responses"
+      none_created: "No one has created a canned response yet."
+    new:
+      help: |-
+        Create a canned response for messages that are sent often or need to be
+        consistent. Start with a key, which is used to pull up the full response
+        from the command bar. To learn more read the
+      faq: "FAQ"
+    form:
+      key: "Key"
+      key_placeholder: "Enter key used to lookup the response"
+      message: "Message"
+      message_placeholder: "Include the full message to include in future responses"
+      create: "Create"
+      update: "Update"
+    edit:
+      delete: "Delete"
