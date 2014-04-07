@@ -3,9 +3,9 @@
 
     <div class="logo logo-default"></div>
 
-    <h3><%=t '.sign_up_free_account' %></h3>
+    <h3><%= t('.sign_up_free_account') %></h3>
 
-    <p><%=t '.quick_easy_sign_up' %> <%=t '.no_cc_required' %> <%=t '.already_have_account' %> <%= link_to(t('.please_sign_in'), new_user_session_path)  %>.</p>
+    <p><%= t('.quick_easy_sign_up') %> <%= t('.no_cc_required') %> <%= t('.already_have_account') %> <%= link_to(t('.please_sign_in'), new_user_session_path)  %>.</p>
 
     <%= render "/shared/error_messages", :target => @account %>
     <%= render "/shared/error_messages", :target => @new_account_user %>

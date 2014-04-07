@@ -3,7 +3,7 @@
 <div class="container">
   <div class="column-content">
 
-    <p><%=t '.try_out_command' %></p>
+    <p><%= t('.try_out_command') %></p>
 
     <pre>
       <code>
@@ -15,7 +15,7 @@
       </code>
     </pre>
 
-    <p><%=t '.embed_form' %> <%= link_to t('.get_code'), web_form_account_path %></p>
+    <p><%= t('.embed_form') %> <%= link_to t('.get_code'), web_form_account_path %></p>
 
     <%= form_for @account, method: :patch, html: {class: 'form'} do |f| %>
 
@@ -58,7 +58,7 @@
         <li>
           <strong><%= membership.user.email %></strong> (<%= membership.role %>)
           <% if !membership.user.accepted_or_not_invited? %>
-            <small class="bg-highlight"><%=t '.invitation_sent' %> <%= time_ago_in_words(membership.user.invitation_sent_at) %> <%=t 'general.ago' %></small>
+            <small class="bg-highlight"><%= t('.invitation_sent') %> <%= time_ago_in_words(membership.user.invitation_sent_at) %> <%= t('general.ago') %></small>
           <% end %>
         </li>
       <% end %>
