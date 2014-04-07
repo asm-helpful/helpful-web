@@ -25,7 +25,10 @@
   </ul>
 
   <ul class="nav navbar-nav navbar-left">
-      <li class="navbar-brand-icon"><img src="/assets/life_saver.png" alt="Helpful"></li>
+    <li class="navbar-brand-icon">
+      <%= image_tag 'life_saver.png', alt: 'Helpful' %>
+    </li>
+
     <% other_accounts = current_user.accounts.reject {|a| a == @account } %>
     <% if other_accounts.any? %>
       <li class="dropdown">
