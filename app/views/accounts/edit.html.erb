@@ -56,7 +56,7 @@
     <ul>
       <% @account.memberships.each do |membership| %>
         <li>
-          <strong><%= membership.user.email %></strong> (<%= membership.role %>)
+          <strong><%= membership.user.email %></strong> (<%= t('general.roles.' + membership.role) %>)
           <% if !membership.user.accepted_or_not_invited? %>
             <small class="bg-highlight"><%= t('.invitation_sent') %> <%= time_ago_in_words(membership.user.invitation_sent_at) %> <%= t('general.ago') %></small>
           <% end %>

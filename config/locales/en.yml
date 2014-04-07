@@ -22,6 +22,12 @@
 en:
   general:
     ago: "ago"
+    email: "Email"
+    email_placeholder: "you@example.com"
+    password: "Password"
+    roles:
+      owner: "owner"
+      agent: "agent"
 
   shared:
     navbar:
@@ -37,7 +43,6 @@ en:
    edit:
      user_settings: "User settings"
      name: "Name"
-     email: "Email"
      update_personal_settings: "Update my personal settings"
 
   accounts:
@@ -52,9 +57,6 @@ en:
       no_cc_required: "No credit card is required."
       already_have_account: "If you already have a Helpful account,"
       please_sign_in: "please sign in"
-      email: "Email"
-      email_placeholder: "you@example.com"
-      password: "Password"
       password_confirmation: "Password confirmation"
       must_meet_requirements: "Must meet *these requirements*"
       create_account: "Create my account"
@@ -170,3 +172,28 @@ en:
       update: "Update"
     edit:
       delete: "Delete"
+
+  devise:
+    general:
+      sign_in: "Sign in"
+    sessions:
+      new:
+        welcome_back: "Welcome Back!"
+        password_placeholder: "Your password"
+        remember_me: "Remember me"
+        
+    shared:
+      links:
+        dont_have_account: "Don't have an account?"
+        forgot_password: "Forgot your password?"
+        didnt_receive_confirmation: "Didn't receive confirmation instructions?"
+        didnt_receive_unlock: "Didn't receive unlock instructions?"
+    passwords:
+      new:
+        did_you_forget: "Did you forget your password?"
+        dont_worry: "No worries, we got you covered. It happens to the best of us."
+        reset: "Reset my password"
+    unlocks:
+      new:
+        resend_unlock_intstructions: "Resend unlock instructions"
+        resend: "Resend instructions"

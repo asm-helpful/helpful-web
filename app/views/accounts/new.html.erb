@@ -26,12 +26,12 @@
 
       <%= fields_for @new_account_user do |ff| %>
         <div class="form-group">
-          <%= ff.label :email, t('.email'), class: 'form-label' %>
-          <%= ff.email_field :email, placeholder: t('.email_placeholder'), class: 'form-control' %>
+          <%= ff.label :email, t('general.email'), class: 'form-label' %>
+          <%= ff.email_field :email, placeholder: t('general.email_placeholder'), class: 'form-control' %>
         </div>
 
         <div class="form-group">
-          <%= ff.label :password, t('.password'), class: 'form-label' %>
+          <%= ff.label :password, t('general.password'), class: 'form-label' %>
           <%= ff.password_field :password, placeholder: t('.must_meet_requirements'), class: 'form-control' %>
         </div>
 
