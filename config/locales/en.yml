@@ -114,3 +114,36 @@ en:
       inbox_zero: "Inbox Zero"
       no_open_conversations: "No open conversations, nice work!"
       customer_support_quote: "Be the customer support you wish to see in the world"
+
+  pages:
+    home:
+      general:
+        sign_up_free: "Sign up for free"
+      header:
+        sign_up: "SIGN UP"
+        login: "LOGIN"
+        build: "BUILD HELPFUL"
+        docs: "DOCUMENTATION"
+      hero:
+        text_header: "Help that doesn't hurt"
+        text_1: "Helpful is a simple support tool you won't need help using."
+        text_2: "Just ask."
+      demo:
+        text_1: "Even simpler than email"
+        text_2: "You shouldn't have to get support for a support tool."
+        text_2_2: "Helpful aims to be a no-brainer to use right out of the box."
+      pricing_table:
+        great_value: "Great Value!"
+        starter_kit: "Starter Kit"
+        growing: "Growing"
+        premium: "Premium"
+        super: "Super"
+        threads: "threads"
+        per_month: "per month"
+        sign_up: "Sign up"
+      pricing_text_1: "Help that grows with you"
+      pricing_text_2: "Pricing is by volume so you can start small and we'll grow as your support needs grow."
+      pricing_text_end: "There are no contracts and plans can be cancelled at any time."
+      in_house: "In-House"
+      in_house_text: "If you prefer to make software your own, you can take Helpful indoors and whitelabel it for your own purposes."
+      contact_us: "Contact Us"
