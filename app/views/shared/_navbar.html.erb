@@ -9,13 +9,13 @@
       </a>
       <ul class="dropdown-menu">
         <li>
-          <a href="<%= edit_user_path %>"><%=t '.personal_settings' %></a>
+          <a href="<%= edit_user_path %>"><%= t('.personal_settings') %></a>
         </li>
         <li>
-          <a href="<%= edit_account_path(@account) %>"><%= @account.name %> <%=t '.settings' %></a>
+          <a href="<%= edit_account_path(@account) %>"><%= @account.name %> <%= t('.settings') %></a>
         </li>
         <li>
-          <a href="mailto:helpful@helpful.io"><%=t '.help' %></a>
+          <a href="mailto:helpful@helpful.io"><%= t('.help') %></a>
         </li>
         <li>
           <%= link_to t('.logout'), destroy_user_session_path, method: :delete, class: 'nav-text' %>

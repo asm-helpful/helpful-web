@@ -30,7 +30,7 @@
 
   <div class="summary">
     <div class="timestamp">
-      <%= time_ago_in_words(conversation.created_at) %> <%=t 'general.ago' %>
+      <%= time_ago_in_words(conversation.created_at) %> <%= t('general.ago') %>
     </div>
 
     <%= avatar_default(conversation.creator_person) %>
@@ -78,13 +78,13 @@
 
       <div class="command-bar">
         <!-- Display these once we have more UI designed
-        <button class="btn btn-light" name="assign">@<%=t '.assign' %></button>
-        <button class="btn btn-light" name="tag">#<%=t '.tag' %></button>
-        <button class="btn btn-light" name="canned_response">:<%=t '.canned_response' %></button>
+        <button class="btn btn-light" name="assign">@<%= t('.assign') %></button>
+        <button class="btn btn-light" name="tag">#<%= t('.tag') %></button>
+        <button class="btn btn-light" name="canned_response">:<%= t('.canned_response') %></button>
         -->
         <%= render 'conversations/markdown' %>
         <div class="pull-right">
-          <input class="btn btn-primary" type="submit" name="commit" value="<%=t '.send' %>">
+          <input class="btn btn-primary" type="submit" name="commit" value="<%= t('.send') %>">
         </div>
       </div>
     <% end %>
@@ -93,11 +93,11 @@
 
 <% if @next_conversation %>
   <a class="conversation conversation-next" href="<%= account_conversation_path(@account, @next_conversation) %>">
-    <p class="text-muted text-uppercase"><%=t '.next_conversation' %></p>
+    <p class="text-muted text-uppercase"><%= t('.next_conversation') %></p>
 
     <div class="summary">
       <div class="timestamp">
-        <%= time_ago_in_words(@next_conversation.created_at) %> <%=t 'general.ago' %>
+        <%= time_ago_in_words(@next_conversation.created_at) %> <%= t('general.ago') %>
       </div>
 
       <%= avatar_default(@next_conversation.creator_person) %>
@@ -121,8 +121,8 @@
   </a>
 <% else %>
   <div class="conversation conversation-next">
-    <p><%=t '.made_last_message' %></p>
+    <p><%= t('.made_last_message') %></p>
 
-    <a class="btn btn-primary" href="<%= inbox_account_conversations_path(@account) %>"><%=t '.back_to_inbox' %></a>
+    <a class="btn btn-primary" href="<%= inbox_account_conversations_path(@account) %>"><%= t('.back_to_inbox') %></a>
   </div>
 <% end %>
