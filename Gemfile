@@ -9,7 +9,7 @@ gem 'dotenv-rails', groups: [:development, :test]
 # Alphabetical list
 
 gem 'active_model_serializers'
-gem 'analytics-ruby', '<1.0'
+gem 'analytics-ruby'
 gem 'bourbon'
 gem 'bugsnag'
 gem 'carrierwave'
@@ -53,6 +53,9 @@ group :development, :test do
   gem 'timecop'
   gem 'jasmine', github: 'pivotal/jasmine-gem'
   gem 'vcr'
+  gem 'webmock', '< 1.16'
+  gem 'faraday', '~> 0.9.0'
+  gem 'psych', '~> 2.0.5'
 end
 
 group :development, :production do
