@@ -24,6 +24,7 @@ class MessagesController < ApplicationController
     else
       if params['commit'] == "Archive" && message_params['content'].empty?
         action.conversation.archive!
+        flash[:notice] = "The conversation has been archived."
         redirect_to inbox_account_conversations_path(@account)
       else
         Analytics.track(user_id: current_user.id, event: 'Message Save Problem')
