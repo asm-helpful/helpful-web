@@ -3,9 +3,9 @@
 
     <div class="logo logo-default"></div>
 
-    <h3>Sign Up for a Free Account</h3>
+    <h3><%=t '.sign_up_free_account' %></h3>
 
-    <p>Quick and easy sign up process. No credit card is required. If you already have a Helpful account, <%= link_to('please sign in', new_user_session_path)  %>.</p>
+    <p><%=t '.quick_easy_sign_up' %> <%=t '.no_cc_required' %> <%=t '.already_have_account' %> <%= link_to(t('.please_sign_in'), new_user_session_path)  %>.</p>
 
     <%= render "/shared/error_messages", :target => @account %>
     <%= render "/shared/error_messages", :target => @new_account_user %>
@@ -13,36 +13,36 @@
     <%= form_for @account, html: {class: 'form'} do |f| %>
 
       <div class="form-group">
-        <%= f.label :name, 'Company name', class: 'form-label' %>
-        <%= f.text_field :name, autofocus: true, placeholder: 'Acme Corp', class: 'form-control' %>
+        <%= f.label :name, t('accounts.general.company_name'), class: 'form-label' %>
+        <%= f.text_field :name, autofocus: true, placeholder: t('accounts.general.company_name_placeholder'), class: 'form-control' %>
       </div>
 
       <%= fields_for @person do |ff| %>
         <div class="form-group">
-          <%= ff.label :name, 'Your name', class: 'form-label' %>
-          <%= ff.text_field :name, placeholder: 'Jane Doe', class: 'form-control' %>
+          <%= ff.label :name, t('accounts.general.your_name'), class: 'form-label' %>
+          <%= ff.text_field :name, placeholder: t('accounts.general.your_name_placeholder'), class: 'form-control' %>
         </div>
       <% end %>
 
       <%= fields_for @new_account_user do |ff| %>
         <div class="form-group">
-          <%= ff.label :email, class: 'form-label' %>
-          <%= ff.email_field :email, placeholder: 'you@example.com', class: 'form-control' %>
+          <%= ff.label :email, t('.email'), class: 'form-label' %>
+          <%= ff.email_field :email, placeholder: t('.email_placeholder'), class: 'form-control' %>
         </div>
 
         <div class="form-group">
-          <%= ff.label :password, class: 'form-label' %>
-          <%= ff.password_field :password, placeholder: 'Must meet *these requirements*', class: 'form-control' %>
+          <%= ff.label :password, t('.password'), class: 'form-label' %>
+          <%= ff.password_field :password, placeholder: t('.must_meet_requirements'), class: 'form-control' %>
         </div>
 
         <div class="form-group">
-          <%= ff.label :password_confirmation, class: 'form-label' %>
-          <%= ff.password_field :password_confirmation, placeholder: 'Must meet *these requirements*', class: 'form-control' %>
+          <%= ff.label :password_confirmation, t('.password_confirmation'), class: 'form-label' %>
+          <%= ff.password_field :password_confirmation, placeholder: t('.must_meet_requirements'), class: 'form-control' %>
         </div>
       <% end %>
 
       <div class="form-actions">
-        <%= f.submit 'Create my account', :class => "btn btn-primary" %>
+        <%= f.submit t('.create_account'), :class => "btn btn-primary" %>
       </div>
     <% end %>
     </div>
