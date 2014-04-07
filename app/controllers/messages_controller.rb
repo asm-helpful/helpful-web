@@ -22,8 +22,13 @@ class MessagesController < ApplicationController
       end
 
     else
-      Analytics.track(user_id: current_user.id, event: 'Message Save Problem')
-      redirect_to conversation_path(@account, action.conversation), alert: "Problem"
+      if params['commit'] == "Archive" && message_params['content'].empty?
+        action.conversation.archive!
+        redirect_to inbox_account_conversations_path(@account)
+      else
+        Analytics.track(user_id: current_user.id, event: 'Message Save Problem')
+        redirect_to account_conversation_path(@account, action.conversation), alert: "Problem"
+      end
     end
   end
 
