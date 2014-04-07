@@ -21,7 +21,7 @@ module AvatarHelper
 
   def avatar_initials(person, size)
     content_tag(:div, class: 'avatar-initials', style: "width: #{size}px; height: #{size}px; line-height: #{size}px") do
-      person.get_initials
+      person.initials
     end
   end
 

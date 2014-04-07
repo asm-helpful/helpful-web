@@ -24,6 +24,10 @@ class User < ActiveRecord::Base
     to: :person,
     allow_nil: true
 
+  delegate :initials,
+    to: :person,
+    allow_nil: true
+
   accepts_nested_attributes_for :person
 
   # Returns the first owned account
@@ -31,13 +35,6 @@ class User < ActiveRecord::Base
   # But for now let's just assume there is either zero or one
   def primary_owned_account
     self.owned_accounts.first
-  end
-
-  # Returns the initial(s) for this user (used in avatars)
-  def get_initials
-    if self.person
-      self.person.get_initials
-    end
   end
 
 end
