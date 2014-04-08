@@ -60,6 +60,11 @@ class Conversation < ActiveRecord::Base
     !!new_archived
   end
 
+  def just_unarchived?
+    _, new_archived = previous_changes[:archived]
+    new_archived == false
+  end
+
   def creator_person
     first_message.person
   end

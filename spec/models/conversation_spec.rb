@@ -74,6 +74,20 @@ describe Conversation do
     end
   end
 
+  describe '#just_unarchived?' do
+    before { subject.save }
+
+    it 'knows when a conversation has been unarchived' do
+      subject.archive!
+
+      expect(subject).to_not be_just_unarchived
+
+      subject.unarchive!
+
+      expect(subject).to be_just_unarchived
+    end
+  end
+
   describe "#mailbox_email" do
     before { subject.save }
     
