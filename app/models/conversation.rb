@@ -41,18 +41,23 @@ class Conversation < ActiveRecord::Base
     on: :create
 
   def archive!
-    update_attribute(:archived, true)
+    update(archived: true)
     self.flash_notice = "The conversation has been archived."
   end
 
   def unarchive!
-    update_attribute(:archived, false)
+    update(archived: false)
     self.flash_notice = "The conversation has been moved to the inbox."
   end
 
   def respond_later!(user)
     respond_later = respond_laters.find_or_create_by(user: user)
     respond_later.touch
+  end
+
+  def just_archived?
+    _, new_archived = previous_changes[:archived]
+    !!new_archived
   end
 
   def creator_person

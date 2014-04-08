@@ -62,6 +62,18 @@ describe Conversation do
     end
   end
 
+  describe '#just_archived?' do
+    before { subject.save }
+
+    it 'knows when a conversation has been archived' do
+      expect(subject).to_not be_just_archived
+
+      subject.archive!
+
+      expect(subject).to be_just_archived
+    end
+  end
+
   describe "#mailbox_email" do
     before { subject.save }
     
