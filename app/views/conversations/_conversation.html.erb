@@ -1,3 +1,23 @@
+<% if true || flash[:preference] %>
+  <div class="alert alert-muted">
+    <button type='button' class='close' data-dismiss='alert'>&times;</button>
+
+    <p>After replying to a support request, would you like us to automatically archive the conversation?</p>
+
+    <div class="form-actions">
+      <%= form_for @account, method: :put, html: { class: 'form-inline' } do |f| %>
+        <%= f.hidden_field :prefers_archiving, value: true %>
+        <%= f.submit 'Auto-archive conversations', class: 'btn btn-danger' %>
+      <% end %>
+
+      <%= form_for @account, method: :put, html: { class: 'form-inline' } do |f| %>
+        <%= f.hidden_field :prefers_archiving, value: false %>
+        <%= f.submit 'Just create new messages', class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
 <div class="conversation">
   <div class="summary">
     <div class="timestamp">
@@ -55,7 +75,6 @@
         -->
         <%= render 'conversations/markdown' %>
         <div class="pull-right">
-          <input class="btn btn-danger" type="submit" name="commit" value="Archive">
           <input class="btn btn-primary" type="submit" name="commit" value="Send">
         </div>
       </div>

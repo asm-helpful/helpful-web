@@ -13,23 +13,22 @@ class MessagesController < ApplicationController
         properties: { action: params['commit'] }
       )
 
-      if params['commit'] == "Archive"
+      if @account.prefers_archiving?
         action.conversation.archive!
-        flash[:notice] = "The conversation has been archived and the message sent."
-        redirect_to inbox_account_conversations_path(@account)
-      else
-        redirect_to account_conversation_path(@account, action.conversation)
-      end
 
-    else
-      if params['commit'] == "Archive" && message_params['content'].empty?
-        action.conversation.archive!
-        flash[:notice] = "The conversation has been archived."
-        redirect_to inbox_account_conversations_path(@account)
+        redirect_to inbox_account_conversations_path(@account),
+          notice: 'The conversation has been archived and the message sent.'
       else
-        Analytics.track(user_id: current_user.id, event: 'Message Save Problem')
-        redirect_to account_conversation_path(@account, action.conversation), alert: "Problem"
+        flash[:preference] = @account.prefers_archiving.nil?
+
+        redirect_to account_conversation_path(@account, action.conversation),
+          notice: 'The message has been sent'
       end
+    else
+      Analytics.track(user_id: current_user.id, event: 'Message Save Problem')
+
+      redirect_to account_conversation_path(@account, action.conversation),
+        alert: "Problem"
     end
   end
 

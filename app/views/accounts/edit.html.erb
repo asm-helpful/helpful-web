@@ -46,6 +46,13 @@
         <pre><%= @account.mailbox_email %></pre>
       </div>
 
+      <div class="form-group">
+        <div class="checkbox">
+          <%= f.label :prefers_archiving, "Auto-archive conversations after replying" %>
+          <%= f.check_box :prefers_archiving %>
+        </div>
+      </div>
+
       <div class="form-actions">
         <%= f.submit 'Update my account settings', :class => "btn btn-primary" %>
       </div>

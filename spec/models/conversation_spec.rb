@@ -29,10 +29,6 @@ describe Conversation do
     it "archives the conversation" do
       expect(subject).to_not be_archived
     end
-
-    it "sets the flash notice" do
-      expect(subject.flash_notice).to eq("The conversation has been moved to the inbox.")
-    end
   end
 
   describe "#archive!" do
@@ -43,10 +39,6 @@ describe Conversation do
     
     it "archives the conversation" do
       expect(subject).to be_archived
-    end
-
-    it "sets the flash notice" do
-      expect(subject.flash_notice).to eq("The conversation has been archived.")
     end
   end
 
@@ -59,6 +51,32 @@ describe Conversation do
       subject.respond_later!(user)
 
       expect(subject.respond_laters).not_to be_empty
+    end
+  end
+
+  describe '#just_archived?' do
+    before { subject.save }
+
+    it 'knows when a conversation has been archived' do
+      expect(subject).to_not be_just_archived
+
+      subject.archive!
+
+      expect(subject).to be_just_archived
+    end
+  end
+
+  describe '#just_unarchived?' do
+    before { subject.save }
+
+    it 'knows when a conversation has been unarchived' do
+      subject.archive!
+
+      expect(subject).to_not be_just_unarchived
+
+      subject.unarchive!
+
+      expect(subject).to be_just_unarchived
     end
   end
 
