@@ -51,9 +51,7 @@ Helpful::Application.routes.draw do
     resources :users, only: [:update]
   end
 
-  get '/:id' => 'accounts#show', as: :account
-
-  resource :account, only: [:new, :create]
+  resource :accounts, only: [:new, :create]
 
   scope '/:id' do
     resource :account, path: '/', only: [:show, :edit, :update] do
