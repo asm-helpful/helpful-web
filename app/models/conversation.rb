@@ -35,19 +35,15 @@ class Conversation < ActiveRecord::Base
   sequential column: :number,
     scope: :account_id
 
-  attr_accessor :flash_notice
-
   after_commit :notify_account_people,
     on: :create
 
   def archive!
     update(archived: true)
-    self.flash_notice = "The conversation has been archived."
   end
 
   def unarchive!
     update(archived: false)
-    self.flash_notice = "The conversation has been moved to the inbox."
   end
 
   def respond_later!(user)

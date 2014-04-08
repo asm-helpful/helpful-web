@@ -63,8 +63,12 @@ class ConversationsController < ApplicationController
   end
 
   def flash_notice
-    if @conversation.flash_notice.present?
-      flash[:notice] = @conversation.flash_notice
+    return unless @conversation
+
+    if @conversation.just_archived?
+      flash[:notice] = "The conversation has been archived."
+    elsif @conversation.just_unarchived?
+      flash[:notice] = "The conversation has been moved to the inbox."
     end
   end 
 
