@@ -24,6 +24,14 @@
   }
 }
 
+.form-inline {
+  display: inline;
+
+  + .form-inline {
+    margin-left: 20px;
+  }
+}
+
 .form-actions {
   margin-top: 20px;
 }

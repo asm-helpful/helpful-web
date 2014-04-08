@@ -1,5 +1,6 @@
 .alert {
   color: $white;
+  margin-top: 20px;
 }
 
 .alert-info,
@@ -18,6 +19,20 @@
 .alert-alert {
   background-color: $error;
   border-color: $error;
+}
+
+.alert-muted {
+  color: $black;
+  background-color: $white;
+  border-color: $lightest-gray;
+
+  .close {
+    color: $light-gray;
+
+    &:hover {
+      color: $dark-gray;
+    }
+  }
 }
 
 .close {
