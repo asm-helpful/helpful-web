@@ -70,7 +70,7 @@ class Message < ActiveRecord::Base
 
   def trigger_pusher_new_message
     # TODO: Perhaps we should mock Pusher call
-    return if Rails.env.test?
+    return unless Rails.env.production?
 
     begin
       Pusher[self.account.slug].trigger('new_message', {})
