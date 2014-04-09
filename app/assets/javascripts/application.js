@@ -4,6 +4,7 @@
 //= require bootstrap
 //= require conversations
 //= require turbolinks
+//= require avatar
 
 $(document).ready(function() {
 

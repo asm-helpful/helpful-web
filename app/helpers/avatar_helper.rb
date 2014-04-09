@@ -24,7 +24,7 @@ module AvatarHelper
   end
 
   def avatar_image(person, size)
-    image_tag(gravatar_url(person.email, size), width: size, height: size, onerror: "this.style.display = 'none'; this.previousSibling.style.display = 'block';" )
+    image_tag(gravatar_url(person.email, size), width: size, height: size, onerror: 'toggleAvatar(this)')
   end
 
   def avatar_style_constraints(size)
