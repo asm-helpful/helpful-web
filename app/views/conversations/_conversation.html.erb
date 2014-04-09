@@ -19,6 +19,15 @@
 <% end %>
 
 <div class="conversation">
+  <div class="actions">
+    <% unless @conversation.archived? %>
+      <%= form_for [@account, @conversation] do |f| %>
+        <%= f.hidden_field :archive, value: true %>
+        <%= f.submit 'Archive', class: 'btn btn-danger' %>
+      <% end %>
+    <% end %>
+  </div>
+
   <div class="summary">
     <div class="timestamp">
       <%= time_ago_in_words(conversation.created_at) %> ago

@@ -13,10 +13,13 @@
       opacity: 1;
     }
   }
+
+  .actions {
+    opacity: 0;
+  }
 }
 
 .actions {
-  opacity: 0;
   margin-left: 700px;
   padding-top: 30px;
   padding-right: 40px;
