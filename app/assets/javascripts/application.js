@@ -5,6 +5,7 @@
 //= require turbolinks
 //= require bootstrap
 //= require conversations
+//= require command_bar
 //= require avatar
 //= require jquery-autosize
 

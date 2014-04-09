@@ -74,7 +74,7 @@
   <div class="conversation-reply">
     <%= form_tag account_messages_path(@account), method: 'post' do %>
       <%= hidden_field :message, :conversation_id, value: conversation.id %>
-      <%= text_area :message, :content, placeholder: t('.reply_to_conversation'), rows: 4, 'data-autosize' => '' %>
+      <%= text_area :message, :content, placeholder: t('.reply_to_conversation'), rows: 4, 'data-autosize' => '', 'data-textcomplete-search-path' => account_textcomplete_searches_path(@account) %>
 
       <div class="command-bar">
         <!-- Display these once we have more UI designed
