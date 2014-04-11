@@ -28,6 +28,7 @@ en:
     roles:
       owner: "owner"
       agent: "agent"
+    hello: "Hello"
 
   shared:
     navbar:
@@ -39,11 +40,23 @@ en:
       archive: "Archive"
       search: "Search"
 
+  message_mailer:
+    created:
+      reply: "Reply to this email or"
+      view: "view Conversation on"
+
   users:
-   edit:
-     user_settings: "User settings"
-     name: "Name"
-     update_personal_settings: "Update my personal settings"
+    edit:
+      user_settings: "User settings"
+      name: "Name"
+      update_personal_settings: "Update my personal settings"
+    mailer:
+      invitation_instructions:
+        someone_invited: "Someone has invited you to"
+        you_can_accept: "you can accept it through the link below."
+        accept: "Accept invitation"
+        dont_want: "If you don't want to accept the invitation, please ignore this email."
+        account_wont_be_created: "Your account won't be created until you access the link above and set your password."
 
   accounts:
     general:
@@ -181,7 +194,23 @@ en:
         welcome_back: "Welcome Back!"
         password_placeholder: "Your password"
         remember_me: "Remember me"
-        
+    mailer:
+      confirmation_instructions:
+        welcome: "Welcome"
+        registered: "We have registered your email as"
+        please_confirm: "Please confirm your email with the link below."
+        confirm_account: "Confirm my account"
+      reset_password_instructions:
+        reset_password_instructions: "Reset Password Instructions"
+        someone_requested: "Someone has requested a link to change your password. You can do this through the link below."
+        please_ignore: "If you didn't request this, please ignore this email."
+        wont_change: "Your password won't change until you access the link below and create a new one."
+        change_password: "Change my password"
+      unlock_instructions:
+        unlock_instructions: "Unlock Instructions"
+        account_locked: "Your account has been locked due to an excessive number of unsuccessful sign in attempts."
+        click_below: "Click the link below to unlock your account."
+        unlock_account: "Unlock my account"
     shared:
       links:
         dont_have_account: "Don't have an account?"
