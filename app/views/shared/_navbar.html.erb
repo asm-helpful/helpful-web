@@ -61,9 +61,11 @@
     </ul>
     <div class="search-bar">
       <%= form_tag search_account_conversations_path(@account), method: 'get' do %>
-        <%= search_field_tag :q, @query, placeholder: 'Search', id: 'search-query' %>
+        <%= search_field_tag :q, @query, placeholder: 'Search', id: 'search-query', 'data-search-path' => search_account_conversations_path(@account) %>
         <span class="search-bar-icon glyphicon glyphicon-search"></span>
       <% end %>
+    </div>
+    <div id="search-results">
     </div>
   </div>
 

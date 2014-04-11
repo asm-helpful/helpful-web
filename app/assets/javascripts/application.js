@@ -6,6 +6,7 @@
 //= require turbolinks
 //= require avatar
 //= require jquery-autosize
+//= require search_bar
 
 $(document).ready(function() {
 
