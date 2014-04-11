@@ -19,7 +19,7 @@ class ConversationsController < ApplicationController
   end
 
   def search
-    search = ConversationsInbox.new(@account, params[:q])
+    search = ConversationsInbox.new(@account, current_user, params[:q])
     @conversations = search.conversations
     @conversation = @conversations.first
 
@@ -28,7 +28,9 @@ class ConversationsController < ApplicationController
       @query = params[:q]
     end
 
-    Analytics.track(user_id: current_user.id, event: 'Searched For', properties: { query: archive.query })
+    Analytics.track(user_id: current_user.id, event: 'Searched For', properties: { query: search.query })
+
+    respond_with @conversations, location: inbox_account_conversations_path(@account)
   end
 
   def show
