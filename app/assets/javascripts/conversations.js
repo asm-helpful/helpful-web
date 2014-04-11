@@ -30,7 +30,8 @@ var conversations = {
   }
 }
 
-$(document).on("ready", function(){
+$(document).on("ready page:change", function(){
   $('.list').delegate('.respond-later', 'click', conversations.onRespondLaterClick);
   $('.list').delegate('.archive', 'click', conversations.onArchiveClick);
+  $("textarea[data-autosize]").autosize();
 });
