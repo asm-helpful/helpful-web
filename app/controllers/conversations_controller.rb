@@ -19,8 +19,8 @@ class ConversationsController < ApplicationController
   end
 
   def search
-    archive = ConversationsArchive.new(@account, params[:q])
-    @conversations = archive.conversations
+    search = ConversationsInbox.new(@account, params[:q])
+    @conversations = search.conversations
     @conversation = @conversations.first
 
     # If there was a query (q) passed, use it for the search field value
