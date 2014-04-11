@@ -54,9 +54,12 @@ group :development, :test do
   gem 'timecop'
   gem 'jasmine', github: 'pivotal/jasmine-gem'
   gem 'vcr'
-  gem 'webmock', '< 1.16'
   gem 'faraday', '~> 0.9.0'
   gem 'psych', '~> 2.0.5'
+end
+
+group :test do
+  gem 'webmock', '< 1.16'
 end
 
 group :development, :production do
