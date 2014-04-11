@@ -1,6 +1,6 @@
 ## Creating a translation for Helpful
 
-A translation for Helpful can be creating by copying config/locales/en.yml and saving it as [your locale].yml, for example fr.yml in the same folder.
+A translation for Helpful can be created by copying config/locales/en.yml and saving it as [your locale].yml, for example fr.yml in the same folder.
 
 Translate all strings in your newly created file. Be sure to check for context "archive" might mean "to archive" in one place, but "an archive" in another.
 
