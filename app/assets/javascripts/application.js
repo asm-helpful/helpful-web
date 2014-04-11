@@ -7,6 +7,7 @@
 //= require avatar
 //= require jquery-autosize
 //= require search_bar
+//= require handlebars
 
 $(document).ready(function() {
 

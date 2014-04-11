@@ -1,6 +1,7 @@
 var searchConversations = function($element) {
   var searchPath = $element.attr('data-search-path');
   var searchTimeout = null;
+  var searchResultsTemplate = Handlebars.compile($('#search-results-template').html());
 
   $element.keypress(function() {
     if(searchTimeout) {
@@ -14,7 +15,9 @@ var searchConversations = function($element) {
           q: $element.val()
         },
         function(results) {
-          $('#search-results').text(JSON.stringify(results));
+          $('#search-results').html(
+            searchResultsTemplate(results)
+          )
         }
       );
     }, 200);

@@ -59,9 +59,26 @@
         <%= link_to "Archive", archived_account_conversations_path(@account) %>
       </li>
     </ul>
+
+    <script id="search-results-template" type="text/x-handlebars-template">
+      <div class="popover bottom">
+        <div class="arrow"></div>
+
+        <div class="popover-content">
+          <ul class="list-group">
+            {{#each conversations}}
+              <li class="list-group-item">
+                {{subject}}
+              </li>
+            {{/each}}
+          </ul>
+        </div>
+      </div>
+    </script>
+
     <div class="search-bar">
       <%= form_tag search_account_conversations_path(@account), method: 'get' do %>
-        <%= search_field_tag :q, @query, placeholder: 'Search', id: 'search-query', 'data-search-path' => search_account_conversations_path(@account) %>
+        <%= search_field_tag :q, @query, autocomplete: 'off', placeholder: 'Search', id: 'search-query', 'data-search-path' => search_account_conversations_path(@account) %>
         <span class="search-bar-icon glyphicon glyphicon-search"></span>
       <% end %>
     </div>
