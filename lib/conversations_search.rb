@@ -15,7 +15,8 @@ module ConversationsSearch
   #
   # Returns ids of matching models
   def search_messages
-    Message.search(query: { match: { content: query } }).records
+    records = Message.search(query: { match: { content: query } }).records
+    records
   end
 
   def search?
