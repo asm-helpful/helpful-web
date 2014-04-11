@@ -1,11 +1,11 @@
-<h1>Welcome</h1>
+<h1><%= t('.welcome') %></h1>
 
 <p>
-We have registered your email as <strong><%= @email %></strong>.
+<%= t('.registered') %> <strong><%= @email %></strong>.
 <br />
-Please confirm your email with the link below.
+<%= t('.please_confirm') %>
 </p>
 
 <hr/>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @token), class: :button %></p>
+<p><%= link_to t('confirm_account'), confirmation_url(@resource, :confirmation_token => @token), class: :button %></p>
