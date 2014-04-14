@@ -3,7 +3,7 @@ class Api::MessagesController < ApiController
   def index
     @account = Account.find(params.fetch(:account))
     authorize_account_read!(@account)
-    @messages = account.messages
+    @messages = @account.messages
     respond_with(@messages)
   end
 
