@@ -2,32 +2,32 @@
 <div class="markdown dropdown">
   <div data-toggle="dropdown" href="#">
     <%= image_tag "markdown.png" %>
-    <span>We use Markdown!</span>
+    <span><%= t('.we_use.markdown') %></span>
   </div>
   <div class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-    <h3>Markdown is a tool to format your text.</h3>
+    <h3><%= t('.tool_to_format_text') %></h3>
     <div class="docs">
       <table class="table">
         <tbody>
           <tr>
-            <td class="bold">Bold</td>
-            <td>**Bolded text here**</td>
+            <td class="bold"><%= t('.bold') %></td>
+            <td>**<%= t('.bolded') %> <%= t('.text_here') %>**</td>
           </tr>
           <tr>
-            <td class="italic">Italic</td>
-            <td>*Italic text here*</td>
+            <td class="italic"><%= t('.italic') %></td>
+            <td>*<%= t('.italic') %> <%= t('.text_here') %>*</td>
           </tr>
           <tr>
-            <td><a href="http://daringfireball.net/projects/markdown/syntax">Link</a></td>
-            <td>[Linked text here](http://link_url.com/?test)</td>
+            <td><a href="http://daringfireball.net/projects/markdown/syntax"><%= t('.link') %></a></td>
+            <td>[<%= t('.linked') %> <%= t('.text_here') %>](<%= t('.link') %>)</td>
           </tr>
           <tr>
-            <td>Image</td>
-            <td>![Image description](http://image_link.com/here.png)</td>
+            <td><%= t('.image') %></td>
+            <td>![<%= t('.image_description') %>](<%= t('.image_example_url') %>)</td>
           </tr>
         </tbody>
       </table>
     </div>
-    <a class="btn btn-sm" href="http://daringfireball.net/projects/markdown/syntax" target="_blank">Advanced Guide</a>
+    <a class="btn btn-sm" href="http://daringfireball.net/projects/markdown/syntax" target="_blank"><%= t('.advanced_guide') %></a>
   </div>
 </div>

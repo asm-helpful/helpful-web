@@ -2,7 +2,7 @@
 
 <div class="panel panel-default">
   <div class="panel-body">
-    <h4>Resend unlock instructions</h4>
+    <h4><%= t('.resend_unlock_instructions') %></h4>
 
     <hr />
 
@@ -10,12 +10,12 @@
       <%= devise_error_messages! %>
 
       <div class="form-group">
-        <%= f.label :email, :class => "form-label" %>
-        <%= f.email_field :email, :autofocus => true, :class => "form-control", :placeholder => 'you@example.com' %>
+        <%= f.label :email, t('general.email'), :class => "form-label" %>
+        <%= f.email_field :email, :autofocus => true, :class => "form-control", :placeholder => t('general.email_placeholder') %>
       </div>
 
       <div>
-        <%= f.submit "Resend instructions", :class => "btn btn-primary" %>
+        <%= f.submit t('.resend'), :class => "btn btn-primary" %>
       </div>
     <% end %>
   </div>

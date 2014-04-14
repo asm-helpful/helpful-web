@@ -1,56 +1,56 @@
 <table class="pricing-table">
   <tr>
     <td></td>
-    <td>Great Value!</td>
+    <td><%= t('.great_value') %></td>
     <td></td>
     <td></td>
   </tr>
   <tr>
     <td>
-      Starter Kit
+      <%= t('.starter_kit') %>
       <div></div>
     </td>
     <td>
-      Growing
+      <%= t('.growing') %>
       <div></div>
     </td>
     <td>
-      Premium
+      <%= t('.premium') %>
       <div></div>
     </td>
     <td>
-      Super
+      <%= t('.super') %>
       <div></div>
     </td>
   </tr>
   <tr>
     <td>
       <h1>25</h1>
-      <h2>threads per month</h2>
+      <h2><%= t('.threads') %> <%= t('.per_month') %></h2>
       <h3>$0</h3>
-      <h4>per month</h4>
-      <a href="<%= new_accounts_path %>">Sign up for free</a>
+      <h4><%= t('.per_month') %></h4>
+      <a href="<%= new_accounts_path %>"><%= t('pages.home.general.sign_up_free') %></a>
     </td>
     <td>
       <h1>50</h1>
-      <h2>threads per month</h2>
+      <h2><%= t('.threads') %> <%= t('.per_month') %></h2>
       <h3>$29</h3>
-      <h4>per month</h4>
-      <a href="<%= new_accounts_path %>">Sign up</a>
+      <h4><%= t('.per_month') %></h4>
+      <a href="<%= new_accounts_path %>"><%= t('.sign_up') %></a>
     </td>
     <td>
       <h1>150</h1>
-      <h2>threads per month</h2>
+      <h2><%= t('.threads') %> <%= t('.per_month') %></h2>
       <h3>$59</h3>
-      <h4>per month</h4>
-      <a href="<%= new_accounts_path %>">Sign up</a>
+      <h4><%= t('.per_month') %></h4>
+      <a href="<%= new_accounts_path %>"><%= t('.sign_up') %></a>
     </td>
     <td>
       <h1>300</h1>
-      <h2>threads per month</h2>
+      <h2><%= t('.threads') %> <%= t('.per_month') %></h2>
       <h3>$199</h3>
-      <h4>per month</h4>
-      <a href="<%= new_accounts_path %>">Sign up</a>
+      <h4><%= t('.per_month') %></h4>
+      <a href="<%= new_accounts_path %>"><%= t('.sign_up') %></a>
     </td>
   </tr>
 </table>

@@ -1,6 +1,6 @@
 <div class="message">
   <div class="timestamp">
-    <%= time_ago_in_words(message.created_at) %> ago
+    <%= time_ago_in_words(message.created_at) %> <%= t('general.ago') %>
   </div>
 
   <%= avatar_default(message.person) %>
