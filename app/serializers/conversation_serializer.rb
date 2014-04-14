@@ -3,6 +3,6 @@ class ConversationSerializer < BaseSerializer
   has_many :messages
 
   def include_messages?
-    !options[:disable_messages]
+    options.fetch(:include_messages, true)
   end
 end

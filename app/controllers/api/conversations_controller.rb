@@ -13,7 +13,7 @@ class Api::ConversationsController < ApiController
       @conversations = @account.conversations
     end
 
-    render json: @conversations, disable_messages: true
+    render json: @conversations, include_messages: false
   end
 
   def create
