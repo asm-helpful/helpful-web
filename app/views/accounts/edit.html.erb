@@ -30,6 +30,11 @@
       </div>
 
       <div class="form-group">
+        <%= f.label :signature, 'Signature', class: 'form-label' %>
+        <%= f.text_area :signature, placeholder: 'Signature included at the end of every e-mail', class: 'form-control', rows: 4, 'data-autosize' => '' %>
+      </div>
+
+      <div class="form-group">
         <%= f.label :webhook_url, 'Webhook URL', class: 'form-label' %>
         <%= f.text_field :webhook_url, autofocus: true, placeholder: 'https://www.example.com/webhooks/helpful', class: 'form-control' %>
       </div>
