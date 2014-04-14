@@ -18,8 +18,8 @@ class MessageMailer < ActionMailer::Base
 
     subject = summary(@conversation)
 
-    @signature_markdown = markdown(@account.signature)
-    @signature_text = stripdown(@account.signature)
+    @signature_markdown = @account.signature ? markdown(@account.signature) : ''
+    @signature_text = @account.signature ? stripdown(@account.signature) : ''
 
     to = Mail::Address.new(@recipient.email)
     to.display_name = @recipient.name
