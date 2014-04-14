@@ -10,8 +10,12 @@ class TextcompleteSearch
     self.query = query
   end
 
+  def cleaned_query
+    query[1..-1]
+  end
+
   def query_regex
-    %r{#{query[1..-1]}}
+    Regexp.new(Regexp.escape(cleaned_query))
   end
 
   def query_type
@@ -23,7 +27,7 @@ class TextcompleteSearch
   end
 
   def results
-    if query && query_type
+    if cleaned_query.present? && query_type
       public_send("#{query_type}s")
     else
       []
@@ -31,26 +35,26 @@ class TextcompleteSearch
   end
 
   def tags
-    [matching_tag_names.map { |tag| "##{tag}" }, query].flatten
+    (matching_tags + [cleaned_query]).uniq.map { |tag| { type: 'tag', value: "##{tag}" } }
   end
 
   def assignments
-    matching_assignment_names.map { |assignment| "@#{assignment}" }
+    matching_assignments.map { |name, user_id| { type: 'assignment', user_id: user_id, value: "@#{name}" } }
   end
 
   def canned_responses
-    matching_canned_response_names.map { |canned_response| ":#{canned_response}" }
+    matching_canned_responses.map { |key, id| { type: 'canned_response', id: id, value: ":#{canned_response}" } }
   end
 
-  def matching_tag_names
+  def matching_tags
     account.conversations.pluck(:tags).flatten.uniq.grep(query_regex)
   end
 
-  def matching_assignment_names
-    account.user_people.pluck('name').uniq.grep(query_regex)
+  def matching_assignments
+    account.user_people.where('name ILIKE ?', "#{cleaned_query}%").pluck(:name, :user_id)
   end
 
-  def matching_canned_response_names
-    account.canned_responses.pluck(:key).uniq.grep(query_regex)
+  def matching_canned_responses
+    account.canned_responses.where('key ILIKE ?', "#{cleaned_query}%").pluck(:key, :id)
   end
 end

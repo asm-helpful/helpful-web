@@ -1,9 +1,9 @@
-class TextcompleteSearchesController < ApplicationController
+class TextcompletesController < ApplicationController
   before_action :authenticate_user!
   before_action :find_account!
 
   def index
-    results = TextcompleteSearch.call(@account, params[:q])
+    results = TextcompleteSearch.call(@account, params[:query])
     render json: results, include_root: false
   end
 
