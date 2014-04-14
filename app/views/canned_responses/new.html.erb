@@ -2,11 +2,9 @@
 
 <div class="container">
   <div class="page-header">
-    <h1>Canned Response</h1>
+    <h1><%= t('canned_responses.general.canned_response') %></h1>
     <p>
-      Create a canned response for messages that are sent often or need to be
-      consistent. Start with a key, which is used to pull up the full response
-      from the command bar. To learn more read the <a href="#">FAQ</a>.
+      <%= t('.help') %> <a href="#"><%= t('.faq') %></a>.
     </p>
   </div>
   <%= render 'form' %>

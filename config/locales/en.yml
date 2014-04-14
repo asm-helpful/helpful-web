@@ -20,4 +20,212 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  general:
+    ago: "ago"
+    email: "Email"
+    email_placeholder: "you@example.com"
+    password: "Password"
+    roles:
+      owner: "owner"
+      agent: "agent"
+    hello: "Hello"
+
+  shared:
+    navbar:
+      personal_settings: "Personal Settings"
+      settings: "Settings"
+      help: "Help"
+      logout: "Logout"
+      inbox: "Inbox"
+      archive: "Archive"
+      search: "Search"
+
+  message_mailer:
+    created:
+      reply: "Reply to this email or"
+      view: "view Conversation on"
+
+  users:
+    edit:
+      user_settings: "User settings"
+      name: "Name"
+      update_personal_settings: "Update my personal settings"
+    mailer:
+      invitation_instructions:
+        someone_invited: "Someone has invited you to"
+        you_can_accept: "you can accept it through the link below."
+        accept: "Accept invitation"
+        dont_want: "If you don't want to accept the invitation, please ignore this email."
+        account_wont_be_created: "Your account won't be created until you access the link above and set your password."
+
+  accounts:
+    general:
+      company_name: "Company name"
+      company_name_placeholder: "Acme Corp"
+      your_name: "Your name"
+      your_name_placeholder: "Jane Doe"
+    new:
+      sign_up_free_accounts: "Sign Up for a Free Account"
+      quick_easy_sign_up: "Quick and easy sign up process."
+      no_cc_required: "No credit card is required."
+      already_have_account: "If you already have a Helpful account,"
+      please_sign_in: "please sign in"
+      password_confirmation: "Password confirmation"
+      must_meet_requirements: "Must meet *these requirements*"
+      create_account: "Create my account"
+    edit:
+      try_out_command: "To try out Helpful website, run this command from your terminal:"
+      embed_form: "Want to embed a help form on your site?"
+      get_code: "Get the code"
+      company_name: "Company name"
+      company_name_placeholder: "Acme Corp"
+      website: "Website"
+      website_placeholder: "https://www.example.com"
+      webhook_url: "Webhook URL"
+      webhook_url_placeholder: "https://www.example.com/webhooks/helpful"
+      webhook_secret: "Webhook Secret"
+      incoming_email: "Incoming e-mail address"
+      update_account_settings: "Update my account settings"
+      invitation_sent: "Invitation sent"
+      signature: "Signature"
+      signature_placeholder: "Signature included at the end of every e-mail"
+      auto_archiving: "Auto-archive conversations after replying"
+    web_form:
+      help_text: "You can embed a web form anywhere that will allow your customers to submit their help requests directly to
+      Helpful:"
+
+  conversations:
+    conversation:
+      reply_to_conversation: "Reply to this conversation…"
+      assign: "Assign"
+      tag: "Tag"
+      canned_response: "Canned Response"
+      archive: "Archive"
+      send: "Send"
+      next_conversation: "Next Conversation"
+      made_last_message: "You made it to the last message!"
+      back_to_inbox: "Back to the Inbox"
+    markdown:
+      we_use_markdown: "We use Markdown!"
+      tool_to_format_text: "Markdown is a tool to format your text."
+      text_here: "text here"
+      bold: "Bold"
+      bolded: "Bolded"
+      italic: "Italic"
+      link: "Link"
+      linked: "Linked"
+      link_example_url: "http://link_url.com/?test"
+      image: "Image"
+      image_description: "Image description"
+      image_example_url: "http://image_link.com/here.png"
+      advanced_guide: "Advanced Guide"
+    navbar:
+      search_conversations: "Search conversations"
+      search: "Search"
+    row:
+      later: "Later"
+      archive: "Archive"
+    search:
+      search_results_for: "Search results for"
+      no_results: "No results to show."
+    empty:
+      inbox_zero: "Inbox Zero"
+      no_open_conversations: "No open conversations, nice work!"
+      customer_support_quote: "Be the customer support you wish to see in the world"
+
+  pages:
+    home:
+      general:
+        sign_up_free: "Sign up for free"
+      header:
+        sign_up: "SIGN UP"
+        login: "LOGIN"
+        build: "BUILD HELPFUL"
+        docs: "DOCUMENTATION"
+      hero:
+        text_header: "Help that doesn't hurt"
+        text_1: "Helpful is a simple support tool you won't need help using."
+        text_2: "Just ask."
+      demo:
+        text_1: "Even simpler than email"
+        text_2: "You shouldn't have to get support for a support tool."
+        text_2_2: "Helpful aims to be a no-brainer to use right out of the box."
+      pricing_table:
+        great_value: "Great Value!"
+        starter_kit: "Starter Kit"
+        growing: "Growing"
+        premium: "Premium"
+        super: "Super"
+        threads: "threads"
+        per_month: "per month"
+        sign_up: "Sign up"
+      pricing_text_1: "Help that grows with you"
+      pricing_text_2: "Pricing is by volume so you can start small and we'll grow as your support needs grow."
+      pricing_text_end: "There are no contracts and plans can be cancelled at any time."
+      in_house: "In-House"
+      in_house_text: "If you prefer to make software your own, you can take Helpful indoors and whitelabel it for your own purposes."
+      contact_us: "Contact Us"
+
+  canned_responses:
+    general:
+      canned_response: "Canned Response"
+    index:
+      create_canned_response: "Create canned response"
+      canned_responses: "Canned Responses"
+      none_created: "No one has created a canned response yet."
+    new:
+      help: |-
+        Create a canned response for messages that are sent often or need to be
+        consistent. Start with a key, which is used to pull up the full response
+        from the command bar. To learn more read the
+      faq: "FAQ"
+    form:
+      key: "Key"
+      key_placeholder: "Enter key used to lookup the response"
+      message: "Message"
+      message_placeholder: "Include the full message to include in future responses"
+      create: "Create"
+      update: "Update"
+    edit:
+      delete: "Delete"
+
+  devise:
+    general:
+      sign_in: "Sign in"
+    sessions:
+      new:
+        welcome_back: "Welcome Back!"
+        password_placeholder: "Your password"
+        remember_me: "Remember me"
+    mailer:
+      confirmation_instructions:
+        welcome: "Welcome"
+        registered: "We have registered your email as"
+        please_confirm: "Please confirm your email with the link below."
+        confirm_account: "Confirm my account"
+      reset_password_instructions:
+        reset_password_instructions: "Reset Password Instructions"
+        someone_requested: "Someone has requested a link to change your password. You can do this through the link below."
+        please_ignore: "If you didn't request this, please ignore this email."
+        wont_change: "Your password won't change until you access the link below and create a new one."
+        change_password: "Change my password"
+      unlock_instructions:
+        unlock_instructions: "Unlock Instructions"
+        account_locked: "Your account has been locked due to an excessive number of unsuccessful sign in attempts."
+        click_below: "Click the link below to unlock your account."
+        unlock_account: "Unlock my account"
+    shared:
+      links:
+        dont_have_account: "Don't have an account?"
+        forgot_password: "Forgot your password?"
+        didnt_receive_confirmation: "Didn't receive confirmation instructions?"
+        didnt_receive_unlock: "Didn't receive unlock instructions?"
+    passwords:
+      new:
+        did_you_forget: "Did you forget your password?"
+        dont_worry: "No worries, we got you covered. It happens to the best of us."
+        reset: "Reset my password"
+    unlocks:
+      new:
+        resend_unlock_intstructions: "Resend unlock instructions"
+        resend: "Resend instructions"

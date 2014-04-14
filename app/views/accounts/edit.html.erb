@@ -3,7 +3,7 @@
 <div class="container">
   <div class="column-content">
 
-    <p>To try out Helpful website, run this command from your terminal:</p>
+    <p><%= t('.try_out_command') %></p>
 
     <pre>
       <code>
@@ -15,51 +15,51 @@
       </code>
     </pre>
 
-    <p>Want to embed a help form on your site? <%= link_to 'Get the code', web_form_account_path %></p>
+    <p><%= t('.embed_form') %> <%= link_to t('.get_code'), web_form_account_path %></p>
 
     <%= form_for @account, method: :patch, html: {class: 'form'} do |f| %>
 
       <div class="form-group">
-        <%= f.label :name, 'Company name', class: 'form-label' %>
-        <%= f.text_field :name, autofocus: true, placeholder: 'Acme Corp', class: 'form-control' %>
+        <%= f.label :name, t('accounts.general.company_name'), class: 'form-label' %>
+        <%= f.text_field :name, autofocus: true, placeholder: t('accounts.general.company_name_placeholder'), class: 'form-control' %>
       </div>
 
       <div class="form-group">
-        <%= f.label :website_url, 'Website', class: 'form-label' %>
-        <%= f.text_field :website_url, autofocus: true, placeholder: 'https://www.example.com', class: 'form-control' %>
+        <%= f.label :website_url, t('.website'), class: 'form-label' %>
+        <%= f.text_field :website_url, autofocus: true, placeholder: t('.website_placeholder'), class: 'form-control' %>
       </div>
 
       <div class="form-group">
-        <%= f.label :signature, 'Signature', class: 'form-label' %>
-        <%= f.text_area :signature, placeholder: 'Signature included at the end of every e-mail', class: 'form-control', rows: 4, 'data-autosize' => '' %>
+        <%= f.label :signature, t('.signature'), class: 'form-label' %>
+        <%= f.text_area :signature, placeholder: t('.signature_placeholder'), class: 'form-control', rows: 4, 'data-autosize' => '' %>
       </div>
 
       <div class="form-group">
-        <%= f.label :webhook_url, 'Webhook URL', class: 'form-label' %>
-        <%= f.text_field :webhook_url, autofocus: true, placeholder: 'https://www.example.com/webhooks/helpful', class: 'form-control' %>
+        <%= f.label :webhook_url, t('.webhook_url'), class: 'form-label' %>
+        <%= f.text_field :webhook_url, autofocus: true, placeholder: t('.webhook_url_placeholder'), class: 'form-control' %>
       </div>
 
       <div class="form-group">
-        <%= f.label :webhook_secret, "Webhook Secret", class: 'form-label' %>
+        <%= f.label :webhook_secret, t('.webhook_secret'), class: 'form-label' %>
         <br />
         <pre><%= @account.webhook_secret %></pre>
       </div>
 
       <div class="form-group">
-        <%= f.label :mailbox, "Incoming e-mail address", class: 'form-label' %>
+        <%= f.label :mailbox, t('.incoming_email'), class: 'form-label' %>
         <br />
         <pre><%= @account.mailbox_email %></pre>
       </div>
 
       <div class="form-group">
         <div class="checkbox">
-          <%= f.label :prefers_archiving, "Auto-archive conversations after replying" %>
+          <%= f.label :prefers_archiving, t('.auto_archiving') %>
           <%= f.check_box :prefers_archiving %>
         </div>
       </div>
 
       <div class="form-actions">
-        <%= f.submit 'Update my account settings', :class => "btn btn-primary" %>
+        <%= f.submit t('.update_account_settings'), :class => "btn btn-primary" %>
       </div>
     <% end %>
 
@@ -68,9 +68,9 @@
     <ul>
       <% @account.memberships.each do |membership| %>
         <li>
-          <strong><%= membership.user.email %></strong> (<%= membership.role %>)
+          <strong><%= membership.user.email %></strong> (<%= t('general.roles.' + membership.role) %>)
           <% if !membership.user.accepted_or_not_invited? %>
-            <small class="bg-highlight">Invitation sent <%= time_ago_in_words(membership.user.invitation_sent_at) %> ago</small>
+            <small class="bg-highlight"><%= t('.invitation_sent') %> <%= time_ago_in_words(membership.user.invitation_sent_at) %> <%= t('general.ago') %></small>
           <% end %>
         </li>
       <% end %>

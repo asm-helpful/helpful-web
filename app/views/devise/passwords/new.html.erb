@@ -2,8 +2,8 @@
 
 <div class="panel panel-default">
   <div class="panel-body">
-    <h4>Did you forget your password?</h4>
-    <p class="text-muted text-smaller">No worries, we got you covered. It happens to the best of us.</p>
+    <h4><%= t('.did_you_forget') %></h4>
+    <p class="text-muted text-smaller"><%= t('.dont_worry') %></p>
 
     <hr />
 
@@ -11,12 +11,12 @@
       <%= devise_error_messages! %>
 
       <div class="form-group">
-        <%= f.label :email, :class => "form-label" %>
-        <%= f.email_field :email, :autofocus => true, :class => "form-control", :placeholder => 'you@example.com' %>
+        <%= f.label :email, t('general.email'), :class => "form-label" %>
+        <%= f.email_field :email, :autofocus => true, :class => "form-control", :placeholder => t('general.email_placeholder') %>
       </div>
 
       <div>
-        <%= f.submit "Reset my password", :class => "btn btn-primary" %>
+        <%= f.submit t('.reset'), :class => "btn btn-primary" %>
       </div>
     <% end %>
   </div>

@@ -1,16 +1,16 @@
 <%= form_for [@account, @canned_response], html: { class: 'form' } do |f| %>
 
   <div class="form-group">
-    <%= f.label :key, 'Key', class: 'form-label' %>
-    <%= f.text_field :key, autofocus: true, placeholder: 'Enter key used to lookup the response', class: 'form-control' %>
+    <%= f.label :key, t('.key'), class: 'form-label' %>
+    <%= f.text_field :key, autofocus: true, placeholder: t('.key_placeholder'), class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= f.label :messsage, 'Message', class: 'form-label' %>
-    <%= f.text_area :message, placeholder: 'Include the full message to include in future responses', class: 'form-control' %>
+    <%= f.label :messsage, t('.message'), class: 'form-label' %>
+    <%= f.text_area :message, placeholder: t('.message_placeholder'), class: 'form-control' %>
   </div>
 
   <div class="form-actions">
-    <%= f.submit @canned_response.persisted? ? 'Update' : 'Create', class: 'btn btn-primary' %>
+    <%= f.submit @canned_response.persisted? ? t('.update') : t('.create'), class: 'btn btn-primary' %>
   </div>
 <% end %>

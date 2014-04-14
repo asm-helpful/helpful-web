@@ -3,9 +3,9 @@
 <div class="container">
   <div class="page-header">
     <a class="btn btn-primary pull-right" href="<%= new_account_canned_response_path %>">
-      Create canned response
+      <%= t('.create_canned_response') %>
     </a>
-    <h1>Canned Responses</h1>
+    <h1><%= t('.canned_responses') %></h1>
   </div>
 
   <% if @canned_responses.any? %>
@@ -22,6 +22,6 @@
       <% end %>
     </div>
   <% else %>
-    <p class="text-muted">No one has created a canned response yet.</p>
+    <p class="text-muted"><%= t('.none_created') %></p>
   <% end %>
 </div>

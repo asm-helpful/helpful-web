@@ -2,18 +2,18 @@
   <% if current_page?(list_account_conversations_path(@account)) %>
     <div class="actions">
       <button class="btn btn-primary respond-later" data-account-conversation-path="<%= account_conversation_path(@account, conversation, conversation: { respond_later: true }) %>">
-        Later
+        <%= t('.later') %>
       </button>
 
       <button class="btn btn-danger archive" data-account-conversation-path="<%= account_conversation_path(@account, conversation, conversation: { archive: true }) %>">
-        Archive
+        <%= t('.archive') %>
       </button>
     </div>
   <% end %>
 
   <div class="summary">
     <div class="last-update">
-      <%= time_ago_in_words(conversation.last_activity_at) %> ago
+      <%= time_ago_in_words(conversation.last_activity_at) %> <%= t('general.ago') %>
     </div>
 
     <%= avatar_default(conversation.creator_person) %>
