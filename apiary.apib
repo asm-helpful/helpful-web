@@ -102,668 +102,289 @@ TODO
 
 TODO
 
-# Group Messages
-
-A single Message object. The Message resource is a central resource in the Helpful API. It represents one message between People (either support agents or customers). Messages are logically grouped into Conversations.
-
-The Message resource has the following attributes:
-
-- id
-- type
-- content
-- data
-- created
-- updated
-
-The states `id`, `type` and `created` are assigned by the Helpful API at when the Message is created. The `updated` state is assigned by the Helpful API when a Message is created and when it's updated.
-
-The `data` attribute is a key value object with strings for keys and values. It is used to attach extra information about the message and the context that it was created in.
-
-*TODO* The values of the data object determine special properties of the message.
-
-
-## Messages [/api/messages]
-
-+ Model (application/vnd.helpful.v1+hal+json)
-
-    + Headers
-
-            Link: <https://helpful.io/api/messages/bb7aae7e-c560-4b3d-b235-71e4305952b8>;rel="self", <https://helpful.io/api/people/10ce24de-23f6-433f-9a71-255cffffa96f>;rel="author", <https://helpful.io/api/conversations/9aedccd5-0261-4158-bc1c-0e377b306f02>;rel="conversation"
-
-    + Body
-
-            [
-                {
-                    "id": "bb7aae7e-c560-4b3d-b235-71e4305952b8",
-                    "type": "message",
-                    "content": "Hello World!",
-                    "created": "2013-12-08T13:08:14.758Z",
-                    "updated": "2013-12-08T13:08:14.758Z",
-                    "data": {
-                        "foo": "bar"
-                    },
-                    "_links": {
-                        "self": {
-                            "href": "https://helpful.io/api/messages/bb7aae7e-c560-4b3d-b235-71e4305952b8"
-                        },
-                        "author": {
-                            "href": "https://helpful.io/api/people/10ce24de-23f6-433f-9a71-255cffffa96f"
-                        },
-                        "conversation": {
-                            "href": "https://helpful.io/api/conversations/9aedccd5-0261-4158-bc1c-0e377b306f02"
-                        }
-                    }
-                }
-            ]
-
-## Create a new message [POST]
-
-+ Request
-
-    + Headers
-
-            Accept: application/vnd.helpful.v1+hal+json
-            Content-Type: application/json
-
-    + Body
-
-            {
-                "content": "Hello World!",
-                "conversation_id": "10ce24de-23f6-433f-9a71-255cffffa96f",
-                "data": {
-                    "foo": "bar"
-                },
-                "person_id": "10ce24de-23f6-433f-9a71-255cffffa96f"
-            }
-
-+ Response 201
-    + Headers
-
-            Location: https://helpful.io/api/messages/bb7aae7e-c560-4b3d-b235-71e4305952b8
-            Link: <https://helpful.io/api/messages/bb7aae7e-c560-4b3d-b235-71e4305952b8>;rel="self", <https://helpful.io/api/people/10ce24de-23f6-433f-9a71-255cffffa96f>;rel="author", <https://helpful.io/api/conversations/9aedccd5-0261-4158-bc1c-0e377b306f02>;rel="conversation"
-
-    + Body
-
-            {
-                "id": "bb7aae7e-c560-4b3d-b235-71e4305952b8",
-                "type": "message",
-                "content": "Hello World!",
-                "created": "2013-12-08T13:08:14.758Z",
-                "updated": "2013-12-08T13:08:14.758Z",
-                "data": {
-                    "foo": "bar"
-                },
-                "_links": {
-                    "self": {
-                        "href": "https://helpful.io/api/messages/bb7aae7e-c560-4b3d-b235-71e4305952b8"
-                    },
-                    "author": {
-                        "href": "https://helpful.io/api/people/
-                    },
-                    "conversation": {
-                        "href": "https://helpful.io/api/conversations/9aedccd5-0261-4158-bc1c-0e377b306f02"
-                    }
-                }
-            }
-
-## List messages [GET]
-+ Parameters
-    + since (optional, string) ... Timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ` Only Messages updated at or after this time are returned.
-
-+ Request
-
-    + Headers
-
-            Accept: application/vnd.helpful.v1+hal+json
-
-+ Response 200 (application/hal+json)
-
-    [Messages][]
-
-
-## Message [/api/messages/{id}]
-
-+ Parameters
-    + id (Required String `bb7aae7e-c560-4b3d-b235-71e4305952b8`)
-
-+ Model (application/vnd.helpful.v1+hal+json)
-
-    + Headers
-
-            Link: <https://helpful.io/api/messages/bb7aae7e-c560-4b3d-b235-71e4305952b8>;rel="self", <https://helpful.io/api/people/10ce24de-23f6-433f-9a71-255cffffa96f>;rel="author", <https://helpful.io/api/conversations/9aedccd5-0261-4158-bc1c-0e377b306f02>;rel="conversation"
-
-    + Body
-
-            {
-                "id": "bb7aae7e-c560-4b3d-b235-71e4305952b8",
-                "type": "message",
-                "content": "Hello World!",
-                "created": "2013-12-08T13:08:14.758Z",
-                "updated": "2013-12-08T13:08:14.758Z",
-                "data": {
-                    "foo": "bar"
-                },
-                "_links": {
-                    "self": {
-                        "href": "https://helpful.io/api/messages/bb7aae7e-c560-4b3d-b235-71e4305952b8"
-                    },
-                    "author": {
-                        "href": "https://helpful.io/api/people/10ce24de-23f6-433f-9a71-255cffffa96f"
-                    },
-                    "conversation": {
-                        "href": "https://helpful.io/api/conversations/9aedccd5-0261-4158-bc1c-0e377b306f02"
-                    }
-                }
-            }
-
-## Fetch a message [GET]
-
-+ Request
-    + Headers
-
-            Accept: application/vnd.helpful.v1+hal+json
-
-+ Response 200
-
-    [Message][]
-
-
-
-## POST /api/messages/{message_id}/read-receipts
-
-- id
-- person
-- message
-- created
-
-+ Request
-
-    + Headers
-
-            Accept: application/vnd.helpful.v1+hal+json
-            Content-Type: application/json
-
-    + Body
-
-            {
-
-
-            }
-
-+ Response 200 (application/hal+json)
-
-    + Body
-
-            {
-                "items": [
-                    {
-                        "id": "abc-123",
-                        "person_id": "10ce24de-23f6-433f-9a71-255cffffa96f",
-                        "created": "2013-12-30 14:29:14 -0500",
-                        "_links": {
-                            "person": {
-                                "href": "https://helpful.io/api/people/10ce24de-23f6-433f-9a71-255cffffa96f"
-                            }
-                        }
-                    }
-                ],
-                "count": 1
-            }
-
-# Group Conversations
-
-## GET /api/conversations{?since,archived}
-### List all conversations
-
-+ Parameters
-    + since (optional Timestamp 12345)
-    + archived (optional Boolean false)
-
-+ Response 200
-
-    + Body
-
-            {
-                "items": [],
-                "count": 0
-            }
-
-## GET /api/conversations/{id}
-### Retrieve a conversation
-
-- id
-- number
-- status
-- account
-- created
-- updated
-
-+ Request
-    + Headers
-
-            Accept: application/vnd.helpful.v1+hal+json
-
-+ Response 200 (application/hal+json)
-    + Body
-
-            {
-            }
-
-## PATCH /api/conversations/{id}
-### Update a conversation
-
-+ Request
-    + Headers
-
-            Accept: application/vnd.helpful.v1+hal+json
-
-    + Body
-
-            {
-                "status": "archived"
-            }
-
-+ Response 200 (application/hal+json)
-    + Body
-
-            {
-            }
-
-# Group People
-
-## Person [/api/people/{id}]
-
-The `user_id` field is only present if the person belongs to an operator in Helpful.
-
-+ Parameters
-    + id (Required String `a2f27bf5-9f07-4745-891a-481d9ef6c887`)
-
-+ Model (application/vnd.helpful.v1+hal+json)
-
-    + Body
-
-            {
-                "id": "a2f27bf5-9f07-4745-891a-481d9ef6c887",
-                "type": "person",
-                "name": "Jane Doe",
-                "email: "janedoe@example.com",
-                "twitter": "janedoe",
-                "user_id": <>,
-                "account_id": "2014-01-02 16:52:18 -0800",
-                "created": "2014-01-02 16:52:18 -0800",
-                "_links": {
-                    ...
-                }
-            }
-
-### Fetch a person [GET]
-
-+ Request
-    + Headers
-
-            Accept: application/vnd.helpful.v1+hal+json
-
-+ Response 200
-
-    [Person][]
-
-
-### Update a person's details [PATCH]
-
-+ Request
-    + Headers
-
-            Accept: application/vnd.helpful.v1+hal+json
-            Content-Type: application/json
-
-    + Body
-
-            {
-                "name": "John Smith",
-                "email": "johnsmith@example.com",
-                "twitter": "johnsmith",
-                "user_id": "51173272-f670-4705-8eac-f60e0c73202c"
-            }
-
-+ Response 200
-
-    [Person][]
-
-
-## GET /api/people
-
-+ Request
-    + Headers
-
-            Accept: application/vnd.helpful.v1+hal+json
-
-+ Response 200 (application/vnd.helpful.v1+hal+json)
-
-    + Body
-
-            {
-                "items": [],
-                "count": 0
-            }
-
-## POST  /api/people
-
-+ Request
-    + Headers
-
-            Accept: application/vnd.helpful.v1+hal+json
-            Content-Type: application/json
-
-    + Body
-
-            {
-                "name": "John Smith",
-                "email": "johnsmith@example.com",
-                "twitter": "johnsmith",
-                "user_id": "51173272-f670-4705-8eac-f60e0c73202c"
-            }
-
-+ Response 201 (application/vnd.helpful.v1+hal+json)
-
-    [Person][]
-
-# Group Users
-
-- id
-- email
-- confirmed
-- locked
-- created
-- updated
-
-## GET   /api/user
-+ Response 200
-
-    + Body
-
-            {
-            }
-
-
-## GET   /api/users
-+ Response 200
-
-    + Body
-
-            {
-                "items": [],
-                "count": 0
-            }
-
-
-## GET   /api/users/{id}
-+ Response 200
-
-    + Body
-
-            {
-            }
-
-
-## PATCH /api/users/{id}
-+ Response 200
-
-    + Body
-
-            {
-            }
-
-
 # Group Accounts
 
-## GET /api/accounts
+These are like organizations which use Helpful.
+
+## Accounts [/api/accounts]
+
+### List all accounts [GET]
 
 All the accounts the user has access to.
 
-+ Response 200 (application/hal+json)
++ Response 200 (application/json)
 
-    + Body
-
+        {
+          "accounts": [
             {
-                "items": [
-                    {
-                        "id": "a25f7939-b39e-4a6a-8329-abd4a3e9ee26",
-                        "type": "account",
-                        "name": "Helpful",
-                        "slug": "helpful",
-                        "billing_status": "active",
-                        "created": "2013-12-30 13:50:55 -0500",
-                        "updated": "2013-12-30 13:50:55 -0500",
-                        "_links": {
-                            "self: {
-                                "href": "https://helpful.io/api/accounts/a25f7939-b39e-4a6a-8329-abd4a3e9ee26"
-                            },
-                            "billing_plan": {
-                                "href": "https://helpful.io/api/billing-plans/d54d1c5a-9727-46ad-91f4-aee18202ca0a"
-                            }
-                        }
-                    }
-                ],
-                "count": 1
+              "id": "b3ebe711-755e-4a91-b8d2-0cc028827bcf",
+              "name": "Assembly",
+              "slug": "assemblymade",
+              "type": "account",
+              "created": "2014-04-14T10:20:23Z",
+              "updated": "2014-04-14T10:20:23Z"
             }
+          ]
+        }
 
-## Account [/api/accounts/{id}]
+# Group People
 
-- id
-- name
-- slug
-- billing_plan
-- billing_status
-- created
-- updated
+People who operate or interacted with that account.
 
-+ Model
-
-    + Body
-
-            {
-                "id": "XXX"
-            }
-
-### Fetch an account [GET]
-
-+ Response 200
-
-    [Account][]
-
-### Update an account [PATCH]
-
-+ Request
-
-    + Body
-
-            {
-                "name": ""
-            }
-
-+ Response 200
-
-    [Account][]
-
-
-## POST /api/accounts/{account_id}/memberships
-
-+ Request
-
-    + Headers
-
-            Accept: application/vnd.helpful.v1+hal+json
-
-    + Body
-
-            {
-                "role": "admin",
-                "user_id": "XXX",
-            }
-
-+ Response 201 (application/hal+json)
-
-    + Headers
-
-            Location: <>
-
-    + Body
-
-            {
-                "id": "XXX",
-                "type": "membership",
-                "role": "admin"
-                "user_id": "XXX",
-            }
-
-
-## Membership [/api/accounts/{account_id}/memberships/{id}]
-
-- id
-- role
-- user
-- account
-- created
-- updated
-
-### Create a new membership [GET]
-
-+ Request
-
-    + Headers
-
-            Accept: application/hal+json
-
-+ Response 200 (application/hal+json)
-
-    + Headers
-
-            Link: <>;rel="self",<>;rel="user",<>;rel="account"
-
-    + Body
-
-            {
-                "id": "abc",
-                "type": "membership",
-                "role": "admin"
-                "user_id": "abc123",
-                "_links": {
-                    "self": {
-                        "href": <>
-                    },
-                    "user": {
-                        "href": <>
-                    },
-                    "account": {
-                        "href": <>
-                    }
-                }
-            }
-
-### Update a Membership [PATCH]
-
-+ Request
-
-    + Body
-
-            {
-                "role": "admin"
-            }
-
-+ Response 200
-
-    + Body
-
-            {
-            }
-
-### Delete a membership [DELETE]
-
-+ Response 204
-
-# Group Billing Plans
-
-- id
-- name
-- slug
-- max_conversations
-- price
-- created
-- updated
-
-## GET /api/billing-plans
-
-+ Request
-
-    + Headers
-
-            Accept: application/hal+json
-
-+ Response 200 (application/hal+json)
-
-    + Headers
-
-            Link: <https://helpful.io/api/billing-plans>;rel="self"
-
-    + Body
-
-            {
-                "items": [
-                    {
-                        "id": "d54d1c5a-9727-46ad-91f4-aee18202ca0a",
-                        "type": "billing_plan",
-                        "name": "Bronze",
-                        "slug": "bronze",
-                        "max_conversations": 25,
-                        "price": 3900,
-                        "created": "2013-12-30 13:44:37 -0500",
-                        "updated": "2013-12-30 13:44:37 -0500",
-                        "_links": {
-                            "self": {
-                                "href": "https://helpful.io/api/billing-plans/d54d1c5a-9727-46ad-91f4-aee18202ca0a"
-                            }
-                        }
-                    }
-                ],
-                "count": 1,
-                "_links": {
-                    "self": {
-                        "href": "https://helpful.io/api/billing-plans"
-                    }
-                }
-            }
-
-## GET /api/billing-plans/{id}
+## People [/api/people]
 
 + Parameters
-    + id (required UUID `d54d1c5a-9727-46ad-91f4-aee18202ca0a`)
+
+    + account (required, string) ... Identifier of the account
+
+### List all people [GET]
+
+List all people in an account the user has access to.
+
++ Response 200 (application/json)
+
+        {
+          "people": [
+            {
+              "id":"56f26d2f-4934-4265-b538-6e4dc2b45f91",
+              "name":"Patrick",
+              "email":"patrick@assemblymade.com",
+              "type": "person",
+              "created":"2014-04-14T10:20:23Z",
+              "updated":"2014-04-14T10:20:23Z"
+            },
+            {
+              "id": "8d5d6346-896a-4447-9543-74685c9adeed",
+              "name": null,
+              "email": "user@example.com",
+              "type": "person",
+              "created":"2014-04-14T11:41:05Z",
+              "updated":"2014-04-14T11:41:05Z",
+            }
+          ]
+        }
+
+# Group Conversations
+
+Conversations in an account.
+
+## Conversations [/api/conversations]
+
+### List all the conversations [GET]
+
+List all conversations in an account the user has access to.
+
++ Parameters
+
+    + account (required, string) ... Identifier of the account
+    + archived (optional, boolean) ... Archived if `true`, not if `false`
+
++ Response 200 (application/json)
+
+        {
+          "conversations": [
+            {
+              "id": "73156f8e-a90a-42ea-bfca-cbd80eb39",
+              "subject": null,
+              "tags": [],
+              "number": 1,
+              "type": "conversation",
+              "created": "2014-04-14T11:41:05Z",
+              "updated": "2014-04-14T11:41:23Z"
+            }
+          ]
+        }
+
+### Create a conversation [POST]
 
 + Request
 
-    + Headers
+        {
+          "account": "b3ebe711-755e-4a91-b8d2-0cc028827bcf"
+        }
 
-            Accept: application/hal+json
++ Response 201 (application/json)
 
-+ Response 200 (application/hal+json)
+        {
+          "conversation": {
+            "id": "412158ca-e9d5-465b-b013-2bddc5b17d47",
+            "messages": [],
+            "subject": null,
+            "tags": [],
+            "number": 3,
+            "type": "conversation",
+            "created": "2014-04-14T15:43:33Z",
+            "updated": "2014-04-14T15:43:33Z"
+          }
+        }
 
-    + Headers
+## Conversation [/api/conversations/{conversation}]
 
-            Link: <https://helpful.io/api/billing-plans/d54d1c5a-9727-46ad-91f4-aee18202ca0a>;rel="self"
++ Parameters
 
-    + Body
+    + conversation (required, string) ... Identifier of the conversation
 
+### Retrieve a conversation [GET]
+
+Get a conversation the user has access to.
+
++ Response 200 (application/json)
+
+        {
+          "conversation": {
+            "id": "459598d5-522b-4b97-8f5a-fab3ea6cb",
+            "subject": null,
+            "tags": [],
+            "messages": [
+              {
+                "id": "33314e4e-baf5-4b33-be72-112ed86701fd",
+                "body": "How do you do?",
+                "body_html": null,
+                "conversation_id": "459598d5-522b-4b97-8f5a-fab3ea6cb",
+                "person_id": "c690ca56-a0af-40df-9389-75264635154a",
+                "type": "message",
+                "created": "2014-04-14T11:43:00Z",
+                "updated": "2014-04-14T11:43:00Z"
+              }
+            ],
+            "number": 2,
+            "type": "conversation",
+            "created": "2014-04-14T11:43:00Z",
+            "updated": "2014-04-14T15:03:21Z"
+          }
+        }
+
+# Group Messages
+
+Messages in conversations the user has access to.
+
+## Messages [/api/messages]
+
++ Parameters
+
+    + account (required, string) ... Identifier of the account
+
+### List all messages [GET]
+
+List all messages in an account the user has access to.
+
++ Response 200 (application/json)
+
+        {
+          "messages": [
             {
-                "id": "d54d1c5a-9727-46ad-91f4-aee18202ca0a",
-                "type": "billing_plan",
-                "name": "Bronze",
-                "slug": "bronze",
-                "max_conversations": 25,
-                "price": 3900,
-                "created": "2013-12-30 13:44:37 -0500",
-                "updated": "2013-12-30 13:44:37 -0500",
-                "_links": {
-                    "self": {
-                        "href": "https://helpful.io/api/billing-plans/d54d1c5a-9727-46ad-91f4-aee18202ca0a"
-                    }
-                }
+              "id": "bdc4daf1-8070-42d1-bfee-4cfef7ffb95b",
+              "body": "I need help please.",
+              "body_html": null,
+              "conversation_id": "73156f8e-a90a-42ea-bfca-cbd80eb39",
+              "person_id": "8d5d6346-896a-4447-9543-74685c9adeed",
+              "type": "message",
+              "created": "2014-04-14T11:41:05Z",
+              "updated": "2014-04-14T11:41:05Z"
+            },
+            {
+              "id": "33314e4e-baf5-4b33-be72-112ed86701fd",
+              "body": "How do you do?",
+              "body_html": null,
+              "conversation_id": "459598d5-522b-4b97-8f5a-fab3ea6cb",
+              "person_id": "c690ca56-a0af-40df-9389-75264635154a",
+              "type": "message",
+              "created": "2014-04-14T11:43:00Z",
+              "updated": "2014-04-14T11:43:00Z"
             }
+          ]
+        }
+
+### Create a message [POST]
+
+Create a new message in a conversation the user has access to.
+
++ Request (application/json)
+
+        {
+          "conversation": "459598d5-522b-4b97-8f5a-fab3ea6cb",
+          "person": "56f26d2f-4934-4265-b538-6e4dc2b45f91",
+          "body": "Fine, I am good"
+        }
+
++ Response 201 (application/json)
+
+        {
+          "message": {
+            "id": "eb41dec1-9eb6-4ec8-a286-7d3def86889d",
+            "body": "Fine, I am good",
+            "body_html": null,
+            "conversation_id": "459598d5-522b-4b97-8f5a-fab3ea6cb",
+            "person_id": "56f26d2f-4934-4265-b538-6e4dc2b45f91",
+            "type": "message",
+            "created": "2014-04-14T16:35:15Z",
+            "updated": "2014-04-14T16:35:15Z"
+          }
+        }
+
+## Message [/api/messages/{message}]
+
+### Retrieve a message [GET]
+
+Get a message the user has access to.
+
++ Parameters
+
+    + message (required, string) ... Identifier of the message
+
++ Response 200 (application/json)
+
+        {
+          "message": {
+            "id": "33314e4e-baf5-4b33-be72-112ed86701fd",
+            "body": "How do you do?",
+            "body_html": null,
+            "conversation_id": "459598d5-522b-4b97-8f5a-fab3ea6cb",
+            "person_id": "c690ca56-a0af-40df-9389-75264635154a",
+            "type": "message",
+            "created": "2014-04-14T11:43:00Z",
+            "updated": "2014-04-14T11:43:00Z"
+          }
+        }
+
+# Group Attachments
+
+Attachments of messages the user has access to.
+
+## Attachments [/api/messages/{message}/attachments]
+
+### List all attachments [GET]
+
+List all the attachments of a message the user has access to.
+
++ Parameters
+
+    + message (required, string) ... Identifier of the message
+
++ Response 200 (application/json)
+
+        {
+          "attachments": [
+            {
+                
+            }
+          ]
+        }
+
+## Attachment [/api/attachments/{attachment}]
+
+### Retrieve an attachment [GET]
+
+Get an attachment the user has acess to.
+
++ Parameters
+
+    + attachment (required, string) ... Identifier of the attachment
+
++ Response 200 (application/json)
+
+        {
+          "attachment": {
+          
+          }
+        }
