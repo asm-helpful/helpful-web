@@ -30,6 +30,11 @@
       </div>
 
       <div class="form-group">
+        <%= f.label :signature, t('.signature'), class: 'form-label' %>
+        <%= f.text_area :signature, placeholder: t('.signature_placeholder'), class: 'form-control', rows: 4, 'data-autosize' => '' %>
+      </div>
+
+      <div class="form-group">
         <%= f.label :webhook_url, t('.webhook_url'), class: 'form-label' %>
         <%= f.text_field :webhook_url, autofocus: true, placeholder: t('.webhook_url_placeholder'), class: 'form-control' %>
       </div>
@@ -48,7 +53,7 @@
 
       <div class="form-group">
         <div class="checkbox">
-          <%= f.label :prefers_archiving, "Auto-archive conversations after replying" %>
+          <%= f.label :prefers_archiving, t('.auto_archiving') %>
           <%= f.check_box :prefers_archiving %>
         </div>
       </div>

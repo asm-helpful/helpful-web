@@ -67,7 +67,7 @@ class AccountsController < ApplicationController
   end
 
   def account_params
-    params.require(:account).permit(:name, :website_url, :webhook_url, :prefers_archiving)
+    params.require(:account).permit(:name, :website_url, :webhook_url, :prefers_archiving, :signature)
   end
 
 end

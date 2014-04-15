@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140408144028) do
+ActiveRecord::Schema.define(version: 20140414141005) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
-  enable_extension "pg_stat_statements"
   enable_extension "uuid-ossp"
+  enable_extension "pg_stat_statements"
 
   create_table "accounts", id: false, force: true do |t|
     t.uuid     "id",                          null: false
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20140408144028) do
     t.string   "chargify_portal_url"
     t.datetime "chargify_portal_valid_until"
     t.boolean  "prefers_archiving"
+    t.text     "signature"
   end
 
   add_index "accounts", ["billing_plan_id"], name: "index_accounts_on_billing_plan_id", using: :btree

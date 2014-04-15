@@ -87,6 +87,9 @@ en:
       incoming_email: "Incoming e-mail address"
       update_account_settings: "Update my account settings"
       invitation_sent: "Invitation sent"
+      signature: "Signature"
+      signature_placeholder: "Signature included at the end of every e-mail"
+      auto_archiving: "Auto-archive conversations after replying"
     web_form:
       help_text: "You can embed a web form anywhere that will allow your customers to submit their help requests directly to
       Helpful:"
