@@ -21,11 +21,11 @@ var applyTextcomplete = function($element) {
     template: function(match) {
       switch(match.type) {
         case 'tag':
-          return 'Tag with <strong>' + match.value + '</strong>';
+          return 'Tag with <strong>#' + match.value + '</strong>';
         case 'assignment':
-          return 'Assign to <strong>' + match.value + '</strong>';
+          return 'Assign to <strong>@' + match.value + '</strong>';
         case 'canned_response':
-          return 'Replace with <strong>' + match.value + '</strong>';
+          return 'Replace with <strong>:' + match.value + '</strong>';
       }
     }
   }];
@@ -39,7 +39,7 @@ var applyTextcomplete = function($element) {
       tagConversationPath,
       { tag: match.value },
       function() {
-        $notice = $('<div class="alert alert-success">').text('Successfully tagged the conversation with ' + match.value);
+        $notice = $('<div class="alert alert-success">').text('Successfully tagged the conversation with #' + match.value);
         $notice.append(
           $('<button type="button" class="close" data-dismiss="alert">').html('&times;')
         );
@@ -59,7 +59,7 @@ var applyTextcomplete = function($element) {
       conversationPath,
       { conversation: { user_id: match.user_id }, _method: 'patch' },
       function() {
-        $notice = $('<div class="alert alert-success">').text('Successfully assigned the conversation to ' + match.value);
+        $notice = $('<div class="alert alert-success">').text('Successfully assigned the conversation to @' + match.value);
         $notice.append(
           $('<button type="button" class="close" data-dismiss="alert">').html('&times;')
         );

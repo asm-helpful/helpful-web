@@ -35,15 +35,15 @@ class TextcompleteSearch
   end
 
   def tags
-    (matching_tags + [cleaned_query]).uniq.map { |tag| { type: 'tag', value: "##{tag}" } }
+    (matching_tags + [cleaned_query]).uniq.map { |tag| { type: 'tag', value: tag } }
   end
 
   def assignments
-    matching_assignments.map { |name, user_id| { type: 'assignment', user_id: user_id, value: "@#{name}" } }
+    matching_assignments.map { |name, user_id| { type: 'assignment', user_id: user_id, value: name } }
   end
 
   def canned_responses
-    matching_canned_responses.map { |key, id| { type: 'canned_response', id: id, value: ":#{key}" } }
+    matching_canned_responses.map { |key, id| { type: 'canned_response', id: id, value: key } }
   end
 
   def matching_tags
