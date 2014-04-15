@@ -102,6 +102,6 @@ var applyTextcomplete = function($element) {
   $element.textcomplete(strategies).on(eventHandlers);
 };
 
-$(document).ready(function() {
+$(document).on('ready page:load', function() {
   applyTextcomplete($('.conversation-reply textarea'));
 });
