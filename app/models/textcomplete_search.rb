@@ -43,7 +43,7 @@ class TextcompleteSearch
   end
 
   def canned_responses
-    matching_canned_responses.map { |key, id| { type: 'canned_response', id: id, value: ":#{canned_response}" } }
+    matching_canned_responses.map { |key, id| { type: 'canned_response', id: id, value: ":#{key}" } }
   end
 
   def matching_tags

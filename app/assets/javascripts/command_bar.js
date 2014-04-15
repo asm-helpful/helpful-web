@@ -31,33 +31,51 @@ var applyTextcomplete = function($element) {
   }];
 
   var tagConversation = function(match) {
-    var tagConversationPath = '/conversations/' + conversationId + '/tags';
+    var account = $("meta[name='account-slug']").attr('content');
+    var conversation = $("meta[name='conversation-number']").attr('content');
+    var tagConversationPath = '/' + account + '/' + conversation + '/tags';
 
-    $.post({
-      url: tagConversationsPath,
-      data: { tag: match.value },
-      success: function() {
-        displayTagEvent(match);
-      }
-    });
+    $.post(
+      tagConversationPath,
+      { tag: match.value },
+      function() {
+        console.log('tagConversation success');
+        console.log(match);
+        // displayTagEvent(match);
+      },
+      'json'
+    );
   };
 
   var assignConversation = function(match) {
-    conversationPath = '/' + accountSlug + '/conversations/' + conversationId;
+    var account = $("meta[name='account-slug']").attr('content');
+    var conversation = $("meta[name='conversation-number']").attr('content');
+    var conversationPath = '/' + account + '/' + conversation;
 
-    $.post({
-      url: conversationPath,
-      data: { conversation: { user_id: match.user_id } },
-      success: function() {
-        displayAssignmentEvent(match);
-      }
-    });
+    $.post(
+      conversationPath,
+      { conversation: { user_id: match.user_id }, _method: 'patch' },
+      function() {
+        console.log('assignConversation success');
+        console.log(match);
+        // displayAssignmentEvent(match);
+      },
+      'json'
+    );
   };
 
   var useCannedResponse = function(match) {
-    var cannedResponsePath = '/' + accountSlug + '/canned_responess/' + match.id;
+    var account = $("meta[name='account-slug']").attr('content');
+    var cannedResponsePath = '/' + account + '/canned_responses/' + match.id;
 
-    $.getJSON()
+    $.getJSON(
+      cannedResponsePath,
+      function(cannedResponse) {
+        console.log('useCannedResponse success');
+        console.log(cannedResponse);
+        // replaceMessageWithCannedResponse(cannedRepsonse);
+      }
+    )
   };
 
   var eventHandlers = {

@@ -72,6 +72,8 @@ Helpful::Application.routes.draw do
       get :inbox, on: :collection
       get :search, on: :collection
       get :list, on: :collection
+
+      resources :tags, only: [:create]
     end
 
     resources :messages, only: [:create]
