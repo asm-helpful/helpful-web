@@ -15,7 +15,7 @@ var applyTextcomplete = function($element) {
     },
 
     replace: function(match) {
-      return match.value; 
+      return '';
     },
 
     template: function(match) {
@@ -39,9 +39,12 @@ var applyTextcomplete = function($element) {
       tagConversationPath,
       { tag: match.value },
       function() {
-        console.log('tagConversation success');
-        console.log(match);
-        // displayTagEvent(match);
+        $notice = $('<div class="alert alert-success">').text('Successfully tagged the conversation with ' + match.value);
+        $notice.append(
+          $('<button type="button" class="close" data-dismiss="alert">').html('&times;')
+        );
+
+        $('.conversation-reply').prepend($notice);
       },
       'json'
     );
@@ -56,9 +59,12 @@ var applyTextcomplete = function($element) {
       conversationPath,
       { conversation: { user_id: match.user_id }, _method: 'patch' },
       function() {
-        console.log('assignConversation success');
-        console.log(match);
-        // displayAssignmentEvent(match);
+        $notice = $('<div class="alert alert-success">').text('Successfully assigned the conversation to ' + match.value);
+        $notice.append(
+          $('<button type="button" class="close" data-dismiss="alert">').html('&times;')
+        );
+
+        $('.conversation-reply').prepend($notice);
       },
       'json'
     );
@@ -71,9 +77,7 @@ var applyTextcomplete = function($element) {
     $.getJSON(
       cannedResponsePath,
       function(cannedResponse) {
-        console.log('useCannedResponse success');
-        console.log(cannedResponse);
-        // replaceMessageWithCannedResponse(cannedRepsonse);
+        $('.conversation-reply textarea').val(cannedResponse.message);
       }
     )
   };
