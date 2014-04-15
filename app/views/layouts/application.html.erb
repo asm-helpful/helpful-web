@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Helpful</title>
+  <% if content_for?(:meta) %>
+    <%= yield(:meta) -%>
+  <% else %>
+    <title>Helpful</title>
+  <% end %>
   <%= stylesheet_link_tag "application", media: "all" %>
   <%= stylesheet_link_tag "//fonts.googleapis.com/css?family=Montserrat:700|Lato:300,400,400italic,700" %>
   <%= javascript_include_tag "application" %>
