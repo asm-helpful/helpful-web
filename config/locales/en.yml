@@ -64,6 +64,8 @@ en:
       company_name_placeholder: "Acme Corp"
       your_name: "Your name"
       your_name_placeholder: "Jane Doe"
+      username: "Username"
+      username_placeholder: "jane"
     new:
       sign_up_free_accounts: "Sign Up for a Free Account"
       quick_easy_sign_up: "Quick and easy sign up process."

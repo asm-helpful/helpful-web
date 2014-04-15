@@ -18,6 +18,13 @@
       <%= f.text_field :name, class: 'form-control' %>
     </div>
 
+    <%= fields_for current_user.person do |ff| %>
+      <div class="form-group">
+        <%= ff.label :username, t('accounts.general.username'), class: 'form-label' %>
+        <%= ff.text_field :username, placeholder: t('accounts.general.username_placeholder'), class: 'form-control' %>
+      </div>
+    <% end %>
+
     <div class="form-group">
       <%= f.label :email, t('general.email'), class: 'form-label' %>
       <%= f.text_field :email, class: 'form-control' %>
