@@ -19,13 +19,61 @@ var applyTextcomplete = function($element) {
     },
 
     template: function(match) {
-      return match.value;
+      switch(match.type) {
+        case 'tag':
+          return 'Tag with <strong>' + match.value + '</strong>';
+        case 'assignment':
+          return 'Assign to <strong>' + match.value + '</strong>';
+        case 'canned_response':
+          return 'Replace with <strong>' + match.value + '</strong>';
+      }
     }
   }];
 
+  var tagConversation = function(match) {
+    var tagConversationPath = '/conversations/' + conversationId + '/tags';
+
+    $.post({
+      url: tagConversationsPath,
+      data: { tag: match.value },
+      success: function() {
+        displayTagEvent(match);
+      }
+    });
+  };
+
+  var assignConversation = function(match) {
+    conversationPath = '/' + accountSlug + '/conversations/' + conversationId;
+
+    $.post({
+      url: conversationPath,
+      data: { conversation: { user_id: match.user_id } },
+      success: function() {
+        displayAssignmentEvent(match);
+      }
+    });
+  };
+
+  var useCannedResponse = function(match) {
+    var cannedResponsePath = '/' + accountSlug + '/canned_responess/' + match.id;
+
+    $.getJSON()
+  };
+
   var eventHandlers = {
-    'textComplete:select': function(e, value) {
-      alert(value);
+    'textComplete:select': function(event, match) {
+
+      switch(match.type) {
+        case 'tag':
+          tagConversation(match);
+          break;
+        case 'assignment':
+          assignConversation(match);
+          break;
+        case 'canned_response':
+          useCannedResponse(match);
+          break;
+      }
     }
   };
 
