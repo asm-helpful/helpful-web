@@ -6,6 +6,7 @@ describe "new user signup" do
     find(".button-sign-up").click
     fill_in "account_name", :with => "Helpful"
     fill_in "person_name", :with => "Jess Brown"
+    fill_in "person_username", :with => "jess"
     fill_in "user_email", :with => "helper@helpful.io"
     fill_in "user_password", :with => "xxx12223xxx"
     fill_in "user_password_confirmation", :with => "xxx12223xxx"

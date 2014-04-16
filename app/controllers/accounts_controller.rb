@@ -1,3 +1,4 @@
+require 'pry'
 class AccountsController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update]
   respond_to :html
@@ -11,7 +12,7 @@ class AccountsController < ApplicationController
   def create
     user_params = params.require(:user).permit(:email, :password, :password_confirmation)
     account_params = params.require(:account).permit(:name)
-    person_params = params.require(:person).permit(:name)
+    person_params = params.require(:person).permit([:name, :username])
 
     @new_account_user = User.new user_params
     @account = Account.new account_params

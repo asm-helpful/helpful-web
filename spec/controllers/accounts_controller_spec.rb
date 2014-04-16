@@ -18,7 +18,8 @@ describe AccountsController do
         name: 'MyCompany'
       },
       person: {
-        name: 'John Doe'
+        name: 'John Doe',
+        username: 'john'
       },
       user: {
         email: 'user@user.com',
@@ -28,6 +29,7 @@ describe AccountsController do
     }
 
     assert_redirected_to inbox_account_conversations_path('mycompany')
+    expect(assigns(:person).username).to eq "john"
   end
 
   describe "GET #show" do
