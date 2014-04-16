@@ -1,4 +1,3 @@
-require 'pry'
 class AccountsController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update]
   respond_to :html
