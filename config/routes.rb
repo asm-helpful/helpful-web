@@ -36,12 +36,13 @@ Helpful::Application.routes.draw do
 
   namespace :api, format: 'json' do
     resources :accounts, except: [:new, :edit, :destroy] do
-      resources :conversations, shallow: true, except: [:new, :edit, :destroy]
-      resources :people, shallow: true, except: [:new, :edit, :destroy]
-    end
+      resources :conversations, shallow: true, except: [:new, :edit, :destroy] do
+        resources :messages, shallow: true, except: [:new, :edit, :destroy] do
+          resources :attachments, shallow: true, except: [:new, :edit, :destroy]
+        end
+      end
 
-    resources :messages, except: [:new, :edit, :destroy] do
-      resources :attachments, shallow: true, except: [:new, :edit, :destroy]
+      resources :people, shallow: true, except: [:new, :edit, :destroy]
     end
   end
 

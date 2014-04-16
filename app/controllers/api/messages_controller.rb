@@ -1,10 +1,8 @@
 class Api::MessagesController < ApiController
 
   def index
-    @account = Account.find(params.fetch(:account))
-    authorize_account_read!(@account)
-    @messages = @account.messages
-    respond_with(@messages)
+    find_conversation!
+    respond_with(@conversation.messages)
   end
 
   def show
@@ -14,8 +12,7 @@ class Api::MessagesController < ApiController
   end
 
   def create
-    @conversation = Conversation.find(message_params.fetch(:conversation))
-    authorize_account_read!(@conversation.account)
+    find_conversation!
 
     @message = @conversation.messages.create!(
       person_id: message_params.fetch(:person),
@@ -30,6 +27,11 @@ class Api::MessagesController < ApiController
   end
 
   protected
+
+  def find_conversation!
+    @conversation = Conversation.find(params.fetch(:conversation_id))
+    authorize_account_read!(@conversation.account)
+  end
 
   def authorize_account_read!(account)
     authorize!(AccountReadPolicy.new(account, current_user))
