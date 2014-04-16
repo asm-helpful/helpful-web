@@ -23,7 +23,7 @@ class Api::MessagesController < ApiController
       attachments_attributes: message_params.fetch(:attachments, [])
     )
 
-    render json: @message, status: :created
+    respond_with(@message, location: api_message_path(@message))
   end
 
   protected
