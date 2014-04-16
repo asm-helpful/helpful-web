@@ -20,6 +20,10 @@ class User < ActiveRecord::Base
 
   has_many :oauth_applications, class_name: 'Doorkeeper::Application', as: :owner
 
+  delegate :username,
+    to: :person,
+    allow_nil: true
+
   delegate :name,
     to: :person,
     allow_nil: true

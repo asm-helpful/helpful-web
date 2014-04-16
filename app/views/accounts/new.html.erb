@@ -22,6 +22,10 @@
           <%= ff.label :name, t('accounts.general.your_name'), class: 'form-label' %>
           <%= ff.text_field :name, placeholder: t('accounts.general.your_name_placeholder'), class: 'form-control' %>
         </div>
+        <div class="form-group">
+          <%= ff.label :username, t('accounts.general.username'), class: 'form-label' %>
+          <%= ff.text_field :username, placeholder: t('accounts.general.username_placeholder'), class: 'form-control' %>
+        </div>
       <% end %>
 
       <%= fields_for @new_account_user do |ff| %>

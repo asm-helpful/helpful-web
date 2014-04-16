@@ -14,6 +14,10 @@ class Person < ActiveRecord::Base
     format: /\A[^@]+@[^@]+\z/,
     uniqueness: {:scope => :account}
 
+  validates :username,
+    allow_blank: true,
+    uniqueness: {:scope => :account}
+
   validates :twitter,
     allow_blank: true,
     uniqueness: {:scope => :account}

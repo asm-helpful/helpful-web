@@ -20,10 +20,11 @@ class Users::InvitationsController < Devise::InvitationsController
 
     account = resource.primary_owned_account
     person = Person.create(
-      account: account,
-      user:    resource,
-      name:    params.fetch(:name),
-      email:   resource.email
+      account:    account,
+      user:       resource,
+      name:       params[:user][:name],
+      username:   params[:person][:username],
+      email:      resource.email
     )
 
     if resource.errors.empty?

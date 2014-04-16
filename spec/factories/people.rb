@@ -5,5 +5,6 @@ FactoryGirl.define do
     name    { Faker::Name.name }
     email   { Faker::Internet.email }
     twitter { Faker::Internet.user_name }
+    username { Faker::Internet.user_name  }
   end
 end

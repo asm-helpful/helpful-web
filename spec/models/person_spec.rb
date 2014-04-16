@@ -7,6 +7,15 @@ describe Person do
     expect(person).to be_valid
   end
 
+  context "when using a username" do
+    let(:person2){ create(:person) }
+    it 'must have a unique username per account' do
+      person.username = person2.username
+      expect(person).to have(1).error_on(:username)
+    end
+  end
+  
+
   describe "Person#parse_email" do
 
     it "handles email addresses without display names" do
