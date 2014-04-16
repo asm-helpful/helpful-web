@@ -5,6 +5,11 @@ describe AccountsController do
   let(:owner) { create(:user) }
   let(:account) { create(:account) }
 
+  before do
+    create(:membership, account: account, user: owner, role: 'owner')
+  end
+
+
   describe "GET #new" do
     it "is successful" do
       get :new
@@ -32,6 +37,7 @@ describe AccountsController do
 
   describe "GET #show" do
     it "redirects to the inbox" do
+      sign_in(owner)
       get :show, id: account.slug
       expect(response).to redirect_to(inbox_account_conversations_path(account))
     end
