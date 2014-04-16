@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140414141005) do
+ActiveRecord::Schema.define(version: 20140415195100) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
-  enable_extension "uuid-ossp"
   enable_extension "pg_stat_statements"
+  enable_extension "uuid-ossp"
 
   create_table "accounts", id: false, force: true do |t|
     t.uuid     "id",                          null: false
@@ -169,8 +169,10 @@ ActiveRecord::Schema.define(version: 20140414141005) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.uuid     "account_id"
+    t.string   "username"
   end
 
+  add_index "people", ["account_id", "username"], name: "index_people_on_account_id_and_username", unique: true, using: :btree
   add_index "people", ["email"], name: "index_people_on_email", using: :btree
   add_index "people", ["twitter"], name: "index_people_on_twitter", using: :btree
   add_index "people", ["user_id"], name: "index_people_on_user_id", using: :btree
