@@ -31,7 +31,7 @@ class Api::ConversationsController < ApiController
   protected
 
   def find_account!
-    @account = Account.find_by!(id: params.fetch(:account))
+    @account = Account.find_by!(id: params.fetch(:account_id))
     authorize! AccountReadPolicy.new(@account, current_user)
   end
 

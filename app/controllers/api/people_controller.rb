@@ -8,7 +8,7 @@ class Api::PeopleController < ApiController
   protected
 
   def find_account!
-    @account = Account.find_by!(id: params.fetch(:account))
+    @account = Account.find_by!(id: params.fetch(:account_id))
   end
 
 end

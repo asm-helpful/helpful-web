@@ -35,9 +35,11 @@ Helpful::Application.routes.draw do
   post 'webhooks/chargify' => 'billings#webhook', :as => :webhook_billing
 
   namespace :api, format: 'json' do
-    resources :accounts
-    resources :people
-    resources :conversations, except: [:new, :edit, :destroy]
+    resources :accounts, except: [:new, :edit, :destroy] do
+      resources :conversations, shallow: true, except: [:new, :edit, :destroy]
+      resources :people, shallow: true, except: [:new, :edit, :destroy]
+    end
+
     resources :messages, except: [:new, :edit, :destroy] do
       resources :attachments, shallow: true, except: [:new, :edit, :destroy]
     end

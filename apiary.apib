@@ -189,7 +189,7 @@ Update an account the user has access to.
 
 People who operate or interacted with that account.
 
-## People [/api/people]
+## People [/api/accounts/{account}/people]
 
 + Parameters
 
@@ -226,7 +226,7 @@ List all people in an account the user has access to.
 
 Conversations in an account.
 
-## Conversations [/api/conversations]
+## Conversations [/api/accounts/{account}/conversations]
 
 ### List all the conversations [GET]
 
@@ -258,7 +258,7 @@ List all conversations in an account the user has access to.
 + Request
 
         {
-          "account": "b3ebe711-755e-4a91-b8d2-0cc028827bcf"
+          "subject": "Another help thread"
         }
 
 + Response 201 (application/json)
@@ -267,7 +267,7 @@ List all conversations in an account the user has access to.
           "conversation": {
             "id": "412158ca-e9d5-465b-b013-2bddc5b17d47",
             "messages": [],
-            "subject": null,
+            "subject": "Another help thread",
             "tags": [],
             "number": 3,
             "type": "conversation",
