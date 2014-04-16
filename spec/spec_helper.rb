@@ -4,6 +4,8 @@ ENV["INCOMING_EMAIL_DOMAIN"] = 'helpful.io'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'sidekiq/testing'
+require 'capybara/rails'
+require 'capybara/rspec'
 require 'webmock/rspec'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
