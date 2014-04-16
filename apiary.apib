@@ -226,7 +226,7 @@ List all people in an account the user has access to.
 
 Conversations in an account.
 
-## Conversations [/api/accounts/{account}/conversations]
+## Conversations [/api/accounts/{account}/conversations{?archived}]
 
 ### List all the conversations [GET]
 
@@ -254,6 +254,12 @@ List all conversations in an account the user has access to.
         }
 
 ### Create a conversation [POST]
+
+Create a conversation in an account the user has access to.
+
++ Parameters
+
+    + account (required, string) ... Identifier of the account
 
 + Request
 
@@ -316,15 +322,15 @@ Get a conversation the user has access to.
 
 Messages in conversations the user has access to.
 
-## Messages [/api/messages]
+## Messages [/api/conversations/{conversation}/messages]
 
 + Parameters
 
-    + account (required, string) ... Identifier of the account
+    + conversation (required, string) ... Identifier of the conversation
 
 ### List all messages [GET]
 
-List all messages in an account the user has access to.
+List all messages in a conversation the user has access to.
 
 + Response 200 (application/json)
 
@@ -342,9 +348,9 @@ List all messages in an account the user has access to.
             },
             {
               "id": "33314e4e-baf5-4b33-be72-112ed86701fd",
-              "body": "How do you do?",
+              "body": "What did you need?",
               "body_html": null,
-              "conversation_id": "459598d5-522b-4b97-8f5a-fab3ea6cb",
+              "conversation_id": "73156f8e-a90a-42ea-bfca-cbd80eb39",
               "person_id": "c690ca56-a0af-40df-9389-75264635154a",
               "type": "message",
               "created": "2014-04-14T11:43:00Z",
