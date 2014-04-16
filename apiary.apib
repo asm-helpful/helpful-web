@@ -120,11 +120,69 @@ All the accounts the user has access to.
               "id": "b3ebe711-755e-4a91-b8d2-0cc028827bcf",
               "name": "Assembly",
               "slug": "assemblymade",
+              "website_url": "assemblymade.com",
+              "webhook_url": "",
+              "prefers_archiving": false,
               "type": "account",
               "created": "2014-04-14T10:20:23Z",
               "updated": "2014-04-14T10:20:23Z"
             }
           ]
+        }
+
+## Account [/api/accounts/{account}]
+
++ Parameters
+
+    + account (required, string) ... Identifier of the account
+
+### Retrieve an account [GET]
+
+Get an account the user has access to.
+
++ Response 200 (application/json)
+
+        {
+          "account": {
+            "id": "b3ebe711-755e-4a91-b8d2-0cc028827bcf",
+            "name": "Assembly",
+            "slug": "assemblymade",
+            "website_url": "assemblymade.com",
+            "webhook_url": "",
+            "prefers_archiving": false,
+            "type": "account",
+            "created": "2014-04-14T10:20:23Z",
+            "updated": "2014-04-14T10:20:23Z"
+          }
+        }
+
+### Update an account [PATCH]
+
+Update an account the user has access to.
+
++ Request (application/json)
+
+        {
+          "name": "Assembly Support",
+          "website_url": "http://assemblymade.com",
+          "webhook_url": "",
+          "prefers_archiving": true
+        }
+
++ Response 200 (application/json)
+
+        {
+          "account": {
+            "id": "b3ebe711-755e-4a91-b8d2-0cc028827bcf",
+            "name": "Assembly Support",
+            "slug": "assemblymade",
+            "website_url": "http://assemblymade.com",
+            "webhook_url": "",
+            "prefers_archiving": true,
+            "type": "account",
+            "created": "2014-04-14T10:20:23Z",
+            "updated": "2014-04-14T10:20:23Z"
+          }
         }
 
 # Group People
