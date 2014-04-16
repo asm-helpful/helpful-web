@@ -64,6 +64,7 @@ class AccountsController < ApplicationController
 
   def find_account!
     @account = Account.find_by!(slug: params.fetch(:id))
+    authorize! AccountReadPolicy.new(@account, current_user)
   end
 
   def account_params
