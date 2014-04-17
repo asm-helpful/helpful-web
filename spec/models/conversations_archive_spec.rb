@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe ConversationsArchive do
+  let!(:test_message){ create(:message, content: 'test message') }
   let!(:account) { create(:account) }
 
   let!(:conversations) {
@@ -27,19 +28,27 @@ describe ConversationsArchive do
   before { Message.import(force: true, refresh: true) }
 
   describe "search", vcr: true do
-    it "receives multiple messages and conversations" do
-      archive = ConversationsArchive.new(account, 'test')
 
-      expect(archive.search_messages.to_a).to match_array(messages)
-      expect(archive.conversations).to match_array(conversations)
+    context "when requsting messages" do
+      let(:archive) { ConversationsArchive.new(account, 'test') }
+
+      it "receives multiple messages and conversations" do
+        expect(archive.search_messages.to_a).to match_array(messages)
+        expect(archive.conversations).to match_array(conversations)
+      end
+
+      it 'only searches messages within the account' do
+        expect(archive.search_messages.to_a).to_not include(test_message)
+      end
     end
 
-    it "receives specific conversations by message content" do
-      archive = ConversationsArchive.new(account, '0')
+    context "when requesting conversations" do
+      it "receives specific conversations by message content" do
+        archive = ConversationsArchive.new(account, '0')
 
-      expect(archive.search_messages.first).to eq(messages.first)
-      expect(archive.conversations.first).to eq(conversations.first)
+        expect(archive.search_messages.first).to eq(messages.first)
+        expect(archive.conversations.first).to eq(conversations.first)
+      end
     end
   end
-
 end

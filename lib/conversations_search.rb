@@ -15,7 +15,8 @@ module ConversationsSearch
   #
   # Returns ids of matching models
   def search_messages
-    Message.search(query: { match: { content: query } }).records
+    Message.search(query: { match: { content: query } }).records.select {|m| m.account.id == account.id }
+    #account.messages.search(query: { match: { content: query } }).records
   end
 
   def search?
