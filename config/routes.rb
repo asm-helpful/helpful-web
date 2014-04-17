@@ -65,11 +65,15 @@ Helpful::Application.routes.draw do
   scope '/:account_id', as: :account do
     resources :canned_responses
 
+    resources :textcompletes, only: [:index]
+
     resources :conversations, path: '/', only: [:show, :update] do
       get :archived, on: :collection
       get :inbox, on: :collection
       get :search, on: :collection
       get :list, on: :collection
+
+      resources :tags, only: [:create]
     end
 
     resources :messages, only: [:create]

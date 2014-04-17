@@ -2,6 +2,8 @@ class CannedResponsesController < ApplicationController
   before_action :authenticate_user!
   before_action :find_account!
 
+  respond_to :html, :json
+
   def index
     @canned_responses = @account.canned_responses
   end
@@ -18,6 +20,11 @@ class CannedResponsesController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    @canned_response = @account.canned_responses.find(params[:id])
+    respond_with @canned_response
   end
 
   def edit

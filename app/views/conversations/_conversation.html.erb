@@ -72,17 +72,19 @@
   <% end %>
 
   <div class="conversation-reply">
+    <%= avatar_default(current_user.person) %>
+
     <%= form_tag account_messages_path(@account), method: 'post' do %>
       <%= hidden_field :message, :conversation_id, value: conversation.id %>
-      <%= text_area :message, :content, placeholder: t('.reply_to_conversation'), rows: 4, 'data-autosize' => '' %>
+      <%= text_area :message, :content, placeholder: t('.reply_to_conversation'), rows: 4, 'data-autosize' => '', 'data-textcomplete-path' => account_textcompletes_path(@account) %>
 
       <div class="command-bar">
-        <!-- Display these once we have more UI designed
-        <button class="btn btn-light" name="assign">@<%= t('.assign') %></button>
-        <button class="btn btn-light" name="tag">#<%= t('.tag') %></button>
-        <button class="btn btn-light" name="canned_response">:<%= t('.canned_response') %></button>
-        -->
-        <%= render 'conversations/markdown' %>
+        <div class="hints">
+          <span>@<%= t('.assign') %></span>
+          <span>#<%= t('.tag') %></span>
+          <span>:<%= t('.canned_response') %></span>
+        </div>
+
         <div class="pull-right">
           <input class="btn btn-primary" type="submit" name="commit" value="<%= t('.send') %>">
         </div>

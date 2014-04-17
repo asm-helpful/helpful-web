@@ -4,6 +4,8 @@ class ConversationsController < ApplicationController
   before_action :find_account!
   after_filter :flash_notice, only: :update
 
+  respond_to :html, :json
+
   def archived
     archive = ConversationsArchive.new(@account, params[:q])
     @conversations = archive.conversations
@@ -38,7 +40,10 @@ class ConversationsController < ApplicationController
   def update
     find_conversation!
     ConversationManager.manage(@conversation, current_user, conversation_params)
-    redirect_to inbox_account_conversations_path(@account)
+
+    respond_with @conversation do |format|
+      format.html { redirect_to inbox_account_conversations_path(@account) }
+    end
   end
 
   def list
