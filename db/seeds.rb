@@ -25,22 +25,23 @@ conversation = Conversation.create!(account: account)
 conversation.messages.create(content: 'Do you want to grab breakfast to chat about Helpful?', person: chris.person)
 conversation.archive!
 
-# Rough billing outline
-# These are some example IDs that correspond to the Chargify dev subdomain 'helpful-dev'
-BillingPlan.create slug: 'bronze',
-                   name: "Bronze",
-                   chargify_product_id: '3362368',
+# Current billing plans
+BillingPlan.create slug: 'starter-kit',
+                   name: "Starter Kit",
                    max_conversations: 25,
-                   price: 39
+                   price: 0
 
-BillingPlan.create slug: 'silver',
-                   name: "Silver",
-                   chargify_product_id: '3362369',
-                   max_conversations: 250,
-                   price: 99
+BillingPlan.create slug: 'growing',
+                   name: "Growing",
+                   max_conversations: 50,
+                   price: 29
 
-BillingPlan.create slug: 'gold',
-                   name: "Gold",
-                   chargify_product_id: '3362370',
-                   max_conversations: 1000,
+BillingPlan.create slug: 'premium',
+                   name: "Premium",
+                   max_conversations: 150,
+                   price: 59
+
+BillingPlan.create slug: 'super',
+                   name: "Super",
+                   max_conversations: 300,
                    price: 199
