@@ -102,6 +102,20 @@ var applyTextcomplete = function($element) {
   $element.textcomplete(strategies).on(eventHandlers);
 };
 
+var toggleSendButton = function(event) {
+  var $textarea = $(this);
+  var $sendButton = $('.command-bar :submit');
+
+  if($textarea.val().length > 0) {
+    $sendButton.show();
+  } else {
+    $sendButton.hide();
+  }
+};
+
 $(document).on('ready page:load', function() {
-  applyTextcomplete($('.conversation-reply textarea'));
+  $textarea = $('.conversation-reply textarea');
+  applyTextcomplete($textarea);
+  $($textarea).keyup(toggleSendButton);
+  toggleSendButton.bind($textarea)();
 });
