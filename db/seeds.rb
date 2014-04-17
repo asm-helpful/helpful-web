@@ -1,3 +1,24 @@
+# Current billing plans
+BillingPlan.create slug: 'starter-kit',
+                   name: "Starter Kit",
+                   max_conversations: 25,
+                   price: 0
+
+BillingPlan.create slug: 'growing',
+                   name: "Growing",
+                   max_conversations: 50,
+                   price: 29
+
+BillingPlan.create slug: 'premium',
+                   name: "Premium",
+                   max_conversations: 150,
+                   price: 59
+
+BillingPlan.create slug: 'super',
+                   name: "Super",
+                   max_conversations: 300,
+                   price: 199
+
 account = Account.create!(name: 'Test Corp')
 
 patrick = User.create!(email: 'patrick@assemblymade.com', password: 'password')
@@ -24,24 +45,3 @@ Person.create!(name: 'Chris', email: 'chris@assemblymade.com', user: chris, acco
 conversation = Conversation.create!(account: account)
 conversation.messages.create(content: 'Do you want to grab breakfast to chat about Helpful?', person: chris.person)
 conversation.archive!
-
-# Current billing plans
-BillingPlan.create slug: 'starter-kit',
-                   name: "Starter Kit",
-                   max_conversations: 25,
-                   price: 0
-
-BillingPlan.create slug: 'growing',
-                   name: "Growing",
-                   max_conversations: 50,
-                   price: 29
-
-BillingPlan.create slug: 'premium',
-                   name: "Premium",
-                   max_conversations: 150,
-                   price: 59
-
-BillingPlan.create slug: 'super',
-                   name: "Super",
-                   max_conversations: 300,
-                   price: 199

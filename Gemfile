@@ -57,6 +57,7 @@ group :development, :test do
   gem 'vcr'
   gem 'faraday', '~> 0.9.0'
   gem 'psych', '~> 2.0.5'
+  gem 'database_cleaner'
 end
 
 group :test do
