@@ -16,7 +16,7 @@ describe TextcompleteSearch do
 
     it 'grabs matching objects for the query type' do
       search = TextcompleteSearch.new(account, ':ref')
-      expect(search.results).to eq([':refund'])
+      expect(search.results.first.fetch(:value)).to eq('refund')
     end
 
     it 'returns an empty array if the query is empty' do
