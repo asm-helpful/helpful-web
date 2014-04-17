@@ -8,7 +8,7 @@ before_script:
 - gem install foreman
 - cp .env.example .env
 - cp config/database.yml.example config/database.yml
-- bin/rake db:create db:migrate RAILS_ENV=test
+- bin/rake db:create db:schema:load RAILS_ENV=test
 script: foreman run bin/rake
 deploy:
   provider: heroku
