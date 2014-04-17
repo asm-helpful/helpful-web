@@ -1,72 +1,37 @@
 .conversation-reply {
+  background-color: $white;
+  border: 1px solid #dddddd;
+  padding: 20px 20px 20px 40px;
+
+  > .avatar {
+    position: absolute;
+    margin-top: -5px;
+    margin-left: -(40px + (45px / 2));
+  }
+
   textarea {
-    border: 1px solid #dddddd;
+    border: none;
     color: $black;
+    font-size: 18px;
     margin: 0;
     outline: none;
-    padding: 10px;
+    resize: none;
     width: 100%;
   }
 
   .command-bar {
-    @include clearfix();
-
     background-color: $white;
-    border: 1px solid #dddddd;
     margin-top: -6px;
+    height: 46px;
 
-    .btn {
-      border-radius: 0;
-      margin-left: -3px;
-    }
-
-    .btn:first-child {
-      margin-left: 0;
-    }
-
-    .markdown { 
+    .hints {
+      padding-top: 16px;
       float: left;
-      padding-right: 15px;
-      border-right: 1px solid #cdcdcd;
-      cursor: pointer;
-      color: $light-black;
 
-      &.open {
-        background-color: #EEE;
-        color: $black;
-      }
-      img {
-        margin: 8px;
-      }
-
-      .dropdown-menu {
-        width: 550px;
-        padding: 10px;
-        
-        h3 {
-          margin-bottom: 15px;
-        }
-
-        .docs {
-          table {
-            margin: 0;
-
-            .bold {
-              font-weight: bold;
-            }
-
-            .italic {
-              font-style: italic;
-            }
-          }
-        }
-
-        .btn.btn-sm {
-          font-size: 12px;
-          line-height: 24px;
-          float: right;
-          color: #FFF;
-        }
+      span {
+        display: inline-block;
+        padding-right: 20px;
+        color: $dark-gray;
       }
     }
   }
