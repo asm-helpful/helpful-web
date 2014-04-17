@@ -32,8 +32,12 @@ class Conversation < ActiveRecord::Base
 
   scope :queue, -> { order('updated_at ASC') }
 
+  scope :this_month, -> { where('extract(month from created_at) = ? and extract(year from created_at) = ?', Time.now.month, Time.now.year) }
+
   sequential column: :number,
     scope: :account_id
+
+  before_create :check_conversations_limit
 
   after_commit :notify_account_people,
     on: :create
@@ -134,5 +138,9 @@ class Conversation < ActiveRecord::Base
 
   def message_added_callback(message)
     unarchive!
+  end
+
+  def check_conversations_limit
+    self.hidden = true if self.account.conversations_limit_reached?
   end
 end
