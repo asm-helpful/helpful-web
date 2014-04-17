@@ -24,6 +24,8 @@ class Conversation < ActiveRecord::Base
 
   validates :account, presence: true
 
+  default_scope -> { where(hidden: false) }
+
   scope :unresolved, -> { where(archived: false) }
 
   scope :archived, -> { where(archived: true) }
@@ -131,6 +133,7 @@ class Conversation < ActiveRecord::Base
 
   def notify_account_people
     return unless most_recent_message
+    return if self.hidden
     MessageMailman.deliver(most_recent_message, account_people)
   end
 
