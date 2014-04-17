@@ -6,10 +6,11 @@ describe Api::MessagesController do
 
     def post_create(args = {})
       post :create, {
-          conversation: conversation.id,
+          conversation_id: conversation.id,
           person: person.id,
           subject: 'Help wanted',
-          body: 'Please!'
+          body: 'Please!',
+          format: :json
         }.merge(args)
     end
 
