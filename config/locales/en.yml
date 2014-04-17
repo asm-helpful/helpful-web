@@ -98,7 +98,7 @@ en:
 
   conversations:
     conversation:
-      reply_to_conversation: "Reply to this conversation…"
+      reply_to_conversation: "Write your reply…"
       assign: "Assign"
       tag: "Tag"
       canned_response: "Canned Response"

@@ -14,6 +14,8 @@ module AvatarHelper
   #
   # Returns a img tag wraped in a div with the class of avatar.
   def avatar(person, size, *html_classes)
+    return unless person
+
     content_tag(:div, class: ['avatar', *html_classes]) do
       [avatar_initials(person, size), avatar_image(person, size)].reduce(:+)
     end
