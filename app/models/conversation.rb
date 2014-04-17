@@ -133,8 +133,12 @@ class Conversation < ActiveRecord::Base
 
   def notify_account_people
     return unless most_recent_message
-    return if self.hidden
+    return if unpaid?
     MessageMailman.deliver(most_recent_message, account_people)
+  end
+
+  def unpaid?
+    hidden
   end
 
   private
