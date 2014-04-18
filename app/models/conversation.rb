@@ -136,8 +136,7 @@ class Conversation < ActiveRecord::Base
   end
 
   def notify_account_people
-    return unless most_recent_message
-    return if unpaid?
+    return if messages.empty? || unpaid?
     MessageMailman.deliver(most_recent_message, account_people)
   end
 
@@ -152,6 +151,6 @@ class Conversation < ActiveRecord::Base
   end
 
   def check_conversations_limit
-    self.hidden = true if self.account.conversations_limit_reached?
+    self.hidden = true if account.conversations_limit_reached?
   end
 end

@@ -168,6 +168,7 @@ describe Conversation do
       message = double('Message')
       account_people = [double('Person')]
 
+      allow(subject).to receive(:messages) { [message] }
       allow(subject).to receive(:most_recent_message) { message }
       allow(subject).to receive(:account_people) { account_people }
 

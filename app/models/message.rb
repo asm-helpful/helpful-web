@@ -51,7 +51,7 @@ class Message < ActiveRecord::Base
   end
 
   def send_webhook
-    return if self.conversation.unpaid?
+    return if conversation.unpaid?
     # If the changed flag is set we know this is an update
     action = self.changed? ? 'updated' : 'created'
     Webhook.create(account: self.account, event: "message.#{action}", data: self.webhook_data)
@@ -62,7 +62,7 @@ class Message < ActiveRecord::Base
   end
 
   def send_email
-    return if self.conversation.unpaid?
+    return if conversation.unpaid?
     MessageMailman.deliver(self, mail_recipients)
   end
 
@@ -73,7 +73,7 @@ class Message < ActiveRecord::Base
   def trigger_pusher_new_message
     # TODO: Perhaps we should mock Pusher call
     return unless Rails.env.production?
-    return if self.conversation.unpaid?
+    return if conversation.unpaid?
 
     begin
       Pusher[self.account.slug].trigger('new_message', {})
