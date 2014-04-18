@@ -24,9 +24,7 @@ class Conversation < ActiveRecord::Base
 
   validates :account, presence: true
 
-  default_scope -> { where(hidden: false) }
-
-  scope :unresolved, -> { where(archived: false) }
+  default_scope -> { paid }
 
   scope :archived, -> { where(archived: true) }
 
@@ -34,7 +32,13 @@ class Conversation < ActiveRecord::Base
 
   scope :queue, -> { order('updated_at ASC') }
 
-  scope :this_month, -> { where('extract(month from created_at) = ? and extract(year from created_at) = ?', Time.now.month, Time.now.year) }
+  scope :paid, -> { where(hidden: false) }
+
+  scope :including_unpaid, -> { unscope(where: :hidden) }
+
+  scope :this_month, -> { where("DATE_TRUNC('month', created_at) = ?", Time.now.utc.beginning_of_month) }
+
+  scope :unresolved, -> { where(archived: false) }
 
   sequential column: :number,
     scope: :account_id

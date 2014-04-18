@@ -102,7 +102,7 @@ describe Account do
         @account.conversations << build(:conversation)
       end
 
-      expect(@account.conversations.unscoped.most_recent.first.unpaid?).to eq(true)
+      expect(@account.conversations.including_unpaid.most_recent.first.unpaid?).to eq(true)
     end
 
     it "must remove conversations over the limit from any scopes" do
