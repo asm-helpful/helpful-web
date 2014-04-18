@@ -14,6 +14,10 @@ describe Conversation do
     expect(subject).to_not be_archived
   end
 
+  it "is not hidden" do
+    expect(subject).to_not be_hidden
+  end
+
   it "is reopened when new messages are added" do
     subject.archived = true
     subject.messages << message
@@ -164,6 +168,7 @@ describe Conversation do
       message = double('Message')
       account_people = [double('Person')]
 
+      allow(subject).to receive(:messages) { [message] }
       allow(subject).to receive(:most_recent_message) { message }
       allow(subject).to receive(:account_people) { account_people }
 

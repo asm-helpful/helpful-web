@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140415195100) do
+ActiveRecord::Schema.define(version: 20140417221953) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,8 +92,10 @@ ActiveRecord::Schema.define(version: 20140415195100) do
     t.boolean  "archived",   default: false
     t.string   "tags",       default: [],                 array: true
     t.uuid     "user_id"
+    t.boolean  "hidden",     default: false, null: false
   end
 
+  add_index "conversations", ["hidden"], name: "index_conversations_on_hidden", using: :btree
   add_index "conversations", ["user_id"], name: "index_conversations_on_user_id", using: :btree
 
   create_table "memberships", id: false, force: true do |t|

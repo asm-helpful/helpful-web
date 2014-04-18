@@ -21,6 +21,7 @@ class Account < ActiveRecord::Base
   validates :slug, presence: true
 
   before_create :generate_webhook_secret
+  before_create :set_default_billing_plan
   after_create :save_new_user
 
   friendly_id :name, use: :slugged
@@ -102,6 +103,14 @@ class Account < ActiveRecord::Base
     memberships.create(user: agent, role: 'agent')
   end
 
+  def conversations_limit
+    return self.billing_plan.max_conversations
+  end
+
+  def conversations_limit_reached?
+    return self.conversations.this_month.size >= self.conversations_limit
+  end
+
   protected
 
   def save_new_user
@@ -113,6 +122,10 @@ class Account < ActiveRecord::Base
 
   def generate_webhook_secret
     self.webhook_secret ||= SecureRandom.hex(16)
+  end
+
+  def set_default_billing_plan
+    self.billing_plan ||= BillingPlan.find_by_slug('starter-kit')
   end
 
 end

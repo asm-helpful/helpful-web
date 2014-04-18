@@ -42,3 +42,6 @@
 # When people accidentally put images in /public
 /public/images
 .ruby-version
+
+# Sublime project files
+*.sublime-*
