@@ -14,6 +14,10 @@ describe Conversation do
     expect(subject).to_not be_archived
   end
 
+  it "is not hidden" do
+    expect(subject).to_not be_hidden
+  end
+
   it "is reopened when new messages are added" do
     subject.archived = true
     subject.messages << message

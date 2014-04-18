@@ -45,7 +45,7 @@ class Webhooks::MailgunController < WebhooksController
 
       # Find or create Conversation
       conversation = if conversation_number
-        account.conversations.find_by!(number: conversation_number)
+        account.conversations.unscoped.find_by!(number: conversation_number)
       else
         account.conversations.create!(
           subject: params.fetch(:subject)
@@ -82,7 +82,7 @@ class Webhooks::MailgunController < WebhooksController
     uuid_regex = /^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$/
     
     if local.match(uuid_regex)
-      Conversation.find_by(id: local).to_mailbox_hash
+      Conversation.unscoped.find_by(id: local).to_mailbox_hash
     else
       local.match(EMAIL_REGEXP)
     end

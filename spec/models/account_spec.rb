@@ -69,4 +69,49 @@ describe Account do
       }.to raise_error(ActiveRecord::RecordNotFound)
     end
   end
+
+  describe ".conversations_limit" do
+
+    it "must have the right conversation limit for the default plan" do
+      @account.save
+      expect(@account.conversations_limit).to eq(25)
+    end
+
+  end
+
+  describe ".conversations_limit_reached?" do
+    
+    before do
+      @account.save
+      24.times do
+        @account.conversations << build(:conversation)
+      end
+    end
+
+    it "must not reach its limit for the first 24 conversations" do
+      expect(@account.conversations_limit_reached?).to eq(false)
+    end
+
+    it "must reach its limit after 25 conversations" do
+      @account.conversations << build(:conversation)
+      expect(@account.conversations_limit_reached?).to eq(true)
+    end
+
+    it "must mark conversations after the limit is reached as unpaid" do
+      2.times do
+        @account.conversations << build(:conversation)
+      end
+
+      expect(@account.conversations.unscoped.most_recent.first.unpaid?).to eq(true)
+    end
+
+    it "must remove conversations over the limit from any scopes" do
+      2.times do
+        @account.conversations << build(:conversation)
+      end
+
+      expect(@account.conversations.size).to eq(25)
+    end
+  end
+
 end

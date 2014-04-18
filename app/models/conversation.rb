@@ -24,6 +24,8 @@ class Conversation < ActiveRecord::Base
 
   validates :account, presence: true
 
+  default_scope -> { where(hidden: false) }
+
   scope :unresolved, -> { where(archived: false) }
 
   scope :archived, -> { where(archived: true) }
@@ -32,8 +34,12 @@ class Conversation < ActiveRecord::Base
 
   scope :queue, -> { order('updated_at ASC') }
 
+  scope :this_month, -> { where('extract(month from created_at) = ? and extract(year from created_at) = ?', Time.now.month, Time.now.year) }
+
   sequential column: :number,
     scope: :account_id
+
+  before_create :check_conversations_limit
 
   after_commit :notify_account_people,
     on: :create
@@ -127,12 +133,21 @@ class Conversation < ActiveRecord::Base
 
   def notify_account_people
     return unless most_recent_message
+    return if unpaid?
     MessageMailman.deliver(most_recent_message, account_people)
+  end
+
+  def unpaid?
+    hidden
   end
 
   private
 
   def message_added_callback(message)
     unarchive!
+  end
+
+  def check_conversations_limit
+    self.hidden = true if self.account.conversations_limit_reached?
   end
 end
