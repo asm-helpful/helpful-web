@@ -1,0 +1,200 @@
+---
+http_interactions:
+- request:
+    method: delete
+    uri: http://127.0.0.1:9200/messages
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '31'
+    body:
+      encoding: UTF-8
+      string: '{"ok":true,"acknowledged":true}'
+    http_version: 
+  recorded_at: Thu, 17 Apr 2014 02:09:39 GMT
+- request:
+    method: head
+    uri: http://127.0.0.1:9200/messages
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - text/plain; charset=UTF-8
+      Content-Length:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Thu, 17 Apr 2014 02:09:39 GMT
+- request:
+    method: put
+    uri: http://127.0.0.1:9200/messages
+    body:
+      encoding: UTF-8
+      string: '{"settings":{},"mappings":{"message":{"properties":{"content":{"type":"string"}}}}}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '31'
+    body:
+      encoding: UTF-8
+      string: '{"ok":true,"acknowledged":true}'
+    http_version: 
+  recorded_at: Thu, 17 Apr 2014 02:09:39 GMT
+- request:
+    method: post
+    uri: http://127.0.0.1:9200/messages/message/_bulk?type=message
+    body:
+      encoding: UTF-8
+      string: |
+        {"index":{"_id":"703b003a-f321-4fd0-9cfc-6dff32c22dfd"}}
+        {"id":"703b003a-f321-4fd0-9cfc-6dff32c22dfd","conversation_id":"ea1fd3f6-178b-4649-a13f-ffa66c6d5f13","content":"test message","data":null,"created_at":"2014-04-17T02:09:38.900Z","updated_at":"2014-04-17T02:09:38.900Z","person_id":"d7aab4e8-b9e8-464c-85a6-98f668d32d90"}
+        {"index":{"_id":"c91d36fb-c406-4a06-a9b0-808c64b80e80"}}
+        {"id":"c91d36fb-c406-4a06-a9b0-808c64b80e80","conversation_id":"e1b505df-ab35-499c-957d-c734fdc8d17d","content":"test 0","data":null,"created_at":"2014-04-17T02:09:38.983Z","updated_at":"2014-04-17T02:09:38.989Z","person_id":"e55c467d-571d-4398-8a8c-ebfbf2eeef9e"}
+        {"index":{"_id":"c91d36fb-c406-4a06-a9b0-808c64b80e81"}}
+        {"id":"c91d36fb-c406-4a06-a9b0-808c64b80e81","conversation_id":"7992339d-a7b7-44dd-b55a-14daad7aa8db","content":"test 1","data":null,"created_at":"2014-04-17T02:09:39.043Z","updated_at":"2014-04-17T02:09:39.049Z","person_id":"1cd69d96-24fb-42b4-9c62-71ebd02d5c5b"}
+        {"index":{"_id":"c91d36fb-c406-4a06-a9b0-808c64b80e82"}}
+        {"id":"c91d36fb-c406-4a06-a9b0-808c64b80e82","conversation_id":"77c70a8b-60ca-441b-aa77-f221a4cd968c","content":"test 2","data":null,"created_at":"2014-04-17T02:09:39.062Z","updated_at":"2014-04-17T02:09:39.068Z","person_id":"92e396f9-b261-4e17-8c5f-6bfa21088bef"}
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '493'
+    body:
+      encoding: UTF-8
+      string: '{"took":31,"items":[{"index":{"_index":"messages","_type":"message","_id":"703b003a-f321-4fd0-9cfc-6dff32c22dfd","_version":1,"ok":true}},{"index":{"_index":"messages","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e80","_version":1,"ok":true}},{"index":{"_index":"messages","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e81","_version":1,"ok":true}},{"index":{"_index":"messages","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e82","_version":1,"ok":true}}]}'
+    http_version: 
+  recorded_at: Thu, 17 Apr 2014 02:09:39 GMT
+- request:
+    method: post
+    uri: http://127.0.0.1:9200/messages/_refresh
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Content-Length:
+      - '0'
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '60'
+    body:
+      encoding: UTF-8
+      string: '{"ok":true,"_shards":{"total":10,"successful":5,"failed":0}}'
+    http_version: 
+  recorded_at: Thu, 17 Apr 2014 02:09:39 GMT
+- request:
+    method: get
+    uri: http://127.0.0.1:9200/messages/message/_search
+    body:
+      encoding: UTF-8
+      string: '{"query":{"match":{"content":"test"}}}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '1665'
+    body:
+      encoding: UTF-8
+      string: '{"took":3,"timed_out":false,"_shards":{"total":5,"successful":5,"failed":0},"hits":{"total":4,"max_score":0.37158427,"hits":[{"_index":"messages","_type":"message","_id":"703b003a-f321-4fd0-9cfc-6dff32c22dfd","_score":0.37158427,
+        "_source" : {"id":"703b003a-f321-4fd0-9cfc-6dff32c22dfd","conversation_id":"ea1fd3f6-178b-4649-a13f-ffa66c6d5f13","content":"test
+        message","data":null,"created_at":"2014-04-17T02:09:38.900Z","updated_at":"2014-04-17T02:09:38.900Z","person_id":"d7aab4e8-b9e8-464c-85a6-98f668d32d90"}},{"_index":"messages","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e81","_score":0.37158427,
+        "_source" : {"id":"c91d36fb-c406-4a06-a9b0-808c64b80e81","conversation_id":"7992339d-a7b7-44dd-b55a-14daad7aa8db","content":"test
+        1","data":null,"created_at":"2014-04-17T02:09:39.043Z","updated_at":"2014-04-17T02:09:39.049Z","person_id":"1cd69d96-24fb-42b4-9c62-71ebd02d5c5b"}},{"_index":"messages","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e80","_score":0.19178301,
+        "_source" : {"id":"c91d36fb-c406-4a06-a9b0-808c64b80e80","conversation_id":"e1b505df-ab35-499c-957d-c734fdc8d17d","content":"test
+        0","data":null,"created_at":"2014-04-17T02:09:38.983Z","updated_at":"2014-04-17T02:09:38.989Z","person_id":"e55c467d-571d-4398-8a8c-ebfbf2eeef9e"}},{"_index":"messages","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e82","_score":0.19178301,
+        "_source" : {"id":"c91d36fb-c406-4a06-a9b0-808c64b80e82","conversation_id":"77c70a8b-60ca-441b-aa77-f221a4cd968c","content":"test
+        2","data":null,"created_at":"2014-04-17T02:09:39.062Z","updated_at":"2014-04-17T02:09:39.068Z","person_id":"92e396f9-b261-4e17-8c5f-6bfa21088bef"}}]}}'
+    http_version: 
+  recorded_at: Thu, 17 Apr 2014 02:09:39 GMT
+- request:
+    method: get
+    uri: http://127.0.0.1:9200/messages/message/_search
+    body:
+      encoding: UTF-8
+      string: '{"query":{"match":{"content":"test"}}}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '1665'
+    body:
+      encoding: UTF-8
+      string: '{"took":4,"timed_out":false,"_shards":{"total":5,"successful":5,"failed":0},"hits":{"total":4,"max_score":0.37158427,"hits":[{"_index":"messages","_type":"message","_id":"703b003a-f321-4fd0-9cfc-6dff32c22dfd","_score":0.37158427,
+        "_source" : {"id":"703b003a-f321-4fd0-9cfc-6dff32c22dfd","conversation_id":"ea1fd3f6-178b-4649-a13f-ffa66c6d5f13","content":"test
+        message","data":null,"created_at":"2014-04-17T02:09:38.900Z","updated_at":"2014-04-17T02:09:38.900Z","person_id":"d7aab4e8-b9e8-464c-85a6-98f668d32d90"}},{"_index":"messages","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e81","_score":0.37158427,
+        "_source" : {"id":"c91d36fb-c406-4a06-a9b0-808c64b80e81","conversation_id":"7992339d-a7b7-44dd-b55a-14daad7aa8db","content":"test
+        1","data":null,"created_at":"2014-04-17T02:09:39.043Z","updated_at":"2014-04-17T02:09:39.049Z","person_id":"1cd69d96-24fb-42b4-9c62-71ebd02d5c5b"}},{"_index":"messages","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e80","_score":0.19178301,
+        "_source" : {"id":"c91d36fb-c406-4a06-a9b0-808c64b80e80","conversation_id":"e1b505df-ab35-499c-957d-c734fdc8d17d","content":"test
+        0","data":null,"created_at":"2014-04-17T02:09:38.983Z","updated_at":"2014-04-17T02:09:38.989Z","person_id":"e55c467d-571d-4398-8a8c-ebfbf2eeef9e"}},{"_index":"messages","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e82","_score":0.19178301,
+        "_source" : {"id":"c91d36fb-c406-4a06-a9b0-808c64b80e82","conversation_id":"77c70a8b-60ca-441b-aa77-f221a4cd968c","content":"test
+        2","data":null,"created_at":"2014-04-17T02:09:39.062Z","updated_at":"2014-04-17T02:09:39.068Z","person_id":"92e396f9-b261-4e17-8c5f-6bfa21088bef"}}]}}'
+    http_version: 
+  recorded_at: Thu, 17 Apr 2014 02:09:39 GMT
+recorded_with: VCR 2.8.0
