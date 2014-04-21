@@ -10,18 +10,27 @@
   font-size: 14px;
   line-height: 30px;
 
-  padding: 3px 20px;
+  padding: $btn-default-padding;
 
   &:hover {
     color: $white;
   }
 }
 
+.btn-large {
+  font-size: 18px;
+  padding: $btn-large-padding;
+}
+
 .btn-default {
   background-color: transparent;
   border: $btn-border-width solid rgba($dark-blue, .4);
   color: $dark-blue;
-  padding: 1px 18px;
+  padding: 1px 18px; // $btn-default-padding - 2px
+
+  &.btn-large {
+    padding: 8px 48px; // $btn-large-padding - 2px
+  }
 
   &[disabled] {
     background-color: $muted;
