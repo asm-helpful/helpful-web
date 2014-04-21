@@ -17,10 +17,10 @@
 
 .nav-separated {
   li {
-    border-right: 1px solid $gray;
+    border-right: 1px solid $navbar-default-border;
 
     &:first-child {
-      border-left: 1px solid $gray;
+      border-left: 1px solid $navbar-default-border;
     }
   }
 }

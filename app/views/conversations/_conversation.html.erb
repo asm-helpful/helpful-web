@@ -1,3 +1,9 @@
+<% if @previous_conversation %>
+  <a class="conversation conversation-previous" href="<%= account_conversation_path(@account, @previous_conversation) %>">
+    <span class="glyphicon glyphicon-chevron-right glyphicon-chevron-up"></span>
+  </a>
+<% end %>
+
 <% if flash[:preference] %>
   <div class="alert alert-muted">
     <button type='button' class='close' data-dismiss='alert'>&times;</button>
@@ -7,12 +13,12 @@
     <div class="form-actions">
       <%= form_for @account, method: :put, html: { class: 'form-inline' } do |f| %>
         <%= f.hidden_field :prefers_archiving, value: true %>
-        <%= f.submit 'Auto-archive conversations', class: 'btn btn-danger' %>
+        <%= f.submit 'Auto-archive conversations', class: 'btn btn-default' %>
       <% end %>
 
       <%= form_for @account, method: :put, html: { class: 'form-inline' } do |f| %>
         <%= f.hidden_field :prefers_archiving, value: false %>
-        <%= f.submit 'Just create new messages', class: 'btn btn-primary' %>
+        <%= f.submit 'Just create new messages', class: 'btn btn-default' %>
       <% end %>
     </div>
   </div>
@@ -23,20 +29,23 @@
     <% unless @conversation.archived? %>
       <%= form_for [@account, @conversation] do |f| %>
         <%= f.hidden_field :archive, value: true %>
-        <%= f.submit t('shared.navbar.archive'), class: 'btn btn-danger' %>
+        <%= f.submit t('conversations.row.archive'), class: 'btn btn-default' %>
+      <% end %>
+
+      <%= form_for [@account, @conversation] do |f| %>
+        <%= f.hidden_field :respond_later, value: true %>
+        <%= f.submit t('conversations.row.later'), class: 'btn btn-default', style: 'margin-top: 10px' %>
       <% end %>
     <% end %>
   </div>
 
   <div class="summary">
-    <div class="timestamp">
-      <%= time_ago_in_words(conversation.created_at) %> <%= t('general.ago') %>
-    </div>
-
     <%= avatar_default(conversation.creator_person) %>
 
-    <div class="title">
-      <%= summary(conversation) %>
+    <div class="message-count"></div>
+
+    <div class="timestamp">
+      <%= time_ago_in_words(conversation.created_at) %> <%= t('general.ago') %>
     </div>
 
     <ul class="participants">
@@ -51,7 +60,8 @@
       #<%= conversation.number %>
     </div>
 
-    <div class="icons">
+    <div class="title">
+      <%= summary(conversation) %>
     </div>
 
     <div class="message">
@@ -86,8 +96,9 @@
         </div>
 
         <div class="pull-right">
-          <input class="btn btn-primary" type="submit" name="commit" value="<%= t('.send') %>">
+          <input class="btn btn-secondary" type="submit" name="commit" value="<%= t('.send') %>">
         </div>
+        <div class="clearfix"></dv>
       </div>
     <% end %>
   </div>
@@ -95,36 +106,6 @@
 
 <% if @next_conversation %>
   <a class="conversation conversation-next" href="<%= account_conversation_path(@account, @next_conversation) %>">
-    <p class="text-muted text-uppercase"><%= t('.next_conversation') %></p>
-
-    <div class="summary">
-      <div class="timestamp">
-        <%= time_ago_in_words(@next_conversation.created_at) %> <%= t('general.ago') %>
-      </div>
-
-      <%= avatar_default(@next_conversation.creator_person) %>
-
-      <div class="title">
-        <%= summary(@next_conversation) %>
-      </div>
-
-      <ul class="participants">
-        <% @next_conversation.participants.each do |participant| %>
-          <li>
-            <%= nickname(participant) %>
-          </li>
-        <% end %>
-      </ul>
-
-      <div class="number">
-        #<%= @next_conversation.number %>
-      </div>
-    </div>
+    <span class="glyphicon glyphicon-chevron-right glyphicon-chevron-down"></span>
   </a>
-<% else %>
-  <div class="conversation conversation-next">
-    <p><%= t('.made_last_message') %></p>
-
-    <a class="btn btn-primary" href="<%= inbox_account_conversations_path(@account) %>"><%= t('.back_to_inbox') %></a>
-  </div>
 <% end %>

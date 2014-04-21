@@ -34,7 +34,9 @@ class ConversationsController < ApplicationController
   def show
     find_conversation!
     @messages = @conversation.messages
-    @next_conversation = ConversationsInbox.new(@account, current_user).next_after(@conversation)
+    @inbox = ConversationsInbox.new(@account, current_user)
+    @next_conversation = @inbox.next_conversation(@conversation)
+    @previous_conversation = @inbox.previous_conversation(@conversation)
   end
 
   def update

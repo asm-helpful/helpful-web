@@ -14,6 +14,12 @@
   }
 }
 
+.list-conversations {
+  > .list-item {
+    border: none;
+  }
+}
+
 .list-timeline {
   display: block;
   @include clearfix;

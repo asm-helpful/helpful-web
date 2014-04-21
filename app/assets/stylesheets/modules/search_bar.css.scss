@@ -1,32 +1,50 @@
 .search-bar {
-  border-right: 1px solid $gray;
+  border-right: 1px solid $navbar-default-border;
   overflow: hidden;
   position: relative;
 
   input {
-    background-color: $light-gray;
+    background-color: $navbar-default-bg;
     border: none;
     color: $black;
+    font-size: 14px;
     height: 50px;
     outline: none;
-    padding: 10px 20px;
+    padding: 10px 20px 10px 38px;
     width: 100%;
+
+    &:hover {
+      background-color: $navbar-default-link-hover-bg;
+      color: $navbar-default-link-hover-color;
+    }
 
     &:focus {
       background-color: $white;
+      color: $black;
 
       + .search-bar-icon {
-        color: $black;
+        color: $dark-gray;
       }
+
+      @include placeholder {
+        color: $dark-gray;
+      }
+    }
+
+    @include placeholder {
+      color: $white;
     }
   }
 
   .search-bar-icon {
-    font-size: 20px;
+    color: $white;
+    font-size: 14px;
+    line-height: 20px;
     margin-top: 14px;
-    margin-right: 14px;
+    margin-left: 14px;
     pointer-events: none;
     position: absolute;
-    right: 0px;
+
+    @include transform(scaleX(-1));
   }
 }

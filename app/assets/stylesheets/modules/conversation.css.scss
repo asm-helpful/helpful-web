@@ -5,17 +5,20 @@
 }
 
 .conversation-row {
-  background-color: $white;
-  border-bottom: 1px solid $gray;
+  background-color: darken($lightest-gray, 2%);
+  border-bottom: 1px solid $light-gray;
 
   &:hover {
+    background-color: $white;
+    border-bottom: 1px solid $light-gray;
+
     .actions {
-      opacity: 1;
+      visibility: visible;
     }
   }
 
   .actions {
-    opacity: 0;
+    visibility: hidden;
   }
 }
 
@@ -30,31 +33,31 @@
   &:hover {
     opacity: 1;
   }
+
+  > button, input {
+    display: block;
+    width: 90px;
+
+    &:first-child {
+      margin-bottom: 10px;
+    }
+  }
 }
 
 .summary {
   color: $light-black;
   padding: 30px 40px;
 
-  > .last-update,
-  .timestamp {
-    color: $black;
-    line-height: 45px;
-    margin-left: -300px;
-    position: absolute;
-    text-align: right;
-    width: 200px;
-  }
-
   > .avatar {
     position: absolute;
-    margin-left: -(40px + (45px / 2));
+    margin-left: -(40px + (30px / 2));
   }
 
-  > .title {
-    color: #333;
-    font-size: 24px;
-    margin-bottom: 5px;
+  > .last-update,
+  .timestamp {
+    display: inline-block;
+    font-weight: bold;
+    margin-right: 6px;
   }
 
   > .participants {
@@ -64,13 +67,22 @@
     margin-bottom: 0;
 
     > li {
+      color: $dark-gray;
       display: inline-block;
-      margin-right: 10px;
+      margin-right: 6px;
     }
   }
 
   > .number {
+    color: $dark-gray;
+    float: right;
     display: inline-block;
+  }
+
+  > .title {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 5px;
   }
 
   > .message {
@@ -81,13 +93,35 @@
   }
 }
 
-.conversation-next {
-  border-top: 2px solid $gray;
-  margin-bottom: 30px;
-  margin-top: 160px;
-  padding-top: 20px;
+.conversation-next,
+.conversation-previous {
+  background-color: darken($lightest-gray, 2%);
+  color: $dark-blue;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
 
-  .conversation-next-heading {
-    margin-left: 30px;
+  &:hover {
+    background-color: darken($lightest-gray, 4%);
+    border-color: darken($light-gray, 4%);
+    color: darken($dark-blue, 4%);
+  }
+}
+
+.conversation-previous {
+  border-bottom: 2px solid $light-gray;
+  margin-bottom: 10px;
+
+  .glyphicon-chevron-up {
+    @include transform(rotate(45));
+  }
+}
+
+.conversation-next {
+  border-top: 2px solid $light-gray;
+  margin-top: 160px;
+
+  .glyphicon-chevron-down {
+    @include transform(rotate(45));
   }
 }

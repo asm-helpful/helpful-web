@@ -1,7 +1,7 @@
 module AvatarHelper
 
   def avatar_default(person)
-    avatar(person, 45, 'avatar-default')
+    avatar(person, 30, 'avatar-default')
   end
 
   # Public: View helper to provide an avatar div & img for a given user.

@@ -46,7 +46,7 @@ $text-color: $black;
 
 // Avatar
 
-$avatar-default-size: 45px;
+$avatar-default-size: 30px;
 $avatar-default-font-size: 18px;
 
 // Btn
@@ -58,11 +58,14 @@ $btn-large-padding: 10px 50px;
 
 // Navbar
 
-$navbar-default-color: $black;
-$navbar-default-bg: $light-gray;
-$navbar-default-border: none;
-$navbar-default-link-hover-bg: lighten($light-gray, 3%);
-$navbar-default-link-color: $light-black;
+$navbar-default-color: $white;
+$navbar-default-bg: $light-black;
+$navbar-default-border: lighten($light-black, 10%);
+$navbar-default-link-color: $white;
+$navbar-default-link-active-color: darken($white, 10%);
+$navbar-default-link-active-bg: darken($light-black, 10%);
+$navbar-default-link-hover-bg: darken($light-black, 10%);
+$navbar-default-link-hover-color: darken($white, 10%);
 $navbar-margin-bottom: 0;
 $navbar-default-brand-bg: $dark-blue;
 

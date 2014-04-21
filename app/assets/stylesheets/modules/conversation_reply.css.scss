@@ -2,11 +2,11 @@
   background-color: $white;
   border: 1px solid #dddddd;
   padding: 20px 20px 20px 40px;
+  margin-bottom: 40px;
 
   > .avatar {
     position: absolute;
-    margin-top: -5px;
-    margin-left: -(40px + (45px / 2));
+    margin-left: -(40px + (30px / 2));
   }
 
   textarea {
@@ -21,11 +21,9 @@
 
   .command-bar {
     background-color: $white;
-    margin-top: -6px;
-    height: 46px;
 
     .hints {
-      padding-top: 16px;
+      line-height: 36px;
       float: left;
 
       span {
