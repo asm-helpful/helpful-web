@@ -1,6 +1,6 @@
 <% if @previous_conversation %>
   <a class="conversation conversation-previous" href="<%= account_conversation_path(@account, @previous_conversation) %>">
-    <span class="glyphicon glyphicon-chevron-right glyphicon-chevron-up"></span>
+    <span class="glyphicon glyphicon-chevron-up"></span>
   </a>
 <% end %>
 
@@ -42,22 +42,27 @@
   <div class="summary">
     <%= avatar_default(conversation.creator_person) %>
 
-    <div class="message-count"></div>
+    <div class="detail">
+      <span class="badge badge-default message-count">
+        <span class="glyphicon glyphicon-envelope"></span>
+        <%= conversation.messages.count %>
+      </span>
 
-    <div class="timestamp">
-      <%= time_ago_in_words(conversation.created_at) %> <%= t('general.ago') %>
-    </div>
+      <div class="timestamp <%= 'timestamp-stale' if conversation.stale? %>">
+        <%= time_ago_in_words(conversation.created_at) %> <%= t('general.ago') %>
+      </div>
 
-    <ul class="participants">
-      <% conversation.participants.each do |participant| %>
-        <li>
-          <%= nickname(participant) %>
-        </li>
-      <% end %>
-    </ul>
+      <ul class="participants">
+        <% conversation.participants.each do |participant| %>
+          <li>
+            <%= nickname(participant) %>
+          </li>
+        <% end %>
+      </ul>
 
-    <div class="number">
-      #<%= conversation.number %>
+      <div class="number">
+        #<%= conversation.number %>
+      </div>
     </div>
 
     <div class="title">
@@ -106,6 +111,6 @@
 
 <% if @next_conversation %>
   <a class="conversation conversation-next" href="<%= account_conversation_path(@account, @next_conversation) %>">
-    <span class="glyphicon glyphicon-chevron-right glyphicon-chevron-down"></span>
+    <span class="glyphicon glyphicon-chevron-down"></span>
   </a>
 <% end %>

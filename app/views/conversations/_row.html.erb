@@ -14,22 +14,27 @@
   <div class="summary">
     <%= avatar_default(conversation.creator_person) %>
 
-    <div class="message-count"></div>
+    <div class="detail">
+      <span class="badge badge-default message-count">
+        <span class="glyphicon glyphicon-envelope"></span>
+        <%= conversation.messages.count %>
+      </span>
 
-    <div class="last-update">
-      <%= time_ago_in_words(conversation.last_activity_at) %> <%= t('general.ago') %>
-    </div>
+      <div class="timestamp <%= 'timestamp-stale' if conversation.stale? %>">
+        <%= time_ago_in_words(conversation.last_activity_at) %> <%= t('general.ago') %>
+      </div>
 
-    <ul class="participants">
-      <% conversation.participants.each do |participant| %>
-        <li>
-          <%= nickname(participant) %>
-        </li>
-      <% end %>
-    </ul>
+      <ul class="participants">
+        <% conversation.participants.each do |participant| %>
+          <li>
+            <%= nickname(participant) %>
+          </li>
+        <% end %>
+      </ul>
 
-    <div class="number">
-      #<%= conversation.number %>
+      <div class="number">
+        #<%= conversation.number %>
+      </div>
     </div>
 
     <div class="title">

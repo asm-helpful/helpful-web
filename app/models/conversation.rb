@@ -144,6 +144,10 @@ class Conversation < ActiveRecord::Base
     hidden
   end
 
+  def stale?
+    !archived? && last_activity_at < 3.days.ago
+  end
+
   private
 
   def message_added_callback(message)
