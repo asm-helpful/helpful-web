@@ -111,17 +111,9 @@
 .conversation-previous {
   border-bottom: 2px solid $light-gray;
   margin-bottom: 10px;
-
-  .glyphicon-chevron-up {
-    @include transform(rotate(45));
-  }
 }
 
 .conversation-next {
   border-top: 2px solid $light-gray;
   margin-top: 160px;
-
-  .glyphicon-chevron-down {
-    @include transform(rotate(45));
-  }
 }

@@ -1,6 +1,6 @@
 <% if @previous_conversation %>
   <a class="conversation conversation-previous" href="<%= account_conversation_path(@account, @previous_conversation) %>">
-    <span class="glyphicon glyphicon-chevron-right glyphicon-chevron-up"></span>
+    <span class="glyphicon glyphicon-chevron-up"></span>
   </a>
 <% end %>
 
@@ -106,6 +106,6 @@
 
 <% if @next_conversation %>
   <a class="conversation conversation-next" href="<%= account_conversation_path(@account, @next_conversation) %>">
-    <span class="glyphicon glyphicon-chevron-right glyphicon-chevron-down"></span>
+    <span class="glyphicon glyphicon-chevron-down"></span>
   </a>
 <% end %>
