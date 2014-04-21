@@ -1,3 +1,9 @@
+<% if @previous_conversation %>
+  <a class="conversation conversation-previous" href="<%= account_conversation_path(@account, @previous_conversation) %>">
+    <span class="glyphicon glyphicon-chevron-right glyphicon-chevron-up"></span>
+  </a>
+<% end %>
+
 <% if flash[:preference] %>
   <div class="alert alert-muted">
     <button type='button' class='close' data-dismiss='alert'>&times;</button>
@@ -100,36 +106,6 @@
 
 <% if @next_conversation %>
   <a class="conversation conversation-next" href="<%= account_conversation_path(@account, @next_conversation) %>">
-    <p class="text-muted text-uppercase"><%= t('.next_conversation') %></p>
-
-    <div class="summary">
-      <%= avatar_default(@next_conversation.creator_person) %>
-
-      <div class="timestamp">
-        <%= time_ago_in_words(@next_conversation.created_at) %> <%= t('general.ago') %>
-      </div>
-
-      <ul class="participants">
-        <% @next_conversation.participants.each do |participant| %>
-          <li>
-            <%= nickname(participant) %>
-          </li>
-        <% end %>
-      </ul>
-
-      <div class="number">
-        #<%= @next_conversation.number %>
-      </div>
-
-      <div class="title">
-        <%= summary(@next_conversation) %>
-      </div>
-    </div>
+    <span class="glyphicon glyphicon-chevron-right glyphicon-chevron-down"></span>
   </a>
-<% else %>
-  <div class="conversation conversation-next">
-    <p><%= t('.made_last_message') %></p>
-
-    <a class="btn btn-primary" href="<%= inbox_account_conversations_path(@account) %>"><%= t('.back_to_inbox') %></a>
-  </div>
 <% end %>
