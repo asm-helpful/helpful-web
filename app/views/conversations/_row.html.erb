@@ -20,7 +20,7 @@
         <%= conversation.messages.count %>
       </span>
 
-      <div class="last-update">
+      <div class="timestamp <%= 'timestamp-stale' if conversation.stale? %>">
         <%= time_ago_in_words(conversation.last_activity_at) %> <%= t('general.ago') %>
       </div>
 

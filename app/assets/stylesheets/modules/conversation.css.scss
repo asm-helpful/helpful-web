@@ -71,15 +71,25 @@
       }
 
       > .glyphicon {
+        font-size: 11px;
         margin-right: 2px;
       }
     }
 
-    > .last-update,
-    .timestamp {
+    > .timestamp {
       display: inline-block;
       font-weight: bold;
       margin-right: 6px;
+
+      &.timestamp-stale {
+        @extend .badge;
+
+        background-color: $red;
+        color: $white;
+        font-weight: normal;
+        padding-top: 4px;
+        padding-bottom: 3px;
+      }
     }
 
     > .participants {

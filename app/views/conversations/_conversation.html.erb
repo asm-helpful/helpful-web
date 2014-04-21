@@ -48,7 +48,7 @@
         <%= conversation.messages.count %>
       </span>
 
-      <div class="timestamp">
+      <div class="timestamp <%= 'timestamp-stale' if conversation.stale? %>">
         <%= time_ago_in_words(conversation.created_at) %> <%= t('general.ago') %>
       </div>
 
