@@ -5,10 +5,13 @@
 }
 
 .conversation-row {
-  background-color: $white;
-  border-bottom: 1px solid $gray;
+  background-color: darken($lightest-gray, 2%);
+  border-bottom: 1px solid $light-gray;
 
   &:hover {
+    background-color: $white;
+    border-bottom: 1px solid $light-gray;
+
     .actions {
       opacity: 1;
     }
