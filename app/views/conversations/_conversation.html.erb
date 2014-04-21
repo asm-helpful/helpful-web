@@ -7,12 +7,12 @@
     <div class="form-actions">
       <%= form_for @account, method: :put, html: { class: 'form-inline' } do |f| %>
         <%= f.hidden_field :prefers_archiving, value: true %>
-        <%= f.submit 'Auto-archive conversations', class: 'btn btn-danger' %>
+        <%= f.submit 'Auto-archive conversations', class: 'btn btn-default' %>
       <% end %>
 
       <%= form_for @account, method: :put, html: { class: 'form-inline' } do |f| %>
         <%= f.hidden_field :prefers_archiving, value: false %>
-        <%= f.submit 'Just create new messages', class: 'btn btn-primary' %>
+        <%= f.submit 'Just create new messages', class: 'btn btn-default' %>
       <% end %>
     </div>
   </div>
@@ -23,20 +23,23 @@
     <% unless @conversation.archived? %>
       <%= form_for [@account, @conversation] do |f| %>
         <%= f.hidden_field :archive, value: true %>
-        <%= f.submit t('shared.navbar.archive'), class: 'btn btn-danger' %>
+        <%= f.submit t('conversations.row.archive'), class: 'btn btn-default' %>
+      <% end %>
+
+      <%= form_for [@account, @conversation] do |f| %>
+        <%= f.hidden_field :respond_later, value: true %>
+        <%= f.submit t('conversations.row.later'), class: 'btn btn-default', style: 'margin-top: 10px' %>
       <% end %>
     <% end %>
   </div>
 
   <div class="summary">
-    <div class="timestamp">
-      <%= time_ago_in_words(conversation.created_at) %> <%= t('general.ago') %>
-    </div>
-
     <%= avatar_default(conversation.creator_person) %>
 
-    <div class="title">
-      <%= summary(conversation) %>
+    <div class="message-count"></div>
+
+    <div class="timestamp">
+      <%= time_ago_in_words(conversation.created_at) %> <%= t('general.ago') %>
     </div>
 
     <ul class="participants">
@@ -51,7 +54,8 @@
       #<%= conversation.number %>
     </div>
 
-    <div class="icons">
+    <div class="title">
+      <%= summary(conversation) %>
     </div>
 
     <div class="message">
@@ -86,8 +90,9 @@
         </div>
 
         <div class="pull-right">
-          <input class="btn btn-primary" type="submit" name="commit" value="<%= t('.send') %>">
+          <input class="btn btn-secondary" type="submit" name="commit" value="<%= t('.send') %>">
         </div>
+        <div class="clearfix"></dv>
       </div>
     <% end %>
   </div>
@@ -98,14 +103,10 @@
     <p class="text-muted text-uppercase"><%= t('.next_conversation') %></p>
 
     <div class="summary">
-      <div class="timestamp">
-        <%= time_ago_in_words(@next_conversation.created_at) %> <%= t('general.ago') %>
-      </div>
-
       <%= avatar_default(@next_conversation.creator_person) %>
 
-      <div class="title">
-        <%= summary(@next_conversation) %>
+      <div class="timestamp">
+        <%= time_ago_in_words(@next_conversation.created_at) %> <%= t('general.ago') %>
       </div>
 
       <ul class="participants">
@@ -118,6 +119,10 @@
 
       <div class="number">
         #<%= @next_conversation.number %>
+      </div>
+
+      <div class="title">
+        <%= summary(@next_conversation) %>
       </div>
     </div>
   </a>

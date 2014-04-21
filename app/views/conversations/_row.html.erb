@@ -12,17 +12,12 @@
   <% end %>
 
   <div class="summary">
-    <div class="last-update">
-      <%= time_ago_in_words(conversation.last_activity_at) %> <%= t('general.ago') %>
-    </div>
-
     <%= avatar_default(conversation.creator_person) %>
 
-    <div class="title">
-      <%= summary(conversation) %>
-    </div>
+    <div class="message-count"></div>
 
-    <div class="message-count">
+    <div class="last-update">
+      <%= time_ago_in_words(conversation.last_activity_at) %> <%= t('general.ago') %>
     </div>
 
     <ul class="participants">
@@ -37,7 +32,8 @@
       #<%= conversation.number %>
     </div>
 
-    <div class="icons">
+    <div class="title">
+      <%= summary(conversation) %>
     </div>
   </div>
 </a>

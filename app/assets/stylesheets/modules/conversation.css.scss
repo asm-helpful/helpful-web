@@ -13,12 +13,12 @@
     border-bottom: 1px solid $light-gray;
 
     .actions {
-      opacity: 1;
+      visibility: visible;
     }
   }
 
   .actions {
-    opacity: 0;
+    visibility: hidden;
   }
 }
 
@@ -34,7 +34,7 @@
     opacity: 1;
   }
 
-  > button {
+  > button, input {
     display: block;
     width: 90px;
 
@@ -48,25 +48,16 @@
   color: $light-black;
   padding: 30px 40px;
 
-  > .last-update,
-  .timestamp {
-    color: $black;
-    line-height: 45px;
-    margin-left: -300px;
-    position: absolute;
-    text-align: right;
-    width: 200px;
-  }
-
   > .avatar {
     position: absolute;
-    margin-left: -(40px + (45px / 2));
+    margin-left: -(40px + (30px / 2));
   }
 
-  > .title {
-    color: #333;
-    font-size: 24px;
-    margin-bottom: 5px;
+  > .last-update,
+  .timestamp {
+    display: inline-block;
+    font-weight: bold;
+    margin-right: 6px;
   }
 
   > .participants {
@@ -76,13 +67,22 @@
     margin-bottom: 0;
 
     > li {
+      color: $dark-gray;
       display: inline-block;
-      margin-right: 10px;
+      margin-right: 6px;
     }
   }
 
   > .number {
+    color: $dark-gray;
+    float: right;
     display: inline-block;
+  }
+
+  > .title {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 5px;
   }
 
   > .message {
