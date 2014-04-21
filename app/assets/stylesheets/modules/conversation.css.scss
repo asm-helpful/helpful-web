@@ -53,30 +53,53 @@
     margin-left: -(40px + (30px / 2));
   }
 
-  > .last-update,
-  .timestamp {
-    display: inline-block;
-    font-weight: bold;
-    margin-right: 6px;
-  }
+  > .detail {
+    margin-top: 5px;
+    margin-bottom: 5px;
 
-  > .participants {
-    display: inline-block;
-    list-style: none;
-    padding-left: 0;
-    margin-bottom: 0;
+    > .message-count {
+      background-color: darken($lightest-gray, 8%);
+      color: darken($dark-blue, 15%);
+      font-weight: normal;
+      margin-right: 6px;
+      padding-left: 10px;
+      padding-right: 10px;
 
-    > li {
-      color: $dark-gray;
+      &.message-count-unread {
+        background-color: $bright-blue;
+        color: $white;
+      }
+
+      > .glyphicon {
+        margin-right: 2px;
+      }
+    }
+
+    > .last-update,
+    .timestamp {
       display: inline-block;
+      font-weight: bold;
       margin-right: 6px;
     }
-  }
 
-  > .number {
-    color: $dark-gray;
-    float: right;
-    display: inline-block;
+    > .participants {
+      display: inline-block;
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 0;
+
+      > li {
+        color: $dark-gray;
+        display: inline-block;
+        margin-right: 6px;
+      }
+    }
+
+    > .number {
+      color: $dark-gray;
+      float: right;
+      display: inline-block;
+    }
   }
 
   > .title {
