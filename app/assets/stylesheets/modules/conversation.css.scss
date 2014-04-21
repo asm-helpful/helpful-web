@@ -30,6 +30,15 @@
   &:hover {
     opacity: 1;
   }
+
+  > button {
+    display: block;
+    width: 90px;
+
+    &:first-child {
+      margin-bottom: 10px;
+    }
+  }
 }
 
 .summary {
