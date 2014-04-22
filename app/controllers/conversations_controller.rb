@@ -33,7 +33,7 @@ class ConversationsController < ApplicationController
 
   def show
     find_conversation!
-    @messages = @conversation.messages
+    @stream = ConversationStream.new(@conversation)
     @inbox = ConversationsInbox.new(@account, current_user)
     @next_conversation = @inbox.next_conversation(@conversation)
     @previous_conversation = @inbox.previous_conversation(@conversation)

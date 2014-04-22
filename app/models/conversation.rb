@@ -22,6 +22,10 @@ class Conversation < ActiveRecord::Base
 
   has_many :respond_laters
 
+  has_many :assignment_events
+
+  has_many :tag_events
+
   validates :account, presence: true
 
   default_scope -> { paid }
