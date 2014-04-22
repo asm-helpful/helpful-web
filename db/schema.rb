@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140417221953) do
+ActiveRecord::Schema.define(version: 20140422212801) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -207,6 +207,16 @@ ActiveRecord::Schema.define(version: 20140417221953) do
   end
 
   add_index "sequential", ["model", "column", "scope", "scope_value"], name: "index_sequential_on_model_and_column_and_scope_and_scope_value", unique: true, using: :btree
+
+  create_table "tag_events", force: true do |t|
+    t.uuid     "conversation_id"
+    t.uuid     "user_id"
+    t.string   "tag"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tag_events", ["conversation_id"], name: "index_tag_events_on_conversation_id", using: :btree
 
   create_table "users", id: false, force: true do |t|
     t.uuid     "id",                                  null: false

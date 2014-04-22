@@ -9,6 +9,12 @@ class TagsController < ApplicationController
     @conversation.tags = (@conversation.tags + [params[:tag]]).uniq
     @conversation.save
 
+    TagEvent.create(
+      conversation: @conversation,
+      user: current_user,
+      tag: params[:tag]
+    )
+
     respond_with @conversation, location: account_conversation_path(@account, @conversation)
   end
 
