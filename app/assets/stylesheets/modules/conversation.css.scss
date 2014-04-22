@@ -23,13 +23,10 @@
 }
 
 .actions {
-  margin-left: 700px;
-  margin-top: -4px;
+  margin-right: -130px;
   padding-top: 30px;
-  padding-right: 40px;
-  padding-bottom: 30px;
   padding-left: 40px;
-  position: absolute;
+  float: right;
 
   &:hover {
     opacity: 1;
