@@ -31,8 +31,8 @@ var applyTextcomplete = function($element) {
   }];
 
   var tagConversation = function(match) {
-    var account = $("meta[name='account-slug']").attr('content');
-    var conversation = $("meta[name='conversation-number']").attr('content');
+    var account = $("[name='account-slug']").val();
+    var conversation = $("[name='conversation-number']").val();
     var tagConversationPath = '/' + account + '/' + conversation + '/tags';
 
     $.post(
@@ -51,8 +51,8 @@ var applyTextcomplete = function($element) {
   };
 
   var assignConversation = function(match) {
-    var account = $("meta[name='account-slug']").attr('content');
-    var conversation = $("meta[name='conversation-number']").attr('content');
+    var account = $("[name='account-slug']").val();
+    var conversation = $("[name='conversation-number']").val();
     var conversationPath = '/' + account + '/' + conversation;
 
     $.post(
@@ -71,7 +71,7 @@ var applyTextcomplete = function($element) {
   };
 
   var useCannedResponse = function(match) {
-    var account = $("meta[name='account-slug']").attr('content');
+    var account = $("[name='account-slug']").val();
     var cannedResponsePath = '/' + account + '/canned_responses/' + match.id;
 
     $.getJSON(

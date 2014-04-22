@@ -12,16 +12,15 @@
   <%= javascript_include_tag "//d3dy5gmtp8yhk7.cloudfront.net/2.1/pusher.min.js" %>
   <%= csrf_meta_tags %>
   <meta name="pusher-key" content="<%= Pusher.key %>">
-
+</head>
+<body>
   <% if @account %>
-    <meta name="account-slug" content="<%= @account.slug %>">
+    <input type="hidden" name="account-slug" value="<%= @account.slug %>">
   <% end %>
 
   <% if @conversation %>
-    <meta name="conversation-number" content="<%= @conversation.number %>">
+    <input type="hidden" name="conversation-number" value="<%= @conversation.number %>">
   <% end %>
-</head>
-<body>
   <%= yield %>
 </body>
 </html>
