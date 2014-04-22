@@ -4,9 +4,9 @@ class MessagesController < ApplicationController
   def create
     find_account!
 
-    action = CommandBarAction.new(message_params)
+    message = Message.new(message_params)
 
-    if action.save
+    if message.save
       Analytics.track(
         user_id: current_user.id,
         event: 'New Message',
@@ -14,20 +14,20 @@ class MessagesController < ApplicationController
       )
 
       if @account.prefers_archiving?
-        action.conversation.archive!
+        message.conversation.archive!
 
         redirect_to inbox_account_conversations_path(@account),
           notice: 'The conversation has been archived and the message sent.'
       else
         flash[:preference] = @account.prefers_archiving.nil?
 
-        redirect_to account_conversation_path(@account, action.conversation),
+        redirect_to account_conversation_path(@account, message.conversation),
           notice: 'The message has been sent'
       end
     else
       Analytics.track(user_id: current_user.id, event: 'Message Save Problem')
 
-      redirect_to account_conversation_path(@account, action.conversation),
+      redirect_to account_conversation_path(@account, message.conversation),
         alert: "Problem"
     end
   end
