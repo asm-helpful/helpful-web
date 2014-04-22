@@ -7,6 +7,7 @@ describe ConversationManager do
   let(:params) { double('params') }
 
   it 'takes an action if needed' do
+    expect(conversation_manager).to receive(:create_assignment_event) { nil }
     expect(conversation_manager).to receive(:lookup_action) { :archive! }
 
     expect(conversation).to receive(:archive!)
@@ -15,6 +16,7 @@ describe ConversationManager do
   end
 
   it 'just updates the conversation if an action is not matched' do
+    expect(conversation_manager).to receive(:create_assignment_event) { nil }
     expect(conversation_manager).to receive(:lookup_action) { nil }
 
     expect(conversation).to receive(:update).with(params)

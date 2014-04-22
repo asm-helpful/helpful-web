@@ -18,6 +18,8 @@ class ConversationManager
     else
       update_conversation(params)
     end
+
+    create_assignment_event
   end
 
   def take_action(action)
@@ -48,5 +50,19 @@ class ConversationManager
     elsif params[:respond_later]
       :respond_later!
     end
+  end
+
+  def create_assignment_event
+    return unless conversation.previous_changes[:user_id]
+
+    AssignmentEvent.create(
+      conversation: conversation,
+      user: user,
+      assignee: assignee
+    )
+  end
+
+  def assignee
+    conversation.user
   end
 end

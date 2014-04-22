@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140422212801) do
+ActiveRecord::Schema.define(version: 20140422214222) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,16 @@ ActiveRecord::Schema.define(version: 20140422212801) do
   add_index "accounts", ["billing_plan_id"], name: "index_accounts_on_billing_plan_id", using: :btree
   add_index "accounts", ["chargify_subscription_id"], name: "index_accounts_on_chargify_subscription_id", using: :btree
   add_index "accounts", ["slug"], name: "index_accounts_on_slug", unique: true, using: :btree
+
+  create_table "assignment_events", force: true do |t|
+    t.uuid     "conversation_id"
+    t.uuid     "user_id"
+    t.uuid     "assignee_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "assignment_events", ["conversation_id"], name: "index_assignment_events_on_conversation_id", using: :btree
 
   create_table "attachments", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
     t.uuid     "message_id",   null: false
