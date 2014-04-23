@@ -24,7 +24,7 @@
   </div>
 <% end %>
 
-<div class="conversation">
+<div class="conversation conversation-detail">
   <div class="actions">
     <% unless @conversation.archived? %>
       <%= form_for [@account, @conversation] do |f| %>
@@ -105,7 +105,7 @@
         <div class="pull-right">
           <input class="btn btn-secondary" type="submit" name="commit" value="<%= t('.send') %>">
         </div>
-        <div class="clearfix"></dv>
+        <div class="clearfix"></div>
       </div>
     <% end %>
   </div>
