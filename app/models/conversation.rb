@@ -94,7 +94,7 @@ class Conversation < ActiveRecord::Base
   end
 
   def messages_count
-    ['messages_count'] || messages.count
+    self['messages_count'] || messages.count
   end
 
   # Public: Conversation specific email address for incoming email replies.
