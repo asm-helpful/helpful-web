@@ -143,10 +143,12 @@
   padding-top: 10px;
   padding-bottom: 10px;
 
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: darken($lightest-gray, 4%);
     border-color: darken($light-gray, 4%);
     color: darken($dark-blue, 4%);
+    outline: none;
   }
 }
 
