@@ -1,0 +1,19 @@
+<div class="event">
+  <%= avatar_default(assignment_event.user.person) %>
+
+  <strong>
+    <%= assignment_event.user.person.name %> assigned
+  </strong>
+
+  <%= avatar_default(assignment_event.assignee.person) %>
+
+  <strong>
+    <%= assignment_event.assignee.person.name %>
+  </strong>
+
+  to this conversation
+
+  <span class="timestamp">
+    <%= time_ago_in_words(assignment_event.updated_at) %> <%= t('general.ago') %>
+  </span>
+</div>

@@ -71,19 +71,19 @@
 
     <div class="message">
       <div class="content">
-        <%== markdown(conversation.first_message.content) %>
+        <%== markdown(@stream.first_item.content) %>
       </div>
 
-      <% if conversation.first_message.attachments.present? %>
+      <% if @stream.first_item.attachments.present? %>
         <div class="attachments">
-          <%= render 'messages/attachments', attachments: conversation.first_message.attachments %>
+          <%= render 'messages/attachments', attachments: @stream.first_item.attachments %>
         </div>
       <% end %>
     </div>
   </div>
 
-  <% conversation.subsequent_messages.each do |message| %>
-    <%= render 'messages/message', message: message %>
+  <% @stream.subsequent_items.each do |item| %>
+    <%= render item %>
   <% end %>
 
   <div class="conversation-reply">
