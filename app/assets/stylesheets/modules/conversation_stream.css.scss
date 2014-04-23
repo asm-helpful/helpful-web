@@ -1,9 +1,5 @@
 .conversation-stream {
   > div {
     border-top: 1px solid $light-gray;
-
-    &:first-child {
-      border-top: none;
-    }
   }
 }

@@ -13,7 +13,6 @@
 
   &:hover {
     background-color: $white;
-    border-bottom: 1px solid $light-gray;
 
     .actions {
       visibility: visible;
@@ -22,6 +21,12 @@
 
   .actions {
     visibility: hidden;
+  }
+
+  .summary {
+    margin: 0;
+    padding: 30px 40px;
+    border-bottom: 1px solid $light-gray;
   }
 }
 
@@ -46,7 +51,6 @@
 }
 
 .summary {
-  border-bottom: 1px solid $light-gray;
   color: $light-black;
   margin-left: 40px;
   margin-right: 40px;
