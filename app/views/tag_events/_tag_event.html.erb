@@ -1,0 +1,17 @@
+<div class="event">
+  <%= avatar_default(tag_event.user.person) %>
+
+  <strong>
+    <%= tag_event.user.person.name %> tagged
+  </strong>
+
+  this conversation with
+
+  <a href="#" class="tag">
+    #<%= tag_event.tag %>
+  </a>
+
+  <span class="timestamp">
+    <%= time_ago_in_words(tag_event.updated_at) %> <%= t('general.ago') %>
+  </span>
+</div>

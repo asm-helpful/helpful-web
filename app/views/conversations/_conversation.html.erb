@@ -24,7 +24,7 @@
   </div>
 <% end %>
 
-<div class="conversation">
+<div class="conversation conversation-detail">
   <div class="actions">
     <% unless @conversation.archived? %>
       <%= form_for [@account, @conversation] do |f| %>
@@ -71,20 +71,22 @@
 
     <div class="message">
       <div class="content">
-        <%== markdown(conversation.first_message.content) %>
+        <%== markdown(@stream.first_item.content) %>
       </div>
 
-      <% if conversation.first_message.attachments.present? %>
+      <% if @stream.first_item.attachments.present? %>
         <div class="attachments">
-          <%= render 'messages/attachments', attachments: conversation.first_message.attachments %>
+          <%= render 'messages/attachments', attachments: @stream.first_item.attachments %>
         </div>
       <% end %>
     </div>
   </div>
 
-  <% conversation.subsequent_messages.each do |message| %>
-    <%= render 'messages/message', message: message %>
-  <% end %>
+  <div class="conversation-stream">
+    <% @stream.subsequent_items.each do |item| %>
+      <%= render item %>
+    <% end %>
+  </div>
 
   <div class="conversation-reply">
     <%= avatar_default(current_user.person) %>
@@ -103,7 +105,7 @@
         <div class="pull-right">
           <input class="btn btn-secondary" type="submit" name="commit" value="<%= t('.send') %>">
         </div>
-        <div class="clearfix"></dv>
+        <div class="clearfix"></div>
       </div>
     <% end %>
   </div>

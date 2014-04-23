@@ -1,7 +1,10 @@
 .message {
   color: $light-black;
   line-height: 24px;
-  padding: 30px 40px;
+  margin-left: 40px;
+  margin-right: 40px;
+  padding-bottom: 30px;
+  padding-top: 30px;
 
   > .avatar {
     position: absolute;

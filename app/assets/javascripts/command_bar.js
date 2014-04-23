@@ -31,47 +31,33 @@ var applyTextcomplete = function($element) {
   }];
 
   var tagConversation = function(match) {
-    var account = $("meta[name='account-slug']").attr('content');
-    var conversation = $("meta[name='conversation-number']").attr('content');
+    var account = $("[name='account-slug']").val();
+    var conversation = $("[name='conversation-number']").val();
     var tagConversationPath = '/' + account + '/' + conversation + '/tags';
 
     $.post(
       tagConversationPath,
       { tag: match.value },
-      function() {
-        $notice = $('<div class="alert alert-success">').text('Successfully tagged the conversation with #' + match.value);
-        $notice.append(
-          $('<button type="button" class="close" data-dismiss="alert">').html('&times;')
-        );
-
-        $('.conversation-reply').prepend($notice);
-      },
+      function() { window.location.reload(); },
       'json'
     );
   };
 
   var assignConversation = function(match) {
-    var account = $("meta[name='account-slug']").attr('content');
-    var conversation = $("meta[name='conversation-number']").attr('content');
+    var account = $("[name='account-slug']").val();
+    var conversation = $("[name='conversation-number']").val();
     var conversationPath = '/' + account + '/' + conversation;
 
     $.post(
       conversationPath,
       { conversation: { user_id: match.user_id }, _method: 'patch' },
-      function() {
-        $notice = $('<div class="alert alert-success">').text('Successfully assigned the conversation to @' + match.value);
-        $notice.append(
-          $('<button type="button" class="close" data-dismiss="alert">').html('&times;')
-        );
-
-        $('.conversation-reply').prepend($notice);
-      },
+      function() { window.location.reload(); },
       'json'
     );
   };
 
   var useCannedResponse = function(match) {
-    var account = $("meta[name='account-slug']").attr('content');
+    var account = $("[name='account-slug']").val();
     var cannedResponsePath = '/' + account + '/canned_responses/' + match.id;
 
     $.getJSON(

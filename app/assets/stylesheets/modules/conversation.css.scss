@@ -4,9 +4,12 @@
   display: block;
 }
 
+.conversation-detail {
+  border-left: 2px solid $light-gray;
+}
+
 .conversation-row {
   background-color: darken($lightest-gray, 2%);
-  border-bottom: 1px solid $light-gray;
 
   &:hover {
     background-color: $white;
@@ -43,8 +46,12 @@
 }
 
 .summary {
+  border-bottom: 1px solid $light-gray;
   color: $light-black;
-  padding: 30px 40px;
+  margin-left: 40px;
+  margin-right: 40px;
+  padding-bottom: 30px;
+  margin-top: 30px;
 
   > .avatar {
     position: absolute;
@@ -118,9 +125,9 @@
 
   > .message {
     padding-top: 20px;
-    padding-right: 0;
     padding-bottom: 0;
-    padding-left: 0;
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 
