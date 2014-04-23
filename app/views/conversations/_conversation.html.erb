@@ -82,9 +82,11 @@
     </div>
   </div>
 
-  <% @stream.subsequent_items.each do |item| %>
-    <%= render item %>
-  <% end %>
+  <div class="conversation-stream">
+    <% @stream.subsequent_items.each do |item| %>
+      <%= render item %>
+    <% end %>
+  </div>
 
   <div class="conversation-reply">
     <%= avatar_default(current_user.person) %>
