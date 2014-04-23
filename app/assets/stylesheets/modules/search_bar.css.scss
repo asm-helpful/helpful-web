@@ -18,7 +18,7 @@
       color: $navbar-default-link-hover-color;
     }
 
-    &:focus {
+    &:focus, &.filled {
       background-color: $white;
       color: $black;
 
