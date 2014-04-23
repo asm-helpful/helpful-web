@@ -38,14 +38,7 @@ var applyTextcomplete = function($element) {
     $.post(
       tagConversationPath,
       { tag: match.value },
-      function() {
-        $notice = $('<div class="alert alert-success">').text('Successfully tagged the conversation with #' + match.value);
-        $notice.append(
-          $('<button type="button" class="close" data-dismiss="alert">').html('&times;')
-        );
-
-        $('.conversation-reply').prepend($notice);
-      },
+      function() { window.location.reload(); },
       'json'
     );
   };
@@ -58,14 +51,7 @@ var applyTextcomplete = function($element) {
     $.post(
       conversationPath,
       { conversation: { user_id: match.user_id }, _method: 'patch' },
-      function() {
-        $notice = $('<div class="alert alert-success">').text('Successfully assigned the conversation to @' + match.value);
-        $notice.append(
-          $('<button type="button" class="close" data-dismiss="alert">').html('&times;')
-        );
-
-        $('.conversation-reply').prepend($notice);
-      },
+      function() { window.location.reload(); },
       'json'
     );
   };
