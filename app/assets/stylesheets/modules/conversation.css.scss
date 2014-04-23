@@ -6,6 +6,10 @@
 
 .conversation-detail {
   border-left: 2px solid $light-gray;
+
+  .actions {
+    padding-top: 0;
+  }
 }
 
 .conversation-row {
