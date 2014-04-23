@@ -93,6 +93,10 @@ class Conversation < ActiveRecord::Base
     first_message.person
   end
 
+  def messages_count
+    ['messages_count'] || messages.count
+  end
+
   # Public: Conversation specific email address for incoming email replies.
   #
   # Returns the Mail::Address customers should send email replies to.
