@@ -156,6 +156,7 @@ GEM
     multi_json (1.9.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
+    newrelic_rpm (3.6.8.168)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
     oauth2 (0.9.3)
@@ -331,6 +332,7 @@ DEPENDENCIES
   jasmine!
   jquery-rails
   jquery-textcomplete-rails
+  newrelic_rpm
   oauth2
   pg
   premailer-rails
