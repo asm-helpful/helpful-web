@@ -15,6 +15,18 @@ class Conversation < ActiveRecord::Base
     after_add: :message_added_callback,
     dependent: :destroy
 
+  has_one :first_message,
+    -> { order('messages.updated_at ASC').limit(1) },
+    class_name: 'Message'
+
+  has_many :subsequent_messages,
+    -> { order('messages.updated_at ASC').offset(1) },
+    class_name: 'Message'
+
+  has_one :most_recent_message,
+    -> { order('messages.updated_at DESC').limit(1) },
+    class_name: 'Message'
+
   has_many :participants,
     -> { uniq },
     through: :messages,
@@ -43,6 +55,8 @@ class Conversation < ActiveRecord::Base
   scope :this_month, -> { where("DATE_TRUNC('month', created_at) = ?", Time.now.utc.beginning_of_month) }
 
   scope :unresolved, -> { where(archived: false) }
+
+  scope :with_messages_count, -> { select('conversations.*, (SELECT COUNT(messages.id) FROM messages WHERE messages.conversation_id = conversations.id) AS messages_count') }
 
   sequential column: :number,
     scope: :account_id
@@ -79,14 +93,6 @@ class Conversation < ActiveRecord::Base
     first_message.person
   end
 
-  def first_message
-    messages.order('created_at ASC').first
-  end
-
-  def subsequent_messages
-    messages.order('created_at ASC').offset(1)
-  end
-
   # Public: Conversation specific email address for incoming email replies.
   #
   # Returns the Mail::Address customers should send email replies to.
@@ -110,10 +116,6 @@ class Conversation < ActiveRecord::Base
   # Returns a Conversation or raises ActiveRecord::RecordNotFound.
   def self.match_mailbox!(email)
     self.match_mailbox(email) || raise(ActiveRecord::RecordNotFound)
-  end
-
-  def most_recent_message
-    messages.most_recent.first
   end
 
   def last_activity_at
