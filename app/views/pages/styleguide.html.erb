@@ -1,258 +1,208 @@
-<div class="column-wrapper">
-  <div class="column column-navbar">
-    <div class="navbar">
-      <span class="logo logo-xs"></span>
+<div class="navbar navbar-default navbar-static-top">
+
+  <div class="container">
+
+    <div class="navbar-header">
+      <span class="navbar-brand">Styleguide</span>
     </div>
-  </div>
-  <div class="column column-subnav">
-    <h2 class="column-heading">Styleguide</h4>
-    <h5 class="heading-bar column-heading">Brand</h5>
-    <ul class="column-navigation">
-      <li><a href="#styleguide-brand" class="text-muted">Brand</a></li>
-      <li><a href="#styleguide-typography" class="text-muted">Typography</a></li>
-      <li><a href="#styleguide-colors" class="text-muted">Colors</a></li>
-    </ul>
-    <h5 class="heading-bar column-heading">Elements</h5>
-    <ul class="column-navigation">
-      <li><a href="#styleguide-buttons" class="text-muted">Buttons</a></li>
-      <li><a href="#styleguide-forms" class="text-muted">Forms</a></li>
-      <li><a href="#styleguide-alerts" class="text-muted">Alerts</a></li>
-      <li><a href="#styleguide-panels" class="text-muted">Panels</a></li>
-    </ul>
+
   </div>
 
+</div>
 
-  <div class="column column-detail">
+<div class="container">
 
-    <header class="column-heading">
-      <h2 class="text-black">A Helpful Styleguide</h2>
-      <p class="text-weak text-smaller">
-        A guide to the Helpful style, brand, and interface.
-      </p>
-    </header>
+  <h1 class="page-title">Page Title</h1>
 
-    <div class="column-content">
+  <form role="form">
 
-      <h2 id="styleguide-brand">Brand</h2>
-      <a href="https://github.com/asm-helpful/helpful-web/blob/master/app/assets/stylesheets/base/brand.css.scss">app/assets/stylesheets/base/brand.css.scss</a>
+    <h2 class="form-heading">Form Heading</h1>
 
-      <div class="example">
-        <p>
-          <div class="logo logo-default">
-            <%= image_tag('logo.png', width: 60, height: 60) %>
-          </div>
-        </p>
+    <fieldset>
 
-        <p>
-          <div class="logo logo-wordmark">Helpful</div>
-        </p>
+      <div class="form-group">
+        <label class="control-label">Label</label>
+        <input type="text" class="form-control">
       </div>
 
+      <div class="row">
 
-      <h2 id="styleguide-typography">Typography</h2>
-      <a href="https://github.com/asm-helpful/helpful-web/blob/master/app/assets/stylesheets/base/typography.css.scss">app/assets/stylesheets/base/typography.css.scss</a>
-
-      <p>All text is set in <strong>Lato</strong>. Some headings are set in uppercase <strong>Montserrat</strong>.</p>
-
-      <p>The base font-size is 18px, with a line-height of 1.5.</p>
-
-      <p>Links don't have a text-decoration: underline, but a border-bottom instead, with a slightly more transparent version of the color of the text (see color section).</p>
-
-      <div class="example">
-        <h1>Heading One</h1>
-        <p>An example paragraph with <strong>strong text</strong>, <em>emphasized text</em> and <a href="#">a link</a>, spanning multiple lines so you can see the line-height.</p>
-
-        <h2>Heading Two</h2>
-        <p>An example paragraph with <strong>strong text</strong> and <em>emphasized text</em>, spanning multiple lines so you can see the line-height.</p>
-
-        <h3>Heading Three</h3>
-        <p>An example paragraph with <strong>strong text</strong> and <em>emphasized text</em>, spanning multiple lines so you can see the line-height.</p>
-
-        <h4>Heading Four</h4>
-        <p>An example paragraph with <strong>strong text</strong> and <em>emphasized text</em>, spanning multiple lines so you can see the line-height.</p>
-
-        <h5>Heading Five</h5>
-        <p>An example paragraph with <strong>strong text</strong> and <em>emphasized text</em>, spanning multiple lines so you can see the line-height.</p>
-
-        <h6>Heading Six</h6>
-        <p>
-          An example paragraph with <strong>strong text</strong> and <em>emphasized text</em>, spanning multiple lines so you can see the line-height.
-        </p>
-      </div>
-
-
-      <h2 id="styleguide-colors">Colors</h2>
-      <a href="https://github.com/asm-helpful/helpful-web/blob/master/app/assets/stylesheets/base/colors.css.scss">app/assets/stylesheets/base/colors.css.scss</a>
-
-      <p>
-        Never use full black, instead opt for <code class="text-black">$black</code> or maybe even <code class="text-muted">$muted</code> gray. There is a <code class="text-primary">$primary</code> color for main actions. Other colors indicate the mood of the action such as <code class="text-success">$success</code>, <code class="text-warning">$warning</code> and <code class="text-danger">$danger</code>.
-      </p>
-
-      <p>Basic <a href="#">text links</a> use the <code>$primary</code> color.</p>
-
-      <p>If you need a tinted version (like for drop shadows, see buttons section), use SCSS <code>darken($color, <strong>15%</strong>)</code>.</p>
-
-      <div class="example">
-        <ul class="color-swatch">
-          <li class="bg-white text-black">White</li>
-          <li class="bg-black text-white">Black</li>
-          <li class="bg-primary text-white">Primary</li>
-          <li class="bg-success text-white">Success</li>
-          <li class="bg-warning text-white">Warning</li>
-          <li class="bg-danger text-white">Danger</li>
-          <li class="bg-muted text-white">Muted</li>
-        </ul>
-      </div>
-
-
-      <h2 id="styleguide-buttons">Buttons</h2>
-      <a href="https://github.com/asm-helpful/helpful-web/blob/master/app/assets/stylesheets/modules/btn.css.scss">app/assets/stylesheets/modules/btn.css.scss</a>
-
-      <p>All buttons have a disabled (opacity: .5) state, assigned with <code>disabled="disabled"</code></p>
-      <p>Buttons get a little offset look with a 2px box-shadow on the y-axis in 15% darkened background-color.</p>
-
-      <div class="example">
-        <p><a href="#" class="btn btn-default">Default button</a></p>
-        <p><a href="#" class="btn btn-default" disabled="disabled">Default disabled button</a></p>
-        <p><a href="#" class="btn btn-primary">Primary button</a></p>
-        <p><a href="#" class="btn btn-primary" disabled="disabled">Primary button disabled</a></p>
-        <p><a href="#" class="btn btn-success">Positive button</a></p>
-        <p><a href="#" class="btn btn-success" disabled="disabled">Positive button disabled</a></p>
-        <p><a href="#" class="btn btn-warning">Warning button</a></p>
-        <p><a href="#" class="btn btn-warning" disabled="disabled">Warning button disabled</a></p>
-        <p><a href="#" class="btn btn-danger">Danger button</a></p>
-        <p><a href="#" class="btn btn-danger" disabled="disabled">Danger button disabled</a></p>
-      </div>
-
-
-      <h3>Button Groups</h3>
-      <a href="https://github.com/asm-helpful/helpful-web/blob/master/app/assets/stylesheets/modules/btn_group.css.scss">app/assets/stylesheets/modules/btn_group.css.scss</a>
-
-      <p>Logically grouped buttons. Usually used when a user can take an exclusive action.</p>
-
-      <div class="example">
-        <div class="btn-group">
-          <div class="btn">Example</div>
-          <div class="btn">Example</div>
-          <div class="btn">Example</div>
-        </div>
-      </div>
-
-
-      <h2 id="styleguide-forms">Forms</h2>
-      <a href="https://github.com/asm-helpful/helpful-web/blob/master/app/assets/stylesheets/modules/form.css.scss">app/assets/stylesheets/modules/form.css.scss</a>
-
-
-      <div class="example">
-
-        <form class="form" role="form">
-          <div class="form-group">
-            <label for="text1" class="form-label">Label</label>
-            <input type="text" class="form-control" id="text1" placeholder="Placeholder" />
-          </div>
-
-          <div class="form-group" data-form-valid>
-            <label for="text2" class="form-label">Label for valid input</label>
-            <input type="text" class="form-control"  id="text2" placeholder="Placeholder" />
-          </div>
-
-          <div class="form-group" data-form-danger>
-            <label for="text3" class="form-label">Label <span>for invalid input</span></label>
-            <input type="text" class="form-control" id="text3" placeholder="Placeholder" />
-          </div>
+        <div class="col-6">
 
           <div class="form-group">
-            <span class="form-group-label">Radio Label (<code>.form-group-label</code>)</legend>
-            <div class="radio">
-              <label class="form-label">
-                <input type="radio" name="styleguide-radio" />
-                Option one
-              </label>
-            </div>
-
-            <div class="radio">
-              <label class="form-label">
-                <input type="radio" name="styleguide-radio" />
-                Option two
-              </label>
-            </div>
+            <label class="control-label">First Name (focused)</label>
+            <input type="text" class="form-control focus">
           </div>
+
+        </div>
+
+        <div class="col-6">
 
           <div class="form-group">
-            <span class="form-group-label">Checkbox Label (<code>.form-group-label</code>)</legend>
-
-            <div class="checkbox">
-              <label class="form-label">
-                <input type="checkbox" />
-                Option one
-              </label>
-            </div>
-
-            <div class="checkbox">
-              <label class="form-label">
-                <input type="checkbox" />
-                Option two
-              </label>
-            </div>
+            <label class="control-label">Last Name</label>
+            <input type="text" class="form-control">
           </div>
 
-        </form>
+        </div>
+
       </div>
 
+      <div class="row">
 
-      <h2 id="styleguide-alerts">Alerts</h2>
-      <a href="https://github.com/asm-helpful/helpful-web/blob/master/app/assets/stylesheets/modules/alert.css.scss">app/assets/stylesheets/modules/alert.css.scss</a>
-      <p>Alerts are used for system messages to the user.</p>
+        <div class="col-8">
 
-      <div class="example">
-        <p>
-          <div class="alert alert-info alert-dismissable">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            This is an <strong>info alert</strong>.
+          <div class="form-group">
+            <label class="control-label">City</label>
+            <input type="text" class="form-control" value="Greenville">
           </div>
-        </p>
 
-        <p>
-          <div class="alert alert-success alert-dismissable">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            This is a <strong>success alert</strong>.
-          </div>
-        </p>
+        </div>
 
-        <p>
-          <div class="alert alert-error alert-dismissable">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            This is an <strong>error alert</strong>.
+        <div class="col-2">
+
+          <div class="form-group">
+            <label class="control-label">State</label>
+            <select class="form-control">
+              <option disabled selected></option>
+            </select>
           </div>
-        </p>
+
+        </div>
+
+        <div class="col-2">
+
+          <div class="form-group">
+            <label class="control-label">Zip</label>
+            <input type="text" class="form-control">
+          </div>
+
+        </div>
+
       </div>
 
+      <div class="form-group has-success has-feedback">
+        <label class="control-label">Field with validation</label>
+        <input type="text" class="form-control">
+        <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+      </div>
 
-      <h2 id="styleguide-panels">Panels</h2>
-      <a href="https://github.com/asm-helpful/helpful-web/blob/master/app/assets/stylesheets/modules/panel.css.scss">app/assets/stylesheets/modules/panel.css.scss</a>
-      <p>Panels are used for short forms in their own box. They use 50% of available width, with a limit on 500px.</p>
-      <p>
-        Panels can also be used as models by adding the class <code>.panel-fixed</code>. If you want to mute the background, you can add an empty div with class <code>.panel-overlay</code>.
-      </p>
+      <div class="form-group has-loading has-feedback">
+        <input type="text" class="form-control">
+        <span class="glyphicon glyphicon-refresh form-control-feedback"></span>
+      </div>
 
-      <div class="example">
-        <div class="panel-outside">
-          If you want to align text with the insides of a panel, you can by adding <code>.panel-outside</code> to the text you want to align.
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <p>This is a basic panel.</p>
-          </div>
-        </div>
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <p>Main panel content goes in <code>.panel-body</code></p>
-          </div>
-          <div class="panel-footer">
-            <p>and an optional <code>.panel-footer</code></p>
-          </div>
+      <div class="form-group has-error has-feedback">
+        <input type="text" class="form-control">
+        <span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
+        <span class="help-block">Sorry, try again. This didn't work.</span>
+      </div>
+
+    </fieldset>
+
+    <fieldset>
+
+      <h2 class="form-heading">Form Heading</h1>
+
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Inline Label">
+      </div>
+
+      <div class="form-group">
+        <input type="text" class="form-control focus" placeholder="Inline Label">
+      </div>
+
+      <div class="form-group">
+        <input type="text" class="form-control focus" placeholder="Inline Label" value="Typing">
+      </div>
+
+      <div class="form-group">
+        <label class="control-label">Radio Label</label>
+        <div class="radio"> 
+          <label>
+            <input type="radio">
+            Greenville Unselected
+          </label>
+
+          <label>
+            <input type="radio" selected>
+            Greenville Selected
+          </label>
+
+          <label>
+            <input type="radio hover">
+            Greenville Hover
+          </label>
         </div>
       </div>
-    </div>
-  </div>
+
+      <div class="form-group">
+        <label class="control-label">Checkbox Label</label>
+        <div class="checkbox"> 
+          <label>
+            <input type="checkbox">
+            Greenville Unselected
+          </label>
+
+          <label>
+            <input type="checkbox" checked>
+            Greenville Selected
+          </label>
+
+          <label>
+            <input type="checkbox hover">
+            Greenville Hover
+          </label>
+        </div>
+      </div>
+
+      <div>
+
+        <button class="btn btn-default">
+          Cancel
+        </button>
+
+        <button class="btn btn-secondary">
+          Secondary
+        </button>
+
+        <button class="btn btn-primary">
+          Primary
+        </button>
+
+      </div>
+
+      <div>
+
+        <button class="btn btn-default btn-lg">
+          Cancel
+        </button>
+
+        <button class="btn btn-secondary btn-lg">
+          Secondary
+        </button>
+
+        <button class="btn btn-primary btn-lg">
+          Primary
+        </button>
+
+      </div>
+
+      <div>
+        <button class="btn btn-default hover">
+          Cancel
+        </button>
+
+        <button class="btn btn-secondary hover">
+          Secondary
+        </button>
+
+        <button class="btn btn-primary hover">
+          Primary
+        </button>
+      </div>
+
+    </fieldset>
+
+  </form>
+
 </div>
