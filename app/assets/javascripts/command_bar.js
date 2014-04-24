@@ -101,6 +101,10 @@ var toggleSendButton = function(event) {
 
 $(document).on('ready page:load', function() {
   $textarea = $('.conversation-reply textarea');
+
+  if (!$textarea.length)
+    return;
+
   applyTextcomplete($textarea);
   $($textarea).keyup(toggleSendButton);
   toggleSendButton.bind($textarea)();

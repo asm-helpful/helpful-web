@@ -19,20 +19,28 @@
     }
 
     &:focus {
-      background-color: $white;
-      color: $black;
-
-      + .search-bar-icon {
+      background-color: $navbar-default-link-hover-bg;
+      color: $white;
+      
+      @include placeholder {
         color: $dark-gray;
       }
 
-      @include placeholder {
-        color: $dark-gray;
+      ~ .search-bar-clear-icon { 
+        visibility: visible;
       }
     }
 
     @include placeholder {
       color: $white;
+    }
+
+    &.filled {
+      color: $white;
+
+      ~ .search-bar-clear-icon {
+        visibility: visible;
+      }
     }
   }
 
@@ -46,5 +54,12 @@
     position: absolute;
 
     @include transform(scaleX(-1));
+
+    &.search-bar-clear-icon {
+      right: 14px;
+      cursor: pointer;
+      pointer-events: auto;
+      visibility: hidden;
+    }
   }
 }

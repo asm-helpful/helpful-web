@@ -63,6 +63,7 @@
       <%= form_tag search_account_conversations_path(@account), method: 'get' do %>
         <%= search_field_tag :q, @query, placeholder: t('.search'), id: 'search-query' %>
         <span class="search-bar-icon glyphicon glyphicon-search"></span>
+        <span class="search-bar-icon search-bar-clear-icon glyphicon glyphicon-remove"></span>
       <% end %>
     </div>
   </div>
