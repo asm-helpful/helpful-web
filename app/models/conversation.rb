@@ -158,6 +158,18 @@ class Conversation < ActiveRecord::Base
     !archived? && last_activity_at < 3.days.ago
   end
 
+  def subject
+    if(self[:subject].present?) then
+      self[:subject]
+    else
+      if (self.first_message.present? && self.first_message.content.present?) then
+        self.first_message.content[0..140]
+      else
+        ""
+      end
+    end
+  end
+
   private
 
   def message_added_callback(message)
