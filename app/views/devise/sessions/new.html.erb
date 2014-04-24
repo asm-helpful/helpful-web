@@ -8,12 +8,12 @@
     <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form'}) do |f| %>
 
       <div class="form-group">
-        <%= f.label :email, t('general.email'), class: 'form-label' %>
+        <%= f.label :email, t('general.email'), class: 'control-label' %>
         <%= f.email_field :email, autofocus: true, placeholder: t('general.email_placeholder'), class: 'form-control' %>
       </div>
 
       <div class="form-group">
-        <%= f.label :password, t('general.password'), class: 'form-label' %>
+        <%= f.label :password, t('general.password'), class: 'control-label' %>
         <%= f.password_field :password, placeholder: t('.password_placeholder'), class: 'form-control' %>
       </div>
 

@@ -59,7 +59,7 @@
   }
 }
 
-.form-label {
+.control-label {
   color: $light-black;
   font-size: 14px;
   font-weight: 600;
@@ -70,7 +70,7 @@
 
 
 [data-form-danger] {
-  .form-label {
+  .control-label {
     color: $danger;
   }
 
@@ -92,7 +92,7 @@
     margin-left: 0;
   }
 
-  .form-label {
+  .control-label {
     position: relative;
     top: -5px;
     padding: 5px;

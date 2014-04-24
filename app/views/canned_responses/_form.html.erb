@@ -1,12 +1,12 @@
 <%= form_for [@account, @canned_response], html: { class: 'form' } do |f| %>
 
   <div class="form-group">
-    <%= f.label :key, t('.key'), class: 'form-label' %>
+    <%= f.label :key, t('.key'), class: 'control-label' %>
     <%= f.text_field :key, autofocus: true, placeholder: t('.key_placeholder'), class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= f.label :messsage, t('.message'), class: 'form-label' %>
+    <%= f.label :messsage, t('.message'), class: 'control-label' %>
     <%= f.text_area :message, placeholder: t('.message_placeholder'), class: 'form-control' %>
   </div>
 
