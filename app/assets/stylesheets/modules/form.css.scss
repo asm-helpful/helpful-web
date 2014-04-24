@@ -1,100 +1,90 @@
-%form-element {
-}
-
-.form {
-
-  .form-group,
-  fieldset,
-  legend {
-    margin-bottom: 10px;
-  }
-
-  fieldset {
-    margin-left: 0;
-    margin-right: 0;
-    padding: 0;
-    border: 0;
-  }
-
-  legend {
-    color: black;
-    display: block;
-    font-size: 14px;
-    font-weight: 600;
-  }
-}
-
-.form-inline {
-  display: inline;
-
-  + .form-inline {
-    margin-left: 20px;
-  }
-}
-
-.form-actions {
-  margin-top: 20px;
+fieldset + fieldset {
 }
 
 .form-group {
-  position: relative;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-.form-control {
-  @include box-sizing(border-box);
-  border: 2px solid $muted;
-  border-radius: 4px;
-  color: $black;
-  font-size: .9em;
-  padding: 33px 13px 9px;
-  height: auto;
-  width: 100%;
-  outline: none;
+label {
+  color: $darkest-blue;
+  font-size: 1.2em;
+  font-weight: normal;
+}
+
+input.form-control {
+  background-color: inherit;
+  border-color: $gray;
+  border-radius: 3px;
   box-shadow: none;
+  color: $black;
+  font-size: 1.2em;
+  font-weight: lighter;
+  padding-top: 22px;
+  padding-bottom: 22px;
 
-  &:focus {
-    border-color: $primary;
+  &:focus,
+  &.focus {
+    background-color: $white;
+    border-color: $blue;
     box-shadow: none;
-    outline: 0;
+    outline: none;
   }
 }
 
-.control-label {
-  color: $light-black;
-  font-size: 14px;
-  font-weight: 600;
-  padding: 10px 15px;
-  position: absolute;
-  top: 0;
-}
-
-
-[data-form-danger] {
+.has-success {
   .control-label {
-    color: $danger;
+    color: $darkest-blue;
   }
-
-  .form-control,
-  .form-control:focus {
-    border-color: $danger;
-  }
-}
-
-// TODO This is a regression from the previous styleguide proposed by @whale
-// and implemented by @pieterbeliqe. Needs fixing, my bad :(
-.radio,
-.checkbox {
-  @include clearfix;
 
   .form-control {
-    position: relative;
-    top: auto;
-    margin-left: 0;
+    border-color: $gray;
+
+    &:focus,
+    &.focus {
+      background-color: $white;
+      border-color: $blue;
+      box-shadow: none;
+      outline: none;
+    }
+  }
+}
+
+.has-error {
+  .control-label {
+    color: $darkest-blue;
   }
 
-  .control-label {
-    position: relative;
-    top: -5px;
-    padding: 5px;
+  .form-control {
+    border-color: $light-red;
+
+    &:focus,
+    &.focus {
+      background-color: $white;
+      border-color: $light-red;
+      box-shadow: none;
+      outline: none;
+    }
   }
+
+  .glyphicon {
+    color: $red;
+  }
+
+  .help-block {
+    color: $darkest-blue;
+  }
+}
+
+.has-feedback {
+  .glyphicon {
+    position: absolute;
+    margin-top: -40px;
+    right: 5px;
+    top: auto;
+  }
+}
+
+.help-block {
+  font-weight: lighter;
 }
