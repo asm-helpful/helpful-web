@@ -12,6 +12,8 @@
 
     <fieldset>
 
+      <%= render 'shared/error_messages', target: @account %>
+
       <div class="row">
 
         <div class="col-md-6">
@@ -72,11 +74,13 @@
 
     -->
 
-    <%= fields_for @person do |ff| %>
+    <fieldset>
 
-      <fieldset>
+      <%= render 'shared/error_messages', target: @new_account_user %>
 
-        <h2>Personal Information</h2>
+      <h2>Personal Information</h2>
+
+      <%= fields_for @person do |ff| %>
 
         <div class="row">
 
@@ -90,6 +94,10 @@
           </div>
 
         </div>
+
+      <% end %>
+
+      <%= fields_for @new_account_user do |ff| %>
 
         <div class="row">
 
@@ -116,10 +124,10 @@
           </div>
 
         </div>
-        
-      </fieldset>
 
-    <% end %>
+      <% end %>
+
+    </fieldset>
 
     <!-- TODO: (vanstee) Add support to add teammates via ajax here
 
