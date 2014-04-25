@@ -36,6 +36,8 @@
 
     </fieldset>
 
+    <!-- TODO: (vanstee) Add support for linking social accounts, prefilling info, and uploading avatars here
+
     <fieldset>
 
       <h2>Be a real person to your customers</h2>
@@ -68,6 +70,8 @@
 
     </fieldset>
 
+    -->
+
     <%= fields_for @person do |ff| %>
 
       <fieldset>
@@ -76,19 +80,10 @@
 
         <div class="row">
 
-          <div class="col-md-6">
+          <div class="col-md-12">
 
             <div class="form-group">
-              <%= ff.label :name, 'First Name', class: 'control-label' %>
-              <%= ff.text_field :name, class: 'form-control' %>
-            </div>
-
-          </div>
-
-          <div class="col-md-6">
-
-            <div class="form-group">
-              <%= ff.label :name, 'Last Name', class: 'control-label' %>
+              <%= ff.label :name, 'Full Name', class: 'control-label' %>
               <%= ff.text_field :name, class: 'form-control' %>
             </div>
 
@@ -125,6 +120,8 @@
       </fieldset>
 
     <% end %>
+
+    <!-- TODO: (vanstee) Add support to add teammates via ajax here
 
     <fieldset>
 
@@ -178,6 +175,8 @@
       </div>
       
     </fieldset>
+
+    -->
 
     <fieldset>
 
