@@ -1,31 +1,76 @@
-<div class="container fold">
-  <div class="logo logo-default"></div>
+<%= render 'shared/navbar' %>
 
-    <h3><%= t('.welcome_back') %></h3>
+<div class="container">
 
-    <%= render '/layouts/flash' %>
+  <h1 class="page-title">Sign In</h1>
 
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form'}) do |f| %>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: 'form' }) do |f| %>
 
-      <div class="form-group">
-        <%= f.label :email, t('general.email'), class: 'form-label' %>
-        <%= f.email_field :email, autofocus: true, placeholder: t('general.email_placeholder'), class: 'form-control' %>
+    <h2><%= t('.welcome_back') %></h2>
+
+    <p>We just need some quick details from you and then you can get right back to work.</p>
+
+    <fieldset>
+
+      <div class="row">
+
+        <div class="col-md-12">
+
+          <div class="form-group">
+            <%= f.label :email, t('general.email'), class: 'control-label' %>
+            <%= f.email_field :email, autofocus: true, placeholder: t('general.email_placeholder'), class: 'form-control' %>
+          </div>
+
+        </div>
+
       </div>
 
-      <div class="form-group">
-        <%= f.label :password, t('general.password'), class: 'form-label' %>
-        <%= f.password_field :password, placeholder: t('.password_placeholder'), class: 'form-control' %>
+      <div class="row">
+
+        <div class="col-md-12">
+
+          <div class="form-group">
+            <%= f.label :password, t('general.password'), class: 'control-label' %>
+            <%= f.password_field :password, placeholder: t('.password_placeholder'), class: 'form-control' %>
+          </div>
+
+        </div>
+
       </div>
 
-      <% if devise_mapping.rememberable? -%>
-        <div><%= f.check_box :remember_me, checked: 'checked' %> <%= f.label :remember_me, t('.remember_me') %></div>
-      <% end -%>
+      <div class="row">
 
-      <div class="form-actions">
-        <%= f.submit t('devise.general.sign_in'), class: 'btn btn-primary' %>
+        <div class="col-md-12">
+
+          <div class="help-block">
+            <%= link_to t('.forgot_password'), new_password_path(resource_name), class: 'pull-right' %>
+          </div>
+
+          <div class="checkbox">
+            <%= f.label :remember_me do %>
+              <%= f.check_box :remember_me, checked: 'checked' %> 
+              <%= t('.remember_me') %>
+            <% end %>
+          </div>
+
+        </div>
+
       </div>
-    <% end %>
-    <br/>
-    <%= render 'devise/shared/links' %>
-  </div>
+
+      <div class="row">
+
+        <div class="col-md-12">
+
+          <div class="form-group">
+            <%= f.submit t('devise.general.sign_in'), class: 'btn btn-lg btn-primary' %>
+          </div>
+
+        </div>
+
+      </div>
+
+    </fieldset>
+
+  <% end %>
+
 </div>

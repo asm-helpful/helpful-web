@@ -13,34 +13,34 @@
     <%= form_for @account, html: {class: 'form'} do |f| %>
 
       <div class="form-group">
-        <%= f.label :name, t('accounts.general.company_name'), class: 'form-label' %>
+        <%= f.label :name, t('accounts.general.company_name'), class: 'control-label' %>
         <%= f.text_field :name, autofocus: true, placeholder: t('accounts.general.company_name_placeholder'), class: 'form-control' %>
       </div>
 
       <%= fields_for @person do |ff| %>
         <div class="form-group">
-          <%= ff.label :name, t('accounts.general.your_name'), class: 'form-label' %>
+          <%= ff.label :name, t('accounts.general.your_name'), class: 'control-label' %>
           <%= ff.text_field :name, placeholder: t('accounts.general.your_name_placeholder'), class: 'form-control' %>
         </div>
         <div class="form-group">
-          <%= ff.label :username, t('accounts.general.username'), class: 'form-label' %>
+          <%= ff.label :username, t('accounts.general.username'), class: 'control-label' %>
           <%= ff.text_field :username, placeholder: t('accounts.general.username_placeholder'), class: 'form-control' %>
         </div>
       <% end %>
 
       <%= fields_for @new_account_user do |ff| %>
         <div class="form-group">
-          <%= ff.label :email, t('general.email'), class: 'form-label' %>
+          <%= ff.label :email, t('general.email'), class: 'control-label' %>
           <%= ff.email_field :email, placeholder: t('general.email_placeholder'), class: 'form-control' %>
         </div>
 
         <div class="form-group">
-          <%= ff.label :password, t('general.password'), class: 'form-label' %>
+          <%= ff.label :password, t('general.password'), class: 'control-label' %>
           <%= ff.password_field :password, placeholder: t('.must_meet_requirements'), class: 'form-control' %>
         </div>
 
         <div class="form-group">
-          <%= ff.label :password_confirmation, t('.password_confirmation'), class: 'form-label' %>
+          <%= ff.label :password_confirmation, t('.password_confirmation'), class: 'control-label' %>
           <%= ff.password_field :password_confirmation, placeholder: t('.must_meet_requirements'), class: 'form-control' %>
         </div>
       <% end %>

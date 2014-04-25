@@ -20,33 +20,33 @@
     <%= form_for @account, method: :patch, html: {class: 'form'} do |f| %>
 
       <div class="form-group">
-        <%= f.label :name, t('accounts.general.company_name'), class: 'form-label' %>
+        <%= f.label :name, t('accounts.general.company_name'), class: 'control-label' %>
         <%= f.text_field :name, autofocus: true, placeholder: t('accounts.general.company_name_placeholder'), class: 'form-control' %>
       </div>
 
       <div class="form-group">
-        <%= f.label :website_url, t('.website'), class: 'form-label' %>
+        <%= f.label :website_url, t('.website'), class: 'control-label' %>
         <%= f.text_field :website_url, autofocus: true, placeholder: t('.website_placeholder'), class: 'form-control' %>
       </div>
 
       <div class="form-group">
-        <%= f.label :signature, t('.signature'), class: 'form-label' %>
+        <%= f.label :signature, t('.signature'), class: 'control-label' %>
         <%= f.text_area :signature, placeholder: t('.signature_placeholder'), class: 'form-control', rows: 4, 'data-autosize' => '' %>
       </div>
 
       <div class="form-group">
-        <%= f.label :webhook_url, t('.webhook_url'), class: 'form-label' %>
+        <%= f.label :webhook_url, t('.webhook_url'), class: 'control-label' %>
         <%= f.text_field :webhook_url, autofocus: true, placeholder: t('.webhook_url_placeholder'), class: 'form-control' %>
       </div>
 
       <div class="form-group">
-        <%= f.label :webhook_secret, t('.webhook_secret'), class: 'form-label' %>
+        <%= f.label :webhook_secret, t('.webhook_secret'), class: 'control-label' %>
         <br />
         <pre><%= @account.webhook_secret %></pre>
       </div>
 
       <div class="form-group">
-        <%= f.label :mailbox, t('.incoming_email'), class: 'form-label' %>
+        <%= f.label :mailbox, t('.incoming_email'), class: 'control-label' %>
         <br />
         <pre><%= @account.mailbox_email %></pre>
       </div>
