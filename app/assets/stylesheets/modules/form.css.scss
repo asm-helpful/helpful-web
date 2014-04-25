@@ -31,8 +31,7 @@ select.form-control {
   color: $black;
   font-size: 1.2em;
   font-weight: lighter;
-  padding-top: 22px;
-  padding-bottom: 22px;
+  height: $line-height-computed + ($padding-base-vertical * 2) + 14;
 
   @include placeholder {
     color: $darkest-blue;
