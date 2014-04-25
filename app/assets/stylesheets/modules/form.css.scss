@@ -15,6 +15,13 @@ label {
   font-weight: normal;
 }
 
+label.control-label + .radio,
+label.control-label + .checkbox {
+  margin-top: 2px;
+  padding-top: 14px;
+  border-top: 1px solid $light-gray;
+}
+
 input.form-control,
 select.form-control {
   background-color: $lightest-gray-highlight;
@@ -46,23 +53,13 @@ select.form-control {
   }
 }
 
-.radio {
-  label {
-    display: block;
-    font-weight: lighter;
-
-    input[type="radio"] {
-      margin-right: 14px;
-    }
-  }
-}
-
+.radio,
 .checkbox {
   label {
     display: block;
     font-weight: lighter;
 
-    input[type="checkbox"] {
+    input {
       margin-right: 14px;
     }
   }
