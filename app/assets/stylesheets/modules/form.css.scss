@@ -110,6 +110,8 @@ select.form-control {
 }
 
 .has-feedback {
+  color: $dark-gray;
+
   .glyphicon {
     position: absolute;
     margin-top: -40px;
