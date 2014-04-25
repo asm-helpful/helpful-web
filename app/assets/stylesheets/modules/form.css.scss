@@ -23,7 +23,8 @@ label.control-label + .checkbox {
 }
 
 input.form-control,
-select.form-control {
+select.form-control,
+textarea.form-control {
   background-color: $lightest-gray-highlight;
   border-color: $gray;
   border-radius: 3px;
@@ -50,6 +51,12 @@ select.form-control {
       font-weight: normal;
     }
   }
+}
+
+textarea.form-control {
+  height: auto;
+  padding: 10px 12px;
+  resize: none;
 }
 
 .radio,
