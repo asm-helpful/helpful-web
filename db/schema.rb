@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140423194736) do
+ActiveRecord::Schema.define(version: 20140425142654) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20140423194736) do
     t.datetime "chargify_portal_valid_until"
     t.boolean  "prefers_archiving"
     t.text     "signature"
+    t.string   "url"
   end
 
   add_index "accounts", ["billing_plan_id"], name: "index_accounts_on_billing_plan_id", using: :btree
