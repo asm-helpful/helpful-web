@@ -1,5 +1,5 @@
 fieldset + fieldset {
-  border-top: 1px solid $gray;
+  border-top: 1px solid $light-gray;
   margin-top: 20px;
   padding-top: 10px;
 }
@@ -16,7 +16,7 @@ label {
 }
 
 input.form-control {
-  background-color: inherit;
+  background-color: $lightest-gray-highlight;
   border-color: $gray;
   border-radius: 3px;
   box-shadow: none;
