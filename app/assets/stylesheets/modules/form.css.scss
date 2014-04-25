@@ -71,6 +71,7 @@ select.form-control {
 
   .form-control {
     border-color: $gray;
+    box-shadow: none;
 
     &:focus,
     &.focus {
