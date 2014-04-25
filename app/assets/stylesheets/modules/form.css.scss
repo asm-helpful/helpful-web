@@ -1,4 +1,7 @@
 fieldset + fieldset {
+  border-top: 1px solid $gray;
+  margin-top: 20px;
+  padding-top: 10px;
 }
 
 .form-group {
@@ -23,12 +26,22 @@ input.form-control {
   padding-top: 22px;
   padding-bottom: 22px;
 
+  @include placeholder {
+    color: $darkest-blue;
+    font-weight: normal;
+  }
+
   &:focus,
   &.focus {
     background-color: $white;
     border-color: $blue;
     box-shadow: none;
     outline: none;
+
+    @include placeholder {
+      color: $gray;
+      font-weight: normal;
+    }
   }
 }
 
