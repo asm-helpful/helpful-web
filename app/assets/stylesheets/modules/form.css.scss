@@ -15,7 +15,8 @@ label {
   font-weight: normal;
 }
 
-input.form-control {
+input.form-control,
+select.form-control {
   background-color: $lightest-gray-highlight;
   border-color: $gray;
   border-radius: 3px;
@@ -41,6 +42,28 @@ input.form-control {
     @include placeholder {
       color: $gray;
       font-weight: normal;
+    }
+  }
+}
+
+.radio {
+  label {
+    display: block;
+    font-weight: lighter;
+
+    input[type="radio"] {
+      margin-right: 14px;
+    }
+  }
+}
+
+.checkbox {
+  label {
+    display: block;
+    font-weight: lighter;
+
+    input[type="checkbox"] {
+      margin-right: 14px;
     }
   }
 }
