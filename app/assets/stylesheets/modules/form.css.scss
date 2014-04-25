@@ -7,6 +7,7 @@ fieldset + fieldset {
 .form-group {
   margin-top: 10px;
   margin-bottom: 10px;
+  overflow: auto;
 }
 
 label {
@@ -35,8 +36,8 @@ textarea.form-control {
   height: $line-height-computed + ($padding-base-vertical * 2) + 14;
 
   @include placeholder {
-    color: $darkest-blue;
-    font-weight: normal;
+    color: $gray;
+    font-weight: lighter;
   }
 
   &:focus,
@@ -45,11 +46,6 @@ textarea.form-control {
     border-color: $blue;
     box-shadow: none;
     outline: none;
-
-    @include placeholder {
-      color: $gray;
-      font-weight: normal;
-    }
   }
 }
 
