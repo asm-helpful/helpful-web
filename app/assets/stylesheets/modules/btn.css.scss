@@ -20,10 +20,6 @@
   }
 }
 
-.btn + .btn {
-  margin-left: 10px;
-}
-
 .btn-lg {
   font-size: 18px;
   padding: $btn-large-padding;
@@ -123,4 +119,10 @@
 .btn[disabled] {
   opacity: .5;
   cursor: default;
+}
+
+.form-group {
+  .btn + .btn {
+    margin-left: 10px;
+  }
 }
