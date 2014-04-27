@@ -40,11 +40,11 @@ class Person < ActiveRecord::Base
 
   # Returns the initial(s) for this person (used in avatars)
   def initials
-    if name
+    if first_name and last_name
+      first_name[0] + last_name[0]
+    elsif name
       names = name.split(' ')
       names.first[0] + names.last[0]
-    elsif first_name and last_name
-      first_name[0] + last_name[0]
     else
       email[0]
     end
