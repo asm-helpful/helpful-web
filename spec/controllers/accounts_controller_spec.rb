@@ -17,13 +17,34 @@ describe AccountsController do
     end
   end
 
-  it "POST create" do
+  it "POST create with name" do
     post :create, {
       account: {
         name: 'MyCompany'
       },
       person: {
         name: 'John Doe',
+        username: 'john'
+      },
+      user: {
+        email: 'user@user.com',
+        password: 'password',
+        password_confirmation: 'password'
+      }
+    }
+
+    assert_redirected_to inbox_account_conversations_path('mycompany')
+    expect(assigns(:person).username).to eq "john"
+  end
+
+  it "POST create with first_name and last_name" do
+    post :create, {
+      account: {
+        name: 'MyCompany'
+      },
+      person: {
+        first_name: 'John',
+        last_name: 'Doe',
         username: 'john'
       },
       user: {
