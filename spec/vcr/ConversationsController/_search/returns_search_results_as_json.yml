@@ -1,0 +1,93 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://127.0.0.1:9200/messages/message/_bulk?type=message
+    body:
+      encoding: UTF-8
+      string: |
+        {"index":{"_id":"08cf523c-f843-4b29-8522-13a4531ef001"}}
+        {"id":"08cf523c-f843-4b29-8522-13a4531ef001","conversation_id":"478929fc-d9e2-456a-b5d5-47e2cfba2804","content":"Consequatur esse aliquid quis velit distinctio amet. Dolorem laudantium temporibus rerum reprehenderit eius. Et ducimus dignissimos nostrum. Eius temporibus minus perspiciatis et qui. Est officia inventore laudantium amet fugit qui.","data":null,"created_at":"2014-04-11T20:01:58.146Z","updated_at":"2014-04-11T20:01:58.146Z","person_id":"5eb0a5cd-f823-4eeb-ae1f-0848f83a8f8d"}
+        {"index":{"_id":"3017d85b-f24c-40d6-b366-f1bf1480449e"}}
+        {"id":"3017d85b-f24c-40d6-b366-f1bf1480449e","conversation_id":"478929fc-d9e2-456a-b5d5-47e2cfba2804","content":"Vel quaerat est quis aspernatur doloremque. Consequatur culpa dolorem aliquam voluptates praesentium excepturi. Dolor quia reprehenderit eaque saepe ad impedit repudiandae.","data":null,"created_at":"2014-04-11T20:01:58.138Z","updated_at":"2014-04-11T20:01:58.138Z","person_id":"9dcb81c6-b963-4050-b850-a45064de22f5"}
+        {"index":{"_id":"3b66bb2d-7f4b-4efe-ad08-586282ca8890"}}
+        {"id":"3b66bb2d-7f4b-4efe-ad08-586282ca8890","conversation_id":"fb65623e-8b10-44e2-9e94-2ac4f8dc65f3","content":"Recusandae est corrupti voluptas nihil eum officia quibusdam. Cum vel quas sint. Aut deleniti accusamus cum doloremque est iste qui illo. Neque quia reprehenderit ipsa recusandae cum. Odit aut veritatis velit perferendis alias quod.","data":null,"created_at":"2014-04-11T20:01:58.100Z","updated_at":"2014-04-11T20:01:58.100Z","person_id":"72c139c4-38d7-4508-af3b-bc10840c3a38"}
+        {"index":{"_id":"4846981c-d8ed-49f3-ac01-883c53569758"}}
+        {"id":"4846981c-d8ed-49f3-ac01-883c53569758","conversation_id":"fb65623e-8b10-44e2-9e94-2ac4f8dc65f3","content":"Pariatur et aut nisi nostrum. Ullam atque sit ipsa enim ut pariatur. Esse sunt qui enim nobis. Incidunt quae explicabo saepe est.","data":null,"created_at":"2014-04-11T20:01:58.084Z","updated_at":"2014-04-11T20:01:58.084Z","person_id":"14639d9c-45cb-49e2-9f75-4394e385c431"}
+        {"index":{"_id":"4b4f2e44-0462-41f1-9861-cedbaf377a99"}}
+        {"id":"4b4f2e44-0462-41f1-9861-cedbaf377a99","conversation_id":"7fc6adab-ceb5-4ef7-a317-4714b1d6ad72","content":"Hi, my name is Ben. I need help","data":null,"created_at":"2014-04-11T20:01:58.216Z","updated_at":"2014-04-11T20:01:58.222Z","person_id":"c47a18fd-91db-4f4c-962c-81356a96b708"}
+        {"index":{"_id":"58af49b8-8b3f-4303-89bf-1a2473e81bdc"}}
+        {"id":"58af49b8-8b3f-4303-89bf-1a2473e81bdc","conversation_id":"478929fc-d9e2-456a-b5d5-47e2cfba2804","content":"Inventore rem laudantium officia itaque aut. Animi in facilis ea ratione incidunt neque architecto. Rem nisi dolorum velit eos.","data":null,"created_at":"2014-04-11T20:01:58.154Z","updated_at":"2014-04-11T20:01:58.154Z","person_id":"901c4e38-b14b-499c-9a86-346234fe5138"}
+        {"index":{"_id":"5c81079a-2ed9-486e-b90d-1d3008438fee"}}
+        {"id":"5c81079a-2ed9-486e-b90d-1d3008438fee","conversation_id":"1314c65b-fceb-4032-9e1e-1d04253f0485","content":"Eum explicabo unde totam. Repellat quia et molestiae fugiat non et. Quae enim laboriosam eius nisi odio rerum. Explicabo animi ipsam velit eveniet vero quidem sint.","data":null,"created_at":"2014-04-11T20:01:58.062Z","updated_at":"2014-04-11T20:01:58.062Z","person_id":"91cc6ad1-77d4-42d0-a172-e1ddba228c5f"}
+        {"index":{"_id":"6f523bb3-201f-4ba8-98ae-aee8ee5bf3aa"}}
+        {"id":"6f523bb3-201f-4ba8-98ae-aee8ee5bf3aa","conversation_id":"fb65623e-8b10-44e2-9e94-2ac4f8dc65f3","content":"Nulla dolore est ut ullam eum tempore. Quasi consequatur voluptatem eligendi reprehenderit neque quia minus. Minima accusamus iste facilis et ipsa.","data":null,"created_at":"2014-04-11T20:01:58.108Z","updated_at":"2014-04-11T20:01:58.108Z","person_id":"f608d697-0394-4289-84b0-2a3e0f419cf3"}
+        {"index":{"_id":"85c8e361-6bb8-4c9d-a239-3feae91cbcb3"}}
+        {"id":"85c8e361-6bb8-4c9d-a239-3feae91cbcb3","conversation_id":"fb65623e-8b10-44e2-9e94-2ac4f8dc65f3","content":"Est qui ut fugiat quod ipsam aut velit ut. Ullam sed deleniti eius ratione impedit. Sunt est odio ut.","data":null,"created_at":"2014-04-11T20:01:58.092Z","updated_at":"2014-04-11T20:01:58.092Z","person_id":"599830e1-8e39-415e-b78d-ebe70f3eefeb"}
+        {"index":{"_id":"8a2ac463-32bc-441a-8ee3-a78f6c6b32b6"}}
+        {"id":"8a2ac463-32bc-441a-8ee3-a78f6c6b32b6","conversation_id":"fb65623e-8b10-44e2-9e94-2ac4f8dc65f3","content":"Doloremque perspiciatis illo et voluptatem nesciunt atque. Quasi repellendus sint maiores. Eligendi vel natus consequatur et ut quae. Quis doloribus quisquam voluptatibus officia tempore iure. Soluta nemo qui et qui accusamus veniam saepe.","data":null,"created_at":"2014-04-11T20:01:58.075Z","updated_at":"2014-04-11T20:01:58.075Z","person_id":"f1315493-2628-44d8-a2e6-4ca76e45c98f"}
+        {"index":{"_id":"922943ee-1528-48a1-b4d9-c81cf53f14c2"}}
+        {"id":"922943ee-1528-48a1-b4d9-c81cf53f14c2","conversation_id":"1314c65b-fceb-4032-9e1e-1d04253f0485","content":"Magni quia ea aut qui numquam delectus. Modi itaque et sit consequuntur officiis quia et. Aut quae distinctio quibusdam ea maiores provident occaecati. Cumque neque deleniti esse est.","data":null,"created_at":"2014-04-11T20:01:58.047Z","updated_at":"2014-04-11T20:01:58.047Z","person_id":"438768c1-8200-4fdf-9f3a-374b4051a670"}
+        {"index":{"_id":"9c244dee-0ad9-426a-a1b6-99185b00c2ea"}}
+        {"id":"9c244dee-0ad9-426a-a1b6-99185b00c2ea","conversation_id":"478929fc-d9e2-456a-b5d5-47e2cfba2804","content":"Velit et soluta quo. Error voluptas et laboriosam non delectus quo dicta. Enim quam in aspernatur fugit. Et aliquam veniam voluptates corporis laudantium. Veritatis pariatur in recusandae et repudiandae officiis quaerat praesentium.","data":null,"created_at":"2014-04-11T20:01:58.130Z","updated_at":"2014-04-11T20:01:58.130Z","person_id":"32a3ecf7-f461-48db-aca6-95535e5e5366"}
+        {"index":{"_id":"9f66e23d-c9dd-4f28-b637-ad0d4dc00d44"}}
+        {"id":"9f66e23d-c9dd-4f28-b637-ad0d4dc00d44","conversation_id":"1314c65b-fceb-4032-9e1e-1d04253f0485","content":"Enim rerum aliquid iure a repudiandae provident asperiores. Saepe laboriosam accusamus deleniti tenetur. Laudantium quod fuga ex.","data":null,"created_at":"2014-04-11T20:01:58.033Z","updated_at":"2014-04-11T20:01:58.033Z","person_id":"a9ae1cfd-c325-4387-b3be-f418e5927a9f"}
+        {"index":{"_id":"c41a8bef-93c8-4348-9b4d-e198554ec72e"}}
+        {"id":"c41a8bef-93c8-4348-9b4d-e198554ec72e","conversation_id":"1314c65b-fceb-4032-9e1e-1d04253f0485","content":"Mollitia quis animi modi aliquam rerum ab. Earum mollitia repellendus non qui. Vitae in voluptates aut officia voluptas est sint minus.","data":null,"created_at":"2014-04-11T20:01:58.014Z","updated_at":"2014-04-11T20:01:58.014Z","person_id":"e00afe8d-a26c-47db-8cdb-70e986401fbd"}
+        {"index":{"_id":"c795dcb6-8f64-4c1d-888d-c0064153f892"}}
+        {"id":"c795dcb6-8f64-4c1d-888d-c0064153f892","conversation_id":"4560878a-549a-418c-b3cc-9fb9643ec5f3","content":"This is broken","data":null,"created_at":"2014-04-11T20:01:58.198Z","updated_at":"2014-04-11T20:01:58.220Z","person_id":"693776f4-eae3-45d4-b6c5-adf7db03eb87"}
+        {"index":{"_id":"d2ac6d50-7855-4659-83b1-9077fbd87547"}}
+        {"id":"d2ac6d50-7855-4659-83b1-9077fbd87547","conversation_id":"478929fc-d9e2-456a-b5d5-47e2cfba2804","content":"Necessitatibus itaque nobis doloribus nihil sunt delectus ad sed. Iusto expedita excepturi iste. Molestiae repudiandae enim odit dolor dignissimos itaque.","data":null,"created_at":"2014-04-11T20:01:58.120Z","updated_at":"2014-04-11T20:01:58.120Z","person_id":"81718c58-11b8-42e2-9b46-1649b5126b7f"}
+        {"index":{"_id":"fe0f5b36-5ccf-49d1-9ac1-f2053303921e"}}
+        {"id":"fe0f5b36-5ccf-49d1-9ac1-f2053303921e","conversation_id":"1314c65b-fceb-4032-9e1e-1d04253f0485","content":"Et est ullam qui modi dolore distinctio aut aut. Consequatur beatae eos mollitia nisi accusantium. Ratione rerum dolores vel.","data":null,"created_at":"2014-04-11T20:01:58.054Z","updated_at":"2014-04-11T20:01:58.054Z","person_id":"e8a9051c-4119-44dd-bad1-3cf9327ddae7"}
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '2026'
+    body:
+      encoding: UTF-8
+      string: '{"took":5,"items":[{"index":{"_index":"messages","_type":"message","_id":"08cf523c-f843-4b29-8522-13a4531ef001","_version":1,"ok":true}},{"index":{"_index":"messages","_type":"message","_id":"3017d85b-f24c-40d6-b366-f1bf1480449e","_version":1,"ok":true}},{"index":{"_index":"messages","_type":"message","_id":"3b66bb2d-7f4b-4efe-ad08-586282ca8890","_version":1,"ok":true}},{"index":{"_index":"messages","_type":"message","_id":"4846981c-d8ed-49f3-ac01-883c53569758","_version":1,"ok":true}},{"index":{"_index":"messages","_type":"message","_id":"4b4f2e44-0462-41f1-9861-cedbaf377a99","_version":2,"ok":true}},{"index":{"_index":"messages","_type":"message","_id":"58af49b8-8b3f-4303-89bf-1a2473e81bdc","_version":1,"ok":true}},{"index":{"_index":"messages","_type":"message","_id":"5c81079a-2ed9-486e-b90d-1d3008438fee","_version":1,"ok":true}},{"index":{"_index":"messages","_type":"message","_id":"6f523bb3-201f-4ba8-98ae-aee8ee5bf3aa","_version":1,"ok":true}},{"index":{"_index":"messages","_type":"message","_id":"85c8e361-6bb8-4c9d-a239-3feae91cbcb3","_version":1,"ok":true}},{"index":{"_index":"messages","_type":"message","_id":"8a2ac463-32bc-441a-8ee3-a78f6c6b32b6","_version":1,"ok":true}},{"index":{"_index":"messages","_type":"message","_id":"922943ee-1528-48a1-b4d9-c81cf53f14c2","_version":1,"ok":true}},{"index":{"_index":"messages","_type":"message","_id":"9c244dee-0ad9-426a-a1b6-99185b00c2ea","_version":1,"ok":true}},{"index":{"_index":"messages","_type":"message","_id":"9f66e23d-c9dd-4f28-b637-ad0d4dc00d44","_version":1,"ok":true}},{"index":{"_index":"messages","_type":"message","_id":"c41a8bef-93c8-4348-9b4d-e198554ec72e","_version":1,"ok":true}},{"index":{"_index":"messages","_type":"message","_id":"c795dcb6-8f64-4c1d-888d-c0064153f892","_version":2,"ok":true}},{"index":{"_index":"messages","_type":"message","_id":"d2ac6d50-7855-4659-83b1-9077fbd87547","_version":1,"ok":true}},{"index":{"_index":"messages","_type":"message","_id":"fe0f5b36-5ccf-49d1-9ac1-f2053303921e","_version":1,"ok":true}}]}'
+    http_version: 
+  recorded_at: Fri, 11 Apr 2014 20:02:07 GMT
+- request:
+    method: get
+    uri: http://127.0.0.1:9200/messages/message/_search
+    body:
+      encoding: UTF-8
+      string: '{"query":{"match":{"content":"Ben"}}}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '1347'
+    body:
+      encoding: UTF-8
+      string: '{"took":7,"timed_out":false,"_shards":{"total":5,"successful":5,"failed":0},"hits":{"total":3,"max_score":1.9345812,"hits":[{"_index":"messages","_type":"message","_id":"1ae9dea1-a6dd-4285-9d47-af71d35354b2","_score":1.9345812,
+        "_source" : {"id":"1ae9dea1-a6dd-4285-9d47-af71d35354b2","conversation_id":"07c38e49-cf61-45c4-ac6d-6e2aaa69c50c","content":"Hi,
+        my name is Ben. I need help","data":null,"created_at":"2014-04-11T19:44:34.694Z","updated_at":"2014-04-11T19:44:34.694Z","person_id":"b05559e3-4f40-4cd6-89af-3b90ddb2835c"}},{"_index":"messages","_type":"message","_id":"eaa71339-fe41-4342-bbc1-42e371004cf8","_score":1.8530931,
+        "_source" : {"id":"eaa71339-fe41-4342-bbc1-42e371004cf8","conversation_id":"a68979d4-d078-45fa-9fee-a09951d32b35","content":"Hi,
+        my name is Ben. I need help","data":null,"created_at":"2014-04-11T19:51:29.808Z","updated_at":"2014-04-11T19:51:29.808Z","person_id":"f0c82ef9-548d-4f06-8e8c-48f697f346e7"}},{"_index":"messages","_type":"message","_id":"4b4f2e44-0462-41f1-9861-cedbaf377a99","_score":1.7675896,
+        "_source" : {"id":"4b4f2e44-0462-41f1-9861-cedbaf377a99","conversation_id":"7fc6adab-ceb5-4ef7-a317-4714b1d6ad72","content":"Hi,
+        my name is Ben. I need help","data":null,"created_at":"2014-04-11T20:01:58.216Z","updated_at":"2014-04-11T20:01:58.222Z","person_id":"c47a18fd-91db-4f4c-962c-81356a96b708"}}]}}'
+    http_version: 
+  recorded_at: Fri, 11 Apr 2014 20:02:08 GMT
+recorded_with: VCR 2.8.0
