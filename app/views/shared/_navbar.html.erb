@@ -68,7 +68,7 @@
           <span class="search-bar-icon search-bar-clear-icon glyphicon glyphicon-remove"></span>
         <% end %>
       </div>
-      <div id="search-results">
+      <div class="search-results-container">
       </div>
     </div>
 
@@ -105,10 +105,12 @@
     <div class="arrow"></div>
 
     <div class="popover-content">
-      <ul class="list-group">
+      <ul class="search-results">
         {{#each conversations}}
-          <li class="list-group-item">
-            {{subject}}
+          <li class="search-result">
+            <a href="{{url}}">
+              {{subject}}
+            </a>
           </li>
         {{/each}}
       </ul>

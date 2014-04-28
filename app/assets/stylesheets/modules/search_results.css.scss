@@ -1,0 +1,42 @@
+.search-results {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.search-result {
+  margin: 0;
+  padding: 10px 20px;
+  background-color: $lightest-gray;
+
+  &:hover {
+    background-color: $white;
+  }
+
+  a {
+    color: $dark-gray;
+    display: block;
+    font-size: lighter;
+  }
+}
+
+.search-results-container {
+  .popover {
+    left: auto;
+    top: auto;
+    display: block;
+    margin-top: 5px;
+    margin-left: 170px;
+    width: 400px;
+    padding: 0;
+  }
+
+  .popover-content {
+    padding: 0;
+    border-width: 2px;
+  }
+
+  .arrow:after {
+    border-bottom-color: $lightest-gray;
+  }
+}

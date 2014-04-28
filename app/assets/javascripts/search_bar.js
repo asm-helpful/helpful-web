@@ -15,7 +15,7 @@ var searchConversations = function($element) {
           q: $element.val()
         },
         function(results) {
-          $('#search-results').html(
+          $('.search-results-container').html(
             searchResultsTemplate(results)
           )
         }
