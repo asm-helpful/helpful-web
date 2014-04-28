@@ -103,8 +103,8 @@ describe ConversationsController do
   describe '#search', vcr: true do
     let!(:messages) {
       [
-        create(:message, content: 'This is broken'), 
-        create(:message, id: '4b4f2e44-0462-41f1-9861-cedbaf377a99', content: 'Hi, my name is Ben. I need help')
+        create(:message, content: 'This is broken', account: account), 
+        create(:message, content: 'Hi, my name is Ben. I need help', account: account)
       ]
     }
 
