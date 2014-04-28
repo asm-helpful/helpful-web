@@ -19,12 +19,12 @@
     background-color: $white;
 
     .actions {
-      visibility: visible;
+      opacity: 1;
     }
   }
 
   .actions {
-    visibility: hidden;
+      opacity: 0;
   }
 
   .summary {
