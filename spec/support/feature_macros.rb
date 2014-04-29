@@ -31,7 +31,7 @@ module BeforeFeatureMacros
       fill_in('user[email]', :with => @user.email)
       fill_in('user[password]', :with => attributes_for(:user)[:password])
       check('user[remember_me]')
-      find(".form-actions input").click
+      click_button('Sign in')
     end
   end
 end

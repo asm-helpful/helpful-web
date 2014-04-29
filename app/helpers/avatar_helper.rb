@@ -22,7 +22,7 @@ module AvatarHelper
   end
 
   def avatar_initials(person, size)
-    content_tag(:div, person.initials, class: 'avatar-initials', style: avatar_style_constraints(size))
+    content_tag(:div, person.initials, class: 'avatar-initials', style: "#{avatar_style_constraints(size)}; display: none;")
   end
 
   def avatar_image(person, size)

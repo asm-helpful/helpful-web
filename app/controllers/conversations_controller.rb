@@ -19,8 +19,8 @@ class ConversationsController < ApplicationController
   end
 
   def search
-    archive = ConversationsArchive.new(@account, params[:q])
-    @conversations = archive.conversations
+    search = ConversationsInbox.new(@account, current_user, params[:q])
+    @conversations = search.conversations
     @conversation = @conversations.first
 
     # If there was a query (q) passed, use it for the search field value
@@ -28,7 +28,9 @@ class ConversationsController < ApplicationController
       @query = params[:q]
     end
 
-    Analytics.track(user_id: current_user.id, event: 'Searched For', properties: { query: archive.query })
+    Analytics.track(user_id: current_user.id, event: 'Searched For', properties: { query: search.query })
+
+    respond_with @conversations, location: inbox_account_conversations_path(@account)
   end
 
   def show

@@ -1,92 +1,140 @@
 <%= render 'shared/navbar' %>
 
 <div class="container">
-  <div class="column-content">
+  <% unless current_user.accounts.one? %>
+    <div class="list-group" style="position: absolute; margin-top: 20px; margin-left: -240px; width: 200px;">
+      <% current_user.accounts.each do |account| %>
+        <%= link_to account.name, edit_account_path(account), class: "list-group-item #{ "active" if account == @account }" %>
+      <% end %>
+    </div>
+  <% end %>
 
-    <p><%= t('.try_out_command') %></p>
+  <h1 class="page-title">
+    <%= @account.name %>
+  </h1>
 
-    <pre>
-      <code>
-        curl -X POST <%= root_url %>incoming_message \
-          -H "Accept: application/json" \
-          --data "account=<%= @account.slug %>" \
-          --data "email=user@example.com" \
-          --data "content=I need help please."
-      </code>
-    </pre>
+  <%= form_for @account, method: :patch, html: {class: 'form'} do |f| %>
 
-    <p><%= t('.embed_form') %> <%= link_to t('.get_code'), web_form_account_path %></p>
+    <div class="form-group">
+      <%= f.label :name, t('accounts.general.company_name'), class: 'control-label' %>
+      <%= f.text_field :name, autofocus: true, placeholder: t('accounts.general.company_name_placeholder'), class: 'form-control' %>
+    </div>
 
-    <%= form_for @account, method: :patch, html: {class: 'form'} do |f| %>
+    <div class="form-group">
+      <%= f.label :website_url, t('.website'), class: 'control-label' %>
+      <%= f.text_field :website_url, placeholder: t('.website_placeholder'), class: 'form-control' %>
+    </div>
 
-      <div class="form-group">
-        <%= f.label :name, t('accounts.general.company_name'), class: 'form-label' %>
-        <%= f.text_field :name, autofocus: true, placeholder: t('accounts.general.company_name_placeholder'), class: 'form-control' %>
-      </div>
+    <div class="form-group">
+      <%= f.label :signature, t('.signature'), class: 'control-label' %>
+      <%= f.text_area :signature, placeholder: t('.signature_placeholder'), class: 'form-control', rows: 3, 'data-autosize' => '' %>
+    </div>
 
-      <div class="form-group">
-        <%= f.label :website_url, t('.website'), class: 'form-label' %>
-        <%= f.text_field :website_url, autofocus: true, placeholder: t('.website_placeholder'), class: 'form-control' %>
-      </div>
+    <div class="form-group">
+      <%= f.label :webhook_url, t('.webhook_url'), class: 'control-label' %>
+      <%= f.text_field :webhook_url, placeholder: t('.webhook_url_placeholder'), class: 'form-control' %>
+    </div>
 
-      <div class="form-group">
-        <%= f.label :signature, t('.signature'), class: 'form-label' %>
-        <%= f.text_area :signature, placeholder: t('.signature_placeholder'), class: 'form-control', rows: 4, 'data-autosize' => '' %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :webhook_url, t('.webhook_url'), class: 'form-label' %>
-        <%= f.text_field :webhook_url, autofocus: true, placeholder: t('.webhook_url_placeholder'), class: 'form-control' %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :webhook_secret, t('.webhook_secret'), class: 'form-label' %>
-        <br />
-        <pre><%= @account.webhook_secret %></pre>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :mailbox, t('.incoming_email'), class: 'form-label' %>
-        <br />
-        <pre><%= @account.mailbox_email %></pre>
-      </div>
-
-      <div class="form-group">
-        <div class="checkbox">
-          <%= f.label :prefers_archiving, t('.auto_archiving') %>
+    <div class="form-group">
+      <div class="checkbox">
+        <%= f.label :prefers_archiving do %>
+          <%= t('.auto_archiving') %>
           <%= f.check_box :prefers_archiving %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit t('.update_account'), class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+
+  <br>
+
+  <h1 class="page-title">
+    <%= t('.invitations') %>
+  </h1>
+
+  <h4 class="section-title">
+    <%= t('.send_invitation') %>
+  </h4>
+
+  <%= form_for @user, url: invitation_path(:user), html: { method: :post } do |f| %>
+    <div class="form-group">
+      <%= f.label :email, class: 'control-label' %>
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.text_field :email, class: 'form-control' %></p>
+        </div>
+        <div class="col-md-3">
+          <%= select_tag :membership_role, options_for_select(Membership::ROLES), class: 'form-control' %>
+        </div>
+        <div class="col-md-3">
+          <%= f.submit 'Send', class: 'btn btn-secondary' %>
         </div>
       </div>
+    </div>
+  <% end %>
 
-      <div class="form-actions">
-        <%= f.submit t('.update_account_settings'), :class => "btn btn-primary" %>
-      </div>
-    <% end %>
+  <h4 class="section-title">
+    <%= t('invitations_sent') %>
+  </h4>
 
-    <h2><%= t "devise.invitations.new.header" %></h2>
+  <ul class="list-unstyled">
+    <% @account.memberships.each do |membership| %>
+      <li>
+        <p>
+          <%= membership.user.email %>
 
-    <ul>
-      <% @account.memberships.each do |membership| %>
-        <li>
-          <strong><%= membership.user.email %></strong> (<%= t('general.roles.' + membership.role) %>)
-          <% if !membership.user.accepted_or_not_invited? %>
-            <small class="bg-highlight"><%= t('.invitation_sent') %> <%= time_ago_in_words(membership.user.invitation_sent_at) %> <%= t('general.ago') %></small>
+          <span class="badge badge-info">
+            <%= t('general.roles.' + membership.role) %>
+          </span>
+
+          <% unless membership.user.accepted_or_not_invited? %>
+            <span class="badge badge-timestamp badge-timestamp-stale">
+              <%= t('.invitation_sent') %> <%= time_ago_in_words(membership.user.invitation_sent_at) %> <%= t('general.ago') %>
+            </span>
           <% end %>
-        </li>
-      <% end %>
-    </ul>
-
-    <%= form_for @user, :url => invitation_path(:user), :html => {:method => :post} do |f| %>
-
-    <% User.invite_key_fields.each do |field| -%>
-      <p><%= f.label field %><br />
-      <%= f.text_field field %></p>
-    <% end -%>
-    <p>
-      <%= select_tag :membership_role, options_for_select(Membership::ROLES) %>
-    </p>
-
-      <p><%= f.submit t("devise.invitations.new.submit_button") %></p>
+        </p>
+      </li>
     <% end %>
-  </div>
+  </ul>
+
+  <br>
+
+  <h1 class="page-title">
+    Getting Setup and Technical Details
+  </h1>
+
+  <p><%= t('.try_out_command') %></p>
+
+  <pre>
+    <code>
+      curl -X POST <%= root_url %>incoming_message \
+        -H "Accept: application/json" \
+        --data "account=<%= @account.slug %>" \
+        --data "email=user@example.com" \
+        --data "content=I need help please."
+    </code>
+  </pre>
+
+  <p><%= t('.embed_help_text') %></p> 
+
+  <pre>
+    <code>
+      <%= web_form_code %>
+    </code>
+  </pre>
+
+  <%= form_for @account, method: :patch, html: {class: 'form'} do |f| %>
+    <div class="form-group">
+      <%= f.label :webhook_secret, t('.webhook_secret'), class: 'control-label' %>
+      <%= f.text_field :webhook_secret, class: 'form-control', readonly: 'readonly' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :mailbox, t('.incoming_email'), class: 'control-label' %>
+      <%= f.text_field :mailbox_email, class: 'form-control', readonly: 'readonly' %>
+    </div>
+  <% end %>
 </div>

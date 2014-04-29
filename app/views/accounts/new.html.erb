@@ -1,54 +1,203 @@
-<div class="l-signup">
-  <div class="container">
+<%= render 'shared/navbar' %>
 
-    <div class="logo logo-default"></div>
+<div class="container">
 
-    <h3><%= t('.sign_up_free_account') %></h3>
+  <h1 class="page-title">Welcome to Helpful</h1>
 
-    <p><%= t('.quick_easy_sign_up') %> <%= t('.no_cc_required') %> <%= t('.already_have_account') %> <%= link_to(t('.please_sign_in'), new_user_session_path)  %>.</p>
+  <%= form_for @account, html: { role: 'form' } do |f| %>
 
-    <%= render "/shared/error_messages", :target => @account %>
-    <%= render "/shared/error_messages", :target => @new_account_user %>
+    <h2>Sign Up for a Free Account</h2>
 
-    <%= form_for @account, html: {class: 'form'} do |f| %>
+    <p>We'll get your company and personal information setup so you can be ready to answer those support requests and make some customers happy.</p>
 
-      <div class="form-group">
-        <%= f.label :name, t('accounts.general.company_name'), class: 'form-label' %>
-        <%= f.text_field :name, autofocus: true, placeholder: t('accounts.general.company_name_placeholder'), class: 'form-control' %>
+    <fieldset>
+
+      <%= render 'shared/error_messages', target: @account %>
+
+      <div class="row">
+
+        <div class="col-md-6">
+
+          <div class="form-group">
+            <%= f.label :name, t('accounts.general.company_name'), class: 'control-label' %>
+            <%= f.text_field :name, autofocus: true, class: 'form-control' %>
+          </div>
+
+        </div>
+
+        <div class="col-md-6">
+
+          <div class="form-group">
+            <%= f.label :url, 'Company URL', class: 'control-label' %>
+            <%= f.text_field :url, class: 'form-control' %>
+          </div>
+
+        </div>
+
       </div>
 
+    </fieldset>
+
+    <!-- TODO: (vanstee) Add support for linking social accounts, prefilling info, and uploading avatars here
+
+    <fieldset>
+
+      <h2>Be a real person to your customers</h2>
+
+      <p>Add a face to the name so your customers can relate to a fellow human</p>
+
+      <div class="form-group">
+
+        <button class="btn btn-secondary">
+          <span class="glyphicon glyphicon-user"></span>
+          Upload a Picture
+        </button>
+
+        <button class="btn btn-default">
+          <span class="glyphicon fa fa-twitter"></span>
+          Twitter
+        </button>
+
+        <button class="btn btn-default">
+          <span class="glyphicon fa fa-facebook"></span>
+          Facebook
+        </button>
+
+        <button class="btn btn-default">
+          <span class="glyphicon fa fa-google-plus"></span>
+          Google+
+        </button>
+
+      </div>
+
+    </fieldset>
+
+    -->
+
+    <fieldset>
+
+      <%= render 'shared/error_messages', target: @new_account_user %>
+
+      <h2>Personal Information</h2>
+
       <%= fields_for @person do |ff| %>
-        <div class="form-group">
-          <%= ff.label :name, t('accounts.general.your_name'), class: 'form-label' %>
-          <%= ff.text_field :name, placeholder: t('accounts.general.your_name_placeholder'), class: 'form-control' %>
+
+        <div class="row">
+
+          <div class="col-md-12">
+
+            <div class="form-group">
+              <%= ff.label :name, 'Full Name', class: 'control-label' %>
+              <%= ff.text_field :name, class: 'form-control' %>
+            </div>
+
+          </div>
+
         </div>
-        <div class="form-group">
-          <%= ff.label :username, t('accounts.general.username'), class: 'form-label' %>
-          <%= ff.text_field :username, placeholder: t('accounts.general.username_placeholder'), class: 'form-control' %>
-        </div>
+
       <% end %>
 
       <%= fields_for @new_account_user do |ff| %>
-        <div class="form-group">
-          <%= ff.label :email, t('general.email'), class: 'form-label' %>
-          <%= ff.email_field :email, placeholder: t('general.email_placeholder'), class: 'form-control' %>
+
+        <div class="row">
+
+          <div class="col-md-12">
+
+            <div class="form-group">
+              <%= ff.label :email, 'Email Address', class: 'control-label' %>
+              <%= ff.email_field :email, class: 'form-control' %>
+            </div>
+
+          </div>
+
         </div>
 
-        <div class="form-group">
-          <%= ff.label :password, t('general.password'), class: 'form-label' %>
-          <%= ff.password_field :password, placeholder: t('.must_meet_requirements'), class: 'form-control' %>
+        <div class="row">
+
+          <div class="col-md-12">
+
+            <div class="form-group">
+              <%= ff.label :password, 'Password', class: 'control-label' %>
+              <%= ff.password_field :password, class: 'form-control', placeholder: "Pretend you're a spy. Make it a good one" %>
+            </div>
+
+          </div>
+
         </div>
 
-        <div class="form-group">
-          <%= ff.label :password_confirmation, t('.password_confirmation'), class: 'form-label' %>
-          <%= ff.password_field :password_confirmation, placeholder: t('.must_meet_requirements'), class: 'form-control' %>
-        </div>
       <% end %>
 
-      <div class="form-actions">
-        <%= f.submit t('.create_account'), :class => "btn btn-primary" %>
+    </fieldset>
+
+    <!-- TODO: (vanstee) Add support to add teammates via ajax here
+
+    <fieldset>
+
+      <h2>Invite Teammates</h2>
+
+      <div class="row">
+
+        <div class="col-md-12">
+
+          <div class="form-group">
+            <label class="control-label">Teammate's Email Address</label>
+
+            <div class="row">
+              
+              <div class="col-md-9">
+                <input type="text" class="form-control">
+              </div>
+
+              <div class="col-md-3">
+                <button class="btn btn-success btn-block">
+                  Invited
+                  <span class="glyphicon glyphicon-ok"></span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
       </div>
-    <% end %>
-    </div>
-  </div>
+
+      <div class="row">
+
+        <div class="col-md-12">
+
+          <div class="form-group">
+            <div class="row">
+              
+              <div class="col-md-9">
+                <input type="text" class="form-control">
+              </div>
+
+              <div class="col-md-3">
+                <button class="btn btn-secondary btn-block">Invite</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      
+    </fieldset>
+
+    -->
+
+    <fieldset>
+
+      <h2>Clearly this isn't your first rodeo</h2>
+
+      <p>You're support experience is about to change for the better</p>
+
+      <div class="form-group">
+        <%= f.submit 'Finish Sign Up!', class: 'btn btn-primary' %>
+      </div>
+      
+    </fieldset>
+
+  <% end %>
+
 </div>

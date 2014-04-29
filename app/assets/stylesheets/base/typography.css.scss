@@ -9,30 +9,19 @@ h4,
 h5,
 h6 {
   line-height: 1.1;
+  font-family: $font-body;
+  font-weight: normal;
   margin-bottom: 1rem;
   margin-top: 2rem;
-
-  &:first-child {
-    margin-top: 0;
-  }
 }
 
 h1 {
-  font-family: $font-headline;
-}
-
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: $font-body;
+  font-size: 2.8em;
 }
 
 h2 {
-  font-size: 1.2em;
-  color: $red;
-  margin-bottom: 2rem;
+  font-size: 1.8em;
+  margin-bottom: 10px;
 }
 
 h3 {
@@ -41,7 +30,6 @@ h3 {
 
 h4 {
   font-size: 1.3em;
-  font-weight: normal;
 }
 
 h5 {
@@ -56,11 +44,9 @@ h6 {
 }
 
 p {
-  margin-bottom: .8rem;
-  max-width: 34em;
-  &:last-child {
-    margin-bottom: 0;
-  }
+  font-size: 1.2em;
+  font-weight: lighter;
+  margin-bottom: 0.8em;
 }
 
 strong {
@@ -79,11 +65,6 @@ a {
   &:focus {
     text-decoration: none;
   }
-}
-
-h1 + p {
-  font-size: 1.55em;
-  font-weight: 200;
 }
 
 ul {

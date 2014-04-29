@@ -99,4 +99,41 @@ describe ConversationsController do
       expect(conversation.respond_laters).not_to be_empty
     end
   end
+
+  describe '#search', vcr: true do
+    let!(:messages) {
+      [
+        create(:message, content: 'This is broken', account: account), 
+        create(:message, content: 'Hi, my name is Ben. I need help', account: account)
+      ]
+    }
+
+    let(:ids) {
+      [
+        'c795dcb6-8f64-4c1d-888d-c0064153f892',
+        '4b4f2e44-0462-41f1-9861-cedbaf377a99'
+      ]
+    }
+
+    before {
+      messages.zip(ids).each do |message, id|
+        message.id = id
+        message.save!
+      end
+
+      Message.import
+    }
+
+    it 'returns search results as json' do
+      post :search,
+        {
+          account_id: account.slug,
+          q: 'Ben',
+          format: :json
+        }
+
+      expect(JSON.parse(response.body)['conversations'].length).to eq(1)
+      expect(JSON.parse(response.body)['conversations'][0]['messages'][0]['body']).to include('Ben')
+    end
+  end
 end

@@ -1,71 +1,119 @@
 <div class="navbar navbar-default navbar-static-top">
 
-  <ul class="nav navbar-nav navbar-right">
-    <li class="dropdown avatar">
-      <a class="dropdown-toggle" href="#" data-toggle="dropdown">
-        <%= avatar(current_user, 30, 'navbar-avatar') %>
-        <span class="username"><%= current_user.name %></span>
-        <b class="caret"></b>
-      </a>
-      <ul class="dropdown-menu">
-        <li>
-          <a href="<%= edit_user_path %>"><%= t('.personal_settings') %></a>
-        </li>
-        <li>
-          <a href="<%= edit_account_path(@account) %>"><%= @account.name %> <%= t('.settings') %></a>
-        </li>
-        <li>
-          <a href="mailto:helpful@helpful.io"><%= t('.help') %></a>
-        </li>
-        <li>
-          <%= link_to t('.logout'), destroy_user_session_path, method: :delete, class: 'nav-text' %>
-        </li>
-      </ul>
-    </li>
-  </ul>
+  <% if current_user %>
 
-  <ul class="nav navbar-nav navbar-left">
-    <li class="navbar-brand-icon">
-      <%= image_tag 'life_saver.png', alt: 'Helpful' %>
-    </li>
-
-    <% other_accounts = current_user.accounts.reject {|a| a == @account } %>
-    <% if other_accounts.any? %>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          <%= @account.name %> <b class="caret"></b>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown avatar">
+        <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+          <%= avatar(current_user, 30, 'navbar-avatar') %>
+          <span class="username"><%= current_user.name %></span>
+          <b class="caret"></b>
         </a>
         <ul class="dropdown-menu">
-          <% other_accounts.each do |account| %>
-            <li>
-              <%= link_to account.name, inbox_account_conversations_path(account) %>
-            </li>
-          <% end %>
+          <li>
+            <a href="<%= edit_user_path %>"><%= t('.personal_settings') %></a>
+          </li>
+          <li>
+            <a href="<%= edit_account_path(@account) %>"><%= t('.account_settings') %></a>
+          </li>
+          <li>
+            <a href="mailto:helpful@helpful.io"><%= t('.help') %></a>
+          </li>
+          <li>
+            <%= link_to t('.logout'), destroy_user_session_path, method: :delete, class: 'nav-text' %>
+          </li>
         </ul>
       </li>
-    <% else %>
-      <li>
-        <span class="navbar-text"><%= @account.name %></span>
-      </li>
-    <% end %>
-  </ul>
+    </ul>
 
-  <div class="container">
-    <ul class="nav navbar-nav nav-separated">
-      <li class="<%= current_page?(inbox_account_conversations_path(@account)) ? 'active' : '' %>"> 
-        <%= link_to t('.inbox'), inbox_account_conversations_path(@account) %>
+    <ul class="nav navbar-nav navbar-left">
+      <li class="navbar-brand-icon">
+        <%= image_tag 'life_saver.png', alt: 'Helpful' %>
       </li>
-      <li class="<%= current_page?(archived_account_conversations_path(@account)) ? 'active' : '' %>">
-        <%= link_to t('.archive'), archived_account_conversations_path(@account) %>
+
+      <% other_accounts = current_user.accounts.reject {|a| a == @account } %>
+      <% if other_accounts.any? %>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <%= @account.name %> <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <% other_accounts.each do |account| %>
+              <li>
+                <%= link_to account.name, inbox_account_conversations_path(account) %>
+              </li>
+            <% end %>
+          </ul>
+        </li>
+      <% else %>
+        <li>
+          <span class="navbar-text"><%= @account.name %></span>
+        </li>
+      <% end %>
+    </ul>
+
+    <div class="container">
+      <ul class="nav navbar-nav nav-separated">
+        <li class="<%= current_page?(inbox_account_conversations_path(@account)) ? 'active' : '' %>"> 
+          <%= link_to t('.inbox'), inbox_account_conversations_path(@account) %>
+        </li>
+        <li class="<%= current_page?(archived_account_conversations_path(@account)) ? 'active' : '' %>">
+          <%= link_to t('.archive'), archived_account_conversations_path(@account) %>
+        </li>
+      </ul>
+      <div class="search-bar">
+        <%= form_tag search_account_conversations_path(@account), method: 'get' do %>
+          <%= search_field_tag :q, @query, autocomplete: 'off', placeholder: 'Search', id: 'search-query', 'data-search-path' => search_account_conversations_path(@account) %>
+          <span class="search-bar-icon glyphicon glyphicon-search"></span>
+          <span class="search-bar-icon search-bar-clear-icon glyphicon glyphicon-remove"></span>
+        <% end %>
+      </div>
+      <div class="search-results-container">
+      </div>
+    </div>
+
+  <% else %>
+
+    <ul class="nav navbar-nav navbar-left">
+      <li class="navbar-brand-icon">
+        <%= image_tag 'life_saver.png', alt: 'Helpful' %>
       </li>
     </ul>
-    <div class="search-bar">
-      <%= form_tag search_account_conversations_path(@account), method: 'get' do %>
-        <%= search_field_tag :q, @query, placeholder: t('.search'), id: 'search-query' %>
-        <span class="search-bar-icon glyphicon glyphicon-search"></span>
-        <span class="search-bar-icon search-bar-clear-icon glyphicon glyphicon-remove"></span>
-      <% end %>
+
+    <div class="container">
+      <ul class="nav navbar-nav navbar-right">
+
+        <% if current_page?(new_user_session_path) %>
+          <li>
+            <%= link_to t('.sign_up'), new_accounts_path %>
+          </li>
+        <% end %>
+        <% if current_page?(new_accounts_path) %>
+          <li>
+            <%= link_to t('.sign_in'), new_user_session_path %>
+          </li>
+        <% end %>
+      </ul>
     </div>
-  </div>
+
+  <% end %>
 
 </div>
+
+<script id="search-results-template" type="text/x-handlebars-template">
+  <div class="popover bottom">
+    <div class="arrow"></div>
+
+    <div class="popover-content">
+      <ul class="search-results">
+        {{#each conversations}}
+          <li class="search-result">
+            <a href="{{url}}">
+              {{subject}}
+            </a>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</script>

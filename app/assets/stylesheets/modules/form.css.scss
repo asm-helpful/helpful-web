@@ -1,100 +1,128 @@
-%form-element {
-}
-
-.form {
-
-  .form-group,
-  fieldset,
-  legend {
-    margin-bottom: 10px;
-  }
-
-  fieldset {
-    margin-left: 0;
-    margin-right: 0;
-    padding: 0;
-    border: 0;
-  }
-
-  legend {
-    color: black;
-    display: block;
-    font-size: 14px;
-    font-weight: 600;
-  }
-}
-
-.form-inline {
-  display: inline;
-
-  + .form-inline {
-    margin-left: 20px;
-  }
-}
-
-.form-actions {
+fieldset + fieldset {
+  border-top: 1px solid $light-gray;
   margin-top: 20px;
+  padding-top: 10px;
 }
 
 .form-group {
-  position: relative;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  overflow: auto;
 }
 
-.form-control {
-  @include box-sizing(border-box);
-  border: 2px solid $muted;
-  border-radius: 4px;
-  color: $black;
-  font-size: .9em;
-  padding: 33px 13px 9px;
-  height: auto;
-  width: 100%;
-  outline: none;
+label {
+  color: $darkest-blue;
+  font-size: 1.2em;
+  font-weight: normal;
+}
+
+label.control-label + .radio,
+label.control-label + .checkbox {
+  margin-top: 2px;
+  padding-top: 14px;
+  border-top: 1px solid $light-gray;
+}
+
+input.form-control,
+select.form-control,
+textarea.form-control {
+  background-color: $lightest-gray-highlight;
+  border-color: $gray;
+  border-radius: 3px;
   box-shadow: none;
+  color: $black;
+  font-size: 1.2em;
+  font-weight: lighter;
+  height: $line-height-computed + ($padding-base-vertical * 2) + 14;
 
-  &:focus {
-    border-color: $primary;
+  @include placeholder {
+    color: $gray;
+    font-weight: lighter;
+  }
+
+  &:focus,
+  &.focus {
+    background-color: $white;
+    border-color: $blue;
     box-shadow: none;
-    outline: 0;
+    outline: none;
   }
 }
 
-.form-label {
-  color: $light-black;
-  font-size: 14px;
-  font-weight: 600;
-  padding: 10px 15px;
-  position: absolute;
-  top: 0;
+textarea.form-control {
+  height: auto;
+  padding: 10px 12px;
+  resize: none;
 }
 
-
-[data-form-danger] {
-  .form-label {
-    color: $danger;
-  }
-
-  .form-control,
-  .form-control:focus {
-    border-color: $danger;
-  }
-}
-
-// TODO This is a regression from the previous styleguide proposed by @whale
-// and implemented by @pieterbeliqe. Needs fixing, my bad :(
 .radio,
 .checkbox {
-  @include clearfix;
+  label {
+    display: block;
+    font-weight: lighter;
+
+    input {
+      margin-right: 14px;
+    }
+  }
+}
+
+.has-success {
+  .control-label {
+    color: $darkest-blue;
+  }
 
   .form-control {
-    position: relative;
-    top: auto;
-    margin-left: 0;
+    border-color: $gray;
+    box-shadow: none;
+
+    &:focus,
+    &.focus {
+      background-color: $white;
+      border-color: $blue;
+      box-shadow: none;
+      outline: none;
+    }
+  }
+}
+
+.has-error {
+  .control-label {
+    color: $darkest-blue;
   }
 
-  .form-label {
-    position: relative;
-    top: -5px;
-    padding: 5px;
+  .form-control {
+    border-color: $light-red;
+
+    &:focus,
+    &.focus {
+      background-color: $white;
+      border-color: $light-red;
+      box-shadow: none;
+      outline: none;
+    }
   }
+
+  .glyphicon {
+    color: $red;
+  }
+
+  .help-block {
+    color: $darkest-blue;
+  }
+}
+
+.has-feedback {
+  color: $dark-gray;
+
+  .glyphicon {
+    position: absolute;
+    margin-top: -40px;
+    right: 5px;
+    top: auto;
+  }
+}
+
+.help-block {
+  font-weight: lighter;
 }

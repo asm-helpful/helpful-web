@@ -19,12 +19,12 @@
     background-color: $white;
 
     .actions {
-      visibility: visible;
+      opacity: 1;
     }
   }
 
   .actions {
-    visibility: hidden;
+      opacity: 0;
   }
 
   .summary {
@@ -70,39 +70,10 @@
     margin-top: 5px;
     margin-bottom: 5px;
 
-    > .message-count {
-      background-color: darken($lightest-gray, 8%);
-      color: darken($dark-blue, 15%);
-      font-weight: normal;
-      margin-right: 6px;
-      padding-left: 10px;
-      padding-right: 10px;
-
-      &.message-count-unread {
-        background-color: $bright-blue;
-        color: $white;
-      }
-
-      > .glyphicon {
-        font-size: 11px;
-        margin-right: 2px;
-      }
-    }
-
     > .timestamp {
       display: inline-block;
       font-weight: bold;
       margin-right: 6px;
-
-      &.timestamp-stale {
-        @extend .badge;
-
-        background-color: $red;
-        color: $white;
-        font-weight: normal;
-        padding-top: 4px;
-        padding-bottom: 3px;
-      }
     }
 
     > .participants {
