@@ -159,15 +159,7 @@ class Conversation < ActiveRecord::Base
   end
 
   def subject
-    if(self[:subject].present?) then
-      self[:subject]
-    else
-      if (self.first_message.present? && self.first_message.content.present?) then
-        self.first_message.content[0..140]
-      else
-        ""
-      end
-    end
+    super.presence || first_message && first_message.content.to_s[0..140]
   end
 
   private

@@ -178,4 +178,21 @@ describe Conversation do
     end
   end
 
+  describe '#subject' do
+    let(:conversation) { build(:conversation) }
+
+    it 'returns the subject if it exists' do
+      conversation.subject = 'Can haz help?'
+
+      expect(conversation.subject).to eq('Can haz help?')
+    end
+
+    it 'return the first 140 characters of the first message if the subject is blank' do
+      conversation.subject = ''
+      message = double('Message', content: 'May I please have some help?')
+      expect(conversation).to receive(:first_message).twice { message }
+
+      expect(conversation.subject).to eq('May I please have some help?')
+    end
+  end
 end
