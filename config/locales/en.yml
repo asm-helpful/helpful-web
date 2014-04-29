@@ -33,7 +33,7 @@ en:
   shared:
     navbar:
       personal_settings: "Personal Settings"
-      settings: "Settings"
+      settings: "Account Settings"
       help: "Help"
       logout: "Logout"
       inbox: "Inbox"
@@ -87,14 +87,15 @@ en:
       webhook_url_placeholder: "https://www.example.com/webhooks/helpful"
       webhook_secret: "Webhook Secret"
       incoming_email: "Incoming e-mail address"
-      update_account_settings: "Update my account settings"
+      update_account: "Save"
+      invitations: "Invitations"
+      send_invitation: "Send an Invitation"
+      invitations_sent: "Invitations Sent"
       invitation_sent: "Invitation sent"
-      signature: "Signature"
+      signature: "Response Signature"
       signature_placeholder: "Signature included at the end of every e-mail"
       auto_archiving: "Auto-archive conversations after replying"
-    web_form:
-      help_text: "You can embed a web form anywhere that will allow your customers to submit their help requests directly to
-      Helpful:"
+      embed_help_text: "You can also embed a web form anywhere that will allow your customers to submit their help requests directly to Helpful:"
 
   conversations:
     conversation:
