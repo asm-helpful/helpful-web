@@ -11,12 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140425142654) do
+ActiveRecord::Schema.define(version: 20140427020532) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
-  enable_extension "pg_stat_statements"
   enable_extension "uuid-ossp"
 
   create_table "accounts", id: false, force: true do |t|
@@ -107,6 +106,7 @@ ActiveRecord::Schema.define(version: 20140425142654) do
   end
 
   add_index "conversations", ["account_id", "archived"], name: "index_conversations_on_account_id_and_archived", using: :btree
+  add_index "conversations", ["account_id"], name: "index_conversations_on_account_id", using: :btree
   add_index "conversations", ["hidden"], name: "index_conversations_on_hidden", using: :btree
   add_index "conversations", ["user_id"], name: "index_conversations_on_user_id", using: :btree
 
@@ -187,6 +187,8 @@ ActiveRecord::Schema.define(version: 20140425142654) do
     t.datetime "updated_at"
     t.uuid     "account_id"
     t.string   "username"
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
   add_index "people", ["account_id", "username"], name: "index_people_on_account_id_and_username", unique: true, using: :btree

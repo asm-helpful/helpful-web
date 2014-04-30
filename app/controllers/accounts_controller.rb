@@ -11,7 +11,7 @@ class AccountsController < ApplicationController
   def create
     user_params = params.require(:user).permit(:email, :password, :password_confirmation)
     account_params = params.require(:account).permit(:name)
-    person_params = params.require(:person).permit([:name, :username])
+    person_params = params.require(:person).permit(:first_name, :last_name, :username)
 
     @new_account_user = User.new user_params
     @account = Account.new account_params
@@ -19,6 +19,7 @@ class AccountsController < ApplicationController
 
     @person.email = @new_account_user.email
     @person.account = @account
+    @person.name ||= person_params[:first_name] + ' ' + person_params[:last_name]
 
     @account.new_account_user = @new_account_user
     @new_account_user.person = @person

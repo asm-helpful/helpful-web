@@ -17,13 +17,14 @@ describe AccountsController do
     end
   end
 
-  it "POST create" do
+  it "POST create with first_name and last_name" do
     post :create, {
       account: {
         name: 'MyCompany'
       },
       person: {
-        name: 'John Doe',
+        first_name: 'John',
+        last_name: 'Doe',
         username: 'john'
       },
       user: {

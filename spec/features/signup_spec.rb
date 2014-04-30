@@ -5,7 +5,8 @@ describe "new user signup" do
     visit root_path
     find(".button-sign-up").click
     fill_in "account_name", :with => "Helpful"
-    fill_in "person_name", :with => "Jess Brown"
+    fill_in "person_first_name", :with => "Jess"
+    fill_in "person_last_name", :with => "Brown"
     fill_in "user_email", :with => "helper@helpful.io"
     fill_in "user_password", :with => "xxx12223xxx"
     click_on "Finish Sign Up!"
@@ -18,7 +19,8 @@ describe "new user signup" do
       visit root_path
       find(".button-sign-up").click
       fill_in "account_name", :with => "Helpful"
-      fill_in "person_name", :with => "Jess Brown"
+      fill_in "person_first_name", :with => "Jess"
+      fill_in "person_last_name", :with => "Brown"
       fill_in "user_email", :with => "helper@helpful.io"
       fill_in "user_password", :with => "short"
       click_on "Finish Sign Up!"
