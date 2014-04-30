@@ -8,21 +8,39 @@ class Account < ActiveRecord::Base
 
   belongs_to :billing_plan
 
-  has_many :canned_responses, dependent: :destroy
-  has_many :conversations, dependent: :destroy
-  has_many :messages, through: :conversations
-  has_many :people, dependent: :destroy
-  has_many :memberships, dependent: :destroy
-  has_many :users, through: :memberships
-  has_many :user_people, through: :users, source: :person
-  has_many :webhooks, dependent: :destroy
+  has_many :canned_responses,
+    dependent: :destroy
 
-  validates :name, presence: true
-  validates :slug, presence: true
+  has_many :conversations,
+    dependent: :destroy
+
+  has_many :messages,
+    through: :conversations
+
+  has_many :people,
+    dependent: :destroy
+
+  has_many :memberships,
+    dependent: :destroy
+
+  has_many :users,
+    through: :memberships
+
+  has_many :user_people,
+    through: :users,
+    source: :person
+
+  has_many :webhooks,
+    dependent: :destroy
+
+  validates :name,
+    presence: true
+
+  validates :slug,
+    presence: true
 
   before_create :generate_webhook_secret
   before_create :set_default_billing_plan
-  after_create :save_new_user
 
   friendly_id :name, use: :slugged
 
@@ -99,6 +117,11 @@ class Account < ActiveRecord::Base
     memberships.create(user: owner, role: 'owner')
   end
 
+  def add_owner!(owner)
+    memberships.create(user: owner, role: 'owner') ||
+      raise(ActiveRecord::Rollback)
+  end
+
   def add_agent(agent)
     memberships.create(user: agent, role: 'agent')
   end
@@ -112,13 +135,6 @@ class Account < ActiveRecord::Base
   end
 
   protected
-
-  def save_new_user
-    if new_account_user
-      new_account_user.save || raise(ActiveRecord::Rollback)
-      add_owner(new_account_user) || raise(ActiveRecord::Rollback)
-    end
-  end
 
   def generate_webhook_secret
     self.webhook_secret ||= SecureRandom.hex(16)

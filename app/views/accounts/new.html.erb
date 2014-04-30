@@ -76,7 +76,7 @@
 
     <fieldset>
 
-      <%= render 'shared/error_messages', target: @new_account_user %>
+      <%= render 'shared/error_messages', target: @user %>
 
       <h2>Personal Information</h2>
 
@@ -102,7 +102,7 @@
 
       <% end %>
 
-      <%= fields_for @new_account_user do |ff| %>
+      <%= fields_for @user do |ff| %>
 
         <div class="row">
 
