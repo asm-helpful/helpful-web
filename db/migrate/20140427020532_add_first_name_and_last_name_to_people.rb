@@ -9,7 +9,7 @@ class AddFirstNameAndLastNameToPeople < ActiveRecord::Migration
           if person[:first_name].nil? && !person[:name].nil?
             names = person[:name].split(' ')
             person.update_attribute(:first_name, names[0])
-            person.update_attribute(:last_name, names[1..-1].join(' '))
+            person.update_attribute(:last_name, Array(names[1..-1]).join(' '))
           end
         end
       }
