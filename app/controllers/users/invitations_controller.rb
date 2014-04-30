@@ -22,7 +22,8 @@ class Users::InvitationsController < Devise::InvitationsController
     person = Person.create(
       account:    account,
       user:       resource,
-      name:       params[:user][:name],
+      first_name: params[:user][:first_name],
+      last_name:  params[:user][:last_name],
       username:   params[:person][:username],
       email:      resource.email
     )
