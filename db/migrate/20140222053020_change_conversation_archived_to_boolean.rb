@@ -1,7 +1,4 @@
 class ChangeConversationArchivedToBoolean < ActiveRecord::Migration
-  class Conversation < ActiveRecord::Base
-  end
-  
   def up
     add_column :conversations, :archived, :boolean, default: false
     Conversation.where(
