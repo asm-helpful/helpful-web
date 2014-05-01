@@ -4,7 +4,7 @@ class Account < ActiveRecord::Base
   include ActiveRecord::UUID
   extend FriendlyId
 
-  attr_accessor :stripe_token, :billing_plan
+  attr_accessor :stripe_token, :billing_plan_slug
 
   belongs_to :billing_plan
 
@@ -42,6 +42,9 @@ class Account < ActiveRecord::Base
   validates :stripe_token,
     presence: true,
     on: :create
+
+  validates :billing_plan,
+    presence: true
 
   before_create :generate_webhook_secret
   before_create :set_default_billing_plan
@@ -136,6 +139,30 @@ class Account < ActiveRecord::Base
 
   def conversations_limit_reached?
     return self.conversations.this_month.size >= self.conversations_limit
+  end
+
+  def billing_plan_slug
+    billing_plan && billing_plan.slug
+  end
+
+  def billing_plan_slug=(new_billing_plan_slug)
+    self.billing_plan = BillingPlan.find_by(slug: new_billing_plan_slug)
+  end
+
+  def owner
+    owner_membership = memberships.where(role: 'owner').first
+    owner_membership && owner_membership.user
+  end
+
+  def subscribe!
+    customer = Stripe::Customer.create(
+      card: stripe_token,
+      plan: billing_plan_slug,
+      email: owner && owner.email
+    )
+
+    self.stripe_customer_id = customer.id
+    self.save!
   end
 
   protected

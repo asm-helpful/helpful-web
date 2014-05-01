@@ -1,19 +1,22 @@
-var stripe = StripeCheckout.configure({
-  key: '<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>',
-  token: function(token, args) {
-    $('[name="account[stripe_token]"]').val(token.id);
-  }
-});
-
 var selectPlan = function($plan) {
+  var slug = $plan.attr('data-plan-slug');
+
   $('.plan-select').removeClass('btn-selected');
   $('.plan-select-message').text('Subscribe');
 
   $plan.addClass('btn-selected');
   $plan.children('.plan-select-message').text('Subscribed');
+  $('[name="account[billing_plan_slug]"]').val(slug);
 }
 
 $(document).on('ready page:load', function() {
+  var stripe = StripeCheckout.configure({
+    key: $('meta[name="stripe-token"]').attr('content'),
+    token: function(token, args) {
+      $('[name="account[stripe_token]"]').val(token.id);
+    }
+  });
+
   $('[data-plan-subscribe="true"').click(function() {
     var slug = $(this).attr('data-plan-slug');
     var name = $(this).attr('data-plan-name');

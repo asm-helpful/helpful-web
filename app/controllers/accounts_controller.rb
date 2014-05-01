@@ -10,9 +10,10 @@ class AccountsController < ApplicationController
   end
 
   def create
+    @account = Account.new(account_params)
     @user = User.new(user_params)
     @person = Person.new(person_params)
-    @account = Account.new(account_params)
+    @plans = BillingPlan.order('price ASC')
 
     @person.email = @user.email
     @person.account = @account
@@ -27,6 +28,8 @@ class AccountsController < ApplicationController
         @person.save!
 
         @account.add_owner!(@user)
+
+        @account.subscribe!
       end
 
       sign_in(@user)
@@ -68,7 +71,7 @@ class AccountsController < ApplicationController
   end
 
   def account_params
-    params.require(:account).permit(:name, :website_url, :webhook_url, :prefers_archiving, :signature)
+    params.require(:account).permit(:name, :website_url, :webhook_url, :prefers_archiving, :signature, :stripe_token, :billing_plan_slug)
   end
 
   def user_params
