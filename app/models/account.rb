@@ -4,25 +4,50 @@ class Account < ActiveRecord::Base
   include ActiveRecord::UUID
   extend FriendlyId
 
-  attr_accessor :new_account_user
+  attr_accessor :stripe_token, :billing_plan_slug
 
   belongs_to :billing_plan
 
-  has_many :canned_responses, dependent: :destroy
-  has_many :conversations, dependent: :destroy
-  has_many :messages, through: :conversations
-  has_many :people, dependent: :destroy
-  has_many :memberships, dependent: :destroy
-  has_many :users, through: :memberships
-  has_many :user_people, through: :users, source: :person
-  has_many :webhooks, dependent: :destroy
+  has_many :canned_responses,
+    dependent: :destroy
 
-  validates :name, presence: true
-  validates :slug, presence: true
+  has_many :conversations,
+    dependent: :destroy
+
+  has_many :messages,
+    through: :conversations
+
+  has_many :people,
+    dependent: :destroy
+
+  has_many :memberships,
+    dependent: :destroy
+
+  has_many :users,
+    through: :memberships
+
+  has_many :user_people,
+    through: :users,
+    source: :person
+
+  has_many :webhooks,
+    dependent: :destroy
+
+  validates :name,
+    presence: true
+
+  validates :slug,
+    presence: true
+
+  validates :stripe_token,
+    presence: true,
+    on: :create
+
+  validates :billing_plan,
+    presence: true
 
   before_create :generate_webhook_secret
   before_create :set_default_billing_plan
-  after_create :save_new_user
 
   friendly_id :name, use: :slugged
 
@@ -99,6 +124,11 @@ class Account < ActiveRecord::Base
     memberships.create(user: owner, role: 'owner')
   end
 
+  def add_owner!(owner)
+    memberships.create(user: owner, role: 'owner') ||
+      raise(ActiveRecord::Rollback)
+  end
+
   def add_agent(agent)
     memberships.create(user: agent, role: 'agent')
   end
@@ -111,14 +141,31 @@ class Account < ActiveRecord::Base
     return self.conversations.this_month.size >= self.conversations_limit
   end
 
-  protected
-
-  def save_new_user
-    if new_account_user
-      new_account_user.save || raise(ActiveRecord::Rollback)
-      add_owner(new_account_user) || raise(ActiveRecord::Rollback)
-    end
+  def billing_plan_slug
+    billing_plan && billing_plan.slug
   end
+
+  def billing_plan_slug=(new_billing_plan_slug)
+    self.billing_plan = BillingPlan.find_by(slug: new_billing_plan_slug)
+  end
+
+  def owner
+    owner_membership = memberships.where(role: 'owner').first
+    owner_membership && owner_membership.user
+  end
+
+  def subscribe!
+    customer = Stripe::Customer.create(
+      card: stripe_token,
+      plan: billing_plan_slug,
+      email: owner && owner.email
+    )
+
+    self.stripe_customer_id = customer.id
+    self.save!
+  end
+
+  protected
 
   def generate_webhook_secret
     self.webhook_secret ||= SecureRandom.hex(16)

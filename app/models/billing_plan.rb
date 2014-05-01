@@ -6,4 +6,8 @@ class BillingPlan < ActiveRecord::Base
   has_many :accounts
 
   scope :ordered, -> { order(price: :asc) }
+
+  def formatted_price
+    (price * 100).to_i.to_s
+  end
 end

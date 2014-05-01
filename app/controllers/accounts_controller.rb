@@ -4,39 +4,41 @@ class AccountsController < ApplicationController
 
   def new
     @account = Account.new
-    @new_account_user = User.new
+    @user = User.new
     @person = Person.new
+    @plans = BillingPlan.order('price ASC')
   end
 
   def create
-    user_params = params.require(:user).permit(:email, :password, :password_confirmation)
-    account_params = params.require(:account).permit(:name)
-    person_params = params.require(:person).permit(:first_name, :last_name, :username)
+    @account = Account.new(account_params)
+    @user = User.new(user_params)
+    @person = Person.new(person_params)
+    @plans = BillingPlan.order('price ASC')
 
-    @new_account_user = User.new user_params
-    @account = Account.new account_params
-    @person = Person.new person_params
-
-    @person.email = @new_account_user.email
+    @person.email = @user.email
     @person.account = @account
     @person.name ||= person_params[:first_name] + ' ' + person_params[:last_name]
 
-    @account.new_account_user = @new_account_user
-    @new_account_user.person = @person
+    @user.person = @person
 
-    if @new_account_user.valid? && @account.valid? && @person.valid? && @account.save
+    begin
+      ActiveRecord::Base.transaction do
+        @user.save!
+        @account.save!
+        @person.save!
 
-      sign_in(@new_account_user)
+        @account.add_owner!(@user)
 
-      Analytics.identify(
-          user_id: @new_account_user.id,
-          traits: { email: @new_account_user.email, account_id: @account.id })
-      Analytics.track(
-          user_id: @new_account_user.id,
-          event: 'Signed Up')
+        @account.subscribe!
+      end
+
+      sign_in(@user)
+
+      Analytics.identify(user_id: @user.id, traits: { email: @user.email, account_id: @account.id })
+      Analytics.track(user_id: @user.id, event: 'Signed Up')
 
       redirect_to inbox_account_conversations_path(@account), notice: 'Welcome to Helpful!'
-    else
+    rescue ActiveRecord::RecordInvalid
       render 'new'
     end
   end
@@ -69,7 +71,14 @@ class AccountsController < ApplicationController
   end
 
   def account_params
-    params.require(:account).permit(:name, :website_url, :webhook_url, :prefers_archiving, :signature)
+    params.require(:account).permit(:name, :website_url, :webhook_url, :prefers_archiving, :signature, :stripe_token, :billing_plan_slug)
   end
 
+  def user_params
+    params.require(:user).permit(:email, :password, :password_confirmation)
+  end
+
+  def person_params
+    params.require(:person).permit(:first_name, :last_name, :username)
+  end
 end
