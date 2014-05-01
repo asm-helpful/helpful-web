@@ -6,6 +6,7 @@ class AccountsController < ApplicationController
     @account = Account.new
     @user = User.new
     @person = Person.new
+    @plans = BillingPlan.order('price ASC')
   end
 
   def create

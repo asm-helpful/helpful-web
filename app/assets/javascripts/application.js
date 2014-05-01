@@ -9,6 +9,7 @@
 //= require avatar
 //= require jquery-autosize
 //= require search_bar
+//= require billing
 //= require handlebars
 
 $(document).ready(function() {

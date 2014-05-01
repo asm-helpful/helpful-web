@@ -4,7 +4,7 @@ class Account < ActiveRecord::Base
   include ActiveRecord::UUID
   extend FriendlyId
 
-  attr_accessor :new_account_user
+  attr_accessor :stripe_token, :billing_plan
 
   belongs_to :billing_plan
 
@@ -38,6 +38,10 @@ class Account < ActiveRecord::Base
 
   validates :slug,
     presence: true
+
+  validates :stripe_token,
+    presence: true,
+    on: :create
 
   before_create :generate_webhook_secret
   before_create :set_default_billing_plan
