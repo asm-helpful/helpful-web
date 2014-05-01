@@ -6,6 +6,8 @@
 @import 'bourbon';
 
 @import 'mixins';
+@import 'medium-editor/medium-editor';
+@import 'medium-editor/themes/default';
 
 @import 'base/*';
 @import 'layouts/*';

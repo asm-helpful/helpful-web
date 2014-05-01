@@ -63,7 +63,7 @@ var applyTextcomplete = function($element) {
     $.getJSON(
       cannedResponsePath,
       function(cannedResponse) {
-        $('.conversation-reply textarea').val(cannedResponse.message);
+        $reply_message.html(cannedResponse.message);
       }
     )
   };
@@ -89,10 +89,9 @@ var applyTextcomplete = function($element) {
 };
 
 var toggleSendButton = function(event) {
-  var $textarea = $(this);
+  var $reply_message = $(this);
   var $sendButton = $('.command-bar :submit');
-
-  if($textarea.val().length > 0) {
+  if($reply_message.text().length > 0) {
     $sendButton.show();
   } else {
     $sendButton.hide();
@@ -100,12 +99,12 @@ var toggleSendButton = function(event) {
 };
 
 $(document).on('ready page:load', function() {
-  $textarea = $('.conversation-reply textarea');
+  $reply_message = $('[data-reply-to-message]');
 
-  if (!$textarea.length)
+  if (!$reply_message.length)
     return;
 
-  applyTextcomplete($textarea);
-  $($textarea).keyup(toggleSendButton);
-  toggleSendButton.bind($textarea)();
+  applyTextcomplete($reply_message);
+  $($reply_message).keyup(toggleSendButton);
+  toggleSendButton.bind($reply_message)();
 });
