@@ -20,7 +20,8 @@ describe AccountsController do
   it "POST create with first_name and last_name" do
     post :create, {
       account: {
-        name: 'MyCompany'
+        name: 'MyCompany',
+        billing_plan_slug: 'starter-kit'
       },
       person: {
         first_name: 'John',

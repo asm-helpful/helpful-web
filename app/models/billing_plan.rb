@@ -10,4 +10,8 @@ class BillingPlan < ActiveRecord::Base
   def formatted_price
     (price * 100).to_i.to_s
   end
+
+  def free?
+    price.zero?
+  end
 end

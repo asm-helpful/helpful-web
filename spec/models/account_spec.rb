@@ -10,7 +10,7 @@ describe Account do
   end
 
   it "must have a unique slug" do
-    Account.create name: 'unique', slug: 'unique'
+    create(:account, name: 'unique', slug: 'unique')
     @account.name = 'unique'
     @account.slug = 'unique'
 

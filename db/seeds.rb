@@ -1,5 +1,5 @@
 # Current billing plans
-BillingPlan.create slug: 'starter-kit',
+starter_kit = BillingPlan.create slug: 'starter-kit',
                    name: "Starter Kit",
                    max_conversations: 25,
                    price: 0
@@ -19,7 +19,7 @@ BillingPlan.create slug: 'super',
                    max_conversations: 300,
                    price: 199
 
-account = Account.create!(name: 'Test Corp')
+account = Account.create!(name: 'Test Corp', billing_plan: starter_kit, stripe_token: 'testing')
 
 patrick = User.create!(email: 'patrick@assemblymade.com', password: 'password')
 Membership.create!(account: account, user: patrick, role: 'owner')

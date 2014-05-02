@@ -3,7 +3,7 @@ class AccountsController < ApplicationController
   respond_to :html
 
   def new
-    @account = Account.new
+    @account = Account.new(billing_plan_slug: 'starter-kit')
     @user = User.new
     @person = Person.new
     @plans = BillingPlan.order('price ASC')

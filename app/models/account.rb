@@ -39,10 +39,6 @@ class Account < ActiveRecord::Base
   validates :slug,
     presence: true
 
-  validates :stripe_token,
-    presence: true,
-    on: :create
-
   validates :billing_plan,
     presence: true
 
@@ -155,6 +151,8 @@ class Account < ActiveRecord::Base
   end
 
   def subscribe!
+    return if billing_plan.free?
+
     customer = Stripe::Customer.create(
       card: stripe_token,
       plan: billing_plan_slug,
