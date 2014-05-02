@@ -25,6 +25,8 @@
         </div>
       </div>
     </div>
+  </div>
+  <div class="section section-half-page">
     <div class="page-middle">
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -41,6 +43,7 @@
 <script>
 $(document).on('ready page:load', function() {
   var windowHeight = $(window).outerHeight();
-  $('.section-full-page').css('height', (windowHeight - 50) + 'px');
+  $('.section-full-page').css('height', (windowHeight - 25) + 'px');
+  $('.section-half-page').css('height', ((windowHeight - 25) / 2.0) + 'px');
 });
 </script>
