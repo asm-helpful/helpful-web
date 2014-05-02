@@ -7,7 +7,7 @@
     <title>Helpful</title>
   <% end %>
   <%= stylesheet_link_tag "application", media: "all" %>
-  <%= stylesheet_link_tag "//fonts.googleapis.com/css?family=Montserrat:700|Lato:300,400,400italic,700" %>
+  <%= stylesheet_link_tag "//fonts.googleapis.com/css?family=Droid+Serif:400,700|Lato:300,400,400italic,700" %>
   <%= javascript_include_tag "https://checkout.stripe.com/checkout.js" %>
   <%= javascript_include_tag "application" %>
   <%= javascript_include_tag "//d3dy5gmtp8yhk7.cloudfront.net/2.1/pusher.min.js" %>
@@ -15,7 +15,7 @@
   <meta name="pusher-key" content="<%= Pusher.key %>">
   <meta name="stripe-token" content="<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>">
 </head>
-<body>
+<body class="<%= 'inverse-background' if current_page?(controller: :pages, action: :home) %>">
   <% if @account %>
     <input type="hidden" name="account-slug" value="<%= @account.slug %>">
   <% end %>

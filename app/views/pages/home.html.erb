@@ -12,51 +12,35 @@
   <meta name="twitter:image:src" content="<%= image_url('logo.png') %>">
   <meta name="twitter:domain" content="helpful.io">
 <% end -%>
-<div class="l-home">
 
-    <%= render 'pages/home/header' %>
-
-    <%= render 'pages/home/hero' %>
-
-    <div class="conversation">
-    </div>
-
-    <%= render 'pages/home/demo' %>
-
-    <div class="demo-image">
-        <div class="screenshot"></div>
-    </div>
-
-    <div class="line"></div>
-
-    <div class="pricing">
-        <div class="pricing-text">
-          <h4 class="pricing-text-1"><%= t('.pricing_text_1') %></h4>
-          <h4 class="pricing-text-2"><%= t('.pricing_text_2') %></h4>
+<div class="container">
+  <div class="section section-full-page">
+    <div class="page-middle">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <%= image_tag('logo.png') %>
+          <h1 class="lead-header">We redesigned the support tool to get out of the way, so you focus on being a helpful human.</h1>
+          <p class="lead-text">Helping your customers with good answers and thoughtful direction should be a breaze, focused 100% on support - and nothing else.</p>
+          <p class="lead-text">C'mon, let's see it in action.</p>
         </div>
-
-        <%= render 'pages/home/pricing_table' %>
-
-        <div class="pricing-text-end">
-          <h1><%= t('.pricing_text_end') %></h1>
+      </div>
+    </div>
+    <div class="page-middle">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <%= image_tag('logo.png') %>
+          <h1 class="lead-header">We redesigned the support tool to get out of the way, so you focus on being a helpful human.</h1>
+          <p class="lead-text">Helping your customers with good answers and thoughtful direction should be a breaze, focused 100% on support - and nothing else.</p>
+          <p class="lead-text">C'mon, let's see it in action.</p>
         </div>
+      </div>
     </div>
-
-    <div class="line"></div>
-
-    <div class="contact-us">
-        <h4>Helpful <%= t('.in_house') %></h4>
-        <h4><%= t('.in_house_text') %></h4>
-        <a href="mailto:helpful@helpful.io"><%= t('.contact_us') %></a>
-
-    </div>
-
-    <div class="line"></div>
-
-  <div class="footer">
-    <div class="assembly-logo">
-      <%= image_tag "assembly_logo.png" %>
-    </div>
-    <h4>Assembly Made</h4>
   </div>
 </div>
+
+<script>
+$(document).on('ready page:load', function() {
+  var windowHeight = $(window).outerHeight();
+  $('.section-full-page').css('height', (windowHeight - 50) + 'px');
+});
+</script>

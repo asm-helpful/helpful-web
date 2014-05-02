@@ -1,0 +1,37 @@
+.section {
+}
+
+.section-full-page {
+  height: 500px;
+  min-height: 300px;
+  position: relative;
+}
+
+.page-middle {
+  bottom: 0;
+  display: block;
+  height: 450px;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  text-align: center;
+}
+
+.lead-header {
+  font-size: 30px;
+  color: $white;
+}
+
+.lead-header + .lead-text {
+  margin-top: 20px;
+}
+
+.lead-text {
+  color: $gray-blue;
+  font-size: 20px;
+  font-family: 'Droid Serif';
+  margin-left: 20px;
+  margin-right: 20px;
+}
