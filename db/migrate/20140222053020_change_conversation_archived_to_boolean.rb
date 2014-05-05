@@ -1,7 +1,7 @@
 class ChangeConversationArchivedToBoolean < ActiveRecord::Migration
   def up
     add_column :conversations, :archived, :boolean, default: false
-    Conversation.where(
+    Conversation.unscoped.where(
       status: 'archived'
     ).update_all(
       archived: true
@@ -11,7 +11,7 @@ class ChangeConversationArchivedToBoolean < ActiveRecord::Migration
 
   def down
     add_column :conversations, :status, :string
-    Conversation.where(
+    Conversation.unscoped.where(
       archived: true
     ).update_all(
       status: 'archived'
