@@ -18,21 +18,47 @@
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
           <%= image_tag('logo.png') %>
-          <h1 class="lead-header">We redesigned the support tool to get out of the way, so you focus on being a helpful human.</h1>
-          <p class="lead-text">Helping your customers with good answers and thoughtful direction should be a breaze, focused 100% on support - and nothing else.</p>
+          <h1 class="lead-header">We redesigned support to get out of the way, so you focus on being a helpful human.</h1>
+          <p class="lead-text">Helping your customers with good answers and thoughtful direction should be a breeze, focused 100% on support - and nothing else.</p>
           <p class="lead-text">C'mon, let's see it in action.</p>
         </div>
       </div>
     </div>
   </div>
-  <div class="section section-half-page">
-    <div class="page-middle">
-      <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-          <%= image_tag('logo.png') %>
-          <h1 class="lead-header">We redesigned the support tool to get out of the way, so you focus on being a helpful human.</h1>
-          <p class="lead-text">Helping your customers with good answers and thoughtful direction should be a breaze, focused 100% on support - and nothing else.</p>
-          <p class="lead-text">C'mon, let's see it in action.</p>
+</div>
+<div class="section section-half-page section-screenshots">
+  <div class="page-middle">
+    <div class="row">
+      <div class="screenshot">
+        <div class="inner">
+          <%= image_tag('home/widget.png') %>
+        </div>
+      </div>
+      <div class="screenshot screenshot-middle">
+        <div class="inner">
+          <%= image_tag('home/app.png') %>
+        </div>
+      </div>
+      <div class="screenshot">
+        <div class="inner last">
+          <%= image_tag('home/email.png') %>
+        </div>
+      </div>
+    </div>
+    <div class="row screenshot-text">
+      <div class="screenshot">
+        <div class="inner">
+          <p>Don’t make your customers swim through hundreds of choices.</p>
+        </div>
+      </div>
+      <div class="screenshot screenshot-middle">
+        <div class="inner">
+          <p>Don’t make your customers swim through hundreds of choices.</p>
+        </div>
+      </div>
+      <div class="screenshot">
+        <div class="inner last">
+          <p>Don’t make your customers swim through hundreds of choices.</p>
         </div>
       </div>
     </div>
@@ -134,6 +160,8 @@
   </div>
 </div>
 
+
+
 <script>
 $(document).on('ready page:load', function() {
   var windowHeight = Math.max($(window).outerHeight(), 600);
@@ -159,6 +187,13 @@ $(document).on('ready page:load', function() {
       }, 400);
       return false;
     }
+  });
+
+  $('.screenshot').addClass("animated bounceInUp")
+  $(window).scroll(function() {
+     if($(window).scrollTop() > 200) {
+        $('.screenshot').addClass("animated fadeInDown")
+     }
   });
 });
 </script>
