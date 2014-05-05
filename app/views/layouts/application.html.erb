@@ -15,7 +15,7 @@
   <meta name="pusher-key" content="<%= Pusher.key %>">
   <meta name="stripe-token" content="<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>">
 </head>
-<body class="<%= 'inverse-background' if current_page?(controller: :pages, action: :home) %>">
+<body> 
   <% if @account %>
     <input type="hidden" name="account-slug" value="<%= @account.slug %>">
   <% end %>

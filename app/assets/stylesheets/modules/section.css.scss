@@ -13,12 +13,20 @@
   position: absolute;
   right: 0;
   top: 0;
+}
+
+.page-centered {
   text-align: center;
+
+  .lead-text {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
 }
 
 .lead-header {
   font-size: 30px;
-  color: $white;
+  color: $black;
 }
 
 .lead-header + .lead-text {
@@ -26,9 +34,17 @@
 }
 
 .lead-text {
-  color: $gray-blue;
+  color: $dark-gray;
   font-size: 20px;
   font-family: 'Droid Serif';
-  margin-left: 20px;
-  margin-right: 20px;
+}
+
+.inverse-background {
+  .lead-header {
+    color: $white;
+  }
+
+  .lead-text {
+    color: $gray-blue;
+  }
 }

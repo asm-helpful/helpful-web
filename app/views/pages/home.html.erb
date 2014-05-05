@@ -12,10 +12,9 @@
   <meta name="twitter:image:src" content="<%= image_url('logo.png') %>">
   <meta name="twitter:domain" content="helpful.io">
 <% end -%>
-
-<div class="container">
+<div class="inverse-background">
   <div class="section section-full-page">
-    <div class="page-middle">
+    <div class="page-middle page-centered">
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
           <%= image_tag('logo.png') %>
@@ -38,12 +37,128 @@
       </div>
     </div>
   </div>
+
+  <div style="height: 200px"></div>
+
+  <div class="navbar navbar-default navbar-static-top navbar-tall" data-scroll-to-content="true">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand">
+          Helpful
+        </a>
+      </div>
+
+      <ul class="nav navbar-nav">
+        <li><a href="#customer">Who's it for?</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <button class="btn btn-default">
+            Try the Demo
+          </button>
+        </li>
+        <li>
+          <button class="btn btn-primary">
+            Get Started
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="navbar navbar-default navbar-fixed-top navbar-tall">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand">
+          Helpful
+        </a>
+      </div>
+
+      <ul class="nav navbar-nav" data-scroll-to-content="true">
+        <li><a href="#customer">Who's it for?</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <button class="btn btn-default">
+            Try the Demo
+          </button>
+        </li>
+        <li>
+          <button class="btn btn-primary">
+            Get Started
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div id="customer" class="section section-full-page">
+    <div class="page-middle">
+      <div class="row">
+        <div class="col-md-6">
+          <h1 class="lead-header">Helpful will be the perfect tool for some of you, but not all.</h1>
+          <p class="lead-text">We built helpful so that we could be more human in our own support. We receive hundreds of support requests across our products per day, but not hundreds of thousands.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="features" class="section section-full-page">
+    <div class="page-middle">
+      <div class="row">
+        <div class="col-md-6">
+          <h1 class="lead-header">Helpful will be the perfect tool for some of you, but not all.</h1>
+          <p class="lead-text">We built helpful so that we could be more human in our own support. We receive hundreds of support requests across our products per day, but not hundreds of thousands.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="pricing" class="section section-full-page">
+    <div class="page-middle">
+      <div class="row">
+        <div class="col-md-6">
+          <h1 class="lead-header">Helpful will be the perfect tool for some of you, but not all.</h1>
+          <p class="lead-text">We built helpful so that we could be more human in our own support. We receive hundreds of support requests across our products per day, but not hundreds of thousands.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>
 $(document).on('ready page:load', function() {
-  var windowHeight = $(window).outerHeight();
-  $('.section-full-page').css('height', (windowHeight - 25) + 'px');
-  $('.section-half-page').css('height', ((windowHeight - 25) / 2.0) + 'px');
+  var windowHeight = Math.max($(window).outerHeight(), 600);
+  $('.section-full-page').css('height', (windowHeight - 50) + 'px');
+  $('.section-half-page').css('height', ((windowHeight - 50) / 2.0) + 'px');
+
+  $('.navbar-fixed-top').hide();
+
+  $(window).scroll(function() {
+    if($(window).scrollTop() > $('.navbar-static-top').offset().top) {
+      $('.navbar-fixed-top').show();
+    } else {
+      $('.navbar-fixed-top').hide();
+    }
+  })
+
+  $('[data-scroll-to-content="true"] a').click(function() {
+    var target = $(this.hash);
+    target = target.length ? target : $('#' + this.hash.slice(1));
+    if (target.length) {
+      $('html,body').animate({
+        scrollTop: target.offset().top
+      }, 400);
+      return false;
+    }
+  });
 });
 </script>

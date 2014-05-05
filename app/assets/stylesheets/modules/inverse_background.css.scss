@@ -1,3 +1,7 @@
 .inverse-background {
   background-color: $light-black;
+
+  .navbar {
+    border-top: 1px solid $dark-gray;
+  }
 }
