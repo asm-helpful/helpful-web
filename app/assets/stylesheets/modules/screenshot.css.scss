@@ -1,0 +1,29 @@
+.screenshot {
+  display: inline-block;
+  margin-left: 20px;
+  margin-right: 20px;
+
+  > p {
+    color: $white;
+    font-size: 24px;
+    margin-top: 10px;
+    margin-left: 60px;
+    margin-right: 60px;
+    text-align: center;
+  }
+
+  &:nth-child(1),
+  &:nth-child(3) {
+    width: 466px;
+  }
+
+  &:nth-child(2) {
+    width: 555px;
+  }
+}
+
+.screenshot-list {
+  overflow-x: visible;
+  overflow-y: hidden;
+  width: 1615px;
+}
