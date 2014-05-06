@@ -12,60 +12,42 @@
   <meta name="twitter:image:src" content="<%= image_url('logo.png') %>">
   <meta name="twitter:domain" content="helpful.io">
 <% end -%>
-<div class="inverse-background">
-  <div class="section section-full-page">
-    <div class="page-middle page-centered">
-      <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-          <%= image_tag('logo.png') %>
-          <h1 class="lead-header">We redesigned support to get out of the way, so you focus on being a helpful human.</h1>
-          <p class="lead-text">Helping your customers with good answers and thoughtful direction should be a breeze, focused 100% on support - and nothing else.</p>
-          <p class="lead-text">C'mon, let's see it in action.</p>
+
+<div class="backdrop">
+  <div class="page page-full page-center text-center">
+    <div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <%= image_tag('logo.png') %>
+            <h1>We redesigned support to get out of the way, so you focus on being a helpful human.</h1>
+            <p>Helping your customers with good answers and thoughtful direction should be a breeze, focused 100% on support - and nothing else.</p>
+            <p>C'mon, let's see it in action.</p>
+          </div>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page page-partial page-showcase">
+    <div class="screenshot-list">
+      <div class="screenshot">
+        <%= image_tag('home/widget_light.png') %>
+        <p>Don’t make your customers swim through hundreds of choices.</p>
+      </div>
+      <div class="screenshot">
+        <%= image_tag('home/app_light.png') %>
+        <p>You want to support customers not master a complex interface.</p>
+      </div>
+      <div class="screenshot">
+        <%= image_tag('home/email_light.png') %>
+        <p>Your cusotmers see an email from you, a person, a helper.</p>
       </div>
     </div>
   </div>
 </div>
-<div class="section section-half-page section-screenshots">
-  <div class="page-middle">
-    <div class="row">
-      <div class="screenshot">
-        <div class="inner">
-          <%= image_tag('home/widget.png') %>
-        </div>
-      </div>
-      <div class="screenshot screenshot-middle">
-        <div class="inner">
-          <%= image_tag('home/app.png') %>
-        </div>
-      </div>
-      <div class="screenshot">
-        <div class="inner last">
-          <%= image_tag('home/email.png') %>
-        </div>
-      </div>
-    </div>
-    <div class="row screenshot-text">
-      <div class="screenshot">
-        <div class="inner">
-          <p>Don’t make your customers swim through hundreds of choices.</p>
-        </div>
-      </div>
-      <div class="screenshot screenshot-middle">
-        <div class="inner">
-          <p>Don’t make your customers swim through hundreds of choices.</p>
-        </div>
-      </div>
-      <div class="screenshot">
-        <div class="inner last">
-          <p>Don’t make your customers swim through hundreds of choices.</p>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <div style="height: 200px"></div>
-
+<div class="navbar-placeholder">
   <div class="navbar navbar-default navbar-static-top navbar-tall" data-scroll-to-content="true">
     <div class="container">
       <div class="navbar-header">
@@ -94,106 +76,43 @@
       </ul>
     </div>
   </div>
+</div>
 
-  <div class="navbar navbar-default navbar-fixed-top navbar-tall">
+<div id="customer" class="page page-partial page-center">
+  <div>
     <div class="container">
-      <div class="navbar-header">
-        <a class="navbar-brand">
-          Helpful
-        </a>
-      </div>
-
-      <ul class="nav navbar-nav" data-scroll-to-content="true">
-        <li><a href="#customer">Who's it for?</a></li>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#pricing">Pricing</a></li>
-      </ul>
-
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-          <button class="btn btn-default">
-            Try the Demo
-          </button>
-        </li>
-        <li>
-          <button class="btn btn-primary">
-            Get Started
-          </button>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<div class="container">
-  <div id="customer" class="section section-full-page">
-    <div class="page-middle">
       <div class="row">
         <div class="col-md-6">
-          <h1 class="lead-header">Helpful will be the perfect tool for some of you, but not all.</h1>
-          <p class="lead-text">We built helpful so that we could be more human in our own support. We receive hundreds of support requests across our products per day, but not hundreds of thousands.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="features" class="section section-full-page">
-    <div class="page-middle">
-      <div class="row">
-        <div class="col-md-6">
-          <h1 class="lead-header">Helpful will be the perfect tool for some of you, but not all.</h1>
-          <p class="lead-text">We built helpful so that we could be more human in our own support. We receive hundreds of support requests across our products per day, but not hundreds of thousands.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="pricing" class="section section-full-page">
-    <div class="page-middle">
-      <div class="row">
-        <div class="col-md-6">
-          <h1 class="lead-header">Helpful will be the perfect tool for some of you, but not all.</h1>
-          <p class="lead-text">We built helpful so that we could be more human in our own support. We receive hundreds of support requests across our products per day, but not hundreds of thousands.</p>
+          <h1>Helpful will be the perfect tool for some of you, but not all.</h1>
+          <p>We built helpful so that we could be more human in our own support. We receive hundreds of support requests across our products per day, but not hundreds of thousands.</p>
         </div>
       </div>
     </div>
   </div>
 </div>
 
+<div id="features" class="page page-partial page-center">
+  <div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1>Helpful will be the perfect tool for some of you, but not all.</h1>
+          <p>We built helpful so that we could be more human in our own support. We receive hundreds of support requests across our products per day, but not hundreds of thousands.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-
-<script>
-$(document).on('ready page:load', function() {
-  var windowHeight = Math.max($(window).outerHeight(), 600);
-  $('.section-full-page').css('height', (windowHeight - 50) + 'px');
-  $('.section-half-page').css('height', ((windowHeight - 50) / 2.0) + 'px');
-
-  $('.navbar-fixed-top').hide();
-
-  $(window).scroll(function() {
-    if($(window).scrollTop() > $('.navbar-static-top').offset().top) {
-      $('.navbar-fixed-top').show();
-    } else {
-      $('.navbar-fixed-top').hide();
-    }
-  })
-
-  $('[data-scroll-to-content="true"] a').click(function() {
-    var target = $(this.hash);
-    target = target.length ? target : $('#' + this.hash.slice(1));
-    if (target.length) {
-      $('html,body').animate({
-        scrollTop: target.offset().top
-      }, 400);
-      return false;
-    }
-  });
-
-  $('.screenshot').addClass("animated bounceInUp")
-  $(window).scroll(function() {
-     if($(window).scrollTop() > 200) {
-        $('.screenshot').addClass("animated fadeInDown")
-     }
-  });
-});
-</script>
+<div id="pricing" class="page page-partial page-center">
+  <div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1>Helpful will be the perfect tool for some of you, but not all.</h1>
+          <p>We built helpful so that we could be more human in our own support. We receive hundreds of support requests across our products per day, but not hundreds of thousands.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
