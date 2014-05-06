@@ -52,13 +52,14 @@
         <%= time_ago_in_words(conversation.created_at) %> <%= t('general.ago') %>
       </div>
 
-      <div class="participants-expandable">
+      <div class="participants participants-expandable">
         from <strong><%= nickname(conversation.participants.first) %></strong> 
-        <% if conversation.participants.size == 2 %> 
+        <% if conversation.participants.count == 2 %>
           and <strong><%= nickname(conversation.participants.last) %></strong>
-        <% elsif  conversation.participants.size > 2 %>
-          and <%= conversation.participants.size - 1 %> others
+        <% elsif conversation.participants.count > 2 %>
+          and <%= conversation.participants.count - 1 %> others
         <% end %>
+
         <div class="participants-expand-icon">i</div>
       </div>
 
@@ -68,7 +69,12 @@
 
       <ul class="participants-list">
         <% conversation.participants.each do |participant| %>
-        <li><a href="mailto:<%= participant.email %>" class="btn btn-default"><strong><%= nickname(participant) %></strong> <%= participant.email %></a></li>
+          <li>
+            <a href="mailto:<%= participant.email %>" class="btn btn-default">
+              <strong><%= nickname(participant) %></strong>
+              <%= participant.email %>
+            </a>
+          </li>
         <% end %>
       </ul>
     </div>
