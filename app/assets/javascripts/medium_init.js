@@ -1,7 +1,11 @@
 $(document).on("ready page:change", function(){
-  var editor = new MediumEditor('[data-reply-to-message]', {
-    placeholder: "Write Your Reply"
+  var $replyMessage = $('[data-reply-to-message]');
+
+  var editor = new MediumEditor($replyMessage, {
+    placeholder: $replyMessage.attr('placeholder')
   });
+
+  setTimeout(function() { $replyMessage.focus() }, 0);
 
   $("form[data-reply-form]").submit(function( event ) {
     var content = $("[data-reply-to-message]").html()
