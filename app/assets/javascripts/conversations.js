@@ -30,8 +30,13 @@ var conversations = {
   }
 }
 
-$(document).on("ready page:change", function(){
+$(document).on("ready", function(){
   $('.list').delegate('.respond-later', 'click', conversations.onRespondLaterClick);
   $('.list').delegate('.archive', 'click', conversations.onArchiveClick);
   $("textarea[data-autosize]").autosize();
+
+  $('.participants-expand-icon').click(function () {
+    $('.participants-list', $(this).closest('.detail')).toggle();
+    $(this).toggleClass('expanded');
+  });
 });
