@@ -101,8 +101,6 @@ var toggleSendButton = function(event) {
 $(document).on('ready page:load', function() {
   $reply_message = $('[data-reply-to-message]');
 
-  $reply_message.focus();
-
   if (!$reply_message.length)
     return;
 
