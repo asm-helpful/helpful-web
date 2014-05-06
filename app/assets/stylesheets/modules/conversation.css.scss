@@ -73,7 +73,6 @@
     > .timestamp {
       display: inline-block;
       font-weight: bold;
-      margin-right: 6px;
     }
 
     > .participants {
@@ -89,10 +88,47 @@
       }
     }
 
+    > .participants-expandable {
+      display: inline-block;
+
+      .participants-expand-icon {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        border-radius: 8px;
+        line-height: 16px;
+        text-align: center;
+        background-color: $darkest-blue;
+        color: $lightest-gray;
+        cursor: pointer;
+        position: relative;
+
+        &.expanded::after {
+          content: 'hide';
+          color: $darkest-blue;
+          position: absolute;
+          left: 20px;
+          text-decoration: underline;
+        }
+      }
+    }
+
     > .number {
       color: $dark-gray;
       float: right;
       display: inline-block;
+    }
+
+    > .participants-list {
+      display: none;
+      list-style-type: none;
+      margin: 10px 0;
+      padding: 0;
+
+      li {
+        display: inline-block;
+        margin-bottom: 5px;
+      }
     }
   }
 
