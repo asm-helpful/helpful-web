@@ -1,6 +1,6 @@
 //= require jquery
 //= require jquery_ujs
-//= require jquery-textcomplete
+//= require jquery.textcomplete.min
 //= require pusher
 //= require turbolinks
 //= require bootstrap
@@ -11,6 +11,8 @@
 //= require search_bar
 //= require billing
 //= require handlebars
+//= require medium-editor
+//= require medium_init
 
 $(document).ready(function() {
 
