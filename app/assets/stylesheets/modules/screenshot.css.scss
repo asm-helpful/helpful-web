@@ -12,13 +12,16 @@
     text-align: center;
   }
 
-  &:nth-child(1),
-  &:nth-child(3) {
+  &:nth-child(1) {
     width: 466px;
   }
 
   &:nth-child(2) {
     width: 555px;
+  }
+
+  &:nth-child(3) {
+    width: 465px;
   }
 }
 
