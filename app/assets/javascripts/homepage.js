@@ -69,9 +69,9 @@ function animateScreenshots() {
 
 function startAnimation() {
   setTimeout(function() { animateScreen(0) },  1000);
-  setTimeout(function() { animateScreen(1) },  5000);
-  setTimeout(function() { animateScreen(2) },  9000);
-  setTimeout(function() { finishAnimation() }, 13000);
+  setTimeout(function() { animateScreen(1) },  3000);
+  setTimeout(function() { animateScreen(2) },  7000);
+  setTimeout(function() { finishAnimation() }, 10000);
 }
 
 function animateScreen(index) {
