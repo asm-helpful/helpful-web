@@ -137,38 +137,41 @@
   <div>
     <div class="container">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-offset-3 col-md-6 text-center">
           <h1>Plans tied to support requests, not staff members</h1>
           <p>Never worry about adding another member. Our plans scale with the number of support conversations you have each month. It places the incentives in the right place; focusing on lowering your number support requests.</p>
         </div>
-        <div class="col-md-offset-1 col-md-4">
-        <div class="list-group plan-list" style="margin-top: -200px;">
-          <% @plans.each do |plan| %>
-            <div class="list-group-item plan">
-              <h3>
-                <%= plan.name %>
-              </h3>
-              <p class="plan-info">
-                <%= plan.max_conversations %> conversations
-              </p>
-              <p class="plan-price">
-                <% if plan.price.zero? %>
-                  Totally Free!
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="list-group list-group-horizontal plan-list" style="margin-top: 50px">
+            <% @plans.each do |plan| %>
+              <div class="list-group-item plan">
+                <h3>
+                  <%= plan.name %>
+                </h3>
+                <p class="plan-info">
+                  <%= plan.max_conversations %> conversations
+                </p>
+                <p class="plan-price">
+                  <% if plan.price.zero? %>
+                    Totally Free!
+                  <% else %>
+                    <%= number_to_currency(plan.price, precision: 0) %> per month
+                  <% end %>
+                </p>
+                <% if plan.free? %>
+                  <%= link_to new_accounts_path, class: 'btn btn-success' do %>
+                    <span class="plan-select-message">Sign up</span>
+                  <% end %>
                 <% else %>
-                  <%= number_to_currency(plan.price, precision: 0) %> per month
+                  <%= link_to new_accounts_path, class: 'btn btn-secondary' do %>
+                    <span class="plan-select-message">Sign up</span>
+                  <% end %>
                 <% end %>
-              </p>
-              <% if plan.free? %>
-                <%= link_to new_accounts_path, class: 'btn btn-success' do %>
-                  <span class="plan-select-message">Sign up</span>
-                <% end %>
-              <% else %>
-                <%= link_to new_accounts_path, class: 'btn btn-secondary' do %>
-                  <span class="plan-select-message">Sign up</span>
-                <% end %>
-              <% end %>
-            </div>
-          <% end %>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
