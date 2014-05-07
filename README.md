@@ -28,18 +28,15 @@ To create a new account for Helpful, click "Sign Up" on the homepage.
 
 ### Sending with Gmail
 
-In development.rb, add:
+In your .env file, change the below values for your own email and
+password:
 
-    config.action_mailer.delivery_method = :smtp
-    config.action_mailer.smtp_settings = {
-        address:              'smtp.gmail.com',
-        port:                 587,
-        domain:               'example.com',
-        user_name:            'your_gmail_username',
-        password:             'your_gmail_password',
-        authentication:       'plain',
-        enable_starttls_auto: true
-    }
+    USE_GMAIL=true
+    SENDER_EMAIL_ADDRESS="email@example.com"
+    SENDER_EMAIL_PASSWORD="PassWord"
+
+Save and restart the app (`sudo restart helpful` on vagrant)
+
 
 ### Recieving with Mailgun (optional)
 

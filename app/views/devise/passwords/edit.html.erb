@@ -1,16 +1,46 @@
-<h2>Change your password</h2>
+<%= render 'shared/navbar' %>
 
-<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
+<div class="container">
+  <h1 class="page-title">Change your password</h1>
+
+  <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put, role: 'form' }) do |f| %>
   <%= devise_error_messages! %>
   <%= f.hidden_field :reset_password_token %>
 
-  <div><%= f.label :password, "New password" %><br />
-  <%= f.password_field :password, :autofocus => true %></div>
+  <fieldset>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <%= f.label :password, "New password", class: 'control-label' %><br />
+          <%= f.password_field :password, autofocus: true, class: 'form-control' %>
+        </div>
+      </div>
+    </div>
 
-  <div><%= f.label :password_confirmation, "Confirm new password" %><br />
-  <%= f.password_field :password_confirmation %></div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <%= f.label :password_confirmation, "Confirm new password", class: 'control-label' %><br />
+          <%= f.password_field :password_confirmation, class: 'form-control' %>
+        </div>
+      </div>
+    </div>
 
-  <div><%= f.submit "Change my password" %></div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <%= f.submit "Change my password", class: 'btn btn-lg btn-primary' %>
+        </div>
+      </div>
+    </div>
+  </fieldset>
 <% end %>
 
-<%= render "devise/shared/links" %>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="help-block">
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </div>
+</div>

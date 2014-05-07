@@ -52,17 +52,31 @@
         <%= time_ago_in_words(conversation.created_at) %> <%= t('general.ago') %>
       </div>
 
-      <ul class="participants">
-        <% conversation.participants.each do |participant| %>
-          <li>
-            <%= nickname(participant) %>
-          </li>
+      <div class="participants participants-expandable">
+        from <strong><%= nickname(conversation.participants.first) %></strong> 
+        <% if conversation.participants.size == 2 %>
+          and <strong><%= nickname(conversation.participants.last) %></strong>
+        <% elsif conversation.participants.size > 2 %>
+          and <%= conversation.participants.size - 1 %> others
         <% end %>
-      </ul>
+
+        <div class="participants-expand-icon">i</div>
+      </div>
 
       <div class="number">
         #<%= conversation.number %>
       </div>
+
+      <ul class="participants-list">
+        <% conversation.participants.each do |participant| %>
+          <li>
+            <a href="mailto:<%= participant.email %>" class="btn btn-default">
+              <strong><%= nickname(participant) %></strong>
+              <%= participant.email %>
+            </a>
+          </li>
+        <% end %>
+      </ul>
     </div>
 
     <div class="title">
@@ -91,9 +105,10 @@
   <div class="conversation-reply">
     <%= avatar_default(current_user.person) %>
 
-    <%= form_tag account_messages_path(@account), method: 'post' do %>
+    <%= form_tag account_messages_path(@account), method: 'post', "data-reply-form" => "" do %>
       <%= hidden_field :message, :conversation_id, value: conversation.id %>
-      <%= text_area :message, :content, placeholder: t('.reply_to_conversation'), rows: 4, 'data-autosize' => '', 'data-textcomplete-path' => account_textcompletes_path(@account) %>
+      <%= hidden_field :message, :content %>
+      <div class="reply-to-message" data-reply-to-message data-textcomplete-path="<%= account_textcompletes_path(@account) %>" placeholder="<%= t('.reply_to_conversation') %>"></div>
 
       <div class="command-bar">
         <div class="hints">

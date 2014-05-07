@@ -40,7 +40,7 @@ class Person < ActiveRecord::Base
 
   # Returns the initial(s) for this person (used in avatars)
   def initials
-    if first_name && last_name
+    if first_name.present? && last_name.present?
       first_name[0] + last_name[0]
     else
       email[0]
