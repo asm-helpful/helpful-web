@@ -17,7 +17,7 @@ $(document).on('ready page:load', function() {
     }
   });
 
-  $('[data-plan-subscribe="true"').click(function() {
+  $('[data-plan-subscribe="true"]').click(function() {
     var slug = $(this).attr('data-plan-slug');
     var name = $(this).attr('data-plan-name');
     var amount = $(this).attr('data-plan-amount');

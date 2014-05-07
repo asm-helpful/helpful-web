@@ -84,12 +84,16 @@
 
         <div class="row">
 
-          <div class="col-md-12">
+          <div class="col-md-6">
 
             <div class="form-group">
               <%= ff.label :first_name, 'First Name', class: 'control-label' %>
               <%= ff.text_field :first_name, class: 'form-control' %>
             </div>
+
+          </div>
+
+          <div class="col-md-6">
 
             <div class="form-group">
               <%= ff.label :last_name, 'Last Name', class: 'control-label' %>
@@ -221,7 +225,13 @@
                 data-plan-subscribe="<%= !plan.price.zero? %>">
 
                 <span class="glyphicon glyphicon-ok"></span>
-                <span class="plan-select-message">Subscribe</span>
+                <span class="plan-select-message">
+                  <% if plan == @plans.first %>
+                    Subscribed
+                  <% else %>
+                    Subscribe
+                  <% end %>
+                </span>
 
               </button>
             </div>

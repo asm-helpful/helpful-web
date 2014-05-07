@@ -10,6 +10,7 @@
 //= require jquery-autosize
 //= require search_bar
 //= require billing
+//= require homepage
 //= require handlebars
 //= require medium-editor
 //= require medium_init

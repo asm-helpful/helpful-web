@@ -12,51 +12,163 @@
   <meta name="twitter:image:src" content="<%= image_url('logo.png') %>">
   <meta name="twitter:domain" content="helpful.io">
 <% end -%>
-<div class="l-home">
 
-    <%= render 'pages/home/header' %>
-
-    <%= render 'pages/home/hero' %>
-
-    <div class="conversation">
-    </div>
-
-    <%= render 'pages/home/demo' %>
-
-    <div class="demo-image">
-        <div class="screenshot"></div>
-    </div>
-
-    <div class="line"></div>
-
-    <div class="pricing">
-        <div class="pricing-text">
-          <h4 class="pricing-text-1"><%= t('.pricing_text_1') %></h4>
-          <h4 class="pricing-text-2"><%= t('.pricing_text_2') %></h4>
+<div class="backdrop">
+  <div class="page page-full page-center text-center">
+    <div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <%= image_tag('logo.png') %>
+            <h1>We redesigned support to get out of the way, so you focus on being a helpful human.</h1>
+            <p>Helping your customers with good answers and thoughtful direction should be a breeze, focused 100% on support - and nothing else.</p>
+            <p>C'mon, let's see it in action.</p>
+          </div>
         </div>
+      </div>
+    </div>
+  </div>
 
-        <%= render 'pages/home/pricing_table' %>
+  <div class="page page-partial page-showcase">
+    <div class="screenshot-list">
+      <div class="screenshot">
+        <%= image_tag('home/widget_light.png') %>
+        <p>Give your customers a simple way to send you a message.</p>
+      </div>
+      <div class="screenshot">
+        <%= image_tag('home/app_light.png') %>
+        <p>Manage interactions with customers from a familiar inbox.</p>
+      </div>
+      <div class="screenshot">
+        <%= image_tag('home/email_light.png') %>
+        <p>Respond directly with an plain text email.</p>
+      </div>
+    </div>
+  </div>
+</div>
 
-        <div class="pricing-text-end">
-          <h1><%= t('.pricing_text_end') %></h1>
+<div class="navbar-placeholder">
+  <div class="navbar navbar-default navbar-static-top navbar-homepage" data-scroll-to-content="true">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand">
+          Helpful
+        </a>
+      </div>
+
+      <ul class="nav navbar-nav">
+        <li><a href="#customer">Who's it for?</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+      </ul>
+
+      <ul class="list-inline pull-right">
+        <li>
+          <%= link_to 'Sign up for free', new_accounts_path, class: 'btn btn-primary' %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div id="customer" class="page page-full page-center">
+  <div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1>Designed with startups in mind</h1>
+          <p>We specifically trimed features that added process and ceremony, so you can focus on having a conversation with your customers.</p>
         </div>
+        <div class="col-md-6" style="margin-top: 20px">
+          <ul class="list-group list-group-icons">
+            <li class="list-group-item">
+              <span class="glyphicon glyphicon-ok text-success"></span>
+              No more than 100 support reqeusts per day
+            </li>
+            <li class="list-group-item">
+              <span class="glyphicon glyphicon-ok text-success"></span>
+              Fewer than 20 people on your support team
+            </li>
+            <li class="list-group-item">
+              <span class="glyphicon glyphicon-ok text-success"></span>
+              Favor simple human interaction over process
+            </li>
+            <li class="list-group-item">
+              <span class="glyphicon glyphicon-ok text-success"></span>
+              Focused on having fewer support requests
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
+  </div>
+</div>
 
-    <div class="line"></div>
-
-    <div class="contact-us">
-        <h4>Helpful <%= t('.in_house') %></h4>
-        <h4><%= t('.in_house_text') %></h4>
-        <a href="mailto:helpful@helpful.io"><%= t('.contact_us') %></a>
-
+<div id="features" class="page page-partial">
+  <div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6" style="margin-top: -50px">
+          <div class="thumbnail">
+            <%= image_tag 'formatting-example.png' %>
+          </div>
+          <div class="thumbnail">
+          <%= image_tag 'assignment-example.png' %>
+          </div>
+          <div class="thumbnail">
+          <%= image_tag 'tag-example.png' %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <h1>Features you need, nothing more</h1>
+          <p>We don't think more features makes a better product. Instead we focused on making those everyday features feel natural and get out of your way.</p>
+        </div>
+      </div>
     </div>
+  </div>
+</div>
 
-    <div class="line"></div>
-
-  <div class="footer">
-    <div class="assembly-logo">
-      <%= image_tag "assembly_logo.png" %>
+<div id="pricing" class="page page-partial">
+  <div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6 text-center">
+          <h1>Plans tied to support requests, not staff members</h1>
+          <p>Never worry about adding another member. Our plans scale with the number of support conversations you have each month. It places the incentives in the right place; focusing on lowering your number support requests.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="list-group list-group-horizontal plan-list" style="margin-top: 50px">
+            <% @plans.each do |plan| %>
+              <div class="list-group-item plan">
+                <h3>
+                  <%= plan.name %>
+                </h3>
+                <p class="plan-info">
+                  <%= plan.max_conversations %> conversations
+                </p>
+                <p class="plan-price">
+                  <% if plan.price.zero? %>
+                    Totally Free!
+                  <% else %>
+                    <%= number_to_currency(plan.price, precision: 0) %> per month
+                  <% end %>
+                </p>
+                <% if plan.free? %>
+                  <%= link_to new_accounts_path, class: 'btn btn-success' do %>
+                    <span class="plan-select-message">Sign up</span>
+                  <% end %>
+                <% else %>
+                  <%= link_to new_accounts_path, class: 'btn btn-secondary' do %>
+                    <span class="plan-select-message">Sign up</span>
+                  <% end %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
-    <h4>Assembly Made</h4>
   </div>
 </div>

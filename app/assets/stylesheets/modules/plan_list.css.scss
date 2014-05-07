@@ -3,7 +3,6 @@
 
 .plan {
   text-align: center;
-  width: 25%;
   padding-bottom: 20px;
 
   > h3 {
@@ -26,5 +25,11 @@
         display: inline;
       }
     }
+  }
+}
+
+.list-group-horizontal {
+  .plan {
+    width: 25%;
   }
 }

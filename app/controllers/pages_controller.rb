@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
 
   def home
-    @billing_plans = BillingPlan.all
+    @plans = BillingPlan.order('price ASC')
   end
 
   def embed

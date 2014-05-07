@@ -2,6 +2,11 @@
   .username {
     margin-left: 10px;
   }
+
+  .btn {
+    margin-top: 7px;
+    margin-left: 10px;
+  }
 }
 
 .navbar-default {
@@ -22,4 +27,31 @@
 
 .navbar-right {
   margin-right: 20px;
+}
+
+.navbar-homepage {
+  border-top: 1px solid $dark-gray;
+
+  .btn {
+    margin-top: 15px;
+  }
+
+  .btn-default {
+    &:hover,
+    &.hover {
+      background-color: $black;
+    }
+  }
+
+  .navbar-header,
+  .navbar-nav {
+    a {
+      padding-top: 25px;
+      padding-bottom: 25px;
+    }
+  }
+}
+
+.navbar-placeholder {
+  height: 72px;
 }

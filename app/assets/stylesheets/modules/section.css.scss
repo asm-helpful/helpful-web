@@ -1,0 +1,97 @@
+.section {
+  position: relative;
+  height: 500px;
+  min-height: 300px;
+}
+
+.page-middle {
+  bottom: 0;
+  display: block;
+  height: 450px;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.page-centered {
+  text-align: center;
+
+  .lead-text {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+
+.lead-header {
+  font-size: 30px;
+  color: $black;
+}
+
+.lead-header + .lead-text {
+  margin-top: 20px;
+}
+
+.lead-text {
+  color: $dark-gray;
+  font-size: 20px;
+  font-family: 'Droid Serif';
+}
+
+.inverse-background {
+  .lead-header {
+    color: $white;
+  }
+
+  .lead-text {
+    color: $gray-blue;
+  }
+}
+
+.section-screenshots {
+  $screenshot-middle: 555;
+  $screenshot-side: 466;
+  $screenshot-middle-size: $screenshot-middle / ( ($screenshot-side * 2) + $screenshot-middle ) * 100%;
+  $screenshot-side-size: ( 100% - $screenshot-middle-size ) / 2;
+  width: 90%;
+  max-width: 1400px;
+  margin-right: auto;
+  margin-left: auto;
+
+  .screenshot {
+    float: left;
+    width: $screenshot-side-size;
+
+    .inner {
+      padding-left: 3%;
+      padding-right: 3%;
+    }
+
+    img {
+      width: 100%;
+      //jw;opacity: .3;
+    }
+  }
+
+  .screenshot-middle {
+    width: $screenshot-middle-size;
+  }
+
+  .screenshot-text {
+    margin-top: 25px;
+    .inner {
+      margin-left: 15px;
+      margin-right: 15px;
+      &.focused  p {
+        color: $white;
+      }
+    }
+    p {
+      color: $dark-gray;
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center;
+    }
+  }
+}

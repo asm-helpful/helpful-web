@@ -50,7 +50,9 @@ var toggleHighlight = function($element) {
 $(document).on('ready page:change', function() {
   $searchQuery = $('#search-query');
 
-  searchConversations($searchQuery);
-  clearInputButton($searchQuery);
-  toggleHighlight($searchQuery);
+  if(!!$searchQuery.length) {
+    searchConversations($searchQuery);
+    clearInputButton($searchQuery);
+    toggleHighlight($searchQuery);
+  }
 });
