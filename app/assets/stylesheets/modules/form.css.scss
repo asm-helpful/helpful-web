@@ -4,6 +4,10 @@ fieldset + fieldset {
   padding-top: 10px;
 }
 
+fieldset:last-child {
+  margin-bottom: 40px;
+}
+
 .form-group {
   margin-top: 10px;
   margin-bottom: 10px;
