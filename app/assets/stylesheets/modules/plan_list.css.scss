@@ -3,8 +3,11 @@
 
 .plan {
   text-align: center;
-  width: 25%;
   padding-bottom: 20px;
+
+  &.list-group-horizontal {
+    width: 25%;
+  }
 
   > h3 {
     text-transform: uppercase;

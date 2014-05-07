@@ -62,16 +62,14 @@
         <li><a href="#pricing">Pricing</a></li>
       </ul>
 
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="list-inline pull-right">
         <li>
-          <button class="btn btn-default">
+          <a href="#" class="btn btn-default">
             Try the Demo
-          </button>
+          </a>
         </li>
         <li>
-          <button class="btn btn-primary">
-            Get Started
-          </button>
+          <%= link_to 'Sign up for free', new_accounts_path, class: 'btn btn-primary' %>
         </li>
       </ul>
     </div>
@@ -83,8 +81,28 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <h1>Helpful will be the perfect tool for some of you, but not all.</h1>
-          <p>We built helpful so that we could be more human in our own support. We receive hundreds of support requests across our products per day, but not hundreds of thousands.</p>
+          <h1>Designed with startups in mind</h1>
+          <p>We specifically trimed features that added process and ceremony, so you can focus on having a conversation with your customers.</p>
+        </div>
+        <div class="col-md-6" style="margin-top: 20px">
+          <ul class="list-group list-group-icons">
+            <li class="list-group-item">
+              <span class="glyphicon glyphicon-ok text-success"></span>
+              No more than 100 support reqeusts per day
+            </li>
+            <li class="list-group-item">
+              <span class="glyphicon glyphicon-ok text-success"></span>
+              Fewer than 20 people on your support team
+            </li>
+            <li class="list-group-item">
+              <span class="glyphicon glyphicon-ok text-success"></span>
+              Favor simple human interaction over process
+            </li>
+            <li class="list-group-item">
+              <span class="glyphicon glyphicon-ok text-success"></span>
+              Focused on having fewer support requests
+            </li>
+          </ul>
         </div>
       </div>
     </div>
@@ -96,8 +114,8 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <h1>Helpful will be the perfect tool for some of you, but not all.</h1>
-          <p>We built helpful so that we could be more human in our own support. We receive hundreds of support requests across our products per day, but not hundreds of thousands.</p>
+          <h1>Features you need, nothing more</h1>
+          <p>We don't think more features makes a better product. It was tough, but we trimmed off any features that we didn't use on a daily basis.</p>
         </div>
       </div>
     </div>
@@ -109,8 +127,37 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <h1>Helpful will be the perfect tool for some of you, but not all.</h1>
-          <p>We built helpful so that we could be more human in our own support. We receive hundreds of support requests across our products per day, but not hundreds of thousands.</p>
+          <h1>Plans tied to support requests, not staff members</h1>
+          <p>Never worry about adding another member. Our plans scale with the number of support conversations you have each month. It places the incentives in the right place; focusing on lowering your number support requests.</p>
+        </div>
+        <div class="col-md-offset-1 col-md-4">
+        <div class="list-group plan-list" style="margin-top: -200px;">
+          <% @plans.each do |plan| %>
+            <div class="list-group-item plan">
+              <h3>
+                <%= plan.name %>
+              </h3>
+              <p class="plan-info">
+                <%= plan.max_conversations %> conversations
+              </p>
+              <p class="plan-price">
+                <% if plan.price.zero? %>
+                  Totally Free!
+                <% else %>
+                  <%= number_to_currency(plan.price, precision: 0) %> per month
+                <% end %>
+              </p>
+              <% if plan.free? %>
+                <%= link_to new_accounts_path, class: 'btn btn-success' do %>
+                  <span class="plan-select-message">Sign up</span>
+                <% end %>
+              <% else %>
+                <%= link_to new_accounts_path, class: 'btn btn-secondary' do %>
+                  <span class="plan-select-message">Sign up</span>
+                <% end %>
+              <% end %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>

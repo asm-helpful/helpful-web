@@ -221,7 +221,13 @@
                 data-plan-subscribe="<%= !plan.price.zero? %>">
 
                 <span class="glyphicon glyphicon-ok"></span>
-                <span class="plan-select-message">Subscribe</span>
+                <span class="plan-select-message">
+                  <% if plan == @plans.first %>
+                    Subscribed
+                  <% else %>
+                    Subscribe
+                  <% end %>
+                </span>
 
               </button>
             </div>
