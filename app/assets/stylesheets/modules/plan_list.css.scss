@@ -5,10 +5,6 @@
   text-align: center;
   padding-bottom: 20px;
 
-  &.list-group-horizontal {
-    width: 25%;
-  }
-
   > h3 {
     text-transform: uppercase;
   }
@@ -29,5 +25,11 @@
         display: inline;
       }
     }
+  }
+}
+
+.list-group-horizontal {
+  .plan {
+    width: 25%;
   }
 }
