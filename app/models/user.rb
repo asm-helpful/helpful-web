@@ -3,17 +3,18 @@ require 'activerecord/uuid'
 class User < ActiveRecord::Base
   include ActiveRecord::UUID
 
-  # Include default devise modules. Others available are:
-  # :rememberable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable,
-         :recoverable, :trackable, :validatable, :rememberable,
-         :lockable, :timeoutable
+    :recoverable, :trackable, :validatable, :rememberable,
+    :lockable, :timeoutable
 
   has_many :memberships
+
   has_many :accounts, through: :memberships
+
   has_many :conversations
 
   has_many :owner_memberships, -> { where(role: 'owner') }, class_name: 'Membership'
+
   has_many :owned_accounts, class_name: 'Account', through: :owner_memberships, source: :account
 
   has_one :person
