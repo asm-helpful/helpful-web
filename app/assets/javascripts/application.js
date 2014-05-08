@@ -14,6 +14,7 @@
 //= require handlebars
 //= require medium-editor
 //= require medium_init
+//= require jquery.transform2d
 
 $(document).ready(function() {
 
