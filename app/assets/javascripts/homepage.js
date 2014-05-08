@@ -54,7 +54,7 @@ var scrollToContentButtons = function() {
 };
 
 function animateScreenshots() {
-  $('.screenshot').addClass('animated bounceInUp');
+  $('.screenshot').addClass('animated fadeInUp');
   $('.screenshot img').animate({ opacity: .3 }, 100);
 
   var startedAnimation = false;
@@ -95,9 +95,11 @@ function finishAnimation() {
   $('.screenshot img').animate({ opacity: 1 }, 800);
   $('.screenshot p').addClass('focused');
 
+  var $screenshotList = $('.screenshot-list');
+  $screenshotList.animate({ left: 0 }, 800);
+
   if($(window).width() < $screenshotList.width()) {
-    var $screenshotList = $('.screenshot-list');
-    $screenshotList.animate({ left: 0, transform: 'scale(' + ($(window).width() / $screenshotList.width()) + ')' }, 800);
+    $screenshotList.animate({ transform: 'scale(' + ($(window).width() / $screenshotList.width()) + ')' }, 800);
   }
 }
 
