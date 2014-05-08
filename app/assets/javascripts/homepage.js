@@ -95,8 +95,10 @@ function finishAnimation() {
   $('.screenshot img').animate({ opacity: 1 }, 800);
   $('.screenshot p').addClass('focused');
 
-  var $screenshotList = $('.screenshot-list');
-  $screenshotList.animate({ left: 0, transform: 'scale(' + ($(window).width() / $screenshotList.width()) + ')' }, 800);
+  if($(window).width() < $screenshotList.width()) {
+    var $screenshotList = $('.screenshot-list');
+    $screenshotList.animate({ left: 0, transform: 'scale(' + ($(window).width() / $screenshotList.width()) + ')' }, 800);
+  }
 }
 
 $(document).on('ready page:load', function() {
