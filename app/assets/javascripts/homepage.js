@@ -75,7 +75,12 @@ function startAnimation() {
 }
 
 function animateScreen(index) {
+  var $screenshotList = $('.screenshot-list');
   var $screenshot = $('.screenshot').eq(index);
+
+  if($(window).width() < $screenshotList.width()) {
+    $screenshotList.animate({ 'left': ($screenshotList.width() / 2) - $screenshot.position().left - ($screenshot.outerWidth(true) / 2) }, 400);
+  }
 
   var $image = $screenshot.find('img');
   $('.screenshot img').not($image).animate({ opacity: .3 }, 200);
@@ -89,6 +94,8 @@ function animateScreen(index) {
 function finishAnimation() {
   $('.screenshot img').animate({ opacity: 1 }, 800);
   $('.screenshot p').addClass('focused');
+
+  $('.screenshot-list').animate({ left: 0 }, 800);
 }
 
 $(document).on('ready page:load', function() {
