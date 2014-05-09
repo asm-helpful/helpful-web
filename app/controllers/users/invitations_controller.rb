@@ -1,15 +1,14 @@
 class Users::InvitationsController < Devise::InvitationsController
+  before_filter :find_account!
 
-  # POST /resource/invitation
   def create
     self.resource = invite_resource
 
-    account = current_user.primary_owned_account
-    account.memberships.create(role: params.fetch(:membership_role), user: resource)
+    @account.memberships.create(role: params.fetch(:membership_role), user: resource)
 
     if resource.errors.empty?
       set_flash_message :notice, :send_instructions, :email => self.resource.email if self.resource.invitation_sent_at
-      respond_with resource, :location => edit_account_path(account)
+      respond_with resource, :location => edit_account_path(@account)
     else
       respond_with_navigational(resource) { render :new }
     end
@@ -18,9 +17,8 @@ class Users::InvitationsController < Devise::InvitationsController
   def update
     self.resource = resource_class.accept_invitation!(update_resource_params)
 
-    account = resource.primary_owned_account
     person = Person.create(
-      account:    account,
+      account:    @account,
       user:       resource,
       first_name: params[:user][:first_name],
       last_name:  params[:user][:last_name],
@@ -38,4 +36,8 @@ class Users::InvitationsController < Devise::InvitationsController
     end
   end
 
+  def find_account!
+    @account = Account.find_by!(slug: params.fetch(:account_id))
+    authorize! AccountReadPolicy.new(@account, current_user)
+  end
 end
