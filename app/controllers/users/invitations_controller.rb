@@ -2,15 +2,24 @@ class Users::InvitationsController < Devise::InvitationsController
   before_filter :find_account!
 
   def create
-    self.resource = invite_resource
+    @user = invite_resource
+    @person = Person.new
+    @plans = BillingPlan.order('price ASC')
 
-    @account.memberships.create(role: params.fetch(:membership_role), user: resource)
+    @membership = Membership.new(
+      role: params.fetch(:membership_role),
+      user: @user,
+      account: @account
+    )
 
-    if resource.errors.empty?
-      set_flash_message :notice, :send_instructions, :email => self.resource.email if self.resource.invitation_sent_at
-      respond_with resource, :location => edit_account_path(@account)
+    if @membership.save
+      if @user.invitation_sent_at
+        set_flash_message :notice, :send_instructions, email: @user.email
+      end
+
+      redirect_to edit_account_path(@account)
     else
-      respond_with_navigational(resource) { render :new }
+      render 'accounts/edit'
     end
   end
 

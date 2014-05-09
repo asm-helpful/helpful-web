@@ -6,11 +6,18 @@ class Membership < ActiveRecord::Base
   ROLES = ['owner', 'agent']
 
   belongs_to :account
+
   belongs_to :user
 
-  validates :account, presence: true
-  validates :user, presence: true
-  validates :role, inclusion: ROLES
+  validates :account,
+    presence: true
+
+  validates :user,
+    presence: true,
+    uniqueness: { scope: :account_id }
+
+  validates :role,
+    inclusion: ROLES
 
   ROLES.each do |role_name|
     define_method("#{role_name}?") do
