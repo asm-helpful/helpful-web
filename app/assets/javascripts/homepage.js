@@ -1,7 +1,7 @@
 var positionPages = function() {
   $(window).resize(function() {
     $('.page-full').each(function() {
-      var height = Math.max($(window).outerHeight(), 700) - 50;
+      var height = Math.max($(window).outerHeight(), 700) - 150;
       $(this).css({ height: height });
     });
 
