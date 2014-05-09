@@ -53,6 +53,31 @@ var scrollToContentButtons = function() {
   });
 };
 
+function animateLogo() {
+  setTimeout(function() { $("[data-animate-logo]").addClass('animated rotateIn') }, 1000)
+}
+
+function animateHeadings() {
+  $lead = $("[data-animate-lead]");
+  $lead.css({opacity: '.5', color: '#6E9096'});
+  setTimeout(function() { $("[data-animate-heading]").addClass('animated pulse') }, 2000);
+  setTimeout(function() { $lead.animate({opacity: 1}, 'slow') }, 4500);
+}
+
+function animateArrowDown() {
+  $arrowDown = $("[data-arrow-down]")
+  $arrowDown.hide()
+  setTimeout(function() {
+    $arrowDown.addClass('animated bounceInDown').show()
+    setInterval(function() { bounceArrow(); }, 2500)
+  }, 6000)
+}
+
+function bounceArrow() {
+  $arrowDown.removeClass();
+  setTimeout(function() { $arrowDown.addClass('animated bounce'); }, 300)
+}
+
 function animateScreenshots() {
   $('.screenshot').addClass('animated fadeInUp');
   $('.screenshot img').animate({ opacity: .3 }, 100);
@@ -105,6 +130,9 @@ function finishAnimation() {
 
 $(document).on('ready page:load', function() {
   positionPages();
+  animateLogo();
+  animateHeadings();
+  animateArrowDown();
   affixNavbar($('.navbar-placeholder'));
   scrollToContentButtons();
   animateScreenshots();
