@@ -58,6 +58,8 @@ Helpful::Application.routes.draw do
 
   scope '/:id' do
     resource :account, path: '/', only: [:show, :edit, :update] do
+      resources :invitations
+
       get :web_form
     end
   end

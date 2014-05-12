@@ -17,9 +17,15 @@ class Users::InvitationsController < Devise::InvitationsController
         set_flash_message :notice, :send_instructions, email: @user.email
       end
 
-      redirect_to edit_account_path(@account)
+      respond_with @user do |format|
+        format.html { redirect_to edit_account_path(@account) }
+        format.json
+      end
     else
-      render 'accounts/edit'
+      respond_with @user do |format|
+        format.html { render 'accounts/edit' }
+        format.json
+      end
     end
   end
 

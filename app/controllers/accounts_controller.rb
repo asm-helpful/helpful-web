@@ -10,14 +10,13 @@ class AccountsController < ApplicationController
   end
 
   def create
-    @account = Account.new(account_params)
+    @account = Account.new(account_params.merge(billing_plan_slug: 'starter-kit'))
     @user = User.new(user_params)
     @person = Person.new(person_params)
     @plans = BillingPlan.order('price ASC')
 
     @person.email = @user.email
     @person.account = @account
-    @person.name ||= person_params[:first_name] + ' ' + person_params[:last_name]
 
     @user.person = @person
 
@@ -37,10 +36,14 @@ class AccountsController < ApplicationController
       Analytics.identify(user_id: @user.id, traits: { email: @user.email, account_id: @account.id })
       Analytics.track(user_id: @user.id, event: 'Signed Up')
 
-      redirect_to inbox_account_conversations_path(@account), notice: 'Welcome to Helpful!'
+      redirect_to account_invitations_path(@account)
     rescue ActiveRecord::RecordInvalid
       render 'new'
     end
+  end
+
+  def invite
+    find_account!
   end
 
   def show
@@ -79,6 +82,6 @@ class AccountsController < ApplicationController
   end
 
   def person_params
-    params.require(:person).permit(:first_name, :last_name, :username)
+    params.require(:person).permit(:name, :username)
   end
 end

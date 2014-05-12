@@ -16,20 +16,11 @@
 
       <div class="row">
 
-        <div class="col-md-6">
+        <div class="col-md-12">
 
           <div class="form-group">
             <%= f.label :name, t('accounts.general.company_name'), class: 'control-label' %>
             <%= f.text_field :name, autofocus: true, class: 'form-control' %>
-          </div>
-
-        </div>
-
-        <div class="col-md-6">
-
-          <div class="form-group">
-            <%= f.label :url, 'Company URL', class: 'control-label' %>
-            <%= f.text_field :url, class: 'form-control' %>
           </div>
 
         </div>
@@ -84,20 +75,11 @@
 
         <div class="row">
 
-          <div class="col-md-6">
+          <div class="col-md-12">
 
             <div class="form-group">
-              <%= ff.label :first_name, 'First Name', class: 'control-label' %>
-              <%= ff.text_field :first_name, class: 'form-control' %>
-            </div>
-
-          </div>
-
-          <div class="col-md-6">
-
-            <div class="form-group">
-              <%= ff.label :last_name, 'Last Name', class: 'control-label' %>
-              <%= ff.text_field :last_name, class: 'form-control' %>
+              <%= ff.label :name, 'Full name', class: 'control-label' %>
+              <%= ff.text_field :name, class: 'form-control' %>
             </div>
 
           </div>
@@ -113,7 +95,7 @@
           <div class="col-md-12">
 
             <div class="form-group">
-              <%= ff.label :email, 'Email Address', class: 'control-label' %>
+              <%= ff.label :email, 'Email address', class: 'control-label' %>
               <%= ff.email_field :email, class: 'form-control' %>
             </div>
 
@@ -195,6 +177,8 @@
 
     -->
 
+    <!-- TODO: Move to seprate page and auto select free trial
+
     <fieldset>
       
       <h2>Pick a Plan</h2>
@@ -245,6 +229,8 @@
       <%= f.hidden_field :stripe_token %>
     </fieldset>
 
+    -->
+
     <fieldset>
 
       <h2>Clearly this isn't your first rodeo</h2>
@@ -252,7 +238,7 @@
       <p>You're support experience is about to change for the better</p>
 
       <div class="form-group">
-        <%= f.submit 'Finish Sign Up!', class: 'btn btn-primary' %>
+        <%= f.submit 'Sign up and start inviting your team!', class: 'btn btn-primary' %>
       </div>
       
     </fieldset>
