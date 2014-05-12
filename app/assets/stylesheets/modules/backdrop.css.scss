@@ -1,8 +1,5 @@
 .backdrop {
   background-color: $light-black;
-  color: $dark-gray;
-  font-size: 20px;
-  font-family: 'Droid Serif';
 
   h1 {
     color: $white;
@@ -11,5 +8,16 @@
 
   h1 + p {
     margin-top: 20px;
+  }
+
+  p + p {
+    margin-top: 40px;
+  }
+
+  p {
+    font-family: 'Droid Serif';
+    color: $gray-blue;
+    font-size: 20px;
+    font-family: 'Droid Serif';
   }
 }
