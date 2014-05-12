@@ -59,7 +59,12 @@
     <%= t('.send_invitation') %>
   </h4>
 
+  <% if @user %>
+    <%= render 'shared/error_messages', target: @user %>
+  <% end %>
+
   <%= form_for @user, url: invitation_path(:user), html: { method: :post } do |f| %>
+    <%= hidden_field_tag :account_id, @account.slug %>
     <div class="form-group">
       <%= f.label :email, class: 'control-label' %>
       <div class="row">

@@ -17,15 +17,14 @@ describe AccountsController do
     end
   end
 
-  it "POST create with first_name and last_name" do
+  it "POST create with name" do
     post :create, {
       account: {
         name: 'MyCompany',
         billing_plan_slug: 'starter-kit'
       },
       person: {
-        first_name: 'John',
-        last_name: 'Doe',
+        name: 'John Doe',
         username: 'john'
       },
       user: {
@@ -35,7 +34,7 @@ describe AccountsController do
       }
     }
 
-    assert_redirected_to inbox_account_conversations_path('mycompany')
+    expect(response).to redirect_to(account_invitations_path(assigns(:account)))
     expect(assigns(:person).username).to eq "john"
   end
 

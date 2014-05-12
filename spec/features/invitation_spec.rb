@@ -20,15 +20,14 @@ describe "a new teammember can join via the invitation" do
   let(:new_user){ create(:user) }
 
   before do
-    account = user.primary_owned_account
+    account = user.accounts.first
     account.memberships.create(role: 'owner', user: new_user)
     new_user.invite!
   end
 
   it 'allows the new_user to signup' do
     visit accept_user_invitation_url(:invitation_token => new_user.raw_invitation_token)
-    fill_in "user_first_name", :with => "Jess"
-    fill_in "user_last_name", :with => "Brown"
+    fill_in "user_name", :with => "Jess Brown"
     fill_in "person_username", :with => "jess"
     fill_in "user_email", :with => "helper@helpful.io"
     fill_in "user_password", :with => "xxx123423423xxx"

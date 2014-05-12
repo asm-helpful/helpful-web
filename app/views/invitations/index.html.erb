@@ -1,0 +1,139 @@
+<%= render 'shared/navbar' %>
+
+<div class="container">
+
+  <h1 class="page-title">Invite your whole team.</h1>
+
+  <p>Oh, don't worry about inviting your whole company. There's no extra cost or limit to how many users you have associated with your account. So you can invite everyone to chime in, even the CEO.</p>
+
+  <form>
+    <%= hidden_field_tag :account_slug, @account.slug %>
+
+    <fieldset>
+
+      <div class="row">
+
+        <div class="col-md-12">
+
+          <div class="form-group">
+            <label class="control-label">Teammate's Email Address</label>
+
+            <div class="row">
+              
+              <div class="col-md-9">
+                <input type="text" class="form-control" name="user_email">
+              </div>
+
+              <div class="col-md-3">
+                <button class="btn btn-secondary btn-block" rel="invite">Invite</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      
+    </fieldset>
+
+    <fieldset>
+
+      <p>Think you might need to add a few more people? You can always invite more users from the account settings page</p>
+
+      <div class="form-group">
+        <%= link_to 'Continue to your brand new inbox', inbox_account_conversations_path(@account), class: 'btn btn-primary' %>
+      </div>
+      
+    </fieldset>
+
+  </form>
+
+</div>
+
+<script id="invitation-row-template" type="text/x-handlebars-template">
+  <div class="row">
+
+    <div class="col-md-12">
+
+      <div class="form-group">
+        <label class="control-label">Teammate's Email Address</label>
+
+        <div class="row">
+          
+          <div class="col-md-9">
+            <input type="text" class="form-control" name="user_email">
+          </div>
+
+          <div class="col-md-3">
+            <button class="btn btn-secondary btn-block" rel="invite">Invite</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</script>
+
+<script>
+var inviteUser = function($row) {
+  var $inviteButton = $('[rel=invite]', $row);
+  var $emailInput = $('[name=user_email]', $row);
+  var accountSlug = $('[name=account_slug]').val();
+  var email = $emailInput.val();
+  var invitationRowTemplate = Handlebars.compile($('#invitation-row-template').html());
+
+  $.ajax({
+    type: 'POST',
+    url: '/users/invitation',
+    dataType: 'json',
+    contentType: 'application/json',
+    data: JSON.stringify({
+      user: { email: email },  
+      account_id: accountSlug,
+      membership_role: 'agent'
+    }),
+    success: function(response) {
+      $inviteButton.removeClass('btn-secondary');
+      $inviteButton.removeAttr('rel');
+
+      $inviteButton.addClass('btn-success');
+      $inviteButton.attr('disabled', 'disabled');
+      $inviteButton.text('Invited');
+      $inviteButton.prepend(
+        $('<span>').addClass('glyphicon glyphicon-ok')
+      )
+
+      $emailInput.attr('disabled', 'disabled');
+
+      $row.parent().parent().parent().after(invitationRowTemplate());
+      $('[name=user_email]:last').focus();
+      attachKeypressHandlers();
+    }
+  });
+};
+
+var attachClickHandlers = function() {
+  $(document).on('click', '[rel=invite]', function() {
+    inviteUser($(this).parent().parent());
+    return false;
+  });
+}
+
+var attachKeypressHandlers = function() {
+  $('[name=user_email]').on('keypress', function(e) {
+    if (e.keyCode == 13) {
+      inviteUser($(this).parent().parent());
+      return false;
+    }
+  });
+}
+
+$(document).ready(function() {
+  attachClickHandlers();
+});
+
+$(document).on('ready page:load', function() {
+  attachKeypressHandlers();
+});
+</script>

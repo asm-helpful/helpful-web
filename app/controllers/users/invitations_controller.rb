@@ -1,32 +1,46 @@
 class Users::InvitationsController < Devise::InvitationsController
+  before_filter :find_account!, only: [:create]
 
-  # POST /resource/invitation
   def create
-    self.resource = invite_resource
+    @user = invite_resource
+    @person = Person.new
+    @plans = BillingPlan.order('price ASC')
 
-    account = current_user.primary_owned_account
-    account.memberships.create(role: params.fetch(:membership_role), user: resource)
+    @membership = Membership.new(
+      role: params.fetch(:membership_role),
+      user: @user,
+      account: @account
+    )
 
-    if resource.errors.empty?
-      set_flash_message :notice, :send_instructions, :email => self.resource.email if self.resource.invitation_sent_at
-      respond_with resource, :location => edit_account_path(account)
+    if @membership.save
+      if @user.invitation_sent_at
+        set_flash_message :notice, :send_instructions, email: @user.email
+      end
+
+      respond_with @user do |format|
+        format.html { redirect_to edit_account_path(@account) }
+        format.json
+      end
     else
-      respond_with_navigational(resource) { render :new }
+      respond_with @user do |format|
+        format.html { render 'accounts/edit' }
+        format.json
+      end
     end
   end
 
   def update
     self.resource = resource_class.accept_invitation!(update_resource_params)
 
-    account = resource.primary_owned_account
-    person = Person.create(
-      account:    account,
-      user:       resource,
-      first_name: params[:user][:first_name],
-      last_name:  params[:user][:last_name],
-      username:   params[:person][:username],
-      email:      resource.email
-    )
+    resource.accounts.each do |account|
+      Person.create(
+        account:    account,
+        user:       resource,
+        name:       params[:person][:name],
+        username:   params[:person][:username],
+        email:      resource.email
+      )
+    end
 
     if resource.errors.empty?
       flash_message = resource.active_for_authentication? ? :updated : :updated_not_active
@@ -38,4 +52,8 @@ class Users::InvitationsController < Devise::InvitationsController
     end
   end
 
+  def find_account!
+    @account = Account.find_by!(slug: params.fetch(:account_id))
+    authorize! AccountReadPolicy.new(@account, current_user)
+  end
 end
