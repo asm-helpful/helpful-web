@@ -25,11 +25,7 @@ class User < ActiveRecord::Base
     to: :person,
     allow_nil: true
 
-  delegate :first_name,
-    to: :person,
-    allow_nil: true
-
-  delegate :last_name,
+  delegate :name,
     to: :person,
     allow_nil: true
 

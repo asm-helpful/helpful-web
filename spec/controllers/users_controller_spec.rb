@@ -11,8 +11,7 @@ describe UsersController do
       put :update, {
         id: user.id,
         user: {
-          first_name: 'Jimmy',
-          last_name: 'Hoffa',
+          name: 'Jimmy Hoffa',
           email: 'jimmy@helpful.io'
         },
         person: {
@@ -26,15 +25,14 @@ describe UsersController do
 
       expect(user.email).to eq('jimmy@helpful.io')
       expect(user.person.email).to eq('jimmy@helpful.io')
-      expect(user.person.first_name).to eq('Jimmy')
-      expect(user.person.last_name).to eq('Hoffa')
+      expect(user.person.name).to eq('Jimmy Hoffa')
       expect(user.username).to eq('jimmy2')
     end
 
     context "when trying to choose a username that already exists" do
       let!(:user2) { create(:user, email: 'user2@assemblymade.com') }
       let!(:membership2) { create(:membership, user: user2, account: user.accounts.first) }
-      let!(:person2) { create(:person, user: user2, username: 'elvis', first_name: 'Patrick', email: 'user2@assemblymade.com', account_id: user.accounts.first.id) }
+      let!(:person2) { create(:person, user: user2, username: 'elvis', name: 'Patrick', email: 'user2@assemblymade.com', account_id: user.accounts.first.id) }
 
       it 'the test users should have belong to the same account' do
         expect(user.person.account_id).to eq user2.person.account_id
@@ -43,7 +41,7 @@ describe UsersController do
       it 'returns an error message when submitted' do
         put :update, {
           user: {
-            first_name: 'user',
+            name: 'Pat',
             email: 'user@user.com'
           },
           id: user.id,

@@ -1,5 +1,5 @@
 class Users::InvitationsController < Devise::InvitationsController
-  before_filter :find_account!
+  before_filter :find_account!, only: [:create]
 
   def create
     @user = invite_resource
@@ -32,14 +32,15 @@ class Users::InvitationsController < Devise::InvitationsController
   def update
     self.resource = resource_class.accept_invitation!(update_resource_params)
 
-    person = Person.create(
-      account:    @account,
-      user:       resource,
-      first_name: params[:user][:first_name],
-      last_name:  params[:user][:last_name],
-      username:   params[:person][:username],
-      email:      resource.email
-    )
+    resource.accounts.each do |account|
+      Person.create(
+        account:    account,
+        user:       resource,
+        name:       params[:person][:name],
+        username:   params[:person][:username],
+        email:      resource.email
+      )
+    end
 
     if resource.errors.empty?
       flash_message = resource.active_for_authentication? ? :updated : :updated_not_active
