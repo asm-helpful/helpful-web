@@ -1,21 +1,43 @@
 $panel-bg: $white;
-$panel-border: $lightest-gray-highlight;
+$panel-border: $light-gray;
+$panel-title: $light-black;
 
 .panel {
   min-height: 20px;
-  padding: 19px;
+  padding: 24px;
   margin-bottom: 20px;
   background-color: $white;
-  border: 1px solid $well-border;
+  border: 1px solid $panel-border;
   border-radius: $border-radius-base;
   @include box-shadow(0 1px 1px rgba(0,0,0,.05));
+
   blockquote {
     border-color: #ddd;
     border-color: rgba(0,0,0,.15);
   }
 }
 
+.panel-title {
+  color: $panel-title;
+  text-transform: uppercase;
+}
+
+.panel-body {
+  color: $darkest-blue;
+  font-size: 16px;
+  font-weight: 300;
+  margin-left: 0;
+  padding-left: 0;
+  padding-top: 10px;
+  padding-bottom: 0;
+  padding-right: 0;
+
+  .btn {
+    margin-top: 24px;
+  }
+}
+
 .panel-lg {
-  padding: 24px;
+  padding: 30px;
   border-radius: $border-radius-large;
 }
