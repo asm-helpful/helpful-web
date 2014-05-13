@@ -21,10 +21,11 @@
       <div class="container">
         <div class="row">
           <div class="col-md-8 col-md-offset-2">
-            <%= image_tag('logo.png') %>
-            <h1>We redesigned support to get out of the way, so you focus on being a helpful human.</h1>
-            <p>Helping your customers with good answers and thoughtful direction should be a breeze, focused 100% on support - and nothing else.</p>
-            <p>C'mon, let's see it in action.</p>
+            <%= image_tag('logo.png', data: {animate_logo: "" }) %>
+            <h1 data-animate-heading>We redesigned support to get out of the way, so you focus on being a helpful human.</h1>
+            <p data-animate-lead>Helping your customers with good answers and thoughtful direction should be a breeze, focused 100% on support - and nothing else.</p>
+            <p data-animate-lead>C'mon, let's see it in action.</p>
+            <p><%= image_tag "arrow-down.png", data: {arrow_down: ""} %></p>
           </div>
         </div>
       </div>
