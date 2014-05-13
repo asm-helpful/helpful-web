@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe UsersController do
   let!(:user) { create(:user_with_account, email: 'patrick.spec@assemblymade.com') }
-  let!(:person) { create(:person, user: user, first_name: 'Patrick', last_name: 'McGrath', email: 'patrick.spec@assemblymade.com', username: 'jimmy', account_id: user.accounts.first.id) }
+  let!(:person) { create(:person, user: user, name: 'Patrick McGrath', email: 'patrick.spec@assemblymade.com', username: 'jimmy', account_id: user.accounts.first.id) }
 
   before { sign_in(user) }
 
