@@ -40,7 +40,7 @@ class Person < ActiveRecord::Base
 
   # Returns the initial(s) for this person (used in avatars)
   def initials
-    email.to_s.split(' ', 2).map(&:first)
+    email.to_s.split(' ', 2).map(&:first).join
   end
 
   private
