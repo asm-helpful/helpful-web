@@ -60,6 +60,7 @@ Helpful::Application.routes.draw do
     resource :account, path: '/', only: [:show, :edit, :update] do
       resources :invitations
 
+      get :configuration
       get :web_form
     end
   end

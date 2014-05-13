@@ -62,6 +62,10 @@ class AccountsController < ApplicationController
     respond_with(@account)
   end
 
+  def configuration
+    find_account!
+  end
+
   def web_form
     find_account!
   end
