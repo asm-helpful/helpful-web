@@ -19,4 +19,13 @@
     color: $gray-blue;
     font-size: 20px;
   }
+
+  .btn-default {
+    &:not([disabled]) {
+      &:hover,
+      &.hover {
+        background-color: $black;
+      }
+    }
+  }
 }
