@@ -16,6 +16,9 @@ class ConversationsController < ApplicationController
 
   def inbox
     Analytics.track(user_id: current_user.id, event: 'Read Conversations Index')
+    inbox = ConversationsInbox.new(@account, current_user, params[:q])
+    @conversations = inbox.conversations
+    respond_with @conversations
   end
 
   def search
