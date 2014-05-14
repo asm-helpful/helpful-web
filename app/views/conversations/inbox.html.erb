@@ -1,8 +1,8 @@
 <%= render 'shared/navbar' %>
 
-<div class="container">
-  <%= render "layouts/flash" %>
+<%= render "layouts/flash" %>
 
+<div class="container">
   <div class="list list-conversations" data-url=<%= list_account_conversations_url(@account) %> data-pusher-channel=<%= @account.slug %>></div>
   <%= render 'conversations/empty' %>
 </div>
