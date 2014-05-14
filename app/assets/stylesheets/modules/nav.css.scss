@@ -24,3 +24,77 @@
     }
   }
 }
+
+.nav-steps {
+  position: relative;
+  text-align: justify !important;
+  width: 96%;
+  height: $navbar-height;
+
+  &::after {
+    content: "\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7";
+    color: $dark-gray;
+    font-size: 10px;
+    letter-spacing: 7px;
+    position: absolute;
+    top: 0;
+    height: $navbar-height;
+    line-height: $navbar-height;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  > li {
+    float: none;
+    position: relative;
+    z-index: 2;
+    display: inline;
+
+    > a {
+      background-color: $navbar-default-bg;
+      display: inline-block;
+      position: relative;
+      whitespace: nowrap;
+
+      .glyphicon {
+        font-size: 10px;
+        width: 10px;
+        left: 0;
+        right: 0;
+        top: 5px;
+        position: absolute;
+        margin: 0 auto;
+        color: $dark-gray;
+        display: none;
+      }
+
+      &.active {
+        color: $dark-gray;
+
+        .glyphicon {
+          display: block;
+        }
+      }
+
+      &::after {
+        bottom: 0;
+        color: $white;
+        content: "\00B7";
+        font-size: 50px;
+        height: 6px;
+        left: 0;
+        line-height: 6px;
+        margin: auto;
+        overflow: hidden;
+        position: absolute;
+        right: 0;
+        width: 12px;
+      }
+    }
+  }
+
+  .strech {
+    display: inline-block;
+    width: 100%;
+  }
+}
