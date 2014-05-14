@@ -1,38 +1,35 @@
 .alert {
+  border: none;
+  border-radius: 0;
   color: $white;
+  margin-bottom: 0;
+
+  a {
+    color: $white;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+}
+
+.alert + div:not(.alert) { 
   margin-top: 20px;
 }
 
-.alert-info,
-.alert-default {
-  background-color: $primary;
-  border-color: $primary;
+.alert-info {
+  background-color: $info;
+  color: $light-black;
+
+  a {
+    color: $light-black;
+  }
 }
 
 .alert-success {
   background-color: $success;
-  border-color: $success;
 }
 
-.alert-danger,
-.alert-error,
-.alert-alert {
-  background-color: $error;
-  border-color: $error;
-}
-
-.alert-muted {
-  color: $black;
-  background-color: $white;
-  border-color: $lightest-gray;
-
-  .close {
-    color: $light-gray;
-
-    &:hover {
-      color: $dark-gray;
-    }
-  }
+.alert-danger {
+  background-color: $danger;
 }
 
 .close {
@@ -45,25 +42,3 @@
     right: -14px;
   }
 }
-
-// .alert-close {
-//   color: white;
-//   border-left: 2px solid rgba(black, .1);
-//   font-size: 1.8em;
-//   font-weight: 800;
-//   position: absolute;
-//   right: 0px;
-//   top: 0px;
-//   bottom: 0px;
-//   padding: 0 .625em;
-//   line-height: 1.85em;
-
-//   &:hover {
-//     color: $white;
-//   }
-// }
-
-// a.alert-close {
-//   display: block;
-//   border-bottom: none;
-// }

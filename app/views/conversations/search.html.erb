@@ -1,7 +1,8 @@
 <%= render 'shared/navbar' %>
 
+<%= render "layouts/flash" %>
+
 <div class="container">
-  <%= render "layouts/flash" %>
   <div class="page-header">
     <h1><%= t('.search_results_for') %> "<%= params[:q] %>"</h1>
   </div>
