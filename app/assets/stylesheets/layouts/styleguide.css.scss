@@ -1,30 +1,6 @@
-.l-styleguide {
-  max-width: 830px;
-
-  > .example {
-    border: 2px solid rgba(200, 200, 200, .3);
-    border-radius: 4px;
-    padding: 20px 30px;
-    margin: 20px -30px;
-    margin-bottom: 60px;
-  }
-
-  .color-swatch {
-    @include clearfix;
-    margin: 0;
-    padding: 0;
-    margin-left: -15px;
-
-    > li {
-      list-style-type: none;
-      float: left;
-      margin-left: 15px;
-
-      width: 100px;
-      line-height: 100px;
-      text-align: center;
-
-      box-shadow: inset 0 0 0 1px rgba(black, 0.05);
-    }
-  }
+.col-example {
+  background-color: $gray;
+  outline: 1px solid $dark-gray;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
