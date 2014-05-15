@@ -23,6 +23,13 @@
     width: 20px;
     height: 20px;
   }
+  a {
+    padding: 15px;
+    margin: -15px;
+    &:hover {
+      background-color: rgba(0,0,0,.1) !important;
+    }
+  }
 }
 
 .navbar-right {
