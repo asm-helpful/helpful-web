@@ -17,14 +17,6 @@
   &.focus {
     color: $white;
   }
-  &:focus,
-  &:active:focus,
-  &.active:focus {
-    outline: none;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-  }
 }
 
 .btn-lg {
