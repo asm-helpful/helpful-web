@@ -31,3 +31,15 @@
 		font-weight: 600;
 	}
 }
+
+.btn {
+  &:focus,
+  &.focus,
+  &:active,
+  &.active {
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+  }
+}
