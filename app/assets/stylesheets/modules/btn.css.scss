@@ -16,6 +16,10 @@
   &:focus,
   &.focus {
     color: $white;
+  }
+  &:focus,
+  &:active:focus,
+  &.active:focus {
     outline: none;
   }
 }

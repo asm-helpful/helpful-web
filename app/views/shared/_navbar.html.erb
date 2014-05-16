@@ -28,7 +28,9 @@
 
     <ul class="nav navbar-nav navbar-left">
       <li class="navbar-brand-icon">
-        <%= image_tag 'life_saver.png', alt: 'Helpful' %>
+        <%= link_to inbox_account_conversations_path(@account) do %>
+          <%= image_tag 'life_saver.png', alt: 'Helpful' %>
+        <% end %>
       </li>
 
       <% other_accounts = current_user.accounts.reject {|a| a == @account } %>
@@ -76,7 +78,9 @@
 
     <ul class="nav navbar-nav navbar-left">
       <li class="navbar-brand-icon">
-        <%= image_tag 'life_saver.png', alt: 'Helpful' %>
+         <%= link_to root_path do %>
+          <%= image_tag 'life_saver.png', alt: 'Helpful' %>
+        <% end %>
       </li>
     </ul>
 
