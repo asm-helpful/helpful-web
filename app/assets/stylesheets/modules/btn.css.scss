@@ -15,8 +15,11 @@
   &.hover,
   &:focus,
   &.focus {
+    box-shadow: none;
     color: $white;
+    outline: none;
   }
+
   &:focus,
   &:active:focus,
   &.active:focus {
