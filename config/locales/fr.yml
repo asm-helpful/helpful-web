@@ -19,83 +19,81 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
+fr:
   general:
-    ago: "ago"
-    email: "Email"
-    email_placeholder: "you@example.com"
-    password: "Password"
+    ago: "il y a"
+    email: "Adresse Internet"
+    email_placeholder: "vous@exemple.com"
     roles:
-      owner: "owner"
+      owner: "patron"
       agent: "agent"
-    hello: "Hello"
+    hello: "Bonjour"
 
   shared:
     navbar:
-      personal_settings: "Personal Settings"
-      settings: "Account Settings"
-      help: "Help"
-      logout: "Logout"
-      inbox: "Inbox"
-      archive: "Archive"
-      search: "Search"
+      personal_settings: "Paramètres Personnels"
+      settings: "Paramètres"
+      help: "Aide"
+      logout: "Déconnexion"
+      inbox: "Boîte de réception"
+      archive: "Archives"
+      search: "Chercher"
 
   message_mailer:
     created:
-      reply: "Reply to this email or"
-      view: "view Conversation on"
-
+      reply: "Répondez à ce courriel ou"
+      view: "Voyez conversation sur"
   users:
     edit:
-      user_settings: "User settings"
-      name: "Name"
-      update_personal_settings: "Update my personal settings"
+      user_settings: "Paramètres des Utilisateurs"
+      name: "Nom"
+      update_personal_settings: "Mettre à jour mes paramètres personnels"
     mailer:
       invitation_instructions:
-        someone_invited: "Someone has invited you to"
-        you_can_accept: "you can accept it through the link below."
-        accept: "Accept invitation"
-        dont_want: "If you don't want to accept the invitation, please ignore this email."
-        account_wont_be_created: "Your account won't be created until you access the link above and set your password."
+        someone_invited: "Quelqu'un vous a invité(e) à"
+        you_can_accept: "Vous pouvez accepter l'invitaion en cliquant sur le lien ci-dessus."
+        accept: "Acceptez invitation"
+        dont_want: "Si vous ne voulez pas accepter l'invitaion, veuillez ignoree ce message."
+        account_wont_be_created: "Votre compte ne sera pas créé jusqu'à ce que vous accédez le lien ci-dessus et créez votre mot de passe."
 
   accounts:
     general:
-      company_name: "Company name"
-      company_name_placeholder: "Acme Corp"
-      your_name: "Your name"
-      your_name_placeholder: "Jane Doe"
-      username: "Username"
-      username_placeholder: "jane"
+      company_name: "Nom de Compagnie"
+      company_name_placeholder: "SAS Bonjour"
+      your_name: "Votre nom"
+      your_name_placeholder: "Jean Dupont"
+      username: "identifiant"
+      username_placeholder: "Jean"
     new:
-      sign_up_free_accounts: "Sign Up for a Free Account"
-      quick_easy_sign_up: "Quick and easy sign up process."
-      no_cc_required: "No credit card is required."
-      already_have_account: "If you already have a Helpful account,"
-      please_sign_in: "please sign in"
-      password_confirmation: "Password confirmation"
-      must_meet_requirements: "Must meet *these requirements*"
-      create_account: "Create my account"
+      sign_up_free_accounts: "Inscrivez-vous pour un Compte Gratuit"
+      quick_easy_sign_up: "Processus D'inscription Rapide et Facile"
+      no_cc_required: "Aucune carte de crédit Nécessaire."
+      already_have_account: "Si vous avez déjà un compte Helpful,"
+      please_sign_in: "veuillez connecter"
+      password_confirmation: "Confirmation de mot de passe"
+      must_meet_requirements: "Doit satisfaire *à ces exigences*"
+      create_account: "Créer mon compte"
     edit:
-      try_out_command: "To try out Helpful website, run this command from your terminal:"
-      embed_form: "Want to embed a help form on your site?"
-      get_code: "Get the code"
-      company_name: "Company name"
-      company_name_placeholder: "Acme Corp"
-      website: "Website"
+      try_out_command: "Pour essayer le site Web Helpful, exécutez cette commande de votre terminal:"
+      embed_form: "Voulez-vous intégrer une forme d'aide sur votre site?"
+      get_code: "Obtenir le code"
+      company_name: "Nom de compagnie"
+      company_name_placeholder: "SAS Bonjour"
+      website: "site Web"
       website_placeholder: "https://www.example.com"
       webhook_url: "Webhook URL"
       webhook_url_placeholder: "https://www.example.com/webhooks/helpful"
       webhook_secret: "Webhook Secret"
-      incoming_email: "Incoming e-mail address"
-      update_account: "Save"
+      incoming_email: "Adresse e-mail entrant"
+      update_account: "Sauvegarder"
       invitations: "Invitations"
-      send_invitation: "Send an Invitation"
-      invitations_sent: "Invitations Sent"
-      invitation_sent: "Invitation sent"
-      signature: "Response Signature"
-      signature_placeholder: "Signature included at the end of every e-mail"
-      auto_archiving: "Auto-archive conversations after replying"
-      embed_help_text: "You can also embed a web form anywhere that will allow your customers to submit their help requests directly to Helpful:"
+      send_invitation: "Envoyez une Invitation"
+      invitations_sent: "Invitations Envoyés"
+      invitation_sent: "Invitation Envoyé"
+      signature: "Signature"
+      signature_placeholder: "Signature est ajoutée à la fin de tous les messages que vous envoyez"
+      auto_archiving: "Archiver mes conversations automatiquement après que je répond"
+      embed_help_text: "Vous pouvez également intégrer un formulaire Web qui permettra vos clients de soumettre leurs demandes d'aide directement à Helpful:"
 
   conversations:
     conversation:
