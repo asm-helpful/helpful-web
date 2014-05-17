@@ -67,4 +67,31 @@
 
 .navbar-placeholder {
   height: 72px;
+
+	.navbar-brand {
+		font-size: 21px;
+		font-weight: 600;
+
+		img {
+			width: 20px;
+			height: 20px;
+			margin: -4px 5px 0 0;
+		}
+
+		&:hover {
+			cursor: pointer;
+		}
+	}
+
+	.navbar-nav {
+		li a {
+      @include transition(.6s all);
+		}
+
+		li > a:hover {
+			color: #e6e6e6;
+			background-color: rgba(0, 0, 0, .1);
+      @include transition(.3s all);
+		}
+	}
 }
