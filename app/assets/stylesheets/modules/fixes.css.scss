@@ -23,6 +23,27 @@
   }
 }
 
+
+/* navbar dropdown */
+.navbar-nav > li > .dropdown-menu {
+	width: 100%;
+	padding: 0;
+	background: #212326;
+	border: 0;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	li > a {
+		color: rgba(255,255,255,.5);
+		&:hover {
+			background: rgba(255,255,255,.1);
+			color: rgba(255,255,255,.7);
+		}
+	}
+}
+
+/* sticky footer */
+
 html, body, .container {
     height: 100%;
 }
