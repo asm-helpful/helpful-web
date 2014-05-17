@@ -79,7 +79,7 @@ fr:
       get_code: "Obtenir le code"
       company_name: "Nom de compagnie"
       company_name_placeholder: "SAS Bonjour"
-      website: "site Web"
+      website: "site Web"l
       website_placeholder: "https://www.example.com"
       webhook_url: "Webhook URL"
       webhook_url_placeholder: "https://www.example.com/webhooks/helpful"
@@ -97,58 +97,58 @@ fr:
 
   conversations:
     conversation:
-      reply_to_conversation: "Write your reply…"
-      assign: "Assign"
-      tag: "Tag"
-      canned_response: "Canned Response"
-      archive: "Archive"
-      send: "Send"
-      next_conversation: "Next Conversation"
-      made_last_message: "You made it to the last message!"
-      back_to_inbox: "Back to the Inbox"
+      reply_to_conversation: "Écrivez votre réponse ..."
+      assign: "Attribuer"
+      tag: "Libellé"
+      canned_response: "Réponse Tout Fait"
+      archive: "Archiver"
+      send: "Envoyer"
+      next_conversation: "Conversation Suivant"
+      made_last_message: "Vous êtes à le dernier message"
+      back_to_inbox: "Retour à la Boîte de réception"
     markdown:
-      we_use_markdown: "We use Markdown!"
-      tool_to_format_text: "Markdown is a tool to format your text."
-      text_here: "text here"
-      bold: "Bold"
-      bolded: "Bolded"
-      italic: "Italic"
-      link: "Link"
-      linked: "Linked"
-      link_example_url: "http://link_url.com/?test"
+      we_use_markdown: "Nous employons Markdown!"
+      tool_to_format_text: "Markdown est un outil pour mettre en forme votre texte."
+      text_here: "texte ici"
+      bold: "Gras"
+      bolded: "En gras"
+      italic: "Italique"
+      link: "Lien"
+      linked: "Liée"
+      link_example_url: "http://lien.com/teste"
       image: "Image"
-      image_description: "Image description"
-      image_example_url: "http://image_link.com/here.png"
-      advanced_guide: "Advanced Guide"
+      image_description: "Description de l'image"
+      image_example_url: "http://lien_image.com/voila.png"
+      advanced_guide: "Guide d'utilisation avancée"
     navbar:
-      search_conversations: "Search conversations"
-      search: "Search"
+      search_conversations: "Recherche conversations"
+      search: "Chercher"
     row:
-      later: "Later"
-      archive: "Archive"
+      later: "Plus Tard"
+      archive: "Archiver"
     search:
       search_results_for: "Search results for"
-      no_results: "No results to show."
+      no_results: "Aucun résultat trouvé"
     empty:
-      inbox_zero: "Inbox Zero"
-      no_open_conversations: "No open conversations, nice work!"
-      customer_support_quote: "Be the customer support you wish to see in the world"
+      inbox_zero: "Boîte de réception Zéro"
+      no_open_conversations: "Aucune conversations ouvertes, bon travail!"
+      customer_support_quote: "Soyez le service à la clientèle vous voulez voir dans le monde"
 
   pages:
     home:
       general:
-        sign_up_free: "Sign up for free"
+        sign_up_free: "Incrivez-vous gratuitement"
       header:
-        sign_up: "SIGN UP"
-        login: "LOGIN"
-        build: "BUILD HELPFUL"
+        sign_up: "INSCRIVEZ-VOUS"
+        login: "CONNEXION"
+        build: "CONSTRUIRE HELPFUL"
         docs: "DOCUMENTATION"
       hero:
-        text_header: "Help that doesn't hurt"
-        text_1: "Helpful is a simple support tool you won't need help using."
-        text_2: "Just ask."
+        text_header: "L'aide qui vous mette à l'aise"
+        text_1: "Helpful est un outil de support simple que vous n'aurez besoin d'aide de l'utilier."
+        text_2: "Il suffit de demander."
       demo:
-        text_1: "Even simpler than email"
+        text_1: "Plus simple que le courriel."
         text_2: "You shouldn't have to get support for a support tool."
         text_2_2: "Helpful aims to be a no-brainer to use right out of the box."
       pricing_table:
@@ -169,7 +169,7 @@ fr:
 
   canned_responses:
     general:
-      canned_response: "Canned Response"
+      canned_response: "Réponse Tout Fait"
     index:
       create_canned_response: "Create canned response"
       canned_responses: "Canned Responses"
