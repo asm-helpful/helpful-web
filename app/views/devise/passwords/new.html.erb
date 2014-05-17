@@ -1,23 +1,22 @@
 <%= render 'shared/navbar' %>
 
 <div class="container">
+
   <h1 class="page-title">Change your password</h1>
+  <h2><%= t('.did_you_forget') %></h2>
+  <p><%= t('.dont_worry') %></p>
+  <hr />
 
-    <h2><%= t('.did_you_forget') %></h2>
-    <p><%= t('.dont_worry') %></p>
+  <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+  <%= devise_error_messages! %>
 
-    <hr />
-
-    <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
-      <%= devise_error_messages! %>
-
-    <fieldset>
+  <fieldset>
 
     <div class="row">
       <div class="col-md-12">
         <div class="form-group">
-            <%= f.label :email, t('general.email'), :class => "control-label" %><br />
-            <%= f.email_field :email, :autofocus => true, :class => "form-control", :placeholder => t('general.email_placeholder') %>
+          <%= f.label :email, t('general.email'), :class => "control-label" %><br />
+          <%= f.email_field :email, :autofocus => true, :class => "form-control", :placeholder => t('general.email_placeholder') %>
         </div>
       </div>
     </div>
@@ -31,6 +30,7 @@
     </div>
 
   </fieldset>
+
   <% end %>
 
   <div class="row">
