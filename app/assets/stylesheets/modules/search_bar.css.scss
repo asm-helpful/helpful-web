@@ -26,9 +26,9 @@
         color: $dark-gray;
       }
 
-      ~ .search-bar-clear-icon { 
-        visibility: visible;
-      }
+      // ~ .search-bar-clear-icon { 
+      //   visibility: visible;
+      // }
     }
 
     @include placeholder {
