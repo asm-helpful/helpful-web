@@ -23,7 +23,7 @@ fr:
   general:
     ago: "il y a"
     email: "Adresse Internet"
-    email_placeholder: "vous@exemple.com"
+    email_placeholder: "vous@example.com"
     roles:
       owner: "patron"
       agent: "agent"
@@ -79,7 +79,7 @@ fr:
       get_code: "Obtenir le code"
       company_name: "Nom de compagnie"
       company_name_placeholder: "SAS Bonjour"
-      website: "site Web"l
+      website: "site Web"
       website_placeholder: "https://www.example.com"
       webhook_url: "Webhook URL"
       webhook_url_placeholder: "https://www.example.com/webhooks/helpful"
@@ -115,10 +115,10 @@ fr:
       italic: "Italique"
       link: "Lien"
       linked: "Liée"
-      link_example_url: "http://lien.com/teste"
+      link_example_url: "http://example.com/teste"
       image: "Image"
       image_description: "Description de l'image"
-      image_example_url: "http://lien_image.com/voila.png"
+      image_example_url: "http://example.com/voila.png"
       advanced_guide: "Guide d'utilisation avancée"
     navbar:
       search_conversations: "Recherche conversations"
@@ -149,84 +149,84 @@ fr:
         text_2: "Il suffit de demander."
       demo:
         text_1: "Plus simple que le courriel."
-        text_2: "You shouldn't have to get support for a support tool."
-        text_2_2: "Helpful aims to be a no-brainer to use right out of the box."
+        text_2: "Vous ne devriez pas obtenir du soutien pour un outil de de soutien."
+        text_2_2: "Helpful a l'intention d'être du gâteau, prêt à l'emploi."
       pricing_table:
-        great_value: "Great Value!"
-        starter_kit: "Starter Kit"
-        growing: "Growing"
-        premium: "Premium"
+        great_value: "Grande Valeur!"
+        starter_kit: "Kit de Démarrage"
+        growing: "En Croissance"
+        premium: "Prime"
         super: "Super"
-        threads: "threads"
-        per_month: "per month"
-        sign_up: "Sign up"
-      pricing_text_1: "Help that grows with you"
-      pricing_text_2: "Pricing is by volume so you can start small and we'll grow as your support needs grow."
-      pricing_text_end: "There are no contracts and plans can be cancelled at any time."
-      in_house: "In-House"
-      in_house_text: "If you prefer to make software your own, you can take Helpful indoors and whitelabel it for your own purposes."
-      contact_us: "Contact Us"
+        threads: "fils"
+        per_month: "par mois"
+        sign_up: "Inscrivez-vous"
+      pricing_text_1: "L'aide qui se grandisse quand vous grandissez"
+      pricing_text_2: "Le prix est par volume donc vous pouvez commencer petit et Helpful grandisse en tant que vos besoins de soutien grandissent."
+      pricing_text_end: "Il n'y a aucun contrat et les plans peuvent être annulées à tout moment."
+      in_house: "Interne"
+      in_house_text: "Si vous préférez votre propre logiciel, vous pouvez prendre Helpful et le privatiser pour vos propres applications."
+      contact_us: "Contactez-Nous"
 
   canned_responses:
     general:
       canned_response: "Réponse Tout Fait"
     index:
-      create_canned_response: "Create canned response"
-      canned_responses: "Canned Responses"
-      none_created: "No one has created a canned response yet."
+      create_canned_response: "Créez une réponse tout fait"
+      canned_responses: "Réponses Tout Faits"
+      none_created: "Personne a créé une réponse tout fait created a canned response à l'instant."
     new:
       help: |-
-        Create a canned response for messages that are sent often or need to be
-        consistent. Start with a key, which is used to pull up the full response
-        from the command bar. To learn more read the
+      Créez une réponse tout fait pour les messages qui sont envoyés souvent ou qui ont besoin d'être cohérente. 
+      Commencez avec une touche, qui est utilisé  pour remonter la réponse complète
+      de la barre de commande. Pour en savoir plus, lisez l'
       faq: "FAQ"
     form:
-      key: "Key"
-      key_placeholder: "Enter key used to lookup the response"
+      key: "Touche"
+      key_placeholder: "Tapez la touche utilisée pour rechercher la réponse"
       message: "Message"
-      message_placeholder: "Include the full message to include in future responses"
-      create: "Create"
-      update: "Update"
+      message_placeholder: "Entrez le message complet à inclure dans les réponses futures"
+      create: "Créer"
+      update: "Mise au Point"
     edit:
-      delete: "Delete"
+      delete: "Effacer"
 
   devise:
     general:
-      sign_in: "Sign in"
+      sign_in: "Connextion"
     sessions:
       new:
-        welcome_back: "Welcome Back!"
-        password_placeholder: "Your password"
-        remember_me: "Remember me"
+        welcome_back: "Bienvenue!"
+        password_placeholder: "Votre mot de passe"
+        remember_me: "Me retenir"
     mailer:
       confirmation_instructions:
-        welcome: "Welcome"
-        registered: "We have registered your email as"
-        please_confirm: "Please confirm your email with the link below."
-        confirm_account: "Confirm my account"
+        welcome: "Bienvenue"
+        registered: "Nous avons enregistré votre adresse e-mail comme"
+        please_confirm: "Veuilliez confirmer votre adresse avec le lien ci-dissus."
+        confirm_account: "Confirmer Mon Compte"
       reset_password_instructions:
-        reset_password_instructions: "Reset Password Instructions"
-        someone_requested: "Someone has requested a link to change your password. You can do this through the link below."
-        please_ignore: "If you didn't request this, please ignore this email."
-        wont_change: "Your password won't change until you access the link below and create a new one."
-        change_password: "Change my password"
+        reset_password_instructions: "Instructions pour réinitialiser mot de passe"
+        someone_requested: "Quelqu'un a demandé un lien pour changer votre mot de passe. Vous pouvez le faire via le lien ci-dessous."
+        please_ignore: "Si vous n'avez pas demandé cela, veuillez ignorer ce message."
+        wont_change: "Votre mot de passe ne sera pas changé jusqu'à ce que vous accédez le lien ci-dissus et faire un nouveau."
+        change_password: "Changer mon mot de passe"
       unlock_instructions:
-        unlock_instructions: "Unlock Instructions"
-        account_locked: "Your account has been locked due to an excessive number of unsuccessful sign in attempts."
-        click_below: "Click the link below to unlock your account."
-        unlock_account: "Unlock my account"
+        unlock_instructions: "Instructions pour Déverrouiller"
+        account_locked: "Votre compte a été bloqué en raison d'un nombre excessif de essais de connexion infructueuses."
+        click_below: "Cliquez sur le lien ci-dessous pour déverrouiller votre compte."
+        unlock_account: "Déverrouiller ma compte"
     shared:
       links:
-        dont_have_account: "Don't have an account?"
-        forgot_password: "Forgot your password?"
-        didnt_receive_confirmation: "Didn't receive confirmation instructions?"
-        didnt_receive_unlock: "Didn't receive unlock instructions?"
+        dont_have_account: "Vous n'avez pas de compte?"
+        forgot_password: "Vous avez oublié votre mot de passe?"
+        didnt_receive_confirmation: "Vous n'avez pas reçu des instructions pour confirmer?"
+        didnt_receive_unlock: "Vous n'avez pas reçu des instructions pour déverrouiller?"
     passwords:
       new:
-        did_you_forget: "Did you forget your password?"
-        dont_worry: "No worries, we got you covered. It happens to the best of us."
-        reset: "Reset my password"
+        did_you_forget: "Avez-vous oublié votre mot de passe?"
+        dont_worry: "Pas de soucis, vous êtes assuré."
+        reset: "Réinitialiser mon mot de passe"
     unlocks:
       new:
-        resend_unlock_intstructions: "Resend unlock instructions"
-        resend: "Resend instructions"
+        resend_unlock_intstructions: "Renvoyez instructions déverrouiller"
+        resend: "Renvoyez instructions"
