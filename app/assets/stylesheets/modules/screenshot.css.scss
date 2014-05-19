@@ -1,8 +1,19 @@
+.demo-image {
+  padding-top: 100px;
+
+    .screenshot {
+      margin: 0 auto;
+      background-image: url(image-path('screenshot.png'));
+      width: 1161px;
+      height: 660px;
+    }
+  }
+
 .screenshot {
   display: inline-block;
   margin-left: 20px;
   margin-right: 20px;
-
+  
   > p {
     color: $white;
     font-size: 24px;

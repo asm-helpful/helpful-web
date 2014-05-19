@@ -54,7 +54,7 @@
   $screenshot-side: 466;
   $screenshot-middle-size: $screenshot-middle / ( ($screenshot-side * 2) + $screenshot-middle ) * 100%;
   $screenshot-side-size: ( 100% - $screenshot-middle-size ) / 2;
-  width: 90%;
+  width: 50%;
   max-width: 1400px;
   margin-right: auto;
   margin-left: auto;
