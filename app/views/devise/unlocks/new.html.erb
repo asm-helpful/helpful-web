@@ -1,25 +1,43 @@
-<%= render "devise/shared/brand" %>
+<%= render 'shared/navbar' %>
 
-<div class="panel panel-default">
-  <div class="panel-body">
-    <h4><%= t('.resend_unlock_instructions') %></h4>
+<div class="container">
 
-    <hr />
+  <h1 class="page-title">Change your password</h1>
+  <h2><%= t('.resend_unlock_instructions') %></h2>
+  <hr />
 
-    <%= form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :method => :post }) do |f| %>
-      <%= devise_error_messages! %>
+  <%= form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :method => :post }) do |f| %>
+  <%= devise_error_messages! %>
 
-      <div class="form-group">
-        <%= f.label :email, t('general.email'), :class => "control-label" %>
-        <%= f.email_field :email, :autofocus => true, :class => "form-control", :placeholder => t('general.email_placeholder') %>
+  <fieldset>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <%= f.label :email, t('general.email'), :class => "control-label" %><br />
+          <%= f.email_field :email, :autofocus => true, :class => "form-control", :placeholder => t('general.email_placeholder') %>
+        </div>
       </div>
+    </div>
 
-      <div>
-        <%= f.submit t('.resend'), :class => "btn btn-primary" %>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <%= f.submit t('.resend'), :class => "btn btn-lg btn-primary" %>
+        </div>
       </div>
-    <% end %>
+    </div>
+
+  </fieldset>
+  
+  <% end %>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="help-block">
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
   </div>
-  <div class="panel-footer">
-    <%= render "devise/shared/links" %>
-  </div>
+
 </div>

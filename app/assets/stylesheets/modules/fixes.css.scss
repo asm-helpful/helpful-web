@@ -1,0 +1,78 @@
+.navbar-placeholder {
+	
+}
+
+.backdrop h1 {
+	line-height: 1.2;
+}
+
+.plan-list {
+	.btn {
+		font-weight: 600;
+	}
+}
+
+.btn {
+  &:focus,
+  &.focus,
+  &:active,
+  &.active {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+  }
+}
+
+/* navbar dropdown */
+.navbar-nav > li > .dropdown-menu {
+	width: 100%;
+	padding: 0;
+	background: #212326;
+	border: 0;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+	li > a {
+		color: rgba(255,255,255,.5);
+		&:hover {
+			background: rgba(255,255,255,.1);
+			color: rgba(255,255,255,.7);
+		}
+	}
+}
+
+/* sticky footer */
+html, body, .container {
+    height: 100%;
+}
+#wrap {
+	min-height: 100%;
+	height: auto;
+	margin-bottom: -80px;
+	padding-bottom: 80px;
+}
+footer {
+	padding: 20px 0;
+	margin-top: 20px;
+	border-top: 1px solid rgba(116,129,143,.1);
+	color: rgba(116,129,143,.5);
+	font-size: 12px;
+}
+
+/* panel */
+.panel {
+	&.empty-state {
+		border: 1px solid #dbe8eb;
+		border-radius: 0;
+		border-top: 0;
+		.empty-state-quote {
+			p {
+				color: #666;
+			}
+			cite {
+				color: inherit;
+			}
+		}
+	}
+}
+

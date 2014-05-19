@@ -1,3 +1,4 @@
+
 .navbar {
   border: 0;
   border-radius: 0;
@@ -38,11 +39,39 @@
 }
 
 .navbar-homepage {
+  height: 72px;
   background: #4D5055;
+  
+  .navbar-header {
+    height: 72px;
+  }
 
+  .navbar-brand {
+    font-size: 21px;
+    font-weight: 600;
+    img {
+      width: 20px;
+      height: 20px;
+      margin: -4px 5px 0 0;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .navbar-nav {
+    li a {
+        -webkit-transition: .6s all;
+      }
+      li > a:hover {
+        color: #e6e6e6;
+        background-color: rgba(0,0,0,.1);
+        -webkit-transition: .3s all;
+      }
+    }
 
   .btn {
-    margin-top: 15px;
+    margin-top: 18px;
   }
 
   .btn-default {
@@ -58,6 +87,21 @@
       padding-top: 25px;
       padding-bottom: 25px;
     }
+  }
+
+  .navbar-toggle {
+    border: 0;
+    .icon-bar {
+      background: rgba(255,255,255,.8);
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+  }
+  .navbar-nav {
+    background: #4D5055;
   }
 }
 

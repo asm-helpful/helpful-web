@@ -56,3 +56,10 @@ $(document).on('ready page:change', function() {
     toggleHighlight($searchQuery);
   }
 });
+
+// idea was to show clear-icon after someone starts typing
+// $('#search-query').keypress(function() {
+//     console.log("hadouken!");
+//     $('.search-bar-clear-icon').css('visiblity','visible');
+// });
+
