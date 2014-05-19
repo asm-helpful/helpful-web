@@ -44,6 +44,7 @@ fr:
     created:
       reply: "Répondez à ce courriel ou"
       view: "Voyez conversation sur"
+
   users:
     edit:
       user_settings: "Paramètres des Utilisateurs"
@@ -142,41 +143,41 @@ fr:
       header:
         sign_up: "INSCRIVEZ-VOUS"
         login: "CONNEXION"
-          build: "CONSTRUIRE HELPFUL"
-          docs: "DOCUMENTATION"
-        hero:
-          text_header: "L'aide qui vous mette à l'aise"
-          text_1: "Helpful est un outil de support simple que vous n'aurez besoin d'aide de l'utiliser."
-          text_2: "Il suffit de demander."
-        demo:
-          text_1: "Plus simple que le courriel."
-          text_2: "Vous ne devriez pas obtenir du soutien pour un outil de de soutien."
-          text_2_2: "Helpful a l'intention d'être du gâteau, prêt à l'emploi."
-        pricing_table:
-          great_value: "Grande Valeur!"
-          starter_kit: "Kit de Démarrage"
-          growing: "En Croissance"
-          premium: "Prime"
-          super: "Super"
-          threads: "fils"
-          per_month: "par mois"
-          sign_up: "Inscrivez-vous"
-        pricing_text_1: "L'aide qui se grandisse quand vous grandissez"
-        pricing_text_2: "Le prix est par volume donc vous pouvez commencer petit et Helpful grandisse en tant que vos besoins de soutien grandissent."
-        pricing_text_end: "Il n'y a aucun contrat et les plans peuvent être annulées à tout moment."
-        in_house: "Interne"
-        in_house_text: "Si vous préférez votre propre logiciel, vous pouvez prendre Helpful et le privatiser pour vos propres applications."
-        contact_us: "Contactez-Nous"
+        build: "CONSTRUIRE HELPFUL"
+        docs: "DOCUMENTATION"
+      hero:
+        text_header: "L'aide qui vous mette à l'aise"
+        text_1: "Helpful est un outil de support simple que vous n'aurez besoin d'aide de l'utiliser."
+        text_2: "Il suffit de demander."
+      demo:
+        text_1: "Plus simple que le courriel."
+        text_2: "Vous ne devriez pas obtenir du soutien pour un outil de de soutien."
+        text_2_2: "Helpful a l'intention d'être du gâteau, prêt à l'emploi."
+      pricing_table:
+        great_value: "Grande Valeur!"
+        starter_kit: "Kit de Démarrage"
+        growing: "En Croissance"
+        premium: "Prime"
+        super: "Super"
+        threads: "fils"
+        per_month: "par mois"
+        sign_up: "Inscrivez-vous"
+      pricing_text_1: "L'aide qui se grandisse quand vous grandissez"
+      pricing_text_2: "Le prix est par volume donc vous pouvez commencer petit et Helpful grandisse en tant que vos besoins de soutien grandissent."
+      pricing_text_end: "Il n'y a aucun contrat et les plans peuvent être annulées à tout moment."
+      in_house: "Interne"
+      in_house_text: "Si vous préférez votre propre logiciel, vous pouvez prendre Helpful et le privatiser pour vos propres applications."
+      contact_us: "Contactez-Nous"
   
-    canned_responses:
-      general:
-        canned_response: "Réponse Tout Fait"
-      index:
-        create_canned_response: "Créez une réponse tout fait"
-        canned_responses: "Réponses Tout Faits"
-        none_created: "Personne a créé une réponse tout fait created a canned response à l'instant."
-      new:
-        help: |-
+  canned_responses:
+    general:
+      canned_response: "Réponse Tout Fait"
+    index:
+      create_canned_response: "Créez une réponse tout fait"
+      canned_responses: "Réponses Tout Faits"
+      none_created: "Personne a créé une réponse tout fait created a canned response à l'instant."
+    new:
+      help: |-
         Créez une réponse tout fait pour les messages qui sont envoyés souvent ou qui ont besoin d'être cohérente. 
         Commencez avec une touche, qui est utilisé  pour remonter la réponse complète
         de la barre de commande. Pour en savoir plus, lisez l'
