@@ -1,0 +1,234 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+fr:
+  general:
+    ago: "il y a"
+    email: "Adresse Internet"
+    email_placeholder: "vous@example.com"
+    password: "mot de passe"
+    roles:
+      owner: "patron"
+      agent: "agent"
+    hello: "Bonjour"
+
+  shared:
+    navbar:
+      personal_settings: "Paramètres Personnels"
+      settings: "Paramètres"
+      help: "Aide"
+      logout: "Déconnexion"
+      inbox: "Boîte de Réception"
+      archive: "Archives"
+      search: "Chercher"
+
+  message_mailer:
+    created:
+      reply: "Répondez à ce courriel ou"
+      view: "Voyez conversation sur"
+
+  users:
+    edit:
+      user_settings: "Paramètres des Utilisateurs"
+      name: "Nom"
+      update_personal_settings: "Mettre à jour mes paramètres personnels"
+    mailer:
+      invitation_instructions:
+        someone_invited: "Quelqu'un vous a invité(e) à"
+        you_can_accept: "Vous pouvez accepter l'invitaion en cliquant sur le lien ci-dessus."
+        accept: "Acceptez invitation"
+        dont_want: "Si vous ne voulez pas accepter l'invitaion, veuillez ignoree ce message."
+        account_wont_be_created: "Votre compte ne sera pas créé jusqu'à ce que vous accédez le lien ci-dessus et créez votre mot de passe."
+
+  accounts:
+    general:
+      company_name: "Nom de Compagnie"
+      company_name_placeholder: "SAS Bonjour"
+      your_name: "Votre nom"
+      your_name_placeholder: "Jean Dupont"
+      username: "identifiant"
+      username_placeholder: "Jean"
+    new:
+      sign_up_free_accounts: "Inscrivez-vous pour un Compte Gratuit"
+      quick_easy_sign_up: "Processus D'inscription Rapide et Facile"
+      no_cc_required: "Aucune carte de crédit nécessaire."
+      already_have_account: "Si vous avez déjà un compte Helpful,"
+      please_sign_in: "veuillez connecter"
+      password_confirmation: "Confirmation de mot de passe"
+      must_meet_requirements: "Doit satisfaire *à ces exigences*"
+      create_account: "Créer mon compte"
+    edit:
+      try_out_command: "Pour essayer le site Web Helpful, exécutez cette commande de votre terminal:"
+      embed_form: "Voulez-vous intégrer une forme d'aide sur votre site?"
+      get_code: "Obtenir le code"
+      company_name: "Nom de compagnie"
+      company_name_placeholder: "SAS Bonjour"
+      website: "site Web"
+      website_placeholder: "https://www.example.com"
+      webhook_url: "Webhook URL"
+      webhook_url_placeholder: "https://www.example.com/webhooks/helpful"
+      webhook_secret: "Webhook Secret"
+      incoming_email: "Adresse e-mail entrant"
+      update_account: "Sauvegarder"
+      invitations: "Invitations"
+      send_invitation: "Envoyez une Invitation"
+      invitations_sent: "Invitations Envoyés"
+      invitation_sent: "Invitation Envoyé"
+      signature: "Signature"
+      signature_placeholder: "Signature est ajoutée à la fin de tous les messages que vous envoyez"
+      auto_archiving: "Archiver mes conversations automatiquement après que je répond"
+      embed_help_text: "Vous pouvez également intégrer un formulaire Web qui permettra vos clients de soumettre leurs demandes d'aide directement à Helpful:"
+
+  conversations:
+    conversation:
+      reply_to_conversation: "Écrivez votre réponse ..."
+      assign: "Attribuer"
+      tag: "Tag"
+      canned_response: "Réponse Tout Fait"
+      archive: "Archiver"
+      send: "Envoyer"
+      next_conversation: "Conversation Suivant"
+      made_last_message: "Vous êtes à le dernier message!"
+      back_to_inbox: "Retour à la Boîte de Réception"
+    markdown:
+      we_use_markdown: "Nous employons Markdown!"
+      tool_to_format_text: "Markdown est un outil pour mettre en forme votre texte."
+      text_here: "texte ici"
+      bold: "Gras"
+      bolded: "En gras"
+      italic: "Italique"
+      link: "Lien"
+      linked: "Liée"
+      link_example_url: "http://example.com/teste"
+      image: "Image"
+      image_description: "Description de l'image"
+      image_example_url: "http://example.com/voila.png"
+      advanced_guide: "Guide d'utilisation avancée"
+    navbar:
+      search_conversations: "Recherche conversations"
+      search: "Chercher"
+    row:
+      later: "Plus Tard"
+      archive: "Archiver"
+    search:
+      search_results_for: "Search results for"
+      no_results: "Aucun résultat trouvé"
+    empty:
+      inbox_zero: "Boîte de Réception Zéro"
+      no_open_conversations: "Aucune conversations ouvertes, bon travail!"
+      customer_support_quote: "Soyez le service à la clientèle vous voulez voir dans le monde"
+
+  pages:
+    home:
+      general:
+        sign_up_free: "Incrivez-vous gratuitement"
+      header:
+        sign_up: "INSCRIVEZ-VOUS"
+        login: "CONNEXION"
+        build: "CONSTRUIRE HELPFUL"
+        docs: "DOCUMENTATION"
+      hero:
+        text_header: "L'aide qui vous mette à l'aise"
+        text_1: "Helpful est un outil de support simple que vous n'aurez besoin d'aide de l'utiliser."
+        text_2: "Il suffit de demander."
+      demo:
+        text_1: "Plus simple que le courriel."
+        text_2: "Vous ne devriez pas obtenir du soutien pour un outil de de soutien."
+        text_2_2: "Helpful a l'intention d'être du gâteau, prêt à l'emploi."
+      pricing_table:
+        great_value: "Grande Valeur!"
+        starter_kit: "Kit de Démarrage"
+        growing: "En Croissance"
+        premium: "Prime"
+        super: "Super"
+        threads: "fils"
+        per_month: "par mois"
+        sign_up: "Inscrivez-vous"
+      pricing_text_1: "L'aide qui se grandisse quand vous grandissez"
+      pricing_text_2: "Le prix est par volume donc vous pouvez commencer petit et Helpful grandisse en tant que vos besoins de soutien grandissent."
+      pricing_text_end: "Il n'y a aucun contrat et les plans peuvent être annulées à tout moment."
+      in_house: "Interne"
+      in_house_text: "Si vous préférez votre propre logiciel, vous pouvez prendre Helpful et le privatiser pour vos propres applications."
+      contact_us: "Contactez-Nous"
+  
+  canned_responses:
+    general:
+      canned_response: "Réponse Tout Fait"
+    index:
+      create_canned_response: "Créez une réponse tout fait"
+      canned_responses: "Réponses Tout Faits"
+      none_created: "Personne a créé une réponse tout fait created a canned response à l'instant."
+    new:
+      help: |-
+        Créez une réponse tout fait pour les messages qui sont envoyés souvent ou qui ont besoin d'être cohérente. 
+        Commencez avec une touche, qui est utilisé  pour remonter la réponse complète
+        de la barre de commande. Pour en savoir plus, lisez l'
+      faq: "FAQ"
+    form:
+      key: "Touche"
+      key_placeholder: "Tapez la touche utilisée pour rechercher la réponse"
+      message: "Message"
+      message_placeholder: "Entrez le message complet à inclure dans les réponses futures"
+      create: "Créer"
+      update: "Mise au Point"
+    edit:
+      delete: "Effacer"
+
+  devise:
+    general:
+      sign_in: "Connextion"
+    sessions:
+      new:
+        welcome_back: "Bienvenue!"
+        password_placeholder: "Votre mot de passe"
+        remember_me: "Me retenir"
+    mailer:
+      confirmation_instructions:
+        welcome: "Bienvenue"
+        registered: "Nous avons enregistré votre adresse e-mail comme"
+        please_confirm: "Veuilliez confirmer votre adresse avec le lien ci-dissus."
+        confirm_account: "Confirmer Mon Compte"
+      reset_password_instructions:
+        reset_password_instructions: "Instructions pour réinitialiser mot de passe"
+        someone_requested: "Quelqu'un a demandé un lien pour changer votre mot de passe. Vous pouvez le faire via le lien ci-dessous."
+        please_ignore: "Si vous n'avez pas demandé cela, veuillez ignorer ce message."
+        wont_change: "Votre mot de passe ne sera pas changé jusqu'à ce que vous accédez le lien ci-dissus et faire un nouveau."
+        change_password: "Changer mon mot de passe"
+      unlock_instructions:
+        unlock_instructions: "Instructions pour Déverrouiller"
+        account_locked: "Votre compte a été bloqué en raison d'un nombre excessif de essais de connexion infructueuses."
+        click_below: "Cliquez sur le lien ci-dessous pour déverrouiller votre compte."
+        unlock_account: "Déverrouiller ma compte"
+    shared:
+      links:
+        dont_have_account: "Vous n'avez pas de compte?"
+        forgot_password: "Vous avez oublié votre mot de passe?"
+        didnt_receive_confirmation: "Vous n'avez pas reçu des instructions pour confirmer?"
+        didnt_receive_unlock: "Vous n'avez pas reçu des instructions pour déverrouiller?"
+    passwords:
+      new:
+        did_you_forget: "Avez-vous oublié votre mot de passe?"
+        dont_worry: "Pas de soucis, vous êtes assuré."
+        reset: "Réinitialiser mon mot de passe"
+    unlocks:
+      new:
+        resend_unlock_intstructions: "Renvoyez instructions déverrouiller"
+        resend: "Renvoyez instructions"
