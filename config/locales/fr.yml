@@ -24,6 +24,7 @@ fr:
     ago: "il y a"
     email: "Adresse Internet"
     email_placeholder: "vous@example.com"
+    password: "mot de passe"
     roles:
       owner: "patron"
       agent: "agent"
