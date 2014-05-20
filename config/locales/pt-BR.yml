@@ -40,11 +40,11 @@ pt-BR:
       archive: "Arquivo"
       search: "Buscar"
 
-  # message_mailer:
-  #   created:
-  #     reply: "Reply to this email or"
-  #     view: "view Conversation on"
-  #
+  message_mailer:
+    created:
+      reply: "Responda este email ou"
+      view: "veja essa conversa no"
+
   # users:
   #   edit:
   #     user_settings: "User settings"
