@@ -10,6 +10,8 @@ Helpful is an open product that's being built by a fantastic group of people on 
 
 ## Getting Started
 
+If you're running Windows, [here's a guide written by one of our members on how to get set up.](https://github.com/asm-helpful/helpful-web/blob/master/docs/getting_started_on_windows.md)
+
 [Vagrant](http://vagrantup.com) is the recommended way to run Helpful on your own machine. You need to download and install [Vagrant](http://vagrantup.com/downloads) before you can continue (this will take a while to run so you may want to grab some coffee).
 
     git clone https://github.com/asm-helpful/helpful-web.git helpful-web
@@ -65,7 +67,7 @@ appear in the helpful account.
 There are a couple of steps you need to take before contributing:
 
 1. Go to https://assemblymade.com and sign up.
-2. Link your GitHub account to your Assembly account
+2. Link your GitHub account to your Assembly account in your profile settings.
 3. Create a new WIP at https://assemblymade.com/helpful/wips. Think of WIPs as GitHub issues.
 
 Then just go ahead, fork the repo & issue a pull request. You're on your way to having a stake in Helpful.
