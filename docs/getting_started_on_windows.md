@@ -4,13 +4,13 @@ I wrote this guide after having trouble getting Helpful to work on my computer. 
 
 ## First Steps
 
-To run Helpful on Windows you'll need to download and install three programs on your computer. Make sure to have administrator privileges. I believe that your computer should also be 64-bit, not 32-bit. [Here's a guide on how to find out](http://windows.microsoft.com/en-ca/windows/32-bit-and-64-bit-windows)
+To run Helpful on Windows you'll need to download and install three programs on your computer. Make sure to have administrator privileges. I believe that your computer should also be 64-bit, not 32-bit. [Here's a guide on how to find out.](http://windows.microsoft.com/en-ca/windows/32-bit-and-64-bit-windows)
 
 ###[Git](http://git-scm.com/downloads)
 You need Git to be able to clone the Helpful repository on GitHub. On the installer, make sure to select the option that allows you to use Git in the Windows Command Prompt.
 
 ###[VirtualBox](https://www.virtualbox.org/wiki/Downloads)
-Vagrant needs VirtualBox to create its virtual environment. You might not be able to run VirtualBox if your processor doesn't support virtualization. If you think it does, and later on it doesn't work, your computer BIOS might have disabled the feature. Check out the Troubleshooting section below.
+Vagrant needs VirtualBox to create its virtual environment. You might not be able to run VirtualBox if your processor doesn't support virtualization. If you think it does, and later on it doesn't work, your computer BIOS might have disabled the feature. Check out the [Troubleshooting section below.](https://github.com/asm-helpful/helpful-web/blob/master/docs/getting_started_on_windows.md#troubleshooting)
 
 ###[Vagrant](http://vagrantup.com)
 You need Vagrant to be able to create the development environment. 
@@ -47,7 +47,7 @@ This is a simple command. Ready? Enter in
   
 Vagrant should now connect and begin to download the box needed to set things up. This will take a bit of time, but only needs to be downloaded once. If you're getting an error message, I've put some troubleshooting stuff below.
 
-When you're done, you have a virtual machine box open, and you should be able to access (http://localhost:5000)
+When you're done, you have a virtual machine box open, and you should be able to access [http://localhost:5000](http://localhost:5000)
 
 
 ## Troubleshooting
