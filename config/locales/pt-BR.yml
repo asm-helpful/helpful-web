@@ -45,27 +45,27 @@ pt-BR:
       reply: "Responda este email ou"
       view: "veja essa conversa no"
 
-  # users:
-  #   edit:
-  #     user_settings: "User settings"
-  #     name: "Name"
-  #     update_personal_settings: "Update my personal settings"
-  #   mailer:
-  #     invitation_instructions:
-  #       someone_invited: "Someone has invited you to"
-  #       you_can_accept: "you can accept it through the link below."
-  #       accept: "Accept invitation"
-  #       dont_want: "If you don't want to accept the invitation, please ignore this email."
-  #       account_wont_be_created: "Your account won't be created until you access the link above and set your password."
-  #
-  # accounts:
-  #   general:
-  #     company_name: "Company name"
-  #     company_name_placeholder: "Acme Corp"
-  #     your_name: "Your name"
-  #     your_name_placeholder: "Jane Doe"
-  #     username: "Username"
-  #     username_placeholder: "jane"
+  users:
+    edit:
+      user_settings: "Perfil do usuário"
+      # name: "Name" # This entry seems to be useless
+      update_personal_settings: "Atualizar meu perfil"
+    mailer:
+      invitation_instructions:
+        someone_invited: "Alguém convidou você para"
+        you_can_accept: "você pode aceitar o convite através do link abaixo."
+        accept: "Aceitar convite"
+        dont_want: "Se você não deseja aceitar o convite, por favor ignore este email."
+        account_wont_be_created: "Seu perfil não será criado até que você acesse o link acima e configure sua senha."
+
+  accounts:
+    general:
+      company_name: "Company name"
+      company_name_placeholder: "Acme Corp"
+      your_name: "Seu nome"
+      your_name_placeholder: "Jane Doe"
+      username: "Nome de usuário"
+      username_placeholder: "jane"
   #   new:
   #     sign_up_free_accounts: "Sign Up for a Free Account"
   #     quick_easy_sign_up: "Quick and easy sign up process."
