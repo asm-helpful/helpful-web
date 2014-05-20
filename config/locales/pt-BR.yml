@@ -30,16 +30,16 @@ pt-BR:
       agent: "agente"
     hello: "Olá"
 
-  # shared:
-  #   navbar:
-  #     personal_settings: "Perfil"
-  #     account_settings: "Conta"
-  #     help: "Ajuda"
-  #     logout: "Sair"
-  #     inbox: "Entrada"
-  #     archive: "Arquivo"
-  #     search: "Busca"
-  #
+  shared:
+    navbar:
+      personal_settings: "Perfil"
+      account_settings: "Conta"
+      help: "Ajuda"
+      logout: "Sair"
+      inbox: "Entrada"
+      archive: "Arquivo"
+      search: "Buscar"
+
   # message_mailer:
   #   created:
   #     reply: "Reply to this email or"
