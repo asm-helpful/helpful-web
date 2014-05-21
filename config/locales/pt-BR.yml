@@ -25,6 +25,8 @@ pt-BR:
     email: "Email"
     email_placeholder: "voce@exemplo.com"
     password: "Senha"
+    forgot_password: "Esqueceu sua senha?"
+    sign_up: "Criar conta"
     roles:
       owner: "dono"
       agent: "agente"
@@ -194,12 +196,12 @@ pt-BR:
 
   devise:
     general:
-      sign_in: "Sign in"
+      sign_in: "Entrar"
     sessions:
       new:
-        welcome_back: "Welcome Back!"
+        welcome_back: "Bem-vindo de volta!"
         password_placeholder: "Your password"
-        remember_me: "Remember me"
+        remember_me: "Continuar conectado"
     mailer:
       confirmation_instructions:
         welcome: "Welcome"

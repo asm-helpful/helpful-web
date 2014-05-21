@@ -2,12 +2,14 @@
 
 <div class="container">
 
+  <!-- TODO locale is missing -->
   <h1 class="page-title">Sign In</h1>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: 'form' }) do |f| %>
 
     <h2><%= t('.welcome_back') %></h2>
 
+    <!-- TODO locale is missing -->
     <p>We just need some quick details from you and then you can get right back to work.</p>
 
     <fieldset>
@@ -43,12 +45,12 @@
         <div class="col-md-12">
 
           <div class="help-block">
-            <%= link_to t('.forgot_password'), new_password_path(resource_name), class: 'pull-right' %>
+            <%= link_to t('general.forgot_password'), new_password_path(resource_name), class: 'pull-right' %>
           </div>
 
           <div class="checkbox">
             <%= f.label :remember_me do %>
-              <%= f.check_box :remember_me, checked: 'checked' %> 
+              <%= f.check_box :remember_me, checked: 'checked' %>
               <%= t('.remember_me') %>
             <% end %>
           </div>
