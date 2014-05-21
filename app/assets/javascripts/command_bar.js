@@ -23,6 +23,7 @@ function applyTextcomplete($btnGroup) {
   var $input = $('input', $btnGroup);
   var $dropdownToggle = $('.dropdown-toggle', $btnGroup);
   var $dropdown = $('.dropdown-menu', $btnGroup);
+  var $divider = $('li.divider', $dropdown);
   var searchType = $dropdownToggle.attr('data-search'); 
   var searchTimeout;
   var actionResultsTemplate = Handlebars.compile($('#action-results-template').html());
@@ -41,9 +42,8 @@ function applyTextcomplete($btnGroup) {
           query_type: searchType
         },
         function(results) {
-          $('.action-results-container').html(
-            actionResultsTemplate(results)
-          )
+          $divider.nextAll().remove();
+          $divider.after(actionResultsTemplate(results));
         }
       );
     });

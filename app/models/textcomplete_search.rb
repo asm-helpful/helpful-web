@@ -44,6 +44,6 @@ class TextcompleteSearch
   end
 
   def matching_canned_responses
-    account.canned_responses.where('key ILIKE ?', "#{cleaned_query}%").pluck(:key, :id)
+    account.canned_responses.where('key ILIKE ?', "#{query}%").pluck(:key, :id)
   end
 end
