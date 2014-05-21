@@ -88,16 +88,6 @@ var applyTextcomplete = function($element) {
   $element.textcomplete(strategies).on(eventHandlers);
 };
 
-var toggleSendButton = function(event) {
-  var $reply_message = $(this);
-  var $sendButton = $('.command-bar :submit');
-  if($reply_message.text().length > 0) {
-    $sendButton.show();
-  } else {
-    $sendButton.hide();
-  }
-};
-
 $(document).on('ready page:load', function() {
   $reply_message = $('[data-reply-to-message]');
 
@@ -105,6 +95,4 @@ $(document).on('ready page:load', function() {
     return;
 
   applyTextcomplete($reply_message);
-  $($reply_message).keyup(toggleSendButton);
-  toggleSendButton.bind($reply_message)();
 });
