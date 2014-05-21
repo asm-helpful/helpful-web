@@ -3,7 +3,7 @@ class TextcompletesController < ApplicationController
   before_action :find_account!
 
   def index
-    results = TextcompleteSearch.call(@account, params[:query])
+    results = TextcompleteSearch.call(@account, params[:query], params[:query_type])
     render json: results, include_root: false
   end
 

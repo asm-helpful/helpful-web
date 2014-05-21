@@ -1,11 +1,35 @@
-var applyTextcomplete = function($element) {
-  var textcompletesPath = $element.attr('data-textcomplete-path');
+function applyCommandBarActions($btnGroup) {
+  autofocusInput($btnGroup);
+  applyTextcomplete($btnGroup);
+};
+
+function autofocusInput($btnGroup) {
+  var $dropdownToggle = $('.dropdown-toggle', $btnGroup);
+  var $input = $('input', $btnGroup);
+
+  $dropdownToggle.click(function() {
+    setTimeout(function() {
+      $input.focus();
+    }, 0);
+  });
+
+  $input.click(function(e) {
+    e.stopPropagation();
+  });
+}
+
+function applyTextcomplete($btnGroup) {
+  var textcompletesPath = $btnGroup.attr('data-textcomplete-path');
+  var $input = $('input', $btnGroup);
+  var $dropdownToggle = $('.dropdown-toggle', $btnGroup);
+  var $dropdown = $('.dropdown-menu', $btnGroup);
+  var searchType = $dropdownToggle.attr('data-search'); 
 
   var strategies =  [{
-    match: /(^|\s)((#|@|:)\w*)$/,
+    match: /(^|\s)(\w*)$/,
 
     search: function(query, callback) {
-      $.getJSON(textcompletesPath, { query: query })
+      $.getJSON(textcompletesPath, { query: query, query_type: searchType })
         .done(function(response) {
           callback(response['textcompletes']);
         })
@@ -19,14 +43,7 @@ var applyTextcomplete = function($element) {
     },
 
     template: function(match) {
-      switch(match.type) {
-        case 'tag':
-          return 'Tag with <strong>#' + match.value + '</strong>';
-        case 'assignment':
-          return 'Assign to <strong>@' + match.value + '</strong>';
-        case 'canned_response':
-          return 'Replace with <strong>:' + match.value + '</strong>';
-      }
+      return match.value;
     }
   }];
 
@@ -85,14 +102,16 @@ var applyTextcomplete = function($element) {
     }
   };
 
-  $element.textcomplete(strategies).on(eventHandlers);
+  $input.textcomplete(strategies, { appendTo: $dropdown }).on(eventHandlers);
 };
 
+
 $(document).on('ready page:load', function() {
-  $reply_message = $('[data-reply-to-message]');
+  $('.command-bar-action').each(function() {
+    applyCommandBarActions($(this));
+  });
 
-  if (!$reply_message.length)
-    return;
-
-  applyTextcomplete($reply_message);
+  $('.dropdown-menu input').click(function(e) {
+    e.stopPropagation();
+  });
 });
