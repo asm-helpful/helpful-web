@@ -44,6 +44,7 @@ class Account < ActiveRecord::Base
 
   before_create :generate_webhook_secret
   before_create :set_default_billing_plan
+  after_commit :unhide_paid_conversations
 
   friendly_id :name, use: :slugged
 
@@ -161,6 +162,18 @@ class Account < ActiveRecord::Base
 
     self.stripe_customer_id = customer.id
     self.save!
+  end
+
+  def unhide_paid_conversations
+    ActiveRecord::Base.transaction do
+      paid_count = conversations.paid.count
+      unhide_count = conversations_limit - paid_count
+
+      conversations.unpaid.
+        order('created_at ASC').
+        limit(unhide_count).
+        update_all(hidden: false)
+    end
   end
 
   protected

@@ -114,4 +114,22 @@ describe Account do
     end
   end
 
+  describe '#unhide_paid_conversations' do
+    it 'checks for hidden conversations and toggles them if the limit has been increased' do
+      @account.billing_plan = create(:billing_plan, max_conversations: 1) 
+      @account.save
+
+      2.times do
+        @account.conversations << build(:conversation)
+      end
+
+      @account.reload
+
+      @account.billing_plan = create(:billing_plan, max_conversations: 2)
+      @account.save
+
+      expect(@account.conversations.paid.count).to eq(2)
+    end
+  end
+
 end
