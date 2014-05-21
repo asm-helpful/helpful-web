@@ -69,19 +69,19 @@ pt-BR:
       username: "Nome de usuário"
       username_placeholder: "jane"
     new:
-      sign_up_free_accounts: "Sign Up for a Free Account"
-      quick_easy_sign_up: "Quick and easy sign up process."
-      no_cc_required: "No credit card is required."
-      already_have_account: "If you already have a Helpful account,"
-      please_sign_in: "please sign in"
-      password_confirmation: "Password confirmation"
-      must_meet_requirements: "Must meet *these requirements*"
-      create_account: "Create my account"
+      sign_up_free_accounts: "Cadastre-se gratuitamente"
+      quick_easy_sign_up: "Cadastro rápido e fácil."
+      no_cc_required: "Não vamos te pedir os dados de cartão de crédito."
+      already_have_account: "Se você já possui uma conta no Helpful,"
+      please_sign_in: "por favor entre"
+      password_confirmation: "Confirmação da senha"
+      must_meet_requirements: "Deve atender *estes requisitos*"
+      create_account: "Criar minha conta"
     edit:
       try_out_command: "Para testar a sua conta, execute este comando em seu terminal:"
-      embed_form: "Want to embed a help form on your site?"
-      get_code: "Get the code"
-      company_name: "Company name"
+      embed_form: "Quer embutir um formulário de ajuda no seu site?"
+      get_code: "Copie o código"
+      company_name: "Nome da empresa"
       company_name_placeholder: "Acme Corp"
       website: "Site"
       website_placeholder: "https://www.exemplo.com"
@@ -105,7 +105,7 @@ pt-BR:
       assign: "Atribuir"
       tag: "Tag"
       canned_response: "Canned Response"
-      archive: "Archive"
+      archive: "Arquivar"
       send: "Enviar"
       next_conversation: "Próxima conversa"
       made_last_message: "Você conseguiu chegar na última mensagem!"
@@ -141,99 +141,116 @@ pt-BR:
   pages:
     home:
       general:
-        sign_up_free: "Sign up for free"
+        sign_up_free: "Cadastre-se gratuitamente"
       header:
-        sign_up: "SIGN UP"
-        login: "LOGIN"
-        build: "BUILD HELPFUL"
-        docs: "DOCUMENTATION"
+        sign_up: "CADASTRE-SE"
+        login: "ENTRAR"
+        build: "AJUDE A CONSTRUIR"
+        docs: "DOCUMENTAÇÃO"
       hero:
-        text_header: "Help that doesn't hurt"
-        text_1: "Helpful is a simple support tool you won't need help using."
-        text_2: "Just ask."
+        text_header: "Ajuda que não dói"
+        text_1: "Helpful é uma ferramenta simples de suporte que você não vai precisar de ajuda para usar."
+        text_2: "Apenas pergunte."
       demo:
-        text_1: "Even simpler than email"
-        text_2: "You shouldn't have to get support for a support tool."
-        text_2_2: "Helpful aims to be a no-brainer to use right out of the box."
+        text_1: "Ainda mais simples que o email"
+        text_2: "Você não deveria precisar de suporte para uma ferramenta de suporte."
+        text_2_2: "Não precisa ser um especialista para começar a usar o Helpful."
       pricing_table:
-        great_value: "Great Value!"
+        great_value: "Grande Valor!"
         starter_kit: "Starter Kit"
         growing: "Growing"
         premium: "Premium"
         super: "Super"
         threads: "threads"
-        per_month: "per month"
-        sign_up: "Sign up"
-      pricing_text_1: "Help that grows with you"
-      pricing_text_2: "Pricing is by volume so you can start small and we'll grow as your support needs grow."
-      pricing_text_end: "There are no contracts and plans can be cancelled at any time."
+        per_month: "por mês"
+        sign_up: "Cadastre-se"
+      pricing_text_1: "Ferramenta de suporte que cresce com você"
+      pricing_text_2: "O preço é por volume então você pode começar pequeno e nós vamos aumentar conforme você precisar de mais."
+      pricing_text_end: "Não existem contratos e o plano pode ser cancelado a qualquer momento."
       in_house: "In-House"
-      in_house_text: "If you prefer to make software your own, you can take Helpful indoors and whitelabel it for your own purposes."
-      contact_us: "Contact Us"
+      in_house_text: "Se você prefere utilizar o serviço por conta própria, você pode ter o Helpful rodando em sua própria infra."
+      contact_us: "Entre em Contato"
 
   canned_responses:
     general:
-      canned_response: "Canned Response"
+      canned_response: "Resposta Pronta"
     index:
-      create_canned_response: "Create canned response"
-      canned_responses: "Canned Responses"
-      none_created: "No one has created a canned response yet."
+      create_canned_response: "Criar uma resposta pronta"
+      canned_responses: "Respostas Prontas"
+      none_created: "Ninguém criou uma resposta pronta ainda."
     new:
       help: |-
-        Create a canned response for messages that are sent often or need to be
-        consistent. Start with a key, which is used to pull up the full response
-        from the command bar. To learn more read the
+        Crie um resposta pronta para mensagens que são respondidas frequentemente
+        ou precisam ser consistentes. Comece com uma palavra-chave, a qual é usada
+        para referenciar a resposta através da barra de comando. Para saber mais leia o
       faq: "FAQ"
     form:
       key: "Key"
-      key_placeholder: "Enter key used to lookup the response"
-      message: "Message"
-      message_placeholder: "Include the full message to include in future responses"
-      create: "Create"
-      update: "Update"
+      key_placeholder: "Digite a chave usada para encontrar a resposta"
+      message: "Mensagem"
+      message_placeholder: "Escreva a mensagem completa para incluir em futuras respostas"
+      create: "Criar"
+      update: "Atualizar"
     edit:
-      delete: "Delete"
+      delete: "Remover"
 
   devise:
-    general:
-      sign_in: "Entrar"
-    sessions:
-      new:
-        welcome_back: "Bem-vindo de volta!"
-        password_placeholder: "Your password"
-        remember_me: "Continuar conectado"
+    confirmations:
+      confirmed: 'Sua conta foi confirmada com sucesso. Você está logado.'
+      send_instructions: 'Dentro de minutos, você receberá um e-mail com instruções para a confirmação da sua conta.'
+      send_paranoid_instructions: 'Se o seu endereço de e-mail estiver cadastrado, você receberá uma mensagem com instruções para confirmação da sua conta.'
+    failure:
+      already_authenticated: 'Você já está logado.'
+      inactive: 'Sua conta ainda não foi ativada.'
+      invalid: 'E-mail ou senha inválidos.'
+      invalid_token: 'O token de autenticação não é válido.'
+      locked: 'Sua conta está bloqueada.'
+      not_found_in_database: 'E-mail ou senha inválidos.'
+      timeout: 'Sua sessão expirou, por favor, efetue login novamente para continuar.'
+      unauthenticated: 'Para continuar, efetue login ou registre-se.'
+      unconfirmed: 'Antes de continuar, confirme a sua conta.'
     mailer:
       confirmation_instructions:
-        welcome: "Welcome"
-        registered: "We have registered your email as"
-        please_confirm: "Please confirm your email with the link below."
-        confirm_account: "Confirm my account"
+        subject: 'Instruções de confirmação'
       reset_password_instructions:
-        reset_password_instructions: "Reset Password Instructions"
-        someone_requested: "Someone has requested a link to change your password. You can do this through the link below."
-        please_ignore: "If you didn't request this, please ignore this email."
-        wont_change: "Your password won't change until you access the link below and create a new one."
-        change_password: "Change my password"
+        subject: 'Instruções de troca de senha'
       unlock_instructions:
-        unlock_instructions: "Unlock Instructions"
-        account_locked: "Your account has been locked due to an excessive number of unsuccessful sign in attempts."
-        click_below: "Click the link below to unlock your account."
-        unlock_account: "Unlock my account"
-    shared:
-      links:
-        dont_have_account: "Don't have an account?"
-        forgot_password: "Forgot your password?"
-        didnt_receive_confirmation: "Didn't receive confirmation instructions?"
-        didnt_receive_unlock: "Didn't receive unlock instructions?"
+        subject: 'Instruções de desbloqueio'
+    omniauth_callbacks:
+      failure: 'Não foi possível autenticá-lo como %{kind} porque "%{reason}".'
+      success: 'Autenticado com sucesso com uma conta de %{kind}.'
     passwords:
-      new:
-        did_you_forget: "Did you forget your password?"
-        dont_worry: "No worries, we got you covered. It happens to the best of us."
-        reset: "Reset my password"
+      no_token: "Você só pode acessar essa página através de um e-mail de troca de senha. Se já estiver acessando por um e-mail, verifique se a URL fornecida está completa."
+      send_instructions: 'Dentro de minutos, você receberá um e-mail com instruções para a troca da sua senha.'
+      send_paranoid_instructions: 'Se o seu endereço de e-mail estiver cadastrado, você receberá um link de recuperação da senha via e-mail.'
+      updated: 'Sua senha foi alterada com sucesso. Você está logado.'
+      updated_not_active: 'Sua senha foi alterada com sucesso.'
+    registrations:
+      destroyed: 'Tchau! Sua conta foi cancelada com sucesso. Esperamos vê-lo novamente em breve.'
+      signed_up: 'Login efetuado com sucesso. Se não foi autorizado, a confirmação será enviada por e-mail.'
+      signed_up_but_inactive: 'Você foi cadastrado com sucesso. No entanto, não foi possível efetuar login, pois sua conta não foi ativada.'
+      signed_up_but_locked: 'Você foi cadastrado com sucesso. No entanto, não foi possível efetuar login, pois sua conta está bloqueada.'
+      signed_up_but_unconfirmed: 'Uma mensagem com um link de confirmação foi enviada para o seu endereço de e-mail. Por favor, abra o link para confirmar a sua conta.'
+      update_needs_confirmation: 'Você atualizou a sua conta com sucesso, mas o seu novo endereço de e-mail precisa ser confirmado. Por favor, acesse-o e clique no link de confirmação que enviamos.'
+      updated: 'Sua conta foi atualizada com sucesso.'
+    sessions:
+      signed_in: 'Login efetuado com sucesso!'
+      signed_out: 'Saiu com sucesso.'
     unlocks:
-      new:
-        resend_unlock_intstructions: "Resend unlock instructions"
-        resend: "Resend instructions"
+      send_instructions: 'Dentro de minutos, você receberá um email com instruções para o desbloqueio da sua conta.'
+      send_paranoid_instructions: 'Se sua conta existir, você receberá um e-mail com instruções para desbloqueá-la em alguns minutos.'
+      unlocked: 'Sua conta foi desbloqueada com sucesso. Efetue login para continuar.'
+
+  errors:
+    messages:
+      already_confirmed: "já foi confirmado"
+      confirmation_period_expired: "precisa ser confirmada em até %{period}, por favor, solicite uma nova"
+      expired: "expirou, por favor, solicite uma nova"
+      not_found: "não encontrado"
+      not_locked: "não foi bloqueado"
+      not_saved:
+        one: "Não foi possível salvar %{resource}: 1 erro"
+        other: "Não foi possível salvar %{resource}: %{count} erros."
 
   # Default locale from https://raw.githubusercontent.com/svenfuchs/rails-i18n/master/rails/locale/pt-BR.yml
   date:
