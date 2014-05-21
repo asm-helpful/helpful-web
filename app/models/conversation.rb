@@ -50,6 +50,8 @@ class Conversation < ActiveRecord::Base
 
   scope :paid, -> { where(hidden: false) }
 
+  scope :unpaid, -> { including_unpaid.where(hidden: true) }
+
   scope :including_unpaid, -> { unscope(where: :hidden) }
 
   scope :this_month, -> { where("DATE_TRUNC('month', created_at) = ?", Time.now.utc.beginning_of_month) }
