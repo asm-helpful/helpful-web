@@ -55,7 +55,7 @@ fr:
         someone_invited: "Quelqu'un vous a invité(e) à"
         you_can_accept: "Vous pouvez accepter l'invitaion en cliquant sur le lien ci-dessus."
         accept: "Acceptez invitation"
-        dont_want: "Si vous ne voulez pas accepter l'invitaion, veuillez ignoree ce message."
+        dont_want: "Si vous ne voulez pas accepter l'invitaion, veuillez ignorer ce message."
         account_wont_be_created: "Votre compte ne sera pas créé jusqu'à ce que vous accédez le lien ci-dessus et créez votre mot de passe."
 
   accounts:
@@ -79,9 +79,9 @@ fr:
       try_out_command: "Pour essayer le site Web Helpful, exécutez cette commande de votre terminal:"
       embed_form: "Voulez-vous intégrer une forme d'aide sur votre site?"
       get_code: "Obtenir le code"
-      company_name: "Nom de compagnie"
+      company_name: "Nom de l'entreprise"
       company_name_placeholder: "SAS Bonjour"
-      website: "site Web"
+      website: "Site Web"
       website_placeholder: "https://www.example.com"
       webhook_url: "Webhook URL"
       webhook_url_placeholder: "https://www.example.com/webhooks/helpful"
