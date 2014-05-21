@@ -142,44 +142,29 @@
 
 <div class="page page-partial">
   <div>
-    <div class="container" id="pricing">
-      <div class="row">
-        <div class="col-md-offset-3 col-md-6 text-center">
-          <h1>Plans tied to support requests, not staff members</h1>
-          <p>Never worry about adding another member. Our plans scale with the number of support conversations you have each month. It places the incentives in the right place; focusing on lowering your number of support requests.</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="list-group list-group-horizontal plan-list" style="margin-top: 50px">
-            <% @plans.each do |plan| %>
-              <div class="list-group-item plan">
-                <h3>
-                  <%= plan.name %>
-                </h3>
-                <p class="plan-info">
-                  <%= plan.max_conversations %> conversations
-                </p>
-                <p class="plan-price">
-                  <% if plan.price.zero? %>
-                    Totally Free!
-                  <% else %>
-                    <%= number_to_currency(plan.price, precision: 0) %> per month
-                  <% end %>
-                </p>
-                <% if plan.free? %>
-                  <%= link_to new_accounts_path, class: 'btn btn-success' do %>
-                    <span class="plan-select-message">Sign up</span>
-                  <% end %>
-                <% else %>
-                  <%= link_to new_accounts_path, class: 'btn btn-secondary' do %>
-                    <span class="plan-select-message">Sign up</span>
-                  <% end %>
-                <% end %>
-              </div>
-            <% end %>
+    <div class="container text-center" id="pricing">
+      <h1>A price that grows with your product.</h1>
+      <p>The number of people you want supporting customers should never be constrained by your support tool. With helpful, you'll never pay per seat, you pay per conversations.
+    </div>
+    <div class="container">
+      <div class="pricing-showcase">
+        <% @plans.each do |plan| %>
+          <div class="pricing-showcase-item">
+
+            <div class="pricing-showcase-item-conversations">
+              <%= plan.max_conversations %>
+            </div>
+
+            <div class="pricing-showcase-item-price">
+              <% if plan.price.zero? %>
+                FREE
+              <% else %>
+                <%= number_to_currency(plan.price, precision: 0) %>
+                <span class="pricing-showcase-item-price-frequency">/mo</span>
+              <% end %>
+            </div>
           </div>
-        </div>
+        <% end %>
       </div>
     </div>
   </div>
