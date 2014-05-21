@@ -1,1 +1,20 @@
-.pricing-showcase {}
+.pricing-showcase {
+  &::after {
+    border-bottom: 3px solid $neon-blue;
+  }
+}
+
+.pricing-showcase-item {
+  float: left;
+  width: 25%;
+  text-align: center;
+
+  &::after {
+    content: "\00B7";
+    font-size: 84px;
+    height: 12px;
+    line-height: 12px;
+    overflow: hidden;
+    width: 12px;
+  }
+}
