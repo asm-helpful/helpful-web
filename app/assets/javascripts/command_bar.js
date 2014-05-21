@@ -49,42 +49,63 @@ function applyTextcomplete($btnGroup) {
     });
   });
 
-  var tagConversation = function(match) {
+  $btnGroup.on('click', 'li a', function() { 
+    switch(searchType) {
+      case 'assignments':
+        assignConversation($(this));
+        break;
+      case 'tags':
+        tagConversation($(this));
+        break;
+      case 'canned_responses':
+        useCannedResponse($(this));
+        break;
+    };
+  });
+
+  var tagConversation = function($anchor) {
     var account = $("[name='account-slug']").val();
     var conversation = $("[name='conversation-number']").val();
     var tagConversationPath = '/' + account + '/' + conversation + '/tags';
 
     $.post(
       tagConversationPath,
-      { tag: match.value },
+      { tag: $anchor.attr('data-value') },
       function() { window.location.reload(); },
       'json'
     );
+
+    return false;
   };
 
-  var assignConversation = function(match) {
+  var assignConversation = function($anchor) {
     var account = $("[name='account-slug']").val();
     var conversation = $("[name='conversation-number']").val();
     var conversationPath = '/' + account + '/' + conversation;
 
     $.post(
       conversationPath,
-      { conversation: { user_id: match.user_id }, _method: 'patch' },
+      { conversation: { user_id: $anchor.attr('data-user-id') }, _method: 'patch' },
       function() { window.location.reload(); },
       'json'
     );
+
+    return false;
   };
 
-  var useCannedResponse = function(match) {
+  var useCannedResponse = function($anchor) {
+    var $replyMessage = $('[data-reply-to-message]');
     var account = $("[name='account-slug']").val();
-    var cannedResponsePath = '/' + account + '/canned_responses/' + match.id;
+    var cannedResponsePath = '/' + account + '/canned_responses/' + $anchor.attr('data-id');
 
     $.getJSON(
       cannedResponsePath,
       function(cannedResponse) {
-        $reply_message.html(cannedResponse.message);
+        $replyMessage.html(cannedResponse.message);
       }
-    )
+    );
+
+    return false;
   };
 };
 
