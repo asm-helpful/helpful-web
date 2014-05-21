@@ -1,5 +1,7 @@
 .pricing-showcase {
   &::after {
+    width: 100px;
+    height: 100px;
     border-bottom: 3px solid $neon-blue;
   }
 }
@@ -16,5 +18,11 @@
     line-height: 12px;
     overflow: hidden;
     width: 12px;
+  }
+
+  > .pricing-showcase-item-conversations {
+    color: $dark-gray;
+    font-size: 18px;
+    font-weight: 300;
   }
 }
