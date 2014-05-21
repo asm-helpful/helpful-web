@@ -49,7 +49,10 @@ function applyTextcomplete($btnGroup) {
     });
   });
 
-  $btnGroup.on('click', 'li a', function() { 
+  $btnGroup.on('click', 'li a', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+
     switch(searchType) {
       case 'assignments':
         assignConversation($(this));
@@ -61,6 +64,8 @@ function applyTextcomplete($btnGroup) {
         useCannedResponse($(this));
         break;
     };
+
+    return false;
   });
 
   var tagConversation = function($anchor) {
@@ -74,8 +79,6 @@ function applyTextcomplete($btnGroup) {
       function() { window.location.reload(); },
       'json'
     );
-
-    return false;
   };
 
   var assignConversation = function($anchor) {
@@ -89,8 +92,6 @@ function applyTextcomplete($btnGroup) {
       function() { window.location.reload(); },
       'json'
     );
-
-    return false;
   };
 
   var useCannedResponse = function($anchor) {
@@ -104,8 +105,6 @@ function applyTextcomplete($btnGroup) {
         $replyMessage.html(cannedResponse.message);
       }
     );
-
-    return false;
   };
 };
 
