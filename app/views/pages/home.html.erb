@@ -157,10 +157,14 @@
 
             <div class="pricing-showcase-item-price">
               <% if plan.price.zero? %>
-                FREE
+                <span class="pricing-showcase-item-free">
+                  FREE
+                </span>
               <% else %>
                 <%= number_to_currency(plan.price, precision: 0) %>
-                <span class="pricing-showcase-item-price-frequency">/mo</span>
+                <span class="pricing-showcase-item-price-frequency">
+                  /mo
+                </span>
               <% end %>
             </div>
           </div>

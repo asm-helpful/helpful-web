@@ -25,4 +25,19 @@
     font-size: 18px;
     font-weight: 300;
   }
+
+  > .pricing-showcase-item-price {
+    font-size: 30px;
+
+    &::first-letter {
+      font-size: 22px;
+      vertical-align: text-top;
+    }
+
+    > .pricing-showcase-item-price-frequency {
+      color: $dark-gray;
+      font-size: 18px;
+      margin-left: -5px;
+    }
+  }
 }
