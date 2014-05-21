@@ -24,28 +24,30 @@ function applyTextcomplete($btnGroup) {
   var $dropdownToggle = $('.dropdown-toggle', $btnGroup);
   var $dropdown = $('.dropdown-menu', $btnGroup);
   var searchType = $dropdownToggle.attr('data-search'); 
+  var searchTimeout;
+  var actionResultsTemplate = Handlebars.compile($('#action-results-template').html());
+  var actionResultsContainer = $('.action-results-container', $btnGroup);
 
-  var strategies =  [{
-    match: /(^|\s)(\w*)$/,
-
-    search: function(query, callback) {
-      $.getJSON(textcompletesPath, { query: query, query_type: searchType })
-        .done(function(response) {
-          callback(response['textcompletes']);
-        })
-        .fail(function() {
-          callback([]);
-        });
-    },
-
-    replace: function(match) {
-      return '';
-    },
-
-    template: function(match) {
-      return match.value;
+  $input.keypress(function() {
+    if(searchTimeout) {
+      clearTimeout(searchTimeout);
     }
-  }];
+
+    searchTimeout = setTimeout(function() {
+      $.getJSON(
+        textcompletesPath,
+        {
+          query: $input.val(),
+          query_type: searchType
+        },
+        function(results) {
+          $('.action-results-container').html(
+            actionResultsTemplate(results)
+          )
+        }
+      );
+    });
+  });
 
   var tagConversation = function(match) {
     var account = $("[name='account-slug']").val();
@@ -84,25 +86,6 @@ function applyTextcomplete($btnGroup) {
       }
     )
   };
-
-  var eventHandlers = {
-    'textComplete:select': function(event, match) {
-
-      switch(match.type) {
-        case 'tag':
-          tagConversation(match);
-          break;
-        case 'assignment':
-          assignConversation(match);
-          break;
-        case 'canned_response':
-          useCannedResponse(match);
-          break;
-      }
-    }
-  };
-
-  $input.textcomplete(strategies, { appendTo: $dropdown }).on(eventHandlers);
 };
 
 

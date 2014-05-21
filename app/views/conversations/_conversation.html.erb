@@ -121,10 +121,7 @@
             <ul class="dropdown-menu" role="menu">
               <li><input type="text" class="form-control" style="margin:10px;"></li>
               <li class="divider"></li>
-              <li><a href="#">Patrick Van Stee</a></li>
-              <li><a href="#">Patrick Van Stee</a></li>
-              <li><a href="#">Patrick Van Stee</a></li>
-              <li><a href="#">Patrick Van Stee</a></li>
+              <div class="action-results-container"></div>
             </ul>
           </div>
 
@@ -136,10 +133,7 @@
             <ul class="dropdown-menu" role="menu">
               <li><input type="text" class="form-control" style="margin:10px;"></li>
               <li class="divider"></li>
-              <li><a href="#">Patrick Van Stee</a></li>
-              <li><a href="#">Patrick Van Stee</a></li>
-              <li><a href="#">Patrick Van Stee</a></li>
-              <li><a href="#">Patrick Van Stee</a></li>
+              <div class="action-results-container"></div>
             </ul>
           </div>
 
@@ -151,10 +145,7 @@
             <ul class="dropdown-menu" role="menu">
               <li><input type="text" class="form-control" style="margin:10px;"></li>
               <li class="divider"></li>
-              <li><a href="#">Patrick Van Stee</a></li>
-              <li><a href="#">Patrick Van Stee</a></li>
-              <li><a href="#">Patrick Van Stee</a></li>
-              <li><a href="#">Patrick Van Stee</a></li>
+              <div class="action-results-container"></div>
             </ul>
           </div>
         </div>
@@ -173,3 +164,13 @@
     <span class="glyphicon glyphicon-chevron-down"></span>
   </a>
 <% end %>
+
+<script id="action-results-template" type="text/x-handlebars-template">
+  {{#each textcompletes}}
+    <li>
+      <a href="#">
+        {{value}}
+      </a>
+    </li>
+  {{/each}}
+</script>
