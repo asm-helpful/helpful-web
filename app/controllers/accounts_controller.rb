@@ -6,7 +6,6 @@ class AccountsController < ApplicationController
     @account = Account.new(billing_plan_slug: 'starter-kit')
     @user = User.new
     @person = Person.new
-    @plans = BillingPlan.order('price ASC')
   end
 
   def create
@@ -53,6 +52,8 @@ class AccountsController < ApplicationController
 
   def edit
     find_account!
+
+    @plans = BillingPlan.order('price ASC')
     @user = User.new
   end
 
