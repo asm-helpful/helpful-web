@@ -68,15 +68,24 @@ function applyTextcomplete($btnGroup) {
     return false;
   });
 
+  var resetCommandBar = function() {
+    $dropdownToggle.dropdown('toggle');
+    $input.val('');
+  }
+
   var tagConversation = function($anchor) {
     var account = $("[name='account-slug']").val();
     var conversation = $("[name='conversation-number']").val();
     var tagConversationPath = '/' + account + '/' + conversation + '/tags';
+    var tagEventTemplate = Handlebars.compile($('#tag-event-template').html());
 
     $.post(
       tagConversationPath,
       { tag: $anchor.attr('data-value') },
-      function() { window.location.reload(); },
+      function(response) {
+        $('.conversation-stream').append(tagEventTemplate(response.tag_event))
+        resetCommandBar();
+      },
       'json'
     );
   };
@@ -103,6 +112,7 @@ function applyTextcomplete($btnGroup) {
       cannedResponsePath,
       function(cannedResponse) {
         $replyMessage.html(cannedResponse.message);
+        $replyMessage.focus();
       }
     );
   };

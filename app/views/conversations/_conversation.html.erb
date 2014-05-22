@@ -171,3 +171,26 @@
     </li>
   {{/each}}
 </script>
+
+<script id="tag-event-template" type="text/x-handlebars-template">
+  <div class="event">
+    <div class="avatar avatar-default">
+      <div class="avatar-initials" style="width: 30px; height: 30px; line-height: 30px; display: none;">{{initials}}</div>
+      <img alt="{{name}} avatar" height="30" onerror="toggleAvatar(this)" src="{{avatar_url}}" width="30">
+    </div>
+
+    <strong>
+      {{name}} tagged
+    </strong>
+
+    this conversation with
+
+    <a href="#" class="tag">
+      #{{tag}}
+    </a>
+
+    <span class="timestamp">
+      {{updated_at_in_words}} <%= t('general.ago') %>
+    </span>
+  </div>
+</script>
