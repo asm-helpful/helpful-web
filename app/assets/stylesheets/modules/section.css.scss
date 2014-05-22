@@ -49,7 +49,9 @@
   }
 }
 
+// I dont think any of those styles below are being used
 .section-screenshots {
+  @expand .row;
   $screenshot-middle: 555;
   $screenshot-side: 466;
   $screenshot-middle-size: $screenshot-middle / ( ($screenshot-side * 2) + $screenshot-middle ) * 100%;
@@ -69,7 +71,7 @@
     }
 
     img {
-      width: 100%;
+      width: 100% !important;
       //jw;opacity: .3;
     }
   }
@@ -89,7 +91,8 @@
     }
     p {
       color: $dark-gray;
-      font-size: 20px;
+      font-size: 16px;
+      font-family: $font-body;
       font-weight: bold;
       text-align: center;
     }

@@ -24,27 +24,26 @@
             <%= image_tag('logo.png', data: {animate_logo: "" }) %>
             <h1 data-animate-heading>We redesigned support to get out of the way, so you focus on being a helpful human.</h1>
             <p data-animate-lead>Helping your customers with good answers and thoughtful direction should be a breeze, focused 100% on support - and nothing else.</p>
-            <p data-animate-lead>C'mon, let's see it in action.</p>
-            <p><%= image_tag "arrow-down.png", data: {arrow_down: ""} %></p>
+            <a href="#page-showcase" id="btn" class="btn btn-default" data-scroll-to-content="true">Let us show how simple it is</a>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="page page-partial page-showcase">
+  <div id="page-showcase" class="page page-partial page-showcase">
     <div class="screenshot-list">
       <div class="screenshot">
-        <%= image_tag('home/widget_light.png') %>
         <p>Give your customers a simple way to send you a message.</p>
+        <%= image_tag('home/widget_light.png') %>
       </div>
       <div class="screenshot">
-        <%= image_tag('home/app_light.png') %>
         <p>Manage interactions with customers from a familiar inbox.</p>
+        <%= image_tag('home/app_light.png') %>
       </div>
       <div class="screenshot">
-        <%= image_tag('home/email_light.png') %>
         <p>Respond directly with an plain text email.</p>
+        <%= image_tag('home/email_light.png') %>
       </div>
     </div>
   </div>

@@ -26,6 +26,10 @@ var positionPages = function() {
   $(window).resize();
 };
 
+$( "#btn" ).click(function() {
+  //startAnimation();
+});
+
 var affixNavbar = function($navbarPlaceholder) {
   var $navbar = $($navbarPlaceholder.children()[0]);
 
@@ -41,7 +45,7 @@ var affixNavbar = function($navbarPlaceholder) {
 };
 
 var scrollToContentButtons = function() {
-  $('[data-scroll-to-content="true"] a').click(function() {
+  $('[data-scroll-to-content="true"] a, #btn').click(function() {
     var $target = $(this.hash);
     $target = $target.length ? $target : $('#' + this.hash.slice(1));
     if ($target.length) {
@@ -53,24 +57,9 @@ var scrollToContentButtons = function() {
   });
 };
 
-function animateLogo() {
-  setTimeout(function() { $("[data-animate-logo]").addClass('animated rotateIn') }, 1000)
-}
-
 function animateHeadings() {
-  $lead = $("[data-animate-lead]");
-  $lead.css({opacity: '.5', color: '#6E9096'});
-  setTimeout(function() { $("[data-animate-heading]").addClass('animated pulse') }, 2000);
-  setTimeout(function() { $lead.animate({opacity: 1}, 'slow') }, 4500);
-}
-
-function animateArrowDown() {
-  $arrowDown = $("[data-arrow-down]")
-  $arrowDown.hide()
-  setTimeout(function() {
-    $arrowDown.addClass('animated bounceInDown').show()
-    setInterval(function() { bounceArrow(); }, 2500)
-  }, 6000)
+  
+  // setTimeout(function() { $lead.animate({opacity: 1}, 'slow') }, 4500);
 }
 
 function bounceArrow() {
@@ -81,6 +70,7 @@ function bounceArrow() {
 function animateScreenshots() {
   $('.screenshot').addClass('animated fadeInUp');
   $('.screenshot img').animate({ opacity: .3 }, 100);
+  $('.screenshot p').animate({ opacity: .3 }, 100);
 
   var startedAnimation = false;
 
@@ -94,45 +84,50 @@ function animateScreenshots() {
 
 function startAnimation() {
   setTimeout(function() { animateScreen(0) },  1000);
-  setTimeout(function() { animateScreen(1) },  4000);
-  setTimeout(function() { animateScreen(2) },  7000);
-  setTimeout(function() { finishAnimation() }, 10000);
+  setTimeout(function() { animateScreen(1) },  3000);
+  setTimeout(function() { animateScreen(2) },  6000);
+  setTimeout(function() { finishAnimation() }, 9000);
 }
 
 function animateScreen(index) {
   var $screenshotList = $('.screenshot-list');
   var $screenshot = $('.screenshot').eq(index);
 
-  if($(window).width() < $screenshotList.width()) {
-    $screenshotList.animate({ 'left': ($screenshotList.width() / 2) - $screenshot.position().left - ($screenshot.outerWidth(true) / 2) }, 400);
-  }
+  // if($(window).width() < $screenshotList.width()) {
+  //   $screenshotList.animate({ 'left': ($screenshotList.width() / 2) - $screenshot.position().left - ($screenshot.outerWidth(true) / 2) }, 400);
+  // }
 
   var $image = $screenshot.find('img');
   $('.screenshot img').not($image).animate({ opacity: .3 }, 200);
-  $image.animate({ opacity: 1 }, 300).addClass('pulse');
+  $image.animate({ opacity: 1 }, 300);
 
   var $paragraph = $screenshot.find('p');
-  $('.screenshot p').removeClass('focused animated flash');
-  $paragraph.addClass('animated pulse focused');
+  $('.screenshot p').not($paragraph).animate({ opacity: .3 }, 200);
+  $paragraph.animate({ opacity: 1 }, 300);
+
+  // $('.screenshot p').removeClass('focused animated flash');
+  // $paragraph.addClass('animated pulse focused');
 }
 
 function finishAnimation() {
   $('.screenshot img').animate({ opacity: 1 }, 800);
-  $('.screenshot p').addClass('focused');
+  $('.screenshot p').animate({ opacity: 1 }, 800);
 
-  var $screenshotList = $('.screenshot-list');
-  $screenshotList.animate({ left: 0 }, 800);
+  // $('.screenshot p').addClass('focused');
 
-  if($(window).width() < $screenshotList.width()) {
-    $screenshotList.animate({ transform: 'scale(' + ($(window).width() / $screenshotList.width()) + ')' }, 800);
-  }
+  // var $screenshotList = $('.screenshot-list');
+  // $screenshotList.animate({ left: 0 }, 800);
+
+  // if($(window).width() < $screenshotList.width()) {
+  //   $screenshotList.animate({ transform: 'scale(' + ($(window).width() / $screenshotList.width()) + ')' }, 800);
+  // }
 }
 
 $(document).on('ready page:load', function() {
   positionPages();
-  animateLogo();
-  animateHeadings();
-  animateArrowDown();
+  //animateLogo();
+  //animateHeadings();
+  //animateArrowDown();
   affixNavbar($('.navbar-placeholder'));
   scrollToContentButtons();
   animateScreenshots();
