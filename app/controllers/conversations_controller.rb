@@ -18,6 +18,7 @@ class ConversationsController < ApplicationController
     Analytics.track(user_id: current_user.id, event: 'Read Conversations Index')
     inbox = ConversationsInbox.new(@account, current_user, params[:q])
     @conversations = inbox.conversations
+    ExampleConversation.create(@account, current_user) unless @account.conversations.including_unpaid.exists?
     respond_with @conversations
   end
 

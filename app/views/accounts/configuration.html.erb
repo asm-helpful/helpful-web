@@ -10,7 +10,7 @@
     Now that you're signed up, let's give your new Helpful email address a test drive real quick.
   </p>
 
-  <%= mail_to @account.mailbox_email.address, 'Send an email to your new support inbox', subject: 'Halp, everything is broken!', body: 'I just visited your site for the first time and the color of red you chose for your log is a little bit too bright. Please fix it immediately.', class: 'btn btn-secondary', style: 'margin-bottom: 20px' %>
+  <%= mail_to @account.mailbox_email.address, 'Send an email to your new support inbox', subject: ExampleConversation::SUBJECT, body: ExampleConversation::CONTENT, class: 'btn btn-secondary', style: 'margin-bottom: 20px' %>
 
   <div class="well well-lg empty-inbox">
     <p style="margin-bottom: 0">
@@ -27,7 +27,7 @@
   </div>
 
   <div class="pull-right">
-    <%= link_to 'Skip', inbox_account_conversations_path(@account), class: 'btn btn-default skip-button' %>
+    <%= link_to 'Send an email for me', inbox_account_conversations_path(@account), class: 'btn btn-default skip-button' %>
     <%= link_to 'Check out the inbox', inbox_account_conversations_path(@account), class: 'btn btn-primary inbox-button' %>
   </div>
 </div>
