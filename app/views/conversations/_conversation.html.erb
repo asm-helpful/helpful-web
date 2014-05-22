@@ -187,14 +187,12 @@
   </a>
 <% end %>
 
-<script id="action-results-template" type="text/x-handlebars-template">
-  {{#each textcompletes}}
-    <li>
-      <a href="#" data-value="{{value}}" data-user-id="{{user_id}}" data-id="{{id}}">
-        {{value}}
-      </a>
-    </li>
-  {{/each}}
+<script id="action-result-template" type="text/x-handlebars-template">
+  <li data-suggestion="{{suggestion}}">
+    <a href="#" data-value="{{value}}">
+      {{value}}
+    </a>
+  </li>
 </script>
 
 <script id="tag-event-template" type="text/x-handlebars-template">

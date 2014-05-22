@@ -26,13 +26,18 @@ function applyTextcomplete($btnGroup) {
   var $divider = $('li.divider', $dropdown);
   var searchType = $dropdownToggle.attr('data-search'); 
   var searchTimeout;
-  var actionResultsTemplate = Handlebars.compile($('#action-results-template').html());
-  var actionResultsContainer = $('.action-results-container', $btnGroup);
+  var actionResultTemplate = Handlebars.compile($('#action-result-template').html());
 
   $input.keyup(function() {
     $divider.nextAll().show();
+    $('[data-suggestion="true"]', $btnGroup).remove();
 
-    var inputRegexp = new RegExp($input.val(), 'gi');
+    var inputValue = $input.val();
+    if (inputValue == "") {
+      return;
+    }
+
+    var inputRegexp = new RegExp(inputValue, 'gi');
     $divider.nextAll().each(function() {
       var $anchor = $(this).children('a');
       var value = $anchor.attr('data-value');
@@ -41,6 +46,10 @@ function applyTextcomplete($btnGroup) {
         $(this).hide();
       }
     });
+
+    if (searchType == 'tags' && !$('a[data-value="' + inputValue + '"]').length) {
+      $divider.after(actionResultTemplate({ value: inputValue, suggestion: true }));
+    }
   });
 
   $btnGroup.on('click', 'li a', function(e) {
