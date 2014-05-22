@@ -117,10 +117,11 @@ function applyTextcomplete($btnGroup) {
 
     $.getJSON(
       cannedResponsePath,
-      function(cannedResponse) {
-        $replyMessage.html(cannedResponse.message);
+      function(response) {
+        $replyMessage.html(response.canned_response.rendered_message);
         $replyMessage.removeClass('medium-editor-placeholder');
         $replyMessage.focus();
+        resetCommandBar();
       }
     );
   };
