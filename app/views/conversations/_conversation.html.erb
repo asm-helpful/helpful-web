@@ -122,8 +122,16 @@
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" role="menu">
-              <li><input type="text" class="form-control" style="margin:10px;"></li>
+              <li><input type="text" class="form-control" style="margin:10px;" placeholder="Search by name"></li>
               <li class="divider"></li>
+              <% @account.user_people.order('name ASC').each do |person| %>
+                <li>
+                  <a href="#" data-value="<%= person.name %>" data-user-id="<%= person.user_id %>">
+                    <%= avatar_default(person) %>
+                    <span style="margin-left: 10px"><%= person.name %></span>
+                  </a>
+                </li>
+              <% end %>
             </ul>
           </div>
 
@@ -133,8 +141,15 @@
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" role="menu">
-              <li><input type="text" class="form-control" style="margin:10px;"></li>
+              <li><input type="text" class="form-control" style="margin:10px;" placeholder="Search by tag"></li>
               <li class="divider"></li>
+              <% @account.tags.each do |tag| %>
+                <li>
+                  <a href="#" data-value="<%= tag %>">
+                    <%= tag %>
+                  </a>
+                </li>
+              <% end %>
             </ul>
           </div>
 
@@ -144,8 +159,15 @@
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" role="menu">
-              <li><input type="text" class="form-control" style="margin:10px;"></li>
+              <li><input type="text" class="form-control" style="margin:10px;" placeholder="Search by key"></li>
               <li class="divider"></li>
+              <% @account.canned_responses.each do |canned_response| %>
+                <li>
+                  <a href="#" data-value="<%= canned_response.key %>" data-id="<%= canned_response.id %>">
+                    <%= canned_response.key %>
+                  </a>
+                </li>
+              <% end %>
             </ul>
           </div>
         </div>

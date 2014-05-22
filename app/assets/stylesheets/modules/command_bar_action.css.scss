@@ -2,4 +2,9 @@
   input {
     width: auto;
   }
+
+  .dropdown-menu {
+    max-height: 356px;
+    overflow-y: scroll;
+  }
 }

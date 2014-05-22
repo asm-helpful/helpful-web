@@ -29,23 +29,17 @@ function applyTextcomplete($btnGroup) {
   var actionResultsTemplate = Handlebars.compile($('#action-results-template').html());
   var actionResultsContainer = $('.action-results-container', $btnGroup);
 
-  $input.keypress(function() {
-    if(searchTimeout) {
-      clearTimeout(searchTimeout);
-    }
+  $input.keyup(function() {
+    $divider.nextAll().show();
 
-    searchTimeout = setTimeout(function() {
-      $.getJSON(
-        textcompletesPath,
-        {
-          query: $input.val(),
-          query_type: searchType
-        },
-        function(results) {
-          $divider.nextAll().remove();
-          $divider.after(actionResultsTemplate(results));
-        }
-      );
+    var inputRegexp = new RegExp($input.val(), 'gi');
+    $divider.nextAll().each(function() {
+      var $anchor = $(this).children('a');
+      var value = $anchor.attr('data-value');
+
+      if (!value.match(inputRegexp)) {
+        $(this).hide();
+      }
     });
   });
 

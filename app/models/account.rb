@@ -176,6 +176,10 @@ class Account < ActiveRecord::Base
     end
   end
 
+  def tags
+    conversations.including_unpaid.pluck(:tags).flatten.uniq.sort
+  end
+
   protected
 
   def generate_webhook_secret
