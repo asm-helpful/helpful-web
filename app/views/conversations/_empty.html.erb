@@ -1,17 +1,19 @@
-<div class="panel panel-default empty-state">
-  <div class="panel-body">
-    <h3><%= t('.inbox_zero') %></h3>
-    <p>
-      <%= t('.no_open_conversations') %>
-    </p>
+<div class="conversation conversation-row conversation-row-empty">
+  <div class="summary text-center">
+    <%= image_tag('logo.png', data: {animate_logo: "" }) %>
+    <h1>Inbox Zero</h1>
+    <p class="lead">Congrats! You're being a helpful human.</p>
   </div>
-  <div class="panel-footer">
-    <div class="empty-state-smiley"></div>
-    <blockquote class="empty-state-quote">
-      <p><%= t('.customer_support_quote') %></p>
-      <footer>
-        <cite>Mahatma Ghandi</cite>
-      </footer>
-    </blockquote>
+</div>
+
+<div class="conversation conversation-row conversation-row-empty">
+  <div class="summary text-center">
+    <h3>Other ways to be helpful</h3>
+
+    <p>Tell someone on your team one thing you appreciate about them.</p>
+
+    <p>Look up your most active customers, and hand-write them a thank you letter.</p>
+
+    <p>Tweet your customers and let them know you appreciate them choosing you to serve them.</p>
   </div>
 </div>
