@@ -1,0 +1,405 @@
+//----------------------------------------------------
+//                   SimpTip v1.0.2                  \\
+//       A simple CSS tooltip made with Sass         \\
+//-----------------------------------------------------
+// source: https://github.com/arashmanteghi/simptip/
+// ducoment: http://arashm.net/lab/simptip/
+// by @ArashManteghi - http://arashm.net
+//-----------------------------------------------------
+
+// ****************************** Variables ****************************/
+//tooltip's default height
+$tooltipHeight: 22px;
+
+//tooltip's default arrow size
+$arrowSize: 6px;
+
+//tooltip's default box color
+$tooltipColor: #fff;
+
+//tooltip's default text color
+$tooltipTextColor: $dark-gray;
+
+//diverse color variables
+$c-success: #62c462;
+$c-info:    #5bc0de;
+$c-danger:  #e74c3c;
+$c-warning: #e67e22;
+
+
+// ******************************** Mixins *****************************/
+//generate custom colors for tooltip's box and the texts. we use it without argumant for default color
+@mixin applyColor($color:$tooltipColor, $textColor:$tooltipTextColor) {
+  @each $position in top, bottom, left, right {
+    &.simptip-position-#{$position}{
+      &:before{border-#{$position}-color: $color;}
+      &:after{background-color: $color; color: $textColor;}
+    }
+  }
+  @each $position in top, bottom {
+    &.simptip-position-#{$position} {
+      &.half-arrow {
+        &:before {border-right: $arrowSize+1px solid $color;}
+      }
+    }
+  }
+}
+
+@mixin border-radius($radius: 4px) {
+  -webkit-border-radius: $radius;
+          border-radius: $radius;
+}
+
+@mixin transition($transition...) {
+  -webkit-transition: $transition;
+     -moz-transition: $transition;
+       -o-transition: $transition;
+      -ms-transition: $transition;
+          transition: $transition;
+}
+
+@mixin fade ($duration: 0.2s) {
+  @include transition(opacity $duration linear, visibility $duration linear);
+}
+
+@mixin transform($string){
+  -webkit-transform: $string;
+     -moz-transform: $string;
+      -ms-transform: $string;
+       -o-transform: $string;
+          transform: $string;
+}
+
+//generate multiline tooltips
+@mixin multiline ($width: 150px, $align: left) {
+  height: auto;
+  width: $width;
+  padding: $tooltipHeight/2;
+  line-height: $tooltipHeight - 3px;
+  white-space: normal;
+  text-align: $align;
+}
+
+// ******************* Customize CSS Output *********************/
+
+// No need to delete or comment out code.
+// Simply set any features you don't want to compile to false to
+// reduce the CSS output to only what you need.
+
+// Positioning
+$left-positioning:        true!default;
+$right-positioning:       true!default;
+$top-positioning:         true!default;
+$bottom-positioning:      true!default;
+
+// Half Arrows
+$half-arrows:             true!default;
+
+// Extra Features
+$movable:                 true!default;
+$soft-edge:               true!default;
+$fade-effect:             true!default;
+$multiline:               true!default;
+
+
+// Diverse Colors
+$coloring:                true!default;
+
+
+/********************************* Core ******************************/
+[data-tooltip] {  
+  position: relative;
+  display: inline-block;
+  &:before, &:after {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 999999;
+    // Force Hardware Acceleration in WebKit with translate3d - Refrence: http://davidwalsh.name/translate3d
+    -webkit-transform: translate3d(0, 0, 0);
+       -moz-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+  }
+  // tooltip arrow   
+  &:before {
+    content: '';
+    border: $arrowSize solid transparent;
+  }
+  // tooltip box
+  &:after {
+    height: $tooltipHeight;
+    padding: $tooltipHeight/2 $tooltipHeight/2 0 $tooltipHeight/2;
+    font-size: 13px;
+    line-height: $tooltipHeight/2;
+    content: attr(data-tooltip);
+    white-space: nowrap;
+  }
+  @include applyColor();
+  &:hover, &:focus{
+  	background-color: transparent;
+  	&:before, &:after {
+  		opacity: 1;
+  		visibility: visible;
+  	}
+  }
+}
+
+
+/******************************* Position ****************************/
+
+//___________________ Left & Right Silent Classes ___________________/
+%shared--left-and-right {
+  &:before, &:after {bottom: 50%;}
+  &:before{margin-bottom: $arrowSize * -1 + 1; } // -5px
+  &:after {margin-bottom: $tooltipHeight/-1.5;}
+
+  @if $half-arrows == true {
+	  &.half-arrow{
+	    &:before {
+	      bottom: 16px;
+	      border-style: none;
+	      border-top: $arrowSize+1px solid transparent; 
+	    }
+	  }
+	}
+
+  @if $multiline == true {
+  	&.simptip-multiline {
+	    &:before, &:after {
+		    @include transform(translateY(50%));
+		    -webkit-filter: blur(0px);
+     		filter: blur(0px);
+     		margin-bottom: 0;
+
+	    }
+	    &:before{margin-bottom: 0;}
+
+	    @if $half-arrows == true {
+			  &.half-arrow{ &:before {margin-bottom: -2px;} }
+			}
+  	}
+  }
+
+}
+//_____________________ End: Silent Classes _______________________/
+
+// Right Position Styling
+@if $right-positioning == true {
+	.simptip-position-right {
+	  @extend %shared--left-and-right;
+	  &:before,&:after {left: 100%;}
+	  &:before{margin-left: -2px;}
+	  &:after{margin-left: 10px;}
+
+    @if $movable == true {
+      &.simptip-movable {
+        &:before {margin-left: -10px;}
+        &:after {margin-left: 2px;}
+        &:hover{
+          &:before, &:after {@include transform(translateX(10px));}
+        }
+				@if $half-arrows == true {
+	        &.half-arrow:before{margin-left: -5px;}
+	      }
+			  @if $multiline == true {		//here here here
+			    &.simptip-multiline {
+			    	&:hover {
+			    		&:before, &:after {@include transform(translate(10px, 50%));}
+
+			    	}
+			    }
+			  }
+      }
+    }
+
+		@if $half-arrows == true {
+		  &.half-arrow{
+		    &:before {
+		      margin-left: 3px;
+		      border-right: $arrowSize+1px solid $tooltipColor;
+		    }
+		  }
+		}
+	}
+}
+
+// Left Position Styling
+@if $left-positioning == true {
+	.simptip-position-left {
+	  @extend %shared--left-and-right;
+	  &:before,&:after {right: 100%;}
+	  &:before{margin-right: -2px;}
+	  &:after{margin-right: 10px;}
+		
+		@if $movable == true {
+		  &.simptip-movable {
+		    &:before {margin-right: -10px;}
+		    &:after {margin-right: 2px;}
+		    &:hover{
+		      &:before, &:after {@include transform(translateX(-10px));}
+		    }
+				@if $half-arrows == true {
+			    &.half-arrow:before{margin-right: -5px;}
+			  }
+			  @if $multiline == true {		//here here here
+			    &.simptip-multiline {
+			    	&:hover {
+			    		&:before, &:after {@include transform(translate(-10px, 50%));}
+
+			    	}
+			    }
+			  }
+		  }
+		}
+
+		@if $half-arrows == true {
+		  &.half-arrow{
+		    &:before {
+		      margin-right: 3px;
+		      border-left: $arrowSize+1px solid $tooltipColor;  
+		    }
+		  }
+		}
+	}
+}
+
+//_________________ Top & Bottom Silent Classes _________________/
+%shared--top-and-bottom {
+  &:before, &:after {
+    left: 50%;
+    @include transform(translateX(-50%));
+  }
+
+  &:after {width: auto;}
+
+	@if $half-arrows == true {
+	  &.half-arrow{
+	    &:before {
+	      border-style: none;
+	      border-right: $arrowSize+1px solid $tooltipColor;
+	    }
+	  }
+	}
+}
+//_____________________ End: Silent Classes _______________________/
+
+// Bottom Position Styling
+@if $bottom-positioning == true {
+	.simptip-position-bottom {
+	  @extend %shared--top-and-bottom;
+	  &:before, &:after {top: 100%;}
+	  &:before {margin-top: $arrowSize * -1 + 1; } // -5px
+	  &:after {margin-top: 7px;}
+	  &:hover{
+	  	&:before, &:after {@include transform(translate(-50%, 0));}
+	  }
+
+		@if $movable == true {
+		  &.simptip-movable {
+		    &:before {margin-top: -15px;}
+		    &:after {margin-top: -3px;}
+		    &:hover{
+		      &:before, &:after {@include transform(translate(-50%, 10px));}
+		    }
+
+		    @if $half-arrows == true {
+			    &.half-arrow {
+			      &:before { margin-top: -10px; }
+			    }
+			  }
+		  }
+		}
+
+		@if $half-arrows == true {
+		  &.half-arrow{
+		    &:before {
+		      margin-top: 0;
+		      border-top: $arrowSize+1px solid transparent;
+		    }
+		  }
+		}
+	}
+}
+
+// Top Position Styling
+@if $top-positioning == true {
+	.simptip-position-top {
+	  @extend %shared--top-and-bottom;
+	  &:before, &:after {bottom: 100%;}
+	  &:before {margin-bottom: $arrowSize * -1 + 1; } // -5px
+	  &:after {margin-bottom: 7px;}
+	  &:hover{
+	  	&:before, &:after {@include transform(translate(-50%, 0px));}
+	  }
+
+		@if $movable == true {
+		  &.simptip-movable {
+		    &:before {margin-bottom: -15px;}
+		    &:after {margin-bottom: -3px;}
+		    &:hover{
+		      &:before, &:after {@include transform(translate(-50%, -10px));}
+		    }
+
+		    @if $half-arrows == true {
+			    &.half-arrow {
+			      &:before { margin-bottom: -10px; }
+			    }
+			  }
+		  }
+		}
+
+		@if $half-arrows == true {
+		  &.half-arrow{
+		    &:before {
+		      margin-bottom: 0;
+		      border-bottom: $arrowSize+1px solid transparent;
+		    }
+		  }
+		}
+	}
+}
+
+
+/******************************* Features ****************************/
+// animate movement on hover
+@if $movable == true {
+	.simptip-movable {
+	  &:before, &:after {
+	    @include transition(all 0.1s linear);
+	  }
+	}
+}
+
+//soft edge
+@if $soft-edge == true {
+	.simptip-smooth {
+	  &:after{ @include border-radius();}
+	}
+}
+
+//fade effect
+@if $fade-effect == true {
+	.simptip-fade {
+	  &:before, &:after{
+	    @include fade();
+	  }
+	}
+}
+
+//multiline tooltip
+@if $multiline == true {
+	.simptip-multiline {
+	  &:after { @include multiline(); }
+	}
+}
+
+/**************************** Diverse Colors *************************/
+@if $coloring == true {
+	.simptip-success {@include applyColor($c-success);}
+
+	.simptip-info {@include applyColor($c-info);}
+
+	.simptip-danger {@include applyColor($c-danger);}
+
+	.simptip-warning {@include applyColor($c-warning);}
+}

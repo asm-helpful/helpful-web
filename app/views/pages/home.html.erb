@@ -116,7 +116,7 @@
   </div>
 </div>
 
-<div class="page page-partial">
+<div class="page page-partial page-center">
   <div>
     <div class="container">
       <div class="row" id="features">
@@ -140,46 +140,43 @@
   </div>
 </div>
 
-<div class="page page-partial">
+<div class="page page-partial page-center pricing-section">
   <div>
-    <div class="container" id="pricing">
-      <div class="row">
-        <div class="col-md-offset-3 col-md-6 text-center">
-          <h1>Plans tied to support requests, not staff members</h1>
-          <p>Never worry about adding another member. Our plans scale with the number of support conversations you have each month. It places the incentives in the right place; focusing on lowering your number of support requests.</p>
-        </div>
+    <div id="pricing">
+      <div class="container text-center">
+        <h1>A price that grows with your product.</h1>
+        <p>The number of people you want supporting customers should never be constrained by your support tool. With helpful, you'll never pay per seat, you pay per conversations.
+        <p class="conversation-explaination simptip-smooth simptip-position-top" data-tooltip="<%= t(".conversation-explaination") %>"><u>Customer Conversation</u> per month</p>
       </div>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="list-group list-group-horizontal plan-list" style="margin-top: 50px">
-            <% @plans.each do |plan| %>
-              <div class="list-group-item plan">
-                <h3>
-                  <%= plan.name %>
-                </h3>
-                <p class="plan-info">
-                  <%= plan.max_conversations %> conversations
-                </p>
-                <p class="plan-price">
-                  <% if plan.price.zero? %>
-                    Totally Free!
-                  <% else %>
-                    <%= number_to_currency(plan.price, precision: 0) %> per month
-                  <% end %>
-                </p>
-                <% if plan.free? %>
-                  <%= link_to new_accounts_path, class: 'btn btn-success' do %>
-                    <span class="plan-select-message">Sign up</span>
-                  <% end %>
+      <div class="container">
+        <div class="pricing-showcase">
+          <% display_plans @plans do |plan, range| %>
+            <div class="pricing-showcase-item">
+              <div class="pricing-showcase-item-conversations">
+                <%= range %>
+              </div>
+              <div class="pricing-showcase-item-price">
+                <div class="pricing-circle"></div>
+                <% if plan.price.zero? %>
+                  <span class="pricing-showcase-item-free">FREE</span>
                 <% else %>
-                  <%= link_to new_accounts_path, class: 'btn btn-secondary' do %>
-                    <span class="plan-select-message">Sign up</span>
-                  <% end %>
+                  <div class="monthly-price">
+                    <%= number_to_currency(plan.price, precision: 0) %>
+                    <span class="pricing-showcase-item-price-frequency"> /mo </span>
+                  </div>
                 <% end %>
               </div>
-            <% end %>
-          </div>
+            </div>
+          <% end %>
+          <div class="clearfix"></div>
         </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="pricing-call-to-action text-center">
+        <p>You’ll never be surprise charged. Every plan starts at free.</p>
+        <p class="call-to-action-btn"><%= link_to 'Get Started Now', new_accounts_path, class: 'btn btn-primary btn-lg' %></p>
+        <div class="clearfix"></div>
       </div>
     </div>
   </div>
