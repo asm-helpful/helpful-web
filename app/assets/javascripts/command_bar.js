@@ -1,110 +1,134 @@
-var applyTextcomplete = function($element) {
-  var textcompletesPath = $element.attr('data-textcomplete-path');
+function applyCommandBarActions($btnGroup) {
+  autofocusInput($btnGroup);
+  applyTextcomplete($btnGroup);
+};
 
-  var strategies =  [{
-    match: /(^|\s)((#|@|:)\w*)$/,
+function autofocusInput($btnGroup) {
+  var $dropdownToggle = $('.dropdown-toggle', $btnGroup);
+  var $input = $('input', $btnGroup);
 
-    search: function(query, callback) {
-      $.getJSON(textcompletesPath, { query: query })
-        .done(function(response) {
-          callback(response['textcompletes']);
-        })
-        .fail(function() {
-          callback([]);
-        });
-    },
+  $dropdownToggle.click(function() {
+    setTimeout(function() {
+      $input.focus();
+    }, 0);
+  });
 
-    replace: function(match) {
-      return '';
-    },
+  $input.click(function(e) {
+    e.stopPropagation();
+  });
+}
 
-    template: function(match) {
-      switch(match.type) {
-        case 'tag':
-          return 'Tag with <strong>#' + match.value + '</strong>';
-        case 'assignment':
-          return 'Assign to <strong>@' + match.value + '</strong>';
-        case 'canned_response':
-          return 'Replace with <strong>:' + match.value + '</strong>';
-      }
+function applyTextcomplete($btnGroup) {
+  var textcompletesPath = $btnGroup.attr('data-textcomplete-path');
+  var $input = $('input', $btnGroup);
+  var $dropdownToggle = $('.dropdown-toggle', $btnGroup);
+  var $dropdown = $('.dropdown-menu', $btnGroup);
+  var $divider = $('li.divider', $dropdown);
+  var searchType = $dropdownToggle.attr('data-search'); 
+  var searchTimeout;
+  var actionResultsTemplate = Handlebars.compile($('#action-results-template').html());
+  var actionResultsContainer = $('.action-results-container', $btnGroup);
+
+  $input.keypress(function() {
+    if(searchTimeout) {
+      clearTimeout(searchTimeout);
     }
-  }];
 
-  var tagConversation = function(match) {
+    searchTimeout = setTimeout(function() {
+      $.getJSON(
+        textcompletesPath,
+        {
+          query: $input.val(),
+          query_type: searchType
+        },
+        function(results) {
+          $divider.nextAll().remove();
+          $divider.after(actionResultsTemplate(results));
+        }
+      );
+    });
+  });
+
+  $btnGroup.on('click', 'li a', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    switch(searchType) {
+      case 'assignments':
+        assignConversation($(this));
+        break;
+      case 'tags':
+        tagConversation($(this));
+        break;
+      case 'canned_responses':
+        useCannedResponse($(this));
+        break;
+    };
+
+    return false;
+  });
+
+  var resetCommandBar = function() {
+    $dropdownToggle.dropdown('toggle');
+    $input.val('');
+  }
+
+  var tagConversation = function($anchor) {
     var account = $("[name='account-slug']").val();
     var conversation = $("[name='conversation-number']").val();
     var tagConversationPath = '/' + account + '/' + conversation + '/tags';
+    var tagEventTemplate = Handlebars.compile($('#tag-event-template').html());
 
     $.post(
       tagConversationPath,
-      { tag: match.value },
-      function() { window.location.reload(); },
+      { tag: $anchor.attr('data-value') },
+      function(response) {
+        $('.conversation-stream').append(tagEventTemplate(response.tag_event))
+        resetCommandBar();
+      },
       'json'
     );
   };
 
-  var assignConversation = function(match) {
+  var assignConversation = function($anchor) {
     var account = $("[name='account-slug']").val();
     var conversation = $("[name='conversation-number']").val();
-    var conversationPath = '/' + account + '/' + conversation;
+    var assignConversationPath = '/' + account + '/' + conversation + '/assignee';
+    var assignmentEventTemplate = Handlebars.compile($('#assignment-event-template').html());
 
     $.post(
-      conversationPath,
-      { conversation: { user_id: match.user_id }, _method: 'patch' },
-      function() { window.location.reload(); },
+      assignConversationPath,
+      { assignee_id: $anchor.attr('data-user-id') },
+      function(response) {
+        $('.conversation-stream').append(assignmentEventTemplate(response.assignment_event))
+        resetCommandBar();
+      },
       'json'
     );
   };
 
-  var useCannedResponse = function(match) {
+  var useCannedResponse = function($anchor) {
+    var $replyMessage = $('[data-reply-to-message]');
     var account = $("[name='account-slug']").val();
-    var cannedResponsePath = '/' + account + '/canned_responses/' + match.id;
+    var cannedResponsePath = '/' + account + '/canned_responses/' + $anchor.attr('data-id');
 
     $.getJSON(
       cannedResponsePath,
       function(cannedResponse) {
-        $reply_message.html(cannedResponse.message);
+        $replyMessage.html(cannedResponse.message);
+        $replyMessage.focus();
       }
-    )
+    );
   };
-
-  var eventHandlers = {
-    'textComplete:select': function(event, match) {
-
-      switch(match.type) {
-        case 'tag':
-          tagConversation(match);
-          break;
-        case 'assignment':
-          assignConversation(match);
-          break;
-        case 'canned_response':
-          useCannedResponse(match);
-          break;
-      }
-    }
-  };
-
-  $element.textcomplete(strategies).on(eventHandlers);
 };
 
-var toggleSendButton = function(event) {
-  var $reply_message = $(this);
-  var $sendButton = $('.command-bar :submit');
-  if($reply_message.text().length > 0) {
-    $sendButton.show();
-  } else {
-    $sendButton.hide();
-  }
-};
 
 $(document).on('ready page:load', function() {
-  $reply_message = $('[data-reply-to-message]');
+  $('.command-bar-action').each(function() {
+    applyCommandBarActions($(this));
+  });
 
-  if (!$reply_message.length)
-    return;
-
-  applyTextcomplete($reply_message);
-  $($reply_message).keyup(toggleSendButton);
-  toggleSendButton.bind($reply_message)();
+  $('.dropdown-menu input').click(function(e) {
+    e.stopPropagation();
+  });
 });

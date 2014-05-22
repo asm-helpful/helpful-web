@@ -108,13 +108,43 @@
     <%= form_tag account_messages_path(@account), method: 'post', "data-reply-form" => "" do %>
       <%= hidden_field :message, :conversation_id, value: conversation.id %>
       <%= hidden_field :message, :content %>
-      <div class="reply-to-message" data-reply-to-message data-textcomplete-path="<%= account_textcompletes_path(@account) %>" placeholder="<%= t('.reply_to_conversation') %>"></div>
+      <div class="reply-to-message" data-reply-to-message placeholder="<%= t('.reply_to_conversation') %>"></div>
 
       <div class="command-bar">
-        <div class="hints">
-          <span>@<%= t('.assign') %></span>
-          <span>#<%= t('.tag') %></span>
-          <span>:<%= t('.canned_response') %></span>
+
+        <div class="pull-left">
+          <div class="btn-group command-bar-action" data-textcomplete-path="<%= account_textcompletes_path(@account) %>">
+            <button class="btn btn-default dropdown-toggle" data-search="assignments" data-toggle="dropdown">
+              <%= t('.assign') %>
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <li><input type="text" class="form-control" style="margin:10px;"></li>
+              <li class="divider"></li>
+            </ul>
+          </div>
+
+          <div class="btn-group command-bar-action" data-textcomplete-path="<%= account_textcompletes_path(@account) %>">
+            <button class="btn btn-default dropdown-toggle" data-search="tags" data-toggle="dropdown">
+              <%= t('.tag') %>
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <li><input type="text" class="form-control" style="margin:10px;"></li>
+              <li class="divider"></li>
+            </ul>
+          </div>
+
+          <div class="btn-group command-bar-action" data-textcomplete-path="<%= account_textcompletes_path(@account) %>">
+            <button class="btn btn-default dropdown-toggle" data-search="canned_responses" data-toggle="dropdown">
+              <%= t('.canned_response') %>
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <li><input type="text" class="form-control" style="margin:10px;"></li>
+              <li class="divider"></li>
+            </ul>
+          </div>
         </div>
 
         <div class="pull-right">
@@ -131,3 +161,64 @@
     <span class="glyphicon glyphicon-chevron-down"></span>
   </a>
 <% end %>
+
+<script id="action-results-template" type="text/x-handlebars-template">
+  {{#each textcompletes}}
+    <li>
+      <a href="#" data-value="{{value}}" data-user-id="{{user_id}}" data-id="{{id}}">
+        {{value}}
+      </a>
+    </li>
+  {{/each}}
+</script>
+
+<script id="tag-event-template" type="text/x-handlebars-template">
+  <div class="event">
+    <div class="avatar avatar-default">
+      <div class="avatar-initials" style="width: 30px; height: 30px; line-height: 30px; display: none;">{{initials}}</div>
+      <img alt="{{name}} avatar" height="30" onerror="toggleAvatar(this)" src="{{avatar_url}}" width="30">
+    </div>
+
+    <strong>
+      {{name}} tagged
+    </strong>
+
+    this conversation with
+
+    <a href="#" class="tag">
+      #{{tag}}
+    </a>
+
+    <span class="timestamp">
+      {{updated_at_in_words}} <%= t('general.ago') %>
+    </span>
+  </div>
+</script>
+
+<script id="assignment-event-template" type="text/x-handlebars-template">
+  <div class="event">
+    <div class="avatar avatar-default">
+      <div class="avatar-initials" style="width: 30px; height: 30px; line-height: 30px; display: none;">{{initials}}</div>
+      <img alt="{{name}} avatar" height="30" onerror="toggleAvatar(this)" src="{{avatar_url}}" width="30">
+    </div>
+
+    <strong>
+      {{name}} assigned
+    </strong>
+
+    <div class="avatar avatar-default">
+      <div class="avatar-initials" style="width: 30px; height: 30px; line-height: 30px; display: none;">{{assignee_initials}}</div>
+      <img alt="{{assignee_name}} avatar" height="30" onerror="toggleAvatar(this)" src="{{assignee_avatar_url}}" width="30">
+    </div>
+
+    <strong>
+      {{assignee_name}}
+    </strong>
+
+    to this conversation
+
+    <span class="timestamp">
+      {{updated_at_in_words}} <%= t('general.ago') %>
+    </span>
+  </div>
+</script>

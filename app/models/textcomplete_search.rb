@@ -1,41 +1,30 @@
 class TextcompleteSearch
-  attr_accessor :account, :query
+  attr_accessor :account, :query, :query_type
 
-  def self.call(account, query)
-    new(account, query).results
+  def self.call(account, query, query_type)
+    new(account, query, query_type).results
   end
 
-  def initialize(account, query)
+  def initialize(account, query, query_type)
     self.account = account
     self.query = query
-  end
-
-  def cleaned_query
-    query[1..-1]
+    self.query_type = query_type
   end
 
   def query_regex
-    Regexp.new(Regexp.escape(cleaned_query))
-  end
-
-  def query_type
-    case query[0]
-    when '#' then 'tag'
-    when '@' then 'assignment'
-    when ':' then 'canned_response'
-    end
+    Regexp.new(Regexp.escape(query))
   end
 
   def results
-    if cleaned_query.present? && query_type
-      public_send("#{query_type}s")
+    if query.present? && query_type
+      public_send(query_type)
     else
       []
     end
   end
 
   def tags
-    (matching_tags + [cleaned_query]).uniq.map { |tag| { type: 'tag', value: tag } }
+    (matching_tags + [query]).uniq.map { |tag| { type: 'tag', value: tag } }
   end
 
   def assignments
@@ -51,10 +40,10 @@ class TextcompleteSearch
   end
 
   def matching_assignments
-    account.user_people.where('name ILIKE ?', "#{cleaned_query}%").pluck(:name, :user_id)
+    account.user_people.where('name ILIKE ?', "#{query}%").pluck(:name, :user_id)
   end
 
   def matching_canned_responses
-    account.canned_responses.where('key ILIKE ?', "#{cleaned_query}%").pluck(:key, :id)
+    account.canned_responses.where('key ILIKE ?', "#{query}%").pluck(:key, :id)
   end
 end

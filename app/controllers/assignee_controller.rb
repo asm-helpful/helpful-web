@@ -1,4 +1,4 @@
-class TagsController < ApplicationController
+class AssigneeController < ApplicationController
   before_action :authenticate_user!
   before_action :find_account!
   before_action :find_conversation!
@@ -6,16 +6,16 @@ class TagsController < ApplicationController
   respond_to :json
 
   def create
-    @conversation.tags = (@conversation.tags + [params[:tag]]).uniq
+    @conversation.user_id = params[:assignee_id]
     @conversation.save
 
-    @tag_event = TagEvent.create(
+    @assignment_event = AssignmentEvent.create(
       conversation: @conversation,
       user: current_user,
-      tag: params[:tag]
+      assignee_id: params[:assignee_id]
     )
 
-    respond_with @tag_event, location: account_conversation_path(@account, @conversation)
+    respond_with @assignment_event, location: account_conversation_path(@account, @conversation)
   end
 
   private
