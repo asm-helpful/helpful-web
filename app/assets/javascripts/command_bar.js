@@ -93,12 +93,16 @@ function applyTextcomplete($btnGroup) {
   var assignConversation = function($anchor) {
     var account = $("[name='account-slug']").val();
     var conversation = $("[name='conversation-number']").val();
-    var conversationPath = '/' + account + '/' + conversation;
+    var assignConversationPath = '/' + account + '/' + conversation + '/assignee';
+    var assignmentEventTemplate = Handlebars.compile($('#assignment-event-template').html());
 
     $.post(
-      conversationPath,
-      { conversation: { user_id: $anchor.attr('data-user-id') }, _method: 'patch' },
-      function() { window.location.reload(); },
+      assignConversationPath,
+      { assignee_id: $anchor.attr('data-user-id') },
+      function(response) {
+        $('.conversation-stream').append(assignmentEventTemplate(response.assignment_event))
+        resetCommandBar();
+      },
       'json'
     );
   };

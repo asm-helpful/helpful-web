@@ -194,3 +194,31 @@
     </span>
   </div>
 </script>
+
+<script id="assignment-event-template" type="text/x-handlebars-template">
+  <div class="event">
+    <div class="avatar avatar-default">
+      <div class="avatar-initials" style="width: 30px; height: 30px; line-height: 30px; display: none;">{{initials}}</div>
+      <img alt="{{name}} avatar" height="30" onerror="toggleAvatar(this)" src="{{avatar_url}}" width="30">
+    </div>
+
+    <strong>
+      {{name}} assigned
+    </strong>
+
+    <div class="avatar avatar-default">
+      <div class="avatar-initials" style="width: 30px; height: 30px; line-height: 30px; display: none;">{{assignee_initials}}</div>
+      <img alt="{{assignee_name}} avatar" height="30" onerror="toggleAvatar(this)" src="{{assignee_avatar_url}}" width="30">
+    </div>
+
+    <strong>
+      {{assignee_name}}
+    </strong>
+
+    to this conversation
+
+    <span class="timestamp">
+      {{updated_at_in_words}} <%= t('general.ago') %>
+    </span>
+  </div>
+</script>
