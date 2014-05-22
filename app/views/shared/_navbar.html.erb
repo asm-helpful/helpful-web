@@ -59,8 +59,39 @@
 
     <div class="container">
       <ul class="nav navbar-nav nav-separated">
-        <li class="<%= current_page?(inbox_account_conversations_path(@account)) ? 'active' : '' %>">
+        <li class="<%= current_page?(inbox_account_conversations_path(@account)) && !@assignment_user ? 'active' : '' %>">
           <%= link_to t('.inbox'), inbox_account_conversations_path(@account) %>
+        </li>
+        <li class="dropdown avatar <%= current_page?(inbox_account_conversations_path(@account)) && @assignment_user ? 'active' : '' %>">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <span style="margin-right: 5px;">
+              Assigned to
+            </span>
+            <% if @assignment_user %>
+              <%= avatar(@assignment_user, 30, 'navbar-avatar') %>
+            <% end %>
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <%= link_to inbox_account_conversations_path(@account, user_id: current_user.id) do %>
+                <%= avatar(current_user, 30, 'navbar-avatar') %>
+                <span class="username"><%= current_user.name %></span>
+              <% end %>
+            </li>
+
+            <li class="divider"></li>
+
+            <% (@account.user_people.order('name ASC') - [current_user.person]).each do |person| %>
+              <li>
+                <%= link_to inbox_account_conversations_path(@account, user_id: person.user_id) do %>
+                  <%= avatar(person, 30, 'navbar-avatar') %>
+                  <span class="username"><%= person.name %></span>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+          </a>
         </li>
         <li class="<%= current_page?(archived_account_conversations_path(@account)) ? 'active' : '' %>">
           <%= link_to t('.archive'), archived_account_conversations_path(@account) %>

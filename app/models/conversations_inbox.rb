@@ -4,12 +4,13 @@ class ConversationsInbox
   include ConversationsMethods
   include ConversationsSearch
 
-  attr_accessor :account, :user, :query
+  attr_accessor :account, :user, :query, :assignment_user
 
-  def initialize(account, user, query = nil)
+  def initialize(account, user, query = nil, assignment_user = nil)
     self.account = account
     self.user = user
     self.query = clean_query(query)
+    self.assignment_user = assignment_user
   end
 
   # Public: Returns conversations matching search results if present.
@@ -59,6 +60,8 @@ class ConversationsInbox
   #
   # Returns an ActiveRecord::Relation of Conversation models.
   def open_conversations
-    preloaded_conversations.unresolved
+    conversations = preloaded_conversations.unresolved
+    conversations = conversations.assigned_to(assignment_user) if assignment_user
+    conversations
   end
 end

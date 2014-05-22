@@ -23,9 +23,9 @@ function pusherStart() {
   function loadList(){
     $(".list").load(listUrl, function(){
       if($(".list .list-item").length == 0){
-        $(".panel.empty-state").show();
+        $(".conversation-row-empty").show();
       } else {
-        $(".panel.empty-state").hide();
+        $(".conversation-row-empty").hide();
       }
     });
   }

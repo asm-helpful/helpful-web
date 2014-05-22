@@ -1,4 +1,3 @@
-
 .navbar {
   border: 0;
 
@@ -15,8 +14,16 @@
     margin-left: 10px;
   }
 
-  .divider {
-    background-color: lighten($light-black, 10%);
+  .navbar-nav {
+    li {
+      .dropdown-menu {
+        width: auto;
+
+        .divider {
+          background-color: lighten($light-black, 10%);
+        }
+      }
+    }
   }
 }
 

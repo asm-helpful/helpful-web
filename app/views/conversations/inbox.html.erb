@@ -3,6 +3,6 @@
 <%= render "layouts/flash" %>
 
 <div class="container">
-  <div class="list list-conversations" data-url=<%= list_account_conversations_url(@account) %> data-pusher-channel=<%= @account.slug %>></div>
+  <div class="list list-conversations" data-url=<%= list_account_conversations_url(@account, user_id: params[:user_id]) %> data-pusher-channel=<%= @account.slug %>></div>
   <%= render 'conversations/empty' %>
 </div>

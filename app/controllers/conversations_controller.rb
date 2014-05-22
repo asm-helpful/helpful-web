@@ -16,7 +16,8 @@ class ConversationsController < ApplicationController
 
   def inbox
     Analytics.track(user_id: current_user.id, event: 'Read Conversations Index')
-    inbox = ConversationsInbox.new(@account, current_user, params[:q])
+    @assignment_user = User.find_by(id: params[:user_id])
+    inbox = ConversationsInbox.new(@account, current_user, params[:q], @assignment_user)
     @conversations = inbox.conversations
     ExampleConversation.create(@account, current_user) unless @account.conversations.including_unpaid.exists?
     respond_with @conversations
@@ -55,7 +56,8 @@ class ConversationsController < ApplicationController
   end
 
   def list
-    inbox = ConversationsInbox.new(@account, current_user, params[:q])
+    @assignment_user = User.find_by(id: params[:user_id])
+    inbox = ConversationsInbox.new(@account, current_user, params[:q], @assignment_user)
     @conversations = inbox.conversations
     render partial: "list"
   end
