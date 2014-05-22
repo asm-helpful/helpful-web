@@ -18,6 +18,7 @@ FactoryGirl.define do
 
       after(:create) do |user, evaluator|
         create(:membership, user: user, account: evaluator.account)
+        create(:person, user: user)
       end
     end
   end
