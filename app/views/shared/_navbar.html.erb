@@ -14,9 +14,6 @@
             <a href="<%= edit_user_path %>"><%= t('.personal_settings') %></a>
           </li>
           <li>
-            <a href="<%= edit_account_path(@account) %>"><%= t('.account_settings') %></a>
-          </li>
-          <li>
             <a href="mailto:helpful@helpful.io"><%= t('.help') %></a>
           </li>
           <li>
@@ -34,24 +31,30 @@
       </li>
 
       <% other_accounts = current_user.accounts.reject {|a| a == @account } %>
-      <% if other_accounts.any? %>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <%= @account.name %> <b class="caret"></b>
-          </a>
-          <ul class="dropdown-menu">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          <%= @account.name %> <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+          <li>
+            <a href="<%= edit_account_path(@account) %>"><%= t('.account_settings') %></a>
+          </li>
+
+          <li>
+            <%= link_to t('canned_responses.index.canned_responses'), account_canned_responses_path(@account) %>
+          </li>
+
+          <% if other_accounts.any? %>
+            <li class="divider"></li>
+
             <% other_accounts.each do |account| %>
               <li>
                 <%= link_to account.name, inbox_account_conversations_path(account) %>
               </li>
             <% end %>
-          </ul>
-        </li>
-      <% else %>
-        <li>
-          <span class="navbar-text"><%= @account.name %></span>
-        </li>
-      <% end %>
+          <% end %>
+        </ul>
+      </li>
     </ul>
 
     <div class="container">
