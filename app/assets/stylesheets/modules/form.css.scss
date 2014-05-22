@@ -41,6 +41,7 @@ textarea.form-control {
   @include placeholder {
     color: $gray;
     font-weight: lighter;
+    -webkit-font-smoothing: antialiased;
   }
 
   &:focus,

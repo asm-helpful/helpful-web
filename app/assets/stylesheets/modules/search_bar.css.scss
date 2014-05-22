@@ -33,6 +33,7 @@
 
     @include placeholder {
       color: $white;
+      -webkit-font-smoothing: antialiased;
     }
 
     &.filled {
