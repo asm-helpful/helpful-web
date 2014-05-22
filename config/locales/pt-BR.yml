@@ -1,0 +1,458 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+pt-BR:
+  general:
+    ago: "atrás"
+    email: "Email"
+    email_placeholder: "voce@exemplo.com"
+    password: "Senha"
+    forgot_password: "Esqueceu sua senha?"
+    sign_up: "Criar conta"
+    roles:
+      owner: "dono"
+      agent: "agente"
+    hello: "Olá"
+
+  shared:
+    navbar:
+      personal_settings: "Perfil"
+      account_settings: "Conta"
+      help: "Ajuda"
+      logout: "Sair"
+      inbox: "Entrada"
+      archive: "Arquivo"
+      search: "Buscar"
+
+  message_mailer:
+    created:
+      reply: "Responda este email ou"
+      view: "veja essa conversa no"
+
+  users:
+    edit:
+      user_settings: "Perfil do usuário"
+      # name: "Name" # This entry seems to be useless
+      update_personal_settings: "Atualizar meu perfil"
+    mailer:
+      invitation_instructions:
+        someone_invited: "Alguém convidou você para"
+        you_can_accept: "você pode aceitar o convite através do link abaixo."
+        accept: "Aceitar convite"
+        dont_want: "Se você não deseja aceitar o convite, por favor ignore este email."
+        account_wont_be_created: "Seu perfil não será criado até que você acesse o link acima e configure sua senha."
+
+  accounts:
+    general:
+      company_name: "Nome da empresa"
+      company_name_placeholder: "Acme Corp"
+      your_name: "Seu nome"
+      your_name_placeholder: "Jane Doe"
+      username: "Nome de usuário"
+      username_placeholder: "jane"
+    new:
+      sign_up_free_accounts: "Cadastre-se gratuitamente"
+      quick_easy_sign_up: "Cadastro rápido e fácil."
+      no_cc_required: "Não vamos te pedir os dados de cartão de crédito."
+      already_have_account: "Se você já possui uma conta no Helpful,"
+      please_sign_in: "por favor entre"
+      password_confirmation: "Confirmação da senha"
+      must_meet_requirements: "Deve atender *estes requisitos*"
+      create_account: "Criar minha conta"
+    edit:
+      try_out_command: "Para testar a sua conta, execute este comando em seu terminal:"
+      embed_form: "Quer embutir um formulário de ajuda no seu site?"
+      get_code: "Copie o código"
+      company_name: "Nome da empresa"
+      company_name_placeholder: "Acme Corp"
+      website: "Site"
+      website_placeholder: "https://www.exemplo.com"
+      webhook_url: "URL do webhook"
+      webhook_url_placeholder: "https://www.exemplo.com/webhooks/helpful"
+      webhook_secret: "Chave secreta do webhook"
+      incoming_email: "Endereço de entrada"
+      update_account: "Atualizar"
+      invitations: "Convites"
+      send_invitation: "Envie um convite"
+      invitations_sent: "Convites enviados"
+      invitation_sent: "Convite enviado"
+      signature: "Assinatura de resposta"
+      signature_placeholder: "Assinatura anexa no final de todos os emails."
+      auto_archiving: "Auto-arquivar a conversa depois de responder"
+      embed_help_text: "Você também pode utilizar o formulário web para permitir que seus clientes submetam seus pedidos de ajuda diretamente aqui no Helpful:"
+
+  conversations:
+    conversation:
+      reply_to_conversation: "Escreva a sua resposta..."
+      assign: "Atribuir"
+      tag: "Tag"
+      canned_response: "Canned Response"
+      archive: "Arquivar"
+      send: "Enviar"
+      next_conversation: "Próxima conversa"
+      made_last_message: "Você conseguiu chegar na última mensagem!"
+      back_to_inbox: "Voltar para a Entrada"
+    markdown:
+      we_use_markdown: "Nós usamos Markdown!"
+      tool_to_format_text: "Markdown é uma ferramenta para formatar texto."
+      text_here: "escreva aqui"
+      bold: "Negrito"
+      bolded: "Mais negrito"
+      italic: "Itálico"
+      link: "Link"
+      linked: "Com link"
+      link_example_url: "http://link_url.com/?test"
+      image: "Imagem"
+      image_description: "Descrição da imagem"
+      image_example_url: "http://imagem_link.com/here.png"
+      advanced_guide: "Guia avançado"
+    navbar:
+      search_conversations: "Buscar conversas"
+      search: "Buscar"
+    row:
+      later: "Adiar"
+      archive: "Arquivar"
+    search:
+      search_results_for: "Buscar resultados por"
+      no_results: "Nenhum resultado encontrado"
+    empty:
+      inbox_zero: "Caixa de entrada vazia"
+      no_open_conversations: "Nenhuma conversa em aberto, bom trabalho!"
+      customer_support_quote: "Seja o suporte ao cliente que você deseja ver no mundo"
+
+  pages:
+    home:
+      general:
+        sign_up_free: "Cadastre-se gratuitamente"
+      header:
+        sign_up: "CADASTRE-SE"
+        login: "ENTRAR"
+        build: "AJUDE A CONSTRUIR"
+        docs: "DOCUMENTAÇÃO"
+      hero:
+        text_header: "Ajuda que não dói"
+        text_1: "Helpful é uma ferramenta simples de suporte que você não vai precisar de ajuda para usar."
+        text_2: "Apenas pergunte."
+      demo:
+        text_1: "Ainda mais simples que o email"
+        text_2: "Você não deveria precisar de suporte para uma ferramenta de suporte."
+        text_2_2: "Não precisa ser um especialista para começar a usar o Helpful."
+      pricing_table:
+        great_value: "Grande Valor!"
+        starter_kit: "Starter Kit"
+        growing: "Growing"
+        premium: "Premium"
+        super: "Super"
+        threads: "threads"
+        per_month: "por mês"
+        sign_up: "Cadastre-se"
+      pricing_text_1: "Ferramenta de suporte que cresce com você"
+      pricing_text_2: "O preço é por volume então você pode começar pequeno e nós vamos aumentar conforme você precisar de mais."
+      pricing_text_end: "Não existem contratos e o plano pode ser cancelado a qualquer momento."
+      in_house: "In-House"
+      in_house_text: "Se você prefere utilizar o serviço por conta própria, você pode ter o Helpful rodando em sua própria infra."
+      contact_us: "Entre em Contato"
+
+  canned_responses:
+    general:
+      canned_response: "Resposta Pronta"
+    index:
+      create_canned_response: "Criar uma resposta pronta"
+      canned_responses: "Respostas Prontas"
+      none_created: "Ninguém criou uma resposta pronta ainda."
+    new:
+      help: |-
+        Crie um resposta pronta para mensagens que são respondidas frequentemente
+        ou precisam ser consistentes. Comece com uma palavra-chave, a qual é usada
+        para referenciar a resposta através da barra de comando. Para saber mais leia o
+      faq: "FAQ"
+    form:
+      key: "Key"
+      key_placeholder: "Digite a chave usada para encontrar a resposta"
+      message: "Mensagem"
+      message_placeholder: "Escreva a mensagem completa para incluir em futuras respostas"
+      create: "Criar"
+      update: "Atualizar"
+    edit:
+      delete: "Remover"
+
+  devise:
+    confirmations:
+      confirmed: 'Sua conta foi confirmada com sucesso. Você está logado.'
+      send_instructions: 'Dentro de minutos, você receberá um e-mail com instruções para a confirmação da sua conta.'
+      send_paranoid_instructions: 'Se o seu endereço de e-mail estiver cadastrado, você receberá uma mensagem com instruções para confirmação da sua conta.'
+    failure:
+      already_authenticated: 'Você já está logado.'
+      inactive: 'Sua conta ainda não foi ativada.'
+      invalid: 'E-mail ou senha inválidos.'
+      invalid_token: 'O token de autenticação não é válido.'
+      locked: 'Sua conta está bloqueada.'
+      not_found_in_database: 'E-mail ou senha inválidos.'
+      timeout: 'Sua sessão expirou, por favor, efetue login novamente para continuar.'
+      unauthenticated: 'Para continuar, efetue login ou registre-se.'
+      unconfirmed: 'Antes de continuar, confirme a sua conta.'
+    mailer:
+      confirmation_instructions:
+        subject: 'Instruções de confirmação'
+      reset_password_instructions:
+        subject: 'Instruções de troca de senha'
+      unlock_instructions:
+        subject: 'Instruções de desbloqueio'
+    omniauth_callbacks:
+      failure: 'Não foi possível autenticá-lo como %{kind} porque "%{reason}".'
+      success: 'Autenticado com sucesso com uma conta de %{kind}.'
+    passwords:
+      no_token: "Você só pode acessar essa página através de um e-mail de troca de senha. Se já estiver acessando por um e-mail, verifique se a URL fornecida está completa."
+      send_instructions: 'Dentro de minutos, você receberá um e-mail com instruções para a troca da sua senha.'
+      send_paranoid_instructions: 'Se o seu endereço de e-mail estiver cadastrado, você receberá um link de recuperação da senha via e-mail.'
+      updated: 'Sua senha foi alterada com sucesso. Você está logado.'
+      updated_not_active: 'Sua senha foi alterada com sucesso.'
+    registrations:
+      destroyed: 'Tchau! Sua conta foi cancelada com sucesso. Esperamos vê-lo novamente em breve.'
+      signed_up: 'Login efetuado com sucesso. Se não foi autorizado, a confirmação será enviada por e-mail.'
+      signed_up_but_inactive: 'Você foi cadastrado com sucesso. No entanto, não foi possível efetuar login, pois sua conta não foi ativada.'
+      signed_up_but_locked: 'Você foi cadastrado com sucesso. No entanto, não foi possível efetuar login, pois sua conta está bloqueada.'
+      signed_up_but_unconfirmed: 'Uma mensagem com um link de confirmação foi enviada para o seu endereço de e-mail. Por favor, abra o link para confirmar a sua conta.'
+      update_needs_confirmation: 'Você atualizou a sua conta com sucesso, mas o seu novo endereço de e-mail precisa ser confirmado. Por favor, acesse-o e clique no link de confirmação que enviamos.'
+      updated: 'Sua conta foi atualizada com sucesso.'
+    sessions:
+      signed_in: 'Login efetuado com sucesso!'
+      signed_out: 'Saiu com sucesso.'
+    unlocks:
+      send_instructions: 'Dentro de minutos, você receberá um email com instruções para o desbloqueio da sua conta.'
+      send_paranoid_instructions: 'Se sua conta existir, você receberá um e-mail com instruções para desbloqueá-la em alguns minutos.'
+      unlocked: 'Sua conta foi desbloqueada com sucesso. Efetue login para continuar.'
+
+  errors:
+    messages:
+      already_confirmed: "já foi confirmado"
+      confirmation_period_expired: "precisa ser confirmada em até %{period}, por favor, solicite uma nova"
+      expired: "expirou, por favor, solicite uma nova"
+      not_found: "não encontrado"
+      not_locked: "não foi bloqueado"
+      not_saved:
+        one: "Não foi possível salvar %{resource}: 1 erro"
+        other: "Não foi possível salvar %{resource}: %{count} erros."
+
+  # Default locale from https://raw.githubusercontent.com/svenfuchs/rails-i18n/master/rails/locale/pt-BR.yml
+  date:
+    abbr_day_names:
+    - Dom
+    - Seg
+    - Ter
+    - Qua
+    - Qui
+    - Sex
+    - Sáb
+    abbr_month_names:
+    -
+    - Jan
+    - Fev
+    - Mar
+    - Abr
+    - Mai
+    - Jun
+    - Jul
+    - Ago
+    - Set
+    - Out
+    - Nov
+    - Dez
+    day_names:
+    - Domingo
+    - Segunda
+    - Terça
+    - Quarta
+    - Quinta
+    - Sexta
+    - Sábado
+    formats:
+      default: ! '%d/%m/%Y'
+      long: ! '%d de %B de %Y'
+      short: ! '%d de %B'
+    month_names:
+    -
+    - Janeiro
+    - Fevereiro
+    - Março
+    - Abril
+    - Maio
+    - Junho
+    - Julho
+    - Agosto
+    - Setembro
+    - Outubro
+    - Novembro
+    - Dezembro
+    order:
+    - :day
+    - :month
+    - :year
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: aproximadamente 1 hora
+        other: aproximadamente %{count} horas
+      about_x_months:
+        one: aproximadamente 1 mês
+        other: aproximadamente %{count} meses
+      about_x_years:
+        one: aproximadamente 1 ano
+        other: aproximadamente %{count} anos
+      almost_x_years:
+        one: quase 1 ano
+        other: quase %{count} anos
+      half_a_minute: meio minuto
+      less_than_x_minutes:
+        one: menos de um minuto
+        other: menos de %{count} minutos
+      less_than_x_seconds:
+        one: menos de 1 segundo
+        other: menos de %{count} segundos
+      over_x_years:
+        one: mais de 1 ano
+        other: mais de %{count} anos
+      x_days:
+        one: 1 dia
+        other: ! '%{count} dias'
+      x_minutes:
+        one: 1 minuto
+        other: ! '%{count} minutos'
+      x_months:
+        one: 1 mês
+        other: ! '%{count} meses'
+      x_seconds:
+        one: 1 segundo
+        other: ! '%{count} segundos'
+    prompts:
+      day: Dia
+      hour: Hora
+      minute: Minuto
+      month: Mês
+      second: Segundo
+      year: Ano
+  errors:
+    format: ! '%{attribute} %{message}'
+    messages:
+      accepted: deve ser aceito
+      blank: não pode ficar em branco
+      present: deve ficar em branco
+      confirmation: não é igual a %{attribute}
+      empty: não pode ficar vazio
+      equal_to: deve ser igual a %{count}
+      even: deve ser par
+      exclusion: não está disponível
+      greater_than: deve ser maior que %{count}
+      greater_than_or_equal_to: deve ser maior ou igual a %{count}
+      inclusion: não está incluído na lista
+      invalid: não é válido
+      less_than: deve ser menor que %{count}
+      less_than_or_equal_to: deve ser menor ou igual a %{count}
+      not_a_number: não é um número
+      not_an_integer: não é um número inteiro
+      odd: deve ser ímpar
+      record_invalid: ! 'A validação falhou: %{errors}'
+      restrict_dependent_destroy:
+        one: "Não é possível excluir o registro pois existe um %{record} dependente"
+        many: "Não é possível excluir o registro pois existem %{record} dependentes"
+      taken: já está em uso
+      too_long: ! 'é muito longo (máximo: %{count} caracteres)'
+      too_short: ! 'é muito curto (mínimo: %{count} caracteres)'
+      wrong_length: não possui o tamanho esperado (%{count} caracteres)
+    template:
+      body: ! 'Por favor, verifique o(s) seguinte(s) campo(s):'
+      header:
+        one: ! 'Não foi possível gravar %{model}: 1 erro'
+        other: ! 'Não foi possível gravar %{model}: %{count} erros.'
+  helpers:
+    select:
+      prompt: Por favor selecione
+    submit:
+      create: Criar %{model}
+      submit: Salvar %{model}
+      update: Atualizar %{model}
+  number:
+    currency:
+      format:
+        delimiter: .
+        format: ! '%u %n'
+        precision: 2
+        separator: ! ','
+        significant: false
+        strip_insignificant_zeros: false
+        unit: R$
+    format:
+      delimiter: .
+      precision: 3
+      separator: ! ','
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: ! '%n %u'
+        units:
+          billion:
+            one: bilhão
+            other: bilhões
+          million:
+            one: milhão
+            other: milhões
+          quadrillion:
+            one: quatrilhão
+            other: quatrilhões
+          thousand: mil
+          trillion:
+            one: trilhão
+            other: trilhões
+          unit: ''
+      format:
+        delimiter: .
+        precision: 2
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: ! '%n %u'
+        units:
+          byte:
+            one: Byte
+            other: Bytes
+          gb: GB
+          kb: KB
+          mb: MB
+          tb: TB
+    percentage:
+      format:
+        delimiter: .
+    precision:
+      format:
+        delimiter: .
+  support:
+    array:
+      last_word_connector: ! ' e '
+      two_words_connector: ! ' e '
+      words_connector: ! ', '
+  time:
+    am: ''
+    formats:
+      default: ! '%a, %d de %B de %Y, %H:%M:%S %z'
+      long: ! '%d de %B de %Y, %H:%M'
+      short: ! '%d de %B, %H:%M'
+    pm: ''

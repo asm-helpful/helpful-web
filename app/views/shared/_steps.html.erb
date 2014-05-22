@@ -9,6 +9,7 @@
         <li>
           <%= link_to edit_account_path(@account), class: "#{'active' if current_page?(edit_account_path(@account))}" do %>
             <span class="glyphicon glyphicon-ok"></span>
+            <!-- TODO: locale is missing -->
             Sign Up
           <% end %>
         </li>
@@ -16,6 +17,7 @@
         <li>
           <%= link_to account_invitations_path(@account), class: "#{'active' if current_page?(account_invitations_path(@account))}" do %>
             <span class="glyphicon glyphicon-ok"></span>
+            <!-- TODO: locale is missing -->
             Add Helpful to Your Site
           <% end %>
         </li>
@@ -23,6 +25,7 @@
         <li>
           <%= link_to configuration_account_path(@account), class: "#{'active' if current_page?(configuration_account_path(@account))}" do %>
             <span class="glyphicon glyphicon-ok"></span>
+            <!-- TODO: locale is missing -->
             Be Helpful
           <% end %>
         </li>

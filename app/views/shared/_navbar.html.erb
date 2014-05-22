@@ -56,7 +56,7 @@
 
     <div class="container">
       <ul class="nav navbar-nav nav-separated">
-        <li class="<%= current_page?(inbox_account_conversations_path(@account)) ? 'active' : '' %>"> 
+        <li class="<%= current_page?(inbox_account_conversations_path(@account)) ? 'active' : '' %>">
           <%= link_to t('.inbox'), inbox_account_conversations_path(@account) %>
         </li>
         <li class="<%= current_page?(archived_account_conversations_path(@account)) ? 'active' : '' %>">
@@ -65,7 +65,7 @@
       </ul>
       <div class="search-bar">
         <%= form_tag search_account_conversations_path(@account), method: 'get' do %>
-          <%= search_field_tag :q, @query, autocomplete: 'off', placeholder: 'Search', id: 'search-query', 'data-search-path' => search_account_conversations_path(@account) %>
+          <%= search_field_tag :q, @query, autocomplete: 'off', placeholder: t('.search'), id: 'search-query', 'data-search-path' => search_account_conversations_path(@account) %>
           <span class="search-bar-icon glyphicon glyphicon-search"></span>
           <span class="search-bar-icon search-bar-clear-icon glyphicon glyphicon-remove"></span>
         <% end %>
@@ -89,7 +89,7 @@
 
         <% if current_page?(new_user_session_path) %>
           <li>
-            <%= link_to t('.sign_up'), new_accounts_path %>
+            <%= link_to t('general.sign_up'), new_accounts_path %>
           </li>
         <% end %>
         <% if current_page?(new_accounts_path) %>

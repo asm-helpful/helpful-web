@@ -2,12 +2,15 @@
 
 <div class="container">
 
+  <!-- TODO: locale is missing -->
   <h1 class="page-title">Welcome to Helpful</h1>
 
   <%= form_for @account, html: { role: 'form' } do |f| %>
 
+    <!-- TODO: locale is missing -->
     <h2>Sign Up for a Free Account</h2>
 
+    <!-- TODO: locale is missing -->
     <p>We'll get your company and personal information setup so you can be ready to answer those support requests and make some customers happy.</p>
 
     <fieldset>
@@ -69,6 +72,7 @@
 
       <%= render 'shared/error_messages', target: @user %>
 
+      <!-- TODO: locale is missing -->
       <h2>Personal Information</h2>
 
       <%= fields_for @person do |ff| %>
@@ -78,6 +82,7 @@
           <div class="col-md-12">
 
             <div class="form-group">
+              <!-- TODO: locale is missing -->
               <%= ff.label :name, 'Full name', class: 'control-label' %>
               <%= ff.text_field :name, class: 'form-control' %>
             </div>
@@ -95,6 +100,7 @@
           <div class="col-md-12">
 
             <div class="form-group">
+              <!-- TODO: locale is missing -->
               <%= ff.label :email, 'Email address', class: 'control-label' %>
               <%= ff.email_field :email, class: 'form-control' %>
             </div>
@@ -108,6 +114,7 @@
           <div class="col-md-12">
 
             <div class="form-group">
+              <!-- TODO: locale is missing -->
               <%= ff.label :password, 'Password', class: 'control-label' %>
               <%= ff.password_field :password, class: 'form-control', placeholder: "Pretend you're a spy. Make it a good one" %>
             </div>
@@ -122,14 +129,17 @@
 
     <fieldset>
 
+      <!-- TODO: locale is missing -->
       <h2>Clearly this isn't your first rodeo</h2>
 
+      <!-- TODO: locale is missing -->
       <p>You're support experience is about to change for the better</p>
 
       <div class="form-group">
+        <!-- TODO: locale is missing -->
         <%= f.submit 'Sign up and start inviting your team!', class: 'btn btn-primary' %>
       </div>
-      
+
     </fieldset>
 
   <% end %>
