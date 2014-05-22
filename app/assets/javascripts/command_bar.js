@@ -116,6 +116,7 @@ function applyTextcomplete($btnGroup) {
       cannedResponsePath,
       function(cannedResponse) {
         $replyMessage.html(cannedResponse.message);
+        $replyMessage.removeClass('medium-editor-placeholder');
         $replyMessage.focus();
       }
     );
