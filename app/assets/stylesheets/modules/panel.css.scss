@@ -7,7 +7,6 @@ $panel-title: $light-black;
   padding: 24px;
   margin-bottom: 20px;
   background-color: $white;
-  border: 1px solid $panel-border;
   border-radius: $border-radius-base;
   @include box-shadow(0 1px 1px rgba(0,0,0,.05));
 
@@ -15,6 +14,14 @@ $panel-title: $light-black;
     border-color: #ddd;
     border-color: rgba(0,0,0,.15);
   }
+}
+
+.panel-default {
+  border: 1px solid $panel-border;
+}
+
+.panel-error {
+  border: 1px solid lighten($danger, 25%);
 }
 
 .panel-title {
@@ -34,6 +41,14 @@ $panel-title: $light-black;
 
   .btn {
     margin-top: 24px;
+  }
+
+  p {
+    margin-bottom: 10px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 }
 
