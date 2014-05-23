@@ -24,6 +24,8 @@ class Person < ActiveRecord::Base
 
   before_save :parse_email
 
+  mount_uploader :avatar, AvatarUploader
+
   def member?(account)
     memberships.where(account_id: account.id).exists?
   end
