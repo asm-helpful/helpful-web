@@ -151,6 +151,10 @@ class Account < ActiveRecord::Base
     owner_membership && owner_membership.user
   end
 
+  def is_user_owner(user)
+    memberships.where(role: 'owner', user: user).count > 0
+  end
+
   def subscribe!
     return if billing_plan.free?
 

@@ -51,6 +51,7 @@
 
   <br>
 
+  <% if @account.is_user_owner(current_user) %>
   <h1 class="page-title">
     <%= t('.subscription') %>
   </h1>
@@ -111,6 +112,7 @@
       </div>
     </fieldset>
 
+  <% end %>
   <% end %>
 
   <h1 class="page-title">
