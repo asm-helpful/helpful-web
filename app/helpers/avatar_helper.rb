@@ -26,7 +26,11 @@ module AvatarHelper
   end
 
   def avatar_image(person, size)
-    image_tag(gravatar_url(person.email, size), width: size, height: size, onerror: 'toggleAvatar(this)')
+    image_tag(avatar_path(person, size), width: size, height: size, onerror: 'toggleAvatar(this)')
+  end
+
+  def avatar_path(person, size)
+    person.avatar.try(:thumb).present? ? person.avatar.thumb : gravatar_url(person.email, size)
   end
 
   def avatar_style_constraints(size)
