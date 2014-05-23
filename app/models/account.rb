@@ -36,9 +36,6 @@ class Account < ActiveRecord::Base
   validates :name,
     presence: true
 
-  validates :slug,
-    presence: true
-
   validates :billing_plan,
     presence: true
 

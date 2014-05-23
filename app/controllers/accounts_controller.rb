@@ -21,6 +21,8 @@ class AccountsController < ApplicationController
 
     begin
       ActiveRecord::Base.transaction do
+        [@user, @account, @person].each(&:valid?)
+
         @user.save!
         @account.save!
         @person.save!
