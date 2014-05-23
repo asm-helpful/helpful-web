@@ -30,4 +30,21 @@ describe AvatarHelper do
     assert_match /avatar-default/, html
   end
 
+  describe "#avatar_path" do
+    context "when the person have an uploaded avatar" do
+      let(:person) { double('person') }
+      let(:avatar) { double('avatar') }
+      let(:thumb) { "/path/to/my/avatar.png" }
+
+      before do
+        allow(person).to receive(:avatar) { avatar }
+        allow(avatar).to receive(:thumb) { thumb }
+      end
+
+      it "should return the thumb path" do
+        expect(avatar_path person, 30).to match thumb
+      end
+    end
+  end
+
 end
