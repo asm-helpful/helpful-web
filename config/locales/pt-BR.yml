@@ -34,8 +34,8 @@ pt-BR:
 
   shared:
     navbar:
-      personal_settings: "Perfil"
-      account_settings: "Conta"
+      profile: "Perfil"
+      company_profile: "Conta"
       help: "Ajuda"
       logout: "Sair"
       inbox: "Entrada"

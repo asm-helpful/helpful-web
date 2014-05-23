@@ -32,8 +32,8 @@ fr:
 
   shared:
     navbar:
-      personal_settings: "Paramètres Personnels"
-      settings: "Paramètres"
+      profile: "Paramètres Personnels"
+      company_profile: "Paramètres"
       help: "Aide"
       logout: "Déconnexion"
       inbox: "Boîte de Réception"
