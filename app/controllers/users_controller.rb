@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   end
 
   def person_params
-    params.require(:user).permit(:name, :email).merge(params.require(:person).permit(:username))
+    params.require(:user).permit(:name, :email).merge(params.require(:person).permit(:username, :avatar))
   end
 
   def user_params
