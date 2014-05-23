@@ -2,8 +2,10 @@
   <div id="flash-messages">
     <% flash.each do |key, value| %>
       <%= content_tag(:div, :class => "#{flash_class(key)} alert-dismissable") do %>
-        <%= value %>
-        <button type="button" class="close" data-dismiss="alert" data-target=".alert-dismissable">&times;</button>
+        <div class="container">
+          <%= value %>
+          <button type="button" class="close" data-dismiss="alert" data-target=".alert-dismissable">&times;</button>
+        </div>
       <% end %>
     <% end %>
   </div>
