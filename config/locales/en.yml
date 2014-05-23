@@ -32,8 +32,8 @@ en:
 
   shared:
     navbar:
-      personal_settings: "Personal Settings"
-      settings: "Account Settings"
+      profile: "Profile"
+      company_profile: "Company Profile"
       help: "Help"
       logout: "Logout"
       inbox: "Inbox"
