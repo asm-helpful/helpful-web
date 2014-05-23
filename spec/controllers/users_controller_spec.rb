@@ -15,7 +15,8 @@ describe UsersController do
           email: 'jimmy@helpful.io'
         },
         person: {
-          username: 'jimmy2'
+          username: 'jimmy2',
+          avatar: fixture_file_upload("spongebob.gif", 'image/gif')
         }
       }
 
@@ -27,6 +28,7 @@ describe UsersController do
       expect(user.person.email).to eq('jimmy@helpful.io')
       expect(user.person.name).to eq('Jimmy Hoffa')
       expect(user.username).to eq('jimmy2')
+      expect(user.person.avatar.file).to_not be_nil
     end
 
     context "when trying to choose a username that already exists" do
