@@ -5,7 +5,7 @@ describe "inviting a team member / user" do
 
   it 'owner can fillout the form to invite a team member' do
     reset_email!
-    click_link "Account Settings"
+    click_link 'Company Profile'
     within "#new_user" do
       fill_in "user_email", :with => "invite@helpful.io"
       click_on "Send"
