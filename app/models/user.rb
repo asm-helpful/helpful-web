@@ -34,4 +34,8 @@ class User < ActiveRecord::Base
     allow_nil: true
 
   accepts_nested_attributes_for :person
+
+  def avatar
+    self.try(:person).try(:avatar)
+  end
 end
