@@ -62,6 +62,8 @@
         <li class="<%= current_page?(inbox_account_conversations_path(@account)) && !@assignment_user ? 'active' : '' %>">
           <%= link_to t('.inbox'), inbox_account_conversations_path(@account) %>
         </li>
+
+        <% other_people = @account.user_people - [current_user.person] %>
         <li class="dropdown avatar <%= current_page?(inbox_account_conversations_path(@account)) && @assignment_user ? 'active' : '' %>">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <span style="margin-right: 5px;">
@@ -72,6 +74,7 @@
             <% end %>
             <b class="caret"></b>
           </a>
+
           <ul class="dropdown-menu">
             <li>
               <%= link_to inbox_account_conversations_path(@account, user_id: current_user.id) do %>
@@ -80,23 +83,26 @@
               <% end %>
             </li>
 
-            <li class="divider"></li>
+            <% if other_people.any? %>
+              <li class="divider"></li>
 
-            <% (@account.user_people.order('name ASC') - [current_user.person]).each do |person| %>
-              <li>
-                <%= link_to inbox_account_conversations_path(@account, user_id: person.user_id) do %>
-                  <%= avatar(person, 30, 'navbar-avatar') %>
-                  <span class="username"><%= person.name %></span>
-                <% end %>
-              </li>
+              <% other_people.each do |person| %>
+                <li>
+                  <%= link_to inbox_account_conversations_path(@account, user_id: person.user_id) do %>
+                    <%= avatar(person, 30, 'navbar-avatar') %>
+                    <span class="username"><%= person.name %></span>
+                  <% end %>
+                </li>
+              <% end %>
             <% end %>
           </ul>
-          </a>
         </li>
+
         <li class="<%= current_page?(archived_account_conversations_path(@account)) ? 'active' : '' %>">
           <%= link_to t('.archive'), archived_account_conversations_path(@account) %>
         </li>
       </ul>
+
       <div class="search-bar">
         <%= form_tag search_account_conversations_path(@account), method: 'get' do %>
           <%= search_field_tag :q, @query, autocomplete: 'off', placeholder: t('.search'), id: 'search-query', 'data-search-path' => search_account_conversations_path(@account) %>
