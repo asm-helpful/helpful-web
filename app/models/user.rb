@@ -9,7 +9,9 @@ class User < ActiveRecord::Base
 
   has_many :memberships
 
-  has_many :accounts, through: :memberships
+  has_many :accounts,
+    -> { order('name ASC') },
+    through: :memberships
 
   has_many :conversations
 
