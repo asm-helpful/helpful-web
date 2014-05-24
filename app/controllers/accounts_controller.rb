@@ -79,7 +79,11 @@ class AccountsController < ApplicationController
   end
 
   def account_params
-    params.require(:account).permit(:name, :website_url, :webhook_url, :prefers_archiving, :signature, :stripe_token, :billing_plan_slug)
+    if !@account.is_user_owner(current_user)
+      params.require(:account).permit(:name, :website_url, :webhook_url, :prefers_archiving, :signature)
+    else
+      params.require(:account).permit(:name, :website_url, :webhook_url, :prefers_archiving, :signature, :stripe_token, :billing_plan_slug)
+    end
   end
 
   def user_params
