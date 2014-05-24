@@ -153,7 +153,12 @@
     <% @account.memberships.each do |membership| %>
       <li>
         <p>
-          <%= membership.user.email %>
+          <span class="btn btn-default">
+            <% if membership.user.name %>
+              <strong><%= membership.user.name %></strong>
+            <% end %>
+            <%= membership.user.email %>
+          </span>
 
           <span class="badge badge-info">
             <%= t('general.roles.' + membership.role) %>
