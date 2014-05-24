@@ -5,9 +5,10 @@ class Users::InvitationsController < Devise::InvitationsController
     @user = invite_resource
     @person = Person.new
     @plans = BillingPlan.order('price ASC')
+    @role = @account.is_user_owner(current_user) ? params.fetch(:membership_role) : 'agent'
 
     @membership = Membership.new(
-      role: params.fetch(:membership_role),
+      role: @role,
       user: @user,
       account: @account
     )
