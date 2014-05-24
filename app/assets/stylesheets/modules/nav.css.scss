@@ -1,16 +1,15 @@
 @import 'addons/clearfix';
 
+// inspect this once again, doesn't look like its required to do such stuff
+
 .nav {
-  @include clearfix;
   margin-top: 0;
   margin-bottom: 0;
 
   > li {
     list-style-type: none;
-    float: left;
 
     > a {
-      display: block;
     }
   }
 }

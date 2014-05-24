@@ -1,13 +1,53 @@
+
+/*-------------------------------
+GENERAL 
+-------------------------------*/
+
+.backdrop h1 {
+  line-height: 1.2;
+}
+
+#reasons h1, #features h1, #pricing h1 {
+  margin-bottom: 40px;
+  font-size: 36px;
+  font-weight: 600;
+}
+#reasons p, #features p, #pricing p {
+  font-family: 'Droid Serif';
+  font-size: 24px;
+  color: $dark-gray;
+}
+
 /*-------------------------------
 REASONS 
 -------------------------------*/
-#reasons {
 
+#reasons {
+  ul {
+    width: 80%;
+    padding: 0;
+    margin: 0 auto 40px auto;
+    li {
+      margin-bottom: 40px;
+      position: relative;
+      list-style: none;
+      text-align: center;
+      font-family: 'Droid Serif';
+      font-size: 24px;
+      color: $dark-gray;
+      span.glyphicon {
+        position: absolute;
+        left: -70px;
+        font-size: 34px;
+      }
+    }
+  }
 }
 
 /*-------------------------------
 FEATURES 
 -------------------------------*/
+
 #features {
 
 }
@@ -19,13 +59,8 @@ PRICING
 
 #pricing {
   h1 {
-    margin-bottom: 45px;
-    font-size: 36px;
   }
   h1 + p {
-    font-family: 'Droid Serif';
-    font-size: 24px;
-    color: $dark-gray;
   }
 
   .conversation-explaination {

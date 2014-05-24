@@ -15,6 +15,7 @@
 //= require medium-editor
 //= require medium_init
 //= require jquery.transform2d
+//= require wow.min.js
 
 $(document).ready(function() {
 
