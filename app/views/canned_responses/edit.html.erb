@@ -1,6 +1,9 @@
 <%= render 'shared/navbar' %>
 
 <div class="container">
+  <% if params.include?(:canned_response) && @canned_response.invalid? %>
+    <%= render '/shared/error_messages', target: @canned_response %>
+  <% end %>
   <div class="page-header">
     <%= button_to t('.delete'), [@account, @canned_response], method: :delete, class: 'btn btn-danger pull-right' %>
     <h1><%= t('canned_responses.general.canned_response') %></h1>
