@@ -39,6 +39,8 @@ class Account < ActiveRecord::Base
   validates :billing_plan,
     presence: true
 
+  validates_uniqueness_of :name
+
   before_create :generate_webhook_secret
   before_create :set_default_billing_plan
   after_commit :unhide_paid_conversations
