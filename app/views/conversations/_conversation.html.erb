@@ -170,6 +170,12 @@
               <% end %>
             </ul>
           </div>
+          <div class="btn-group command-bar-action">
+            <button class="btn btn-default" id="message_attachments_atributes_trigger">
+              <%= t('.attach_files') %>
+              <span class="counter"></span>
+            </button>
+          </div>
           <%= file_field :message, :attachments_atributes, multiple: true, name: "message[attachments_attributes[][file]]" %>
         </div>
 
