@@ -40,6 +40,15 @@ REASONS
         left: -70px;
         font-size: 34px;
       }
+      &:nth-child(1) span {
+        top: 20%;
+      }
+      &:nth-child(2) span {
+        top: 40%;
+      }
+      &:nth-child(3) span {
+        top: 40%;
+      }
     }
   }
 }
@@ -49,7 +58,23 @@ FEATURES
 -------------------------------*/
 
 #features {
-
+  div {
+    margin-bottom: 40px;
+  }
+  .feature1 {
+    float: left;
+    width: 68%;
+    margin-left: -20%;
+  }
+  .feature2 {
+    float: right;
+    width: 68%;
+    margin-right: -20%;
+  }
+  .feature3 {
+    width: 68%;
+    margin: 0 auto;
+  }
 }
 
 

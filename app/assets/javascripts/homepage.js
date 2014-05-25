@@ -70,10 +70,10 @@ function animateScreenshots() {
 }
 
 function startAnimation() {
-  setTimeout(function() { animateScreen(0) },  1000);
-  setTimeout(function() { animateScreen(1) },  3000);
-  setTimeout(function() { animateScreen(2) },  6000);
-  setTimeout(function() { finishAnimation() }, 9000);
+  setTimeout(function() { animateScreen(0) },  500);
+  setTimeout(function() { animateScreen(1) },  1000);
+  setTimeout(function() { animateScreen(2) },  1500);
+  setTimeout(function() { finishAnimation() }, 1800);
 }
 
 function animateScreen(index) {
@@ -95,8 +95,8 @@ function animateScreen(index) {
 }
 
 function finishAnimation() {
-  $('.screenshot img').animate({ opacity: 1 }, 800);
-  $('.screenshot p').animate({ opacity: 1 }, 800);
+  $('.screenshot img').animate({ opacity: 1 }, 400);
+  $('.screenshot p').animate({ opacity: 1 }, 400);
 
   // var $screenshotList = $('.screenshot-list');
 
