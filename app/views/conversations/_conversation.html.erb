@@ -108,7 +108,7 @@
   <div class="conversation-reply">
     <%= avatar_default(current_user.person) %>
 
-    <%= form_tag account_messages_path(@account), method: 'post', "data-reply-form" => "" do %>
+    <%= form_tag account_messages_path(@account), method: 'post', "data-reply-form" => "", multipart: true do %>
       <%= hidden_field :message, :conversation_id, value: conversation.id %>
       <%= hidden_field :message, :content %>
       <div class="reply-to-message" data-reply-to-message placeholder="<%= t('.reply_to_conversation') %>"></div>
@@ -170,6 +170,7 @@
               <% end %>
             </ul>
           </div>
+          <%= file_field :message, :attachments_atributes, multiple: true, name: "message[attachments_attributes[][file]]" %>
         </div>
 
         <div class="pull-right">
