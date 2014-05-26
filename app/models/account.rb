@@ -34,7 +34,8 @@ class Account < ActiveRecord::Base
     dependent: :destroy
 
   validates :name,
-    presence: true
+    presence: true,
+    uniqueness: true
 
   validates :billing_plan,
     presence: true

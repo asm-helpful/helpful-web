@@ -14,7 +14,7 @@ describe Account do
     @account.name = 'unique'
     @account.slug = 'unique'
 
-    expect { @account.save }.to raise_error(ActiveRecord::RecordNotUnique)
+    expect(@account).to be_invalid
   end
 
   it "must have a webhook_url field" do
