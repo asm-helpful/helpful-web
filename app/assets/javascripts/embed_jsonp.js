@@ -1,48 +1,38 @@
-<!-- This partial bundles the embed HTML as JSONP. -->
-
-helpful_embed.jsonpReturned(
+helpful_embed.htmlLoaded(
   { html: '\
-    <div id="helpful-embed-html">\
-      <article class="helpful-embed">\
-          <header>\
-              <div class="user-image">\
-                  <img src="/assets/operator.jpg" width="86" height="86" alt="Alison the Helpful" />\
-              </div>\
-              <!-- Commented out because the ratings didn\'t make much sense -->\
-              <!-- <ul class="user-ratings">\
-                  <li class="user-rating">\
-                      <a href="#">G</a>\
-                  </li>\
-                  <li class="user-rating">\
-                      <a href="#">B</a>\
-                  </li>\
-              </ul> -->\
-              <p class="intro">\
-                  Hi, I&rsquo;m Alison.<br />\
-                  I&rsquo;m here to be helpful.\
-              </p>\
-          </header>\
-          <form action="">\
-              <div class="email-container">\
-                <input type="email" id="email" name="email" placeholder="email address"  required="required" />\
-              </div>\
-              <div class="question-container">\
-                  <label for="question" class="hidden">Your question</label>\
-                  <textarea name="question" id="question" required="required" cols="10" rows="3" placeholder="Write your question or feedback here"></textarea>\
-              </div>\
-              <div class="button-container">\
-                  <input type="submit" class="btn" value="Next" />\
-              </div>\
-          </form>\
-          <footer>\
-              <p class="footer-links">\
-                  <a href="#">Contact us</a>\
-                  <a href="#">Support</a>\
-              </p>\
-              <span class="footer-tagline"><a href="#">Helpful.io</a> by <a href="#">Assembly</a></span>\
-          </footer>\
-      </article>\
-    </div>\
+    <article class="helpful-embed">\
+        <div class="helpful-pointer"></div>\
+        <div class="helpful-question-container">\
+            <header>\
+            <h1>How may we help you?</h1>\
+            <div class="helpful-close-button">x</div>\
+        </header>\
+            <textarea name="question" id="helpful-question" required="required" cols="10" rows="3" placeholder="Type your message here..."></textarea>\
+            <button class="helpful-btn helpful-btn-default">Next</button>\
+        </div>\
+        <div class="helpful-details-container">\
+            <header>\
+                <h1>Your contact information.</h1>\
+                <div class="helpful-back-button"><</div>\
+                <div class="helpful-close-button">x</div>\
+            </header>\
+            <p>So we can respond to your question.</p>\
+            <input type="text" name="name" id="helpful-name" placeholder="Name">\
+            <input type="email" name="email" id="helpful-email" placeholder="Email">\
+            <input type="submit" class="helpful-btn helpful-btn-primary" value="Submit your Question" />\
+        </div>\
+        <div class="helpful-thanks-container">\
+            <header>\
+                <h1>Thanks!</h1>\
+                <div class="helpful-close-button">x</div>\
+            </header>\
+            <p>Have a wonderful day.</p>\
+            <button class="helpful-btn helpful-btn-default helpful-btn-return">Submit another question?</button>\
+        </div>\
+        <footer>\
+            <a href="#">Helpful.io</a> by <a href="#">Assembly</a>\
+        </footer>\
+    </article>\
   '
   }
 )
