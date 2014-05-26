@@ -16,7 +16,7 @@
 }
 
 .nav-separated {
-  li {
+  > li {
     border-right: 1px solid $navbar-default-border;
 
     &:first-child {
