@@ -103,9 +103,13 @@
   }
 
   .navbar-toggle {
+    margin-top: 19px;
     border: 0;
     .icon-bar {
       background: rgba(255,255,255,.8);
+    }
+    &:hover {
+      background: rgba(0,0,0,.1);
     }
   }
 }
@@ -115,9 +119,32 @@
   }
   .navbar-nav {
     background: #4D5055;
+    .btn-primary {
+      margin-left: 0;
+      border-radius: 0;
+      -webkit-border-radius: 0;
+    }  
   }
 }
 
 .navbar-placeholder {
   height: 72px;
+}
+
+/* navbar dropdown */
+.navbar-nav > li > .dropdown-menu {
+  width: 100%;
+  padding: 0;
+  background: #212326;
+  border: 0;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  li > a {
+    color: rgba(255,255,255,.5);
+    &:hover {
+      background: rgba(255,255,255,.1);
+      color: rgba(255,255,255,.7);
+    }
+  }
 }

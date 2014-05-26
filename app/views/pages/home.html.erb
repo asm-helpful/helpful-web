@@ -20,10 +20,10 @@
     <div>
       <div class="container">
         <div class="row">
-          <div class="col-md-8 col-md-offset-2">
+          <div class="col-md-8 col-md-offset-2 wow fadeInUp" data-wow-duration="1.3s" data-wow-delay=".4s">
             <%= image_tag('logo.png', data: {animate_logo: "" }) %>
-            <h1 data-animate-heading>We redesigned support to get out of the way, so you focus on being a helpful human.</h1>
-            <p data-animate-lead>Helping your customers with good answers and thoughtful direction should be a breeze, focused 100% on support - and nothing else.</p>
+            <h1 data-animate-heading>We redesigned the support tool to get out of the way, so you focus on being a helpful human.</h1>
+            <p data-animate-lead>Helping your customers with good answers and thoughtful direction should be a breeze, focused 100% on support &ndash; and nothing else.</p>
             <a href="#page-showcase" id="btn" class="btn btn-default" data-scroll-to-content="true">Let us show how simple it is</a>
           </div>
         </div>
@@ -68,7 +68,7 @@
 
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
-          <li><a href="#customer">Who's it for?</a></li>
+          <li><a href="#reasons">Who's it for?</a></li>
           <li><a href="#features">Features</a></li>
           <li><a href="#pricing">Pricing</a></li>
         </ul>
@@ -86,30 +86,32 @@
 <div class="page page-full page-center">
   <div>
     <div class="container">
-      <div class="row" id="customer">
-        <div class="col-md-6">
-          <h1>Designed with startups in mind</h1>
-          <p>We specifically trimed features that added process and ceremony, so you can focus on having a conversation with your customers.</p>
+      <div class="row" id="reasons">
+
+        <div class="container text-center wow fadeInDown" data-wow-duration="1.4s" data-wow-delay=".2s">
+          <h1>Helpful is good for you</h1>
         </div>
-        <div class="col-md-6" style="margin-top: 20px">
-          <ul class="list-group list-group-icons">
-            <li class="list-group-item">
-              <span class="glyphicon glyphicon-ok text-success"></span>
-              No more than 100 support requests per day
+
+        <div class="">
+          <ul class="">
+            <li class="wow fadeInUp" data-wow-duration="1.4s" data-wow-delay=".4s">
+              <span class="glyphicon glyphicon-ok text-success hidden-xs"></span>
+              Because you believe good support comes from a great team – not neat software.
             </li>
-            <li class="list-group-item">
-              <span class="glyphicon glyphicon-ok text-success"></span>
-              Fewer than 20 people on your support team
+            <li class="wow fadeInUp" data-wow-duration="1.4s" data-wow-delay=".6s">
+              <span class="glyphicon glyphicon-ok text-success hidden-xs"></span>
+              Because you expect that anyone on your team whether CEO, Developer, or Jessica at the support desk should be able to offer a customer some help without the extra cost of additional seats.
             </li>
-            <li class="list-group-item">
-              <span class="glyphicon glyphicon-ok text-success"></span>
-              Favor simple human interaction over process
-            </li>
-            <li class="list-group-item">
-              <span class="glyphicon glyphicon-ok text-success"></span>
-              Focused on having fewer support requests
+            <li class="wow fadeInUp" data-wow-duration="1.4s" data-wow-delay=".8s">
+              <span class="glyphicon glyphicon-ok text-success hidden-xs"></span>
+              You want your customers to feel that they are getting one-on-one attention, not that they are assigned to ticket #3421.
             </li>
           </ul>
+
+          <div class="call-to-action text-center">
+            <a href="#features" class="btn btn-default">View Features</a>
+          </div>
+
         </div>
       </div>
     </div>
@@ -120,21 +122,31 @@
   <div>
     <div class="container">
       <div class="row" id="features">
-        <div class="col-md-6" style="margin-top: -50px">
-          <div class="thumbnail">
-            <%= image_tag 'formatting-example.png' %>
+
+        <div class="container text-center wow fadeInDown" data-wow-duration="1.4s" data-wow-delay=".2s">
+          <h1>Features that serve a purpose</h1>
+          <p>Assign teammates on the fly. Organize with tags, and use consistent canned responses to speed up your workflow. Spend more time with your customers.</p>
+        </div>
+
+        <div class="container">
+          <div class="feature1 wow fadeInLeft" data-wow-duration="1.4s" data-wow-delay=".4s">
+            <%= image_tag('home/features_editing.png') %>
+            <p>Customize your text, but only when you have a good reason for it.</p>
           </div>
-          <div class="thumbnail">
-          <%= image_tag 'assignment-example.png' %>
+          <div class="feature2 wow fadeInRight" data-wow-duration="1.4s" data-wow-delay=".6s">
+            <%= image_tag('home/features_tagging.png') %>
+            <p>Tag your conversations so you can start to learn more about your organization.</p>
           </div>
-          <div class="thumbnail">
-          <%= image_tag 'tag-example.png' %>
+          <div class="feature3 wow fadeInLeft" data-wow-duration="1.4s" data-wow-delay=".8s">
+            <%= image_tag('home/features_canned.png') %>
+            <p>Canned Responses save time, and can help answer questions for your customers with double-time.</p>
           </div>
         </div>
-        <div class="col-md-6">
-          <h1>Features you need, nothing more</h1>
-          <p>We don't think more features makes a better product. Instead we focused on making those everyday features feel natural and get out of your way.</p>
+        
+        <div class="call-to-action text-center">
+          <a href="#pricing" class="btn btn-default">View Pricing</a>
         </div>
+
       </div>
     </div>
   </div>
@@ -143,13 +155,13 @@
 <div class="page page-partial page-center pricing-section">
   <div>
     <div id="pricing">
-      <div class="container text-center">
-        <h1>A price that grows with your product.</h1>
+      <div class="container text-center wow fadeInDown" data-wow-duration="1.4s" data-wow-delay=".2s">
+        <h1>A price that grows with your product</h1>
         <p>The number of people you want supporting customers should never be constrained by your support tool. With helpful, you'll never pay per seat, you pay per conversations.
         <p class="conversation-explaination simptip-smooth simptip-position-top" data-tooltip="<%= t(".conversation-explaination") %>"><u>Customer Conversation</u> per month</p>
       </div>
       <div class="container">
-        <div class="pricing-showcase">
+        <div class="pricing-showcase wow fadeInUp" data-wow-duration="1.4s" data-wow-delay=".4s">
           <% display_plans @plans do |plan, range| %>
             <div class="pricing-showcase-item">
               <div class="pricing-showcase-item-conversations">
@@ -175,7 +187,7 @@
     <div class="container">
       <div class="pricing-call-to-action text-center">
         <p>You’ll never be surprise charged. Every plan starts at free.</p>
-        <p class="call-to-action-btn"><%= link_to 'Get Started Now', new_accounts_path, class: 'btn btn-primary btn-lg' %></p>
+        <p class="call-to-action-btn wow pulse" data-wow-duration="1.4s" data-wow-delay=".4s"><%= link_to 'Get Started Now', new_accounts_path, class: 'btn btn-primary btn-lg' %></p>
         <div class="clearfix"></div>
       </div>
     </div>

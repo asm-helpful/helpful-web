@@ -1,3 +1,4 @@
+
 var positionPages = function() {
   $(window).resize(function() {
     $('.page-full').each(function() {
@@ -6,7 +7,7 @@ var positionPages = function() {
     });
 
     $('.page-partial').each(function() {
-      var height = Math.max($(window).outerHeight() * 2/3, 700) - 50;
+      var height = Math.max($(window).outerHeight() * 2/3, 900) - 50;
       $(this).css({ height: height });
     });
 
@@ -25,10 +26,6 @@ var positionPages = function() {
 
   $(window).resize();
 };
-
-$( "#btn" ).click(function() {
-  //startAnimation();
-});
 
 var affixNavbar = function($navbarPlaceholder) {
   var $navbar = $($navbarPlaceholder.children()[0]);
@@ -57,16 +54,6 @@ var scrollToContentButtons = function() {
   });
 };
 
-function animateHeadings() {
-  
-  // setTimeout(function() { $lead.animate({opacity: 1}, 'slow') }, 4500);
-}
-
-function bounceArrow() {
-  $arrowDown.removeClass();
-  setTimeout(function() { $arrowDown.addClass('animated bounce'); }, 300)
-}
-
 function animateScreenshots() {
   $('.screenshot').addClass('animated fadeInUp');
   $('.screenshot img').animate({ opacity: .3 }, 100);
@@ -83,10 +70,10 @@ function animateScreenshots() {
 }
 
 function startAnimation() {
-  setTimeout(function() { animateScreen(0) },  1000);
-  setTimeout(function() { animateScreen(1) },  3000);
-  setTimeout(function() { animateScreen(2) },  6000);
-  setTimeout(function() { finishAnimation() }, 9000);
+  setTimeout(function() { animateScreen(0) },  500);
+  setTimeout(function() { animateScreen(1) },  1000);
+  setTimeout(function() { animateScreen(2) },  1500);
+  setTimeout(function() { finishAnimation() }, 1800);
 }
 
 function animateScreen(index) {
@@ -105,30 +92,48 @@ function animateScreen(index) {
   $('.screenshot p').not($paragraph).animate({ opacity: .3 }, 200);
   $paragraph.animate({ opacity: 1 }, 300);
 
-  // $('.screenshot p').removeClass('focused animated flash');
-  // $paragraph.addClass('animated pulse focused');
 }
 
 function finishAnimation() {
-  $('.screenshot img').animate({ opacity: 1 }, 800);
-  $('.screenshot p').animate({ opacity: 1 }, 800);
-
-  // $('.screenshot p').addClass('focused');
+  $('.screenshot img').animate({ opacity: 1 }, 400);
+  $('.screenshot p').animate({ opacity: 1 }, 400);
 
   // var $screenshotList = $('.screenshot-list');
-  // $screenshotList.animate({ left: 0 }, 800);
 
   // if($(window).width() < $screenshotList.width()) {
   //   $screenshotList.animate({ transform: 'scale(' + ($(window).width() / $screenshotList.width()) + ')' }, 800);
   // }
 }
 
-$(document).on('ready page:load', function() {
-  positionPages();
-  //animateLogo();
-  //animateHeadings();
-  //animateArrowDown();
-  affixNavbar($('.navbar-placeholder'));
-  scrollToContentButtons();
-  animateScreenshots();
+
+
+var isMobile = window.matchMedia("only screen and (max-width: 760px)");
+
+var windowChecker = function() {
+  if (isMobile.matches) {
+    $(document).on('ready page:load', function() {
+      $(".navbar-homepage").addClass('navbar-fixed-top');
+      $("body").css("padding-top", "60px");
+      $(".navbar-right li").detach().appendTo('.navbar-nav');
+      $(".navbar-right").hide();
+      console.log("1");
+    });
+  } else {
+    $(document).on('ready page:load', function() {
+      new WOW().init();
+      positionPages();
+      affixNavbar($('.navbar-placeholder'));
+      scrollToContentButtons();
+      animateScreenshots();
+      console.log("2");
+    });
+  }
+};
+
+windowChecker();
+
+// for all those resizing the damn browser window!
+$(window).resize(function() {
+    windowChecker();
 });
+
