@@ -34,12 +34,11 @@ class Account < ActiveRecord::Base
     dependent: :destroy
 
   validates :name,
-    presence: true
+    presence: true,
+    uniqueness: true
 
   validates :billing_plan,
     presence: true
-
-  validates_uniqueness_of :name
 
   before_create :generate_webhook_secret
   before_create :set_default_billing_plan
