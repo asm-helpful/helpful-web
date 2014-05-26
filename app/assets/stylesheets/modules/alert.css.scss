@@ -3,11 +3,17 @@
   border-radius: 0;
   color: $white;
   margin-bottom: 0;
+  font-weight: bold;
+  background-color: #51555C;
 
   a {
     color: $white;
     font-weight: bold;
     text-decoration: underline;
+  }
+
+  .container {
+    padding: 0 27px;
   }
 }
 
@@ -15,31 +21,13 @@
   margin-top: 20px;
 }
 
-.alert-info {
-  background-color: $info;
-  color: $light-black;
-
-  a {
-    color: $light-black;
-  }
-}
-
-.alert-success {
-  background-color: $success;
-}
-
-.alert-danger,
-.alert-error {
-  background-color: $danger;
-}
-
-.close {
+.alert-dismissable .close {
   color: #fff;
   opacity: 1;
   text-shadow: none;
+  font-weight: bold;
+}
 
-  .alert-dismissable & {
-    top: 1px;
-    right: -14px;
-  }
+.alert-dismissable .close:hover {
+  color: $light-gray;
 }
