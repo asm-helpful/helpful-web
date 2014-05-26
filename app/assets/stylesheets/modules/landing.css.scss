@@ -12,7 +12,7 @@ GENERAL
   font-size: 36px;
   font-weight: 600;
 }
-#reasons p, #features p, #pricing p {
+#reasons p, #pricing p {
   font-family: 'Droid Serif';
   font-size: 24px;
   color: $dark-gray;
@@ -48,6 +48,12 @@ REASONS
       }
       &:nth-child(3) span {
         top: 40%;
+      }
+      p {
+        width: 70%;
+        margin: 0 auto;
+        font-size: 18px;
+        text-align: center;
       }
     }
   }

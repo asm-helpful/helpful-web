@@ -7,7 +7,7 @@ var positionPages = function() {
     });
 
     $('.page-partial').each(function() {
-      var height = Math.max($(window).outerHeight() * 2/3, 700) - 50;
+      var height = Math.max($(window).outerHeight() * 2/3, 900) - 50;
       $(this).css({ height: height });
     });
 
