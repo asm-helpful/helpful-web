@@ -24,7 +24,7 @@ function applyTextcomplete($btnGroup) {
   var $dropdownToggle = $('.dropdown-toggle', $btnGroup);
   var $dropdown = $('.dropdown-menu', $btnGroup);
   var $divider = $('li.divider', $dropdown);
-  var searchType = $dropdownToggle.attr('data-search'); 
+  var searchType = $dropdownToggle.attr('data-search');
   var searchTimeout;
   var actionResultTemplate = Handlebars.compile($('#action-result-template').html());
 
@@ -135,5 +135,18 @@ $(document).on('ready page:load', function() {
 
   $('.dropdown-menu input').click(function(e) {
     e.stopPropagation();
+  });
+
+  // TODO: change this for a generic function that triggers file inputs
+  $('#message_attachments_atributes_trigger').click(function(){
+    $('#message_attachments_atributes').trigger('click');
+
+    $('#message_attachments_atributes').change(function(){
+      $('#message_attachments_atributes_trigger').find('span.counter').html(
+        $("#message_attachments_atributes").get(0).files.length
+      )
+    });
+
+    return false;
   });
 });

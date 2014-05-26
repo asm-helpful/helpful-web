@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   before_action :authenticate_user!, :only => [:create]
-  
+
   def create
     find_account!
 
@@ -40,7 +40,7 @@ class MessagesController < ApplicationController
 
   def message_params
     params.require(:message).permit(
-      :content, :conversation_id
+      :content, :conversation_id, :attachments_attributes => [:file]
     ).merge(
       person_id: current_user.person.id
     )

@@ -110,6 +110,7 @@ pt-BR:
       next_conversation: "Próxima conversa"
       made_last_message: "Você conseguiu chegar na última mensagem!"
       back_to_inbox: "Voltar para a Entrada"
+      attach_files: "Anexar Arquivos"
     markdown:
       we_use_markdown: "Nós usamos Markdown!"
       tool_to_format_text: "Markdown é uma ferramenta para formatar texto."

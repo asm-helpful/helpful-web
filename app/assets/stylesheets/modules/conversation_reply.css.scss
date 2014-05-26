@@ -38,6 +38,10 @@
         color: $dark-gray;
       }
     }
+
+    input[type="file"] {
+      display: none;
+    }
   }
 
   .textcomplete-wrapper {
