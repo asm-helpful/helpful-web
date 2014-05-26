@@ -133,4 +133,9 @@ textarea.form-control {
 
 .help-block {
   font-weight: lighter;
+
+  &.help-block-right {
+    float: right;
+    margin-top: 13px;
+  }
 }
