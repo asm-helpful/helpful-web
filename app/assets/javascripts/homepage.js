@@ -85,11 +85,11 @@ function animateScreen(index) {
   // }
 
   var $image = $screenshot.find('img');
-  $('.screenshot img').not($image).animate({ opacity: .3 }, 200);
+  //$('.screenshot img').not($image).animate({ opacity: .3 }, 200);
   $image.animate({ opacity: 1 }, 300);
 
   var $paragraph = $screenshot.find('p');
-  $('.screenshot p').not($paragraph).animate({ opacity: .3 }, 200);
+  //$('.screenshot p').not($paragraph).animate({ opacity: .3 }, 200);
   $paragraph.animate({ opacity: 1 }, 300);
 
 }
