@@ -255,6 +255,13 @@ MOBILE
     background: rgba(0,0,0,.3);
   }
 
+  .screenshot-list {
+    margin: 50px 0;
+    .screenshot > p {
+      margin-top: 30px;
+      opacity: .9;
+    }
+  }
 }
 @media (max-width: 960px) {
 
@@ -279,7 +286,7 @@ MOBILE
 @media (max-width: 1200px) {
 
   .screenshot-list .screenshot > p {
-    width: 100%; 
+    width: 100%;
   }
 
   .navbar {
