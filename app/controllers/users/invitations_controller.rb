@@ -5,13 +5,14 @@ class Users::InvitationsController < Devise::InvitationsController
     @user = invite_resource
     @person = Person.new
     @plans = BillingPlan.order('price ASC')
-    @role = @account.is_user_owner(current_user) ? params.fetch(:membership_role) : 'agent'
 
     @membership = Membership.new(
-      role: @role,
+      role: params.fetch(:membership_role),
       user: @user,
       account: @account
     )
+
+    authorize! InvitationCreatePolicy.new(@account, current_user, @membership)
 
     if @membership.save
       if @user.invitation_sent_at
