@@ -1,14 +1,6 @@
 <%= render 'shared/navbar' %>
 
 <div class="container">
-  <% unless current_user.accounts.one? %>
-    <div class="list-group" style="position: absolute; margin-top: 20px; margin-left: -240px; width: 200px;">
-      <% current_user.accounts.each do |account| %>
-        <%= link_to account.name, edit_account_path(account), class: "list-group-item #{ "active" if account == @account }" %>
-      <% end %>
-    </div>
-  <% end %>
-
   <h1 class="page-title">
     <%= @account.name %>
   </h1>
