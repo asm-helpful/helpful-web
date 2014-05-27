@@ -34,10 +34,8 @@ class Account < ActiveRecord::Base
     dependent: :destroy
 
   validates :name,
-    presence: true
-
-  validates :slug,
-    presence: true
+    presence: true,
+    uniqueness: true
 
   validates :billing_plan,
     presence: true
@@ -149,6 +147,18 @@ class Account < ActiveRecord::Base
   def owner
     owner_membership = memberships.where(role: 'owner').first
     owner_membership && owner_membership.user
+  end
+
+  def owner?(user)
+    memberships.where(user: user, role: 'owner').exists?
+  end
+
+  def roles_allowed_by(user)
+    if owner?(user)
+      ['owner', 'agent']
+    else
+      ['agent']
+    end
   end
 
   def subscribe!

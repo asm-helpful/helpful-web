@@ -1,7 +1,11 @@
 .dropdown-menu {
   li {
     a {
-      line-height: 50px;
+      line-height: 32px;
+    }
+
+    &:last-child a {
+      padding-bottom: 8px;
     }
   }
 }

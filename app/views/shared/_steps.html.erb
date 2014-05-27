@@ -18,7 +18,7 @@
           <%= link_to account_invitations_path(@account), class: "#{'active' if current_page?(account_invitations_path(@account))}" do %>
             <span class="glyphicon glyphicon-ok"></span>
             <!-- TODO: locale is missing -->
-            Add Helpful to Your Site
+            Invite Your Team
           <% end %>
         </li>
 
@@ -26,7 +26,7 @@
           <%= link_to configuration_account_path(@account), class: "#{'active' if current_page?(configuration_account_path(@account))}" do %>
             <span class="glyphicon glyphicon-ok"></span>
             <!-- TODO: locale is missing -->
-            Be Helpful
+            Start Using Helpful
           <% end %>
         </li>
 
@@ -65,14 +65,14 @@
         <li>
           <%= link_to new_accounts_path do %>
             <span class="glyphicon glyphicon-ok"></span>
-            Add Helpful to Your Site
+            Invite Your Team
           <% end %>
         </li>
 
         <li>
           <%= link_to new_accounts_path do %>
             <span class="glyphicon glyphicon-ok"></span>
-            Be Helpful
+            Start Using Helpful
           <% end %>
         </li>
 

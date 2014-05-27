@@ -11,6 +11,10 @@ fieldset:last-child {
 .form-group {
   margin-top: 10px;
   margin-bottom: 10px;
+  .avatar {
+    display: block;
+    margin-top: 10px;
+  }
 }
 
 label {

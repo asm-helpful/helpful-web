@@ -28,7 +28,8 @@
   background-color: $success;
 }
 
-.alert-danger {
+.alert-danger,
+.alert-error {
   background-color: $danger;
 }
 

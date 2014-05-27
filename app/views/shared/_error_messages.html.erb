@@ -1,10 +1,15 @@
 <% if target.errors.any? %>
-  <div id="errorExplanation">
-    <h2><%= pluralize(target.errors.count, "error") %> prohibited this record from being saved:</h2>
-    <ul>
-      <% target.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+  <div class="panel panel-errors">
+    <div class="panel-title">
+      Oops! Something went wrong.
+    </div>
+
+    <div class="panel-body">
+      <% target.errors.full_messages.each do |message| %>
+        <p>
+          <%= message %>
+        </p>
       <% end %>
-    </ul>
+    </div>
   </div>
 <% end %>

@@ -70,10 +70,10 @@
 
     <fieldset>
 
-      <%= render 'shared/error_messages', target: @user %>
-
       <!-- TODO: locale is missing -->
       <h2>Personal Information</h2>
+
+      <%= render 'shared/error_messages', target: @user %>
 
       <%= fields_for @person do |ff| %>
 

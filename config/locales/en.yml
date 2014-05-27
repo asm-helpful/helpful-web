@@ -32,8 +32,8 @@ en:
 
   shared:
     navbar:
-      personal_settings: "Personal Settings"
-      settings: "Account Settings"
+      profile: "Profile"
+      company_profile: "Company Profile"
       help: "Help"
       logout: "Logout"
       inbox: "Inbox"
@@ -108,6 +108,7 @@ en:
       next_conversation: "Next Conversation"
       made_last_message: "You made it to the last message!"
       back_to_inbox: "Back to the Inbox"
+      attach_files: "Attach Files"
     markdown:
       we_use_markdown: "We use Markdown!"
       tool_to_format_text: "Markdown is a tool to format your text."

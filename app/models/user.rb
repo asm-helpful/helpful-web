@@ -9,7 +9,9 @@ class User < ActiveRecord::Base
 
   has_many :memberships
 
-  has_many :accounts, through: :memberships
+  has_many :accounts,
+    -> { order('name ASC') },
+    through: :memberships
 
   has_many :conversations
 
@@ -34,4 +36,8 @@ class User < ActiveRecord::Base
     allow_nil: true
 
   accepts_nested_attributes_for :person
+
+  def avatar
+    self.try(:person).try(:avatar)
+  end
 end

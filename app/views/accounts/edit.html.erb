@@ -51,6 +51,7 @@
 
   <br>
 
+  <% if @account.owner?(current_user) %>
   <h1 class="page-title">
     <%= t('.subscription') %>
   </h1>
@@ -112,6 +113,7 @@
     </fieldset>
 
   <% end %>
+  <% end %>
 
   <h1 class="page-title">
     <%= t('.invitations') %>
@@ -134,7 +136,7 @@
           <%= f.text_field :email, class: 'form-control' %></p>
         </div>
         <div class="col-md-3">
-          <%= select_tag :membership_role, options_for_select(Membership::ROLES), class: 'form-control' %>
+          <%= select_tag :membership_role, options_for_select(@account.roles_allowed_by(current_user)), class: 'form-control' %>
         </div>
         <div class="col-md-3">
           <%= f.submit 'Send', class: 'btn btn-secondary' %>
@@ -151,7 +153,11 @@
     <% @account.memberships.each do |membership| %>
       <li>
         <p>
-          <%= membership.user.email %>
+          <% if membership.user.name %>
+            <strong><%= membership.user.name %></strong>
+          <% else %>
+            <%= membership.user.email %>
+          <% end %>
 
           <span class="badge badge-info">
             <%= t('general.roles.' + membership.role) %>

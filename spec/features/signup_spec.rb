@@ -21,7 +21,7 @@ describe "new user signup" do
       fill_in "user_email", :with => "helper@helpful.io"
       fill_in "user_password", :with => "short"
       click_on "Sign up and start inviting your team!"
-      expect(page).to have_selector("h2", text: "1 error prohibited this record from being saved")
+      expect(page).to have_selector(".panel-title", text: "Oops! Something went wrong.")
       expect(page).to have_selector("body", "Password is too short (minimum is 8 characters)")
     end
   end
