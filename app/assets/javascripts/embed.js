@@ -5,7 +5,7 @@
 //
 // It's attached to the DOM with the use of the `data-helpful` attribute:
 //
-//    <a href='#' data-helpful='my-account-slug'>Click me to show embed</a>
+//    <a href="#" data-helpful="my-account-slug">Click me to show embed</a>
 //
 // The value of `data-helpful` should be the account slug of the Helpful account
 // where the new message should be created.
@@ -13,7 +13,7 @@
 // 
 // No need for jQuery! Plain old Javascript!
 //
-(function($) {
+(function() {
   // HelpfulEmbed Class
   var HelpfulEmbed = function () {
   }
@@ -166,7 +166,7 @@
 
       var js_el = document.createElement('script');
       js_el.type = 'text/javascript';
-      js_el.src = 'http://localhost:5000/incoming_message?'+ params; // DEV
+      js_el.src = 'http://localhost:5000/incoming_message?' + params; // DEV
 
       document.body.appendChild(js_el);
     });

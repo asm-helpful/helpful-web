@@ -18,6 +18,8 @@
 }
 
 .helpful-embed {
+  * { margin: 0; }
+
   @include box-sizing(border-box);
 
   z-index: 99999;
