@@ -1,7 +1,4 @@
 class InvitationCreatePolicy < Policy
-  ALLOWED_ROLES_FOR_OWNER = ['owner', 'agent']
-  ALLOWED_ROLES_FOR_AGENT = ['agent']
-
   def initialize(account, user, invitation_membership)
     @account = account
     @user = user

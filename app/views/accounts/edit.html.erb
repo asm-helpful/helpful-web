@@ -51,7 +51,7 @@
 
   <br>
 
-  <% if @account.is_user_owner(current_user) %>
+  <% if @account.owner?(current_user) %>
   <h1 class="page-title">
     <%= t('.subscription') %>
   </h1>
@@ -136,7 +136,7 @@
           <%= f.text_field :email, class: 'form-control' %></p>
         </div>
         <div class="col-md-3">
-          <%= select_tag :membership_role, options_for_select(@account.is_user_owner(current_user) ? Membership::ROLES : ['agent']), class: 'form-control' %>
+          <%= select_tag :membership_role, options_for_select(@account.roles_allowed_by(current_user)), class: 'form-control' %>
         </div>
         <div class="col-md-3">
           <%= f.submit 'Send', class: 'btn btn-secondary' %>
