@@ -29,7 +29,12 @@
 
 <div class="conversation conversation-detail">
   <div class="actions">
-    <% unless @conversation.archived? %>
+    <% if @conversation.archived? %>
+      <%= form_for [@account, @conversation] do |f| %>
+        <%= f.hidden_field :unarchive, value: true %>
+        <%= f.submit t('conversations.row.unarchive'), class: 'btn btn-default' %>
+      <% end %>
+    <% else %>
       <%= form_for [@account, @conversation] do |f| %>
         <%= f.hidden_field :respond_later, value: true %>
         <%= f.submit t('conversations.row.later'), class: 'btn btn-default', style: 'margin-bottom: 10px' %>

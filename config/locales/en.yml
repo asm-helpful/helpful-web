@@ -129,6 +129,7 @@ en:
     row:
       later: "Later"
       archive: "Archive"
+      unarchive: "Move to Inbox"
     search:
       search_results_for: "Search results for"
       no_results: "No results to show."
