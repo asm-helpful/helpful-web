@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  UNSTORED_LOCATIONS = ['/users/sign_up', '/users/sign_in', '/users/password', 'users/sign_out']
+  UNSTORED_LOCATIONS = ['/users/sign_up', '/users/sign_in', '/users/password', '/users/sign_out', '/users/invitation']
 
   before_filter :store_location
 
