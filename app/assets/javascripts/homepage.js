@@ -106,34 +106,32 @@ function finishAnimation() {
 }
 
 
-
-var isMobile = window.matchMedia("only screen and (max-width: 760px)");
-
-var windowChecker = function() {
-  if (isMobile.matches) {
-    $(document).on('ready page:load', function() {
-      $(".navbar-homepage").addClass('navbar-fixed-top');
-      $("body").css("padding-top", "60px");
-      $(".navbar-right li").detach().appendTo('.navbar-nav');
-      $(".navbar-right").hide();
-      console.log("1");
-    });
+function isMobile() {
+  return window.matchMedia("only screen and (max-width: 760px)").matches;
+}
+ 
+function displayDesktop() {
+  new WOW().init();
+  positionPages();
+  affixNavbar($('.navbar-placeholder'));
+  scrollToContentButtons();
+  animateScreenshots();
+}
+ 
+function displayMobile() {
+  $(".navbar-homepage").addClass('navbar-fixed-top');
+}
+ 
+var displayWindow = function() {
+  if (isMobile()) {
+    displayMobile();
   } else {
-    $(document).on('ready page:load', function() {
-      new WOW().init();
-      positionPages();
-      affixNavbar($('.navbar-placeholder'));
-      scrollToContentButtons();
-      animateScreenshots();
-      console.log("2");
-    });
+    displayDesktop();
   }
 };
-
-windowChecker();
-
-// for all those resizing the damn browser window!
-$(window).resize(function() {
-    windowChecker();
+ 
+$(document).on('ready page:load', function() {
+    
+  displayWindow();
+ 
 });
-

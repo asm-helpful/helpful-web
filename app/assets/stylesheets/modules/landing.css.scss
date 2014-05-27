@@ -1,8 +1,29 @@
+/*-------------------------------
+NAVBAR 
+-------------------------------*/
+
+.navbar {
+  .navbar-nav.pull-right {
+    .btn {
+      padding: 20px 20px;
+      line-height: 0px;
+      &.btn-default {
+        display: none;    
+      }
+    }
+  }
+}
 
 /*-------------------------------
 GENERAL 
 -------------------------------*/
 
+.signin_absolute {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 999;
+}
 .backdrop h1 {
   line-height: 1.2;
 }
@@ -201,5 +222,72 @@ border-top-color: rgb(228, 228, 228);
 
   .call-to-action-btn {
     margin-top: 55px;
+  }
+}
+
+
+/*-------------------------------
+MOBILE 
+-------------------------------*/
+
+@media (max-width: 768px) {
+
+  .backdrop {
+    padding-top: 100px;
+  }
+
+  .navbar .navbar-nav.pull-right {
+    width: 100%;
+    margin: 0;
+    a.btn {
+      padding: 31px !important;
+      margin: 0 !important;
+      border-radius: 0;
+      -webkit-border-radius: 0;
+      &.btn-default {
+        border: 0;
+        background: #16a0b5;
+      }
+    }
+  }
+
+  .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+    background: rgba(0,0,0,.3);
+  }
+
+}
+@media (max-width: 960px) {
+
+  .signin_absolute {
+    display: none;    
+  }
+  .navbar.container {
+      position: relative;
+  }
+  .navbar .navbar-nav.pull-right {
+    a.btn {
+      padding: 20px 20px;
+      margin: 15px 0 0 15px;
+      &.btn-default {
+        display: block; 
+      }
+    }
+  }
+
+}
+
+@media (max-width: 1200px) {
+
+  .screenshot-list .screenshot > p {
+    width: 100%; 
+  }
+
+  .navbar {
+    .navbar-nav.pull-right {
+      a.btn {
+        margin: 15px 0 0 0px;
+        padding: 20px 16px;
+      }
+    }
   }
 }
