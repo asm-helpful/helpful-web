@@ -1,11 +1,14 @@
 <%= render 'shared/navbar' %>
 
 <div class="container">
-  <div class="page-header">
+  <div>
     <a class="btn btn-primary pull-right" href="<%= new_account_canned_response_path %>">
       <%= t('.create_canned_response') %>
     </a>
-    <h1><%= t('.canned_responses') %></h1>
+
+    <h1 class="page-title">
+      <%= t('.canned_responses') %>
+    </h1>
   </div>
 
   <% if @canned_responses.any? %>

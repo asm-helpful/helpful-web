@@ -1,9 +1,12 @@
 <%= render 'shared/navbar' %>
 
 <div class="container">
-  <div class="page-header">
+  <div>
     <%= button_to t('.delete'), [@account, @canned_response], method: :delete, class: 'btn btn-danger pull-right' %>
-    <h1><%= t('canned_responses.general.canned_response') %></h1>
+
+    <h1 class="page-title">
+      <%= t('canned_responses.general.canned_response') %>
+    </h1>
   </div>
 
   <%= render 'shared/error_messages', target: @canned_response %>
