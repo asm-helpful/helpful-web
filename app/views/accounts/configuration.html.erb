@@ -7,10 +7,8 @@
   <h1 class="page-title">Start using Helpful!</h1>
 
   <p>
-    Now that you're signed up, let's give your new Helpful email address a test drive real quick.
+    Send yourself a support request to see how it works <%= mail_to @account.mailbox_email.address %>. 
   </p>
-
-  <%= mail_to @account.mailbox_email.address, 'Send an email to your new support inbox', subject: ExampleConversation::SUBJECT, body: ExampleConversation::CONTENT, class: 'btn btn-secondary', style: 'margin-bottom: 20px' %>
 
   <div class="well well-lg empty-inbox">
     <p style="margin-bottom: 0">
