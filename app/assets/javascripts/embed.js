@@ -122,6 +122,12 @@
   HelpfulEmbed.prototype.setupEvents = function () {
     var that = this;
 
+    // event listener for closing on overlay click
+    document.querySelector('.helpful-overlay').addEventListener('click', function (e) {
+      e.stopPropagation();
+      helpful_embed.close();
+    });
+
     // event listener to change styles for textarea input
     document.querySelector('.helpful-embed textarea').addEventListener('keyup', function () {
       that.checkTextarea();
