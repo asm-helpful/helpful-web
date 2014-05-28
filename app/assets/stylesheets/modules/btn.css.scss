@@ -65,12 +65,12 @@
 
 .btn-primary,
 .btn-primary[disabled] {
-  background-color: $light-red;
+  background-color: $red;
 
   &:not([disabled]) {
     &:hover,
     &.hover {
-      background-color: $red;
+      background-color: $light-red;
     }
   }
 }
