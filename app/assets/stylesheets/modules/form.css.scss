@@ -48,6 +48,19 @@ textarea.form-control {
     -webkit-font-smoothing: antialiased;
   }
 
+  &.inline-label {
+    @include placeholder {
+      color: $darkest-blue;
+      font-weight: normal;
+    }
+
+    &:focus, &.focus {
+      @include placeholder {
+        color: $gray;
+      }
+    }
+  }
+
   &:focus,
   &.focus {
     background-color: $white;
@@ -133,4 +146,9 @@ textarea.form-control {
 
 .help-block {
   font-weight: lighter;
+
+  &.help-block-right {
+    float: right;
+    margin-top: 13px;
+  }
 }
