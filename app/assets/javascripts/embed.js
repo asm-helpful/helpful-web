@@ -247,6 +247,7 @@
 
   [].forEach.call(document.querySelectorAll('[data-helpful]'), function (el) {
     el.addEventListener('click', function(e) {
+      e.preventDefault();
       e.stopPropagation();
       helpful_embed.open(this);
     });
