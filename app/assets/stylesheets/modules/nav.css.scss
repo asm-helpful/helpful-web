@@ -47,7 +47,7 @@
     float: none;
     position: relative;
     z-index: 2;
-    display: inline;
+    display: inline-block;
 
     > a {
       background-color: $navbar-default-bg;
