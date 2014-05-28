@@ -51,6 +51,7 @@
 
     > a {
       background-color: $navbar-default-bg;
+      color: $dark-gray !important;
       display: inline-block;
       position: relative;
       whitespace: nowrap;
@@ -63,12 +64,12 @@
         top: 5px;
         position: absolute;
         margin: 0 auto;
-        color: $dark-gray;
+        color: $white;
         display: none;
       }
 
       &.active {
-        color: $dark-gray;
+        color: $white !important;
 
         .glyphicon {
           display: block;
