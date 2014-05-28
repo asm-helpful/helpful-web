@@ -110,13 +110,15 @@ function finishAnimation() {
 var isMobile = window.matchMedia("only screen and (max-width: 760px)");
 
 var windowChecker = function() {
+  if (window.location.pathname != '/')
+    return; // not on homepage
+
   if (isMobile.matches) {
     $(document).on('ready page:load', function() {
       $(".navbar-homepage").addClass('navbar-fixed-top');
       $("body").css("padding-top", "60px");
       $(".navbar-right li").detach().appendTo('.navbar-nav');
       $(".navbar-right").hide();
-      console.log("1");
     });
   } else {
     $(document).on('ready page:load', function() {
@@ -125,7 +127,6 @@ var windowChecker = function() {
       affixNavbar($('.navbar-placeholder'));
       scrollToContentButtons();
       animateScreenshots();
-      console.log("2");
     });
   }
 };
