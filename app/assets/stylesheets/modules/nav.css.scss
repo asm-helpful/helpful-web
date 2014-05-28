@@ -68,28 +68,31 @@
         display: none;
       }
 
-      &.active {
-        color: $white !important;
-
+      &.completed {
         .glyphicon {
           display: block;
         }
       }
 
-      &::after {
-        bottom: 0;
-        color: $white;
-        content: "\00B7";
-        font-size: 50px;
-        height: 6px;
-        left: 0;
-        line-height: 6px;
-        margin: auto;
-        overflow: hidden;
-        position: absolute;
-        right: 0;
-        width: 12px;
+      &.active {
+        color: $white !important;
+
+        &::after {
+          bottom: 0;
+          color: $lightest-gray;
+          content: "\00B7";
+          font-size: 50px;
+          height: 6px;
+          left: 0;
+          line-height: 6px;
+          margin: auto;
+          overflow: hidden;
+          position: absolute;
+          right: 0;
+          width: 12px;
+        }
       }
+
     }
   }
 
