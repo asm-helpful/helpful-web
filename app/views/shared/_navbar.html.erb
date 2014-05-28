@@ -44,14 +44,11 @@
             <%= link_to t('canned_responses.index.canned_responses'), account_canned_responses_path(@account) %>
           </li>
 
-          <% if other_accounts.any? %>
+          <% other_accounts.each do |account| %>
             <li class="divider"></li>
-
-            <% other_accounts.each do |account| %>
-              <li>
-                <%= link_to account.name, inbox_account_conversations_path(account) %>
-              </li>
-            <% end %>
+            <li>
+              <%= link_to account.name, inbox_account_conversations_path(account), class: 'navbar-company-link' %>
+            </li>
           <% end %>
         </ul>
       </li>

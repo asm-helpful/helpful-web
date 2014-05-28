@@ -148,3 +148,12 @@
     }
   }
 }
+
+.navbar-nav.navbar-left > li > .dropdown-menu a {
+  margin-left: -50px;
+  padding-left: 65px;
+
+  &.navbar-company-link {
+    color: #e6e6e6;
+  }
+}

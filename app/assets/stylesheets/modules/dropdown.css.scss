@@ -1,7 +1,14 @@
 .dropdown-menu {
+  max-width: 320px;
+
   li {
     a {
       line-height: 32px;
+      padding: 3px 15px;
+    }
+
+    &:first-child a {
+      padding-top: 8px;
     }
 
     &:last-child a {
