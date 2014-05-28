@@ -45,6 +45,13 @@ class ConversationsController < ApplicationController
     @next_conversation = @inbox.next_conversation(@conversation)
     @previous_conversation = @inbox.previous_conversation(@conversation)
 
+    # We consider viewing this action enough to create a read receipt
+    ReadReceipt.transaction do
+      @conversation.messages.each do |m|
+        ReadReceipt.find_or_create_by(person: current_user.person, message: m)
+      end
+    end
+
     respond_with @conversation
   end
 
