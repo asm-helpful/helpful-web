@@ -48,6 +48,7 @@
     line-height: 30px;
     padding: 3px 20px;
     cursor: pointer;
+    margin: 0;
   }
 
   .helpful-btn-default {
@@ -140,6 +141,8 @@
     border-radius: 4px 4px 0 0;
     text-align: center;
     background-color: white;
+    padding: 0;
+    margin: 0;
 
     h1 {
       font-size: 18px;
@@ -162,6 +165,8 @@
   }
 
   > footer {
+    margin: 0;
+    padding: 0;
     width: 100%;
     position: absolute;
     bottom: 0;
