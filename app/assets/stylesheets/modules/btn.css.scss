@@ -99,6 +99,16 @@
   }
 }
 
+.btn-status {
+  &.btn-success,
+  &.btn-success[disabled] {
+    &:hover,
+    &.hover {
+      background-color: $success;
+    }
+  }
+}
+
 .btn-warning,
 .btn-warning[disabled] {
   background-color: $warning;

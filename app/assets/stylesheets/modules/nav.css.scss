@@ -31,10 +31,10 @@
   height: $navbar-height;
 
   &::after {
-    content: "\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7";
+    content: "\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7";
     color: $dark-gray;
     font-size: 10px;
-    letter-spacing: 7px;
+    letter-spacing: 3px;
     position: absolute;
     top: 0;
     height: $navbar-height;
@@ -47,14 +47,14 @@
     float: none;
     position: relative;
     z-index: 2;
-    display: inline;
+    display: inline-block;
 
     > a {
       background-color: $navbar-default-bg;
       color: $dark-gray !important;
       display: inline-block;
       position: relative;
-      whitespace: nowrap;
+      white-space: nowrap;
 
       .glyphicon {
         font-size: 10px;
@@ -64,32 +64,36 @@
         top: 5px;
         position: absolute;
         margin: 0 auto;
-        color: $white;
+        color: $dark-gray;
         display: none;
       }
 
-      &.active {
-        color: $white !important;
-
+      &.completed {
         .glyphicon {
           display: block;
         }
       }
 
-      &::after {
-        bottom: 0;
-        color: $white;
-        content: "\00B7";
-        font-size: 50px;
-        height: 6px;
-        left: 0;
-        line-height: 6px;
-        margin: auto;
-        overflow: hidden;
-        position: absolute;
-        right: 0;
-        width: 12px;
+      &.active {
+        font-weight: bold;
+        color: $white !important;
+
+        &::after {
+          bottom: 0;
+          color: $white;
+          content: "\00B7";
+          font-size: 30px;
+          height: 5px;
+          left: 0;
+          line-height: 5px;
+          margin: auto;
+          overflow: hidden;
+          position: absolute;
+          right: 0;
+          width: 12px;
+        }
       }
+
     }
   }
 
