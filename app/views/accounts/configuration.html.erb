@@ -25,7 +25,7 @@
   </div>
 
   <div class="pull-right">
-    <%= link_to 'Send an email for me', inbox_account_conversations_path(@account), class: 'btn btn-default skip-button' %>
+    <%= link_to 'Skip this and check out the inbox', inbox_account_conversations_path(@account), class: 'btn btn-default skip-button' %>
     <%= link_to 'Check out the inbox', inbox_account_conversations_path(@account), class: 'btn btn-primary inbox-button' %>
   </div>
 </div>
@@ -36,7 +36,7 @@ var checkInbox = function() {
     var accountSlug = $('[name=account_slug]').val();
 
     $.getJSON('/' + accountSlug + '/inbox', function(data) {
-      if (data['conversations'].length > 0) {
+      if (data['conversations'].length > 1) {
         notifyConversationCreated();
         clearInterval(checkInterval);
       }
@@ -52,9 +52,7 @@ var notifyConversationCreated = function() {
   $('.inbox-button').show();
 }
 
-$(document).on('ready page:load', function() {
-  checkInbox();
-  $('.full-inbox').hide();
-  $('.inbox-button').hide();
-});
+checkInbox();
+$('.full-inbox').hide();
+$('.inbox-button').hide();
 </script>

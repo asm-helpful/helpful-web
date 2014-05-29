@@ -19,7 +19,7 @@ class ConversationsController < ApplicationController
     @assignment_user = User.find_by(id: params[:user_id])
     inbox = ConversationsInbox.new(@account, current_user, params[:q], @assignment_user)
     @conversations = inbox.conversations
-    WelcomeConversation.create(@account, current_user) unless @account.conversations.including_unpaid.exists?
+    WelcomeConversation.create(@account, current_user) unless @account.conversations.welcome_email.exists?
     respond_with @conversations
   end
 
