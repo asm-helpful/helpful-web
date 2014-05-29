@@ -19,7 +19,6 @@ function autofocusInput($btnGroup) {
 }
 
 function applyTextcomplete($btnGroup) {
-  var textcompletesPath = $btnGroup.attr('data-textcomplete-path');
   var $input = $('input', $btnGroup);
   var $dropdownToggle = $('.dropdown-toggle', $btnGroup);
   var $dropdown = $('.dropdown-menu', $btnGroup);

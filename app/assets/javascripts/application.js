@@ -1,6 +1,5 @@
 //= require jquery
 //= require jquery_ujs
-//= require jquery.textcomplete.min
 //= require pusher
 //= require turbolinks
 //= require bootstrap

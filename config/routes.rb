@@ -69,8 +69,6 @@ Helpful::Application.routes.draw do
   scope '/:account_id', as: :account do
     resources :canned_responses
 
-    resources :textcompletes, only: [:index]
-
     resources :conversations, path: '/', only: [:show, :update] do
       get :archived, on: :collection
       get :inbox, on: :collection
