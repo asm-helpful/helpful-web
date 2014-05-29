@@ -86,16 +86,14 @@ var inviteUser = function($row) {
       membership_role: 'agent'
     }),
     success: function(response) {
-      $inviteButton.removeClass('btn-secondary');
-      $inviteButton.removeAttr('rel');
-
-      $inviteButton.addClass('btn-success');
-      $inviteButton.text('Invited');
-      $inviteButton.prepend(
-        $('<span>').addClass('glyphicon glyphicon-ok')
+      
+      $inviteButton.parent().html(
+        $('<span class="btn btn-block btn-success btn-status"><span class="glyphicon glyphicon-ok"></span>Invited</span>')
       );
       
-      $emailInput.parent().html('<div class="form-text">' + email + '</div>');
+      $emailInput.parent().html(
+        '<div class="form-text">' + email + '</div>'
+      );
 
       $row.after(invitationRowTemplate());
       $('[name=user_email]:last').focus();
