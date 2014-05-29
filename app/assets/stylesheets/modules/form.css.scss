@@ -17,6 +17,13 @@ fieldset:last-child {
   }
 }
 
+.form-text {
+  height: 46px;
+  line-height: 46px;
+  font-weight: lighter;
+  font-size: 1.2em;
+}
+
 label {
   color: $darkest-blue;
   font-size: 1.2em;
