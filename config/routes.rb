@@ -61,6 +61,7 @@ Helpful::Application.routes.draw do
       resources :invitations
 
       get :configuration
+      get :setup
       get :web_form
     end
   end
