@@ -44,5 +44,13 @@ module Helpful
     config.to_prepare do
       Devise::Mailer.layout "email"
     end
+
+    console do
+      config.console = Pry
+    end
+
+    config.after_initialize do
+      Hirb.enable if Rails.env.development? || Rails.env.test?
+    end
   end
 end
