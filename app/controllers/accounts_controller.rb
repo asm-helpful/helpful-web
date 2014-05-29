@@ -69,6 +69,10 @@ class AccountsController < ApplicationController
     find_account!
   end
 
+  def setup
+    find_account!
+  end
+
   def web_form
     find_account!
   end

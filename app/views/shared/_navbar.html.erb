@@ -39,6 +39,10 @@
           <li>
             <a href="<%= edit_account_path(@account) %>"><%= t('.company_profile') %></a>
           </li>
+          
+          <li>
+            <a href="<%= setup_account_path(@account) %>"><%= t('.technical_setup') %></a>
+          </li>
 
           <li>
             <%= link_to t('canned_responses.index.canned_responses'), account_canned_responses_path(@account) %>
