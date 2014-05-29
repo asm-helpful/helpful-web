@@ -34,6 +34,7 @@ fr:
     navbar:
       profile: "Paramètres Personnels"
       company_profile: "Paramètres"
+      technical_setup: "Configuration technique"
       help: "Aide"
       logout: "Déconnexion"
       inbox: "Boîte de Réception"

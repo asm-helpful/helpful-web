@@ -34,6 +34,7 @@ en:
     navbar:
       profile: "Profile"
       company_profile: "Company Profile"
+      technical_setup: "Technical Setup"
       help: "Help"
       logout: "Logout"
       inbox: "Inbox"
