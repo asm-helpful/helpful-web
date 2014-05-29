@@ -48,9 +48,9 @@ en:
 
   users:
     edit:
-      user_settings: "User settings"
+      user_settings: "Your Account Settings"
       name: "Name"
-      update_personal_settings: "Update my personal settings"
+      update_personal_settings: "Update My Profile"
     mailer:
       invitation_instructions:
         someone_invited: "Someone has invited you to"

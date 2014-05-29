@@ -30,7 +30,7 @@ module AvatarHelper
   end
 
   def avatar_path(person, size)
-    person.avatar.try(:thumb).present? ? person.avatar.thumb : gravatar_url(person.email, size)
+    person.avatar.try(:preview).present? ? person.avatar.thumb : gravatar_url(person.email, size)
   end
 
   def avatar_style_constraints(size)
