@@ -36,6 +36,7 @@ var clearInputButton = function($element) {
 var toggleHighlight = function($element) {
   $element.focus(function() {  
     $(this).removeClass('filled');
+    $('.search-results-container').show();
   });
 
   $element.blur(function() {
@@ -44,6 +45,7 @@ var toggleHighlight = function($element) {
     } else {
       $(this).removeClass('filled');
     }
+    $('.search-results-container').hide();
   });
 }
 
