@@ -17,6 +17,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network :forwarded_port, guest: 5000, host: 5000
 
   config.vm.provider "virtualbox" do |vb|
+    vb.customize ['modifyvm', :id, '--cpus', '2']
+    vb.customize ['modifyvm', :id, '--ioapic', 'on']
+    vb.customize ['modifyvm', :id, '--memory', '2048']
+
     # https://github.com/mitchellh/vagrant/issues/1807
     # whatupdave: my VM was super slow until I added these:
     vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
