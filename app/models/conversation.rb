@@ -62,6 +62,8 @@ class Conversation < ActiveRecord::Base
 
   scope :with_messages_count, -> { select('conversations.*, (SELECT COUNT(messages.id) FROM messages WHERE messages.conversation_id = conversations.id) AS messages_count') }
 
+  scope :welcome_email, -> { where(subject: WelcomeConversation::SUBJECT) }
+
   sequential column: :number,
     scope: :account_id
 

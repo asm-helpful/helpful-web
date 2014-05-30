@@ -39,19 +39,20 @@
           <li>
             <a href="<%= edit_account_path(@account) %>"><%= t('.company_profile') %></a>
           </li>
+          
+          <li>
+            <a href="<%= setup_account_path(@account) %>"><%= t('.technical_setup') %></a>
+          </li>
 
           <li>
             <%= link_to t('canned_responses.index.canned_responses'), account_canned_responses_path(@account) %>
           </li>
 
-          <% if other_accounts.any? %>
+          <% other_accounts.each do |account| %>
             <li class="divider"></li>
-
-            <% other_accounts.each do |account| %>
-              <li>
-                <%= link_to account.name, inbox_account_conversations_path(account) %>
-              </li>
-            <% end %>
+            <li>
+              <%= link_to account.name, inbox_account_conversations_path(account), class: 'navbar-company-link' %>
+            </li>
           <% end %>
         </ul>
       </li>
@@ -78,7 +79,7 @@
           <ul class="dropdown-menu">
             <li>
               <%= link_to inbox_account_conversations_path(@account, user_id: current_user.id) do %>
-                <%= avatar(current_user, 30, 'avatar-default navbar-avatar') %>
+                <%= avatar(current_user, 20, 'avatar-default navbar-avatar navbar-avatar-dropdown') %>
                 <span class="username"><%= current_user.name %></span>
               <% end %>
             </li>
@@ -89,7 +90,7 @@
               <% other_people.each do |person| %>
                 <li>
                   <%= link_to inbox_account_conversations_path(@account, user_id: person.user_id) do %>
-                    <%= avatar(person, 30, 'avatar-default navbar-avatar') %>
+                    <%= avatar(person, 20, 'avatar-default navbar-avatar navbar-avatar-dropdown') %>
                     <span class="username"><%= person.name %></span>
                   <% end %>
                 </li>

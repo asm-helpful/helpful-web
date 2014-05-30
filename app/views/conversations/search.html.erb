@@ -3,9 +3,10 @@
 <%= render "layouts/flash" %>
 
 <div class="container">
-  <div class="page-header">
-    <h1><%= t('.search_results_for') %> "<%= params[:q] %>"</h1>
-  </div>
+  <h1 class="page-title">
+    <%= t('.search_results_for') %> "<%= params[:q] %>"
+  </h1>
+
   <% if @conversations.any? %>
     <%= render 'conversations/inbox', conversations: @conversations %>
   <% else %>

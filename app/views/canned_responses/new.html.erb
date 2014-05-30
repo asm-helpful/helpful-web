@@ -1,12 +1,13 @@
 <%= render 'shared/navbar' %>
 
 <div class="container">
-  <div class="page-header">
-    <h1><%= t('canned_responses.general.canned_response') %></h1>
-    <p>
-      <%= t('.help') %> <a href="#"><%= t('.faq') %></a>.
-    </p>
-  </div>
+  <h1 class="page-title">
+    <%= t('canned_responses.general.canned_response') %>
+  </h1>
+
+  <p>
+    <%= t('.help') %> <a href="#"><%= t('.faq') %></a>.
+  </p>
 
   <%= render 'shared/error_messages', target: @canned_response %>
 

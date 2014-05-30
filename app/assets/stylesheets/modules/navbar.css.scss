@@ -30,7 +30,7 @@
 
 .navbar-brand-icon {
   width: 50px;
-  //height: 50px;
+  height: 50px;
   padding: 15px;
   background-color: $navbar-default-brand-bg;
 
@@ -146,5 +146,14 @@
       background: rgba(255,255,255,.1);
       color: rgba(255,255,255,.7);
     }
+  }
+}
+
+.navbar-nav.navbar-left > li > .dropdown-menu a {
+  margin-left: -50px;
+  padding-left: 65px;
+
+  &.navbar-company-link {
+    color: #e6e6e6;
   }
 }

@@ -1,28 +1,42 @@
-<%= render 'shared/navbar' %>
-
 <%= render 'layouts/flash' %>
 
 <div class="container">
 
   <!-- TODO locale is missing -->
-  <h1 class="page-title">Sign In</h1>
+  
+  <div class="row">
+
+      <div class="col-md-6 col-md-offset-3">
+
+          <h1 class="page-title">Sign In <%= link_to t('general.sign_up'), new_accounts_path, class: 'btn btn-default pull-right' %></h1>
+
+      </div>
+
+  </div>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: 'form' }) do |f| %>
 
-    <h2><%= t('.welcome_back') %></h2>
+   <div class="row">
 
-    <!-- TODO locale is missing -->
-    <p>We just need some quick details from you and then you can get right back to work.</p>
+      <div class="col-md-6 col-md-offset-3 text-center">
+
+          <h2><%= t('.welcome_back') %></h2>
+
+          <!-- TODO locale is missing -->
+          <p>We just need some quick details from you and then you can get right back to work.</p>
+
+      </div>
+
+    </div>
 
     <fieldset>
 
       <div class="row">
 
-        <div class="col-md-12">
+        <div class="col-md-6 col-md-offset-3 text-center">
 
           <div class="form-group">
-            <%= f.label :email, t('general.email'), class: 'control-label' %>
-            <%= f.email_field :email, autofocus: true, placeholder: t('general.email_placeholder'), class: 'form-control' %>
+            <%= f.email_field :email, autofocus: true, placeholder: t('general.email_placeholder'), class: 'form-control inline-label' %>
           </div>
 
         </div>
@@ -31,11 +45,10 @@
 
       <div class="row">
 
-        <div class="col-md-12">
+        <div class="col-md-6 col-md-offset-3 text-center">
 
           <div class="form-group">
-            <%= f.label :password, t('general.password'), class: 'control-label' %>
-            <%= f.password_field :password, placeholder: t('.password_placeholder'), class: 'form-control' %>
+            <%= f.password_field :password, placeholder: t('.password_placeholder'), class: 'form-control inline-label' %>
           </div>
 
         </div>
@@ -44,10 +57,10 @@
 
       <div class="row">
 
-        <div class="col-md-12">
+        <div class="col-md-6 col-md-offset-3 clearfix">
 
-          <div class="help-block">
-            <%= link_to t('general.forgot_password'), new_password_path(resource_name), class: 'pull-right' %>
+          <div class="help-block help-block-right">
+            <%= link_to t('general.forgot_password'), new_password_path(resource_name) %>
           </div>
 
           <div class="checkbox">
@@ -63,7 +76,7 @@
 
       <div class="row">
 
-        <div class="col-md-12">
+        <div class="col-md-6 col-md-offset-3 text-center">
 
           <div class="form-group">
             <%= f.submit t('devise.general.sign_in'), class: 'btn btn-lg btn-primary' %>

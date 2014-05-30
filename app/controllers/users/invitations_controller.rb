@@ -15,7 +15,7 @@ class Users::InvitationsController < Devise::InvitationsController
     authorize! InvitationCreatePolicy.new(@account, current_user, @membership)
 
     if @membership.save
-      if @user.invitation_sent_at
+      if @user.invitation_sent_at && request.format == 'html'
         set_flash_message :notice, :send_instructions, email: @user.email
       end
 

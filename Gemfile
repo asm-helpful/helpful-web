@@ -44,6 +44,8 @@ gem 'stripe'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 gem 'unf'
+gem 'awesome_print'
+gem 'pry-rails'
 
 group :development do
   gem 'quiet_assets'
@@ -53,6 +55,7 @@ group :development do
 end
 
 group :development, :test do
+  gem 'jazz_hands'
   gem 'factory_girl_rails', '~> 4.2.1'
   gem 'ffaker', '~> 1.20'
   gem 'rake'
@@ -69,6 +72,7 @@ end
 group :test do
   gem 'capybara'
   gem 'webmock', '< 1.16'
+  gem 'codeclimate-test-reporter', require: nil
 end
 
 group :development, :production do

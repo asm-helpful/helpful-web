@@ -1,3 +1,6 @@
+require 'codeclimate-test-reporter'
+CodeClimate::TestReporter.start
+
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
 ENV["INCOMING_EMAIL_DOMAIN"] = 'helpful.io'
@@ -27,6 +30,7 @@ VCR.configure do |config|
   config.cassette_library_dir = Rails.root.join('spec', 'vcr')
   config.configure_rspec_metadata!
   config.hook_into :webmock
+  config.ignore_hosts 'codeclimate.com'
 end
 
 RSpec.configure do |config|

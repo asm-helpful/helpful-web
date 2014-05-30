@@ -1,14 +1,8 @@
 <%= render 'shared/navbar' %>
 
-<div class="container">
-  <% unless current_user.accounts.one? %>
-    <div class="list-group" style="position: absolute; margin-top: 20px; margin-left: -240px; width: 200px;">
-      <% current_user.accounts.each do |account| %>
-        <%= link_to account.name, edit_account_path(account), class: "list-group-item #{ "active" if account == @account }" %>
-      <% end %>
-    </div>
-  <% end %>
+<%= render "layouts/flash" %>
 
+<div class="container">
   <h1 class="page-title">
     <%= @account.name %>
   </h1>
@@ -173,42 +167,4 @@
     <% end %>
   </ul>
 
-  <br>
-
-  <h1 class="page-title">
-    <!-- TODO locale is missing -->
-    Getting Setup and Technical Details
-  </h1>
-
-  <p><%= t('.try_out_command') %></p>
-
-  <pre>
-    <code>
-      curl -X POST <%= root_url %>incoming_message \
-        -H "Accept: application/json" \
-        --data "account=<%= @account.slug %>" \
-        --data "email=user@example.com" \
-        --data "content=I need help please."
-    </code>
-  </pre>
-
-  <p><%= t('.embed_help_text') %></p>
-
-  <pre>
-    <code>
-      <%= web_form_code %>
-    </code>
-  </pre>
-
-  <%= form_for @account, method: :patch, html: {class: 'form'} do |f| %>
-    <div class="form-group">
-      <%= f.label :webhook_secret, t('.webhook_secret'), class: 'control-label' %>
-      <%= f.text_field :webhook_secret, class: 'form-control', readonly: 'readonly' %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :mailbox, t('.incoming_email'), class: 'control-label' %>
-      <%= f.text_field :mailbox_email, class: 'form-control', readonly: 'readonly' %>
-    </div>
-  <% end %>
 </div>

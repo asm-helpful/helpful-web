@@ -24,6 +24,12 @@
 .navbar .navbar-avatar {
   display: inline-block;
   vertical-align: middle;
+
+  &.navbar-avatar-dropdown {
+    margin-top: -2px;
+
+    .avatar-initials { font-size: 10px; }
+  }
 }
 
 .dropdown.avatar > a {

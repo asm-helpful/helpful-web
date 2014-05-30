@@ -36,6 +36,7 @@ pt-BR:
     navbar:
       profile: "Perfil"
       company_profile: "Conta"
+      technical_setup: "Programación Técnica"
       help: "Ajuda"
       logout: "Sair"
       inbox: "Entrada"

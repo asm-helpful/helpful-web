@@ -52,26 +52,14 @@
 
 <script id="invitation-row-template" type="text/x-handlebars-template">
   <div class="row">
-
-    <div class="col-md-12">
-
-      <div class="form-group">
-        <label class="control-label">Teammate's Email Address</label>
-
-        <div class="row">
-          
-          <div class="col-md-9">
-            <input type="text" class="form-control" name="user_email">
-          </div>
-
-          <div class="col-md-3">
-            <button class="btn btn-secondary btn-block" rel="invite">Invite</button>
-          </div>
-        </div>
-      </div>
-
+    
+    <div class="col-md-9">
+      <input type="text" class="form-control" name="user_email">
     </div>
 
+    <div class="col-md-3">
+      <button class="btn btn-secondary btn-block" rel="invite">Invite</button>
+    </div>
   </div>
 </script>
 
@@ -82,6 +70,10 @@ var inviteUser = function($row) {
   var accountSlug = $('[name=account_slug]').val();
   var email = $emailInput.val();
   var invitationRowTemplate = Handlebars.compile($('#invitation-row-template').html());
+
+  // @TODO Handle fail
+  $inviteButton.text('Inviting...');
+  $inviteButton.attr('disabled', 'disabled');
 
   $.ajax({
     type: 'POST',
@@ -94,19 +86,16 @@ var inviteUser = function($row) {
       membership_role: 'agent'
     }),
     success: function(response) {
-      $inviteButton.removeClass('btn-secondary');
-      $inviteButton.removeAttr('rel');
+      
+      $inviteButton.parent().html(
+        $('<span class="btn btn-block btn-success btn-status"><span class="glyphicon glyphicon-ok"></span>Invited</span>')
+      );
+      
+      $emailInput.parent().html(
+        '<div class="form-text">' + email + '</div>'
+      );
 
-      $inviteButton.addClass('btn-success');
-      $inviteButton.attr('disabled', 'disabled');
-      $inviteButton.text('Invited');
-      $inviteButton.prepend(
-        $('<span>').addClass('glyphicon glyphicon-ok')
-      )
-
-      $emailInput.attr('disabled', 'disabled');
-
-      $row.parent().parent().parent().after(invitationRowTemplate());
+      $row.after(invitationRowTemplate());
       $('[name=user_email]:last').focus();
       attachKeypressHandlers();
     }
