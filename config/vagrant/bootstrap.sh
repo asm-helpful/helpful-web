@@ -25,6 +25,7 @@ else
   dpkg -i elasticsearch-0.90.7.deb
 fi
 
+(source /vagrant/config/vagrant/install-phantomjs.sh)
 
 log "Setting up Helpful"
 
