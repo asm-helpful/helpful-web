@@ -1,0 +1,224 @@
+@import 'addons/prefixer';
+@import 'css3/box-sizing';
+
+.helpful-overlay {
+  z-index: 99997;
+
+  background-color: rgba(0, 0, 0, 0.3);
+
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+
+  &.transparent {
+    background-color: transparent;
+  }
+}
+
+.helpful-embed {
+  * { margin: 0; }
+
+  @include box-sizing(border-box);
+
+  z-index: 99999;
+  position: absolute;
+
+  background-color: #F2F7F8;
+  border-radius: 4px;
+  font-family: "Lato", Helvetica, Arial, sans-serif;
+  color: #333333;
+  text-align: center;
+  
+  width: 350px;
+  height: 340px;
+
+  .helpful-btn {
+    @include box-sizing(border-box);
+    -webkit-appearance: none;
+    display: inline-block;
+    vertical-align: baseline;
+    zoom: 1;
+    border-radius: 99px;
+    border: 0;
+    color: white;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 30px;
+    padding: 3px 20px;
+    cursor: pointer;
+    margin: 0;
+  }
+
+  .helpful-btn-default {
+    background-color: #F2F7F8;
+    border: 2px solid rgba(22, 160, 181, 0.4);
+    color: #16a0b5;
+    padding: 1px 18px;
+
+    &:hover {
+      background-color: white;
+    }
+  }
+
+  .helpful-btn-primary {
+    background-color: #ff6c6c;
+    margin-top: 25px;
+
+    &:hover {
+      background-color: #ff4b4b;
+    }
+  }
+
+  .helpful-btn-return {
+    margin-top: 117px;
+  }
+
+  textarea {
+    @include box-sizing(border-box);
+    border: 0;
+    color: #333333;
+    background-color: transparent;
+    display: block;
+    width: 100%;
+    height: 185px;
+    padding: 20px 40px;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+    font-size: 1em;
+    line-height: 1.375;
+    outline: 0;
+    resize: none;
+    text-align: center;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .helpful-question-container button {
+    display: none;
+  }
+
+  .helpful-details-container, .helpful-thanks-container {
+    display: none;
+  }
+
+  p {
+    margin-top: 10px;
+  }
+
+  input[type=text], input[type=email] {
+    @include box-sizing(border-box);
+    display: block;
+    width: 250px;
+    padding: 6px 12px;
+    line-height: 1.428571429;
+    background-color: white;
+    background-image: none;
+    border: 1px solid #cccccc;
+    background-color: #f7fbfc;
+    border-color: #c6d1d4;
+    border-radius: 3px;
+    color: #333333;
+    font-size: 1em;
+    font-weight: lighter;
+    height: 46px;
+    margin: 10px auto 0 auto;
+
+    &:focus {
+      background-color: white;
+      border-color: #46c4d7;
+      box-shadow: none;
+      outline: none;
+    }
+
+    &::-webkit-input-placeholder {
+      color: #5a787d;
+    }
+  }
+
+  header {
+    height: 65px;
+    border: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 4px 4px 0 0;
+    text-align: center;
+    background-color: white;
+    padding: 0;
+    margin: 0;
+
+    h1 {
+      font-size: 18px;
+      line-height: 65px;
+    }
+
+    .helpful-close-button {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      cursor: pointer;
+    }
+
+    .helpful-back-button {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      cursor: pointer;
+    }
+  }
+
+  > footer {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    padding-bottom: 20px;
+    text-align: center;
+    font-size: 12px;
+    color: #ccc;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+
+    a {
+      color: #ccc;
+      font-weight: bold;
+      text-decoration: none;
+    }
+  }
+
+  .helpful-pointer {
+    content: '';
+    height: 0;
+    width: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 12px solid #F2F7F8;
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    margin-left: -8px;
+  }
+
+  &.helpful-shown-below .helpful-pointer {
+    border-top: none;
+    border-bottom: 12px solid white;
+    top: -12px;
+  }
+
+  &.helpful-textarea-filled {
+    background-color: white;
+
+    .helpful-question-container button {
+      display: inline-block;
+    }
+  }
+
+  &.helpful-textarea-filled:not(.helpful-shown-below) {
+    .helpful-pointer {
+      border-top: 12px solid white;
+    }
+  }
+
+  .helpful-icon {
+    width: 10px;
+  }
+}

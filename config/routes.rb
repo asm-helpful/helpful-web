@@ -46,7 +46,7 @@ Helpful::Application.routes.draw do
     end
   end
 
-  resource :incoming_message, only: [:create]
+  match '/incoming_message' => 'incoming_messages#create', via: [:get, :post]
 
   authenticated :user do
     root :to => 'dashboard#show', :as => 'authenticated_root'

@@ -9,6 +9,12 @@ class IncomingMessagesController < ApplicationController
     conversation = Concierge.new(account, params).find_conversation
     @message = author.compose_message(conversation, params.fetch(:content))
 
+    content_type = 'application/json'
+
+    if params[:callback].present?
+      request.format = 'json'
+      content_type = 'text/javascript'
+    end
 
     if @message.save
       if !params[:attachment].nil?
@@ -21,7 +27,8 @@ class IncomingMessagesController < ApplicationController
         format.json do
           render :json => @message,
                  :status => :created,
-                 :callback => params[:callback]
+                 :callback => params[:callback],
+                 :content_type => content_type
         end
       end
 
@@ -32,7 +39,8 @@ class IncomingMessagesController < ApplicationController
         format.json do
           render :json => @message.errors,
              :status => :unprocessable_entity,
-             :callback => params[:callback]
+             :callback => params[:callback],
+             :content_type => content_type
         end
       end
 
