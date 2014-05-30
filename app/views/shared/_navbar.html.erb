@@ -77,6 +77,37 @@
         <% end %>
       </div>
       <div class="search-results-container">
+        <div class="popover bottom">
+          <div class="arrow"></div>
+
+          <div class="popover-content">
+            <div class="search-header">
+              Search by Tag
+            </div>
+            <div class="search-result-populated">
+              <% @account.conversations.pluck(:tags).flatten.uniq.sort.each do |tag_name| %>
+                <a href="#" class="tag">
+                  #<%= tag_name %>
+                </a>
+              <% end %>
+            </div>
+            <div class="search-header">
+              Search by Assignee
+            </div>
+            <ul class="search-results">
+              <% @account.users.joins(:person).order('name ASC').each do |person| %>
+                <li class="search-result">
+                  <a href="#">
+                    <%= avatar(person, 30, 'navbar-avatar') %>
+                    <span class="username">
+                      <%= person.name %>
+                    </span>
+                  </a>
+                </li>
+              <% end %>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 

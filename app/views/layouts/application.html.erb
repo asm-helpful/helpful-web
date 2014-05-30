@@ -16,8 +16,6 @@
   <meta name="stripe-token" content="<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>">
 </head>
 <body>
-  <div id="wrap">
-
   <% if @account %>
     <input type="hidden" name="account-slug" value="<%= @account.slug %>">
   <% end %>
@@ -26,8 +24,6 @@
     <input type="hidden" name="conversation-number" value="<%= @conversation.number %>">
   <% end %>
   <%= yield %>
-
-  </div>
 
   <footer class="col-md-12">
     <div class="container">
