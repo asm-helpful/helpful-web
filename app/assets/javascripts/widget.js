@@ -22,7 +22,8 @@
     var load_js = function () {
       var js_el = document.createElement('script');
       js_el.type = 'text/javascript';
-      js_el.src = 'http://localhost:5000/assets/embed_jsonp.js' // DEV
+      // js_el.src = 'http://localhost:5000/assets/embed_jsonp.js' // DEV
+      js_el.src = '//assets.helpful.io/assets/widget-content.js' // PROD
       document.body.appendChild(js_el);
     }
 
@@ -30,7 +31,8 @@
     css_el.rel = 'stylesheet';
     css_el.type = 'text/css';
     css_el.addEventListener('load', load_js);
-    css_el.href = 'http://localhost:5000/assets/embed.css'; // DEV
+    // css_el.href = 'http://localhost:5000/assets/embed.css'; // DEV
+    css_el.href = '//assets.helpful.io/assets/widget.css'; // PROD
     css_el.media = 'all';
     document.head.appendChild(css_el);
   }
@@ -172,7 +174,8 @@
 
       var js_el = document.createElement('script');
       js_el.type = 'text/javascript';
-      js_el.src = 'http://localhost:5000/incoming_message?' + params; // DEV
+      // js_el.src = 'http://localhost:5000/incoming_message?' + params; // DEV
+      js_el.src = '//helpful.io/incoming_message?' + params; // PROD
 
       document.body.appendChild(js_el);
     });
