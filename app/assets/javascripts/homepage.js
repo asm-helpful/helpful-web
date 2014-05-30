@@ -85,11 +85,11 @@ function animateScreen(index) {
   // }
 
   var $image = $screenshot.find('img');
-  $('.screenshot img').not($image).animate({ opacity: .3 }, 200);
+  //$('.screenshot img').not($image).animate({ opacity: .3 }, 200);
   $image.animate({ opacity: 1 }, 300);
 
   var $paragraph = $screenshot.find('p');
-  $('.screenshot p').not($paragraph).animate({ opacity: .3 }, 200);
+  //$('.screenshot p').not($paragraph).animate({ opacity: .3 }, 200);
   $paragraph.animate({ opacity: 1 }, 300);
 
 }
@@ -106,35 +106,32 @@ function finishAnimation() {
 }
 
 
-
-var isMobile = window.matchMedia("only screen and (max-width: 760px)");
-
-var windowChecker = function() {
-  if (window.location.pathname != '/')
-    return; // not on homepage
-
-  if (isMobile.matches) {
-    $(document).on('ready page:load', function() {
-      $(".navbar-homepage").addClass('navbar-fixed-top');
-      $("body").css("padding-top", "60px");
-      $(".navbar-right li").detach().appendTo('.navbar-nav');
-      $(".navbar-right").hide();
-    });
+function isMobile() {
+  return window.matchMedia("only screen and (max-width: 760px)").matches;
+}
+ 
+function displayDesktop() {
+  new WOW().init();
+  positionPages();
+  affixNavbar($('.navbar-placeholder'));
+  scrollToContentButtons();
+  animateScreenshots();
+}
+ 
+function displayMobile() {
+  $(".navbar-homepage").addClass('navbar-fixed-top');
+}
+ 
+var displayWindow = function() {
+  if (isMobile()) {
+    displayMobile();
   } else {
-    $(document).on('ready page:load', function() {
-      new WOW().init();
-      positionPages();
-      affixNavbar($('.navbar-placeholder'));
-      scrollToContentButtons();
-      animateScreenshots();
-    });
+    displayDesktop();
   }
 };
-
-windowChecker();
-
-// for all those resizing the damn browser window!
-$(window).resize(function() {
-    windowChecker();
+ 
+$(document).on('ready page:load', function() {
+    
+  displayWindow();
+ 
 });
-
