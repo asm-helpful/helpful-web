@@ -23,15 +23,7 @@
   <% if @conversation %>
     <input type="hidden" name="conversation-number" value="<%= @conversation.number %>">
   <% end %>
+
   <%= yield %>
-
-  <footer class="col-md-12">
-    <div class="container">
-      <div class="row text-center">
-        Copyright © 2014, Assembly Made, Inc. All rights reserved.
-      </div>
-    </div>
-  </footer>
-
 </body>
 </html>
