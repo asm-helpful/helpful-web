@@ -9,13 +9,19 @@
   padding-top: 30px;
   word-wrap: break-word;
 
-  > .avatar {
-    margin-left: 6px;
-    margin-right: 6px;
+  a {
+    color: $black;
+
+    .avatar {
+      margin-left: 6px;
+      margin-right: 6px;
+    }
 
     &:first-child {
-      position: absolute;
-      margin-left: -(40px + (30px / 2));
+      .avatar {
+        position: absolute;
+        margin-left: -(40px + (30px / 2));
+      }
     }
   }
 

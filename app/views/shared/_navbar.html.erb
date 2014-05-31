@@ -86,23 +86,21 @@
             </div>
             <div class="search-result-populated">
               <% @account.conversations.pluck(:tags).flatten.uniq.sort.each do |tag_name| %>
-                <a href="#" class="tag">
-                  #<%= tag_name %>
-                </a>
+                <%= link_to "##{tag_name}", search_account_conversations_path(@account, tag: tag_name), class: 'tag' %>
               <% end %>
             </div>
             <div class="search-header">
               Search by Assignee
             </div>
             <ul class="search-results">
-              <% @account.users.joins(:person).order('name ASC').each do |person| %>
+              <% @account.users.includes(:person).order('people.name ASC').each do |user| %>
                 <li class="search-result">
-                  <a href="#">
-                    <%= avatar(person, 30, 'navbar-avatar') %>
+                  <%= link_to search_account_conversations_path(@account, assignee: user.id) do %>
+                    <%= avatar(user, 30, 'navbar-avatar') %>
                     <span class="username">
-                      <%= person.name %>
+                      <%= user.name %>
                     </span>
-                  </a>
+                  <% end %>
                 </li>
               <% end %>
             </div>

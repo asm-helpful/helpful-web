@@ -45,7 +45,10 @@ var toggleHighlight = function($element) {
     } else {
       $(this).removeClass('filled');
     }
-    $('.search-results-container').hide();
+
+    setTimeout(function() {
+      $('.search-results-container').hide();
+    }, 100);
   });
 }
 

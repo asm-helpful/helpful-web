@@ -1,14 +1,19 @@
 <div class="event">
-  <%= avatar_default(assignment_event.user.person) %>
+  <%= link_to search_account_conversations_path(@account, assignee: assignment_event.user.id) do %>
+    <%= avatar_default(assignment_event.user.person) %>
+  <% end %>
 
   <strong>
-    <%= assignment_event.user.person.name %> assigned
+    <%= link_to assignment_event.user.person.name, search_account_conversations_path(@account, assignee: assignment_event.user.id) %>
+    assigned
   </strong>
 
-  <%= avatar_default(assignment_event.assignee.person) %>
+  <%= link_to search_account_conversations_path(@account, assignee: assignment_event.assignee.id) do %>
+    <%= avatar_default(assignment_event.assignee.person) %>
+  <% end %>
 
   <strong>
-    <%= assignment_event.assignee.person.name %>
+    <%= link_to assignment_event.assignee.person.name, search_account_conversations_path(@account, assignee: assignment_event.assignee.id) %>
   </strong>
 
   to this conversation

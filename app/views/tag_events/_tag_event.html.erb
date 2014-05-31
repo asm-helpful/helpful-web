@@ -1,15 +1,16 @@
 <div class="event">
-  <%= avatar_default(tag_event.user.person) %>
+  <%= link_to search_account_conversations_path(@account, assignee: tag_event.user.id) do %>
+    <%= avatar_default(tag_event.user.person) %>
+  <% end %>
 
   <strong>
-    <%= tag_event.user.person.name %> tagged
+    <%= link_to tag_event.user.person.name, search_account_conversations_path(@account, assignee: tag_event.user.id) %>
+    tagged
   </strong>
 
   this conversation with
 
-  <a href="#" class="tag">
-    #<%= tag_event.tag %>
-  </a>
+  <%= link_to "##{tag_event.tag}", search_account_conversations_path(@account, tag: tag_event.tag), class: 'tag' %>
 
   <span class="timestamp">
     <%= time_ago_in_words(tag_event.updated_at) %> <%= t('general.ago') %>
