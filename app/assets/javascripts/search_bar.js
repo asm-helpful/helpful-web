@@ -48,7 +48,7 @@ var toggleHighlight = function($element) {
 
     setTimeout(function() {
       $('.search-results-container').hide();
-    }, 100);
+    }, 200);
   });
 }
 
