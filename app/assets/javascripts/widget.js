@@ -22,7 +22,7 @@
     var load_js = function () {
       var js_el = document.createElement('script');
       js_el.type = 'text/javascript';
-      // js_el.src = 'http://localhost:5000/assets/embed_jsonp.js' // DEV
+      // js_el.src = 'http://localhost:5000/assets/widget-content.js' // DEV
       js_el.src = '//assets.helpful.io/assets/widget-content.js' // PROD
       document.body.appendChild(js_el);
     }
@@ -31,7 +31,7 @@
     css_el.rel = 'stylesheet';
     css_el.type = 'text/css';
     css_el.addEventListener('load', load_js);
-    // css_el.href = 'http://localhost:5000/assets/embed.css'; // DEV
+    // css_el.href = 'http://localhost:5000/assets/widget.css'; // DEV
     css_el.href = '//assets.helpful.io/assets/widget.css'; // PROD
     css_el.media = 'all';
     document.head.appendChild(css_el);
@@ -167,8 +167,7 @@
     // event listener for submiting data
     document.querySelector('.helpful-embed input[type=submit]').addEventListener('click', function (e) {
       var params = 'content='+encodeURIComponent(document.querySelector('#helpful-question').value);
-          params += '&name='+encodeURIComponent(document.querySelector('#helpful-name').value)
-          params += '&email='+encodeURIComponent(document.querySelector('#helpful-email').value)
+          params += '&email='+encodeURIComponent(document.querySelector('#helpful-name').value + ' <' + document.querySelector('#helpful-email').value + '>')
           params += '&account='+encodeURIComponent(that.options.company)
           params += '&callback=helpful_embed.gotResponse';
 
