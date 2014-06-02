@@ -16,24 +16,24 @@ class ConversationsController < ApplicationController
 
   def inbox
     Analytics.track(user_id: current_user.id, event: 'Read Conversations Index')
-    @assignment_user = User.find_by(id: params[:user_id])
-    inbox = ConversationsInbox.new(@account, current_user, params[:q], @assignment_user)
+    inbox = ConversationsInbox.new(@account, current_user, params[:q])
     @conversations = inbox.conversations
     WelcomeConversation.create(@account, current_user) unless @account.conversations.welcome_email.exists?
     respond_with @conversations
   end
 
   def search
-    search = ConversationsInbox.new(@account, current_user, params[:q])
-    @conversations = search.conversations
-    @conversation = @conversations.first
+    @results = ConversationSearch.search(@account, current_user, params.slice(:q, :tag, :assignee))
+    @conversations = @results[:conversations]
 
     # If there was a query (q) passed, use it for the search field value
     if params[:q]
       @query = params[:q]
     end
 
-    Analytics.track(user_id: current_user.id, event: 'Searched For', properties: { query: search.query })
+    @assignee = User.find(params[:assignee]) if params[:assignee]
+
+    Analytics.track(user_id: current_user.id, event: 'Searched For', properties: { query: params[:q] })
 
     respond_with @conversations, location: inbox_account_conversations_path(@account)
   end
@@ -56,8 +56,7 @@ class ConversationsController < ApplicationController
   end
 
   def list
-    @assignment_user = User.find_by(id: params[:user_id])
-    inbox = ConversationsInbox.new(@account, current_user, params[:q], @assignment_user)
+    inbox = ConversationsInbox.new(@account, current_user, params[:q])
     @conversations = inbox.conversations
     render partial: "list"
   end

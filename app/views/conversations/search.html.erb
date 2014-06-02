@@ -4,7 +4,13 @@
 
 <div class="container">
   <h1 class="page-title">
-    <%= t('.search_results_for') %> "<%= params[:q] %>"
+    <% if params[:tag].present? %>
+      Tagged with #<%= params[:tag] %>
+    <% elsif @assignee %>
+      Assigned to <%= @assignee.name %>
+    <% else %>
+      <%= t('.search_results_for') %> "<%= params[:q] %>"
+    <% end %>
   </h1>
 
   <% if @conversations.any? %>

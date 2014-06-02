@@ -36,6 +36,7 @@ var clearInputButton = function($element) {
 var toggleHighlight = function($element) {
   $element.focus(function() {  
     $(this).removeClass('filled');
+    $('.search-results-container').show();
   });
 
   $element.blur(function() {
@@ -44,6 +45,10 @@ var toggleHighlight = function($element) {
     } else {
       $(this).removeClass('filled');
     }
+
+    setTimeout(function() {
+      $('.search-results-container').hide();
+    }, 200);
   });
 }
 
@@ -56,10 +61,3 @@ $(document).on('ready page:change', function() {
     toggleHighlight($searchQuery);
   }
 });
-
-// idea was to show clear-icon after someone starts typing
-// $('#search-query').keypress(function() {
-//     console.log("hadouken!");
-//     $('.search-bar-clear-icon').css('visiblity','visible');
-// });
-

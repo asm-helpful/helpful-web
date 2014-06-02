@@ -46,6 +46,8 @@ class Conversation < ActiveRecord::Base
 
   scope :assigned_to, -> (user) { where(user_id: user.id) }
 
+  scope :unassigned_or_assigned_to, -> (user) { where(user_id: [nil, user.id]) }
+
   scope :most_recent, -> { order('updated_at DESC') }
 
   scope :queue, -> { order('updated_at ASC') }
