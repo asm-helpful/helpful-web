@@ -5,7 +5,7 @@ helpful_embed.htmlLoaded(
         <div class="helpful-question-container">\
             <header>\
             <h1>How may we help you?</h1>\
-            <img src="http://localhost:5000/assets/icons/close.svg" class="helpful-icon helpful-close-button">\
+            <img src="//assets.helpful.io/assets/icons/close.svg" class="helpful-icon helpful-close-button">\
         </header>\
             <textarea name="question" id="helpful-question" required="required" cols="10" rows="3" placeholder="Type your message here..."></textarea>\
             <button class="helpful-btn helpful-btn-default">Next</button>\
@@ -13,8 +13,8 @@ helpful_embed.htmlLoaded(
         <div class="helpful-details-container">\
             <header>\
                 <h1>Your contact information.</h1>\
-                <img src="http://localhost:5000/assets/icons/arrow.svg" class="helpful-icon helpful-back-button">\
-                <img src="http://localhost:5000/assets/icons/close.svg" class="helpful-icon helpful-close-button">\
+                <img src="//assets.helpful.io/assets/icons/arrow.svg" class="helpful-icon helpful-back-button">\
+                <img src="//assets.helpful.io/assets/icons/close.svg" class="helpful-icon helpful-close-button">\
             </header>\
             <p>So we can respond to your question.</p>\
             <input type="text" name="name" id="helpful-name" placeholder="Name">\
@@ -24,7 +24,7 @@ helpful_embed.htmlLoaded(
         <div class="helpful-thanks-container">\
             <header>\
                 <h1>Thanks!</h1>\
-                <img src="http://localhost:5000/assets/icons/close.svg" class="helpful-icon helpful-close-button">\
+                <img src="//assets.helpful.io/assets/icons/close.svg" class="helpful-icon helpful-close-button">\
             </header>\
             <p>Have a wonderful day.</p>\
             <button class="helpful-btn helpful-btn-default helpful-btn-return">Submit another question?</button>\
