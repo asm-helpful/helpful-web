@@ -30,7 +30,7 @@ helpful_embed.htmlLoaded(
             <button class="helpful-btn helpful-btn-default helpful-btn-return">Submit another question?</button>\
         </div>\
         <footer>\
-            <a href="#">Helpful.io</a> by <a href="#">Assembly</a>\
+            <a href="https://helpful.io/">Helpful.io</a> by <a href="https://assemblymade.com/">Assembly</a>\
         </footer>\
     </article>\
   '
