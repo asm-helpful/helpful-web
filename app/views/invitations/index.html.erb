@@ -15,19 +15,21 @@
 
         <div class="col-md-12">
 
-          <div class="form-group">
-            <label class="control-label">Teammate's Email Address</label>
+          <div class="row">
 
-            <div class="row">
-              
-              <div class="col-md-9">
+            <div class="col-md-9">
+              <div class="form-group">
+                <label class="control-label">Teammate's Email Address</label>
                 <input type="text" class="form-control" name="user_email">
-              </div>
-
-              <div class="col-md-3">
-                <button class="btn btn-secondary btn-block" rel="invite">Invite</button>
+                <span class="help-block"></span>
               </div>
             </div>
+
+            <div class="col-md-3">
+              <div class="control-label-margin"></div>
+              <button class="btn btn-secondary btn-block" rel="invite">Invite</button>
+            </div>
+
           </div>
 
         </div>
@@ -52,21 +54,29 @@
 
 <script id="invitation-row-template" type="text/x-handlebars-template">
   <div class="row">
-    
+
     <div class="col-md-9">
-      <input type="text" class="form-control" name="user_email">
+      <div class="form-group">
+        <label class="control-label">Teammate's Email Address</label>
+        <input type="text" class="form-control" name="user_email">
+        <span class="help-block"></span>
+      </div>
     </div>
 
     <div class="col-md-3">
+      <div class="control-label-margin"></div>
       <button class="btn btn-secondary btn-block" rel="invite">Invite</button>
     </div>
+
   </div>
 </script>
 
 <script>
 var inviteUser = function($row) {
   var $inviteButton = $('[rel=invite]', $row);
+  var $emailFormGroup = $('.form-group', $row);
   var $emailInput = $('[name=user_email]', $row);
+  var $emailHelpBlock = $('.help-block', $row);
   var accountSlug = $('[name=account_slug]').val();
   var email = $emailInput.val();
   var invitationRowTemplate = Handlebars.compile($('#invitation-row-template').html());
@@ -86,9 +96,8 @@ var inviteUser = function($row) {
       membership_role: 'agent'
     }),
     success: function(response) {
-      
       $inviteButton.parent().html(
-        $('<span class="btn btn-block btn-success btn-status"><span class="glyphicon glyphicon-ok"></span>Invited</span>')
+        $('<div class="form-group"><span class="btn btn-block btn-success btn-status"><span class="glyphicon glyphicon-ok"></span>Invited</span></div>')
       );
       
       $emailInput.parent().html(
@@ -98,13 +107,21 @@ var inviteUser = function($row) {
       $row.after(invitationRowTemplate());
       $('[name=user_email]:last').focus();
       attachKeypressHandlers();
+    },
+    error: function(xhr) {
+      $inviteButton.text('Invite');
+      $inviteButton.removeAttr('disabled');
+
+      $emailFormGroup.addClass('has-error');
+      $emailHelpBlock.text(JSON.parse(xhr.responseText).errors.email[0]);
+      $('[name=user_email]:last').focus();
     }
   });
 };
 
 var attachClickHandlers = function() {
   $(document).on('click', '[rel=invite]', function() {
-    inviteUser($(this).parent().parent());
+    inviteUser($(this).closest('.row'));
     return false;
   });
 }
@@ -112,7 +129,7 @@ var attachClickHandlers = function() {
 var attachKeypressHandlers = function() {
   $('[name=user_email]').on('keypress', function(e) {
     if (e.keyCode == 13) {
-      inviteUser($(this).parent().parent());
+      inviteUser($(this).closest('.row'));
       return false;
     }
   });

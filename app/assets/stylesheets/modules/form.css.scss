@@ -37,6 +37,10 @@ label.control-label + .checkbox {
   border-top: 1px solid $light-gray;
 }
 
+.control-label-margin {
+  height: 45px;
+}
+
 input.form-control,
 select.form-control,
 textarea.form-control {
