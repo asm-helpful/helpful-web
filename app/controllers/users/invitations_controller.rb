@@ -2,9 +2,11 @@ class Users::InvitationsController < Devise::InvitationsController
   before_filter :find_account!, only: [:create]
 
   def create
-    @user = invite_resource
-    @person = Person.new
-    @plans = BillingPlan.order('price ASC')
+    if existing_user = User.find_by(email: params[:user][:email])
+      @user = existing_user
+    else
+      @user = invite_resource
+    end
 
     @membership = Membership.new(
       role: params.fetch(:membership_role),
@@ -12,15 +14,18 @@ class Users::InvitationsController < Devise::InvitationsController
       account: @account
     )
 
+    @person = Person.new
+    @plans = BillingPlan.order('price ASC')
+
     authorize! InvitationCreatePolicy.new(@account, current_user, @membership)
 
     if @membership.save
-      if @user.invitation_sent_at && request.format == 'html'
-        set_flash_message :notice, :send_instructions, email: @user.email
-      end
-
       respond_with @user do |format|
-        format.html { redirect_to edit_account_path(@account) }
+        format.html do
+          set_flash_message :notice, :send_instructions, email: @user.email if @user.invitation_sent_at
+          redirect_to edit_account_path(@account)
+        end
+
         format.json
       end
     else

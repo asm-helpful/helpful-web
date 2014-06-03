@@ -18,7 +18,7 @@ class AccountsController < ApplicationController
     @person.email = @user.email
     @person.account = @account
 
-    @user.person = @person
+    @person.user = @user
 
     begin
       ActiveRecord::Base.transaction do
