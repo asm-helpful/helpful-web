@@ -8,13 +8,31 @@
 
   a {
     color: $white;
-    font-weight: bold;
-    text-decoration: underline;
+    text-decoration: none;
+    border-bottom: 1px solid $white;
   }
 
   .container {
-    padding: 0 27px;
+    padding: 0 16px 0 25px;
   }
+}
+
+.alert .container i:before {
+  font: 20px/0.75 "SSGeomiconsSquared";
+  padding-right: 5px;
+  vertical-align: bottom;
+}
+
+.alert-success i:before {
+  color: $success;
+}
+
+.alert-info i:before {
+  color: $info;
+}
+
+.alert-danger i:before {
+  color: $light-danger;
 }
 
 .alert + div:not(.alert) {
@@ -26,6 +44,11 @@
   opacity: 1;
   text-shadow: none;
   font-weight: bold;
+
+  .alert-dismissable & {
+    top: -1px;
+    right: -14px;
+  }
 }
 
 .alert-dismissable .close:hover {
