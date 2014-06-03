@@ -8,6 +8,7 @@ class MessageMailer < ActionMailer::Base
   #
   # Returns nothing.
   def created(message_id, recipient_id)
+
     @message = Message.find(message_id)
     @recipient = Person.find(recipient_id)
     @message_markdown = markdown(@message.content)
@@ -24,12 +25,14 @@ class MessageMailer < ActionMailer::Base
     to = Mail::Address.new(@recipient.email)
     to.display_name = @recipient.name
 
-    from = Mail::Address.new(
-      "notifications@#{Helpful.incoming_email_domain}"
-    )
+    from = Mail::Address.new("notifications@#{Helpful.incoming_email_domain}")
     from.display_name = nickname(@message.person)
 
     reply_to = @conversation.mailbox_email.dup
+
+    @message.attachments.each do |attachment|
+      attachments[File.basename(attachment.file.path)] = File.read(attachment.file.path)
+    end
 
     mail to: to,
          # FIXME: CC recipient instead
