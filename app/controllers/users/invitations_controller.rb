@@ -20,12 +20,12 @@ class Users::InvitationsController < Devise::InvitationsController
     authorize! InvitationCreatePolicy.new(@account, current_user, @membership)
 
     if @membership.save
-      if @user.invitation_sent_at && request.format == 'html'
-        set_flash_message :notice, :send_instructions, email: @user.email
-      end
-
       respond_with @user do |format|
-        format.html { redirect_to edit_account_path(@account) }
+        format.html do
+          set_flash_message :notice, :send_instructions, email: @user.email if @user.invitation_sent_at
+          redirect_to edit_account_path(@account)
+        end
+
         format.json
       end
     else
