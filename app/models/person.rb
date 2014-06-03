@@ -12,7 +12,11 @@ class Person < ActiveRecord::Base
   validates :email,
     allow_blank: true,
     format: /\A[^@]+@[^@]+\z/,
-    uniqueness: {:scope => :account}
+    uniqueness: { :scope => :account}
+
+  validates :name,
+    presence: true,
+    if: proc { |p| p.user.present? }
 
   validates :username,
     allow_blank: true,
