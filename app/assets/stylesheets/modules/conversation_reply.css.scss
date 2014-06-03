@@ -23,6 +23,7 @@
 
   .reply-to-message {
     min-height: 100px;
+    outline: 0;
   }
 
   .command-bar {
@@ -42,9 +43,5 @@
     input[type="file"] {
       display: none;
     }
-  }
-
-  .textcomplete-wrapper {
-    display: block !important;
   }
 }

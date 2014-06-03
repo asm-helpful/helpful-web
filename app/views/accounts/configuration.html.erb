@@ -7,14 +7,12 @@
   <h1 class="page-title">Start using Helpful!</h1>
 
   <p>
-    Now that you're signed up, let's give your new Helpful email address a test drive real quick.
+    Try sending a support request to <%= mail_to @account.mailbox_email.address %> and see how it works. 
   </p>
-
-  <%= mail_to @account.mailbox_email.address, 'Send an email to your new support inbox', subject: ExampleConversation::SUBJECT, body: ExampleConversation::CONTENT, class: 'btn btn-secondary', style: 'margin-bottom: 20px' %>
 
   <div class="well well-lg empty-inbox">
     <p style="margin-bottom: 0">
-      <span class="glyphicon glyphicon-inbox" style="margin-right: 10px"></span>
+      <span class="glyphicon glyphicon-refresh" style="margin-right: 10px"></span>
       Keeping an eye on your inbox. Still nothing yet...
     </p>
   </div>
@@ -27,7 +25,7 @@
   </div>
 
   <div class="pull-right">
-    <%= link_to 'Send an email for me', inbox_account_conversations_path(@account), class: 'btn btn-default skip-button' %>
+    <%= link_to 'Skip this and check out the inbox', inbox_account_conversations_path(@account), class: 'btn btn-default skip-button' %>
     <%= link_to 'Check out the inbox', inbox_account_conversations_path(@account), class: 'btn btn-primary inbox-button' %>
   </div>
 </div>
@@ -38,7 +36,7 @@ var checkInbox = function() {
     var accountSlug = $('[name=account_slug]').val();
 
     $.getJSON('/' + accountSlug + '/inbox', function(data) {
-      if (data['conversations'].length > 0) {
+      if (data['conversations'].length > 1) {
         notifyConversationCreated();
         clearInterval(checkInterval);
       }
@@ -54,9 +52,7 @@ var notifyConversationCreated = function() {
   $('.inbox-button').show();
 }
 
-$(document).on('ready page:load', function() {
-  checkInbox();
-  $('.full-inbox').hide();
-  $('.inbox-button').hide();
-});
+checkInbox();
+$('.full-inbox').hide();
+$('.inbox-button').hide();
 </script>

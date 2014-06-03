@@ -65,12 +65,12 @@
 
 .btn-primary,
 .btn-primary[disabled] {
-  background-color: $light-red;
+  background-color: $red;
 
   &:not([disabled]) {
     &:hover,
     &.hover {
-      background-color: $red;
+      background-color: $dark-red;
     }
   }
 }
@@ -95,6 +95,16 @@
     &:hover,
     &.hover {
       background-color: darken($success, 5%);
+    }
+  }
+}
+
+.btn-status {
+  &.btn-success,
+  &.btn-success[disabled] {
+    &:hover,
+    &.hover {
+      background-color: $success;
     }
   }
 }
@@ -143,3 +153,5 @@
     margin-right: 10px;
   }
 }
+
+h1 .btn { margin-top: 5px; }

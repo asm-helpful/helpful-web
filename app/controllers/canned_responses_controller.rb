@@ -1,6 +1,7 @@
 class CannedResponsesController < ApplicationController
   before_action :authenticate_user!
   before_action :find_account!
+  before_action :find_canned_response!, only: [:show, :edit, :update, :destroy]
 
   respond_to :html, :json
 
@@ -23,17 +24,13 @@ class CannedResponsesController < ApplicationController
   end
 
   def show
-    @canned_response = @account.canned_responses.find(params[:id])
     respond_with @canned_response
   end
 
   def edit
-    @canned_response = @account.canned_responses.find(params[:id])
   end
 
   def update
-    @canned_response = @account.canned_responses.find(params[:id])
-
     if @canned_response.update(canned_response_params)
       redirect_to account_canned_responses_path(@account)
     else
@@ -42,7 +39,6 @@ class CannedResponsesController < ApplicationController
   end
 
   def destroy
-    @canned_response = @account.canned_responses.find(params[:id])
     @canned_response.destroy
     redirect_to account_canned_responses_path(@account)
   end
@@ -50,6 +46,10 @@ class CannedResponsesController < ApplicationController
   def find_account!
     @account = Account.friendly.find_by!(slug: params.fetch(:account_id))
     authorize! AccountReadPolicy.new(@account, current_user)
+  end
+
+  def find_canned_response!
+    @canned_response = @account.canned_responses.find(params[:id])
   end
 
   def canned_response_params

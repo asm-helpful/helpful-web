@@ -17,6 +17,13 @@ fieldset:last-child {
   }
 }
 
+.form-text {
+  height: 46px;
+  line-height: 46px;
+  font-weight: lighter;
+  font-size: 1.2em;
+}
+
 label {
   color: $darkest-blue;
   font-size: 1.2em;
@@ -28,6 +35,10 @@ label.control-label + .checkbox {
   margin-top: 2px;
   padding-top: 14px;
   border-top: 1px solid $light-gray;
+}
+
+.control-label-margin {
+  height: 45px;
 }
 
 input.form-control,
@@ -43,9 +54,23 @@ textarea.form-control {
   height: $line-height-computed + ($padding-base-vertical * 2) + 14;
 
   @include placeholder {
-    color: $gray;
+    color: $dark-gray;
+    opacity: 1;
     font-weight: lighter;
     -webkit-font-smoothing: antialiased;
+  }
+
+  &.inline-label {
+    @include placeholder {
+      color: $darkest-blue;
+      font-weight: normal;
+    }
+
+    &:focus, &.focus {
+      @include placeholder {
+        color: $gray;
+      }
+    }
   }
 
   &:focus,
@@ -133,4 +158,9 @@ textarea.form-control {
 
 .help-block {
   font-weight: lighter;
+
+  &.help-block-right {
+    float: right;
+    margin-top: 13px;
+  }
 }

@@ -45,3 +45,5 @@
 
 # Sublime project files
 *.sublime-*
+
+config/vagrant/phantomjs-1.9.7-*

@@ -149,6 +149,18 @@ class Account < ActiveRecord::Base
     owner_membership && owner_membership.user
   end
 
+  def owner?(user)
+    memberships.where(user: user, role: 'owner').exists?
+  end
+
+  def roles_allowed_by(user)
+    if owner?(user)
+      ['owner', 'agent']
+    else
+      ['agent']
+    end
+  end
+
   def subscribe!
     return if billing_plan.free?
 

@@ -1,3 +1,6 @@
+require 'codeclimate-test-reporter'
+CodeClimate::TestReporter.start
+
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
 ENV["INCOMING_EMAIL_DOMAIN"] = 'helpful.io'
@@ -7,6 +10,9 @@ require 'sidekiq/testing'
 require 'capybara/rails'
 require 'capybara/rspec'
 require 'webmock/rspec'
+
+require 'capybara/poltergeist'
+Capybara.javascript_driver = :poltergeist
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -27,6 +33,7 @@ VCR.configure do |config|
   config.cassette_library_dir = Rails.root.join('spec', 'vcr')
   config.configure_rspec_metadata!
   config.hook_into :webmock
+  config.ignore_hosts 'codeclimate.com'
 end
 
 RSpec.configure do |config|

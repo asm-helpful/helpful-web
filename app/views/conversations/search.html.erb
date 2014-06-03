@@ -3,9 +3,16 @@
 <%= render "layouts/flash" %>
 
 <div class="container">
-  <div class="page-header">
-    <h1><%= t('.search_results_for') %> "<%= params[:q] %>"</h1>
-  </div>
+  <h1 class="page-title">
+    <% if params[:tag].present? %>
+      Tagged with #<%= params[:tag] %>
+    <% elsif @assignee %>
+      Assigned to <%= @assignee.name %>
+    <% else %>
+      <%= t('.search_results_for') %> "<%= params[:q] %>"
+    <% end %>
+  </h1>
+
   <% if @conversations.any? %>
     <%= render 'conversations/inbox', conversations: @conversations %>
   <% else %>

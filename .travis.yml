@@ -9,7 +9,7 @@ before_script:
 - cp .env.example .env
 - cp config/database.yml.example config/database.yml
 - bin/rake db:create db:schema:load RAILS_ENV=test
-script: foreman run bin/rake
+script: foreman run bin/rake CODECLIMATE_REPO_TOKEN=bc1f2e3577b0e97d31923693254d33208ebeeb970c0b5dd0d8e49023f23196d9
 deploy:
   provider: heroku
   strategy: git

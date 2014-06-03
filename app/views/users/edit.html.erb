@@ -3,13 +3,13 @@
 <%= render 'layouts/flash' %>
 
 <div class="container">
+  <h1 class="page-title">
+    <%= t('.user_settings') %>
+  </h1>
+
   <% if current_user.invalid? %>
     <%= render '/shared/error_messages', target: current_user %>
   <% end %>
-
-  <div class="page-header">
-    <h1><%= t('.user_settings') %></h1>
-  </div>
 
   <%= form_for current_user, html: {class: 'form', multipart: true} do |f| %>
 

@@ -1,8 +1,4 @@
-require 'active_support/concern'
-
 module ConversationsSearch
-  extend ActiveSupport::Concern
-
   # Public: Sorts conversations that have messages matching search results by the order
   # elasticsearch returns them.
   #

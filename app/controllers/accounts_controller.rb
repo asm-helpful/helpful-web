@@ -1,5 +1,6 @@
 class AccountsController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update]
+  before_action :find_account!, only: [:edit, :update, :show]
   respond_to :html
 
   def new
@@ -17,7 +18,7 @@ class AccountsController < ApplicationController
     @person.email = @user.email
     @person.account = @account
 
-    @user.person = @person
+    @person.user = @user
 
     begin
       ActiveRecord::Base.transaction do
@@ -48,24 +49,24 @@ class AccountsController < ApplicationController
   end
 
   def show
-    find_account!
     redirect_to inbox_account_conversations_path(@account)
   end
 
   def edit
-    find_account!
-
     @plans = BillingPlan.order('price ASC')
     @user = User.new
   end
 
   def update
-    find_account!
     @account.update(account_params)
     respond_with(@account)
   end
 
   def configuration
+    find_account!
+  end
+
+  def setup
     find_account!
   end
 
@@ -81,7 +82,10 @@ class AccountsController < ApplicationController
   end
 
   def account_params
-    params.require(:account).permit(:name, :website_url, :webhook_url, :prefers_archiving, :signature, :stripe_token, :billing_plan_slug)
+    permitted_account_params = [:name, :website_url, :webhook_url, :prefers_archiving, :signature]
+    permitted_account_params += [:stripe_token, :billing_plan_slug] if !@account || @account.owner?(current_user)
+
+    params.require(:account).permit(permitted_account_params)
   end
 
   def user_params

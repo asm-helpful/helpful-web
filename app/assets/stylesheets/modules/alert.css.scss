@@ -44,11 +44,7 @@
   opacity: 1;
   text-shadow: none;
   font-weight: bold;
-
-  .alert-dismissable & {
-    top: -1px;
-    right: -14px;
-  }
+  right: 0;
 }
 
 .alert-dismissable .close:hover {

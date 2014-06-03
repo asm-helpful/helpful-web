@@ -34,6 +34,7 @@ en:
     navbar:
       profile: "Profile"
       company_profile: "Company Profile"
+      technical_setup: "Technical Setup"
       help: "Help"
       logout: "Logout"
       inbox: "Inbox"
@@ -129,6 +130,7 @@ en:
     row:
       later: "Later"
       archive: "Archive"
+      unarchive: "Move to Inbox"
     search:
       search_results_for: "Search results for"
       no_results: "No results to show."

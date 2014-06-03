@@ -14,7 +14,8 @@
 <% end -%>
 
 <div class="backdrop">
-  <%= link_to 'Sign in', new_user_session_path, class: 'btn btn-default pull-right', style: 'right: 20px; top: 20px; position: absolute; z-index: 2' %>
+
+  <%= link_to 'Sign in', new_user_session_path, class: 'btn signin_absolute btn-default' %>
 
   <div class="page page-full page-center text-center">
     <div>
@@ -42,7 +43,7 @@
         <%= image_tag('home/app_light.png') %>
       </div>
       <div class="screenshot">
-        <p>Respond directly with an plain text email.</p>
+        <p>Respond directly with a plain text email.</p>
         <%= image_tag('home/email_light.png') %>
       </div>
     </div>
@@ -72,10 +73,9 @@
           <li><a href="#features">Features</a></li>
           <li><a href="#pricing">Pricing</a></li>
         </ul>
-        <ul class="list-inline navbar-right">
-          <li>
-            <%= link_to 'Sign up for free', new_accounts_path, class: 'btn btn-primary', rel: 'signup' %>
-          </li>
+        <ul class="nav navbar-nav pull-right">
+          <li><%= link_to 'Sign in', new_user_session_path, class: 'btn btn-default' %></li>
+          <li><%= link_to 'Sign up for free', new_accounts_path, class: 'btn btn-primary', rel: 'signup' %></li>
         </ul>
       </div>
 
