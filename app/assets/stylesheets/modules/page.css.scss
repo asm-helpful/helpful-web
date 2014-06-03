@@ -2,7 +2,17 @@
   position: relative;
 }
 
-.page-showcase {
-  overflow-x: hidden;
-  overflow-y: visible;
+.page-section {
+  margin-top: 150px;
+  padding-bottom: 150px;
+  padding-top: 100px;
+}
+
+.navbar-placeholder + .page-section {
+  padding-top: 0;
+}
+
+.page-full + .page-section {
+  margin-top: 40px;
+  padding-top: 0;
 }
