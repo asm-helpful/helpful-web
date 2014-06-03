@@ -1,5 +1,6 @@
 class AccountsController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update]
+  before_action :find_account!, only: [:edit, :update, :show]
   respond_to :html
 
   def new
@@ -48,19 +49,15 @@ class AccountsController < ApplicationController
   end
 
   def show
-    find_account!
     redirect_to inbox_account_conversations_path(@account)
   end
 
   def edit
-    find_account!
-
     @plans = BillingPlan.order('price ASC')
     @user = User.new
   end
 
   def update
-    find_account!
     @account.update(account_params)
     respond_with(@account)
   end
