@@ -2,15 +2,20 @@ class Users::InvitationsController < Devise::InvitationsController
   before_filter :find_account!, only: [:create]
 
   def create
-    @user = invite_resource
-    @person = Person.new
-    @plans = BillingPlan.order('price ASC')
+    if existing_user = User.find_by(email: params[:user][:email])
+      @user = existing_user
+    else
+      @user = invite_resource
+    end
 
     @membership = Membership.new(
       role: params.fetch(:membership_role),
       user: @user,
       account: @account
     )
+
+    @person = Person.new
+    @plans = BillingPlan.order('price ASC')
 
     authorize! InvitationCreatePolicy.new(@account, current_user, @membership)
 

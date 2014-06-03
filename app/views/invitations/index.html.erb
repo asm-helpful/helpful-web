@@ -96,8 +96,14 @@ var inviteUser = function($row) {
       membership_role: 'agent'
     }),
     success: function(response) {
+      var invitationText = response.invitation_created_at === null ? 'Added' : 'Invited'
+
       $inviteButton.parent().html(
-        $('<div class="form-group"><span class="btn btn-block btn-success btn-status"><span class="glyphicon glyphicon-ok"></span>Invited</span></div>')
+        $('<div class="form-group">').append(
+          $('<span class="btn btn-block btn-success btn-status">').text(invitationText).prepend(
+            $('<span class="glyphicon glyphicon-ok"></span>')
+          )
+        )
       );
       
       $emailInput.parent().html(
