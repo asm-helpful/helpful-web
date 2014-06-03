@@ -16,7 +16,7 @@
 }
 
 .screenshot-list {
-  @expand .row;
+  @extend .row;
 }
 
 .screenshot {
