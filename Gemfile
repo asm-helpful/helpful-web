@@ -73,6 +73,7 @@ group :test do
   gem 'capybara'
   gem 'webmock', '< 1.16'
   gem 'codeclimate-test-reporter', require: nil
+  gem 'poltergeist'
 end
 
 group :development, :production do
