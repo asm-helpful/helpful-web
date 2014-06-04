@@ -34,7 +34,7 @@ GENERAL
   font-weight: 600;
 }
 #reasons p, #pricing p {
-  font-family: 'Droid Serif';
+  font-family: $font-serif;
   font-size: 24px;
   color: $dark-gray;
 }
@@ -53,7 +53,7 @@ REASONS
       position: relative;
       list-style: none;
       text-align: center;
-      font-family: 'Droid Serif';
+      font-family: $font-serif;
       font-size: 24px;
       color: $dark-gray;
       span.glyphicon {
@@ -116,7 +116,7 @@ PRICING
   }
 
   .conversation-explaination {
-    font-family: 'Droid Serif';
+    font-family: $font-serif;
     font-size: 12px;
     text-transform: uppercase;
     margin-top: 50px;
