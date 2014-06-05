@@ -4,3 +4,13 @@
   padding-top: 10px;
   padding-bottom: 10px;
 }
+
+.styleguide {
+  .has-success i.ss-check {
+    top: 36px !important;
+  }
+  
+  .nav-steps li i.ss-check {
+    padding-right: 4px;
+  }
+}
