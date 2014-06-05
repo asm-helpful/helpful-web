@@ -20,6 +20,18 @@ If you're running Windows, [here's a guide written by one of our members on how 
 
 Once it's finished open up [http://localhost:5000](http://localhost:5000) in your web browser to check out Helpful.
 
+### Gems Installation and Database Migration
+
+Remember that you are using Vagrant, so if you run ```bundle install``` or ```rake db:migrate``` directly in your terminal it will not affect the virtual machine where Helpful is running.
+
+In order to run these commands, in the virtual machine, all you have to do is to run ```vagrant provision```.
+
+
+### Environment Variables
+
+If you need to change any environment variable you have to edit ```.env``` file properly and restart Rails server running:
+
+    vagrant ssh -c "sudo restart helpful"
 
 ### Using Helpful
 
