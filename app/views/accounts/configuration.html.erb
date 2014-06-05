@@ -42,6 +42,10 @@ var checkInbox = function() {
       }
     });
   }, 2000);
+
+  $(document).one(function() {
+    clearInterval(checkInterval);
+  });
 }
 
 var notifyConversationCreated = function() {
