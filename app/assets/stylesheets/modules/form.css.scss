@@ -105,6 +105,10 @@ textarea.form-control {
     color: $darkest-blue;
   }
 
+  i.ss-check {
+    color: $success;
+  }
+
   .form-control {
     border-color: $gray;
     box-shadow: none;
@@ -116,6 +120,12 @@ textarea.form-control {
       box-shadow: none;
       outline: none;
     }
+  }
+}
+
+.has-loading {
+  i.ss-sync {
+    color: $dark-gray;
   }
 }
 
@@ -136,8 +146,8 @@ textarea.form-control {
     }
   }
 
-  .glyphicon {
-    color: $red;
+  i.ss-alert {
+    color: $light-danger;
   }
 
   .help-block {
@@ -148,11 +158,16 @@ textarea.form-control {
 .has-feedback {
   color: $dark-gray;
 
-  .glyphicon {
+  i.form-control-feedback {
     position: absolute;
-    margin-top: -40px;
-    right: 5px;
-    top: auto;
+    top: 7px;
+    right: 4px;
+    display: block;
+    width: 34px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    font-size: 16px;
   }
 }
 
