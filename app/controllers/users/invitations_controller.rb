@@ -40,20 +40,17 @@ class Users::InvitationsController < Devise::InvitationsController
     self.resource = resource_class.accept_invitation!(update_resource_params)
 
     resource.accounts.each do |account|
-      Person.create(
-        account:    account,
-        user:       resource,
-        name:       params[:person][:name],
-        username:   params[:person][:username],
-        email:      resource.email
+      resource.create_person(
+        account: account,
+        email: resource.email,
+        name: params[:person][:name],
+        user: resource,
       )
     end
 
-    if resource.errors.empty?
-      flash_message = resource.active_for_authentication? ? :updated : :updated_not_active
-      set_flash_message :notice, flash_message
+    if resource.valid?
       sign_in(resource_name, resource)
-      respond_with resource, :location => after_accept_path_for(resource)
+      respond_with resource, location: after_accept_path_for(resource)
     else
       respond_with_navigational(resource){ render :edit }
     end
