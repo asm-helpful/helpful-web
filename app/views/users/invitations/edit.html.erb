@@ -1,44 +1,101 @@
-<div class="l-signup">
-  <div class="container">
+<%= render 'layouts/flash' %>
 
-    <div class="logo logo-default"></div>
-      <h3><%= t('.create_account') %></h3>
+<div class="container">
 
-      <%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put } do |f| %>
-        <%= devise_error_messages! %>
-        <%= f.hidden_field :invitation_token %>
+  <div class="row">
 
-        <div class="form-group">
-          <%= f.label :name, t('accounts.general.your_name'), class: 'control-label' %>
-          <%= f.text_field :name, placeholder: t('accounts.general.your_name_placeholder'), class: 'form-control' %>
-        </div>
+      <div class="col-md-6 col-md-offset-3">
 
-        <%= fields_for Person.new do |ff| %>
-          <div class="form-group">
-            <%= ff.label :username, t('accounts.general.username'), class: 'control-label' %>
-            <%= ff.text_field :username, placeholder: t('accounts.general.username_placeholder'), class: 'form-control' %>
-          </div>
-        <% end %>
+        <h1 class="page-title"><%= t('.create_account') %></h1>
 
-        <div class="form-group">
-          <%= f.label :email, t('general.email'), class: 'control-label' %>
-          <%= f.email_field :email, placeholder: t('general.email_placeholder'), class: 'form-control' %>
-        </div>
+      </div>
 
-        <div class="form-group">
-          <%= f.label :password, t('general.password'), class: 'control-label' %>
-          <%= f.password_field :password, placeholder: t('accounts.new.must_meet_requirements'), class: 'form-control' %>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :password_confirmation, t('.password_confirmation'), class: 'control-label' %>
-          <%= f.password_field :password_confirmation, placeholder: t('accounts.new.must_meet_requirements'), class: 'form-control' %>
-        </div>
-
-        <div class="form-actions">
-          <%= f.submit t('accounts.new.create_account'), :class => "btn btn-primary" %>
-        </div>
-      <% end %>
-    </div>
   </div>
+
+  <%= form_for(resource, as: resource_name, url: invitation_path(resource_name), html: { method: :put }) do |f| %>
+
+    <div class="row">
+
+      <div class="col-md-6 col-md-offset-3 text-center">
+
+          <h2>Congrats on the invitation.</h2>
+
+          <!-- TODO locale is missing -->
+          <p>We just need some quick details from you and then you can get right to work.</p>
+
+      </div>
+
+    </div>
+
+    <fieldset>
+
+      <%= render 'shared/error_messages', target: resource %>
+
+      <%= f.hidden_field :invitation_token %>
+
+      <div class="row">
+
+        <div class="col-md-6 col-md-offset-3 text-center">
+
+          <%= fields_for resource.build_person do |ff| %>
+
+            <div class="row">
+
+              <div class="col-md-12">
+
+                <div class="form-group">
+                  <!-- TODO: locale is missing -->
+                  <%= ff.text_field :name, placeholder: 'Your name', class: 'form-control' %>
+                </div>
+
+              </div>
+
+            </div>
+
+          <% end %>
+
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-md-6 col-md-offset-3 text-center">
+
+          <div class="form-group">
+            <%= f.email_field :email, placeholder: 'Email address', class: 'form-control inline-label' %>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-md-6 col-md-offset-3 text-center">
+
+          <div class="form-group">
+            <%= f.password_field :password, placeholder: 'Password', class: 'form-control inline-label' %>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-md-6 col-md-offset-3 text-center">
+
+          <div class="form-group">
+            <%= f.submit t('accounts.new.create_account'), class: 'btn btn-lg btn-primary' %>
+          </div>
+
+        </div>
+
+      </div>
+
+    </fieldset>
+
+  <% end %>
+
 </div>
