@@ -23,7 +23,7 @@
 
           <div class="form-group">
             <%= f.label :name, t('accounts.general.company_name'), class: 'control-label' %>
-            <%= f.text_field :name, autofocus: true, class: 'form-control' %>
+            <%= f.text_field :name, autofocus: true, class: 'form-control', required: true %>
           </div>
 
         </div>
@@ -84,7 +84,7 @@
             <div class="form-group">
               <!-- TODO: locale is missing -->
               <%= ff.label :name, 'Full name', class: 'control-label' %>
-              <%= ff.text_field :name, class: 'form-control' %>
+              <%= ff.text_field :name, class: 'form-control', required: true %>
             </div>
 
           </div>
@@ -102,7 +102,7 @@
             <div class="form-group">
               <!-- TODO: locale is missing -->
               <%= ff.label :email, 'Email address', class: 'control-label' %>
-              <%= ff.email_field :email, class: 'form-control' %>
+              <%= ff.email_field :email, class: 'form-control', required: true %>
             </div>
 
           </div>
@@ -116,7 +116,8 @@
             <div class="form-group">
               <!-- TODO: locale is missing -->
               <%= ff.label :password, 'Password', class: 'control-label' %>
-              <%= ff.password_field :password, class: 'form-control', placeholder: "Pretend you're a spy. Make it a good one" %>
+              <%= ff.password_field :password, class: 'form-control', placeholder: "Pretend you're a spy. Make it a good one", required: true, pattern: '.{8,}', title: 'Make sure you use at least 8 characters' %>
+              <span class="help-block">Make sure you use at least 8 characters.</span>
             </div>
 
           </div>
