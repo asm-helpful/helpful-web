@@ -32,6 +32,9 @@ class Conversation < ActiveRecord::Base
     through: :messages,
     source: :person
 
+  has_many :read_receipts,
+    through: :messages
+
   has_many :respond_laters
 
   has_many :assignment_events
