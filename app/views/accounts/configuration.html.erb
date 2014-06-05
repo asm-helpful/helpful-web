@@ -7,7 +7,7 @@
   <h1 class="page-title">Start using Helpful!</h1>
 
   <p>
-    Try sending a support request to <%= mail_to @account.mailbox_email.address %> and see how it works. 
+    Try sending a support request to <%= mail_to @account.mailbox_email.address, @account.mailbox_email.address, class: 'send-email' %> and see how it works. 
   </p>
 
   <div class="well well-lg empty-inbox">
@@ -56,7 +56,16 @@ var notifyConversationCreated = function() {
   $('.inbox-button').show();
 }
 
-checkInbox();
+var sendEmail = function() {
+  $('.empty-inbox').show();
+  checkInbox();
+}
+
+$('.send-email').on('click', function() {
+  sendEmail();
+});
+
+$('.empty-inbox').hide();
 $('.full-inbox').hide();
 $('.inbox-button').hide();
 </script>
