@@ -49,10 +49,11 @@
     z-index: 2;
     display: inline-block;
 
-    > a {
+    > a, div {
       background-color: $navbar-default-bg;
       color: $dark-gray !important;
       display: inline-block;
+      padding: 15px 10px;
       position: relative;
       white-space: nowrap;
 

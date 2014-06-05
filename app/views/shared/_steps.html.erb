@@ -1,88 +1,38 @@
-<% if @account.persisted? %>
+<div class="navbar navbar-default">
 
-  <div class="navbar navbar-default">
+  <div class="container">
 
-    <div class="container">
+    <ul class="nav navbar-nav nav-steps">
 
-      <ul class="nav navbar-nav nav-steps">
-
-        <li>
-          <%= link_to edit_account_path(@account), class: "#{'active' if current_page?(edit_account_path(@account))}#{'completed' if current_page?(account_invitations_path(@account))}#{'completed' if current_page?(configuration_account_path(@account))}"  do %>
-            <span class="glyphicon glyphicon-ok"></span>
-            <!-- TODO: locale is missing -->
-            Sign Up
-          <% end %>
-        </li>
-
-        <li>
-          <%= link_to account_invitations_path(@account), class: "#{'active' if current_page?(account_invitations_path(@account))}#{'completed' if current_page?(configuration_account_path(@account))}" do %>
-            <span class="glyphicon glyphicon-ok"></span>
-            <!-- TODO: locale is missing -->
-            Invite Your Team
-          <% end %>
-        </li>
-
-        <li>
-          <%= link_to configuration_account_path(@account), class: "#{'active' if current_page?(configuration_account_path(@account))}" do %>
-            <span class="glyphicon glyphicon-ok"></span>
-            <!-- TODO: locale is missing -->
-            Start Using Helpful
-          <% end %>
-        </li>
-
-        <li class="strech">
-        </li>
-
-      </ul>
-
-    </div>
-
-  </div>
-
-<% else %>
-
-  <div class="navbar navbar-default">
-
-    <ul class="nav navbar-nav navbar-left">
-      <li class="navbar-brand-icon">
-         <%= link_to root_path do %>
-          <%= image_tag 'life_saver.png', alt: 'Helpful' %>
-        <% end %>
+      <li>
+        <div class="<%= 'active' if current_page?(new_accounts_path) %> <%= 'completed' if @account.persisted? && (current_page?(account_invitations_path(@account)) || current_page?(configuration_account_path(@account))) %>">
+          <span class="glyphicon glyphicon-ok"></span>
+          <!-- TODO: locale is missing -->
+          Sign Up
+        </div>
       </li>
+
+      <li>
+        <div class="<%= 'active' if @account.persisted? && current_page?(account_invitations_path(@account)) %> <%= 'completed' if @account.persisted? && current_page?(configuration_account_path(@account)) %>">
+          <span class="glyphicon glyphicon-ok"></span>
+          <!-- TODO: locale is missing -->
+          Invite Your Team
+        </div>
+      </li>
+
+      <li>
+        <div class="<%= 'active' if @account.persisted? && current_page?(configuration_account_path(@account)) %>">
+          <span class="glyphicon glyphicon-ok"></span>
+          <!-- TODO: locale is missing -->
+          Start Using Helpful
+        </div>
+      </li>
+
+      <li class="strech">
+      </li>
+
     </ul>
 
-    <div class="container">
-
-      <ul class="nav navbar-nav nav-steps">
-
-        <li>
-          <%= link_to new_accounts_path, class: 'active' do %>
-            <span class="glyphicon glyphicon-ok"></span>
-            Sign Up
-          <% end %>
-        </li>
-
-        <li>
-          <%= link_to new_accounts_path do %>
-            <span class="glyphicon glyphicon-ok"></span>
-            Invite Your Team
-          <% end %>
-        </li>
-
-        <li>
-          <%= link_to new_accounts_path do %>
-            <span class="glyphicon glyphicon-ok"></span>
-            Start Using Helpful
-          <% end %>
-        </li>
-
-        <li class="strech">
-        </li>
-
-      </ul>
-
-    </div>
-
   </div>
 
-<% end %>
+</div>
