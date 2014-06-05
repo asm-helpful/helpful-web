@@ -69,6 +69,6 @@
   }
 
   .arrow:after {
-    border-bottom-color: $lightest-gray;
+    border-bottom-color: $lightest-gray !important;
   }
 }
