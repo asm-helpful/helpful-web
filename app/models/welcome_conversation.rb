@@ -7,15 +7,15 @@ like. Here are examples of how to use our important features.
 
 1.  Assign it to another team member.
 
-    ![assign.gif](https://d1015h9unskp4y.cloudfront.net/attachments/6cb6a5b4-cb6e-4741-94e5-c2aff8fc2e11/assign.gif)
+    ![assign.gif](https://d1015h9unskp4y.cloudfront.net/attachments/9e1eb4d9-03a0-4137-9c14-2fd927914ee2/assign.gif)
 
 2.  Add a tag to group it with other support tickets.
 
-    ![tag.gif](https://d1015h9unskp4y.cloudfront.net/attachments/3cfb2f79-8117-4093-a2bd-e830665d7f93/tag.gif)
+    ![tag.gif](https://d1015h9unskp4y.cloudfront.net/attachments/5736caaa-83bd-47b3-bd2b-d616f0a1e51f/canned-response.gif)
 
 3.  Use a canned response to reply with a saved message.
 
-    ![canned-response.gif](https://d1015h9unskp4y.cloudfront.net/attachments/4fb59ca4-11c7-45b9-bd74-74d1aa03a482/canned-response.gif) 
+    ![canned-response.gif](https://d1015h9unskp4y.cloudfront.net/attachments/b39716a1-d17c-4fa5-84d1-ed12814eef64/tag.gif) 
 
 **If you have any more questions just respond below.**
 
