@@ -29,13 +29,13 @@
 
     <fieldset>
 
-      <%= render 'shared/error_messages', target: resource %>
-
-      <%= f.hidden_field :invitation_token %>
-
       <div class="row">
 
         <div class="col-md-6 col-md-offset-3 text-center">
+
+          <%= render 'shared/error_messages', target: resource %>
+
+          <%= f.hidden_field :invitation_token %>
 
           <%= fields_for resource.build_person do |ff| %>
 

@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   UNSTORED_LOCATIONS = ['/users/sign_up', '/users/sign_in', '/users/password', '/users/sign_out', '/users/invitation']
 
   before_filter :store_location
+  before_filter :configure_permitted_parameters, if: :devise_controller?
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -21,6 +22,12 @@ class ApplicationController < ActionController::Base
 
   def authorize!(policy)
     policy.access? || raise(ActiveRecord::RecordNotFound)
+  end
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:accept_invitation) do |u|
+      u.permit(:email, :name, :password, :invitation_token)
+    end
   end
 
 end
