@@ -41,12 +41,12 @@
             <div class="col-md-12">
               <div class="row">
                 <div class="col-md-3">
-                  <div class="form-container">
-                    <%= avatar(current_user, 125, :preview) %>
+                  <div class="panel panel-subtle">
+                    <%= avatar(current_user, 105, :preview) %>
                   </div>
                 </div>
                 <div class="col-md-9">
-                  <div class="form-container">
+                  <div class="panel panel-subtle panel-center">
                     <div class="btn btn-default btn-file">
                       Choose a new Profile Pic
                       <%= ff.file_field :avatar %>

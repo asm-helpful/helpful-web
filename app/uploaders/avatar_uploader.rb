@@ -38,7 +38,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # @TODO: Make sure existing images also get the preview
   version :preview do
-    process :resize_to_fill => [125, 125]
+    process :resize_to_fill => [210, 210]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
