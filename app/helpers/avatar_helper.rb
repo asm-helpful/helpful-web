@@ -1,7 +1,7 @@
 module AvatarHelper
 
   def avatar_default(person)
-    avatar(person, 30, 'avatar-default')
+    avatar(person, 30, :thumb, 'avatar-default')
   end
 
   # Public: View helper to provide an avatar div & img for a given user.
@@ -10,14 +10,16 @@ module AvatarHelper
   #
   # size         - the non-retina size of the avatar
   #
+  # version      - the uploader version, see avatar_uploader.rb
+  #
   # html_classes - optional extra html classes. Typically `avatar-` variations.
   #
   # Returns a img tag wraped in a div with the class of avatar.
-  def avatar(person, size, *html_classes)
+  def avatar(person, size, version, *html_classes)
     return unless person
 
     content_tag(:div, class: ['avatar', *html_classes]) do
-      [avatar_initials(person, size), avatar_image(person, size)].reduce(:+)
+      [avatar_initials(person, size), avatar_image(person, size, version)].reduce(:+)
     end
   end
 
@@ -25,12 +27,12 @@ module AvatarHelper
     content_tag(:div, person.initials, class: 'avatar-initials', style: "#{avatar_style_constraints(size)}; display: none;")
   end
 
-  def avatar_image(person, size)
-    image_tag(avatar_path(person, size), width: size, height: size, onerror: 'toggleAvatar(this)')
+  def avatar_image(person, size, version)
+    image_tag(avatar_path(person, size, version), width: size, height: size, onerror: 'toggleAvatar(this)')
   end
 
-  def avatar_path(person, size)
-    person.avatar.try(:preview).present? ? person.avatar.thumb : gravatar_url(person.email, size)
+  def avatar_path(person, size, version)
+    person.avatar.try(version).present? ? person.avatar.send(version) : gravatar_url(person.email, size)
   end
 
   def avatar_style_constraints(size)

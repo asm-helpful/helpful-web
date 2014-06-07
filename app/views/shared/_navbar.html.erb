@@ -5,7 +5,7 @@
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown avatar">
         <a class="dropdown-toggle" href="#" data-toggle="dropdown">
-          <%= avatar(current_user, 30, 'navbar-avatar') %>
+          <%= avatar(current_user, 30, ':thumb', 'navbar-avatar') %>
           <span class="username"><%= current_user.name %></span>
           <b class="caret"></b>
         </a>
@@ -39,7 +39,7 @@
           <li>
             <a href="<%= edit_account_path(@account) %>"><%= t('.company_profile') %></a>
           </li>
-          
+
           <li>
             <a href="<%= setup_account_path(@account) %>"><%= t('.technical_setup') %></a>
           </li>
@@ -96,7 +96,7 @@
               <% @account.users.includes(:person).order('people.name ASC').each do |user| %>
                 <li class="search-result">
                   <%= link_to search_account_conversations_path(@account, assignee: user.id) do %>
-                    <%= avatar(user, 30, 'navbar-avatar') %>
+                    <%= avatar(user, 30, :thumb, 'navbar-avatar') %>
                     <span class="username">
                       <%= user.name %>
                     </span>
