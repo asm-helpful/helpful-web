@@ -46,6 +46,7 @@ log "Setting up the Database"
 cp config/database.yml.example config/database.yml &&
 su vagrant -lc "cd /vagrant && bundle exec rake db:create"
 su vagrant -lc "cd /vagrant && bundle exec rake db:migrate"
+su vagrant -lc "cd /vagrant && bundle exec rake db:seed"
 
 # Trigger a reindex for ElasticSearch
 su vagrant -lc "cd /vagrant && bundle exec rake search:reindex"
