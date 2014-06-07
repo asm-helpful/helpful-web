@@ -12,48 +12,51 @@
   <% end %>
 
   <%= form_for current_user, html: {class: 'form', multipart: true} do |f| %>
-    
+
     <fieldset>
       <h2>Change your account</h2>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, quae, labore, aliquid, ea at quam nemo minus dolor tempore facere repellat illum quidem ab adipisci recusandae officia nihil! Ex, culpa.</p>
-      
+
       <div class="form-group  has-feedback has-success">
         <%= f.label :name, t('accounts.general.your_name'), class: 'control-label' %>
         <%= f.text_field :name, class: 'form-control' %>
-        <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+        <span class="form-control-feedback"></span>
       </div>
 
       <div class="form-group has-feedback has-success">
         <%= f.label :email, t('general.email'), class: 'control-label' %>
         <%= f.text_field :email, class: 'form-control' %>
-        <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+        <span class="form-control-feedback"></span>
       </div>
     </fieldset>
 
     <%= fields_for current_user.person do |ff| %>
-      
+
       <fieldset>
         <h2>Change your account profile picture</h2>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae, placeat, repudiandae hic velit eveniet magnam labore nam officia adipisci alias exercitationem eaque! Vel earum voluptatibus accusantium enim a consequuntur dolorum?</p>
-        
+
         <div class="form-group avatar-preview">
           <div class="row">
             <div class="col-md-12">
               <div class="row">
                 <div class="col-md-3">
                   <div class="form-container">
-                    <%= avatar(current_user, 125) %>                    
+                    <%= avatar(current_user, 125, :preview) %>
                   </div>
                 </div>
                 <div class="col-md-9">
                   <div class="form-container">
-                    <%= ff.file_field :avatar %>
+                    <div class="btn btn-default btn-file">
+                      Choose a new Profile Pic
+                      <%= ff.file_field :avatar %>
+                    </div>
                     <p>
                       Or connect a social account to use that picture
                     </p>
-                    <a href="#" class="twitter-connect">Connect</a>
-                    <a href="#" class="facebook-connect">Connect</a>
-                    <a href="#" class="google-connect">Connect</a>
+                    <a href="#" class="btn btn-default">Twitter</a>
+                    <a href="#" class="btn btn-default">Facebook</a>
+                    <a href="#" class="btn btn-default">Google</a>
                   </div>
                 </div>
               </div>
