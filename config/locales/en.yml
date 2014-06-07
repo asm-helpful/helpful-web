@@ -23,7 +23,7 @@ en:
   general:
     ago: "ago"
     email: "Email"
-    email_placeholder: "you@example.com"
+    email_placeholder: "Your Email"
     password: "Password"
     roles:
       owner: "owner"
@@ -61,9 +61,9 @@ en:
 
   accounts:
     general:
-      company_name: "Company name"
+      company_name: "Company Name"
       company_name_placeholder: "Acme Corp"
-      your_name: "Your name"
+      your_name: "Your Name"
       your_name_placeholder: "Jane Doe"
       username: "Username"
       username_placeholder: "jane"
