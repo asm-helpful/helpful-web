@@ -8,19 +8,6 @@ fieldset:last-child {
   margin-bottom: 40px;
 }
 
-/* @TODO: Add to styleguide */
-.form-container {
-  padding: 15px;
-  border: 1px solid #dee3e3;
-  background: #f6fbfc; /* @TODO: Variable? */
-
-  @include border-radius(5px);
-
-  p {
-    color: $black;
-  }
-}
-
 .form-group {
   margin-top: 10px;
   margin-bottom: 10px;

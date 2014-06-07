@@ -21,6 +21,20 @@ $panel-title: $light-black;
   border: 1px solid $panel-border;
 }
 
+/* @TODO: Variables for color? */
+.panel-subtle {
+  background: #f6fbfc;
+  border: 1px solid $panel-border;
+
+  p {
+    color: $black;
+  }
+}
+
+.panel-center {
+  text-align: center;
+}
+
 .panel-error {
   border: 1px solid lighten($danger, 25%);
 
