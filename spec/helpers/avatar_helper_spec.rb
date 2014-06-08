@@ -11,17 +11,17 @@ describe AvatarHelper do
   end
 
   it "#avatar returns an element with the avatar class" do
-    html = avatar(@person, 60)
+    html = avatar(@person, 60, :thumb)
     assert_match %r{avatar}, html
   end
 
   it "#avatar returns an img element" do
-    html = avatar(@person, 60)
+    html = avatar(@person, 60, :thumb)
     assert_match %r{img}, html
   end
 
   it "#avatar returns an img element with the size" do
-    html = avatar(@person, 60)
+    html = avatar(@person, 60, :thumb)
     assert_match %r{width="60"}, html
   end
 
@@ -34,16 +34,20 @@ describe AvatarHelper do
     context "when the person have an uploaded avatar" do
       let(:person) { double('person') }
       let(:avatar) { double('avatar') }
-      let(:thumb) { "/path/to/my/avatar.png" }
+
+      let(:version) { :thumb }
+      let(:path) { "/path/to/my/avatar.png" }
 
       before do
         allow(person).to receive(:avatar) { avatar }
-        allow(avatar).to receive(:thumb) { thumb }
+        allow(avatar).to receive(:send).with(version) { path }
+        allow(avatar).to receive(:try).with(version) { path }
       end
 
       it "should return the thumb path" do
-        expect(avatar_path person, 30).to match thumb
+        expect(avatar_path person, 30, version).to match path
       end
+
     end
   end
 
