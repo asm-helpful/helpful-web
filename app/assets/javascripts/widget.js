@@ -121,6 +121,9 @@
 
     this.overlay.style.display = 'block';
     this.container.style.display = 'block';
+
+    // focus question field
+    document.querySelector('#helpful-question').focus();
   }
 
   HelpfulEmbed.prototype.checkTextarea = function () {
