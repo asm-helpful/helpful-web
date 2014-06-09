@@ -87,6 +87,9 @@ GEM
       execjs
     coffee-script-source (1.7.0)
     columnize (0.8.9)
+    confyio (1.2.0)
+      faraday (>= 0.9.0)
+      json (>= 1.7.7)
     connection_pool (1.2.0)
     coolline (0.4.3)
     crack (0.4.2)
@@ -390,6 +393,7 @@ DEPENDENCIES
   carrierwave
   carrierwave-aws
   codeclimate-test-reporter
+  confyio
   curb
   database_cleaner
   devise (~> 3.1)

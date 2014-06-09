@@ -1,3 +1,5 @@
+Confy::Config.env(ENV['CONFY_URL']) if ENV['CONFY_URL']
+
 module Helpful
   extend self
 
