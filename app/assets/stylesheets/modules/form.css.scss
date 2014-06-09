@@ -169,6 +169,10 @@ textarea.form-control {
     text-align: center;
     font-size: 16px;
   }
+
+  .control-label ~ .form-control-feedback {
+    top: 36px;
+  }
 }
 
 .help-block {
