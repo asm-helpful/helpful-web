@@ -50,56 +50,70 @@
       this.overlay.className.replace('transparent', '');
     }
 
-    // calculate widget location, width = 300px, height = 325px, minimum viewport margin = 25px
-    var el_pos = this.source.getBoundingClientRect();
-
+    // get documents measurements
     var document_h = Math.max(
-        document.body.scrollHeight, document.documentElement.scrollHeight,
-        document.body.offsetHeight, document.documentElement.offsetHeight,
-        document.body.clientHeight, document.documentElement.clientHeight
+      document.body.scrollHeight, document.documentElement.scrollHeight,
+      document.body.offsetHeight, document.documentElement.offsetHeight,
+      document.body.clientHeight, document.documentElement.clientHeight
     );
 
     var document_w = Math.max(
-        document.body.scrollWidth, document.documentElement.scrollWidth,
-        document.body.offsetWidth, document.documentElement.offsetWidth,
-        document.body.clientWidth, document.documentElement.clientWidth
+      document.body.scrollWidth, document.documentElement.scrollWidth,
+      document.body.offsetWidth, document.documentElement.offsetWidth,
+      document.body.clientWidth, document.documentElement.clientWidth
     );
-    
-    var widget_top = 0;
-    var widget_left = 0;
 
-    // check if enough space on screen above source AND if enough space below in document UNLESS not enough above in document
-    if ((el_pos.top < 355) && ((this.source.offsetTop + this.source.offsetHeight + 355) < document_h || this.source.offsetTop < 355)) {
-      // show below
-      widget_top = this.source.offsetTop + this.source.offsetHeight + 15;
-      this.widget.className += ' helpful-shown-below';
+    // get screen measurements
+    var screen_w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
+    var screen_h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
+
+    if (this.options.modal) {
+      document.querySelector('.helpful-pointer').style.display = 'none';
+
+      this.widget.style.top = screen_h / 2 - 170 + 'px';
+      this.widget.style.left = screen_w / 2 - 175 + 'px';
+      this.widget.style.position = 'fixed';
     } else
     {
-      // show above
-      widget_top = this.source.offsetTop - 355;
+      // calculate widget location, width = 300px, height = 325px, minimum viewport margin = 25px
+      var el_pos = this.source.getBoundingClientRect();
+      
+      var widget_top = 0;
+      var widget_left = 0;
+
+      // check if enough space on screen above source AND if enough space below in document UNLESS not enough above in document
+      if ((el_pos.top < 355) && ((this.source.offsetTop + this.source.offsetHeight + 355) < document_h || this.source.offsetTop < 355)) {
+        // show below
+        widget_top = this.source.offsetTop + this.source.offsetHeight + 15;
+        this.widget.className += ' helpful-shown-below';
+      } else
+      {
+        // show above
+        widget_top = this.source.offsetTop - 355;
+      }
+      
+      widget_left = this.source.offsetLeft + (this.source.offsetWidth / 2) - 175; // center relative to source
+      document.querySelector('.helpful-pointer').style.left = '50%';
+
+      if (widget_left < 0) {
+        widget_left = Math.min(this.source.offsetLeft, 25); // compensate when centering would cause offscreen pos
+
+        // position arrow
+        var arrow_left = this.source.offsetLeft + this.source.offsetWidth / 2 - widget_left;
+        document.querySelector('.helpful-pointer').style.left = arrow_left + 'px';
+      }
+
+      if (widget_left + 350 > document_w) {
+        widget_left = Math.min(this.source.offsetLeft + this.source.offsetWidth - 300, document_w - 25); // compensate when centering would cause offscreen pos
+
+        // position arrow
+        var arrow_left = this.source.offsetLeft + this.source.offsetWidth / 2 - widget_left;
+        document.querySelector('.helpful-pointer').style.left = arrow_left + 'px';
+      }
+
+      this.widget.style.top = widget_top + 'px';
+      this.widget.style.left = widget_left + 'px';
     }
-    
-    widget_left = this.source.offsetLeft + (this.source.offsetWidth / 2) - 175; // center relative to source
-    document.querySelector('.helpful-pointer').style.left = '50%';
-
-    if (widget_left < 0) {
-      widget_left = Math.min(this.source.offsetLeft, 25); // compensate when centering would cause offscreen pos
-
-      // position arrow
-      var arrow_left = this.source.offsetLeft + this.source.offsetWidth / 2 - widget_left;
-      document.querySelector('.helpful-pointer').style.left = arrow_left + 'px';
-    }
-
-    if (widget_left + 350 > document_w) {
-      widget_left = Math.min(this.source.offsetLeft + this.source.offsetWidth - 300, document_w - 25); // compensate when centering would cause offscreen pos
-
-      // position arrow
-      var arrow_left = this.source.offsetLeft + this.source.offsetWidth / 2 - widget_left;
-      document.querySelector('.helpful-pointer').style.left = arrow_left + 'px';
-    }
-
-    this.widget.style.top = widget_top + 'px';
-    this.widget.style.left = widget_left + 'px';
 
     // fill out predefined values
     document.querySelector('#helpful-name').value = this.options.name;
@@ -206,6 +220,7 @@
     this.options = {
       company: source.getAttribute('data-helpful'),
       overlay: source.getAttribute('data-helpful-overlay') != 'off',
+      modal: source.getAttribute('data-helpful-modal') == 'on',
       name: source.getAttribute('data-helpful-name') || '',
       email: source.getAttribute('data-helpful-email') || ''
     };
