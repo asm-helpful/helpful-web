@@ -14,7 +14,7 @@
             <a href="<%= edit_user_path %>"><%= t('.profile') %></a>
           </li>
           <li>
-            <a href="mailto:helpful@helpful.io"><%= t('.help') %></a>
+            <a href="#" data-helpful="helpful" data-helpful-modal="on" data-helpful-name="<%= current_user.name %>" data-helpful-email="<%= current_user.email %>"><%= t('.help') %></a>
           </li>
           <li>
             <%= link_to t('.logout'), destroy_user_session_path, method: :delete, class: 'nav-text' %>
