@@ -164,6 +164,23 @@
     margin-left: 0;
     margin-right: 0;
   }
+
+  > .tag-label-list {
+    .tag-label {
+      color: $dark-gray;
+      display: inline-block;
+      font-weight: normal;
+      margin-right: 6px;
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
 }
 
 .conversation-next,

@@ -40,5 +40,11 @@
     <div class="title">
       <%= summary(conversation) %>
     </div>
+
+    <div class="tag-label-list">
+      <% conversation.tags.each do |tag| %>
+        <span class="tag-label">#<%= tag %></span>
+      <% end %>
+    </div>
   </div>
 </a>

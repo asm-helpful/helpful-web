@@ -91,6 +91,12 @@
       <%= summary(conversation) %>
     </div>
 
+    <div class="tag-label-list">
+      <% conversation.tags.each do |tag_name| %>
+        <%= link_to "##{tag_name}", search_account_conversations_path(@account, tag: tag_name), class: 'tag-label' %>
+      <% end %>
+    </div>
+
     <div class="message">
       <div class="content">
         <%== markdown(@stream.first_item.content) %>
