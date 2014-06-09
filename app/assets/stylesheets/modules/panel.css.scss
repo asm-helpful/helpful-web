@@ -11,6 +11,7 @@ $panel-title: $light-black;
   @include box-shadow(0 1px 1px rgba(0,0,0,.05));
 
   blockquote {
+    color: $dark-gray;
     border-color: #ddd;
     border-color: rgba(0,0,0,.15);
   }
@@ -23,11 +24,30 @@ $panel-title: $light-black;
 .panel-error {
   border: 1px solid lighten($danger, 25%);
 
+  i.ss-alert {
+    display: inline-block;
+    padding-right: 5px;
+    font-size: 20px;
+    vertical-align: top;
+    color: $danger;
+  }
+
+  .panel-title {
+    display: inline-block;
+    font-weight: bold;
+    color: $darker-gray;
+  }
+
   ul {
     list-style: none;
-    line-height: 22px;
+    color: $light-black;
+    line-height: 1.5;
     padding-left: 0;
   }
+}
+
+form fieldset .panel-error {
+  margin: 2em 0 1em 0;
 }
 
 .panel-title {
