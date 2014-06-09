@@ -1,15 +1,17 @@
 <% if target.errors.any? %>
-  <div class="panel panel-errors">
+  <div class="panel panel-error">
     <div class="panel-title">
       Oops! Something went wrong.
     </div>
 
     <div class="panel-body">
-      <% target.errors.full_messages.each do |message| %>
-        <p>
-          <%= message %>
-        </p>
-      <% end %>
+      <ul>
+        <% target.errors.full_messages.each do |message| %>
+          <li>
+            <%= message %>
+          </li>
+        <% end %>
+      </ul>
     </div>
   </div>
 <% end %>
