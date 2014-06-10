@@ -21,9 +21,8 @@ $panel-title: $light-black;
   border: 1px solid $panel-border;
 }
 
-/* @TODO: Variables for color? */
 .panel-subtle {
-  background: #f6fbfc;
+  background: $lightest-gray-highlight;
   border: 1px solid $panel-border;
 
   p {
