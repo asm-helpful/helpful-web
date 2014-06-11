@@ -10,19 +10,20 @@
 
 var Avatar = React.createClass({
   render: function() {
-    avatarInitialsStyle = { width: 30, height: 30, lineHeight: 30, display: 'none' };
+    avatarInitialsStyle = { width: 30, height: 30, lineHeight: '30px', display: 'none' };
 
     return (
-      <div className="avatar">
-        <div className="avatar-initials" style={avatarInitialsStyle}>
-          {this.props.initials}
-        </div>
-
-        <div>
-          <img src={this.props.gravatarUrl} width="30px" height="30px" onerror="toggleAvatar(this)" />
-        </div>
+      <div className="avatar avatar-default">
+        <div className="avatar-initials" style={avatarInitialsStyle}>{this.props.initials}</div>
+        <img src={this.props.gravatarUrl} width="30" height="30" onError={this.toggleAvatar} />
       </div>
     );
+  },
+
+  toggleAvatar: function(event) {
+    var $img = $(event.target);
+    $img.hide();
+    $img.siblings().show();
   }
 });
 
@@ -109,14 +110,11 @@ var ConversationList = React.createClass({
 
   render: function() {
     var renderConversation = function(conversation) {
-      // TODO: Use real values from the ajax response
-      var gravatarUrl = "https://secure.gravatar.com/avatar/5609938fde25344389e62754e44976ee.png?s=30&d=404";
-
       return (
         <div className="list-item" key={conversation.id}>
           <a className="conversation conversation-row">
             <div className="summary">
-              <Avatar initials="PV" gravatarUrl={gravatarUrl} />
+              <Avatar initials={conversation.creator_person.initials} gravatarUrl={conversation.creator_person.gravatar_url} />
 
               <div className="detail">
                 <MessageCount count="3" />
