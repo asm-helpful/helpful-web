@@ -1,8 +1,106 @@
 <%= render 'shared/navbar' %>
 
-<%= render "layouts/flash" %>
+<%= render 'layouts/flash' %>
 
-<div class="container">
-  <div class="list list-conversations" data-url=<%= list_account_conversations_url(@account, user_id: params[:user_id]) %> data-pusher-channel=<%= @account.slug %>></div>
-  <%= render 'conversations/empty' %>
+<div class="container conversation-list">
 </div>
+
+<script type="text/jsx">
+/** @jsx React.DOM */
+
+var Avatar = React.createClass({
+  render: function() {
+    return (
+      <span>Avatar</span>
+    );
+  }
+});
+
+var MessageCount = React.createClass({
+  render: function() {
+    return (
+      <span className="badge badge-message-count">
+        <span className="glyphicon glyphicon-envelope"></span>
+        3
+      </span>
+    );
+  }
+});
+
+var Timestamp = React.createClass({
+  render: function() {
+    return (
+      <span>Timestamp</span>
+    );
+  }
+});
+
+var ParticipantList = React.createClass({
+  render: function() {
+    return (
+      <span>ParticipantList</span>
+    );
+  }
+});
+
+var TagList = React.createClass({
+  render: function() {
+    return (
+      <span>TagList</span>
+    );
+  }
+});
+
+var ConversationList = React.createClass({
+  getInitialState: function() {
+    return {
+      conversations: []
+    };
+  },
+
+  componentDidMount: function() {
+    $.get(this.props.source, function(response) {
+      this.setState({
+        conversations: response['conversations']
+      });
+    }.bind(this));
+  },
+
+  render: function() {
+    var renderConversation = function(conversation) {
+      return (
+        <a className="conversation conversation-row" key={conversation.id}>
+          <div className="summary">
+            <Avatar />
+
+            <div className="detail">
+              <MessageCount />
+              <Timestamp />
+
+              <ParticipantList />          
+
+              <div className="number">
+                #{conversation.number}
+              </div>
+            </div>
+
+            <div className="title">
+              {conversation.subject}
+            </div>
+
+            <TagList />
+          </div>
+        </a>
+      );
+    };
+
+    return (
+      <div>
+        {this.state.conversations.map(renderConversation)}
+      </div>
+    );
+  }
+});
+
+React.renderComponent(<ConversationList source="<%= inbox_account_conversations_path(@account, format: 'json') %>" />, $('.conversation-list')[0]);
+</script>

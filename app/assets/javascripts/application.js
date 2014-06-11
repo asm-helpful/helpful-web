@@ -15,6 +15,7 @@
 //= require jquery.transform2d
 //= require wow.min.js
 //= require react
+//= require JSXTransformer
 
 $(document).ready(function() {
 
