@@ -40,20 +40,28 @@ var MessageCount = React.createClass({
 
 var Timestamp = React.createClass({
   render: function() {
-    // TODO: Remove stale badge if not stale
-    var timestampClassNames = ['timestamp', 'badge', 'badge-timestamp-stale'].join(' ');
     var lastActivityAtInWords = this.timeAgoInWords(this.props.lastActivityAt);
 
     return (
-      <span className={timestampClassNames}>
+      <span className={this.timestampClassNames(this.props.archived, this.props.lastActivityAt)}>
         {lastActivityAtInWords}
       </span>
     );
   },
 
-  // TODO: Use moment.js to generate real time
-  timeAgoInWords: function(datetime) {
-    return '5 minutes ago';
+  timestampClassNames: function(archived, date) {
+    var classes = ['timestamp'];
+
+    if(!archived && moment(date) < moment().subtract('days', 3)) {
+      classes.push('badge');
+      classes.push('badge-timestamp-stale');
+    }
+
+    return classes.join(' ');
+  },
+
+  timeAgoInWords: function(date) {
+    return moment(date).fromNow();
   }
 });
 
@@ -118,7 +126,7 @@ var ConversationList = React.createClass({
 
               <div className="detail">
                 <MessageCount count={conversation.message_count} />
-                <Timestamp />
+                <Timestamp archived={conversation.archived} lastActivityAt={conversation.last_activity_at} />
 
                 <ParticipantList participants={conversation.participants} />
 

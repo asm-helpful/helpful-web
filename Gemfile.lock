@@ -272,6 +272,7 @@ GEM
     rails-assets-jquery (2.1.0)
     rails-assets-jquery-autosize (1.18.6)
       rails-assets-jquery (>= 1.7)
+    rails-assets-moment (2.5.0)
     rails_12factor (0.0.2)
       rails_serve_static_assets
       rails_stdout_logging
@@ -428,6 +429,7 @@ DEPENDENCIES
   rails (~> 4.1.1)
   rails-assets-handlebars
   rails-assets-jquery-autosize
+  rails-assets-moment
   rails_12factor
   rake
   react-rails!

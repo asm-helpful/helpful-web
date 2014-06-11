@@ -1,5 +1,5 @@
 class ConversationSerializer < BaseSerializer
-  attributes :number, :subject, :summary, :tags, :account_slug, :url, :message_count
+  attributes :number, :subject, :summary, :tags, :account_slug, :url, :message_count, :last_activity_at, :archived
   has_one :creator_person
   has_many :messages
   has_many :participants

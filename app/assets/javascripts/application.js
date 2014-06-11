@@ -16,6 +16,7 @@
 //= require wow.min.js
 //= require react
 //= require JSXTransformer
+//= require moment
 
 $(document).ready(function() {
 
