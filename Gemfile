@@ -47,6 +47,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'unf'
 gem 'awesome_print'
 gem 'pry-rails'
+gem 'react-rails', github: 'reactjs/react-rails'
 
 group :development do
   gem 'quiet_assets'
