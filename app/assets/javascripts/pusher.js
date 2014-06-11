@@ -31,6 +31,6 @@ function pusherStart() {
   }
 }
 
-$(document).on("ready page:change", function(){
+$(function(){
   pusherStart();
 });

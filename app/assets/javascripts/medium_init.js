@@ -1,4 +1,4 @@
-$(document).on("ready page:change", function(){
+$(function(){
   var $replyMessage = $('[data-reply-to-message]');
 
   var editor = new MediumEditor($replyMessage, {

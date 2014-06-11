@@ -72,7 +72,7 @@ var displayWindow = function() {
   }
 };
  
-$(document).on('ready page:load', function() {
+$(function() {
     
   displayWindow();
  

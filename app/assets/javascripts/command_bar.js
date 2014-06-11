@@ -128,7 +128,7 @@ function applyTextcomplete($btnGroup) {
 };
 
 
-$(document).on('ready page:load', function() {
+$(function() {
   $('.command-bar-action').each(function() {
     applyCommandBarActions($(this));
   });

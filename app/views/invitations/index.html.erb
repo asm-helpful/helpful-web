@@ -141,11 +141,8 @@ var attachKeypressHandlers = function() {
   });
 }
 
-$(document).ready(function() {
+$(function() {
   attachClickHandlers();
-});
-
-$(document).on('ready page:load', function() {
   attachKeypressHandlers();
 });
 </script>

@@ -9,7 +9,7 @@ var selectPlan = function($plan) {
   $('[name="account[billing_plan_slug]"]').val(slug);
 }
 
-$(document).on('ready page:load', function() {
+$(function() {
   var stripe = StripeCheckout.configure({
     key: $('meta[name="stripe-token"]').attr('content'),
     token: function(token, args) {

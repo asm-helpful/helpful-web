@@ -52,7 +52,7 @@ var toggleHighlight = function($element) {
   });
 }
 
-$(document).on('ready page:change', function() {
+$(function() {
   $searchQuery = $('#search-query');
 
   if(!!$searchQuery.length) {
