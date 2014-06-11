@@ -112,12 +112,12 @@ var ConversationList = React.createClass({
     var renderConversation = function(conversation) {
       return (
         <div className="list-item" key={conversation.id}>
-          <a className="conversation conversation-row">
+          <a href={conversation.url} className="conversation conversation-row">
             <div className="summary">
               <Avatar initials={conversation.creator_person.initials} gravatarUrl={conversation.creator_person.gravatar_url} />
 
               <div className="detail">
-                <MessageCount count="3" />
+                <MessageCount count={conversation.message_count} />
                 <Timestamp />
 
                 <ParticipantList participants={conversation.participants} />

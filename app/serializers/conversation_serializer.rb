@@ -1,11 +1,15 @@
 class ConversationSerializer < BaseSerializer
-  attributes :number, :subject, :summary, :tags, :account_slug, :url
+  attributes :number, :subject, :summary, :tags, :account_slug, :url, :message_count
   has_one :creator_person
   has_many :messages
   has_many :participants
 
   def include_messages?
     options.fetch(:include_messages, true)
+  end
+
+  def message_count
+    object.messages.count
   end
 
   def account_slug
