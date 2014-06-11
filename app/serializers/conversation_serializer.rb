@@ -1,6 +1,7 @@
 class ConversationSerializer < BaseSerializer
-  attributes :number, :subject, :tags, :account_slug, :url
+  attributes :number, :subject, :summary, :tags, :account_slug, :url, :creator_person
   has_many :messages
+  has_many :participants
 
   def include_messages?
     options.fetch(:include_messages, true)
@@ -8,6 +9,10 @@ class ConversationSerializer < BaseSerializer
 
   def account_slug
     object.account.slug
+  end
+
+  def summary
+    ConversationSummarizer.new(object).summary
   end
 
   def url
