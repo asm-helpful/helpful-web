@@ -10,8 +10,18 @@
 
 var Avatar = React.createClass({
   render: function() {
+    avatarInitialsStyle = { width: 30, height: 30, lineHeight: 30, display: 'none' };
+
     return (
-      <span>Avatar</span>
+      <div className="avatar">
+        <div className="avatar-initials" style={avatarInitialsStyle}>
+          {this.props.initials}
+        </div>
+
+        <div>
+          <img src={this.props.gravatarUrl} width="30px" height="30px" onerror="toggleAvatar(this)" />
+        </div>
+      </div>
     );
   }
 });
@@ -21,7 +31,7 @@ var MessageCount = React.createClass({
     return (
       <span className="badge badge-message-count">
         <span className="glyphicon glyphicon-envelope"></span>
-        3
+        {this.props.count} 
       </span>
     );
   }
@@ -29,24 +39,55 @@ var MessageCount = React.createClass({
 
 var Timestamp = React.createClass({
   render: function() {
+    // TODO: Remove stale badge if not stale
+    var timestampClassNames = ['timestamp', 'badge', 'badge-timestamp-stale'].join(' ');
+    var lastActivityAtInWords = this.timeAgoInWords(this.props.lastActivityAt);
+
     return (
-      <span>Timestamp</span>
+      <span className={timestampClassNames}>
+        {lastActivityAtInWords}
+      </span>
     );
+  },
+
+  // TODO: Use moment.js to generate real time
+  timeAgoInWords: function(datetime) {
+    return '5 minutes ago';
   }
 });
 
 var ParticipantList = React.createClass({
   render: function() {
+    var renderParticipant = function(participant) {
+      return (
+        <li>
+          {participant.nickname}
+        </li>
+      );
+    };
+
     return (
-      <span>ParticipantList</span>
+      <ul className="participants">
+        {this.props.participants.map(renderParticipant)}
+      </ul>
     );
   }
 });
 
 var TagList = React.createClass({
   render: function() {
+    var renderTagLabel = function(tag) {
+      return (
+        <span className="tag-label">
+          #{tag}
+        </span>
+      )
+    }
+
     return (
-      <span>TagList</span>
+      <div className="tag-label-list">
+        {this.props.tags.map(renderTagLabel)}
+      </div>
     );
   }
 });
@@ -68,34 +109,40 @@ var ConversationList = React.createClass({
 
   render: function() {
     var renderConversation = function(conversation) {
+      // TODO: Use real values from the ajax response
+      var gravatarUrl = "https://secure.gravatar.com/avatar/5609938fde25344389e62754e44976ee.png?s=30&d=404";
+      var participants = [{ nickname: 'Patrick Van Stee' }, { nickname: 'Matthew Smith' }];
+
       return (
-        <a className="conversation conversation-row" key={conversation.id}>
-          <div className="summary">
-            <Avatar />
+        <div className="list-item">
+          <a className="conversation conversation-row" key={conversation.id}>
+            <div className="summary">
+              <Avatar initials="PV" gravatarUrl={gravatarUrl} />
 
-            <div className="detail">
-              <MessageCount />
-              <Timestamp />
+              <div className="detail">
+                <MessageCount count="3" />
+                <Timestamp />
 
-              <ParticipantList />          
+                <ParticipantList participants={participants} />
 
-              <div className="number">
-                #{conversation.number}
+                <div className="number">
+                  #{conversation.number}
+                </div>
               </div>
-            </div>
 
-            <div className="title">
-              {conversation.subject}
-            </div>
+              <div className="title">
+                {conversation.subject}
+              </div>
 
-            <TagList />
-          </div>
-        </a>
+              <TagList tags={conversation.tags} />
+            </div>
+          </a>
+        </div>
       );
     };
 
     return (
-      <div>
+      <div className="list list-conversations">
         {this.state.conversations.map(renderConversation)}
       </div>
     );
