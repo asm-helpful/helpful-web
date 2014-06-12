@@ -15,8 +15,9 @@
 //= require jquery.transform2d
 //= require wow.min.js
 //= require react
-//= require JSXTransformer
+//= require react_ujs
 //= require moment
+//= require_tree ./components
 
 $(document).ready(function() {
 
