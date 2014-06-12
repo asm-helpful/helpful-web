@@ -17,6 +17,7 @@
 //= require react
 //= require react_ujs
 //= require moment
+//= require showdown
 //= require_tree ./components
 
 $(document).ready(function() {

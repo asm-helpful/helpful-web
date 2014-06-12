@@ -16,7 +16,7 @@ class ConversationSummarizer
   end
 
   def tweet_sized_snippet_from_first_message
-    first_message.content[0...LENGTH]
+    first_message && first_message.content[0...LENGTH]
   end
 
   def first_message

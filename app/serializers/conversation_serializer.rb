@@ -3,6 +3,7 @@ class ConversationSerializer < BaseSerializer
   has_one :creator_person
   has_many :messages
   has_many :participants
+  has_many :stream_items
 
   def include_messages?
     options.fetch(:include_messages, true)
@@ -22,5 +23,9 @@ class ConversationSerializer < BaseSerializer
 
   def url
     "/#{account_slug}/#{number}"
+  end
+
+  def stream_items
+    ConversationStream.new(object).stream_items
   end
 end

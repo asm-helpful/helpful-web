@@ -1,10 +1,16 @@
 /** @jsx React.DOM */
 
 var Conversation = React.createClass({
+  getInitialState: function() {
+    return {
+      messagesVisible: false
+    };
+  },
+
   render: function() {
     return (
       <div className="list-item" key={this.props.conversation.id}>
-        <a href={this.props.conversation.url} className="conversation conversation-row">
+        <div onClick={this.toggleMessages} className={this.conversationClassNames()}>
           <div className="summary">
             <Avatar initials={this.props.conversation.creator_person.initials} gravatarUrl={this.props.conversation.creator_person.gravatar_url} />
 
@@ -28,9 +34,30 @@ var Conversation = React.createClass({
             </div>
 
             <ConversationTagList tags={this.props.conversation.tags} />
+
+            {this.state.messagesVisible ? <Message message={this.props.conversation.stream_items[0]} detail={false} /> : ''}
           </div>
-        </a>
+
+          {this.state.messagesVisible ? <ConversationStream items={this.props.conversation.stream_items} /> : ''}
+        </div>
       </div>
     );
+  },
+
+  toggleMessages: function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    this.setState({
+      messagesVisible: !this.state.messagesVisible
+    });
+  },
+
+  conversationClassNames: function() {
+    if(this.state.messagesVisible) {
+      return ['conversation', 'conversation-detail'].join(' ');
+    } else {
+      return ['conversation', 'conversation-row'].join(' ');
+    }
   }
 });

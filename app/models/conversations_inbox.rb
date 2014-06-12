@@ -61,6 +61,7 @@ class ConversationsInbox
   def open_conversations
     conversations = preloaded_conversations.unresolved
     conversations = conversations.unassigned_or_assigned_to(user)
+    conversations = conversations.with_messages
     conversations
   end
 end
