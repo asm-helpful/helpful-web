@@ -1,5 +1,7 @@
 class ConversationSerializer < BaseSerializer
-  attributes :number, :subject, :summary, :tags, :account_slug, :url, :message_count, :last_activity_at, :archived
+  attributes :account_slug, :archived, :create_message_path, :last_activity_at, :message_count,
+    :number, :path, :subject, :summary, :tags
+
   has_one :creator_person
   has_many :messages
   has_many :participants
@@ -21,8 +23,12 @@ class ConversationSerializer < BaseSerializer
     ConversationSummarizer.new(object).summary
   end
 
-  def url
+  def path
     "/#{account_slug}/#{number}"
+  end
+
+  def create_message_path
+    current_account && url_helpers.account_messages_path(current_account)
   end
 
   def stream_items

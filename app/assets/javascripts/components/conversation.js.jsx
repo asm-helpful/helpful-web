@@ -39,7 +39,7 @@ var Conversation = React.createClass({
           </div>
 
           {this.state.messagesVisible ? <ConversationStream items={this.props.conversation.stream_items} /> : ''}
-          {this.state.messagesVisible ? <ConversationResponse conversation={this.props.conversation} /> : ''}
+          {this.state.messagesVisible ? <ConversationResponse conversation={this.props.conversation} addMessageHandler={this.addMessage} /> : ''}
         </div>
       </div>
     );
@@ -54,6 +54,11 @@ var Conversation = React.createClass({
     this.setState({
       messagesVisible: !this.state.messagesVisible
     });
+  },
+
+  addMessage: function(message) {
+    this.props.conversation.stream_items.push(message);
+    this.forceUpdate();
   },
 
   conversationClassNames: function() {

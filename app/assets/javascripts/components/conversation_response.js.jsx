@@ -35,11 +35,44 @@ var ConversationResponse = React.createClass({
     setTimeout(function() { $response.focus() }, 0);
   },
 
-  // TODO: Submit response via ajax and insert message
+  // TODO: Include file attachments
+  createMessage: function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    var data = {
+      message: {
+        conversation_id: this.props.conversation.id,
+        content: $('.conversation-response').html()
+      }
+    };
+
+    $.ajax({
+      type: 'POST',
+      url: this.props.conversation.create_message_path,
+      data: JSON.stringify(data),
+      dataType: 'json',
+      contentType: 'application/json',
+      accepts: { json: 'application/json' },
+      success: function(response) {
+        this.addMessage(response.message);
+        this.clearResponse();
+      }.bind(this)
+    });
+  },
+
+  addMessage: function(message) {
+    this.props.addMessageHandler(message);
+  },
+
+  clearResponse: function() {
+    $('.conversation-response').html('');
+  },
+
   // TODO: Include all command bar functions (assignment, tag, canned response)
   render: function() {
     return (
-      <div className="conversation-response-container">
+      <div className="conversation-response-container" onSubmit={this.createMessage}>
         <Avatar person={this.state.currentUser.person} />
 
         <form>
