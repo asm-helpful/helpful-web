@@ -3,7 +3,7 @@ Help shouldn't hurt.
 
 [![Build Status](https://travis-ci.org/asm-helpful/helpful-web.png?branch=master)](https://travis-ci.org/asm-helpful/helpful-web)
 [![Code Climate](https://codeclimate.com/github/support-foo/web.png)](https://codeclimate.com/github/support-foo/web)
-[![Inline docs](http://inch-pages.github.io/github/asm-helpful/helpful-web.png)](http://inch-pages.github.io/github/asm-helpful/helpful-web)
+[![Inline docs](http://inch-ci.org/github/asm-helpful/helpful-web.png)](http://inch-ci.org/github/asm-helpful/helpful-web)
 
 Helpful is an open product that's being built by a fantastic group of people on [Assembly](https://assemblymade.com/helpful). Anybody can join in building this product and earn a stake of the profit.
 
