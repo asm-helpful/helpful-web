@@ -10,8 +10,8 @@ var Conversation = React.createClass({
   render: function() {
     return (
       <div className="list-item" key={this.props.conversation.id}>
-        <div onClick={this.toggleMessages} className={this.conversationClassNames()}>
-          <div className="summary">
+        <div className={this.conversationClassNames()}>
+          <div className="summary" onClick={this.toggleMessages}>
             <Avatar initials={this.props.conversation.creator_person.initials} gravatarUrl={this.props.conversation.creator_person.gravatar_url} />
 
             <div className="detail">
@@ -39,11 +39,14 @@ var Conversation = React.createClass({
           </div>
 
           {this.state.messagesVisible ? <ConversationStream items={this.props.conversation.stream_items} /> : ''}
+          {this.state.messagesVisible ? <ConversationResponse conversation={this.props.conversation} /> : ''}
         </div>
       </div>
     );
   },
 
+  // TODO: scroll to conversation reply field
+  // TODO: hide other open conversations
   toggleMessages: function(event) {
     event.preventDefault();
     event.stopPropagation();

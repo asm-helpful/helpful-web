@@ -1,4 +1,4 @@
-.conversation-reply {
+.conversation-response-container {
   background-color: $white;
   border-bottom: 2px solid $light-gray;
   border-right: 2px solid $light-gray;
@@ -10,9 +10,9 @@
     position: absolute;
     margin-left: -(40px + (30px / 2));
   }
+}
 
-  .reply-to-message {
-    min-height: 100px;
-    outline: 0;
-  }
+.conversation-response {
+  min-height: 100px;
+  outline: 0;
 }
