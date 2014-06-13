@@ -4,8 +4,10 @@ var ConversationResponse = React.createClass({
   getInitialState: function() {
     return {
       currentUser: {
-        initials: '',
-        gravatarUrl: ''
+        person: {
+          initials: '',
+          gravatar_url: ''
+        }
       }
     }
   },
@@ -39,7 +41,7 @@ var ConversationResponse = React.createClass({
   render: function() {
     return (
       <div className="conversation-response-container">
-        <Avatar initials={this.state.currentUser.initials} gravatarUrl={this.state.currentUser.gravatarUrl} />
+        <Avatar initials={this.state.currentUser.person.initials} gravatarUrl={this.state.currentUser.person.gravatar_url} />
 
         <form>
           <div className="conversation-response" placeholder="Write your reply..."></div>
