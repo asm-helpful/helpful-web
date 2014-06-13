@@ -4,21 +4,21 @@ var AssignmentEvent = React.createClass({
   render: function() {
     return (
       <div className="event">
-        <a href={this.props.assignmentEvent.user_url}>
-          <Avatar initials={this.props.assignmentEvent.initials} gravatarUrl={this.props.assignmentEvent.avatar_url} />
+        <a href={this.props.assignmentEvent.user.search_path}>
+          <Avatar person={this.props.assignmentEvent.user.person} />
         </a>
 
         <strong>
-          <a href={this.props.assignmentEvent.user_url}>
-            {this.props.assignmentEvent.name}
+          <a href={this.props.assignmentEvent.user.search_path}>
+            {this.props.assignmentEvent.user.person.name}
           </a>
 
           {' '} assigned
 
-          <a href={this.props.assignmentEvent.assignee_url}>
-            <Avatar initials={this.props.assignmentEvent.assignee_initials} gravatarUrl={this.props.assignmentEvent.assignee_avatar_url} />
+          <a href={this.props.assignmentEvent.assignee.search_path}>
+            <Avatar person={this.props.assignmentEvent.assignee.person} />
 
-            {this.props.assignmentEvent.assignee_name}
+            {this.props.assignmentEvent.assignee.person.name}
           </a>
         </strong>
 

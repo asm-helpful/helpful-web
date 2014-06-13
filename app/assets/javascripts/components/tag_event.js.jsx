@@ -4,13 +4,13 @@ var TagEvent = React.createClass({
   render: function() {
     return (
       <div className="event">
-        <a href={this.props.tagEvent.user_url}>
-          <Avatar initials={this.props.tagEvent.initials} gravatarUrl={this.props.tagEvent.avatar_url} />
+        <a href={this.props.tagEvent.user.path}>
+          <Avatar person={this.props.tagEvent.user.person} />
         </a>
 
         <strong>
-          <a href={this.props.tagEvent.user_url}>
-            {this.props.tagEvent.name}
+          <a href={this.props.tagEvent.user.search_path}>
+            {this.props.tagEvent.user.person.name}
           </a>
 
           {' '} tagged
@@ -18,7 +18,7 @@ var TagEvent = React.createClass({
 
         {' '} this conversation with {' '}
 
-        <a href={this.props.tagEvent.tag_url} className="tag">
+        <a href={this.props.tagEvent.search_path} className="tag">
           #{this.props.tagEvent.tag}
         </a>
 

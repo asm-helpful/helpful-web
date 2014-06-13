@@ -12,7 +12,7 @@ var Conversation = React.createClass({
       <div className="list-item" key={this.props.conversation.id}>
         <div className={this.conversationClassNames()}>
           <div className="summary" onClick={this.toggleMessages}>
-            <Avatar initials={this.props.conversation.creator_person.initials} gravatarUrl={this.props.conversation.creator_person.gravatar_url} />
+            <Avatar person={this.props.conversation.creator_person} />
 
             <div className="detail">
               <span className="badge badge-message-count">

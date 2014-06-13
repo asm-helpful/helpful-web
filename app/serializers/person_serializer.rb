@@ -1,5 +1,5 @@
 class PersonSerializer < BaseSerializer
-  attributes :name, :email, :nickname, :gravatar_url, :initials
+  attributes :email, :gravatar_url, :initials, :name, :nickname
 
   def nickname
     Nicknamer.new(object).nickname

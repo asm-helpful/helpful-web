@@ -6,14 +6,14 @@ var Avatar = React.createClass({
 
     return (
       <div className="avatar avatar-default">
-        <div className="avatar-initials" style={avatarInitialsStyle}>{this.props.initials}</div>
-        <img src={this.props.gravatarUrl} width="30" height="30" onError={this.avatarFailedToLoad} />
+        <div className="avatar-initials" style={avatarInitialsStyle}>{this.props.person.initials}</div>
+        <img src={this.props.person.gravatar_url} width="30" height="30" onError={this.avatarFailedToLoad} />
       </div>
     );
   },
 
   componentWillReceiveProps: function(nextProps) {
-    if(nextProps.gravatarUrl !== this.props.gravatarUrl) {
+    if(nextProps.person.gravatar_url !== this.props.person.gravatar_url) {
       this.showAvatar($('img', this.getDOMNode()));
     }
   },

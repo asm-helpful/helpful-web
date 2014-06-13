@@ -4,7 +4,7 @@ var Message = React.createClass({
   render: function() {
     return (
       <div className="message">
-        {this.props.detail ? <Avatar initials={this.props.message.person.initials} gravatarUrl={this.props.message.person.gravatar_url} /> : ''}
+        {this.props.detail ? <Avatar person={this.props.message.person} /> : ''}
 
         {this.props.detail ? <div className="person">{this.props.message.person.nickname}</div> : ''}
 

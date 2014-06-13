@@ -41,7 +41,7 @@ var ConversationResponse = React.createClass({
   render: function() {
     return (
       <div className="conversation-response-container">
-        <Avatar initials={this.state.currentUser.person.initials} gravatarUrl={this.state.currentUser.person.gravatar_url} />
+        <Avatar person={this.state.currentUser.person} />
 
         <form>
           <div className="conversation-response" placeholder="Write your reply..."></div>
