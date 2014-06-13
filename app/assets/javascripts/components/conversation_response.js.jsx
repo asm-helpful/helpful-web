@@ -17,7 +17,6 @@ var ConversationResponse = React.createClass({
     this.initMediumEditor();
   },
 
-  // TODO: Implement server side call for grabbing the current user
   getCurrentUser: function() {
     $.getJSON('/user', function(response) {
       this.setState({
