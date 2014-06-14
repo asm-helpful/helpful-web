@@ -31,8 +31,13 @@ var ConversationResponse = React.createClass({
       placeholder: $response.attr('placeholder')
     });
 
+    console.log($response.offset().top);
+    $(document).animate({ scrollTop: $('.conversation-response').offset().top }, 1000);
+
     // Autofocus the response field after setting up the editor
-    setTimeout(function() { $response.focus() }, 0);
+    setTimeout(function() {
+      $response.focus();
+    }, 1000);
   },
 
   // TODO: Include file attachments

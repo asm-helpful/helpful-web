@@ -14,10 +14,10 @@
 //= require medium_init
 //= require jquery.transform2d
 //= require wow.min.js
-//= require react
-//= require react_ujs
 //= require moment
 //= require showdown
+//= require react
+//= require react_ujs
 //= require_tree ./components
 
 $(document).ready(function() {

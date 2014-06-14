@@ -1,17 +1,11 @@
 /** @jsx React.DOM */
 
 var Conversation = React.createClass({
-  getInitialState: function() {
-    return {
-      messagesVisible: false
-    };
-  },
-
   render: function() {
     return (
       <div className="list-item" key={this.props.conversation.id}>
         <div className={this.conversationClassNames()}>
-          <div className="summary" onClick={this.toggleMessages}>
+          <div className="summary" onClick={this.props.toggleMessagesHandler}>
             <Avatar person={this.props.conversation.creator_person} />
 
             <div className="detail">
@@ -35,34 +29,18 @@ var Conversation = React.createClass({
 
             <ConversationTagList tags={this.props.conversation.tags} />
 
-            {this.state.messagesVisible ? <Message message={this.props.conversation.stream_items[0]} detail={false} /> : ''}
+            {this.props.messagesVisible ? <Message message={this.props.conversation.stream_items[0]} detail={false} /> : ''}
           </div>
 
-          {this.state.messagesVisible ? <ConversationStream items={this.props.conversation.stream_items} /> : ''}
-          {this.state.messagesVisible ? <ConversationResponse conversation={this.props.conversation} addMessageHandler={this.addMessage} /> : ''}
+          {this.props.messagesVisible ? <ConversationStream items={this.props.conversation.stream_items} /> : ''}
+          {this.props.messagesVisible ? <ConversationResponse conversation={this.props.conversation} addMessageHandler={this.props.addMessageHandler} /> : ''}
         </div>
       </div>
     );
   },
 
-  // TODO: scroll to conversation reply field
-  // TODO: hide other open conversations
-  toggleMessages: function(event) {
-    event.preventDefault();
-    event.stopPropagation();
-
-    this.setState({
-      messagesVisible: !this.state.messagesVisible
-    });
-  },
-
-  addMessage: function(message) {
-    this.props.conversation.stream_items.push(message);
-    this.forceUpdate();
-  },
-
   conversationClassNames: function() {
-    if(this.state.messagesVisible) {
+    if(this.props.messagesVisible) {
       return ['conversation', 'conversation-detail'].join(' ');
     } else {
       return ['conversation', 'conversation-row'].join(' ');
