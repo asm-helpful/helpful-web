@@ -31,9 +31,13 @@ var ConversationList = React.createClass({
   },
 
   // TODO: This is terrible; Use React.addons.update()
-  toggleMessagesHandler: function(index) {
-    this.state.conversations[index].messagesVisible = !this.state.conversations[index].messagesVisible;
-    this.replaceState(this.state);
+  toggleMessagesHandler: function(visibleIndex) {
+    var newConversations = this.state.conversations.map(function(conversation, index) {
+      conversation.messagesVisible = visibleIndex === index;
+      return conversation;
+    });
+
+    this.setState({ conversations: newConversations });
   },
 
   // TODO: This is terrible; Use React.addons.update()
