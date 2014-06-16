@@ -6,7 +6,7 @@ class TagsController < ApplicationController
   respond_to :json
 
   def index
-    respond_with @account.conversations.pluck(:tags).uniq
+    respond_with @account.tags
   end
 
   def create
