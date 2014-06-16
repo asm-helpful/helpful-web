@@ -27,6 +27,57 @@ var AssignmentButton = React.createClass({
     setTimeout(function() { $input.focus() }, 0);
   },
 
+  filterAssignees: function(event) {
+    $input = $(event.target);
+    $dropdown = $input.closest('.dropdown-menu');
+    $divider = $('li.divider', $dropdown);
+    $divider.nextAll().show();
+
+    var inputValue = $input.val();
+    if (inputValue == "") {
+      return;
+    }
+
+    var inputRegexp = new RegExp(inputValue, 'gi');
+
+    $divider.nextAll().each(function() {
+      if(!$(this).text().match(inputRegexp)) {
+        $(this).hide();
+      }
+    });
+  },
+
+  assignConversationHandler: function(assignee) {
+    return function(event) {
+      var assigneesPath = this.props.conversation.assignees_path;
+      var data = { assignee_id: assignee.id };
+
+      $.ajax({
+        type: 'POST',
+        url: assigneesPath,
+        data: JSON.stringify(data),
+        dataType: 'json',
+        contentType: 'application/json',
+        accepts: { json: 'application/json' },
+        success: function(response) {
+          this.addStreamItem(response.assignment_event);
+          this.clearAssignmentFilter(event);
+        }.bind(this)
+      });
+    }.bind(this);
+  },
+
+  addStreamItem: function(streamItem) {
+    this.props.addStreamItemHandler(streamItem);
+  },
+
+  clearAssignmentFilter: function(event) {
+    $dropdown = $(event.target).closest('.dropdown-menu');
+    $input = $('input', $dropdown);
+    $input.val('');
+    $dropdown.removeClass('open');
+  },
+
   render: function() {
     return (
       <div className="btn-group command-bar-action">
@@ -36,23 +87,23 @@ var AssignmentButton = React.createClass({
         </button>
         <ul className="dropdown-menu" role="menu">
           <li>
-            <input type="text" className="form-control" placeholder="Search by name" onClick={this.ignore} />
+            <input type="text" className="form-control" placeholder="Search by name" onClick={this.ignore} onKeyUp={this.filterAssignees} />
           </li>
           <li className="divider"></li>
-          {this.state.assignees.map(function(assignee) {
+          {this.state.assignees.map(function(assignee, index) {
             if(!assignee.person) {
               return;
             }
 
             return (
               <li>
-                <a href="#">
+                <a href="#" onClick={this.assignConversationHandler(assignee)}>
                   <Avatar person={assignee.person} />
                   <span>{assignee.person.name}</span>
                 </a>
               </li>
             );
-          })}
+          }.bind(this))}
         </ul>
       </div>
     );

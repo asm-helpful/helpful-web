@@ -60,14 +60,14 @@ var ConversationResponse = React.createClass({
       contentType: 'application/json',
       accepts: { json: 'application/json' },
       success: function(response) {
-        this.addMessage(response.message);
+        this.addStreamItem(response.message);
         this.clearResponse();
       }.bind(this)
     });
   },
 
-  addMessage: function(message) {
-    this.props.addMessageHandler(message);
+  addStreamItem: function(streamItem) {
+    this.props.addStreamItemHandler(streamItem);
   },
 
   clearResponse: function() {
@@ -85,9 +85,9 @@ var ConversationResponse = React.createClass({
 
           <div className="command-bar">
             <div className="pull-left">
-              <AssignmentButton conversation={this.props.conversation} />
-              <TagButton conversation={this.props.conversation} />
-              <CannedResponseButton conversation={this.props.conversation} />
+              <AssignmentButton conversation={this.props.conversation} addStreamItemHandler={this.props.addStreamItemHandler} />
+              <TagButton conversation={this.props.conversation} addStreamItemHandler={this.props.addStreamItemHandler} />
+              <CannedResponseButton conversation={this.props.conversation} addStreamItemHandler={this.props.addStreamItemHandler} />
               <FileAttachmentButton conversation={this.props.conversation} />
             </div>
 

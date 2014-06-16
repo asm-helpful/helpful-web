@@ -33,7 +33,7 @@ var Conversation = React.createClass({
           </div>
 
           {this.props.messagesVisible ? <ConversationStream items={this.props.conversation.stream_items} /> : ''}
-          {this.props.messagesVisible ? <ConversationResponse conversation={this.props.conversation} addMessageHandler={this.props.addMessageHandler} /> : ''}
+          {this.props.messagesVisible ? <ConversationResponse conversation={this.props.conversation} addStreamItemHandler={this.props.addStreamItemHandler} /> : ''}
         </div>
       </div>
     );

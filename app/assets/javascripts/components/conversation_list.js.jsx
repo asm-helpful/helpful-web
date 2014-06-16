@@ -43,8 +43,8 @@ var ConversationList = React.createClass({
   },
 
   // TODO: This is terrible; Use React.addons.update()
-  addMessageHandler: function(index, message) {
-    this.state.conversations[index].stream_items.push(message);
+  addStreamItemHandler: function(index, streamItem) {
+    this.state.conversations[index].stream_items.push(streamItem);
     this.replaceState(this.state);
   },
 
@@ -56,8 +56,8 @@ var ConversationList = React.createClass({
             this.toggleMessagesHandler(index);
           }.bind(this);
 
-          var addMessage = function(message) {
-            this.addMessageHandler(index, message);
+          var addStreamItem = function(streamItem) {
+            this.addStreamItemHandler(index, streamItem);
           }.bind(this);
 
           return (
@@ -66,7 +66,7 @@ var ConversationList = React.createClass({
               currentUser={this.state.currentUser}
               messagesVisible={conversation.messagesVisible}
               toggleMessagesHandler={toggleMessages}
-              addMessageHandler={addMessage}
+              addStreamItemHandler={addStreamItem}
               key={conversation.id} />
           );
         }.bind(this))}
