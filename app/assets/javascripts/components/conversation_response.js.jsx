@@ -20,7 +20,7 @@ var ConversationResponse = React.createClass({
   getCurrentUser: function() {
     $.getJSON('/user', function(response) {
       this.setState({
-        currentUser: response['user']
+        currentUser: response.user
       });
     }.bind(this));
   },
@@ -30,9 +30,6 @@ var ConversationResponse = React.createClass({
     var editor = new MediumEditor($response, {
       placeholder: $response.attr('placeholder')
     });
-
-    console.log($response.offset().top);
-    $(document).animate({ scrollTop: $('.conversation-response').offset().top }, 1000);
 
     // Autofocus the response field after setting up the editor
     setTimeout(function() {
@@ -80,7 +77,6 @@ var ConversationResponse = React.createClass({
     $('.conversation-response').focus();
   },
 
-  // TODO: Include all command bar functions (assignment, tag, canned response)
   render: function() {
     return (
       <div className="conversation-response-container" onSubmit={this.createMessage}>
