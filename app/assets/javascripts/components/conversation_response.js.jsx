@@ -74,6 +74,12 @@ var ConversationResponse = React.createClass({
     $('.conversation-response').html('');
   },
 
+  useCannedResponseHandler: function(cannedResponse) {
+    $('.conversation-response').html(cannedResponse.rendered_message);
+    $('.conversation-response').removeClass('medium-editor-placeholder');
+    $('.conversation-response').focus();
+  },
+
   // TODO: Include all command bar functions (assignment, tag, canned response)
   render: function() {
     return (
@@ -87,7 +93,7 @@ var ConversationResponse = React.createClass({
             <div className="pull-left">
               <AssignmentButton conversation={this.props.conversation} addStreamItemHandler={this.props.addStreamItemHandler} />
               <TagButton conversation={this.props.conversation} addStreamItemHandler={this.props.addStreamItemHandler} />
-              <CannedResponseButton conversation={this.props.conversation} addStreamItemHandler={this.props.addStreamItemHandler} />
+              <CannedResponseButton conversation={this.props.conversation} addStreamItemHandler={this.props.addStreamItemHandler} useCannedResponseHandler={this.useCannedResponseHandler} />
               <FileAttachmentButton conversation={this.props.conversation} />
             </div>
 
