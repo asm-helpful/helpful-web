@@ -1,9 +1,13 @@
-class AssigneeController < ApplicationController
+class AssigneesController < ApplicationController
   before_action :authenticate_user!
   before_action :find_account!
   before_action :find_conversation!
 
   respond_to :json
+
+  def index
+    respond_with @conversation.account.users
+  end
 
   def create
     @conversation.user_id = params[:assignee_id]

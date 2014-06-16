@@ -1,6 +1,7 @@
 class ConversationSerializer < BaseSerializer
-  attributes :account_slug, :archived, :create_message_path, :last_activity_at, :message_count,
-    :number, :path, :subject, :summary, :tags
+  attributes :account_slug, :archived, :create_message_path, :last_activity_at,
+    :message_count, :number, :path, :subject, :summary, :tags, :assignees_path,
+    :tags_path, :canned_responses_path
 
   has_one :creator_person
   has_many :messages
@@ -28,7 +29,19 @@ class ConversationSerializer < BaseSerializer
   end
 
   def create_message_path
-    current_account && url_helpers.account_messages_path(current_account)
+    url_helpers.account_messages_path(object.account)
+  end
+
+  def assignees_path
+    url_helpers.account_conversation_assignees_path(object.account, object)
+  end
+
+  def tags_path
+    url_helpers.account_conversation_tags_path(object.account, object)
+  end
+
+  def canned_responses_path
+    url_helpers.account_canned_responses_path(object.account)
   end
 
   def stream_items

@@ -86,9 +86,9 @@ var ConversationResponse = React.createClass({
           <div className="command-bar">
             <div className="pull-left">
               <AssignmentButton conversation={this.props.conversation} />
-              <TagButton />
-              <CannedResponseButton />
-              <FileAttachmentButton />
+              <TagButton conversation={this.props.conversation} />
+              <CannedResponseButton conversation={this.props.conversation} />
+              <FileAttachmentButton conversation={this.props.conversation} />
             </div>
 
             <div className="pull-right">
