@@ -90,7 +90,6 @@ var ConversationResponse = React.createClass({
               <AssignmentButton conversation={this.props.conversation} addStreamItemHandler={this.props.addStreamItemHandler} />
               <TagButton conversation={this.props.conversation} addStreamItemHandler={this.props.addStreamItemHandler} />
               <CannedResponseButton conversation={this.props.conversation} addStreamItemHandler={this.props.addStreamItemHandler} useCannedResponseHandler={this.useCannedResponseHandler} />
-              <FileAttachmentButton conversation={this.props.conversation} />
             </div>
 
             <div className="pull-right">
