@@ -84,9 +84,17 @@ var ConversationResponse = React.createClass({
           <div className="conversation-response" placeholder="Write your reply..."></div>
 
           <div className="command-bar">
+            <div className="pull-left">
+              <AssignmentButton conversation={this.props.conversation} />
+              <TagButton />
+              <CannedResponseButton />
+              <FileAttachmentButton />
+            </div>
+
             <div className="pull-right">
               <input className="btn btn-secondary" type="submit" name="commit" value="Send" />
             </div>
+
             <div className="clearfix"></div>
           </div>
         </form>  

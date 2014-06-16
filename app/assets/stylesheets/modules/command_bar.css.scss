@@ -15,4 +15,20 @@
   input[type="file"] {
     display: none;
   }
+
+  .btn-group {
+    margin-left: 10px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  .dropdown-menu {
+    li:first-child {
+      input {
+        margin: 10px;
+      }
+    }
+  }
 }
