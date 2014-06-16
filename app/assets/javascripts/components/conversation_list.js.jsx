@@ -31,9 +31,11 @@ var ConversationList = React.createClass({
   },
 
   // TODO: This is terrible; Use React.addons.update()
+  // TODO: Ignore clicks on content
   toggleMessagesHandler: function(visibleIndex) {
     var newConversations = this.state.conversations.map(function(conversation, index) {
-      conversation.messagesVisible = visibleIndex === index;
+      var toggleConversation = visibleIndex === index;
+      conversation.messagesVisible = toggleConversation && !conversation.messagesVisible;
       return conversation;
     });
 
