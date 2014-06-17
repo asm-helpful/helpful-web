@@ -1,6 +1,8 @@
 class MessagesController < ApplicationController
   before_action :authenticate_user!, :only => [:create]
 
+  respond_to :html, :json
+
   def create
     find_account!
 
@@ -13,22 +15,34 @@ class MessagesController < ApplicationController
         properties: { action: params['commit'] }
       )
 
-      if @account.prefers_archiving?
-        message.conversation.archive!
+      message.conversation.archive! if @account.prefers_archiving?
 
-        redirect_to inbox_account_conversations_path(@account),
-          notice: 'The conversation has been archived and the message sent.'
-      else
-        flash[:preference] = @account.prefers_archiving.nil?
+      respond_with message, location: account_conversation_path(@account, message.conversation) do |format|
+        format.html do
+          flash[:preference] = @account.prefers_archiving.nil?
 
-        redirect_to account_conversation_path(@account, message.conversation),
-          notice: 'The message has been sent'
+          if message.conversation.archived?
+            redirect_to inbox_account_conversations_path(@account),
+              notice: 'The conversation has been archived and the message sent.'
+          else
+            redirect_to account_conversation_path(@account, message.conversation),
+              notice: 'The message has been sent'
+          end
+        end
+
+        format.json
       end
     else
       Analytics.track(user_id: current_user.id, event: 'Message Save Problem')
 
-      redirect_to account_conversation_path(@account, message.conversation),
-        alert: "Problem"
+      respond_with message do |format|
+        format.html do
+          redirect_to account_conversation_path(@account, message.conversation),
+            alert: "Problem"
+        end
+
+        format.json
+      end
     end
   end
 

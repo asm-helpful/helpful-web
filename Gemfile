@@ -8,7 +8,7 @@ gem 'dotenv-rails', groups: [:development, :test]
 
 # Alphabetical list
 
-gem 'active_model_serializers'
+gem 'active_model_serializers', github: 'rails-api/active_model_serializers'
 gem 'analytics-ruby'
 gem 'bootstrap-sass'
 gem 'bourbon'
@@ -36,17 +36,19 @@ gem 'pusher'
 gem 'rails', '~> 4.1.1'
 gem 'rails-assets-jquery-autosize'
 gem 'rails-assets-handlebars'
+gem 'rails-assets-moment'
+gem 'rails-assets-showdown'
 gem 'redcarpet'
 gem 'sass-rails', '~> 4.0.0'
 gem 'sequential', '>= 0.1'
 gem 'sidekiq'
 gem 'stringex'
 gem 'stripe'
-gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 gem 'unf'
 gem 'awesome_print'
 gem 'pry-rails'
+gem 'react-rails', github: 'reactjs/react-rails'
 
 group :development do
   gem 'quiet_assets'

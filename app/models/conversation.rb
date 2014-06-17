@@ -66,6 +66,8 @@ class Conversation < ActiveRecord::Base
 
   scope :welcome_email, -> { where(subject: WelcomeConversation::SUBJECT) }
 
+  scope :with_messages, -> { where('(SELECT COUNT(messages.id) FROM messages WHERE messages.conversation_id = conversations.id) > 0') }
+
   sequential column: :number,
     scope: :account_id
 
@@ -98,7 +100,7 @@ class Conversation < ActiveRecord::Base
   end
 
   def creator_person
-    first_message.person
+    first_message && first_message.person
   end
 
   def messages_count

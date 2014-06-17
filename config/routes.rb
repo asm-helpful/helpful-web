@@ -52,6 +52,10 @@ Helpful::Application.routes.draw do
     root :to => 'dashboard#show', :as => 'authenticated_root'
     get '/settings' => 'users#edit', as: :edit_user
     resources :users, only: [:update]
+
+    resource :current_user,
+      path: '/user',
+      only: [:show]
   end
 
   resource :accounts, only: [:new, :create]
@@ -75,8 +79,8 @@ Helpful::Application.routes.draw do
       get :search, on: :collection
       get :list, on: :collection
 
-      resources :tags, only: [:create]
-      resources :assignee, only: [:create]
+      resources :assignees, only: [:index, :create]
+      resources :tags, only: [:index, :create]
     end
 
     resources :messages, only: [:create]

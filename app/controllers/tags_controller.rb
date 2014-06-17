@@ -5,6 +5,10 @@ class TagsController < ApplicationController
 
   respond_to :json
 
+  def index
+    respond_with @account.tags
+  end
+
   def create
     @conversation.tags = (@conversation.tags + [params[:tag]]).uniq
     @conversation.save

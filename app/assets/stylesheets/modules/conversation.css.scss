@@ -76,6 +76,7 @@
 
 .summary {
   color: $light-black;
+  cursor: pointer;
   margin-left: 40px;
   margin-right: 40px;
   padding-bottom: 30px;
@@ -98,8 +99,9 @@
     > .participants {
       display: inline-block;
       list-style: none;
-      padding-left: 0;
       margin-bottom: 0;
+      margin-left: 5px;
+      padding-left: 0;
 
       > li {
         color: $dark-gray;

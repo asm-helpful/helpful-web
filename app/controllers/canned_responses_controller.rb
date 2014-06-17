@@ -6,11 +6,11 @@ class CannedResponsesController < ApplicationController
   respond_to :html, :json
 
   def index
-    @canned_responses = @account.canned_responses
+    respond_with @canned_responses = @account.canned_responses
   end
 
   def new
-    @canned_response = @account.canned_responses.new
+    respond_with @canned_response = @account.canned_responses.new
   end
 
   def create

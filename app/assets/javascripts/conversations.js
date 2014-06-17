@@ -30,7 +30,7 @@ var conversations = {
   }
 }
 
-$(document).on('ready page:load', function() {
+$(function() {
   $('.list').on('click', '.respond-later', conversations.onRespondLaterClick);
   $('.list').on('click', '.archive', conversations.onArchiveClick);
 

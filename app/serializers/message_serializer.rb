@@ -1,8 +1,8 @@
 class MessageSerializer < BaseSerializer
-  attributes :body, :body_html
+  attributes :body, :body_html, :content
 
   has_one :conversation, embed: :ids
-  has_one :person, embed: :ids
+  has_one :person
 
   has_many :attachments
 

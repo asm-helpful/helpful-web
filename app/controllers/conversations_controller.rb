@@ -44,6 +44,8 @@ class ConversationsController < ApplicationController
     @inbox = ConversationsInbox.new(@account, current_user)
     @next_conversation = @inbox.next_conversation(@conversation)
     @previous_conversation = @inbox.previous_conversation(@conversation)
+
+    respond_with @conversation
   end
 
   def update

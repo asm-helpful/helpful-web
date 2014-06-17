@@ -128,7 +128,7 @@ function applyTextcomplete($btnGroup) {
 };
 
 
-$(document).on('ready page:load', function() {
+$(function() {
   $('.command-bar-action').each(function() {
     applyCommandBarActions($(this));
   });
@@ -137,8 +137,7 @@ $(document).on('ready page:load', function() {
     e.stopPropagation();
   });
 
-  // TODO: change this for a generic function that triggers file inputs
-  $('#message_attachments_atributes_trigger').click(function(){
+  $(document).on('click', '#message_attachments_atributes_trigger', function(){
     $('#message_attachments_atributes').trigger('click');
 
     $('#message_attachments_atributes').change(function(){
