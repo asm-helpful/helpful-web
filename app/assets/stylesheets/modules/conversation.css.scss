@@ -5,8 +5,28 @@
 }
 
 .conversation-header {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  border-bottom: 1px solid #b5cbd0;
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+
+.conversation-summary {
+  > .conversation-summary-subject {
+    display: block;
+    font-size: 16px;
+    margin-top: 5px;
+  }
+
+  > .conversation-summary-body {
+    color: #7b8193;
+    display: block;
+    font-size: 14px;
+    height: 20px;
+    margin-top: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }
 
 .conversation-participants {
@@ -41,23 +61,10 @@
   }
 }
 
-.conversation-summary {
-  > .conversation-summary-subject {
-    display: block;
-    font-size: 16px;
-    margin-top: 5px;
-  }
+.conversation-actions {
+}
 
-  > .conversation-summary-body {
-    color: #7b8193;
-    display: block;
-    font-size: 14px;
-    height: 20px;
-    margin-top: 5px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
+.conversation-avatars {
 }
 
 .conversation-row-empty {
@@ -75,26 +82,6 @@
     > p {
       margin-top: 30px;
       margin-bottom: 30px;
-    }
-  }
-}
-
-.actions {
-  margin-right: -170px;
-  padding-top: 30px;
-  padding-left: 40px;
-  float: right;
-
-  &:hover {
-    opacity: 1;
-  }
-
-  > button, input {
-    display: block;
-    width: 130px;
-
-    &:first-child {
-      margin-bottom: 10px;
     }
   }
 }

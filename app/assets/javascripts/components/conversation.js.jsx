@@ -4,13 +4,13 @@ var Conversation = React.createClass({
 
 
   render: function() {
-    var unreadStatus = '';
-    var urgentStatus = '';
-    var replyStatus = '';
+    var unreadStatus = null;
+    var urgentStatus = null;
+    var replyStatus = null;
 
-    var firstMessage = '';
-    var conversationStream = '';
-    var conversationResponse = '';
+    var firstMessage = null;
+    var conversationStream = null;
+    var conversationResponse = null;
 
     if(this.props.messagesVisible) { 
       firstMessage = (
@@ -30,39 +30,39 @@ var Conversation = React.createClass({
       <div className="list-item" key={this.props.conversation.id}>
         <div className={this.conversationClassNames()}>
           <div className="conversation-header" onClick={this.props.toggleMessagesHandler}>
-            <div className="conversation-status">
-              {unreadStatus}
-              {urgentStatus}
-              {replyStatus}
-            </div>
-
-            <div className="conversation-summary">
-              <ConversationParticipantList creator={this.props.conversation.creator_person} participants={this.props.conversation.participants} />
-
-              <div className="conversation-summary-subject">
-                {this.props.conversation.subject}
+            <div className="row">
+              <div className="conversation-status">
+                {unreadStatus}
+                {urgentStatus}
+                {replyStatus}
               </div>
 
-              <div className="conversation-summary-body">
-                {this.props.conversation.stream_items[0].content}
+              <div className="conversation-summary col-xs-9">
+                <ConversationParticipantList creator={this.props.conversation.creator_person} participants={this.props.conversation.participants} />
+
+                <div className="conversation-summary-subject">
+                  {this.props.conversation.subject}
+                </div>
+
+                <div className="conversation-summary-body">
+                  {this.props.conversation.stream_items[0].content}
+                </div>
+              </div>
+
+              <div className="conversation-actions col-xs-2">
+                <button className="btn btn-default" onClick={this.props.laterConversationHandler}>
+                  Later
+                </button>
+
+                <button className="btn btn-default" onClick={this.props.archiveConversationHandler}>
+                  Archive
+                </button>
+              </div>
+
+              <div className="conversation-avatars col-xs-1">
+                <Avatar person={this.props.conversation.creator_person} />
               </div>
             </div>
-
-            <div className="conversation-actions">
-              <button className="btn btn-default" onClick={this.props.laterConversationHandler}>
-                Later
-              </button>
-
-              <button className="btn btn-default" onClick={this.props.archiveConversationHandler}>
-                Archive
-              </button>
-            </div>
-
-            <div className="conversation-avatars">
-              <Avatar person={this.props.conversation.creator_person} />
-            </div>
-
-            <ConversationTagList tags={this.props.conversation.tags} />
 
             {firstMessage}
           </div>
