@@ -39,12 +39,12 @@ var Conversation = React.createClass({
             <div className="conversation-summary">
               <ConversationParticipantList creator={this.props.conversation.creator_person} participants={this.props.conversation.participants} />
 
-              <div className="title">
-                {this.props.conversation.title}
+              <div className="conversation-summary-subject">
+                {this.props.conversation.subject}
               </div>
 
-              <div className="summary">
-                {this.props.conversation.summary}
+              <div className="conversation-summary-body">
+                {this.props.conversation.stream_items[0].content}
               </div>
             </div>
 

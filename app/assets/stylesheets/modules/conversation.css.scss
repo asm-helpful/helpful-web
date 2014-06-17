@@ -5,6 +5,8 @@
 }
 
 .conversation-header {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .conversation-participants {
@@ -36,6 +38,25 @@
     display: inline;
     font-size: 12px;
     margin-right: 6px;
+  }
+}
+
+.conversation-summary {
+  > .conversation-summary-subject {
+    display: block;
+    font-size: 16px;
+    margin-top: 5px;
+  }
+
+  > .conversation-summary-body {
+    color: #7b8193;
+    display: block;
+    font-size: 14px;
+    height: 20px;
+    margin-top: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
 
