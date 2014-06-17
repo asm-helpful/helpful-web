@@ -86,8 +86,11 @@ var ConversationList = React.createClass({
   },
 
   moveToBottom: function(movedConversation) {
-    var index = this.state.conversations.indexOf(movedConversation);
-    var reorganizedConversations = this.state.conversations.slice(index + 1).concat(movedConversation);
+    var conversations = this.state.conversations;
+    var index = conversations.indexOf(movedConversation);
+    var reorganizedConversations = conversations.slice(0, index).
+      concat(conversations.slice(index + 1)).
+      concat(movedConversation);
 
     this.setState({
       conversations: reorganizedConversations
@@ -115,8 +118,10 @@ var ConversationList = React.createClass({
   },
 
   moveToArchive: function(movedConversation) {
-    var index = this.state.conversations.indexOf(movedConversation);
-    var unarchivedConversations = this.state.conversations.slice(index + 1);
+    var conversations = this.state.conversations;
+    var index = conversations.indexOf(movedConversation);
+    var unarchivedConversations = conversations.slice(0, index).
+      concat(conversations.slice(index + 1));
 
     this.setState({
       conversations: unarchivedConversations
