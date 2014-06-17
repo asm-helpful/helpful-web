@@ -120,38 +120,44 @@ var ConversationList = React.createClass({
   },
 
   render: function() {
-    return (
-      <div className="list list-conversations">
-        {this.state.conversations.map(function(conversation) {
-          var toggleMessages = function() {
-            this.toggleMessagesHandler(conversation);
-          }.bind(this);
+    if(!!this.state.conversations.length) {
+      return (
+        <div className="list list-conversations">
+          {this.state.conversations.map(function(conversation) {
+            var toggleMessages = function() {
+              this.toggleMessagesHandler(conversation);
+            }.bind(this);
 
-          var addStreamItem = function(streamItem) {
-            this.addStreamItemHandler(conversation, streamItem);
-          }.bind(this);
+            var addStreamItem = function(streamItem) {
+              this.addStreamItemHandler(conversation, streamItem);
+            }.bind(this);
 
-          var laterConversation = function(event) {
-            this.laterConversationHandler(conversation);
-          }.bind(this);
+            var laterConversation = function(event) {
+              this.laterConversationHandler(conversation);
+            }.bind(this);
 
-          var archiveConversation = function(event) {
-            this.archiveConversationHandler(conversation);
-          }.bind(this);
+            var archiveConversation = function(event) {
+              this.archiveConversationHandler(conversation);
+            }.bind(this);
 
-          return (
-            <Conversation
-              conversation={conversation}
-              currentUser={this.state.currentUser}
-              messagesVisible={conversation.messagesVisible}
-              toggleMessagesHandler={toggleMessages}
-              addStreamItemHandler={addStreamItem}
-              laterConversationHandler={laterConversation}
-              archiveConversationHandler={archiveConversation}
-              key={conversation.id} />
-          );
-        }.bind(this))}
-      </div>
-    );
+            return (
+              <Conversation
+                conversation={conversation}
+                currentUser={this.state.currentUser}
+                messagesVisible={conversation.messagesVisible}
+                toggleMessagesHandler={toggleMessages}
+                addStreamItemHandler={addStreamItem}
+                laterConversationHandler={laterConversation}
+                archiveConversationHandler={archiveConversation}
+                key={conversation.id} />
+            );
+          }.bind(this))}
+        </div>
+      );
+    } else {
+      return (
+        <InboxZero />
+      );
+    }
   }
 });

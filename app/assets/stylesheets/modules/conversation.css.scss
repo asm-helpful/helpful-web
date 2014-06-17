@@ -36,7 +36,6 @@
 
 .conversation-row-empty {
   border-bottom: 1px solid $light-gray;
-  display: none;
 
   &:hover {
     background-color: darken($lightest-gray, 2%);
