@@ -124,7 +124,7 @@ var ConversationList = React.createClass({
   },
 
   render: function() {
-    if(!!this.state.conversations.length || !this.state.conversationsLoaded) {
+    if(!!this.state.conversations.length) {
       return (
         <div className="list list-conversations">
           {this.state.conversations.map(function(conversation) {
@@ -158,7 +158,7 @@ var ConversationList = React.createClass({
           }.bind(this))}
         </div>
       );
-    } else {
+    } else if(this.state.conversationsLoaded) {
       return (
         <InboxZero />
       );
