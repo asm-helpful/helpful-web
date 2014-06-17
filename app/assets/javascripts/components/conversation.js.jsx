@@ -5,9 +5,10 @@ var Conversation = React.createClass({
     return (
       <div className="list-item" key={this.props.conversation.id}>
         <div className={this.conversationClassNames()}>
-          <button className="btn btn-default" onClick={this.props.laterConversationHandler}>Later</button>
-          <button className="btn btn-default" onClick={this.props.archiveConversationHandler}>Archive</button>
-
+          <div className="actions">
+            <button className="btn btn-default" onClick={this.props.laterConversationHandler}>Later</button>
+            <button className="btn btn-default" onClick={this.props.archiveConversationHandler}>Archive</button>
+          </div>
           <div className="summary" onClick={this.props.toggleMessagesHandler}>
             <Avatar person={this.props.conversation.creator_person} />
 
