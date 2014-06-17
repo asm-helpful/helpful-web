@@ -3,6 +3,7 @@
 var ConversationList = React.createClass({
   getInitialState: function() {
     return {
+      conversationsLoaded: false,
       conversations: [],
       currentUser: {
         person: {
@@ -26,7 +27,10 @@ var ConversationList = React.createClass({
         return conversation;
       });
 
-      this.setState({ conversations: conversations });
+      this.setState({
+        conversationsLoaded: true,
+        conversations: conversations
+      });
     }.bind(this));
   },
 
@@ -120,7 +124,7 @@ var ConversationList = React.createClass({
   },
 
   render: function() {
-    if(!!this.state.conversations.length) {
+    if(!!this.state.conversations.length || !this.state.conversationsLoaded) {
       return (
         <div className="list list-conversations">
           {this.state.conversations.map(function(conversation) {
