@@ -1,9 +1,10 @@
 <%= render 'shared/navbar' %>
+<%= render 'layouts/flash' %>
+<%= render 'shared/inbox_navbar' %>
 
 <div class="container">
   <%= render 'conversations/inbox', conversations: @conversations %>
 </div>
-
 
 <script>
   $(document).ready(function(){
