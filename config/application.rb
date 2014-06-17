@@ -52,5 +52,7 @@ module Helpful
     config.after_initialize do
       Hirb.enable if Rails.env.development? || Rails.env.test?
     end
+
+    config.react.addons = true
   end
 end

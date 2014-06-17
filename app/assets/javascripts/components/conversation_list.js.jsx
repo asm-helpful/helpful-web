@@ -30,25 +30,37 @@ var ConversationList = React.createClass({
     }.bind(this));
   },
 
-  // TODO: This is terrible; Use React.addons.update()
   // TODO: Ignore clicks on content
-  toggleMessagesHandler: function(visibleIndex) {
-    var newConversations = this.state.conversations.map(function(conversation, index) {
-      var toggleConversation = visibleIndex === index;
-      conversation.messagesVisible = toggleConversation && !conversation.messagesVisible;
+  toggleMessagesHandler: function(toggledConversation) {
+    var toggledConversations = this.state.conversations.map(function(conversation) {
+      if(conversation === toggledConversation) {
+        conversation.messagesVisible = !conversation.messagesVisible;
+      } else {
+        conversation.messagesVisible = false;
+      }
+
       return conversation;
     });
 
-    this.setState({ conversations: newConversations });
+    this.setState({
+      conversations: toggledConversations
+    });
   },
 
-  // TODO: This is terrible; Use React.addons.update()
-  addStreamItemHandler: function(index, streamItem) {
-    this.state.conversations[index].stream_items.push(streamItem);
-    this.replaceState(this.state);
+  addStreamItemHandler: function(updatedConversation, streamItem) {
+    var updatedConversations = this.state.conversations.map(function(conversation) {
+      if(conversation === updatedConversation) {
+        conversation.streamItems.push(streamItem);
+      }
+
+      return conversation;
+    });
+
+    this.setState({
+      conversations: updatedConversations
+    });
   },
 
-  // TODO: This is terrible; Use React.addons.update()
   laterConversationHandler: function(conversation) {
     var data = {
       conversation: {
@@ -69,14 +81,12 @@ var ConversationList = React.createClass({
     });
   },
 
-  moveToBottom: function(conversation) {
-    var conversations = this.state.conversations;
-    var index = conversations.indexOf(conversation);
-    delete conversations[index];
-    conversations.push(conversation);
+  moveToBottom: function(movedConversation) {
+    var index = this.state.conversations.indexOf(movedConversation);
+    var reorganizedConversations = this.state.conversations.slice(index).concat(movedConversation);
 
     this.setState({
-      conversations: conversations
+      conversations: reorganizedConversations
     });
   },
 
@@ -101,12 +111,11 @@ var ConversationList = React.createClass({
   },
 
   moveToArchive: function(conversation) {
-    var conversations = this.state.conversations;
-    var index = conversations.indexOf(conversation);
-    delete conversations[index];
+    var index = this.state.conversations.indexOf(movedConversation);
+    var unarchivedConversations = this.state.conversations.slice(index);
 
     this.setState({
-      conversations: conversations
+      conversations: unarchivedConversations
     });
   },
 
