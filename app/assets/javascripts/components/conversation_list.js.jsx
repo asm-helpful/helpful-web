@@ -162,6 +162,10 @@ var ConversationList = React.createClass({
       return (
         <InboxZero />
       );
+    } else {
+      return (
+        <div></div>
+      );
     }
   }
 });
