@@ -1,43 +1,74 @@
 /** @jsx React.DOM */
 
 var Conversation = React.createClass({
+
+
   render: function() {
+    var unreadStatus = '';
+    var urgentStatus = '';
+    var replyStatus = '';
+
+    var firstMessage = '';
+    var conversationStream = '';
+    var conversationResponse = '';
+
+    if(this.props.messagesVisible) { 
+      firstMessage = (
+        <Message message={this.props.conversation.stream_items[0]} detail={false} />
+      );
+
+      conversationStream = (
+        <ConversationStream items={this.props.conversation.stream_items} />
+      );
+
+      conversationResponse = (
+        <ConversationResponse conversation={this.props.conversation} addStreamItemHandler={this.props.addStreamItemHandler} />
+      );
+    }
+
     return (
       <div className="list-item" key={this.props.conversation.id}>
         <div className={this.conversationClassNames()}>
-          <div className="actions">
-            <button className="btn btn-default" onClick={this.props.laterConversationHandler}>Later</button>
-            <button className="btn btn-default" onClick={this.props.archiveConversationHandler}>Archive</button>
-          </div>
-          <div className="summary" onClick={this.props.toggleMessagesHandler}>
-            <Avatar person={this.props.conversation.creator_person} />
+          <div className="conversation-header" onClick={this.props.toggleMessagesHandler}>
+            <div className="conversation-status">
+              {unreadStatus}
+              {urgentStatus}
+              {replyStatus}
+            </div>
 
-            <div className="detail">
-              <span className="badge badge-message-count">
-                <span className="glyphicon glyphicon-envelope"></span>
-                {this.props.conversation.message_count} 
-              </span>
+            <div className="conversation-summary">
+              <ConversationParticipantList creator={this.props.conversation.creator_person} participants={this.props.conversation.participants} />
 
-              <ConversationTimestamp archived={this.props.conversation.archived} lastActivityAt={this.props.conversation.last_activity_at} />
+              <div className="title">
+                {this.props.conversation.title}
+              </div>
 
-              <ConversationParticipantList participants={this.props.conversation.participants} />
-
-              <div className="number">
-                #{this.props.conversation.number}
+              <div className="summary">
+                {this.props.conversation.summary}
               </div>
             </div>
 
-            <div className="title">
-              {this.props.conversation.summary}
+            <div className="conversation-actions">
+              <button className="btn btn-default" onClick={this.props.laterConversationHandler}>
+                Later
+              </button>
+
+              <button className="btn btn-default" onClick={this.props.archiveConversationHandler}>
+                Archive
+              </button>
+            </div>
+
+            <div className="conversation-avatars">
+              <Avatar person={this.props.conversation.creator_person} />
             </div>
 
             <ConversationTagList tags={this.props.conversation.tags} />
 
-            {this.props.messagesVisible ? <Message message={this.props.conversation.stream_items[0]} detail={false} /> : ''}
+            {firstMessage}
           </div>
 
-          {this.props.messagesVisible ? <ConversationStream items={this.props.conversation.stream_items} /> : ''}
-          {this.props.messagesVisible ? <ConversationResponse conversation={this.props.conversation} addStreamItemHandler={this.props.addStreamItemHandler} /> : ''}
+          {conversationStream}
+          {conversationResponse}
         </div>
       </div>
     );

@@ -4,33 +4,38 @@
   display: block;
 }
 
-.conversation-detail {
-  border-left: 2px solid $light-gray;
-
-  .actions {
-    padding-top: 0;
-  }
+.conversation-header {
 }
 
-.conversation-row {
-  background-color: darken($lightest-gray, 2%);
+.conversation-participants {
+  color: #7b8193;
 
-  &:hover {
-    background-color: $white;
+  > .conversation-creator-name {
+    display: inline;
+    font-size: 16px;
+    margin-right: 6px;
 
-    .actions {
-      opacity: 1;
+    &:first-child {
+      color: $black;
+      font-weight: bold;
     }
   }
 
-  .actions {
-      opacity: 0;
+  > .conversation-creator-email {
+    display: inline;
+    font-size: 16px;
+    margin-right: 6px;
+
+    &:first-child {
+      color: $black;
+      font-weight: bold;
+    }
   }
 
-  .summary {
-    margin: 0;
-    padding: 30px 40px;
-    border-bottom: 1px solid $light-gray;
+  > .conversation-participants-count {
+    display: inline;
+    font-size: 12px;
+    margin-right: 6px;
   }
 }
 
@@ -78,8 +83,8 @@
   cursor: pointer;
   margin-left: 40px;
   margin-right: 40px;
-  padding-bottom: 30px;
-  margin-top: 30px;
+  padding-bottom: 16px;
+  margin-top: 16px;
 
   > .avatar {
     position: absolute;
