@@ -6,7 +6,6 @@
       <li class="dropdown avatar">
         <a class="dropdown-toggle" href="#" data-toggle="dropdown">
           <%= avatar(current_user, 30, 'navbar-avatar') %>
-          <span class="username"><%= current_user.name %></span>
           <b class="caret"></b>
         </a>
         <ul class="dropdown-menu">
@@ -59,16 +58,6 @@
     </ul>
 
     <div class="container">
-      <ul class="nav navbar-nav nav-separated">
-        <li class="<%= current_page?(inbox_account_conversations_path(@account)) ? 'active' : '' %>">
-          <%= link_to t('.inbox'), inbox_account_conversations_path(@account) %>
-        </li>
-
-        <li class="<%= current_page?(archived_account_conversations_path(@account)) ? 'active' : '' %>">
-          <%= link_to t('.archive'), archived_account_conversations_path(@account) %>
-        </li>
-      </ul>
-
       <div class="search-bar">
         <%= form_tag search_account_conversations_path(@account), method: 'get' do %>
           <%= search_field_tag :q, @query, autocomplete: 'off', placeholder: t('.search'), id: 'search-query', 'data-search-path' => search_account_conversations_path(@account) %>
