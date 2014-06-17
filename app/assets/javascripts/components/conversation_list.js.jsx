@@ -48,6 +48,44 @@ var ConversationList = React.createClass({
     this.replaceState(this.state);
   },
 
+  // TODO: This is terrible; Use React.addons.update()
+  laterConversationHandler: function(conversation) {
+    var data = {
+      conversation: {
+        respond_later: true
+      }
+    };
+
+    $.ajax({
+      type: 'PUT',
+      url: conversation.path,
+      data: JSON.stringify(data),
+      dataType: 'json',
+      contentType: 'application/json',
+      accepts: { json: 'application/json' },
+      success: function(response) {
+        this.moveToBottom(conversation);
+      }.bind(this)
+    });
+  },
+
+  moveToBottom: function(conversation) {
+    var conversations = this.state.conversations;
+    var index = conversations.indexOf(conversation);
+    delete conversations[index];
+    conversations.push(conversation);
+
+    this.setState({
+      conversations: conversations
+    });
+  },
+
+  archiveConversationHandler: function(conversation) {
+    $.ajax
+    // ajax post
+    // remove from queue
+  },
+
   render: function() {
     return (
       <div className="list list-conversations">
@@ -60,6 +98,10 @@ var ConversationList = React.createClass({
             this.addStreamItemHandler(index, streamItem);
           }.bind(this);
 
+          var laterConversation = function(event) {
+            this.laterConversationHandler(conversation);
+          }.bind(this);
+
           return (
             <Conversation
               conversation={conversation}
@@ -67,6 +109,7 @@ var ConversationList = React.createClass({
               messagesVisible={conversation.messagesVisible}
               toggleMessagesHandler={toggleMessages}
               addStreamItemHandler={addStreamItem}
+              laterConversationHandler={laterConversation}
               key={conversation.id} />
           );
         }.bind(this))}
