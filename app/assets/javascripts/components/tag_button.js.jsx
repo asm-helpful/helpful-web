@@ -96,7 +96,7 @@ var TagButton = React.createClass({
 
             if(!filterTag) {
               return (
-                <li>
+                <li key={tag}>
                   <a href="#" onClick={this.tagConversationHandler(tag)}>
                     {tag}
                   </a>
