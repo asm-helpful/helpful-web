@@ -81,9 +81,33 @@ var ConversationList = React.createClass({
   },
 
   archiveConversationHandler: function(conversation) {
-    $.ajax
-    // ajax post
-    // remove from queue
+    var data = {
+      conversation: {
+        archive: true
+      }
+    };
+
+    $.ajax({
+      type: 'PUT',
+      url: conversation.path,
+      data: JSON.stringify(data),
+      dataType: 'json',
+      contentType: 'application/json',
+      accepts: { json: 'application/json' },
+      success: function(response) {
+        this.moveToArchive(conversation);
+      }.bind(this)
+    });
+  },
+
+  moveToArchive: function(conversation) {
+    var conversations = this.state.conversations;
+    var index = conversations.indexOf(conversation);
+    delete conversations[index];
+
+    this.setState({
+      conversations: conversations
+    });
   },
 
   render: function() {
@@ -102,6 +126,10 @@ var ConversationList = React.createClass({
             this.laterConversationHandler(conversation);
           }.bind(this);
 
+          var archiveConversation = function(event) {
+            this.archiveConversationHandler(conversation);
+          }.bind(this);
+
           return (
             <Conversation
               conversation={conversation}
@@ -110,6 +138,7 @@ var ConversationList = React.createClass({
               toggleMessagesHandler={toggleMessages}
               addStreamItemHandler={addStreamItem}
               laterConversationHandler={laterConversation}
+              archiveConversationHandler={archiveConversation}
               key={conversation.id} />
           );
         }.bind(this))}
