@@ -34,7 +34,7 @@ var ConversationResponse = React.createClass({
     // Autofocus the response field after setting up the editor
     setTimeout(function() {
       $response.focus();
-    }, 1000);
+    }, 0);
   },
 
   // TODO: Include file attachments
