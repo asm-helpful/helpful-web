@@ -50,7 +50,7 @@ var ConversationList = React.createClass({
   addStreamItemHandler: function(updatedConversation, streamItem) {
     var updatedConversations = this.state.conversations.map(function(conversation) {
       if(conversation === updatedConversation) {
-        conversation.streamItems.push(streamItem);
+        conversation.stream_items.push(streamItem);
       }
 
       return conversation;
@@ -83,7 +83,7 @@ var ConversationList = React.createClass({
 
   moveToBottom: function(movedConversation) {
     var index = this.state.conversations.indexOf(movedConversation);
-    var reorganizedConversations = this.state.conversations.slice(index).concat(movedConversation);
+    var reorganizedConversations = this.state.conversations.slice(index + 1).concat(movedConversation);
 
     this.setState({
       conversations: reorganizedConversations
@@ -110,9 +110,9 @@ var ConversationList = React.createClass({
     });
   },
 
-  moveToArchive: function(conversation) {
+  moveToArchive: function(movedConversation) {
     var index = this.state.conversations.indexOf(movedConversation);
-    var unarchivedConversations = this.state.conversations.slice(index);
+    var unarchivedConversations = this.state.conversations.slice(index + 1);
 
     this.setState({
       conversations: unarchivedConversations
@@ -122,13 +122,13 @@ var ConversationList = React.createClass({
   render: function() {
     return (
       <div className="list list-conversations">
-        {this.state.conversations.map(function(conversation, index) {
+        {this.state.conversations.map(function(conversation) {
           var toggleMessages = function() {
-            this.toggleMessagesHandler(index);
+            this.toggleMessagesHandler(conversation);
           }.bind(this);
 
           var addStreamItem = function(streamItem) {
-            this.addStreamItemHandler(index, streamItem);
+            this.addStreamItemHandler(conversation, streamItem);
           }.bind(this);
 
           var laterConversation = function(event) {
