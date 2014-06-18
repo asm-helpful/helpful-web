@@ -28,6 +28,13 @@
     margin-right: -38px;
     padding-right: 37px;
   }
+
+  .conversation-summary-body {
+    height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }
 
 .conversation-header {
@@ -83,11 +90,7 @@
     color: #7b8193;
     display: block;
     font-size: 14px;
-    height: 20px;
     margin-top: 5px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
   }
 }
 

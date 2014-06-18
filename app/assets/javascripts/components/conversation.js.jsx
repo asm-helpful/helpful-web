@@ -39,15 +39,10 @@ var Conversation = React.createClass({
       );
     }
 
-    var firstMessage = null;
     var conversationStream = null;
     var conversationResponse = null;
 
     if(this.props.messagesVisible) { 
-      firstMessage = (
-        <Message message={this.props.conversation.stream_items[0]} detail={false} />
-      );
-
       conversationStream = (
         <ConversationStream items={this.props.conversation.stream_items} />
       );
@@ -102,8 +97,6 @@ var Conversation = React.createClass({
                 <Avatar person={this.props.conversation.creator_person} />
               </div>
             </div>
-
-            {firstMessage}
           </div>
 
           {conversationStream}
