@@ -62,11 +62,11 @@ var Conversation = React.createClass({
     if(this.state.hover) {
       actions = (
         <div className="conversation-actions col-xs-2">
-          <button className="btn btn-default" onClick={this.props.laterConversationHandler}>
+          <button className="btn btn-default btn-action" onClick={this.props.laterConversationHandler}>
             Later
           </button>
 
-          <button className="btn btn-default" onClick={this.props.archiveConversationHandler}>
+          <button className="btn btn-default btn-action" onClick={this.props.archiveConversationHandler}>
             Archive
           </button>
         </div>

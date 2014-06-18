@@ -95,6 +95,21 @@
 }
 
 .conversation-actions {
+  .btn-action {
+    border-width: 1px;
+    margin-top: 5px;
+    width: 100%;
+
+    &:hover {
+      border-width: 1px;
+      border-color: $blue;
+      color: $blue;
+    }
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
 }
 
 .conversation-avatars {
