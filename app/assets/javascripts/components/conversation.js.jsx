@@ -1,6 +1,20 @@
 /** @jsx React.DOM */
 
 var Conversation = React.createClass({
+  getInitialState: function() {
+    return {
+      hover: false
+    }
+  },
+
+  setHoverHandler: function(hover) {
+    return function(event) {
+      this.setState({
+        hover: hover
+      });
+    }.bind(this);
+  },
+
   render: function() {
     var unreadStatus = null;
     var urgentStatus = null;
@@ -43,9 +57,25 @@ var Conversation = React.createClass({
       );
     }
 
+    var actions = null;
+
+    if(this.state.hover) {
+      actions = (
+        <div className="conversation-actions col-xs-2">
+          <button className="btn btn-default" onClick={this.props.laterConversationHandler}>
+            Later
+          </button>
+
+          <button className="btn btn-default" onClick={this.props.archiveConversationHandler}>
+            Archive
+          </button>
+        </div>
+      );
+    }
+
     return (
       <div className="list-item" key={this.props.conversation.id}>
-        <div className={this.conversationClassNames()}>
+        <div className={this.conversationClassNames()} onMouseEnter={this.setHoverHandler(true)} onMouseLeave={this.setHoverHandler(false)}>
           <div className="conversation-header" onClick={this.props.toggleMessagesHandler}>
             <div className="row">
               <div className="conversation-status">
@@ -54,7 +84,7 @@ var Conversation = React.createClass({
                 {replyStatus}
               </div>
 
-              <div className="conversation-summary col-xs-9">
+              <div className={this.conversationSummaryClassNames()}>
                 <ConversationParticipantList creator={this.props.conversation.creator_person} participants={this.props.conversation.participants} />
 
                 <div className="conversation-summary-subject">
@@ -66,15 +96,7 @@ var Conversation = React.createClass({
                 </div>
               </div>
 
-              <div className="conversation-actions col-xs-2">
-                <button className="btn btn-default" onClick={this.props.laterConversationHandler}>
-                  Later
-                </button>
-
-                <button className="btn btn-default" onClick={this.props.archiveConversationHandler}>
-                  Archive
-                </button>
-              </div>
+              {actions}
 
               <div className="conversation-avatars col-xs-1">
                 <Avatar person={this.props.conversation.creator_person} />
@@ -89,6 +111,14 @@ var Conversation = React.createClass({
         </div>
       </div>
     );
+  },
+
+  conversationSummaryClassNames: function() {
+    if(this.state.hover) {
+      return ['conversation-summary', 'col-xs-9'].join(' ');
+    } else {
+      return ['conversation-summary', 'col-xs-11'].join(' ');
+    }
   },
 
   conversationClassNames: function() {
