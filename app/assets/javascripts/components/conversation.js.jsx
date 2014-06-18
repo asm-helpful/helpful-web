@@ -1,8 +1,6 @@
 /** @jsx React.DOM */
 
 var Conversation = React.createClass({
-
-
   render: function() {
     var unreadStatus = null;
     var urgentStatus = null;
