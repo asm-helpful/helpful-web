@@ -18,7 +18,7 @@ var ConversationStreamItem = React.createClass({
 
   messageComponent: function() {
     return (
-      <Message message={this.props.item} detail={true} key={this.props.item.id} />
+      <Message message={this.props.item} key={this.props.item.id} />
     )
   },
 
