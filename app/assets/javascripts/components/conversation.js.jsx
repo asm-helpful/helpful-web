@@ -59,7 +59,7 @@ var Conversation = React.createClass({
 
     var actions = null;
 
-    if(this.state.hover) {
+    if(this.state.hover || this.props.messagesVisible) {
       actions = (
         <div className="conversation-actions col-xs-2">
           <button className="btn btn-default btn-action" onClick={this.props.laterConversationHandler}>
@@ -114,7 +114,7 @@ var Conversation = React.createClass({
   },
 
   conversationSummaryClassNames: function() {
-    if(this.state.hover) {
+    if(this.state.hover || this.props.messagesVisible) {
       return ['conversation-summary', 'col-xs-9'].join(' ');
     } else {
       return ['conversation-summary', 'col-xs-11'].join(' ');

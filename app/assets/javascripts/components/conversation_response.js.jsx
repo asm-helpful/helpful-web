@@ -30,11 +30,6 @@ var ConversationResponse = React.createClass({
     var editor = new MediumEditor($response, {
       placeholder: $response.attr('placeholder')
     });
-
-    // Autofocus the response field after setting up the editor
-    setTimeout(function() {
-      $response.focus();
-    }, 0);
   },
 
   // TODO: Include file attachments

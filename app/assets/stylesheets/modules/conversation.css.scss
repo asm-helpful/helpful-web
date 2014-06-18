@@ -4,8 +4,34 @@
   display: block;
 }
 
-.conversation-header {
+.conversation-detail {
+  border: 1px solid #b5cbd0;
+  border-radius: 3px;
+  background-color: $white;
+  margin-top: -1px;
+  margin-left: -38px;
+  padding-left: 37px;
+  margin-right: -38px;
+  padding-right: 37px;
+}
+
+.conversation-row {
   border-bottom: 1px solid #b5cbd0;
+
+  &:hover {
+    border: 1px solid #b5cbd0;
+    border-radius: 3px;
+    background-color: $white;
+    margin-top: -1px;
+    margin-left: -38px;
+    padding-left: 37px;
+    margin-right: -38px;
+    padding-right: 37px;
+  }
+}
+
+.conversation-header {
+  cursor: pointer;
   padding-top: 18px;
   padding-bottom: 18px;
 }
@@ -104,6 +130,7 @@
     width: 100%;
 
     &:hover {
+      background-color: $light-gray;
       border-width: 1px;
       border-color: $blue;
       color: $blue;
