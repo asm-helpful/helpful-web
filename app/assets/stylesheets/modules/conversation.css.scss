@@ -10,6 +10,39 @@
   padding-bottom: 18px;
 }
 
+.conversation-status {
+  margin-left: -12px;
+
+  > .unread-status {
+    background-color: $blue;
+    border-radius: 50%;
+    display: block;
+    height: 12px;
+    margin-top: 5px;
+    position: absolute;
+    width: 12px;
+  }
+
+  > .urgent-status {
+    background-color: $red;
+    border-radius: 50%;
+    display: block;
+    height: 12px;
+    margin-top: 32px;
+    position: absolute;
+    width: 12px;
+  }
+
+  > .reply-status {
+    color: #b5cbd0;
+    display: block;
+    height: 12px;
+    margin-top: 54px;
+    position: absolute;
+    width: 12px;
+  }
+}
+
 .conversation-summary {
   > .conversation-summary-subject {
     display: block;

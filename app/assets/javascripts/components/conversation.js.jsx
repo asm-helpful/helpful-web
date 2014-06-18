@@ -6,6 +6,25 @@ var Conversation = React.createClass({
     var urgentStatus = null;
     var replyStatus = null;
 
+    // TODO: Imeplement read receipts
+    if(false) {
+      unreadStatus = (
+        <i className="unread-status"></i>
+      );
+    }
+
+    if(this.stale()) {
+      urgentStatus = (
+        <i className="urgent-status"></i>
+      );
+    }
+
+    if(this.props.conversation.messages.length > 1) {
+      replyStatus = (
+        <i className="reply-status ss-reply"></i>
+      );
+    }
+
     var firstMessage = null;
     var conversationStream = null;
     var conversationResponse = null;
@@ -78,5 +97,10 @@ var Conversation = React.createClass({
     } else {
       return ['conversation', 'conversation-row'].join(' ');
     }
+  },
+
+  stale: function() {
+    return !this.props.conversation.archived &&
+      moment(this.props.conversation.last_activity_at) < moment().subtract('days', 3)
   }
 });
