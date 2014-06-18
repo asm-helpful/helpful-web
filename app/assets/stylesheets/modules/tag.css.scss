@@ -2,18 +2,17 @@
   background-color: transparent;
   border-radius: $btn-border-radius;
   border: $btn-border-width solid rgba($dark-blue, .4);
-  color: $dark-blue;
+  color: $dark-blue !important;
   font-family: $font-body;
   font-size: 14px;
-  font-weight: bold;
   line-height: 30px;
   margin-left: 6px;
   margin-right: 6px;
   padding: 4px 12px 6px 12px;
 
   &:hover {
-    background-color: $white;
-    border: $btn-border-width solid rgba($dark-blue, .4);
+    background-color: $light-gray;
+    border: $btn-border-width solid $blue;
     color: $dark-blue;
   }
 }

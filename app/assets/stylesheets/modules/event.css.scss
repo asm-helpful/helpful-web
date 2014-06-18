@@ -1,26 +1,21 @@
 .event {
-  color: $light-black;
-  font-size: 16px;
-  font-weight: light;
+  color: #7b8193;
+  font-size: 14px;
   line-height: 30px;
-  margin-left: 40px;
-  margin-right: 40px;
-  padding-bottom: 30px;
-  padding-top: 30px;
-  word-wrap: break-word;
+  padding-bottom: 18px;
+  padding-top: 18px;
 
   a {
-    color: $black;
+    color: #7b8193;
 
     .avatar {
       margin-left: 6px;
       margin-right: 6px;
-    }
 
-    &:first-child {
-      .avatar {
-        position: absolute;
-        margin-left: -(40px + (30px / 2));
+      img {
+        height: 24px;
+        width: 24px;
+        line-height: 24px;
       }
     }
   }
