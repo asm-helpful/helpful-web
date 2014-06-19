@@ -1,23 +1,19 @@
+$avatar-small-size: 16px;
+
 .avatar {
   display: inline;
 
   img {
     border-radius: 50%;
   }
-
-  .avatar-initials {
-    display: inline-block;
-    background-color: $dark-gray;
-    border-radius: 50%;
-    color: $white;
-    text-align: center;
-    text-transform: uppercase;
-  }
 }
 
-.avatar-default {
-  .avatar-initials {
-    font-size: $avatar-default-font-size;
+.avatar-small {
+  line-height: $avatar-small-size;
+
+  img {
+    height: $avatar-small-size;
+    width: $avatar-small-size;
   }
 }
 
