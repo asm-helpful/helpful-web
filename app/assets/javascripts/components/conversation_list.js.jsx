@@ -3,7 +3,7 @@
 var ConversationList = React.createClass({
   getInitialState: function() {
     return {
-      conversationsLoaded: false,
+      loaded: false,
       conversations: [],
       currentUser: {
         person: {
@@ -28,7 +28,7 @@ var ConversationList = React.createClass({
       });
 
       this.setState({
-        conversationsLoaded: true,
+        loaded: true,
         conversations: conversations
       });
     }.bind(this));
@@ -36,132 +36,114 @@ var ConversationList = React.createClass({
 
   expandHandler: function(expanded) {
     return function(event) {
-      var newConversations = this.state.conversations.map(function(conversation) {
+      var conversations = this.state.conversations.map(function(conversation) {
         conversation.expanded = conversation === expanded
         return conversation;
       });
 
-      this.setState({
-        conversations: newConversations
+      this.setState({ conversations: conversations });
+    }.bind(this);
+  },
+
+  addStreamItemHandler: function(addedTo) {
+    return function(streamItem) {
+      var conversations = this.state.conversations.map(function(conversation) {
+        if(conversation === addedTo) {
+          conversation.stream_items.push(streamItem);
+        }
+
+        return conversation;
+      });
+
+      this.setState({ conversations: conversations });
+    }.bind(this);
+  },
+
+  laterHandler: function(conversation) {
+    return function(event) {
+      event.stopPropagation();
+
+      var data = {
+        conversation: {
+          respond_later: true
+        }
+      };
+
+      $.ajax({
+        type: 'PUT',
+        url: conversation.path,
+        data: JSON.stringify(data),
+        dataType: 'json',
+        contentType: 'application/json',
+        accepts: { json: 'application/json' },
+        success: function(response) {
+          this.moveToBottom(conversation);
+        }.bind(this)
       });
     }.bind(this);
   },
 
-  addStreamItemHandler: function(updatedConversation, streamItem) {
-    var updatedConversations = this.state.conversations.map(function(conversation) {
-      if(conversation === updatedConversation) {
-        conversation.stream_items.push(streamItem);
-      }
+  moveToBottom: function(conversation) {
+    var index = this.state.conversations.indexOf(conversation);
+    var conversations = this.state.conversations.slice(0, index).
+      concat(this.state.conversations.slice(index + 1)).
+      concat(conversation);
 
-      return conversation;
-    });
-
-    this.setState({
-      conversations: updatedConversations
-    });
+    this.setState({ conversations: conversations });
   },
 
-  laterConversationHandler: function(conversation) {
-    var data = {
-      conversation: {
-        respond_later: true
-      }
-    };
+  archiveHandler: function(conversation) {
+    return function(event) {
+      event.stopPropagation();
 
-    $.ajax({
-      type: 'PUT',
-      url: conversation.path,
-      data: JSON.stringify(data),
-      dataType: 'json',
-      contentType: 'application/json',
-      accepts: { json: 'application/json' },
-      success: function(response) {
-        this.moveToBottom(conversation);
-      }.bind(this)
-    });
+      var data = {
+        conversation: {
+          archive: true
+        }
+      };
+
+      $.ajax({
+        type: 'PUT',
+        url: conversation.path,
+        data: JSON.stringify(data),
+        dataType: 'json',
+        contentType: 'application/json',
+        accepts: { json: 'application/json' },
+        success: function(response) {
+          this.moveToArchive(conversation);
+        }.bind(this)
+      });
+    }.bind(this);
   },
 
-  moveToBottom: function(movedConversation) {
-    var conversations = this.state.conversations;
-    var index = conversations.indexOf(movedConversation);
-    var reorganizedConversations = conversations.slice(0, index).
-      concat(conversations.slice(index + 1)).
-      concat(movedConversation);
+  moveToArchive: function(conversation) {
+    var index = this.state.conversations.indexOf(conversation);
+    var conversations = this.state.conversations.slice(0, index).
+      concat(this.state.conversations.slice(index + 1));
 
-    this.setState({
-      conversations: reorganizedConversations
-    });
+    this.setState({ conversations: conversations });
   },
 
-  archiveConversationHandler: function(conversation) {
-    var data = {
-      conversation: {
-        archive: true
-      }
-    };
-
-    $.ajax({
-      type: 'PUT',
-      url: conversation.path,
-      data: JSON.stringify(data),
-      dataType: 'json',
-      contentType: 'application/json',
-      accepts: { json: 'application/json' },
-      success: function(response) {
-        this.moveToArchive(conversation);
-      }.bind(this)
-    });
-  },
-
-  moveToArchive: function(movedConversation) {
-    var conversations = this.state.conversations;
-    var index = conversations.indexOf(movedConversation);
-    var unarchivedConversations = conversations.slice(0, index).
-      concat(conversations.slice(index + 1));
-
-    this.setState({
-      conversations: unarchivedConversations
+  renderConversation: function(conversation) {
+    return Conversation({
+      conversation: conversation,
+      expandHandler: this.expandHandler(conversation),
+      addStreamItemHandler: this.addStreamItemHandler(conversation),
+      laterHandler: this.laterHandler(conversation),
+      archiveHandler: this.archiveHandler(conversation),
+      currentUser: this.state.currentUser,
+      key: conversation.id
     });
   },
 
   render: function() {
-    if(!!this.state.conversations.length) {
-      return (
-        <div className="list list-conversations">
-          {this.state.conversations.map(function(conversation) {
-            var addStreamItem = function(streamItem) {
-              this.addStreamItemHandler(conversation, streamItem);
-            }.bind(this);
-
-            var laterConversation = function(event) {
-              this.laterConversationHandler(conversation);
-            }.bind(this);
-
-            var archiveConversation = function(event) {
-              this.archiveConversationHandler(conversation);
-            }.bind(this);
-
-            return (
-              <Conversation
-                conversation={conversation}
-                currentUser={this.state.currentUser}
-                expandHandler={this.expandHandler(conversation)}
-                addStreamItemHandler={addStreamItem}
-                laterConversationHandler={laterConversation}
-                archiveConversationHandler={archiveConversation}
-                key={conversation.id} />
-            );
-          }.bind(this))}
-        </div>
-      );
-    } else if(this.state.conversationsLoaded) {
-      return (
-        <InboxZero />
-      );
+    if(this.state.conversations.length) {
+      var conversations = this.state.conversations.map(this.renderConversation);
+      return <div className="list list-conversations">{conversations}</div>
+    } else if(this.state.loaded) {
+      return <InboxZero />
     } else {
-      return (
-        <div></div>
-      );
+      return <div></div>
     }
   }
 });

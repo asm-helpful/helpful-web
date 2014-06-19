@@ -67,7 +67,7 @@ var CannedResponseButton = React.createClass({
 
             if(!filterCannedResponse) {
               return (
-                <li>
+                <li key={cannedResponse.key}>
                   <a href="#" onClick={this.useCannedResponse(cannedResponse)}>
                     {cannedResponse.key}
                   </a>

@@ -30,8 +30,8 @@ var Conversation = React.createClass({
     return (
       <div className="conversation-header">
         <div className="btn-group pull-right">
-          <button className="btn btn-default btn-sm">Later</button>
-          <button className="btn btn-default btn-sm">Archive</button>
+          <button className="btn btn-default btn-sm" onClick={this.props.laterHandler}>Later</button>
+          <button className="btn btn-default btn-sm" onClick={this.props.archiveHandler}>Archive</button>
         </div>
 
         <div className="conversation-subject">

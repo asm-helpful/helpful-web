@@ -2,21 +2,16 @@
 
 var Stream = React.createClass({
   renderStreamItem: function(item) {
-    var component = this.componentForType(item.type);
+    var componentClass = this.componentForType(item.type);
+    var streamItem = componentClass({ item: item });
 
-    return (
-      <div className="stream-item">
-        {component({ item: item, key: item.id })}
-      </div>
-    );
+    return <div className="stream-item" key={item.id}>{streamItem}</div>
   },
 
   render: function() {
-    return (
-      <div className="stream">
-        {this.props.items.map(this.renderStreamItem)}
-      </div>
-    );
+    var streamItems = this.props.items.map(this.renderStreamItem);
+
+    return <div className="stream">{streamItems}</div>
   },
 
   componentForType: function(type) {
