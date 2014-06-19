@@ -4,7 +4,10 @@ var Message = React.createClass({
   render: function() {
     return (
       <div className="message">
-        <div className="message-person"></div>
+        <div className="message-person">
+          <Avatar person={this.props.item.person} />
+          <Person person={this.props.item.person} />
+        </div>
         <div className="message-content" dangerouslySetInnerHTML={{__html: this.content()}} />
       </div>
     );
