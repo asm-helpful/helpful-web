@@ -1,25 +1,10 @@
 /** @jsx React.DOM */
 
 var Message = React.createClass({
-  renderReplyStatus: function() {
-    if(this.props.reply) {
-      var classes = React.addons.classSet({
-        'status': true,
-        'status-reply': true
-      });
-
-      return (
-        <div className={classes}></div>
-      );
-    }
-  },
-
   render: function() {
     return (
       <div className="message">
-        <div className="conversation-gutter">
-          {this.renderReplyStatus()}
-        </div>
+        <div className="message-person"></div>
         <div className="message-content" dangerouslySetInnerHTML={{__html: this.content()}} />
       </div>
     );
@@ -35,7 +20,7 @@ var Message = React.createClass({
 
   markdownContent: function() {
     var converter = new Showdown.converter();
-    return converter.makeHtml(this.props.message.content);
+    return converter.makeHtml(this.props.item.content);
   },
 
   previewContent: function() {

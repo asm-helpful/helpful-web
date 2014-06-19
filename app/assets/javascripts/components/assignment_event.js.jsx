@@ -4,21 +4,21 @@ var AssignmentEvent = React.createClass({
   render: function() {
     return (
       <div className="event">
-        <a href={this.props.assignmentEvent.user.search_path}>
-          <Avatar person={this.props.assignmentEvent.user.person} />
+        <a href={this.props.item.user.search_path}>
+          <Avatar person={this.props.item.user.person} />
         </a>
 
         <strong>
-          <a href={this.props.assignmentEvent.user.search_path}>
-            {this.props.assignmentEvent.user.person.name}
+          <a href={this.props.item.user.search_path}>
+            {this.props.item.user.person.name}
           </a>
 
           {' '} assigned
 
-          <a href={this.props.assignmentEvent.assignee.search_path}>
-            <Avatar person={this.props.assignmentEvent.assignee.person} />
+          <a href={this.props.item.assignee.search_path}>
+            <Avatar person={this.props.item.assignee.person} />
 
-            {this.props.assignmentEvent.assignee.person.name}
+            {this.props.item.assignee.person.name}
           </a>
         </strong>
 
@@ -28,6 +28,6 @@ var AssignmentEvent = React.createClass({
   },
 
   timeAgoInWords: function() {
-    return moment(this.props.assignmentEvent.updated_at).fromNow();
+    return moment(this.props.item.updated_at).fromNow();
   }
 });

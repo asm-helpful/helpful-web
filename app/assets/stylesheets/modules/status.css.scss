@@ -6,9 +6,8 @@ $status-size: 12px;
 .status {
   border-radius: 50%;
   display: inline-block;
-  height: $status-size;
-  line-height: $status-size;
   width: $status-size;
+  height: $status-size;
 }
 
 .status-unread {

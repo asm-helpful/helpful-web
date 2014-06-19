@@ -1,57 +1,55 @@
-$conversation-background-color-active: $white;
-$conversation-border-color: #E6EBEB;
-$conversation-border-radius-active: 3px;
-$conversation-gutter-size: 20px;
-$conversation-subject-font-size: 16px;
+$brand-border: #E6EBEB;
+$conversation-gutter: 40px;
 
 .conversation {
-  border-bottom: 1px solid $conversation-border-color;
-  margin-top: -1px;
-  padding-top: $padding-large-vertical;
-  padding-bottom: $padding-large-vertical;
+//  border-bottom: 1px solid $brand-border;
+//  cursor: pointer;
+//  margin-top: -1px;
+  padding: $padding-large-vertical $padding-large-vertical;
+  
+  padding-left: $conversation-gutter ;
+
+  border-radius: $border-radius-base;
 
   &:hover {
-    background-color: $conversation-background-color-active;
-    border-radius: $conversation-border-radius-active;
-    border: 1px solid $conversation-border-color;
-    margin-left: -$padding-large-horizontal;
-    margin-right: -$padding-large-horizontal;
-    padding-left: $padding-large-horizontal - 1;
-    padding-right: $padding-large-horizontal - 1;
-    padding-top: $padding-large-vertical - 1;
+    background-color: white;
+    box-shadow: inset 0 0 0 1px $brand-border;
+//    margin-left: -$padding-large-horizontal;
+//    margin-right: -$padding-large-horizontal;
+//    padding-right: $padding-large-horizontal - 1;
+//    padding-top: $padding-large-vertical - 1;
   }
 
-  &:first-child {
-    margin-top: $padding-base-vertical;
-  }
+//  &:first-child {
+//    margin-top: $padding-base-vertical;
+//  }
+
+}
+
+.conversation-gutter {
+  float: left;
+  margin-left: - $conversation-gutter; 
+  width: $conversation-gutter;
+  text-align: center;
 }
 
 .conversation-subject {
-  font-size: $conversation-subject-font-size;
+  font-size: $font-size-large;
   padding-top: $padding-base-vertical;
   padding-bottom: $padding-base-vertical;
 }
 
 .conversation-preview {
-  > .person {
-    padding-top: $padding-base-vertical;
-    padding-bottom: $padding-base-vertical;
-  }
+  padding-top: $padding-base-vertical;
+  padding-bottom: $padding-base-vertical;
+}
 
-  > .message {
-    > .message-content {
-      display: inline-block;
-    }
-  }
+.conversation-preview-content {
+  display: block;
+  height: $line-height-computed;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .conversation-stream {
-}
-
-.conversation-gutter {
-  display: inline-block;
-  height: 20px;
-  margin-right: $padding-base-horizontal;
-  text-align: center;
-  width: 20px;
 }

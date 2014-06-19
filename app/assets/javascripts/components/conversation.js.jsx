@@ -2,14 +2,14 @@
 
 var Conversation = React.createClass({
   renderStatus: function() {
-    var unread = this.unread();
-    var stale = this.stale();
+    var isUnread = this.isUnread();
+    var isStale = this.isStale();
 
-    if(unread || stale) {
+    if(isUnread || isStale) {
       var classes = React.addons.classSet({
         'status': true,
-        'status-unread': unread,
-        'status-urgent': stale
+        'status-unread': isUnread,
+        'status-urgent': isStale
       });
 
       return (
@@ -18,87 +18,103 @@ var Conversation = React.createClass({
     }
   },
 
-  renderReplyStatus: function() {
-    var reply = this.reply();
-
-    if(reply) {
-      var classes = React.addons.classSet({
-        'status': true,
-        'status-reply': true
-      });
-
+  renderReply: function() {
+    if(this.hasReply()) {
       return (
-        <div className={classes}></div>
+        <i className="ss-reply"></i>
       );
     }
   },
 
   render: function() {
-
-    var replyStatus = null;
-
-    if(this.props.conversation.messages.length > 1) {
-      replyStatus = (
-        <i className="reply-status ss-reply"></i>
-      );
-    }
-
-    var stream = null;
-    var conversationResponse = null;
-
-    if(this.props.messagesVisible) { 
-      stream = (
-        <ConversationStream items={this.props.conversation.stream_items} />
-      );
-
-      conversationResponse = (
-        <ConversationResponse conversation={this.props.conversation} addStreamItemHandler={this.props.addStreamItemHandler} />
-      );
-    }
-
-    return (
-      <div className="conversation">
-        <div className="pull-right">
-          <button className="btn btn-link">Later</button>
-          <button className="btn btn-link">Archive</button>
+    var header = (
+      <div className="conversation-header">
+        <div className="btn-group pull-right">
+          <button className="btn btn-default btn-sm">Later</button>
+          <button className="btn btn-default btn-sm">Archive</button>
         </div>
-      
+
         <div className="conversation-subject">
           <div className="conversation-gutter">
             {this.renderStatus()}
           </div>
+  
           {this.props.conversation.subject}
-        </div>
-          
-        <div className="conversation-preview">
-          <Person person={this.props.conversation.creator_person} />
-          <Message message={this.props.conversation.messages[0]} reply={true} preview={true} />
         </div>
       </div>
     );
-    
-    
-  //   <div className="conversation-stream">{stream}</div>
-  //   {conversationResponse}
-  // </div>
-  //   
-  },
 
-  conversationClassNames: function() {
-    if(this.props.messagesVisible) {
-      return ['conversation', 'conversation-detail'].join(' ');
+    // var stream = (
+    //   <div className="conversation-stream">
+    //     <Stream items={this.props.conversation.stream_items.slice(1)} />
+    //   </div>
+    // );
+    // 
+    // var response = (
+    //   <div className="conversation-response">
+    //     <Response conversation={this.props.conversation} addStreamItemHandler={this.props.addStreamItemHandler} />
+    //   </div>
+    // );
+  
+    var preview = (
+      <div className="conversation-preview">
+        <div className="conversation-gutter">
+          <Avatar person={this.props.conversation.creator_person} size={'small'} />
+        </div>
+
+        <Person person={this.props.conversation.creator_person} />
+    
+        <div>
+          <div className="conversation-gutter">
+            {this.renderReply()}
+          </div>
+          <div className="conversation-preview-content" dangerouslySetInnerHTML={{__html: this.preview()}} />
+        </div>
+      </div>
+    );
+
+    var conversation = null;
+    
+    if(!this.props.messagesVisible) {
+      conversation = (
+        <a href="#" onClick={this.props.toggleMessagesHandler}>
+          {header}
+          {preview}
+        </a>
+      );
     } else {
-      return ['conversation', 'conversation-row'].join(' ');
+      conversation = (
+        <div>
+          {header}
+          {stream}
+          {response}
+        </div>
+      );
     }
+    
+    return (
+      <div className="conversation">
+        {conversation}
+      </div>
+    );
   },
 
   // TODO: Implement read receipts
-  unread: function() {
+  isUnread: function() {
     return false;
   },
 
-  stale: function() {
+  isStale: function() {
     return !this.props.conversation.archived &&
       moment(this.props.conversation.last_activity_at) < moment().subtract('days', 3)
   },
+  
+  hasReply: function() {
+    return true;
+  },
+  
+  preview: function() {
+    var converter = new Showdown.converter();
+    return $(converter.makeHtml(this.props.conversation.messages[0].content)).text();
+  }
 });
