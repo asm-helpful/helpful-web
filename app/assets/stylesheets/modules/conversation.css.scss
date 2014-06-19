@@ -1,11 +1,29 @@
+$conversation-background-color-active: $white;
 $conversation-border-color: #E6EBEB;
-$conversation-subject-font-size: 16px;
+$conversation-border-radius-active: 3px;
 $conversation-gutter-size: 20px;
+$conversation-subject-font-size: 16px;
 
 .conversation {
   border-bottom: 1px solid $conversation-border-color;
+  margin-top: -1px;
   padding-top: $padding-large-vertical;
   padding-bottom: $padding-large-vertical;
+
+  &:hover {
+    background-color: $conversation-background-color-active;
+    border-radius: $conversation-border-radius-active;
+    border: 1px solid $conversation-border-color;
+    margin-left: -$padding-large-horizontal;
+    margin-right: -$padding-large-horizontal;
+    padding-left: $padding-large-horizontal - 1;
+    padding-right: $padding-large-horizontal - 1;
+    padding-top: $padding-large-vertical - 1;
+  }
+
+  &:first-child {
+    margin-top: $padding-base-vertical;
+  }
 }
 
 .conversation-subject {
