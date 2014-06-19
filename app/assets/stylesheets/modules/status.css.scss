@@ -1,0 +1,34 @@
+$status-unread-background-color: $blue;
+$status-urgent-background-color: $red;
+$status-reply-color: #b5cbd0;
+$status-size: 12px;
+
+.status {
+  border-radius: 50%;
+  display: inline-block;
+  height: $status-size;
+  line-height: $status-size;
+  width: $status-size;
+}
+
+.status-unread {
+  background-color: $status-unread-background-color;
+}
+
+.status-urgent {
+  background-color: $status-urgent-background-color;
+}
+
+.status-reply {
+  &:after {
+    color: $status-reply-color;
+    content: "↩";
+    font-family: "SSGeomiconsSquared";
+    font-style: normal;
+    font-size: 13px;
+    font-weight: 400;
+    text-decoration: none;
+    text-rendering: optimizeLegibility;
+    white-space: nowrap;
+  }
+}

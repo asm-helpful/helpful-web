@@ -7,6 +7,6 @@ class PersonSerializer < BaseSerializer
 
   def gravatar_url
     id = Digest::MD5::hexdigest(object.email).downcase
-    "https://secure.gravatar.com/avatar/#{id}.png?s=60&d=blank"
+    "https://secure.gravatar.com/avatar/#{id}.png?s=60&d=mm"
   end
 end

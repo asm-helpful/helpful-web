@@ -1,16 +1,39 @@
+$conversation-border-color: #E6EBEB;
+$conversation-subject-font-size: 16px;
+$conversation-gutter-size: 20px;
+
 .conversation {
-  background-color: white;
-//  padding: $padding-large-vertical $padding-large-horizontal;
-  
-  margin-bottom: $line-height-computed;
+  border-bottom: 1px solid $conversation-border-color;
+  padding-top: $padding-large-vertical;
+  padding-bottom: $padding-large-vertical;
 }
 
 .conversation-subject {
-
+  font-size: $conversation-subject-font-size;
+  padding-top: $padding-base-vertical;
+  padding-bottom: $padding-base-vertical;
 }
 
 .conversation-preview {
+  > .person {
+    padding-top: $padding-base-vertical;
+    padding-bottom: $padding-base-vertical;
+  }
+
+  > .message {
+    > .message-content {
+      display: inline-block;
+    }
+  }
 }
 
 .conversation-stream {
+}
+
+.conversation-gutter {
+  display: inline-block;
+  height: 20px;
+  margin-right: $padding-base-horizontal;
+  text-align: center;
+  width: 20px;
 }

@@ -4,7 +4,6 @@
 
   border-radius: $btn-border-radius;
   border: 0;
-  color: $white;
   font-family: $font-body;
   font-size: 14px;
   font-weight: 400;
@@ -16,7 +15,6 @@
   &:focus,
   &.focus {
     box-shadow: none;
-    color: $white;
     outline: none;
   }
 

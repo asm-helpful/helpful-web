@@ -1,15 +1,13 @@
 .message {
 }
 
-.message-person {
-  border-bottom: 1px solid black;
-  padding: $padding-base-vertical $padding-base-horizontal;
-}
-
 .message-content {
-  padding: $padding-large-vertical $padding-base-horizontal;
+  padding-top: $padding-base-vertical;
+  padding-bottom: $padding-base-vertical;
   
-  > :last-child {
+  p {
+    font-size: $font-size-base;
+    font-weight: normal;
     margin-bottom: 0;
   }
 }

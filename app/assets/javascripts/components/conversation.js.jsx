@@ -1,23 +1,41 @@
 /** @jsx React.DOM */
 
 var Conversation = React.createClass({
-  render: function() {
-    var unreadStatus = null;
-    var urgentStatus = null;
-    var replyStatus = null;
-    //
-    // TODO: Imeplement read receipts
-    if(false) {
-      unreadStatus = (
-        <i className="unread-status"></i>
-      );
-    }
+  renderStatus: function() {
+    var unread = this.unread();
+    var stale = this.stale();
 
-    if(this.stale()) {
-      urgentStatus = (
-        <i className="urgent-status"></i>
+    if(unread || stale) {
+      var classes = React.addons.classSet({
+        'status': true,
+        'status-unread': unread,
+        'status-urgent': stale
+      });
+
+      return (
+        <div className={classes}></div>
       );
     }
+  },
+
+  renderReplyStatus: function() {
+    var reply = this.reply();
+
+    if(reply) {
+      var classes = React.addons.classSet({
+        'status': true,
+        'status-reply': true
+      });
+
+      return (
+        <div className={classes}></div>
+      );
+    }
+  },
+
+  render: function() {
+
+    var replyStatus = null;
 
     if(this.props.conversation.messages.length > 1) {
       replyStatus = (
@@ -46,11 +64,15 @@ var Conversation = React.createClass({
         </div>
       
         <div className="conversation-subject">
+          <div className="conversation-gutter">
+            {this.renderStatus()}
+          </div>
           {this.props.conversation.subject}
         </div>
           
         <div className="conversation-preview">
-          <Message message={this.props.conversation.messages[0]} />
+          <Person person={this.props.conversation.creator_person} />
+          <Message message={this.props.conversation.messages[0]} reply={true} preview={true} />
         </div>
       </div>
     );
@@ -70,8 +92,13 @@ var Conversation = React.createClass({
     }
   },
 
+  // TODO: Implement read receipts
+  unread: function() {
+    return false;
+  },
+
   stale: function() {
     return !this.props.conversation.archived &&
       moment(this.props.conversation.last_activity_at) < moment().subtract('days', 3)
-  }
+  },
 });
