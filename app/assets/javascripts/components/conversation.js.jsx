@@ -67,7 +67,7 @@ var Conversation = React.createClass({
   renderStream: function() {
     return (
       <div className="conversation-stream">
-        <Stream items={this.props.conversation.stream_items.slice(1)} />
+        <Stream items={this.props.conversation.stream_items} />
       </div>
     );
   },
@@ -81,10 +81,10 @@ var Conversation = React.createClass({
   },
 
   render: function() {
-    if(!this.props.messagesVisible) {
+    if(!this.props.conversation.expanded) {
       return (
         <div className="conversation">
-          <a href="#" onClick={this.props.toggleMessagesHandler}>
+          <a href="#" onClick={this.props.expandHandler}>
             {this.renderHeader()}
             {this.renderPreview()}
           </a>
@@ -112,7 +112,7 @@ var Conversation = React.createClass({
   },
   
   hasReply: function() {
-    return true;
+    return this.props.conversation.messages.length > 1;
   },
   
   preview: function() {

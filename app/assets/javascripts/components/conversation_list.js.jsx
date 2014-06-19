@@ -23,7 +23,7 @@ var ConversationList = React.createClass({
       var conversations = response.conversations;
 
       conversations = conversations.map(function(conversation) {
-        conversation.messagesVisible = false;
+        conversation.expanded = false;
         return conversation;
       });
 
@@ -34,21 +34,17 @@ var ConversationList = React.createClass({
     }.bind(this));
   },
 
-  // TODO: Ignore clicks on content
-  toggleMessagesHandler: function(toggledConversation) {
-    var toggledConversations = this.state.conversations.map(function(conversation) {
-      if(conversation === toggledConversation) {
-        conversation.messagesVisible = !conversation.messagesVisible;
-      } else {
-        conversation.messagesVisible = false;
-      }
+  expandHandler: function(expanded) {
+    return function(event) {
+      var newConversations = this.state.conversations.map(function(conversation) {
+        conversation.expanded = conversation === expanded
+        return conversation;
+      });
 
-      return conversation;
-    });
-
-    this.setState({
-      conversations: toggledConversations
-    });
+      this.setState({
+        conversations: newConversations
+      });
+    }.bind(this);
   },
 
   addStreamItemHandler: function(updatedConversation, streamItem) {
@@ -133,10 +129,6 @@ var ConversationList = React.createClass({
       return (
         <div className="list list-conversations">
           {this.state.conversations.map(function(conversation) {
-            var toggleMessages = function() {
-              this.toggleMessagesHandler(conversation);
-            }.bind(this);
-
             var addStreamItem = function(streamItem) {
               this.addStreamItemHandler(conversation, streamItem);
             }.bind(this);
@@ -153,8 +145,7 @@ var ConversationList = React.createClass({
               <Conversation
                 conversation={conversation}
                 currentUser={this.state.currentUser}
-                messagesVisible={conversation.messagesVisible}
-                toggleMessagesHandler={toggleMessages}
+                expandHandler={this.expandHandler(conversation)}
                 addStreamItemHandler={addStreamItem}
                 laterConversationHandler={laterConversation}
                 archiveConversationHandler={archiveConversation}
