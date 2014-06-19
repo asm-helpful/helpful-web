@@ -1,25 +1,11 @@
 /** @jsx React.DOM */
 
 var Conversation = React.createClass({
-  getInitialState: function() {
-    return {
-      hover: false
-    }
-  },
-
-  setHoverHandler: function(hover) {
-    return function(event) {
-      this.setState({
-        hover: hover
-      });
-    }.bind(this);
-  },
-
   render: function() {
     var unreadStatus = null;
     var urgentStatus = null;
     var replyStatus = null;
-
+    //
     // TODO: Imeplement read receipts
     if(false) {
       unreadStatus = (
@@ -39,11 +25,11 @@ var Conversation = React.createClass({
       );
     }
 
-    var conversationStream = null;
+    var stream = null;
     var conversationResponse = null;
 
     if(this.props.messagesVisible) { 
-      conversationStream = (
+      stream = (
         <ConversationStream items={this.props.conversation.stream_items} />
       );
 
@@ -52,66 +38,28 @@ var Conversation = React.createClass({
       );
     }
 
-    var actions = null;
-
-    if(this.state.hover || this.props.messagesVisible) {
-      actions = (
-        <div className="conversation-actions col-xs-2">
-          <button className="btn btn-default btn-action" onClick={this.props.laterConversationHandler}>
-            Later
-          </button>
-
-          <button className="btn btn-default btn-action" onClick={this.props.archiveConversationHandler}>
-            Archive
-          </button>
-        </div>
-      );
-    }
-
     return (
-      <div className="list-item" key={this.props.conversation.id}>
-        <div className={this.conversationClassNames()} onMouseEnter={this.setHoverHandler(true)} onMouseLeave={this.setHoverHandler(false)}>
-          <div className="conversation-header" onClick={this.props.toggleMessagesHandler}>
-            <div className="row">
-              <div className="conversation-status">
-                {unreadStatus}
-                {urgentStatus}
-                {replyStatus}
-              </div>
-
-              <div className={this.conversationSummaryClassNames()}>
-                <ConversationParticipantList creator={this.props.conversation.creator_person} participants={this.props.conversation.participants} />
-
-                <div className="conversation-summary-subject">
-                  {this.props.conversation.subject}
-                </div>
-
-                <div className="conversation-summary-body">
-                  {this.props.conversation.stream_items[0].content}
-                </div>
-              </div>
-
-              {actions}
-
-              <div className="conversation-avatars col-xs-1">
-                <Avatar person={this.props.conversation.creator_person} />
-              </div>
-            </div>
-          </div>
-
-          {conversationStream}
-          {conversationResponse}
+      <div className="conversation">
+        <div className="pull-right">
+          <button className="btn btn-link">Later</button>
+          <button className="btn btn-link">Archive</button>
+        </div>
+      
+        <div className="conversation-subject">
+          {this.props.conversation.subject}
+        </div>
+          
+        <div className="conversation-preview">
+          <Message message={this.props.conversation.messages[0]} />
         </div>
       </div>
     );
-  },
-
-  conversationSummaryClassNames: function() {
-    if(this.state.hover || this.props.messagesVisible) {
-      return ['conversation-summary', 'col-xs-9'].join(' ');
-    } else {
-      return ['conversation-summary', 'col-xs-11'].join(' ');
-    }
+    
+    
+  //   <div className="conversation-stream">{stream}</div>
+  //   {conversationResponse}
+  // </div>
+  //   
   },
 
   conversationClassNames: function() {

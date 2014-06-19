@@ -1,42 +1,15 @@
 .message {
-  padding-bottom: 18px;
-  padding-top: 18px;
+}
 
-  > .person {
-    color: $black;
-    display: inline;
-    font-size: 16px;
-    margin-right: 6px;
-  }
+.message-person {
+  border-bottom: 1px solid black;
+  padding: $padding-base-vertical $padding-base-horizontal;
+}
 
-  > .avatar {
-    line-height: 18px;
-    margin-top: -2px;
-
-    img {
-      display: inline;
-      height: 18px;
-      width: 18px;
-    }
-  }
-
-  > .content {
-    padding-top: 6px;
-    padding-bottom: 6px;
-
-    p {
-      color: #7b8193;
-      font-size: 14px;
-      font-weight: normal;
-      margin-bottom: 0px;
-    }
-  }
-
-  > .attachments {
-    color: $light-gray;
-    a {
-      font-size: 14px;
-    }
-    padding-bottom: 10.5px;
+.message-content {
+  padding: $padding-large-vertical $padding-base-horizontal;
+  
+  > :last-child {
+    margin-bottom: 0;
   }
 }
