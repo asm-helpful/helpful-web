@@ -26,8 +26,8 @@ var Conversation = React.createClass({
     }
   },
 
-  render: function() {
-    var header = (
+  renderHeader: function() {
+    return (
       <div className="conversation-header">
         <div className="btn-group pull-right">
           <button className="btn btn-default btn-sm">Later</button>
@@ -43,20 +43,10 @@ var Conversation = React.createClass({
         </div>
       </div>
     );
+  },
 
-    // var stream = (
-    //   <div className="conversation-stream">
-    //     <Stream items={this.props.conversation.stream_items.slice(1)} />
-    //   </div>
-    // );
-    // 
-    // var response = (
-    //   <div className="conversation-response">
-    //     <Response conversation={this.props.conversation} addStreamItemHandler={this.props.addStreamItemHandler} />
-    //   </div>
-    // );
-  
-    var preview = (
+  renderPreview: function() {
+    return (
       <div className="conversation-preview">
         <div className="conversation-gutter">
           <Avatar person={this.props.conversation.creator_person} size={'small'} />
@@ -72,31 +62,43 @@ var Conversation = React.createClass({
         </div>
       </div>
     );
+  },
 
-    var conversation = null;
-    
+  renderStream: function() {
+    return (
+      <div className="conversation-stream">
+        <Stream items={this.props.conversation.stream_items.slice(1)} />
+      </div>
+    );
+  },
+
+  renderResponse: function() {
+    return (
+      <div className="conversation-response">
+        <Response conversation={this.props.conversation} addStreamItemHandler={this.props.addStreamItemHandler} />
+      </div>
+    );
+  },
+
+  render: function() {
     if(!this.props.messagesVisible) {
-      conversation = (
-        <a href="#" onClick={this.props.toggleMessagesHandler}>
-          {header}
-          {preview}
-        </a>
+      return (
+        <div className="conversation">
+          <a href="#" onClick={this.props.toggleMessagesHandler}>
+            {this.renderHeader()}
+            {this.renderPreview()}
+          </a>
+        </div>
       );
     } else {
-      conversation = (
-        <div>
-          {header}
-          {stream}
-          {response}
+      return (
+        <div className="conversation">
+          {this.renderHeader()}
+          {this.renderStream()}
+          {this.renderResponse()}
         </div>
       );
     }
-    
-    return (
-      <div className="conversation">
-        {conversation}
-      </div>
-    );
   },
 
   // TODO: Implement read receipts
