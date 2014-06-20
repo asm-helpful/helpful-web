@@ -36,23 +36,11 @@ $gutter: 40px;
 
 
 .conversation-person {
-  margin-top: $padding-small-vertical;
-  margin-bottom: $padding-small-vertical;
-
-  > .person {
-    display: inline-block;
-  }
-
-  > .avatar {
-    display: inline-block;
-    margin-right: $padding-small-horizontal;
-  }
+  padding-bottom: $padding-large-vertical;
 }
 
 .conversation-preview {
   color: $preview-color;
-  margin-top: $padding-small-vertical;
-  margin-bottom: $padding-small-vertical;
   height: $line-height-computed;
 
   > .reply {

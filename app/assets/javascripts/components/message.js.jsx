@@ -5,8 +5,7 @@ var Message = React.createClass({
     return (
       <div className="message">
         <div className="message-person">
-          <Avatar person={this.props.item.person} size={'small'} />
-          <Person person={this.props.item.person} />
+          <Person person={this.props.person} />
         </div>
         <div className="message-content" dangerouslySetInnerHTML={{__html: this.content()}} />
       </div>
@@ -23,7 +22,7 @@ var Message = React.createClass({
 
   markdownContent: function() {
     var converter = new Showdown.converter();
-    return converter.makeHtml(this.props.item.content);
+    return converter.makeHtml(this.props.content);
   },
 
   previewContent: function() {

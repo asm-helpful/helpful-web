@@ -1,13 +1,11 @@
-$avatar-small-size: 18px;
+$avatar-small-size: 20px;
 
 .avatar {
   @extend .img-circle;
-
-  display: inline;
+  display: inline-block;
 }
 
 .avatar-small {
-  line-height: $avatar-small-size;
   height: $avatar-small-size;
   width: $avatar-small-size;
 }

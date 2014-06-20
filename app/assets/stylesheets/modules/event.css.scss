@@ -1,32 +1,10 @@
 .event {
-  color: #7b8193;
-  font-size: 14px;
-  line-height: 30px;
-  padding-bottom: 18px;
-  padding-top: 18px;
-
-  a {
-    color: #7b8193;
-
-    .avatar {
-      margin-left: 6px;
-      margin-right: 6px;
-
-      img {
-        height: 24px;
-        width: 24px;
-        line-height: 24px;
-      }
-    }
+  .person {
+    display: inline-block;
   }
 
-  > .person {
-    line-height: $avatar-default-size;
-    font-size: 20px;
-
-    > div {
-      position: absolute;
-      margin-left: - ($avatar-default-size + 30px);
-    }
+  .avatar {
+    display: inline-block;
+    margin-right: $padding-small-horizontal;
   }
 }

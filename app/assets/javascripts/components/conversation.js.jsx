@@ -40,7 +40,6 @@ var Conversation = React.createClass({
           </div>
 
           <div className="conversation-person">
-            <Avatar person={this.props.conversation.creator_person} size={'small'} />
             <Person person={this.props.conversation.creator_person} />
           </div>
 

@@ -2,14 +2,14 @@
 
 var Avatar = React.createClass({
   render: function() {
-    var classes = React.addons.classSet({
-      'avatar': true,
-      'avatar-small': this.props.size === 'small',
-      'avatar-default': !('size' in this.props)
-    });
+    var size = this.props.size;
+
+    if(size === 'small') {
+      size = 20;
+    }
 
     return (
-      <img className={classes} src={this.props.person.gravatar_url} width="30" height="30" />
+      <img className="avatar" src={this.props.person.gravatar_url} width={size} height={size} />
     );
   }
 });

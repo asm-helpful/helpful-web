@@ -3,7 +3,7 @@
 var Stream = React.createClass({
   renderStreamItem: function(item) {
     var componentClass = this.componentForType(item.type);
-    var streamItem = componentClass({ item: item });
+    var streamItem = componentClass(item);
 
     return <div className="stream-item" key={item.id}>{streamItem}</div>
   },
