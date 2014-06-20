@@ -21,7 +21,9 @@ var Conversation = React.createClass({
   renderReply: function() {
     if(this.hasReply()) {
       return (
-        <i className="ss-reply"></i>
+        <div className="reply">
+          <i className="ss-reply"></i>
+        </div>
       );
     }
   },
@@ -30,22 +32,26 @@ var Conversation = React.createClass({
     return (
       <a href="#" onClick={this.props.toggleHandler}>
         <div className="conversation-header">
+          {this.renderStatus()}        
+
           <div className="conversation-actions btn-group pull-right">
             <button className="btn btn-default btn-sm" onClick={this.props.laterHandler}>Later</button>
             <button className="btn btn-default btn-sm" onClick={this.props.archiveHandler}>Archive</button>
           </div>
 
           <div className="conversation-person">
-            {this.renderStatus()}
             <Avatar person={this.props.conversation.creator_person} size={'small'} />
             <Person person={this.props.conversation.creator_person} />
           </div>
 
           <div className="conversation-preview">
             {this.renderReply()}
-            {this.props.conversation.subject}
-            &nbsp;
-            <span className="text-muted" dangerouslySetInnerHTML={{__html: this.preview()}} />
+
+            <div className="ellipsis-overflow">
+              {this.props.conversation.subject}
+              &nbsp;
+              <span className="text-muted" dangerouslySetInnerHTML={{__html: this.preview()}} />
+            </div>
           </div>
         </div>
       </a>

@@ -1,7 +1,6 @@
 $brand-border: #E6EBEB;
 $preview-color: #7B8193;
-$conversation-gutter: 40px;
-$line-height-large-computed: floor(($font-size-large * $line-height-large)) !default;
+$gutter: 40px;
 
 .conversation {
   padding: $padding-large-vertical $padding-large-vertical;
@@ -20,21 +19,16 @@ $line-height-large-computed: floor(($font-size-large * $line-height-large)) !def
 
 .conversation-header {
   color: $black;
+  padding-left: $gutter;
+
+  > .status {
+    float: left;
+    margin-left: -20px;
+  }
 }
 
 .conversation-actions {
   display: none;
-}
-
-.conversation-subject {
-  font-size: $font-size-large;
-  height: $line-height-large-computed;
-  line-height: $line-height-large;
-  margin-bottom: $padding-small-vertical;
-  margin-top: $padding-small-vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .conversation-person {
@@ -47,7 +41,7 @@ $line-height-large-computed: floor(($font-size-large * $line-height-large)) !def
 
   > .avatar {
     display: inline-block;
-    margin-left: $padding-small-horizontal;
+    margin-right: $padding-small-horizontal;
   }
 }
 
@@ -56,9 +50,11 @@ $line-height-large-computed: floor(($font-size-large * $line-height-large)) !def
   margin-top: $padding-small-vertical;
   margin-bottom: $padding-small-vertical;
   height: $line-height-computed;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
+
+  > .reply {
+    float: left;
+    margin-left: -20px;
+  }
 }
 
 .conversation-stream {
