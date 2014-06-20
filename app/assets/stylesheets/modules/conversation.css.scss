@@ -55,9 +55,6 @@ $line-height-large-computed: floor(($font-size-large * $line-height-large)) !def
   color: $preview-color;
   margin-top: $padding-small-vertical;
   margin-bottom: $padding-small-vertical;
-}
-
-.conversation-preview-content {
   height: $line-height-computed;
   text-overflow: ellipsis;
   overflow: hidden;

@@ -36,18 +36,16 @@ var Conversation = React.createClass({
           </div>
 
           <div className="conversation-person">
-            <Person person={this.props.conversation.creator_person} />
-            <Avatar person={this.props.conversation.creator_person} size={'small'} />
-          </div>
-
-          <div className="conversation-subject">
-            {this.props.conversation.subject}
             {this.renderStatus()}
+            <Avatar person={this.props.conversation.creator_person} size={'small'} />
+            <Person person={this.props.conversation.creator_person} />
           </div>
 
           <div className="conversation-preview">
             {this.renderReply()}
-            <div className="conversation-preview-content" dangerouslySetInnerHTML={{__html: this.preview()}} />
+            {this.props.conversation.subject}
+            &nbsp;
+            <span className="text-muted" dangerouslySetInnerHTML={{__html: this.preview()}} />
           </div>
         </div>
       </a>
@@ -93,11 +91,11 @@ var Conversation = React.createClass({
     return !this.props.conversation.archived &&
       moment(this.props.conversation.last_activity_at) < moment().subtract('days', 3)
   },
-  
+
   hasReply: function() {
     return this.props.conversation.messages.length > 1;
   },
-  
+
   preview: function() {
     var converter = new Showdown.converter();
     return $(converter.makeHtml(this.props.conversation.messages[0].content)).text();
