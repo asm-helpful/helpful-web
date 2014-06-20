@@ -1,0 +1,15 @@
+.form-control-invisible {
+  border: none;
+  box-shadow: none;
+  background-color: transparent;
+  padding: 0;
+
+  &:focus,
+  &.focus {
+    box-shadow: none;
+  }
+}
+
+.form-actions {
+  @include clearfix;
+}

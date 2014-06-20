@@ -1,10 +1,21 @@
 .message {
 }
 
+.message-person {
+  > .person {
+    display: inline-block;
+  }
+
+  > .avatar {
+    display: inline-block;
+    margin-right: $padding-small-horizontal;
+  }
+}
+
 .message-content {
   padding-top: $padding-base-vertical;
   padding-bottom: $padding-base-vertical;
-  
+
   p {
     font-size: $font-size-base;
     font-weight: normal;

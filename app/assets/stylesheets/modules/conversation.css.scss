@@ -3,7 +3,6 @@ $preview-color: #7B8193;
 $gutter: 40px;
 
 .conversation {
-  padding: $padding-large-vertical $padding-large-vertical;
   border-radius: $border-radius-base;
 
   &.is-collapsed {
@@ -26,6 +25,7 @@ $gutter: 40px;
 
 .conversation-header {
   color: $black;
+  padding: $padding-large-vertical $padding-large-horizontal;
   padding-left: $gutter;
 
   > .status {
@@ -62,4 +62,10 @@ $gutter: 40px;
 }
 
 .conversation-stream {
+}
+
+.conversation-response {
+  border-top: 1px solid $brand-border;
+  padding: $padding-large-vertical $padding-large-horizontal;
+  padding-left: $gutter;
 }

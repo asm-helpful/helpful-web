@@ -1,0 +1,9 @@
+$gutter: 40px;
+
+.stream {
+}
+
+.stream-item {
+  padding: $padding-large-vertical $padding-large-horizontal;
+  padding-left: $gutter;
+}

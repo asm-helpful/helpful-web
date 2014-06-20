@@ -26,7 +26,7 @@ var Response = React.createClass({
   },
 
   initMediumEditor: function() {
-    var $response = $('.conversation-response');
+    var $response = $('.medium-editor');
     var editor = new MediumEditor($response, {
       placeholder: $response.attr('placeholder')
     });
@@ -40,7 +40,7 @@ var Response = React.createClass({
     var data = {
       message: {
         conversation_id: this.props.conversation.id,
-        content: $('.conversation-response').html()
+        content: $('.medium-editor').html()
       }
     };
 
@@ -63,38 +63,34 @@ var Response = React.createClass({
   },
 
   clearResponse: function() {
-    $('.conversation-response').html('');
+    $('.medium-editor').html('');
   },
 
   useCannedResponseHandler: function(cannedResponse) {
-    $('.conversation-response').html(cannedResponse.rendered_message);
-    $('.conversation-response').removeClass('medium-editor-placeholder');
-    $('.conversation-response').focus();
+    $('.medium-editor').html(cannedResponse.rendered_message);
+    $('.medium-editor').removeClass('medium-editor-placeholder');
+    $('.medium-editor').focus();
   },
 
   render: function() {
     return (
-      <div className="conversation-response-container" onSubmit={this.createMessage}>
-        <Avatar person={this.state.currentUser.person} />
+      <form className="form" onSubmit={this.createMessage}>
+        <div className="form-group">
+          <div className="form-control form-control-invisible medium-editor" placeholder="Write your reply..."></div>
+        </div>
 
-        <form>
-          <div className="conversation-response" placeholder="Write your reply..."></div>
-
-          <div className="command-bar">
-            <div className="pull-left">
-              <AssignmentButton conversation={this.props.conversation} addStreamItemHandler={this.props.addStreamItemHandler} />
-              <TagButton conversation={this.props.conversation} addStreamItemHandler={this.props.addStreamItemHandler} />
-              <CannedResponseButton conversation={this.props.conversation} addStreamItemHandler={this.props.addStreamItemHandler} useCannedResponseHandler={this.useCannedResponseHandler} />
-            </div>
-
-            <div className="pull-right">
-              <input className="btn btn-secondary" type="submit" name="commit" value="Send" />
-            </div>
-
-            <div className="clearfix"></div>
+        <div className="form-actions">
+          <div className="pull-right">
+            <input className="btn btn-secondary" type="submit" name="commit" value="Send" />
           </div>
-        </form>  
-      </div>
+
+          <div className="btn-group">
+            <AssignmentButton conversation={this.props.conversation} addStreamItemHandler={this.props.addStreamItemHandler} />
+            <TagButton conversation={this.props.conversation} addStreamItemHandler={this.props.addStreamItemHandler} />
+            <CannedResponseButton conversation={this.props.conversation} addStreamItemHandler={this.props.addStreamItemHandler} useCannedResponseHandler={this.useCannedResponseHandler} />
+          </div>
+        </div>
+      </form>
     );
   }
 });
