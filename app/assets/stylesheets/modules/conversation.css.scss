@@ -1,5 +1,6 @@
 $brand-border: #E6EBEB;
 $conversation-gutter: 40px;
+$line-height-large-computed: floor(($font-size-large * $line-height-large)) !default;
 
 .conversation {
   padding: $padding-large-vertical $padding-large-vertical;
@@ -30,25 +31,30 @@ $conversation-gutter: 40px;
 
 .conversation-subject {
   font-size: $font-size-large;
-  padding-top: $padding-small-vertical;
-  padding-bottom: $padding-small-vertical;
+  height: $line-height-large-computed;
+  line-height: $line-height-large;
+  margin-bottom: $padding-small-vertical;
+  margin-top: $padding-small-vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .conversation-person {
-  padding-top: $padding-small-vertical;
-  padding-bottom: $padding-small-vertical;
+  margin-top: $padding-small-vertical;
+  margin-bottom: $padding-small-vertical;
 }
 
 .conversation-preview {
-  padding-top: $padding-small-vertical;
-  padding-bottom: $padding-small-vertical;
+  margin-top: $padding-small-vertical;
+  margin-bottom: $padding-small-vertical;
 }
 
 .conversation-preview-content {
-  display: block;
   height: $line-height-computed;
   text-overflow: ellipsis;
   overflow: hidden;
+  white-space: nowrap;
 }
 
 .conversation-stream {
