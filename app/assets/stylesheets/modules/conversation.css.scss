@@ -2,28 +2,19 @@ $brand-border: #E6EBEB;
 $conversation-gutter: 40px;
 
 .conversation {
-//  border-bottom: 1px solid $brand-border;
-//  cursor: pointer;
-//  margin-top: -1px;
   padding: $padding-large-vertical $padding-large-vertical;
-  
-  padding-left: $conversation-gutter ;
-
+  padding-left: $conversation-gutter;
   border-radius: $border-radius-base;
 
-  &:hover {
+  &:hover,
+  &.active {
     background-color: white;
     box-shadow: inset 0 0 0 1px $brand-border;
-//    margin-left: -$padding-large-horizontal;
-//    margin-right: -$padding-large-horizontal;
-//    padding-right: $padding-large-horizontal - 1;
-//    padding-top: $padding-large-vertical - 1;
+
+    .conversation-actions {
+      display: block;
+    }
   }
-
-//  &:first-child {
-//    margin-top: $padding-base-vertical;
-//  }
-
 }
 
 .conversation-gutter {
@@ -31,6 +22,10 @@ $conversation-gutter: 40px;
   margin-left: - $conversation-gutter; 
   width: $conversation-gutter;
   text-align: center;
+}
+
+.conversation-actions {
+  display: none;
 }
 
 .conversation-subject {

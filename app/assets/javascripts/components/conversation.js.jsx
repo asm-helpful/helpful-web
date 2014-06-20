@@ -26,21 +26,34 @@ var Conversation = React.createClass({
     }
   },
 
-  renderHeader: function() {
+  renderActionBar: function() {
     return (
-      <div className="conversation-header">
-        <div className="btn-group pull-right">
+      <div className="conversation-action-bar clearfix">
+        <div className="conversation-actions btn-group pull-right">
           <button className="btn btn-default btn-sm" onClick={this.props.laterHandler}>Later</button>
           <button className="btn btn-default btn-sm" onClick={this.props.archiveHandler}>Archive</button>
         </div>
+      </div>
+    );
+  },
 
-        <div className="conversation-subject">
-          <div className="conversation-gutter">
-            {this.renderStatus()}
-          </div>
-  
-          {this.props.conversation.subject}
+  renderActions: function() {
+    return (
+      <div className="conversation-actions btn-group pull-right">
+        <button className="btn btn-default btn-sm" onClick={this.props.laterHandler}>Later</button>
+        <button className="btn btn-default btn-sm" onClick={this.props.archiveHandler}>Archive</button>
+      </div>
+    );
+  },
+
+  renderSubject: function() {
+    return (
+      <div className="conversation-subject">
+        <div className="conversation-gutter">
+          {this.renderStatus()}
         </div>
+
+        {this.props.conversation.subject}
       </div>
     );
   },
@@ -85,15 +98,19 @@ var Conversation = React.createClass({
       return (
         <div className="conversation">
           <a href="#" onClick={this.props.expandHandler}>
-            {this.renderHeader()}
+            {this.renderActions()}
+            {this.renderSubject()}
             {this.renderPreview()}
           </a>
         </div>
       );
     } else {
       return (
-        <div className="conversation">
-          {this.renderHeader()}
+        <div className="conversation active">
+          <a href="#" onClick={this.props.collapseHandler}>
+            {this.renderActionBar()}
+          </a>
+          {this.renderSubject()}
           {this.renderStream()}
           {this.renderResponse()}
         </div>

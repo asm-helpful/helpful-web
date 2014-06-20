@@ -45,6 +45,15 @@ var ConversationList = React.createClass({
     }.bind(this);
   },
 
+  collapseHandler: function(event) {
+    var conversations = this.state.conversations.map(function(conversation) {
+      conversation.expanded = false;
+      return conversation;
+    });
+
+    this.setState({ conversations: conversations });
+  },
+
   addStreamItemHandler: function(addedTo) {
     return function(streamItem) {
       var conversations = this.state.conversations.map(function(conversation) {
@@ -128,6 +137,7 @@ var ConversationList = React.createClass({
     return Conversation({
       conversation: conversation,
       expandHandler: this.expandHandler(conversation),
+      collapseHandler: this.collapseHandler,
       addStreamItemHandler: this.addStreamItemHandler(conversation),
       laterHandler: this.laterHandler(conversation),
       archiveHandler: this.archiveHandler(conversation),
