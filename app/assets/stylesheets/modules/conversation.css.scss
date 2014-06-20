@@ -1,4 +1,5 @@
 $brand-border: #E6EBEB;
+$preview-color: #7B8193;
 $conversation-gutter: 40px;
 $line-height-large-computed: floor(($font-size-large * $line-height-large)) !default;
 
@@ -7,7 +8,7 @@ $line-height-large-computed: floor(($font-size-large * $line-height-large)) !def
   border-radius: $border-radius-base;
 
   &:hover,
-  &.active {
+  &.conversation-expanded {
     background-color: white;
     box-shadow: inset 0 0 0 1px $brand-border;
 
@@ -15,6 +16,10 @@ $line-height-large-computed: floor(($font-size-large * $line-height-large)) !def
       display: block;
     }
   }
+}
+
+.conversation-header {
+  color: $black;
 }
 
 .conversation-actions {
@@ -47,6 +52,7 @@ $line-height-large-computed: floor(($font-size-large * $line-height-large)) !def
 }
 
 .conversation-preview {
+  color: $preview-color;
   margin-top: $padding-small-vertical;
   margin-bottom: $padding-small-vertical;
 }

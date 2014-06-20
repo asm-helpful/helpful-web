@@ -26,96 +26,62 @@ var Conversation = React.createClass({
     }
   },
 
-  renderActionBar: function() {
+  renderHeader: function() {
     return (
-      <div className="conversation-action-bar clearfix">
-        <div className="conversation-actions btn-group pull-right">
-          <button className="btn btn-default btn-sm" onClick={this.props.laterHandler}>Later</button>
-          <button className="btn btn-default btn-sm" onClick={this.props.archiveHandler}>Archive</button>
+      <a href="#" onClick={this.props.toggleHandler}>
+        <div className="conversation-header">
+          <div className="conversation-actions btn-group pull-right">
+            <button className="btn btn-default btn-sm" onClick={this.props.laterHandler}>Later</button>
+            <button className="btn btn-default btn-sm" onClick={this.props.archiveHandler}>Archive</button>
+          </div>
+
+          <div className="conversation-person">
+            <Person person={this.props.conversation.creator_person} />
+            <Avatar person={this.props.conversation.creator_person} size={'small'} />
+          </div>
+
+          <div className="conversation-subject">
+            {this.props.conversation.subject}
+            {this.renderStatus()}
+          </div>
+
+          <div className="conversation-preview">
+            {this.renderReply()}
+            <div className="conversation-preview-content" dangerouslySetInnerHTML={{__html: this.preview()}} />
+          </div>
         </div>
-      </div>
+      </a>
     );
   },
 
-  renderActions: function() {
-    return (
-      <div className="conversation-actions btn-group pull-right">
-        <button className="btn btn-default btn-sm" onClick={this.props.laterHandler}>Later</button>
-        <button className="btn btn-default btn-sm" onClick={this.props.archiveHandler}>Archive</button>
-      </div>
-    );
-  },
-
-  renderSubject: function() {
-    return (
-      <div className="conversation-subject">
-        <div className="conversation-gutter">
-          {this.renderStatus()}
-        </div>
-
-        {this.props.conversation.subject}
-      </div>
-    );
-  },
-
-  renderPerson: function() {
-    return (
-      <div className="conversation-person">
-        <Person person={this.props.conversation.creator_person} />
-        <Avatar person={this.props.conversation.creator_person} size={'small'} />
-      </div>
-    );
-  },
-
-  renderPreview: function() {
-    return (
-      <div className="conversation-preview">
-        {this.renderReply()}
-        <div className="conversation-preview-content" dangerouslySetInnerHTML={{__html: this.preview()}} />
-      </div>
-    );
-  },
-
-  renderStream: function() {
-    return (
-      <div className="conversation-stream">
-        <Stream items={this.props.conversation.stream_items} />
-      </div>
-    );
-  },
-
-  renderResponse: function() {
-    return (
-      <div className="conversation-response">
-        <Response conversation={this.props.conversation} addStreamItemHandler={this.props.addStreamItemHandler} />
-      </div>
-    );
-  },
-
-  render: function() {
-    if(!this.props.conversation.expanded) {
+  renderBody: function() {
+    if(this.props.conversation.expanded) {
       return (
-        <div className="conversation">
-          <a href="#" onClick={this.props.expandHandler}>
-            {this.renderActions()}
-            {this.renderPerson()}
-            {this.renderSubject()}
-          </a>
-        </div>
-      );
-    } else {
-      return (
-        <div className="conversation active">
-          <a href="#" onClick={this.props.collapseHandler}>
-            {this.renderActionBar()}
-          </a>
+        <div className="conversation-body">
+          <div className="conversation-stream">
+            <Stream items={this.props.conversation.stream_items} />
+          </div>
 
-          {this.renderSubject()}
-          {this.renderStream()}
-          {this.renderResponse()}
+          <div className="conversation-response">
+            <Response conversation={this.props.conversation} addStreamItemHandler={this.props.addStreamItemHandler} />
+          </div>
         </div>
       );
     }
+  },
+
+  render: function() {
+    var classes = React.addons.classSet({
+      'conversation': true,
+      'conversation-expanded': this.props.conversation.expanded
+    });
+
+    return (
+      <div className={classes}>
+        {this.renderHeader()}
+        {this.renderBody()}
+      </div>
+    );
   },
 
   // TODO: Implement read receipts

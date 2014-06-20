@@ -34,24 +34,20 @@ var ConversationList = React.createClass({
     }.bind(this));
   },
 
-  expandHandler: function(expanded) {
+  toggleHandler: function(toggled) {
     return function(event) {
       var conversations = this.state.conversations.map(function(conversation) {
-        conversation.expanded = conversation === expanded
+        if(conversation === toggled) {
+          conversation.expanded = !conversation.expanded;
+        } else {
+          conversation.expanded = false;
+        }
+
         return conversation;
       });
 
       this.setState({ conversations: conversations });
     }.bind(this);
-  },
-
-  collapseHandler: function(event) {
-    var conversations = this.state.conversations.map(function(conversation) {
-      conversation.expanded = false;
-      return conversation;
-    });
-
-    this.setState({ conversations: conversations });
   },
 
   addStreamItemHandler: function(addedTo) {
@@ -136,8 +132,7 @@ var ConversationList = React.createClass({
   renderConversation: function(conversation) {
     return Conversation({
       conversation: conversation,
-      expandHandler: this.expandHandler(conversation),
-      collapseHandler: this.collapseHandler,
+      toggleHandler: this.toggleHandler(conversation),
       addStreamItemHandler: this.addStreamItemHandler(conversation),
       laterHandler: this.laterHandler(conversation),
       archiveHandler: this.archiveHandler(conversation),
