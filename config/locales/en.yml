@@ -77,8 +77,6 @@ en:
       must_meet_requirements: "Must meet *these requirements*"
       create_account: "Create my account"
     edit:
-      try_out_command: "To try out Helpful website, run this command from your terminal:"
-      embed_form: "Want to embed a help form on your site?"
       get_code: "Get the code"
       company_name: "Company name"
       company_name_placeholder: "Acme Corp"
@@ -96,6 +94,10 @@ en:
       signature: "Response Signature"
       signature_placeholder: "Signature included at the end of every e-mail"
       auto_archiving: "Auto-archive conversations after replying"
+    setup:
+      try_api: "Try our API"
+      try_out_command: "To try out Helpfuls incoming messages API, run this command from your terminal:"
+      embed_form: "Want to embed a help form on your site?"
       embed_help_text: "You can also embed a web form anywhere that will allow your customers to submit their help requests directly to Helpful:"
 
   conversations:
