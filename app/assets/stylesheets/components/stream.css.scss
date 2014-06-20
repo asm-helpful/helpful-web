@@ -4,6 +4,7 @@ $gutter: 40px;
 }
 
 .stream-item {
+  border-top: 1px solid $light-gray;
   padding: $padding-large-vertical $padding-large-horizontal;
   padding-left: $gutter;
 }
