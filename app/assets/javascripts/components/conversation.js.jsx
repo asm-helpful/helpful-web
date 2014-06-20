@@ -58,21 +58,26 @@ var Conversation = React.createClass({
     );
   },
 
-  renderPreview: function() {
+  renderPerson: function() {
     return (
-      <div className="conversation-preview">
+      <div className="conversation-person">
         <div className="conversation-gutter">
           <Avatar person={this.props.conversation.creator_person} size={'small'} />
         </div>
 
         <Person person={this.props.conversation.creator_person} />
-    
-        <div>
-          <div className="conversation-gutter">
-            {this.renderReply()}
-          </div>
-          <div className="conversation-preview-content" dangerouslySetInnerHTML={{__html: this.preview()}} />
+      </div>
+    );
+  },
+
+  renderPreview: function() {
+    return (
+      <div className="conversation-preview">
+        <div className="conversation-gutter">
+          {this.renderReply()}
         </div>
+
+        <div className="conversation-preview-content" dangerouslySetInnerHTML={{__html: this.preview()}} />
       </div>
     );
   },
@@ -100,6 +105,7 @@ var Conversation = React.createClass({
           <a href="#" onClick={this.props.expandHandler}>
             {this.renderActions()}
             {this.renderSubject()}
+            {this.renderPerson()}
             {this.renderPreview()}
           </a>
         </div>
@@ -110,6 +116,7 @@ var Conversation = React.createClass({
           <a href="#" onClick={this.props.collapseHandler}>
             {this.renderActionBar()}
           </a>
+
           {this.renderSubject()}
           {this.renderStream()}
           {this.renderResponse()}

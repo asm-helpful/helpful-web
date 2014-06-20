@@ -30,13 +30,18 @@ $conversation-gutter: 40px;
 
 .conversation-subject {
   font-size: $font-size-large;
-  padding-top: $padding-base-vertical;
-  padding-bottom: $padding-base-vertical;
+  padding-top: $padding-small-vertical;
+  padding-bottom: $padding-small-vertical;
+}
+
+.conversation-person {
+  padding-top: $padding-small-vertical;
+  padding-bottom: $padding-small-vertical;
 }
 
 .conversation-preview {
-  padding-top: $padding-base-vertical;
-  padding-bottom: $padding-base-vertical;
+  padding-top: $padding-small-vertical;
+  padding-bottom: $padding-small-vertical;
 }
 
 .conversation-preview-content {
