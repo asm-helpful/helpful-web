@@ -4,7 +4,6 @@ $line-height-large-computed: floor(($font-size-large * $line-height-large)) !def
 
 .conversation {
   padding: $padding-large-vertical $padding-large-vertical;
-  padding-left: $conversation-gutter;
   border-radius: $border-radius-base;
 
   &:hover,
@@ -16,13 +15,6 @@ $line-height-large-computed: floor(($font-size-large * $line-height-large)) !def
       display: block;
     }
   }
-}
-
-.conversation-gutter {
-  float: left;
-  margin-left: - $conversation-gutter; 
-  width: $conversation-gutter;
-  text-align: center;
 }
 
 .conversation-actions {
@@ -43,6 +35,15 @@ $line-height-large-computed: floor(($font-size-large * $line-height-large)) !def
 .conversation-person {
   margin-top: $padding-small-vertical;
   margin-bottom: $padding-small-vertical;
+
+  > .person {
+    display: inline-block;
+  }
+
+  > .avatar {
+    display: inline-block;
+    margin-left: $padding-small-horizontal;
+  }
 }
 
 .conversation-preview {

@@ -9,9 +9,7 @@ var Avatar = React.createClass({
     });
 
     return (
-      <div className={classes}>
-        <img src={this.props.person.gravatar_url} width="30" height="30" />
-      </div>
+      <img className={classes} src={this.props.person.gravatar_url} width="30" height="30" />
     );
   }
 });

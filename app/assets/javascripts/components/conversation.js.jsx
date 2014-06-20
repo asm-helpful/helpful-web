@@ -61,11 +61,8 @@ var Conversation = React.createClass({
   renderPerson: function() {
     return (
       <div className="conversation-person">
-        <div className="conversation-gutter">
-          <Avatar person={this.props.conversation.creator_person} size={'small'} />
-        </div>
-
         <Person person={this.props.conversation.creator_person} />
+        <Avatar person={this.props.conversation.creator_person} size={'small'} />
       </div>
     );
   },
@@ -73,10 +70,7 @@ var Conversation = React.createClass({
   renderPreview: function() {
     return (
       <div className="conversation-preview">
-        <div className="conversation-gutter">
-          {this.renderReply()}
-        </div>
-
+        {this.renderReply()}
         <div className="conversation-preview-content" dangerouslySetInnerHTML={{__html: this.preview()}} />
       </div>
     );
@@ -104,9 +98,8 @@ var Conversation = React.createClass({
         <div className="conversation">
           <a href="#" onClick={this.props.expandHandler}>
             {this.renderActions()}
-            {this.renderSubject()}
             {this.renderPerson()}
-            {this.renderPreview()}
+            {this.renderSubject()}
           </a>
         </div>
       );

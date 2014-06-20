@@ -1,20 +1,15 @@
 $avatar-small-size: 18px;
 
 .avatar {
-  display: inline;
+  @extend .img-circle;
 
-  img {
-    border-radius: 50%;
-  }
+  display: inline;
 }
 
 .avatar-small {
   line-height: $avatar-small-size;
-
-  img {
-    height: $avatar-small-size;
-    width: $avatar-small-size;
-  }
+  height: $avatar-small-size;
+  width: $avatar-small-size;
 }
 
 .navbar .navbar-avatar {
