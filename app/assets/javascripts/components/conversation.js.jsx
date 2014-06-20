@@ -32,7 +32,7 @@ var Conversation = React.createClass({
     return (
       <a href="#" onClick={this.props.toggleHandler}>
         <div className="conversation-header">
-          {this.renderStatus()}        
+          {this.renderStatus()}
 
           <div className="conversation-actions btn-group pull-right">
             <button className="btn btn-default btn-sm" onClick={this.props.laterHandler}>Later</button>
@@ -77,7 +77,8 @@ var Conversation = React.createClass({
   render: function() {
     var classes = React.addons.classSet({
       'conversation': true,
-      'conversation-expanded': this.props.conversation.expanded
+      'is-expanded': this.props.conversation.expanded,
+      'is-collapsed': !this.props.conversation.expanded
     });
 
     return (
