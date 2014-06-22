@@ -40,6 +40,8 @@ en:
       inbox: "Inbox"
       archive: "Archive"
       search: "Search"
+    footer:
+      copyright: "All content &copy; Assembly Inc. who loves customers, hates spam, and believes support is naturally human."
 
   message_mailer:
     created:
