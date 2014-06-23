@@ -54,5 +54,6 @@ module Helpful
     end
 
     config.react.addons = true
+    config.react.variant = :development
   end
 end

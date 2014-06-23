@@ -8,25 +8,44 @@
     Getting Setup and Technical Details
   </h1>
 
-  <p><%= t('.try_out_command') %></p>
+  <h2>Widget</h2>
 
-  <pre>
-    <code>
-      curl -X POST <%= root_url %>incoming_message \
-        -H "Accept: application/json" \
-        --data "account=<%= @account.slug %>" \
-        --data "email=user@example.com" \
-        --data "content=I need help please."
-    </code>
-  </pre>
+  <p>Adding our widget to your site is very simple. First, include the following script add the end of the body of your page.</p>
+
+  <pre><code>&lt;script src="https://assets.helpful.io/assets/widget.js"&gt;&lt;/script&gt;</code></pre>
+
+  <p>Next, all you need to do is adding an attribute containing your company slug to the element you want to open the widget after clicking it.</p>
+
+  <pre><code>&lt;a href="#" data-helpful="<%= @account.slug %>"&gt;Help!&lt;/a&gt;</code></pre>
+
+  <p>That's it! Clicking the element will open up the widget. Additionally some extra options are available:</p>
+
+  <pre><code>&lt;-- Pre fill user information --&gt;
+&lt;a href="#" data-helpful="<%= @account.slug %>" data-helpful-name="name" data-helpful-email="user@example.com"&gt;Help!&lt;/a&gt;
+
+&lt;-- Show widget as modal instead of above element --&gt;
+&lt;a href="#" data-helpful="<%= @account.slug %>" data-helpful-modal="on"&gt;Help!&lt;/a&gt;
+
+&lt;-- Disable the overlay behind the widget --&gt;
+&lt;a href="#" data-helpful="<%= @account.slug %>" data-helpful-overlay="off"&gt;Help!&lt;/a&gt;</code></pre>
+
+  <h2><%= t('.embed_form') %></h2>
 
   <p><%= t('.embed_help_text') %></p>
 
-  <pre>
-    <code>
-      <%= web_form_code %>
-    </code>
-  </pre>
+  <pre><code><%= web_form_code %></code></pre>
+
+  <h2><%= t('.try_api') %></h2>
+
+  <p><%= t('.try_out_command') %></p>
+
+  <pre><code>curl -X POST <%= root_url %>incoming_message \
+  -H "Accept: application/json" \
+  --data "account=<%= @account.slug %>" \
+  --data "email=user@example.com" \
+  --data "content=I need help please."</code></pre>
+
+  <h2>Other details</h2>
 
   <%= form_for @account, method: :patch, html: {class: 'form'} do |f| %>
     <div class="form-group">

@@ -38,16 +38,23 @@ var ConversationList = React.createClass({
     return function(event) {
       var conversations = this.state.conversations.map(function(conversation) {
         if(conversation === toggled) {
-          conversation.expanded = !conversation.expanded;
+          var expanded = !conversation.expanded;
+          conversation.expanded = expanded;
+          conversation.unread = false;
+          this.read(conversation);
         } else {
           conversation.expanded = false;
         }
 
         return conversation;
-      });
+      }.bind(this));
 
       this.setState({ conversations: conversations });
     }.bind(this);
+  },
+
+  read: function(conversation) {
+    $.getJSON(conversation.path)
   },
 
   addStreamItemHandler: function(addedTo) {

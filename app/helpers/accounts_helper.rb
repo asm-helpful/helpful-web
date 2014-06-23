@@ -1,7 +1,6 @@
 module AccountsHelper
   def web_form_code
-    %{
-<form action="#{incoming_message_url}" method="post">
+    %{<form action="#{incoming_message_url}" method="post">
   <input type="hidden" name="account" value="#{@account.slug}">
   <p>
     <label for="email">Email</label><br>
@@ -13,7 +12,6 @@ module AccountsHelper
   </p>
 
   <input type="submit" value="Submit">
-</form>
-    }
+</form>}
   end
 end
