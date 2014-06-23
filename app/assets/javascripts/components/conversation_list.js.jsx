@@ -138,6 +138,38 @@ var ConversationList = React.createClass({
     this.setState({ conversations: conversations });
   },
 
+  unarchiveHandler: function(conversation) {
+    return function(event) {
+      event.stopPropagation();
+
+      var data = {
+        conversation: {
+          unarchive: true
+        }
+      };
+
+      $.ajax({
+        type: 'PUT',
+        url: conversation.path,
+        data: JSON.stringify(data),
+        dataType: 'json',
+        contentType: 'application/json',
+        accepts: { json: 'application/json' },
+        success: function(response) {
+          this.moveToArchive(conversation);
+        }.bind(this)
+      });
+    }.bind(this);
+  },
+
+  moveToInbox: function(conversation) {
+    var index = this.state.conversations.indexOf(conversation);
+    var conversations = this.state.conversations.slice(0, index).
+      concat(this.state.conversations.slice(index + 1));
+
+    this.setState({ conversations: conversations });
+  },
+
   renderConversation: function(conversation) {
     return Conversation({
       conversation: conversation,
@@ -145,6 +177,7 @@ var ConversationList = React.createClass({
       addStreamItemHandler: this.addStreamItemHandler(conversation),
       laterHandler: this.laterHandler(conversation),
       archiveHandler: this.archiveHandler(conversation),
+      unarchiveHandler: this.unarchiveHandler(conversation),
       currentUser: this.state.currentUser,
       key: conversation.id
     });

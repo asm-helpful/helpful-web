@@ -18,6 +18,23 @@ var Conversation = React.createClass({
     }
   },
 
+  renderActions: function() {
+    if(this.props.conversation.archived) {
+      return (
+        <div className="conversation-actions btn-group pull-right">
+          <button className="btn btn-default btn-sm" onClick={this.props.unarchiveHandler}>Move to Inbox</button>
+        </div>
+      );
+    } else {
+      return (
+        <div className="conversation-actions btn-group pull-right">
+          <button className="btn btn-default btn-sm" onClick={this.props.laterHandler}>Later</button>
+          <button className="btn btn-default btn-sm" onClick={this.props.archiveHandler}>Archive</button>
+        </div>
+      );
+    }
+  },
+
   renderReply: function() {
     if(this.hasReply()) {
       return (
@@ -40,11 +57,7 @@ var Conversation = React.createClass({
         <div className="conversation-header">
           {this.renderStatus()}
 
-          <div className="conversation-actions btn-group pull-right">
-            <button className="btn btn-default btn-sm" onClick={this.props.laterHandler}>Later</button>
-            <button className="btn btn-default btn-sm" onClick={this.props.archiveHandler}>Archive</button>
-          </div>
-
+          {this.renderActions()}
           <div className="conversation-person">
             <Person person={this.props.conversation.creator_person} />
           </div>
