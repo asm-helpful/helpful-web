@@ -36,6 +36,8 @@ var ConversationList = React.createClass({
 
   toggleHandler: function(toggled) {
     return function(event) {
+      event.stopPropagation();
+
       var conversations = this.state.conversations.map(function(conversation) {
         if(conversation === toggled) {
           var expanded = !conversation.expanded;

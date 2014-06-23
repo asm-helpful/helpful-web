@@ -19,9 +19,7 @@ var Response = React.createClass({
 
   getCurrentUser: function() {
     $.getJSON('/user', function(response) {
-      this.setState({
-        currentUser: response.user
-      });
+      this.setState({ currentUser: response.user });
     }.bind(this));
   },
 

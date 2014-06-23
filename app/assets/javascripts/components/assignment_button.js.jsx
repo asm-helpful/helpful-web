@@ -33,6 +33,8 @@ var AssignmentButton = React.createClass({
 
   assignConversationHandler: function(assignee) {
     return function(event) {
+      event.stopPropagation();
+
       var assigneesPath = this.props.conversation.assignees_path;
       var data = { assignee_id: assignee.id };
 
