@@ -7,4 +7,11 @@ $gutter: 40px;
   border-top: 1px solid $light-gray;
   padding: $padding-large-vertical $padding-large-horizontal;
   padding-left: $gutter;
+
+  .reply {
+    color: $gray;
+    float: left;
+    margin-left: -25px;
+    margin-top: 6px;
+  }
 }
