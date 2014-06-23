@@ -2,18 +2,21 @@
   <div class="navbar navbar-tabs">
     <ul class="nav nav-tabs nav-tabs-lg pull-left">
       <li>
-        <%= link_to 'Team Inbox', inbox_account_conversations_path(@account), class: "#{'active' if current_page?(inbox_account_conversations_path(@account)) }" %>
+        <%= link_to inbox_account_conversations_path(@account), class: "#{'active' if current_page?(inbox_account_conversations_path(@account)) }" do %>
+          Inbox
+          <span class="badge"><%= @inbox_count %></span>
+        <% end %>
       </li>
       <li>
-        <%= link_to 'Archive', archived_account_conversations_path(@account), class: "#{'active' if current_page?(archived_account_conversations_path(@account)) }" %>
+        <%= link_to archived_account_conversations_path(@account), class: "#{'active' if current_page?(archived_account_conversations_path(@account)) }" do %>
+          Archive
+          <span class="badge"><%= @archive_count %></span>
+        <% end %>
       </li>
     </ul>
 
     <ul class="nav nav-tabs pull-right">
       <li><a href="#">Recent</a></li>
-      <li><a href="#">Assigned to Me</a></li>
-      <li><a href="#">Needs Response</a></li>
-      <li><a href="#">Urgent</a></li>
     </ul>
   </div>
 </div>

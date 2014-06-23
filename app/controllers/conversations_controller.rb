@@ -22,6 +22,9 @@ class ConversationsController < ApplicationController
     Analytics.track(user_id: current_user.id, event: 'Read Conversations Index')
     inbox = ConversationsInbox.new(@account, current_user, params[:q])
     @conversations = inbox.conversations
+    counts = @account.conversations.group(:archived).count
+    @inbox_count = counts[false]
+    @archive_count = counts[true]
     WelcomeConversation.create(@account, current_user) unless @account.conversations.welcome_email.exists?
     respond_with @conversations
   end
