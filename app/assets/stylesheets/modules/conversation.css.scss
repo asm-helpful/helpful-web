@@ -63,6 +63,11 @@ $gutter: 46px;
 }
 
 .conversation-stream {
+  .stream-item:first-child {
+    .person {
+      display: none;
+    }
+  }
 }
 
 .conversation-response {

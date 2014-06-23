@@ -6,6 +6,10 @@ class ConversationsController < ApplicationController
 
   respond_to :html, :json
 
+  def index
+    respond_with @account.conversations
+  end
+
   def archived
     archive = ConversationsArchive.new(@account, params[:q])
     @conversations = archive.conversations
