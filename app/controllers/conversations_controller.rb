@@ -11,11 +11,13 @@ class ConversationsController < ApplicationController
   end
 
   def archived
+    Analytics.track(user_id: current_user.id, event: 'Read Archived Conversations Index')
     archive = ConversationsArchive.new(@account, params[:q])
     @conversations = archive.conversations
-    @conversation = @conversations.first
-
-    Analytics.track(user_id: current_user.id, event: 'Read Archived Conversations Index')
+    counts = @account.conversations.group(:archived).count
+    @inbox_count = counts[false]
+    @archive_count = counts[true]
+    respond_with @conversations
   end
 
   def inbox
