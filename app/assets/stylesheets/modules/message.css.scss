@@ -1,4 +1,5 @@
 .message {
+  color: $light-black;
 }
 
 .message-person {
@@ -16,9 +17,7 @@
   padding-top: $padding-base-vertical;
   padding-bottom: $padding-base-vertical;
 
-  p {
-    font-size: $font-size-base;
-    font-weight: normal;
+  p:last-child {
     margin-bottom: 0;
   }
 }

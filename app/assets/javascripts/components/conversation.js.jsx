@@ -29,6 +29,12 @@ var Conversation = React.createClass({
   },
 
   renderHeader: function() {
+    var previewBody = null;
+
+    if(!this.props.conversation.expanded) {
+      previewBody = <span className="text-muted" dangerouslySetInnerHTML={{__html: this.preview()}} />;
+    }
+
     return (
       <a href="#" onClick={this.props.toggleHandler}>
         <div className="conversation-header">
@@ -49,7 +55,7 @@ var Conversation = React.createClass({
             <div className="ellipsis-overflow">
               {this.props.conversation.subject}
               &nbsp;
-              <span className="text-muted" dangerouslySetInnerHTML={{__html: this.preview()}} />
+              {previewBody}
             </div>
           </div>
         </div>

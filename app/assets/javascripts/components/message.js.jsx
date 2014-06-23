@@ -13,19 +13,7 @@ var Message = React.createClass({
   },
 
   content: function() {
-    if(('preview' in this.props) && this.props.preview) {
-      return this.previewContent();
-    } else {
-      return this.markdownContent();
-    }
-  },
-
-  markdownContent: function() {
     var converter = new Showdown.converter();
     return converter.makeHtml(this.props.content);
-  },
-
-  previewContent: function() {
-    return $(this.markdownContent()).text();
   }
 });

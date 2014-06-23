@@ -1,9 +1,13 @@
 $brand-border: #E6EBEB;
-$preview-color: #7B8193;
-$gutter: 40px;
+$gutter: 46px;
 
 .conversation {
-  border-radius: $border-radius-base;
+  border-top: 1px solid $brand-border;
+
+  &:first-child {
+    border-top: none;
+    padding-top: 1px;
+  }
 
   &.is-collapsed {
     .conversation-actions {
@@ -15,10 +19,18 @@ $gutter: 40px;
   &.hover,
   &.is-expanded {
     background-color: white;
+    border-top: none;
+    border-radius: $border-radius-base;
     box-shadow: inset 0 0 0 1px $brand-border;
+    padding-top: 1px;
 
     .conversation-actions {
       display: block;
+    }
+
+    &+ .conversation {
+      border-top: none;
+      padding-top: 1px;
     }
   }
 }
@@ -30,22 +42,23 @@ $gutter: 40px;
 
   > .status {
     float: left;
-    margin-left: -20px;
+    margin-left: -25px;
+    margin-top: 5px;
   }
 }
 
 
 .conversation-person {
-  padding-bottom: $padding-large-vertical;
+  padding-bottom: $padding-base-vertical;
 }
 
 .conversation-preview {
-  color: $preview-color;
   height: $line-height-computed;
 
   > .reply {
+    color: $gray;
     float: left;
-    margin-left: -20px;
+    margin-left: -25px;
   }
 }
 

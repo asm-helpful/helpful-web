@@ -15,7 +15,9 @@
 }
 
 .list-conversations {
+  padding-top: $padding-base-vertical;
   overflow-y: visible;
+
   > .list-item {
     border: none;
   }
