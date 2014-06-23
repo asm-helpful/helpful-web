@@ -29,9 +29,7 @@ var TagButton = React.createClass({
   },
 
   filterTags: function(event) {
-    this.setState({
-      filter: event.target.value
-    });
+    this.setState({ filter: event.target.value });
   },
 
   tagConversationHandler: function(tag) {
@@ -74,9 +72,41 @@ var TagButton = React.createClass({
     });
   },
 
-  render: function() {
-    var showNewTag = this.state.newTag !== '' && !!this.state.tags.indexOf(this.state.newTag);
+  showNewTag: function() {
+    return this.state.newTag !== '' && this.state.tags.indexOf(this.state.newTag) < 0;
+  },
 
+  renderNewTag: function() {
+    if(this.showNewTag()) {
+      return (
+        <li>
+          <a href="#" onClick={this.tagConversationHandler(this.state.newTag)}>
+            {this.state.newTag}
+          </a>
+        </li>
+      );
+    }
+  },
+
+  renderFilteredTags: function() {
+    return this.state.tags.map(function(tag) {
+      var useFilter = this.state.filter !== '';
+      var regexp = new RegExp(this.state.filter, 'gi');
+      var applyFilter = useFilter && !tag.match(regexp);
+
+      if(!applyFilter) {
+        return (
+          <li key={tag}>
+            <a href="#" onClick={this.tagConversationHandler(tag)}>
+              {tag}
+            </a>
+          </li>
+        );
+      }
+    }.bind(this));
+  },
+
+  render: function() {
     return (
       <div className="btn-group command-bar-action">
         <button className="btn btn-default dropdown-toggle" data-search="tags" data-toggle="dropdown" onClick={this.focusInput}>
@@ -88,22 +118,8 @@ var TagButton = React.createClass({
             <input type="text" className="form-control" placeholder="Search by tag" onClick={this.ignore} onChange={this.updateNewTag} value={this.state.newTag} />
           </li>
           <li className="divider"></li>
-          {showNewTag ? <li><a href="#"onClick={this.tagConversationHandler(this.state.newTag)}>{this.state.newTag}</a></li> : ''}
-          {this.state.tags.map(function(tag) {
-            var useFilter = this.state.filter !== '';
-            var regexp = new RegExp(this.state.filter, 'gi');
-            var filterTag = useFilter && !tag.match(regexp);
-
-            if(!filterTag) {
-              return (
-                <li key={tag}>
-                  <a href="#" onClick={this.tagConversationHandler(tag)}>
-                    {tag}
-                  </a>
-                </li>
-              );
-            }
-          }.bind(this))}
+          {this.renderNewTag()}
+          {this.renderFilteredTags()}
         </ul>
       </div>
     );
