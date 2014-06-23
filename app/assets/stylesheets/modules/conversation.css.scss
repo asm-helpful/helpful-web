@@ -50,6 +50,10 @@ $gutter: 46px;
 
 .conversation-person {
   padding-bottom: $padding-base-vertical;
+
+  > .person {
+    @extend .ellipsis-overflow;
+  }
 }
 
 .conversation-preview {
