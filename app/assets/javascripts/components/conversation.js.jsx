@@ -8,7 +8,7 @@ var Conversation = React.createClass({
     if(isUnread || isStale) {
       var classes = React.addons.classSet({
         'status': true,
-        'status-unread': isUnread,
+        'status-unread': !isStale && isUnread,
         'status-urgent': isStale
       });
 
@@ -90,7 +90,7 @@ var Conversation = React.createClass({
 
   // TODO: Implement read receipts
   isUnread: function() {
-    return false;
+    return this.props.conversation.unread;
   },
 
   isStale: function() {
