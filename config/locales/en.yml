@@ -40,8 +40,6 @@ en:
       inbox: "Inbox"
       archive: "Archive"
       search: "Search"
-    footer:
-      copyright: "All content &copy; Assembly Inc. who loves customers, hates spam, and believes support is naturally human."
 
   message_mailer:
     created:
@@ -176,6 +174,8 @@ en:
       in_house: "In-House"
       in_house_text: "If you prefer to make software your own, you can take Helpful indoors and whitelabel it for your own purposes."
       contact_us: "Contact Us"
+      footer:
+        copyright: "All content &copy; Assembly Inc. who loves customers, hates spam, and believes support is naturally human."
 
   canned_responses:
     general:

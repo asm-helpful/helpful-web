@@ -40,8 +40,6 @@ fr:
       inbox: "Boîte de Réception"
       archive: "Archives"
       search: "Chercher"
-    footer:
-      copyright: "All content &copy; Assembly Inc. who loves customers, hates spam, and believes support is naturally human."
 
   message_mailer:
     created:
@@ -171,6 +169,8 @@ fr:
       in_house: "Interne"
       in_house_text: "Si vous préférez votre propre logiciel, vous pouvez prendre Helpful et le privatiser pour vos propres applications."
       contact_us: "Contactez-Nous"
+      footer:
+        copyright: "All content &copy; Assembly Inc. who loves customers, hates spam, and believes support is naturally human."
 
   canned_responses:
     general:
