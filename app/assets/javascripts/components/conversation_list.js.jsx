@@ -19,7 +19,7 @@ var ConversationList = React.createClass({
   },
 
   getConversations: function() {
-    $.getJSON(this.props.source, function(response) {
+    $.getJSON(this.conversationsPath(), function(response) {
       var conversations = response.conversations;
 
       conversations = conversations.map(function(conversation) {
@@ -43,8 +43,19 @@ var ConversationList = React.createClass({
         if(conversation === toggled) {
           var expanded = !conversation.expanded;
           conversation.expanded = expanded;
-          conversation.unread = false;
-          this.read(conversation);
+
+          // TODO: Remove nested conditionals
+          if(expanded) {
+            conversation.unread = false;
+            this.read(conversation);
+            router.navigate(conversation.path);
+          } else {
+            if(conversation.archived) {
+              router.navigate(this.archivePath());
+            } else {
+              router.navigate(this.inboxPath());
+            }
+          }
         } else {
           conversation.expanded = false;
         }
@@ -198,5 +209,17 @@ var ConversationList = React.createClass({
     } else {
       return <div></div>
     }
+  },
+
+  inboxPath: function() {
+    return '/' + this.props.accountSlug + '/inbox';
+  },
+
+  archivePath: function() {
+    return '/' + this.props.accountSlug + '/archived';
+  },
+
+  conversationsPath: function() {
+    return '/accounts/' + this.props.accountSlug + '/conversations.json?archived=' + this.props.archived;
   }
 });

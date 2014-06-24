@@ -16,8 +16,8 @@
 //= require moment
 //= require showdown
 //= require underscore
-//= require backbone
-//= require router
 //= require react
 //= require react_ujs
 //= require_tree ./components
+//= require backbone
+//= require router

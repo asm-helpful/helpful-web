@@ -5,7 +5,7 @@ class ConversationsController < ApplicationController
   respond_to :html, :json
 
   def index
-    account = Account.find(params[:account_id])
+    account = Account.find_by(slug: params[:account_id])
     respond_with ConversationMailbox.find(account, current_user, params)
   end
 
