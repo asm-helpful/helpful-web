@@ -18,6 +18,7 @@
 //= require showdown
 //= require react
 //= require react_ujs
+//= react-router-component
 //= require_tree ./components
 
 $(document).ready(function() {
