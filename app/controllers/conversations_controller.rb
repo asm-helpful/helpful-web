@@ -6,22 +6,12 @@ class ConversationsController < ApplicationController
 
   respond_to :html, :json
 
-  # TODO: Move to service object
   def index
-    archived = params[:archived]
-    conversations = Account.find(params[:account_id]).conversations
-
-    unless archived.nil?
-      conversations = conversations.where(archived: archived)
-    end
-
-    respond_with conversations
+    account = Account.find(params[:account_id])
+    respond_with ConversationMailbox.find(account, current_user, params)
   end
 
   def archived
-    Analytics.track(user_id: current_user.id, event: 'Read Archived Conversations Index')
-    archive = ConversationsArchive.new(@account, params[:q])
-    @conversations = archive.conversations
     counts = @account.conversations.group(:archived).count
     @inbox_count = counts[false]
     @archive_count = counts[true]
@@ -29,14 +19,9 @@ class ConversationsController < ApplicationController
   end
 
   def inbox
-    Analytics.track(user_id: current_user.id, event: 'Read Conversations Index')
-    inbox = ConversationsInbox.new(@account, current_user, params[:q])
-    @conversations = inbox.conversations
     counts = @account.conversations.group(:archived).count
     @inbox_count = counts[false]
     @archive_count = counts[true]
-    WelcomeConversation.create(@account, current_user) unless @account.conversations.welcome_email.exists?
-    respond_with @conversations
   end
 
   def search
