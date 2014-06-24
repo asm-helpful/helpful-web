@@ -18,7 +18,6 @@ describe ConversationsController do
 
       expect(response).to be_successful
       expect(assigns(:conversations)).to eq([archived_conversation])
-      expect(assigns(:conversation)).to eq(archived_conversation)
     end
   end
 

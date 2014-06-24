@@ -47,8 +47,8 @@ RSpec.configure do |config|
   config.render_views
 
   config.include FactoryGirl::Syntax::Methods
-  config.include Devise::TestHelpers, type: [:controller]
-  config.include Warden::Test::Helpers
+  config.include Devise::TestHelpers, type: :controller
+  config.include Warden::Test::Helpers, type: :request
   config.include AdminAuth
 
   config.expect_with :rspec do |c|
@@ -67,4 +67,8 @@ RSpec.configure do |config|
   config.order = "random"
 
   config.fixture_path = "#{Rails.root}/spec/fixtures"
+
+  config.treat_symbols_as_metadata_keys_with_true_values = true
+
+  config.infer_spec_type_from_file_location!
 end

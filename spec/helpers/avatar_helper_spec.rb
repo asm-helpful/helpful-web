@@ -7,7 +7,7 @@ describe AvatarHelper do
   end
 
   it "#gravatar_url" do
-    assert_equal 'https://secure.gravatar.com/avatar/55502f40dc8b7c769880b10874abc9d0.png?s=60&d=404', gravatar_url(@person.email, 60)
+    assert_equal 'https://secure.gravatar.com/avatar/55502f40dc8b7c769880b10874abc9d0.png?s=120&d=404', gravatar_url(@person.email, 60)
   end
 
   it "#avatar returns an element with the avatar class" do

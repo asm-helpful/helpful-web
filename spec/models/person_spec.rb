@@ -11,7 +11,7 @@ describe Person do
     let(:person2){ create(:person) }
     it 'must have a unique username per account' do
       person.username = person2.username
-      expect(person).to have(1).error_on(:username)
+      expect(person).to be_invalid
     end
   end
   
