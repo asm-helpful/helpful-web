@@ -36,7 +36,7 @@ var Conversation = React.createClass({
   },
 
   renderReply: function() {
-    if(this.hasReply()) {
+    if(this.hasReply() && !this.props.conversation.expanded) {
       return (
         <div className="reply">
           <i className="ss-reply"></i>
