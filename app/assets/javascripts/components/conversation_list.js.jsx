@@ -175,16 +175,18 @@ var ConversationList = React.createClass({
   },
 
   renderConversation: function(conversation) {
-    return Conversation({
-      conversation: conversation,
-      toggleHandler: this.toggleHandler(conversation),
-      addStreamItemHandler: this.addStreamItemHandler(conversation),
-      laterHandler: this.laterHandler(conversation),
-      archiveHandler: this.archiveHandler(conversation),
-      unarchiveHandler: this.unarchiveHandler(conversation),
-      currentUser: this.state.currentUser,
-      key: conversation.id
-    });
+    if(conversation.messages.length > 0) {
+      return Conversation({
+        conversation: conversation,
+        toggleHandler: this.toggleHandler(conversation),
+        addStreamItemHandler: this.addStreamItemHandler(conversation),
+        laterHandler: this.laterHandler(conversation),
+        archiveHandler: this.archiveHandler(conversation),
+        unarchiveHandler: this.unarchiveHandler(conversation),
+        currentUser: this.state.currentUser,
+        key: conversation.id
+      });
+    }
   },
 
   render: function() {

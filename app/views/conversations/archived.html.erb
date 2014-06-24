@@ -3,5 +3,5 @@
 <%= render 'shared/inbox_navbar' %>
 
 <div class="container">
-  <%= react_component('ConversationList', source: archived_account_conversations_path(@account, format: :json)) %>
+  <%= react_component('ConversationList', source: account_conversations_path(@account.id, archived: true, format: :json)) %>
 </div>
