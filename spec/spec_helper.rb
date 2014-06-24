@@ -47,7 +47,8 @@ RSpec.configure do |config|
   config.render_views
 
   config.include FactoryGirl::Syntax::Methods
-  config.include Devise::TestHelpers, type: :controller
+  config.include Devise::TestHelpers, type: [:controller]
+  config.include Warden::Test::Helpers
   config.include AdminAuth
 
   config.expect_with :rspec do |c|
