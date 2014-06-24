@@ -58,18 +58,19 @@ group :development do
 end
 
 group :development, :test do
-  gem 'jazz_hands'
-  gem 'factory_girl_rails', '~> 4.2.1'
-  gem 'ffaker', '~> 1.20'
-  gem 'rake'
-  gem 'rspec-rails', '~> 3.0.0.beta2'
-  gem 'pry'
-  gem 'timecop'
-  gem 'jasmine', github: 'pivotal/jasmine-gem'
-  gem 'vcr'
-  gem 'faraday', '~> 0.9.0'
-  gem 'psych', '~> 2.0.5'
   gem 'database_cleaner'
+  gem 'factory_girl_rails', '~> 4.2.1'
+  gem 'faraday', '~> 0.9.0'
+  gem 'ffaker', '~> 1.20'
+  gem 'jasmine', github: 'pivotal/jasmine-gem'
+  gem 'jazz_hands'
+  gem 'json_spec'
+  gem 'pry'
+  gem 'psych', '~> 2.0.5'
+  gem 'rake'
+  gem 'rspec-rails', '~> 2.99.0'
+  gem 'timecop'
+  gem 'vcr'
 end
 
 group :test do
