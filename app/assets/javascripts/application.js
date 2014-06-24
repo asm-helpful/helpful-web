@@ -4,7 +4,6 @@
 //= require bootstrap
 //= require conversations
 //= require command_bar
-//= require avatar
 //= require jquery-autosize
 //= require search_bar
 //= require billing

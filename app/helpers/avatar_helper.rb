@@ -26,7 +26,7 @@ module AvatarHelper
   end
 
   def avatar_image(person, size)
-    image_tag(avatar_path(person, size), width: size, height: size, onerror: 'toggleAvatar(this)')
+    image_tag(avatar_path(person, size), width: size, height: size)
   end
 
   def avatar_path(person, size)
