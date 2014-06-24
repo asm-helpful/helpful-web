@@ -34,6 +34,7 @@ var CannedResponseButton = React.createClass({
   useCannedResponse: function(cannedResponse) {
     return function(event) {
       event.stopPropagation();
+      event.preventDefault();
 
       this.props.useCannedResponseHandler(cannedResponse)
       this.clearCannedResponseFilter(event);

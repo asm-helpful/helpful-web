@@ -32,8 +32,8 @@ var Response = React.createClass({
 
   // TODO: Include file attachments
   createMessage: function(event) {
-    event.preventDefault();
     event.stopPropagation();
+    event.preventDefault();
 
     var data = {
       message: {

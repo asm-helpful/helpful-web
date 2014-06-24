@@ -37,6 +37,7 @@ var ConversationList = React.createClass({
   toggleHandler: function(toggled) {
     return function(event) {
       event.stopPropagation();
+      event.preventDefault();
 
       var conversations = this.state.conversations.map(function(conversation) {
         if(conversation === toggled) {
@@ -76,6 +77,7 @@ var ConversationList = React.createClass({
   laterHandler: function(conversation) {
     return function(event) {
       event.stopPropagation();
+      event.preventDefault();
 
       var data = {
         conversation: {
@@ -109,6 +111,7 @@ var ConversationList = React.createClass({
   archiveHandler: function(conversation) {
     return function(event) {
       event.stopPropagation();
+      event.preventDefault();
 
       var data = {
         conversation: {
@@ -141,6 +144,7 @@ var ConversationList = React.createClass({
   unarchiveHandler: function(conversation) {
     return function(event) {
       event.stopPropagation();
+      event.preventDefault();
 
       var data = {
         conversation: {

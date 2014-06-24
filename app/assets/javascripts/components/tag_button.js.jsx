@@ -35,6 +35,7 @@ var TagButton = React.createClass({
   tagConversationHandler: function(tag) {
     return function(event) {
       event.stopPropagation();
+      event.preventDefault();
 
       var tagsPath = this.props.conversation.tags_path;
       var data = { tag: tag };
