@@ -1,8 +1,6 @@
 class ConversationsController < ApplicationController
-
+  before_action :find_account!, except: [:index]
   before_action :authenticate_user!
-  before_action :find_account!, except: :index
-  after_filter :flash_notice, only: :update
 
   respond_to :html, :json
 
@@ -15,7 +13,6 @@ class ConversationsController < ApplicationController
     counts = @account.conversations.group(:archived).count
     @inbox_count = counts[false]
     @archive_count = counts[true]
-    respond_with @conversations
   end
 
   def inbox

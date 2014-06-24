@@ -23,9 +23,9 @@ var ConversationList = React.createClass({
       var conversations = response.conversations;
 
       conversations = conversations.map(function(conversation) {
-        conversation.expanded = false;
+        conversation.expanded = (this.props.selected == conversation.number)
         return conversation;
-      });
+      }.bind(this));
 
       this.setState({
         loaded: true,
