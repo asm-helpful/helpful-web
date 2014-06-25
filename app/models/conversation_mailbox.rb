@@ -16,13 +16,19 @@ class ConversationMailbox
       search
     elsif archive?
       archive
-    else
+    elsif inbox?
       inbox
+    else
+      account_conversations
     end
   end
 
   def inbox
     account_conversations.unresolved.queue_order(user)
+  end
+
+  def inbox?
+    params[:archived] == 'false'
   end
 
   def archive
