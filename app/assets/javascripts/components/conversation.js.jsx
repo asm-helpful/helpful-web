@@ -1,53 +1,128 @@
 /** @jsx React.DOM */
 
 var Conversation = React.createClass({
-  render: function() {
-    return (
-      <div className="list-item" key={this.props.conversation.id}>
-        <div className={this.conversationClassNames()}>
-          <div className="actions">
-            <button className="btn btn-default" onClick={this.props.laterConversationHandler}>Later</button>
-            <button className="btn btn-default" onClick={this.props.archiveConversationHandler}>Archive</button>
-          </div>
-          <div className="summary" onClick={this.props.toggleMessagesHandler}>
-            <Avatar person={this.props.conversation.creator_person} />
+  renderStatus: function() {
+    var isUnread = this.isUnread();
+    var isStale = this.isStale();
 
-            <div className="detail">
-              <span className="badge badge-message-count">
-                <span className="glyphicon glyphicon-envelope"></span>
-                {this.props.conversation.message_count} 
-              </span>
+    if(isUnread || isStale) {
+      var classes = React.addons.classSet({
+        'status': true,
+        'status-unread': !isStale && isUnread,
+        'status-urgent': isStale
+      });
 
-              <ConversationTimestamp archived={this.props.conversation.archived} lastActivityAt={this.props.conversation.last_activity_at} />
+      return (
+        <div className={classes}></div>
+      );
+    }
+  },
 
-              <ConversationParticipantList participants={this.props.conversation.participants} />
-
-              <div className="number">
-                #{this.props.conversation.number}
-              </div>
-            </div>
-
-            <div className="title">
-              {this.props.conversation.summary}
-            </div>
-
-            <ConversationTagList tags={this.props.conversation.tags} />
-
-            {this.props.messagesVisible ? <Message message={this.props.conversation.stream_items[0]} detail={false} /> : ''}
-          </div>
-
-          {this.props.messagesVisible ? <ConversationStream items={this.props.conversation.stream_items} /> : ''}
-          {this.props.messagesVisible ? <ConversationResponse conversation={this.props.conversation} addStreamItemHandler={this.props.addStreamItemHandler} /> : ''}
+  renderActions: function() {
+    if(this.props.conversation.archived) {
+      return (
+        <div className="conversation-actions btn-group pull-right">
+          <button className="btn btn-default btn-sm" onClick={this.props.unarchiveHandler}>Move to Inbox</button>
         </div>
+      );
+    } else {
+      return (
+        <div className="conversation-actions btn-group pull-right">
+          <button className="btn btn-default btn-sm" onClick={this.props.laterHandler}>Later</button>
+          <button className="btn btn-default btn-sm" onClick={this.props.archiveHandler}>Archive</button>
+        </div>
+      );
+    }
+  },
+
+  renderReply: function() {
+    if(this.hasReply() && !this.props.conversation.expanded) {
+      return (
+        <div className="reply">
+          <i className="ss-reply"></i>
+        </div>
+      );
+    }
+  },
+
+  renderHeader: function() {
+    var previewBody = null;
+
+    if(!this.props.conversation.expanded) {
+      previewBody = <span className="text-muted" dangerouslySetInnerHTML={{__html: this.preview()}} />;
+    }
+
+    return (
+      <a href="#" onClick={this.props.toggleHandler}>
+        <div className="conversation-header">
+          {this.renderStatus()}
+
+          {this.renderActions()}
+          <div className="conversation-person">
+            <Person person={this.props.conversation.creator_person} />
+          </div>
+
+          <div className="conversation-preview">
+            {this.renderReply()}
+
+            <div className="ellipsis-overflow">
+              {this.props.conversation.subject}
+              &nbsp;
+              {previewBody}
+            </div>
+          </div>
+        </div>
+      </a>
+    );
+  },
+
+  renderBody: function() {
+    if(this.props.conversation.expanded) {
+      return (
+        <div className="conversation-body">
+          <div className="conversation-stream">
+            <Stream items={this.props.conversation.stream_items} />
+          </div>
+
+          <div className="conversation-response">
+            <Response conversation={this.props.conversation} addStreamItemHandler={this.props.addStreamItemHandler} />
+          </div>
+        </div>
+      );
+    }
+  },
+
+  render: function() {
+    var classes = React.addons.classSet({
+      'conversation': true,
+      'is-expanded': this.props.conversation.expanded,
+      'is-collapsed': !this.props.conversation.expanded
+    });
+
+    return (
+      <div className={classes}>
+        {this.renderHeader()}
+        {this.renderBody()}
       </div>
     );
   },
 
-  conversationClassNames: function() {
-    if(this.props.messagesVisible) {
-      return ['conversation', 'conversation-detail'].join(' ');
-    } else {
-      return ['conversation', 'conversation-row'].join(' ');
-    }
+  // TODO: Implement read receipts
+  isUnread: function() {
+    return this.props.conversation.unread;
+  },
+
+  isStale: function() {
+    return !this.props.conversation.archived &&
+      moment(this.props.conversation.last_activity_at) < moment().subtract('days', 3)
+  },
+
+  hasReply: function() {
+    return this.props.conversation.messages.length > 1;
+  },
+
+  preview: function() {
+    var converter = new Showdown.converter();
+    return $(converter.makeHtml(this.props.conversation.messages[0].content)).text();
   }
 });

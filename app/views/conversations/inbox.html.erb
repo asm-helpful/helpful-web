@@ -1,7 +1,6 @@
 <%= render 'shared/navbar' %>
-
 <%= render 'layouts/flash' %>
+<%= render 'shared/inbox_navbar' %>
 
-<div class="container">
-  <%= react_component('ConversationList', source: inbox_account_conversations_path(@account)) %>
+<div class="container react">
 </div>

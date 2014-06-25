@@ -12,6 +12,7 @@ class Conversation < ActiveRecord::Base
     source: :user_people
 
   has_many :messages,
+    -> { order('created_at ASC') },
     after_add: :message_added_callback,
     dependent: :destroy
 
@@ -31,6 +32,9 @@ class Conversation < ActiveRecord::Base
     -> { uniq },
     through: :messages,
     source: :person
+
+  has_many :read_receipts,
+    through: :messages
 
   has_many :respond_laters
 
@@ -75,6 +79,12 @@ class Conversation < ActiveRecord::Base
 
   after_commit :notify_account_people,
     on: :create
+
+  def self.queue_order(user)
+    self.joins("LEFT OUTER JOIN respond_laters ON conversations.id = respond_laters.conversation_id AND respond_laters.user_id = '#{user.id}'").
+      order('respond_laters.updated_at ASC NULLS FIRST').
+      order('conversations.updated_at DESC')
+  end
 
   def archive!
     update(archived: true)

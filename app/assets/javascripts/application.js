@@ -4,7 +4,6 @@
 //= require bootstrap
 //= require conversations
 //= require command_bar
-//= require avatar
 //= require jquery-autosize
 //= require search_bar
 //= require billing
@@ -16,10 +15,9 @@
 //= require wow.min.js
 //= require moment
 //= require showdown
+//= require underscore
 //= require react
 //= require react_ujs
 //= require_tree ./components
-
-$(document).ready(function() {
-
-});
+//= require backbone
+//= require router

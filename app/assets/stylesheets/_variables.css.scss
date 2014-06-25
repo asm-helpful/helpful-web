@@ -1,7 +1,10 @@
 // Base Typography
 
+$font-family-sans-serif: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+$font-size-base: 16px;
+$font-body: $font-family-sans-serif;
 $font-header: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-$font-body: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $font-headline: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $font-serif: 'Droid Serif', 'Georgia', 'Times New Roman', Times, serif;
 
@@ -10,7 +13,7 @@ $font-serif: 'Droid Serif', 'Georgia', 'Times New Roman', Times, serif;
 $white:         #FFFFFF;
 $lightest-gray-highlight: #F7FBFC;
 $lightest-gray: #F2F7F8;
-$light-gray:    #DBE8EB;
+$light-gray:    #F4FAF9;
 $gray:          #C6D1D4;
 $gray-blue:     #99b1b5;
 $dark-gray:     #909799;
@@ -63,7 +66,7 @@ $avatar-default-font-size: 12px;
 // Btn
 
 $btn-border-radius: 99px;
-$btn-border-width: 2px;
+$btn-border-width: 1px;
 $btn-default-padding: 3px 20px;
 $btn-large-padding: 10px 50px;
 
@@ -80,13 +83,7 @@ $navbar-default-link-hover-color: darken($white, 10%);
 $navbar-margin-bottom: 0;
 $navbar-default-brand-bg: $dark-blue;
 
-// Container
+// Padding
 
-$container-md: 540px;
-$container-lg: 740px;
-
-// Responsive Utilities
-
-// $screen-sm: 0; // disabled
-// $screen-xs: 0; // disabled
-// $screen-md: 0; // disabled
+$padding-large-vertical: 16px;
+$padding-large-horizontal: 24px;
