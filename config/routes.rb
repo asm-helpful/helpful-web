@@ -61,7 +61,7 @@ Helpful::Application.routes.draw do
   resource :accounts, only: [:new, :create]
 
   resources :accounts do
-    resources :conversations, shallow: true
+    resources :conversations
   end
 
   scope '/:id' do

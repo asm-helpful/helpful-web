@@ -10,12 +10,24 @@ var ConversationList = React.createClass({
           initials: '',
           gravatar_url: ''
         }
-      }
+      },
+      archived: this.props.archived
     };
   },
 
   componentDidMount: function() {
-    this.getConversations();
+    if(this.props.conversationNumber) {
+      this.getConversation();
+    } else {
+      this.getConversations();
+    }
+  },
+
+  getConversation: function() {
+    $.getJSON(this.conversationPath(), function(response) {
+      this.setState({ archived: response.conversation.archived });
+      this.getConversations();
+    }.bind(this));
   },
 
   getConversations: function() {
@@ -23,7 +35,7 @@ var ConversationList = React.createClass({
       var conversations = response.conversations;
 
       conversations = conversations.map(function(conversation) {
-        conversation.expanded = (this.props.selected == conversation.number)
+        conversation.expanded = (this.props.conversationNumber == conversation.number)
         return conversation;
       }.bind(this));
 
@@ -220,6 +232,10 @@ var ConversationList = React.createClass({
   },
 
   conversationsPath: function() {
-    return '/accounts/' + this.props.accountSlug + '/conversations.json?archived=' + this.props.archived;
+    return '/accounts/' + this.props.accountSlug + '/conversations.json?archived=' + this.state.archived;
+  },
+
+  conversationPath: function() {
+    return '/accounts/' + this.props.accountSlug + '/conversations/' + this.props.conversationNumber + '.json';
   }
 });

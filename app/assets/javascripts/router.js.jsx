@@ -8,15 +8,15 @@ var Router = Backbone.Router.extend({
   },
 
   inbox: function(accountSlug) {
-    React.renderComponent(<Inbox accountSlug={accountSlug} />, $('.react')[0]);
+    React.renderComponent(<ConversationList accountSlug={accountSlug} archived={false} />, $('.react')[0]);
   },
 
   archive: function(accountSlug) {
-    React.renderComponent(<Archive accountSlug={accountSlug} />, $('.react')[0]);
+    React.renderComponent(<ConversationList accountSlug={accountSlug} archived={true} />, $('.react')[0]);
   },
 
   conversation: function(accountSlug, conversationNumber) {
-    console.log('conversation');
+    React.renderComponent(<ConversationList accountSlug={accountSlug} conversationNumber={conversationNumber} />, $('.react')[0]);
   }
 });
 
