@@ -12,6 +12,7 @@
     color: $white;
     text-align: center;
     text-transform: uppercase;
+    vertical-align: middle;
   }
 }
 
@@ -23,12 +24,20 @@
 
 .navbar .navbar-avatar {
   display: inline-block;
-  vertical-align: middle;
 
   &.navbar-avatar-dropdown {
     margin-top: -2px;
 
     .avatar-initials { font-size: 10px; }
+  }
+}
+
+.avatar-preview {
+  .avatar {
+    .avatar-initials {
+      font-size: 56px;
+      font-weight: bold;
+    }
   }
 }
 

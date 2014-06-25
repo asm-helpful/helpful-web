@@ -50,9 +50,7 @@ pt-BR:
 
   users:
     edit:
-      user_settings: "Perfil do usuário"
       # name: "Name" # This entry seems to be useless
-      update_personal_settings: "Atualizar meu perfil"
     mailer:
       invitation_instructions:
         someone_invited: "Alguém convidou você para"
