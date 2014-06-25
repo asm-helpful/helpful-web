@@ -1,4 +1,5 @@
 $avatar-small-size: 20px;
+$avatar-base-size: 26px;
 
 .avatar {
   @extend .img-circle;
@@ -10,15 +11,11 @@ $avatar-small-size: 20px;
   width: $avatar-small-size;
 }
 
-.navbar .navbar-avatar {
+.navbar-avatar {
   display: inline-block;
   vertical-align: middle;
-
-  &.navbar-avatar-dropdown {
-    margin-top: -2px;
-
-    .avatar-initials { font-size: 10px; }
-  }
+  height: $avatar-base-size;
+  width: $avatar-base-size;
 }
 
 .dropdown.avatar > a {

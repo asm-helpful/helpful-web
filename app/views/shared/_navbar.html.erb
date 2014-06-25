@@ -3,9 +3,9 @@
   <% if current_user %>
 
     <ul class="nav navbar-nav navbar-right">
-      <li class="dropdown avatar">
+      <li class="dropdown">
         <a class="dropdown-toggle" href="#" data-toggle="dropdown">
-          <%= avatar(current_user, 30, 'navbar-avatar') %>
+          <%= avatar(current_user, 30, 'avatar navbar-avatar') %>
           <b class="caret"></b>
         </a>
         <ul class="dropdown-menu">
@@ -85,7 +85,7 @@
               <% @account.users.includes(:person).order('people.name ASC').each do |user| %>
                 <li class="search-result">
                   <%= link_to search_account_conversations_path(@account, assignee: user.id) do %>
-                    <%= avatar(user, 30, 'navbar-avatar') %>
+                    <%= avatar(user, 30, 'avatar navbar-avatar') %>
                     <span class="username">
                       <%= user.name %>
                     </span>
