@@ -117,12 +117,16 @@ var ConversationList = React.createClass({
   },
 
   moveToBottom: function(conversation) {
+    conversation.expanded = false;
+
     var index = this.state.conversations.indexOf(conversation);
     var conversations = this.state.conversations.slice(0, index).
       concat(this.state.conversations.slice(index + 1)).
       concat(conversation);
 
     this.setState({ conversations: conversations });
+
+    this.updateRoute(conversation);
   },
 
   archiveHandler: function(conversation) {
@@ -151,11 +155,15 @@ var ConversationList = React.createClass({
   },
 
   moveToArchive: function(conversation) {
+    conversation.expanded = false;
+
     var index = this.state.conversations.indexOf(conversation);
     var conversations = this.state.conversations.slice(0, index).
       concat(this.state.conversations.slice(index + 1));
 
     this.setState({ conversations: conversations });
+
+    this.updateRoute(conversation);
   },
 
   unarchiveHandler: function(conversation) {
@@ -184,11 +192,15 @@ var ConversationList = React.createClass({
   },
 
   moveToInbox: function(conversation) {
+    conversation.expanded = false;
+
     var index = this.state.conversations.indexOf(conversation);
     var conversations = this.state.conversations.slice(0, index).
       concat(this.state.conversations.slice(index + 1));
 
     this.setState({ conversations: conversations });
+
+    this.updateRoute(conversation);
   },
 
   renderConversation: function(conversation) {
@@ -213,6 +225,16 @@ var ConversationList = React.createClass({
       return <InboxZero />
     } else {
       return <div></div>
+    }
+  },
+
+  updateRoute: function(conversation) {
+    if(conversation.expanded) {
+      router.navigate(conversation.path);
+    } else if(conversation.archived) {
+      router.navigate(this.archivePath());
+    } else {
+      router.navigate(this.inboxPath());
     }
   },
 
