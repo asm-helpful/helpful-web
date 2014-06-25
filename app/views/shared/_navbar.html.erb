@@ -5,7 +5,7 @@
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
         <a class="dropdown-toggle" href="#" data-toggle="dropdown">
-          <%= avatar(current_user, 30, 'avatar navbar-avatar') %>
+          <%= avatar(current_user, 20, 'avatar avatar-small') %>
           <b class="caret"></b>
         </a>
         <ul class="dropdown-menu">
@@ -58,6 +58,13 @@
     </ul>
 
     <div class="container">
+      <ul class="nav navbar-nav">
+        <li>
+          <%= link_to inbox_account_conversations_path(@account), class: "#{'active' if current_page?(inbox_account_conversations_path(@account)) }" do %>
+            <i class="ss-inbox glyphicon"></i>
+          <% end %>
+        </li>
+      </ul>
       <div class="search-bar">
         <%= form_tag search_account_conversations_path(@account), method: 'get' do %>
           <%= search_field_tag :q, @query, autocomplete: 'off', placeholder: t('.search'), id: 'search-query', 'data-search-path' => search_account_conversations_path(@account) %>
@@ -85,7 +92,7 @@
               <% @account.users.includes(:person).order('people.name ASC').each do |user| %>
                 <li class="search-result">
                   <%= link_to search_account_conversations_path(@account, assignee: user.id) do %>
-                    <%= avatar(user, 30, 'avatar navbar-avatar') %>
+                    <%= avatar(user, 20, 'avatar avatar-small') %>
                     <span class="username">
                       <%= user.name %>
                     </span>
