@@ -52,7 +52,7 @@ password:
 Save and restart the app (`sudo restart helpful` on vagrant)
 
 
-### Recieving with Mailgun (optional)
+### Receiving with Mailgun (optional)
 
 Setting up [Mailgun](http://mailgun.com) in development takes a little work but allows you to use the
 actual email workflow used in production.
