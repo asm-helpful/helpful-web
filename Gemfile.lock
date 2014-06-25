@@ -281,6 +281,7 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.1.1)
       sprockets-rails (~> 2.0)
+    rails-assets-animate.css (3.1.1)
     rails-assets-handlebars (1.3.0)
     rails-assets-jquery (2.1.0)
     rails-assets-jquery-autosize (1.18.6)
@@ -446,6 +447,7 @@ DEPENDENCIES
   pusher
   quiet_assets
   rails (~> 4.1.1)
+  rails-assets-animate.css
   rails-assets-handlebars
   rails-assets-jquery-autosize
   rails-assets-moment
