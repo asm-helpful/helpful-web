@@ -1,26 +1,8 @@
 /** @jsx React.DOM */
 
 var Response = React.createClass({
-  getInitialState: function() {
-    return {
-      currentUser: {
-        person: {
-          initials: '',
-          gravatar_url: ''
-        }
-      }
-    }
-  },
-
   componentDidMount: function() {
-    this.getCurrentUser();
     this.initMediumEditor();
-  },
-
-  getCurrentUser: function() {
-    $.getJSON('/user', function(response) {
-      this.setState({ currentUser: response.user });
-    }.bind(this));
   },
 
   initMediumEditor: function() {

@@ -5,12 +5,6 @@ var ConversationList = React.createClass({
     return {
       loaded: false,
       conversations: [],
-      currentUser: {
-        person: {
-          initials: '',
-          gravatar_url: ''
-        }
-      },
       archived: this.props.archived
     };
   },
@@ -206,7 +200,6 @@ var ConversationList = React.createClass({
         laterHandler: this.laterHandler(conversation),
         archiveHandler: this.archiveHandler(conversation),
         unarchiveHandler: this.unarchiveHandler(conversation),
-        currentUser: this.state.currentUser,
         key: conversation.id
       });
     }
