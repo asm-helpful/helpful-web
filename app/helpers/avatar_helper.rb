@@ -44,7 +44,8 @@ module AvatarHelper
   # Returns a url to the PNG of the user's gravatar.
   def gravatar_url(email, size)
     id = gravatar_id(email)
-    "https://secure.gravatar.com/avatar/#{id}.png?s=#{size}&d=404"
+    retina_size = size * 2
+    "https://secure.gravatar.com/avatar/#{id}.png?s=#{retina_size}&d=404"
   end
 
   # Internal: Helper that generates a gravatar id for an email

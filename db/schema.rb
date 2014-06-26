@@ -16,7 +16,6 @@ ActiveRecord::Schema.define(version: 20140522234705) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
-  enable_extension "pg_stat_statements"
   enable_extension "uuid-ossp"
 
   create_table "accounts", id: false, force: true do |t|
@@ -108,6 +107,7 @@ ActiveRecord::Schema.define(version: 20140522234705) do
   end
 
   add_index "conversations", ["account_id", "archived"], name: "index_conversations_on_account_id_and_archived", using: :btree
+  add_index "conversations", ["account_id"], name: "index_conversations_on_account_id", using: :btree
   add_index "conversations", ["hidden"], name: "index_conversations_on_hidden", using: :btree
   add_index "conversations", ["user_id"], name: "index_conversations_on_user_id", using: :btree
 
