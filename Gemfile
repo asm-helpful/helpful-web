@@ -85,4 +85,5 @@ end
 
 group :development, :production do
   gem 'rails_12factor'
+  gem 'font_assets'
 end

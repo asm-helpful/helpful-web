@@ -82,4 +82,6 @@ Helpful::Application.configure do
 
   config.action_mailer.default_url_options = { :host => 'helpful.io' }
   config.action_mailer.delivery_method = :mailgun
+
+  config.font_assets.origin = 'https://helpful.io'
 end
