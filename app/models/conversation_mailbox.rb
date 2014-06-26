@@ -24,7 +24,7 @@ class ConversationMailbox
   end
 
   def inbox
-    account_conversations.unresolved.queue_order(user)
+    account_conversations.unresolved.order('updated_at DESC')
   end
 
   def inbox?

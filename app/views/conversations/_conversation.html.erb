@@ -36,11 +36,6 @@
       <% end %>
     <% else %>
       <%= form_for [@account, @conversation] do |f| %>
-        <%= f.hidden_field :respond_later, value: true %>
-        <%= f.submit t('conversations.row.later'), class: 'btn btn-default', style: 'margin-bottom: 10px' %>
-      <% end %>
-
-      <%= form_for [@account, @conversation] do |f| %>
         <%= f.hidden_field :archive, value: true %>
         <%= f.submit t('conversations.row.archive'), class: 'btn btn-default' %>
       <% end %>

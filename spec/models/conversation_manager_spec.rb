@@ -27,6 +27,5 @@ describe ConversationManager do
   it 'takes the correct action' do
     expect(conversation_manager.lookup_action(archive: true)).to eq(:archive!)
     expect(conversation_manager.lookup_action(unarchive: true)).to eq(:unarchive!)
-    expect(conversation_manager.lookup_action(respond_later: true)).to eq(:respond_later!)
   end
 end

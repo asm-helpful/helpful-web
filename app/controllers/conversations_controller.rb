@@ -80,7 +80,7 @@ class ConversationsController < ApplicationController
   end
 
   def conversation_params
-    params.require(:conversation).permit(:archive, :unarchive, :respond_later, :id, :user_id)
+    params.require(:conversation).permit(:archive, :unarchive, :id, :user_id)
   end
 
   def flash_notice

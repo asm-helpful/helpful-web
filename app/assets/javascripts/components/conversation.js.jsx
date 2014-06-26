@@ -28,7 +28,6 @@ var Conversation = React.createClass({
     } else {
       return (
         <div className="conversation-actions btn-group pull-right">
-          <button className="btn btn-default btn-sm" onClick={this.props.laterHandler}>Later</button>
           <button className="btn btn-default btn-sm" onClick={this.props.archiveHandler}>Archive</button>
         </div>
       );

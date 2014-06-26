@@ -43,21 +43,6 @@ describe ConversationsController do
       expect(conversation).not_to be_archived
       expect(response).to redirect_to inbox_account_conversations_path(account)
     end
-
-    it 'moves a conversation to the bottom of the queue' do
-      post :update,
-        {
-          account_id: account.slug,
-          id: conversation.number,
-          conversation: {
-            respond_later: true
-          }
-        }
-
-      conversation.reload
-
-      expect(conversation.respond_laters).not_to be_empty
-    end
   end
 
   describe '#search', vcr: true do
