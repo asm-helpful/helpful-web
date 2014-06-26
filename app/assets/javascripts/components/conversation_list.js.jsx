@@ -91,44 +91,6 @@ var ConversationList = React.createClass({
     }.bind(this);
   },
 
-  laterHandler: function(conversation) {
-    return function(event) {
-      event.stopPropagation();
-      event.preventDefault();
-
-      var data = {
-        conversation: {
-          respond_later: true
-        }
-      };
-
-      $.ajax({
-        type: 'PUT',
-        url: conversation.path,
-        data: JSON.stringify(data),
-        dataType: 'json',
-        contentType: 'application/json',
-        accepts: { json: 'application/json' },
-        success: function(response) {
-          this.moveToBottom(conversation);
-        }.bind(this)
-      });
-    }.bind(this);
-  },
-
-  moveToBottom: function(conversation) {
-    conversation.expanded = false;
-
-    var index = this.state.conversations.indexOf(conversation);
-    var conversations = this.state.conversations.slice(0, index).
-      concat(this.state.conversations.slice(index + 1)).
-      concat(conversation);
-
-    this.setState({ conversations: conversations });
-
-    this.updateRoute(conversation);
-  },
-
   archiveHandler: function(conversation) {
     return function(event) {
       event.stopPropagation();
@@ -209,7 +171,6 @@ var ConversationList = React.createClass({
         conversation: conversation,
         toggleHandler: this.toggleHandler(conversation),
         addStreamItemHandler: this.addStreamItemHandler(conversation),
-        laterHandler: this.laterHandler(conversation),
         archiveHandler: this.archiveHandler(conversation),
         unarchiveHandler: this.unarchiveHandler(conversation),
         key: conversation.id

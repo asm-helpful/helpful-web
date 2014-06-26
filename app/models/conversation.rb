@@ -36,8 +36,6 @@ class Conversation < ActiveRecord::Base
   has_many :read_receipts,
     through: :messages
 
-  has_many :respond_laters
-
   has_many :assignment_events
 
   has_many :tag_events
@@ -80,23 +78,12 @@ class Conversation < ActiveRecord::Base
   after_commit :notify_account_people,
     on: :create
 
-  def self.queue_order(user)
-    self.joins("LEFT OUTER JOIN respond_laters ON conversations.id = respond_laters.conversation_id AND respond_laters.user_id = '#{user.id}'").
-      order('respond_laters.updated_at ASC NULLS FIRST').
-      order('conversations.updated_at DESC')
-  end
-
   def archive!
     update(archived: true)
   end
 
   def unarchive!
     update(archived: false)
-  end
-
-  def respond_later!(user)
-    respond_later = respond_laters.find_or_create_by(user: user)
-    respond_later.touch
   end
 
   def just_archived?

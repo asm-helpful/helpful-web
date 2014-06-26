@@ -127,7 +127,6 @@ fr:
       search_conversations: "Recherche conversations"
       search: "Chercher"
     row:
-      later: "Plus Tard"
       archive: "Archiver"
     search:
       search_results_for: "Search results for"
