@@ -5,23 +5,32 @@ class Message < ActiveRecord::Base
   include ActiveRecord::UUID
   include Elasticsearch::Model
 
+  has_one :account,
+    through: :conversation
+
+  has_many :attachments,
+    inverse_of: :message
+
+  belongs_to :conversation,
+    touch: true
+
   belongs_to :person
-  belongs_to :conversation, touch: true
-  has_one :account, through: :conversation
 
   has_many :read_receipts
-  has_many :attachments, inverse_of: :message
 
-  delegate :account, :to => :conversation
+  delegate :account,
+    to: :conversation
 
   store_accessor :data, :recipient, :headers, :raw, :body, :subject
 
-  validates :person,       presence: true
-  validates :conversation, presence: true
-  validates :content,      presence: {
-                             allow_nil: false,
-                             allow_blank: false
-                           }
+  validates :person_id,
+    presence: true
+
+  validates :conversation_id,
+    presence: true
+
+  validates :content,
+    presence: true
 
   after_save :send_webhook, if: ->(message) {
     message.conversation.account.webhook_url?
