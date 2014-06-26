@@ -10,28 +10,3 @@
   width: 60px;
   height: 60px;
 }
-
-.logo-s {
-  width: 48px;
-  height: 48px;
-}
-
-.logo-xs {
-  width: 32px;
-  height: 32px;
-}
-
-.logo-wordmark {
-  background-image: url(image-path('logo.png'));
-  background-repeat: no-repeat;
-  background-position: left center;
-  background-size: auto 100%;
-
-  padding-left: (24px * 1.5) + 30px;
-
-  color: $black;
-  font-family: $font-headline;
-  font-size: 24px;
-  font-weight: 800;
-  text-transform: uppercase;
-}
