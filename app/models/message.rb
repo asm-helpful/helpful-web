@@ -32,13 +32,17 @@ class Message < ActiveRecord::Base
   validates :content,
     presence: true
 
-  after_save :send_webhook, if: ->(message) {
-    message.conversation.account.webhook_url?
-  }
+  after_commit :send_webhook,
+    on: [:create]
 
-  after_commit :trigger_pusher_new_message, on: [:create]
-  after_commit :enqueue_to_update_search_index, on: [:create, :update]
-  after_commit :send_email, on: :create
+  after_commit :trigger_pusher_new_message,
+    on: [:create]
+
+  after_commit :enqueue_to_update_search_index,
+    on: [:create, :update]
+
+  after_commit :send_email,
+    on: :create
 
   scope :most_recent, -> { order('updated_at DESC') }
 
@@ -60,6 +64,7 @@ class Message < ActiveRecord::Base
   end
 
   def send_webhook
+    return unless conversation.account.webhook_url?
     return if conversation.unpaid?
     # If the changed flag is set we know this is an update
     action = self.changed? ? 'updated' : 'created'
