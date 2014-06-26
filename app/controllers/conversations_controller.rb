@@ -1,25 +1,24 @@
 class ConversationsController < ApplicationController
-
+  before_action :find_account!, except: [:index]
   before_action :authenticate_user!
-  before_action :find_account!
-  after_filter :flash_notice, only: :update
 
   respond_to :html, :json
 
-  def archived
-    archive = ConversationsArchive.new(@account, params[:q])
-    @conversations = archive.conversations
-    @conversation = @conversations.first
+  def index
+    account = Account.find_by(slug: params[:account_id])
+    respond_with ConversationMailbox.find(account, current_user, params)
+  end
 
-    Analytics.track(user_id: current_user.id, event: 'Read Archived Conversations Index')
+  def archived
+    counts = @account.conversations.group(:archived).count
+    @inbox_count = counts[false]
+    @archive_count = counts[true]
   end
 
   def inbox
-    Analytics.track(user_id: current_user.id, event: 'Read Conversations Index')
-    inbox = ConversationsInbox.new(@account, current_user, params[:q])
-    @conversations = inbox.conversations
-    WelcomeConversation.create(@account, current_user) unless @account.conversations.welcome_email.exists?
-    respond_with @conversations
+    counts = @account.conversations.group(:archived).count
+    @inbox_count = counts[false]
+    @archive_count = counts[true]
   end
 
   def search
@@ -44,6 +43,12 @@ class ConversationsController < ApplicationController
     @inbox = ConversationsInbox.new(@account, current_user)
     @next_conversation = @inbox.next_conversation(@conversation)
     @previous_conversation = @inbox.previous_conversation(@conversation)
+
+    ReadReceipt.transaction do
+      @conversation.messages.each do |m|
+        ReadReceipt.find_or_create_by(person: current_user.person, message: m)
+      end
+    end
 
     respond_with @conversation
   end
@@ -75,7 +80,7 @@ class ConversationsController < ApplicationController
   end
 
   def conversation_params
-    params.require(:conversation).permit(:archive, :unarchive, :respond_later, :id, :user_id)
+    params.require(:conversation).permit(:archive, :unarchive, :id, :user_id)
   end
 
   def flash_notice

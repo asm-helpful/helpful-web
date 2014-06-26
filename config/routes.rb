@@ -60,6 +60,10 @@ Helpful::Application.routes.draw do
 
   resource :accounts, only: [:new, :create]
 
+  resources :accounts do
+    resources :conversations
+  end
+
   scope '/:id' do
     resource :account, path: '/', only: [:show, :edit, :update] do
       resources :invitations

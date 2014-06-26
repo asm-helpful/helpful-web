@@ -1,0 +1,11 @@
+a,
+a:hover,
+a:focus {
+  text-decoration: none;
+}
+
+.ellipsis-overflow {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}

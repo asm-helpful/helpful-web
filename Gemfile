@@ -34,6 +34,7 @@ gem 'premailer-rails'
 gem 'puma'
 gem 'pusher'
 gem 'rails', '~> 4.1.1'
+gem 'rails-assets-animate.css'
 gem 'rails-assets-jquery-autosize'
 gem 'rails-assets-handlebars'
 gem 'rails-assets-moment'
@@ -49,6 +50,8 @@ gem 'unf'
 gem 'awesome_print'
 gem 'pry-rails'
 gem 'react-rails', github: 'reactjs/react-rails'
+gem 'underscore-rails'
+gem 'rails-backbone'
 
 group :development do
   gem 'quiet_assets'
@@ -58,18 +61,19 @@ group :development do
 end
 
 group :development, :test do
-  gem 'jazz_hands'
-  gem 'factory_girl_rails', '~> 4.2.1'
-  gem 'ffaker', '~> 1.20'
-  gem 'rake'
-  gem 'rspec-rails', '~> 3.0.0.beta2'
-  gem 'pry'
-  gem 'timecop'
-  gem 'jasmine', github: 'pivotal/jasmine-gem'
-  gem 'vcr'
-  gem 'faraday', '~> 0.9.0'
-  gem 'psych', '~> 2.0.5'
   gem 'database_cleaner'
+  gem 'factory_girl_rails', '~> 4.2.1'
+  gem 'faraday', '~> 0.9.0'
+  gem 'ffaker', '~> 1.20'
+  gem 'jasmine', github: 'pivotal/jasmine-gem'
+  gem 'jazz_hands'
+  gem 'json_spec'
+  gem 'pry'
+  gem 'psych', '~> 2.0.5'
+  gem 'rake'
+  gem 'rspec-rails', '~> 2.99.0'
+  gem 'timecop'
+  gem 'vcr'
 end
 
 group :test do
@@ -81,4 +85,5 @@ end
 
 group :development, :production do
   gem 'rails_12factor'
+  gem 'font_assets'
 end

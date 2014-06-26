@@ -25,15 +25,17 @@ var positionPages = function() {
 var affixNavbar = function($navbarPlaceholder) {
   var $navbar = $($navbarPlaceholder.children()[0]);
 
-  $(window).scroll(function() {
-    if($(window).scrollTop() > $navbarPlaceholder.offset().top) {
-      $navbar.removeClass('navbar-static-top');
-      $navbar.addClass('navbar-fixed-top');
-    } else {
-      $navbar.removeClass('navbar-fixed-top');
-      $navbar.addClass('navbar-static-top');
-    }
-  });
+  if($navbar.length) {
+    $(window).scroll(function() {
+      if($(window).scrollTop() > $navbarPlaceholder.offset().top) {
+        $navbar.removeClass('navbar-static-top');
+        $navbar.addClass('navbar-fixed-top');
+      } else {
+        $navbar.removeClass('navbar-fixed-top');
+        $navbar.addClass('navbar-static-top');
+      }
+    });
+  }
 };
 
 var scrollToContentButtons = function() {

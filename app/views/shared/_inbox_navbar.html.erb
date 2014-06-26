@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="navbar navbar-tabs">
+    <ul class="nav nav-tabs nav-tabs-lg pull-left">
+      <li>
+        <%= link_to inbox_account_conversations_path(@account), class: "#{'active' if current_page?(inbox_account_conversations_path(@account)) }" do %>
+          Inbox
+          <span class="badge"><%= @inbox_count %></span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to archived_account_conversations_path(@account), class: "#{'active' if current_page?(archived_account_conversations_path(@account)) }" do %>
+          Archive
+          <span class="badge"><%= @archive_count %></span>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>

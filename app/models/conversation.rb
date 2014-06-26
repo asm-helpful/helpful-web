@@ -12,6 +12,7 @@ class Conversation < ActiveRecord::Base
     source: :user_people
 
   has_many :messages,
+    -> { order('created_at ASC') },
     after_add: :message_added_callback,
     dependent: :destroy
 
@@ -32,7 +33,8 @@ class Conversation < ActiveRecord::Base
     through: :messages,
     source: :person
 
-  has_many :respond_laters
+  has_many :read_receipts,
+    through: :messages
 
   has_many :assignment_events
 
@@ -82,11 +84,6 @@ class Conversation < ActiveRecord::Base
 
   def unarchive!
     update(archived: false)
-  end
-
-  def respond_later!(user)
-    respond_later = respond_laters.find_or_create_by(user: user)
-    respond_later.touch
   end
 
   def just_archived?

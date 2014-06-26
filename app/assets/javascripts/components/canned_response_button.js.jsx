@@ -28,13 +28,14 @@ var CannedResponseButton = React.createClass({
   },
 
   filterCannedResponses: function(event) {
-    this.setState({
-      filter: event.target.value
-    });
+    this.setState({ filter: event.target.value });
   },
 
   useCannedResponse: function(cannedResponse) {
     return function(event) {
+      event.stopPropagation();
+      event.preventDefault();
+
       this.props.useCannedResponseHandler(cannedResponse)
       this.clearCannedResponseFilter(event);
     }.bind(this);
@@ -42,10 +43,25 @@ var CannedResponseButton = React.createClass({
 
   clearCannedResponseFilter: function(event) {
     $dropdown = $(event.target).closest('.dropdown-menu').removeClass('open');
+    this.setState({ filter: '' });
+  },
 
-    this.setState({
-      filter: ''
-    });
+  renderFilteredCannedResponses: function() {
+    return this.state.cannedResponses.map(function(cannedResponse) {
+      var useFilter = this.state.filter !== '';
+      var regexp = new RegExp(this.state.filter, 'gi');
+      var applyFilter = useFilter && !cannedResponse.key.match(regexp);
+
+      if(!applyFilter) {
+        return (
+          <li key={cannedResponse.key}>
+            <a href="#" onClick={this.useCannedResponse(cannedResponse)}>
+              {cannedResponse.key}
+            </a>
+          </li>
+        );
+      }
+    }.bind(this));
   },
 
   render: function() {
@@ -60,21 +76,7 @@ var CannedResponseButton = React.createClass({
             <input type="text" className="form-control" placeholder="Search by key" onClick={this.ignore} onKeyUp={this.filterCannedResponses} />
           </li>
           <li className="divider"></li>
-          {this.state.cannedResponses.map(function(cannedResponse) {
-            var useFilter = this.state.filter !== '';
-            var regexp = new RegExp(this.state.filter, 'gi');
-            var filterCannedResponse = useFilter && !cannedResponse.key.match(regexp);
-
-            if(!filterCannedResponse) {
-              return (
-                <li>
-                  <a href="#" onClick={this.useCannedResponse(cannedResponse)}>
-                    {cannedResponse.key}
-                  </a>
-                </li>
-              );
-            }
-          }.bind(this))}
+          {this.renderFilteredCannedResponses()} 
         </ul>
       </div>
     );
