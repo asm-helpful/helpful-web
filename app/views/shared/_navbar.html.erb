@@ -23,9 +23,9 @@
     </ul>
 
     <ul class="nav navbar-nav navbar-left">
-      <li class="navbar-brand-icon">
-        <%= link_to inbox_account_conversations_path(@account) do %>
-          <%= image_tag 'life_saver.png', alt: 'Helpful' %>
+      <li>
+        <%= link_to inbox_account_conversations_path(@account), class: 'navbar-brand' do %>
+          <%= image_tag 'logo.png', alt: 'Helpful' %>
         <% end %>
       </li>
 
@@ -46,9 +46,10 @@
           <li>
             <%= link_to t('canned_responses.index.canned_responses'), account_canned_responses_path(@account) %>
           </li>
+          
+          <li class="divider"></li>
 
           <% other_accounts.each do |account| %>
-            <li class="divider"></li>
             <li>
               <%= link_to account.name, inbox_account_conversations_path(account), class: 'navbar-company-link' %>
             </li>

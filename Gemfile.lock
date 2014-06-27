@@ -25,6 +25,13 @@ GIT
       rails (>= 3.1)
       react-source (= 0.10.0)
 
+GIT
+  remote: git://github.com/twbs/bootstrap-sass.git
+  revision: d70d004389b4da5e4cff0c35532347e8f792cea9
+  specs:
+    bootstrap-sass (3.2.0.0)
+      sass (~> 3.2)
+
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -66,8 +73,6 @@ GEM
     bcrypt-ruby (3.1.2)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bootstrap-sass (3.1.1.0)
-      sass (~> 3.2)
     bourbon (3.1.8)
       sass (>= 3.2.0)
       thor
@@ -410,7 +415,7 @@ DEPENDENCIES
   active_model_serializers!
   analytics-ruby
   awesome_print
-  bootstrap-sass
+  bootstrap-sass!
   bourbon
   bugsnag
   capybara

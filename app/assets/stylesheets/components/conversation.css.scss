@@ -36,7 +36,7 @@ $gutter: 46px;
 }
 
 .conversation-header {
-  color: $black;
+  color: $gray-darker;
   padding: $padding-large-vertical $padding-large-horizontal;
   padding-left: $gutter;
 
@@ -78,4 +78,8 @@ $gutter: 46px;
   border-top: 1px solid $brand-border;
   padding: $padding-large-vertical $padding-large-horizontal;
   padding-left: $gutter;
+
+  .form-control {
+    height: auto !important;
+  }
 }

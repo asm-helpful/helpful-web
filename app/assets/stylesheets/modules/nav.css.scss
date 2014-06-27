@@ -55,7 +55,7 @@
       &.active {
         background-color: transparent;
         box-shadow: inset 0 -6px 0 0 #b5cbd0;
-        color: $black;
+        color: $gray-darker;
       }
 
       &.active {
@@ -81,7 +81,7 @@
 
   &::after {
     content: "\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7";
-    color: $dark-gray;
+    color: $gray-dark;
     font-size: 10px;
     letter-spacing: 3px;
     position: absolute;
@@ -100,7 +100,7 @@
 
     > a, div {
       background-color: $navbar-default-bg;
-      color: $dark-gray !important;
+      color: $gray-dark !important;
       display: inline-block;
       padding: 15px 10px;
       position: relative;
@@ -114,7 +114,7 @@
         top: 5px;
         position: absolute;
         margin: 0 auto;
-        color: $dark-gray;
+        color: $gray-dark;
         display: none;
       }
 
@@ -126,11 +126,11 @@
 
       &.active {
         font-weight: bold;
-        color: $white !important;
+        color: white !important;
 
         &::after {
           bottom: 0;
-          color: $white;
+          color: white;
           content: "\00B7";
           font-size: 30px;
           height: 5px;

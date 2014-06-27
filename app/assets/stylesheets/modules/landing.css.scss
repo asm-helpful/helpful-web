@@ -34,9 +34,9 @@ GENERAL
   font-weight: 600;
 }
 #reasons p, #pricing p {
-  font-family: $font-serif;
+  font-family: $font-family-serif;
   font-size: 24px;
-  color: $dark-gray;
+  color: $gray-dark;
 }
 
 /*-------------------------------
@@ -53,9 +53,9 @@ REASONS
       position: relative;
       list-style: none;
       text-align: center;
-      font-family: $font-serif;
+      font-family: $font-family-serif;
       font-size: 24px;
-      color: $dark-gray;
+      color: $gray-dark;
       span.glyphicon {
         position: absolute;
         left: -70px;
@@ -116,7 +116,7 @@ PRICING
   }
 
   .conversation-explaination {
-    font-family: $font-serif;
+    font-family: $font-family-serif;
     font-size: 12px;
     text-transform: uppercase;
     margin-top: 50px;
@@ -133,7 +133,7 @@ PRICING
       box-shadow:         0px 0px 10px 0px #ccc;
       margin-bottom: 30px;
     }
-    @include applyColor(#fff, $dark-gray);
+    @include applyColor(#fff, $gray-dark);
     &:before {
       margin-bottom: 0px;
       border-top: 26px solid rgb(228, 228, 228);
@@ -160,7 +160,7 @@ border-top-color: rgb(228, 228, 228);
     margin-top: -178px;
     margin-left: 101px;
     height: 100px;
-    border-bottom: 3px solid $neon-blue;
+    border-bottom: 3px solid lighten($blue, 20%);
     content: "";
     display: block;
   }
@@ -181,7 +181,7 @@ border-top-color: rgb(228, 228, 228);
   }
 
   > .pricing-showcase-item-conversations {
-    color: $dark-gray;
+    color: $gray-dark;
     font-size: 18px;
     font-weight: 300;
   }
@@ -190,7 +190,7 @@ border-top-color: rgb(228, 228, 228);
     font-size: 30px;
 
     .pricing-circle {
-      background: $black;
+      background: $gray-darker;
       border-radius: 50%;
       width: 15px;
       height: 15px;
@@ -204,7 +204,7 @@ border-top-color: rgb(228, 228, 228);
       }
 
       > .pricing-showcase-item-price-frequency {
-        color: $dark-gray;
+        color: $gray-dark;
         font-size: 18px;
         margin-left: -5px;
       }
