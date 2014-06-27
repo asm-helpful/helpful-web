@@ -172,7 +172,7 @@ $input-group-addon-border-color: $input-border !default;
 $dropdown-bg:                    #fff !default;
 $dropdown-border:                rgba(0,0,0,.15) !default;
 $dropdown-fallback-border:       #ccc !default;
-$dropdown-divider-bg:            $gray;
+$dropdown-divider-bg:            $gray-lighter;
 
 $dropdown-link-color:            $gray-dark !default;
 $dropdown-link-hover-color:      darken($gray-dark, 5%) !default;

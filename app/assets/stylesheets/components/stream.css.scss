@@ -4,7 +4,7 @@ $gutter: 46px;
 }
 
 .stream-item {
-  border-top: 1px solid $gray-light;
+  border-top: 1px solid lighten($brand-border, 5%);
   padding: $padding-large-vertical $padding-large-horizontal;
   padding-left: $gutter;
 
