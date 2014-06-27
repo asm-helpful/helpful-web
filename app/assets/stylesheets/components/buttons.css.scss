@@ -1,0 +1,81 @@
+.btn {
+  @include button-size($padding-base-vertical, $btn-padding-base-horizontal, $font-size-base, $line-height-base, $btn-radius);
+}
+
+.btn-lg {
+  @include button-size($padding-large-vertical, $btn-padding-large-horizontal, $font-size-large, $line-height-large, $btn-radius);
+}
+
+.btn-sm {
+  @include button-size($padding-small-vertical, $btn-padding-small-horizontal, $font-size-small, $line-height-small, $btn-radius);
+}
+
+.btn-xs {
+  @include button-size($padding-xs-vertical, $btn-padding-xs-horizontal, $font-size-small, $line-height-small, $btn-radius);
+}
+
+.btn-default {
+  &:hover,
+  &:focus,
+  &:active,
+  &.active,
+  .open > &.dropdown-toggle {
+    background-color: $btn-default-bg;
+    color: darken($btn-default-color, 5%);
+  }
+}
+
+.btn-primary {
+  &:hover,
+  &:focus,
+  &:active,
+  &.active,
+  .open > &.dropdown-toggle {
+    background-color: darken($btn-primary-bg, 5%);
+    border-color: darken($btn-primary-bg, 5%);
+  }
+}
+
+.btn-success {
+  &:hover,
+  &:focus,
+  &:active,
+  &.active,
+  .open > &.dropdown-toggle {
+    background-color: $btn-default-bg;
+    color: darken($btn-success-color, 5%);
+  }
+}
+
+.btn-info {
+  &:hover,
+  &:focus,
+  &:active,
+  &.active,
+  .open > &.dropdown-toggle {
+    background-color: $btn-default-bg;
+    color: darken($btn-info-color, 5%);
+  }
+}
+
+.btn-warning {
+  &:hover,
+  &:focus,
+  &:active,
+  &.active,
+  .open > &.dropdown-toggle {
+    background-color: $btn-default-bg;
+    color: darken($btn-warning-color, 5%);
+  }
+}
+
+.btn-danger {
+  &:hover,
+  &:focus,
+  &:active,
+  &.active,
+  .open > &.dropdown-toggle {
+    background-color: $btn-default-bg;
+    color: darken($btn-danger-color, 5%);
+  }
+}

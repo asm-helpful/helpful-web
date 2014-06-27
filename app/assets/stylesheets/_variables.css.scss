@@ -1,10 +1,10 @@
 // Colors
 
-$gray-darker:            lighten(#000, 13.5%) !default; // #222
-$gray-dark:              lighten(#000, 20%) !default;   // #333
-$gray:                   lighten(#000, 33.5%) !default; // #555
-$gray-light:             lighten(#000, 46.7%) !default; // #777
-$gray-lighter:           lighten(#000, 93.5%) !default; // #eee
+$gray-darker:            lighten(#000, 13.5%);
+$gray-dark:              lighten(#000, 20%);
+$gray:                   lighten(#000, 33.5%);
+$gray-light:             lighten(#000, 46.7%);
+$gray-lighter:           lighten(#000, 93.5%);
 
 $blue:                  #00b3ed;
 $blue-highlight:        #0093cd;
@@ -12,17 +12,20 @@ $green:                 #82c451;
 $yellow:                #edda3b;
 $red:                   #ff4b4b;
 
-$brand-primary:         $blue !default;
-$brand-success:         $green !default;
-$brand-info:            $yellow !default;
-$brand-warning:         $yellow !default;
-$brand-danger:          $red !default;
+$brand-color:           $blue;
+$brand-bg:              #f4faf9;
+$brand-border:          #dae8ec;
+$brand-primary:         $blue;
+$brand-success:         $green;
+$brand-info:            $yellow;
+$brand-warning:         $yellow;
+$brand-danger:          $red;
 
 
 // Scaffolding
 
-$body-bg:               #f4faf9 !default;
-$text-color:            $gray-dark !default;
+$body-bg:               $brand-bg;
+$text-color:            $gray-dark;
 
 $link-color:            $brand-primary !default;
 $link-hover-color:      darken($link-color, 15%) !default;
@@ -66,8 +69,8 @@ $icon-font-svg-id:        "glyphicons_halflingsregular" !default;
 $padding-base-vertical:     6px !default;
 $padding-base-horizontal:   12px !default;
 
-$padding-large-vertical:    16px !default;
-$padding-large-horizontal:  24px !default;
+$padding-large-vertical:    10px !default;
+$padding-large-horizontal:  16px !default;
 
 $padding-small-vertical:    5px !default;
 $padding-small-horizontal:  10px !default;
@@ -106,31 +109,38 @@ $table-border-color:            #ddd !default;
 
 $btn-font-weight:                normal !default;
 
-$btn-default-color:              #333 !default;
-$btn-default-bg:                 #fff !default;
-$btn-default-border:             #ccc !default;
+$btn-default-color:              $brand-color;
+$btn-default-bg:                 white;
+$btn-default-border:             $brand-border;
 
-$btn-primary-color:              #fff !default;
-$btn-primary-bg:                 $brand-primary !default;
-$btn-primary-border:             darken($btn-primary-bg, 5%) !default;
+$btn-primary-color:              white;
+$btn-primary-bg:                 $blue;
+$btn-primary-border:             $blue;
 
-$btn-success-color:              #fff !default;
-$btn-success-bg:                 $brand-success !default;
-$btn-success-border:             darken($btn-success-bg, 5%) !default;
+$btn-success-color:              $brand-success;
+$btn-success-bg:                 white;
+$btn-success-border:             $brand-border;
 
-$btn-info-color:                 #fff !default;
-$btn-info-bg:                    $brand-info !default;
-$btn-info-border:                darken($btn-info-bg, 5%) !default;
+$btn-info-color:                 $brand-info;
+$btn-info-bg:                    white;
+$btn-info-border:                $brand-border;
 
-$btn-warning-color:              #fff !default;
-$btn-warning-bg:                 $brand-warning !default;
-$btn-warning-border:             darken($btn-warning-bg, 5%) !default;
+$btn-warning-color:              $brand-warning;
+$btn-warning-bg:                 white;
+$btn-warning-border:             $brand-border;
 
-$btn-danger-color:               #fff !default;
-$btn-danger-bg:                  $brand-danger !default;
-$btn-danger-border:              darken($btn-danger-bg, 5%) !default;
+$btn-danger-color:               $brand-danger;
+$btn-danger-bg:                  white;
+$btn-danger-border:              $brand-border;
 
 $btn-link-disabled-color:        $gray-light !default;
+
+$btn-padding-base-horizontal:    $padding-base-horizontal * 1.5;
+$btn-padding-large-horizontal:   $padding-large-horizontal * 1.5;
+$btn-padding-small-horizontal:   $padding-small-horizontal * 1.5;
+$btn-padding-xs-horizontal:      $padding-xs-horizontal * 1.5;
+
+$btn-radius:                     90px;
 
 
 // Forms
@@ -654,33 +664,33 @@ $btn-large-padding: 10px 50px;
 
 // Buttons
 
-$btn-font-weight:                normal !default;
-
-$btn-default-color:              $gray-darker;
-$btn-default-bg:                 white;
-$btn-default-border:             #d5e4e9;
-
-$btn-primary-color:              #fff !default;
-$btn-primary-bg:                 $brand-primary !default;
-$btn-primary-border:             darken($btn-primary-bg, 5%) !default;
-
-$btn-success-color:              #fff !default;
-$btn-success-bg:                 $brand-success !default;
-$btn-success-border:             darken($btn-success-bg, 5%) !default;
-
-$btn-info-color:                 #fff !default;
-$btn-info-bg:                    $brand-info !default;
-$btn-info-border:                darken($btn-info-bg, 5%) !default;
-
-$btn-warning-color:              #fff !default;
-$btn-warning-bg:                 $brand-warning !default;
-$btn-warning-border:             darken($btn-warning-bg, 5%) !default;
-
-$btn-danger-color:               #fff !default;
-$btn-danger-bg:                  $brand-danger !default;
-$btn-danger-border:              darken($btn-danger-bg, 5%) !default;
-
-$btn-link-disabled-color:        $gray-light !default;
+// $btn-font-weight:                normal !default;
+// 
+// $btn-default-color:              $gray-darker;
+// $btn-default-bg:                 white;
+// $btn-default-border:             #d5e4e9;
+// 
+// $btn-primary-color:              #fff !default;
+// $btn-primary-bg:                 $brand-primary !default;
+// $btn-primary-border:             darken($btn-primary-bg, 5%) !default;
+// 
+// $btn-success-color:              #fff !default;
+// $btn-success-bg:                 $brand-success !default;
+// $btn-success-border:             darken($btn-success-bg, 5%) !default;
+// 
+// $btn-info-color:                 #fff !default;
+// $btn-info-bg:                    $brand-info !default;
+// $btn-info-border:                darken($btn-info-bg, 5%) !default;
+// 
+// $btn-warning-color:              #fff !default;
+// $btn-warning-bg:                 $brand-warning !default;
+// $btn-warning-border:             darken($btn-warning-bg, 5%) !default;
+// 
+// $btn-danger-color:               #fff !default;
+// $btn-danger-bg:                  $brand-danger !default;
+// $btn-danger-border:              darken($btn-danger-bg, 5%) !default;
+// 
+// $btn-link-disabled-color:        $gray-light !default;
 
 // Navbar
 

@@ -75,7 +75,7 @@
                   <%= number_to_currency(plan.price, precision: 0) %> per month
                 <% end %>
               </p>
-              <button class="btn btn-secondary plan-select <%= "btn-selected" if plan == @account.billing_plan %>"
+              <button class="btn btn-default plan-select <%= "btn-selected" if plan == @account.billing_plan %>"
                 data-plan-slug="<%= plan.slug %>"
                 data-plan-name="<%= plan.name %>"
                 data-plan-amount="<%= plan.formatted_price %>"
@@ -133,7 +133,7 @@
           <%= select_tag :membership_role, options_for_select(@account.roles_allowed_by(current_user)), class: 'form-control' %>
         </div>
         <div class="col-md-3">
-          <%= f.submit 'Send', class: 'btn btn-secondary' %>
+          <%= f.submit 'Send', class: 'btn btn-primary' %>
         </div>
       </div>
     </div>

@@ -61,7 +61,7 @@ var Response = React.createClass({
 
         <div className="form-actions">
           <div className="pull-right">
-            <input className="btn btn-secondary" type="submit" name="commit" value="Send" />
+            <input className="btn btn-primary" type="submit" name="commit" value="Send" />
           </div>
 
           <div className="btn-group">
