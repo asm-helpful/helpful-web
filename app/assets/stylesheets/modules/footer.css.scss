@@ -1,10 +1,41 @@
 footer {
-  padding: 20px 0;
+  background: $footer-background;
+  padding: 40px 0;
   margin-top: 20px;
   text-align: center;
 
-  p {
-    color: $footer-text;
-    font-size: 14px;
+  h2 {
+    color: #ffffff;
+    font-weight: bold;
+    margin: 80px;
+  }
+
+  nav {
+    padding-bottom: 40px;
+
+    ul li {
+      display: inline-block;
+
+      a {
+        color: #ffffff;
+        font-size: 12px;
+        font-weight: bold;
+        padding-right: 40px;
+        text-transform: uppercase;
+      }
+
+      &.divider {
+        background-color: lighten($footer-background, 4%);
+        margin-right: 40px;
+        width: 1px;
+        height: 13px;
+      }
+    }
+  }
+
+  .copyright {
+    color: $footer-copyright-text;
+    font-size: 13px;
+    margin: 60px 0px;
   }
 }

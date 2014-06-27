@@ -1,3 +1,22 @@
 <footer>
-  <p><%= t('.copyright').html_safe %></p>
+  <nav>
+    <ul>
+      <li><%= link_to 'Helpful', root_path %></li>
+      <li><%= link_to 'About', '#' %></li>
+      <li><%= link_to 'Blog', '#' %></li>
+      <li><%= link_to "Who's it for", '#' %></li>
+      <li><%= link_to 'Features', '#' %></li>
+      <li><%= link_to 'Pricing', '#' %></li>
+      <li><%= link_to 'Contact', '#' %></li>
+      <li><%= link_to 'Twitter', '#' %></li>
+      <li class="divider"></li>
+      <li><%= link_to 'Sign In', '#' %></li>
+    </ul>
+  </nav>
+
+  <h2>Thank you for your time. We know it's precious.</h2>
+
+  <a href="#" class="btn btn-default">Still have a question?</a>
+
+  <p class="copyright"><%= t('.copyright').html_safe %></p>
 </footer>
