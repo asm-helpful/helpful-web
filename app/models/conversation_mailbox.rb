@@ -40,7 +40,7 @@ class ConversationMailbox
   end
 
   def account_conversations
-    account.conversations
+    account.conversations.with_messages
   end
 
   def search
