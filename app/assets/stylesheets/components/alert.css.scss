@@ -1,0 +1,39 @@
+.alert {
+  a {
+    color: $alert-link-color;
+    text-decoration: underline;
+
+    .hover,
+    &:hover {
+      color: $alert-link-hover-color;
+    }
+  }
+
+  .icon {
+    padding-right: $padding-xs-horizontal;
+  }
+}
+
+.alert-success {
+  .icon {
+    color: $brand-success;
+  }
+}
+
+.alert-info {
+  .icon {
+    color: $brand-info;
+  }
+}
+
+.alert-danger {
+  .icon {
+    color: $brand-danger;
+  }
+}
+
+.alert-dismissible {
+  .close {
+    color: $white;
+  }
+}

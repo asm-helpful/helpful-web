@@ -1,11 +1,11 @@
 <% unless flash.empty? %>
   <div id="flash-messages">
     <% flash.each do |key, value| %>
-      <div class="<%= flash_class(key) %> alert-dismissable">
+      <div class="<%= flash_class(key) %> alert-dismissible">
         <div class="container">
-          <i class="<%= flash_icon_class(key) %>"></i>
-          <%= value %>
           <button type="button" class="close" data-dismiss="alert" data-target=".alert-dismissable">&times;</button>
+          <i class="<%= flash_icon_class(key) %> icon"></i>
+          <%= value %>
         </div>
       </div>
     <% end %>
