@@ -1,8 +1,8 @@
 .backdrop {
-  background-color: $light-black;
+  background-color: $gray-dark;
 
   h1 {
-    color: $white;
+    color: white;
     font-size: 30px;
     line-height: 1.2;
   }
@@ -16,8 +16,8 @@
   }
 
   p {
-    font-family: $font-serif;
-    color: $gray-blue;
+    font-family: $font-family-serif;
+    color: $gray-light;
     font-size: 20px;
   }
 
@@ -25,7 +25,7 @@
     &:not([disabled]) {
       &:hover,
       &.hover {
-        background-color: $black;
+        background-color: $gray-darker;
       }
     }
   }

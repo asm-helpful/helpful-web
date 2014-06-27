@@ -5,7 +5,8 @@
 
     .hover,
     &:hover {
-      color: $alert-link-hover-color;
+      color: darken($alert-link-hover-color, 10%);
+      text-decoration: underline;
     }
   }
 
@@ -34,6 +35,6 @@
 
 .alert-dismissible {
   .close {
-    color: $white;
+    color: white;
   }
 }

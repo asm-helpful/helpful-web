@@ -26,7 +26,7 @@
 
 .lead-header {
   font-size: 30px;
-  color: $black;
+  color: $gray-darker;
 }
 
 .lead-header + .lead-text {
@@ -34,17 +34,17 @@
 }
 
 .lead-text {
-  color: $dark-gray;
+  color: $gray-dark;
   font-size: 20px;
   font-family: 'Droid Serif';
 }
 
 .inverse-background {
   .lead-header {
-    color: $white;
+    color: white;
   }
 
   .lead-text {
-    color: $gray-blue;
+    color: $gray-light;
   }
 }

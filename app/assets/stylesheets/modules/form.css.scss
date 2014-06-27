@@ -1,5 +1,5 @@
 fieldset + fieldset {
-  border-top: 1px solid $light-gray;
+  border-top: 1px solid $gray-light;
   margin-top: 20px;
   padding-top: 10px;
 }
@@ -16,7 +16,7 @@ fieldset:last-child {
 }
 
 label {
-  color: $darkest-blue;
+  color: darken($blue, 20%);
   font-size: 1.2em;
   font-weight: normal;
 }
@@ -25,7 +25,7 @@ label.control-label + .radio,
 label.control-label + .checkbox {
   margin-top: 2px;
   padding-top: 14px;
-  border-top: 1px solid $light-gray;
+  border-top: 1px solid $gray-light;
 }
 
 .control-label-margin {
@@ -34,17 +34,17 @@ label.control-label + .checkbox {
 
 input.form-control,
 select.form-control {
-  background-color: $lightest-gray-highlight;
+  background-color: $gray-lighter;
   border-color: $gray;
   border-radius: 3px;
   box-shadow: none;
-  color: $black;
+  color: $gray-darker;
   font-size: 1.2em;
   font-weight: lighter;
   height: $line-height-computed + ($padding-base-vertical * 2) + 14;
 
   @include placeholder {
-    color: $dark-gray;
+    color: $gray-dark;
     opacity: 1;
     font-weight: lighter;
     -webkit-font-smoothing: antialiased;
@@ -52,7 +52,7 @@ select.form-control {
 
   &.inline-label {
     @include placeholder {
-      color: $darkest-blue;
+      color: darken($blue, 20%);
       font-weight: normal;
     }
 
@@ -65,7 +65,7 @@ select.form-control {
 
   &:focus,
   &.focus {
-    background-color: $white;
+    background-color: white;
     border-color: $blue;
     box-shadow: none;
     outline: none;
@@ -86,11 +86,11 @@ select.form-control {
 
 .has-success {
   .control-label {
-    color: $darkest-blue;
+    color: darken($blue, 20%);
   }
 
   i.ss-check {
-    color: $success;
+    color: $brand-success;
   }
 
   .form-control {
@@ -99,7 +99,7 @@ select.form-control {
 
     &:focus,
     &.focus {
-      background-color: $white;
+      background-color: white;
       border-color: $blue;
       box-shadow: none;
       outline: none;
@@ -109,38 +109,38 @@ select.form-control {
 
 .has-loading {
   i.ss-sync {
-    color: $dark-gray;
+    color: $gray-dark;
   }
 }
 
 .has-error {
   .control-label {
-    color: $darkest-blue;
+    color: darken($blue, 20%);
   }
 
   .form-control {
-    border-color: $light-red;
+    border-color: $red;
 
     &:focus,
     &.focus {
-      background-color: $white;
-      border-color: $light-red;
+      background-color: white;
+      border-color: $red;
       box-shadow: none;
       outline: none;
     }
   }
 
   i.ss-alert {
-    color: $light-danger;
+    color: $brand-danger;
   }
 
   .help-block {
-    color: $darkest-blue;
+    color: darken($blue, 20%);
   }
 }
 
 .has-feedback {
-  color: $dark-gray;
+  color: $gray-dark;
 
   i.form-control-feedback {
     position: absolute;
@@ -169,5 +169,5 @@ select.form-control {
 }
 
 .help-block.help-error {
-  color: $danger;
+  color: $brand-danger;
 }
