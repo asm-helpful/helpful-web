@@ -23,9 +23,9 @@
     </ul>
 
     <ul class="nav navbar-nav navbar-left">
-      <li class="navbar-brand-icon">
-        <%= link_to inbox_account_conversations_path(@account) do %>
-          <%= image_tag 'life_saver.png', alt: 'Helpful' %>
+      <li>
+        <%= link_to inbox_account_conversations_path(@account), class: 'navbar-brand-icon' do %>
+          <%= image_tag 'logo.png', alt: 'Helpful' %>
         <% end %>
       </li>
 
