@@ -1,3 +1,25 @@
+.control-label {
+  color: $legend-color;
+  font-weight: normal;
+
+  & + .radio,
+  & + .checkbox {
+    border-top: 1px solid $brand-border;
+    margin-top: 0;
+    padding-top: $padding-base-vertical;
+  }
+}
+
+.form-control {
+  box-shadow: none;
+
+  &:focus {
+    background-color: $input-bg-focus;
+    box-shadow: none;
+    outline: none;
+  }
+}
+
 .form-control-invisible {
   border: none;
   box-shadow: none;

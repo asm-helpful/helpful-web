@@ -145,22 +145,23 @@ $btn-radius:                     90px;
 
 // Forms
 
-$input-bg:                       #fff !default;
+$input-bg:                       lighten($brand-bg, 2%);
+$input-bg-focus:                 white;
 $input-bg-disabled:              $gray-lighter !default;
 
-$input-color:                    $gray !default;
-$input-border:                   #ccc !default;
-$input-border-radius:            $border-radius-base !default;
-$input-border-focus:             #66afe9 !default;
+$input-color:                    $gray-darker;
+$input-border:                   $brand-border;
+$input-border-radius:            $border-radius-base;
+$input-border-focus:             $brand-color;
 
-$input-color-placeholder:        $gray-light !default;
+$input-color-placeholder:        $gray-light;
 
-$input-height-base:              ($line-height-computed + ($padding-base-vertical * 2) + 2) !default;
-$input-height-large:             (ceil($font-size-large * $line-height-large) + ($padding-large-vertical * 2) + 2) !default;
-$input-height-small:             (floor($font-size-small * $line-height-small) + ($padding-small-vertical * 2) + 2) !default;
+$input-height-base:              ($line-height-computed + ($padding-base-vertical * 2) + 2) * 1.3;
+$input-height-large:             (ceil($font-size-large * $line-height-large) + ($padding-large-vertical * 2) + 2) * 1.3;
+$input-height-small:             (floor($font-size-small * $line-height-small) + ($padding-small-vertical * 2) + 2) * 1.3;
 
-$legend-color:                   $gray-dark !default;
-$legend-border-color:            #e5e5e5 !default;
+$legend-color:                   darken($brand-color, 25%);
+$legend-border-color:            $brand-border;
 
 $input-group-addon-bg:           $gray-lighter !default;
 $input-group-addon-border-color: $input-border !default;
@@ -655,42 +656,6 @@ $alert-danger-border:         $alert-default-bg;
 $avatar-default-size: 30px;
 $avatar-default-font-size: 12px;
 
-// Btn
-
-$btn-border-radius: 99px;
-$btn-border-width: 1px;
-$btn-default-padding: 3px 20px;
-$btn-large-padding: 10px 50px;
-
-// Buttons
-
-// $btn-font-weight:                normal !default;
-// 
-// $btn-default-color:              $gray-darker;
-// $btn-default-bg:                 white;
-// $btn-default-border:             #d5e4e9;
-// 
-// $btn-primary-color:              #fff !default;
-// $btn-primary-bg:                 $brand-primary !default;
-// $btn-primary-border:             darken($btn-primary-bg, 5%) !default;
-// 
-// $btn-success-color:              #fff !default;
-// $btn-success-bg:                 $brand-success !default;
-// $btn-success-border:             darken($btn-success-bg, 5%) !default;
-// 
-// $btn-info-color:                 #fff !default;
-// $btn-info-bg:                    $brand-info !default;
-// $btn-info-border:                darken($btn-info-bg, 5%) !default;
-// 
-// $btn-warning-color:              #fff !default;
-// $btn-warning-bg:                 $brand-warning !default;
-// $btn-warning-border:             darken($btn-warning-bg, 5%) !default;
-// 
-// $btn-danger-color:               #fff !default;
-// $btn-danger-bg:                  $brand-danger !default;
-// $btn-danger-border:              darken($btn-danger-bg, 5%) !default;
-// 
-// $btn-link-disabled-color:        $gray-light !default;
 
 // Navbar
 

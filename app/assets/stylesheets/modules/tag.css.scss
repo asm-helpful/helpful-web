@@ -1,7 +1,7 @@
 .tag {
   background-color: transparent;
-  border-radius: $btn-border-radius;
-  border: $btn-border-width solid darken($blue, 20%);
+  border-radius: $btn-radius;
+  border: 1px solid darken($blue, 20%);
   color: darken($blue, 20%) !important;
   font-size: 14px;
   line-height: 30px;
@@ -11,7 +11,7 @@
 
   &:hover {
     background-color: $gray-light;
-    border: $btn-border-width solid $blue;
+    border: 1px solid $blue;
     color: darken($blue, 20%);
   }
 }

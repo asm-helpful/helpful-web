@@ -10,7 +10,7 @@ gem 'dotenv-rails', groups: [:development, :test]
 
 gem 'active_model_serializers', github: 'rails-api/active_model_serializers'
 gem 'analytics-ruby'
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', github: 'twbs/bootstrap-sass'
 gem 'bourbon'
 gem 'bugsnag'
 gem 'carrierwave'
