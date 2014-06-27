@@ -38,17 +38,11 @@ class ConversationManager
     conversation.unarchive!
   end
 
-  def respond_later!
-    conversation.respond_later!(user)
-  end
-
   def lookup_action(params)
     if params[:archive]
       :archive!
     elsif params[:unarchive]
       :unarchive!
-    elsif params[:respond_later]
-      :respond_later!
     end
   end
 

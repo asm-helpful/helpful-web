@@ -36,11 +36,6 @@
       <% end %>
     <% else %>
       <%= form_for [@account, @conversation] do |f| %>
-        <%= f.hidden_field :respond_later, value: true %>
-        <%= f.submit t('conversations.row.later'), class: 'btn btn-default', style: 'margin-bottom: 10px' %>
-      <% end %>
-
-      <%= form_for [@account, @conversation] do |f| %>
         <%= f.hidden_field :archive, value: true %>
         <%= f.submit t('conversations.row.archive'), class: 'btn btn-default' %>
       <% end %>
@@ -217,7 +212,7 @@
   <div class="event">
     <div class="avatar avatar-default">
       <div class="avatar-initials" style="width: 30px; height: 30px; line-height: 30px; display: none;">{{initials}}</div>
-      <img alt="{{name}} avatar" height="30" onerror="toggleAvatar(this)" src="{{avatar_url}}" width="30">
+      <img alt="{{name}} avatar" height="30" src="{{avatar_url}}" width="30">
     </div>
 
     <strong>
@@ -240,7 +235,7 @@
   <div class="event">
     <div class="avatar avatar-default">
       <div class="avatar-initials" style="width: 30px; height: 30px; line-height: 30px; display: none;">{{initials}}</div>
-      <img alt="{{name}} avatar" height="30" onerror="toggleAvatar(this)" src="{{avatar_url}}" width="30">
+      <img alt="{{name}} avatar" height="30" src="{{avatar_url}}" width="30">
     </div>
 
     <strong>
@@ -249,7 +244,7 @@
 
     <div class="avatar avatar-default">
       <div class="avatar-initials" style="width: 30px; height: 30px; line-height: 30px; display: none;">{{assignee_initials}}</div>
-      <img alt="{{assignee_name}} avatar" height="30" onerror="toggleAvatar(this)" src="{{assignee_avatar_url}}" width="30">
+      <img alt="{{assignee_name}} avatar" height="30" src="{{assignee_avatar_url}}" width="30">
     </div>
 
     <strong>

@@ -14,7 +14,6 @@ var AssignmentButton = React.createClass({
 
   getAssignees: function() {
     $.getJSON(this.props.conversation.assignees_path, function(response) {
-      response.users = [];
       this.setState({ assignees: response.assignees });
     }.bind(this));
   },
@@ -29,13 +28,14 @@ var AssignmentButton = React.createClass({
   },
 
   filterAssignees: function(event) {
-    this.setState({
-      filter: event.target.value
-    });
+    this.setState({ filter: event.target.value });
   },
 
   assignConversationHandler: function(assignee) {
     return function(event) {
+      event.stopPropagation();
+      event.preventDefault();
+
       var assigneesPath = this.props.conversation.assignees_path;
       var data = { assignee_id: assignee.id };
 
@@ -60,10 +60,27 @@ var AssignmentButton = React.createClass({
 
   clearAssignmentFilter: function(event) {
     $dropdown = $(event.target).closest('.dropdown-menu').removeClass('open');
+    this.setState({ filter: '' });
+  },
 
-    this.setState({
-      filter: ''
-    });
+  renderFilteredAssignees: function() {
+    return this.state.assignees.map(function(assignee) {
+      var missingPerson = !assignee.person;
+      var useFilter = this.state.filter !== '';
+      var regexp = new RegExp(this.state.filter, 'gi');
+      var applyFilter = missingPerson || (useFilter && !assignee.person.name.match(regexp));
+
+      if(!applyFilter) {
+        return (
+          <li key={assignee.id}>
+            <a href="#" onClick={this.assignConversationHandler(assignee)}>
+              <Avatar person={assignee.person} />
+              <span>{assignee.person.name}</span>
+            </a>
+          </li>
+        );
+      }
+    }.bind(this));
   },
 
   render: function() {
@@ -78,23 +95,7 @@ var AssignmentButton = React.createClass({
             <input type="text" className="form-control" placeholder="Search by name" value={this.state.filter} onClick={this.ignore} onChange={this.filterAssignees} />
           </li>
           <li className="divider"></li>
-          {this.state.assignees.map(function(assignee, index) {
-            var missingPerson = !assignee.person;
-            var useFilter = this.state.filter !== '';
-            var regexp = new RegExp(this.state.filter, 'gi');
-            var filterAssignee = missingPerson || (useFilter && !assignee.person.name.match(regexp));
-
-            if(!filterAssignee) {
-              return (
-                <li key={assignee.id}>
-                  <a href="#" onClick={this.assignConversationHandler(assignee)}>
-                    <Avatar person={assignee.person} />
-                    <span>{assignee.person.name}</span>
-                  </a>
-                </li>
-              );
-            }
-          }.bind(this))}
+          {this.renderFilteredAssignees()}
         </ul>
       </div>
     );

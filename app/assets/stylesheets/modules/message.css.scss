@@ -1,39 +1,24 @@
 .message {
   color: $light-black;
-  line-height: 24px;
-  margin-left: 40px;
-  margin-right: 40px;
-  padding-bottom: 30px;
-  padding-top: 30px;
+}
+
+.message-person {
+  > .person {
+    display: inline-block;
+  }
 
   > .avatar {
-    position: absolute;
-    margin-left: -(40px + (30px / 2));
+    display: inline-block;
+    margin-right: $padding-small-horizontal;
   }
+}
 
-  > .person {
-    line-height: $avatar-default-size;
-    font-size: 20px;
+.message-content {
+  font-size: $font-size-small;
+  padding-top: $padding-base-vertical;
+  padding-bottom: $padding-base-vertical;
 
-    > div {
-      position: absolute;
-      margin-left: - ($avatar-default-size + 30px);
-    }
-  }
-
-  > .content {
-    font-weight: light;
-    font-size: 16px;
-    padding-top: 10.5px;
-    padding-bottom: 10.5px;
-    word-wrap: break-word;
-  }
-
-  > .attachments {
-    color: $light-gray;
-    a {
-      font-size: 14px;
-    }
-    padding-bottom: 10.5px;
+  p:last-child {
+    margin-bottom: 0;
   }
 }

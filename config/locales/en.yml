@@ -130,7 +130,6 @@ en:
       search_conversations: "Search conversations"
       search: "Search"
     row:
-      later: "Later"
       archive: "Archive"
       unarchive: "Move to Inbox"
     search:

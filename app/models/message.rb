@@ -5,31 +5,44 @@ class Message < ActiveRecord::Base
   include ActiveRecord::UUID
   include Elasticsearch::Model
 
+  has_one :account,
+    through: :conversation
+
+  has_many :attachments,
+    inverse_of: :message
+
+  belongs_to :conversation,
+    touch: true
+
   belongs_to :person
-  belongs_to :conversation, touch: true
-  has_one :account, through: :conversation
 
   has_many :read_receipts
-  has_many :attachments, inverse_of: :message
 
-  delegate :account, :to => :conversation
+  delegate :account,
+    to: :conversation
 
   store_accessor :data, :recipient, :headers, :raw, :body, :subject
 
-  validates :person,       presence: true
-  validates :conversation, presence: true
-  validates :content,      presence: {
-                             allow_nil: false,
-                             allow_blank: false
-                           }
+  validates :person_id,
+    presence: true
 
-  after_save :send_webhook, if: ->(message) {
-    message.conversation.account.webhook_url?
-  }
+  validates :conversation_id,
+    presence: true
 
-  after_create :trigger_pusher_new_message
-  after_commit :enqueue_to_update_search_index, on: [:create, :update]
-  after_commit :send_email, on: :create
+  validates :content,
+    presence: true
+
+  after_commit :send_webhook,
+    on: [:create]
+
+  after_commit :trigger_pusher_new_message,
+    on: [:create]
+
+  after_commit :enqueue_to_update_search_index,
+    on: [:create, :update]
+
+  after_commit :send_email,
+    on: :create
 
   scope :most_recent, -> { order('updated_at DESC') }
 
@@ -51,6 +64,7 @@ class Message < ActiveRecord::Base
   end
 
   def send_webhook
+    return unless conversation.account.webhook_url?
     return if conversation.unpaid?
     # If the changed flag is set we know this is an update
     action = self.changed? ? 'updated' : 'created'

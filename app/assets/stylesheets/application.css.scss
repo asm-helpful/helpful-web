@@ -2,7 +2,7 @@
 
 @import 'bootstrap';
 @import 'font-awesome';
-@import "animate";
+@import 'animate';
 @import 'simptip';
 
 @import 'bourbon';
@@ -11,6 +11,7 @@
 @import 'medium-editor/medium-editor';
 @import 'medium-editor/themes/default';
 
+@import 'components/*';
 @import 'base/*';
 @import 'layouts/*';
 @import 'modules/*';

@@ -1,212 +1,81 @@
-@import 'addons/clearfix';
+$brand-border: #E6EBEB;
+$gutter: 46px;
 
 .conversation {
-  display: block;
-}
+  border-top: 1px solid $brand-border;
 
-.conversation-detail {
-  border-left: 2px solid $light-gray;
-
-  .actions {
-    padding-top: 0;
-  }
-}
-
-.conversation-row {
-  background-color: darken($lightest-gray, 2%);
-
-  &:hover {
-    background-color: $white;
-
-    .actions {
-      opacity: 1;
-    }
+  &:first-child {
+    border-top: none;
+    padding-top: 1px;
   }
 
-  .actions {
-      opacity: 0;
-  }
-
-  .summary {
-    margin: 0;
-    padding: 30px 40px;
-    border-bottom: 1px solid $light-gray;
-  }
-}
-
-.conversation-row-empty {
-  border-bottom: 1px solid $light-gray;
-
-  &:hover {
-    background-color: darken($lightest-gray, 2%);
-  }
-
-  .summary {
-    border-bottom: none;
-    margin: 0 auto;
-    width: 500px;
-
-    > p {
-      margin-top: 30px;
-      margin-bottom: 30px;
-    }
-  }
-}
-
-.actions {
-  margin-right: -170px;
-  padding-top: 30px;
-  padding-left: 40px;
-  float: right;
-
-  &:hover {
-    opacity: 1;
-  }
-
-  > button, input {
-    display: block;
-    width: 130px;
-
-    &:first-child {
-      margin-bottom: 10px;
-    }
-  }
-}
-
-.summary {
-  color: $light-black;
-  cursor: pointer;
-  margin-left: 40px;
-  margin-right: 40px;
-  padding-bottom: 30px;
-  margin-top: 30px;
-
-  > .avatar {
-    position: absolute;
-    margin-left: -(40px + (30px / 2));
-  }
-
-  > .detail {
-    margin-top: 5px;
-    margin-bottom: 5px;
-
-    > .timestamp {
-      display: inline-block;
-      font-weight: bold;
-    }
-
-    > .participants {
-      display: inline-block;
-      list-style: none;
-      margin-bottom: 0;
-      margin-left: 5px;
-      padding-left: 0;
-
-      > li {
-        color: $dark-gray;
-        display: inline-block;
-        margin-right: 6px;
-      }
-    }
-
-    > .participants-expandable {
-      display: inline-block;
-
-      .participants-expand-icon {
-        display: inline-block;
-        width: 16px;
-        height: 16px;
-        border-radius: 8px;
-        line-height: 16px;
-        text-align: center;
-        background-color: $darkest-blue;
-        color: $lightest-gray;
-        cursor: pointer;
-        position: relative;
-
-        &.expanded::after {
-          content: 'hide';
-          color: $darkest-blue;
-          position: absolute;
-          left: 20px;
-          text-decoration: underline;
-        }
-      }
-    }
-
-    > .number {
-      color: $dark-gray;
-      float: right;
-      display: inline-block;
-    }
-
-    > .participants-list {
+  &.is-collapsed {
+    .conversation-actions {
       display: none;
-      list-style-type: none;
-      margin: 10px 0;
-      padding: 0;
-
-      li {
-        display: inline-block;
-        margin-bottom: 5px;
-      }
     }
   }
-
-  > .title {
-    color: #333;
-    font-size: 24px;
-    margin-bottom: 5px;
-  }
-
-  > .message {
-    padding-top: 20px;
-    padding-bottom: 0;
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-  > .tag-label-list {
-    .tag-label {
-      color: $dark-gray;
-      display: inline-block;
-      font-weight: normal;
-      margin-right: 6px;
-
-      &:hover {
-        text-decoration: underline;
-      }
-
-      &:last-child {
-        margin-right: 0;
-      }
-    }
-  }
-}
-
-.conversation-next,
-.conversation-previous {
-  background-color: darken($lightest-gray, 2%);
-  color: $dark-blue;
-  text-align: center;
-  padding-top: 10px;
-  padding-bottom: 10px;
 
   &:hover,
-  &:focus {
-    background-color: darken($lightest-gray, 4%);
-    border-color: darken($light-gray, 4%);
-    color: darken($dark-blue, 4%);
-    outline: none;
+  &.hover,
+  &.is-expanded {
+    background-color: white;
+    border-top: none;
+    border-radius: $border-radius-base;
+    box-shadow: inset 0 0 0 1px $brand-border;
+    padding-top: 1px;
+
+    .conversation-actions {
+      display: block;
+    }
+
+    &+ .conversation {
+      border-top: none;
+      padding-top: 1px;
+    }
   }
 }
 
-.conversation-previous {
-  border-bottom: 2px solid $light-gray;
-  margin-bottom: 10px;
+.conversation-header {
+  color: $black;
+  padding: $padding-large-vertical $padding-large-horizontal;
+  padding-left: $gutter;
+
+  > .status {
+    float: left;
+    margin-left: -25px;
+    margin-top: 5px;
+  }
 }
 
-.conversation-next {
-  border-top: 2px solid $light-gray;
-  margin-top: 160px;
+
+.conversation-person {
+  padding-bottom: $padding-base-vertical;
+
+  > .person {
+    @extend .ellipsis-overflow;
+  }
+}
+
+.conversation-preview {
+  height: $line-height-computed;
+
+  > .reply {
+    color: $gray;
+    float: left;
+    margin-left: -25px;
+  }
+}
+
+.conversation-stream {
+  .stream-item:first-child {
+    .person {
+      display: none;
+    }
+  }
+}
+
+.conversation-response {
+  border-top: 1px solid $brand-border;
+  padding: $padding-large-vertical $padding-large-horizontal;
+  padding-left: $gutter;
 }

@@ -1,10 +1,6 @@
 <a class="conversation conversation-row" href="<%= account_conversation_path(conversation.account, conversation) %>">
   <% if current_page?(list_account_conversations_path(@account)) %>
     <div class="actions">
-      <button class="btn btn-default respond-later" data-account-conversation-path="<%= account_conversation_path(@account, conversation, conversation: { respond_later: true }) %>">
-        <%= t('.later') %>
-      </button>
-
       <button class="btn btn-default archive" data-account-conversation-path="<%= account_conversation_path(@account, conversation, conversation: { archive: true }) %>">
         <%= t('.archive') %>
       </button>
@@ -15,7 +11,9 @@
     <%= avatar_default(conversation.creator_person) %>
 
     <div class="detail">
-      <span class="badge badge-message-count">
+
+      <% unread = conversation.messages.count - conversation.read_receipts.where(person: current_user.person).count %>
+      <span class="badge badge-message-count <%= 'badge-message-count-unread' if unread > 0 %>">
         <span class="glyphicon glyphicon-envelope"></span>
         <%= conversation.messages_count %>
       </span>

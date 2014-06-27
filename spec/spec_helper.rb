@@ -1,5 +1,7 @@
-require 'codeclimate-test-reporter'
-CodeClimate::TestReporter.start
+if ENV.key?('CODECLIMATE_REPO_TOKEN')
+  require 'codeclimate-test-reporter'
+  CodeClimate::TestReporter.start
+end
 
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
@@ -48,6 +50,7 @@ RSpec.configure do |config|
 
   config.include FactoryGirl::Syntax::Methods
   config.include Devise::TestHelpers, type: :controller
+  config.include Warden::Test::Helpers, type: :request
   config.include AdminAuth
 
   config.expect_with :rspec do |c|
@@ -66,4 +69,8 @@ RSpec.configure do |config|
   config.order = "random"
 
   config.fixture_path = "#{Rails.root}/spec/fixtures"
+
+  config.treat_symbols_as_metadata_keys_with_true_values = true
+
+  config.infer_spec_type_from_file_location!
 end
