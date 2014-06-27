@@ -172,7 +172,7 @@ $input-group-addon-border-color: $input-border !default;
 $dropdown-bg:                    #fff !default;
 $dropdown-border:                rgba(0,0,0,.15) !default;
 $dropdown-fallback-border:       #ccc !default;
-$dropdown-divider-bg:            #e5e5e5 !default;
+$dropdown-divider-bg:            $gray;
 
 $dropdown-link-color:            $gray-dark !default;
 $dropdown-link-hover-color:      darken($gray-dark, 5%) !default;
@@ -245,27 +245,27 @@ $container-lg:                 $container-large-desktop !default;
 // Navbar
 
 $navbar-height:                    50px !default;
-$navbar-margin-bottom:             $line-height-computed !default;
+$navbar-margin-bottom:             0px;
 $navbar-border-radius:             $border-radius-base !default;
 $navbar-padding-horizontal:        floor(($grid-gutter-width / 2)) !default;
 $navbar-padding-vertical:          (($navbar-height - $line-height-computed) / 2) !default;
 $navbar-collapse-max-height:       340px !default;
 
-$navbar-default-color:             white !default;
-$navbar-default-bg:                $gray-dark !default;
-$navbar-default-border:            $gray-darker !default;
+$navbar-default-color:             white;
+$navbar-default-bg:                $gray-dark;
+$navbar-default-border:            $gray-darker;
 
-$navbar-default-link-color:                #777 !default;
-$navbar-default-link-hover-color:          #333 !default;
-$navbar-default-link-hover-bg:             transparent !default;
-$navbar-default-link-active-color:         #555 !default;
-$navbar-default-link-active-bg:            darken($navbar-default-bg, 6.5%) !default;
-$navbar-default-link-disabled-color:       #ccc !default;
-$navbar-default-link-disabled-bg:          transparent !default;
+$navbar-default-link-color:                white;
+$navbar-default-link-hover-color:          $gray-lighter;
+$navbar-default-link-hover-bg:             $gray-darker;
+$navbar-default-link-active-color:         $gray-lighter;
+$navbar-default-link-active-bg:            $gray-darker;
+$navbar-default-link-disabled-color:       $gray;
+$navbar-default-link-disabled-bg:          transparent;
 
 $navbar-default-brand-color:               $navbar-default-link-color !default;
-$navbar-default-brand-hover-color:         darken($navbar-default-brand-color, 10%) !default;
-$navbar-default-brand-hover-bg:            transparent !default;
+$navbar-default-brand-hover-color:         $navbar-default-brand-color;
+$navbar-default-brand-hover-bg:            darken($navbar-default-brand-color, 10%);
 
 $navbar-default-toggle-hover-bg:           #ddd !default;
 $navbar-default-toggle-icon-bar-bg:        #888 !default;
@@ -651,18 +651,8 @@ $alert-danger-bg:             $alert-default-bg;
 $alert-danger-text:           $alert-default-text;
 $alert-danger-border:         $alert-default-bg;
 
+
 // Avatar
 
 $avatar-default-size: 30px;
 $avatar-default-font-size: 12px;
-
-
-// Navbar
-
-$navbar-default-link-color: white;
-$navbar-default-link-active-color: $gray-lighter;
-$navbar-default-link-active-bg: $gray-dark;
-$navbar-default-link-hover-bg: $gray-dark;
-$navbar-default-link-hover-color: $gray-lighter;
-$navbar-margin-bottom: 0;
-$navbar-default-brand-bg: darken($blue, 10%);
