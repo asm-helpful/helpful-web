@@ -10,6 +10,7 @@ gem 'dotenv-rails', groups: [:development, :test]
 
 gem 'active_model_serializers', github: 'rails-api/active_model_serializers'
 gem 'analytics-ruby'
+gem 'awesome_print'
 gem 'bootstrap-sass'
 gem 'bourbon'
 gem 'bugsnag'
@@ -31,6 +32,7 @@ gem 'newrelic_rpm'
 gem 'oauth2'
 gem 'pg'
 gem 'premailer-rails'
+gem 'pry-rails'
 gem 'puma'
 gem 'pusher'
 gem 'rails', '~> 4.1.1'
@@ -39,6 +41,8 @@ gem 'rails-assets-jquery-autosize'
 gem 'rails-assets-handlebars'
 gem 'rails-assets-moment'
 gem 'rails-assets-showdown'
+gem 'rails-backbone'
+gem 'react-rails', github: 'reactjs/react-rails'
 gem 'redcarpet'
 gem 'sass-rails', '~> 4.0.0'
 gem 'sequential', '>= 0.1'
@@ -46,12 +50,8 @@ gem 'sidekiq'
 gem 'stringex'
 gem 'stripe'
 gem 'uglifier', '>= 1.3.0'
-gem 'unf'
-gem 'awesome_print'
-gem 'pry-rails'
-gem 'react-rails', github: 'reactjs/react-rails'
 gem 'underscore-rails'
-gem 'rails-backbone'
+gem 'unf'
 
 group :development do
   gem 'quiet_assets'
@@ -78,9 +78,9 @@ end
 
 group :test do
   gem 'capybara'
-  gem 'webmock', '< 1.16'
   gem 'codeclimate-test-reporter', require: nil
   gem 'poltergeist'
+  gem 'webmock', '< 1.16'
 end
 
 group :development, :production do
