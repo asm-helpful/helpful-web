@@ -15,7 +15,7 @@
       <% unread = conversation.messages.count - conversation.read_receipts.where(person: current_user.person).count %>
       <span class="badge badge-message-count <%= 'badge-message-count-unread' if unread > 0 %>">
         <span class="glyphicon glyphicon-envelope"></span>
-        <%= conversation.messages_count %>
+        <%= conversation.message_count %>
       </span>
 
       <div class="timestamp <%= 'badge badge-timestamp-stale' if conversation.stale? %>">
