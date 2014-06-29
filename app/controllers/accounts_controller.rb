@@ -17,6 +17,10 @@ class AccountsController < ApplicationController
         :csrf_param => request_forgery_protection_token,
         :csrf_token => form_authenticity_token
       },
+      :validation_url => {
+        :company => validate_name_accounts_path,
+        :email   => validate_email_accounts_path
+      },
       :translations => {
         :company_name => t('accounts.general.company_name')
       }
@@ -90,6 +94,14 @@ class AccountsController < ApplicationController
 
   def validate_name
     if Account.where(name: params[:name]).present?
+      render :json => {}, :status => 409
+    else
+      render :json => {}, :status => 200
+    end
+  end
+
+  def validate_email
+    if Person.where(email: params[:email]).present?
       render :json => {}, :status => 409
     else
       render :json => {}, :status => 200

@@ -5,6 +5,13 @@ var SignUpForm = React.createClass({
     return JSON.parse(this.props.presenter);
   },
 
+  isInvalid: function(){
+    return !this.state.accountName || 
+      !this.state.email ||
+      this.isEmailInvalid() ||
+      this.isAccountNameInvalid();
+  },
+
   handleSubmit: function(event){
     // TODO: implement me
     event.preventDefault();
@@ -15,28 +22,60 @@ var SignUpForm = React.createClass({
     this.setState({accountName: event.target.value});
   },
 
+  handleEmailChange: function(event){
+    this.setState({email: event.target.value});
+  },
+
+  checkEmail: function(event){
+    var email = this.state.email;
+    if (email.length > 0){
+      if (/@/.test(email)) {
+        $.ajax({
+          type: 'GET',
+          url: this.state.validation_url.email,
+          data: {email: email},
+          dataType: 'json',
+          contentType: 'application/json',
+          accepts: { json: 'application/json' },
+          success: function(response) {
+            this.setState({isEmailValid: true});
+          }.bind(this),
+          error: function(response) {
+            this.setState({isEmailValid: false});
+          }.bind(this)
+        });
+      } else {
+        this.setState({isEmailValid: false});
+      }
+    }
+  },
+
   checkAccountName: function(){
     var accountName = this.state.accountName;
     if (accountName.length > 0){
       $.ajax({
         type: 'GET',
-        url: '/accounts/validate_name',
+        url: this.state.validation_url.company,
         data: {name: accountName},
         dataType: 'json',
         contentType: 'application/json',
         accepts: { json: 'application/json' },
         success: function(response) {
-          this.setState({accountNameIsValid: true});
+          this.setState({isAccountNameValid: true});
         }.bind(this),
         error: function(response) {
-          this.setState({accountNameIsValid: false});
+          this.setState({isAccountNameValid: false});
         }.bind(this)
       });
     }
   },
 
-  accountNameIsInvalid: function(){
-    return this.state.accountNameIsValid == false;
+  isAccountNameInvalid: function(){
+    return this.state.isAccountNameValid == false;
+  },
+
+  isEmailInvalid: function(){
+    return this.state.isEmailValid == false;
   },
 
   renderTitle: function(){
@@ -61,7 +100,7 @@ var SignUpForm = React.createClass({
       return
 
     var validationMessage;
-    if (this.accountNameIsInvalid()){
+    if (this.isAccountNameInvalid()){
       validationMessage = <span className="help-block"> That company name has already been taken.  Please choose a unique name so we can give you a Helpful.io URL. </span>
     } else {
       validationMessage = <span className="help-block"> Your sweet profile URL will be <b>http://helpful.io/{ this.state.accountName }</b></span>
@@ -73,8 +112,8 @@ var SignUpForm = React.createClass({
   renderCompanyValidationIcon: function(){
     var classNames = React.addons.classSet({
       'glyphicon': true,
-      'glyphicon glyphicon-ok form-control-feedback': this.state.accountNameIsValid,
-      'glyphicon glyphicon-remove form-control-feedback': this.state.accountNameIsValid == false
+      'glyphicon glyphicon-ok form-control-feedback': this.state.isAccountNameValid,
+      'glyphicon glyphicon-remove form-control-feedback': this.isAccountNameInvalid()
     });
     return <span className={ classNames }></span>
   },
@@ -91,8 +130,8 @@ var SignUpForm = React.createClass({
   renderCompanyName: function(){
     var classNames = React.addons.classSet({
       'form-group': true,
-      'form-group has-feedback has-success': this.state.accountNameIsValid,
-      'form-group has-feedback has-error': this.state.accountNameIsValid == false
+      'form-group has-feedback has-success': this.state.isAccountNameValid,
+      'form-group has-feedback has-error': this.isAccountNameInvalid()
     });
 
     return (
@@ -161,32 +200,54 @@ var SignUpForm = React.createClass({
            )
   },
 
-  renderPersonalInfo: function(){
-    // TODO: make me DRY
+  renderFullName: function(){
     return (
-            <fieldset>
+      <div className="row">
+        <div className="col-md-12">
+          <div className="form-group">
             {/* TODO: locale is missing  */}
-            <h2>Personal Information</h2>
-              <div className="row">
-                <div className="col-md-12">
-                  <div className="form-group">
-                    {/* TODO: locale is missing  */}
-                    <label className="control-label" htmlFor="person_name">Full name</label>
-                    <input className="form-control" id="person_name" name="person[name]" required="required" type="text" autoComplete="off"/>
-                  </div>
-                </div>
-              </div>
+            <label className="control-label" htmlFor="person_name">Full name</label>
+            <input className="form-control" id="person_name" name="person[name]" required="required"
+                   type="text" autoComplete="off"/>
+          </div>
+        </div>
+      </div>
+    )
+  },
 
+  renderEmailValidationIcon: function(){
+    var classNames = React.addons.classSet({
+      'glyphicon': true,
+      'glyphicon glyphicon-ok form-control-feedback': this.state.isEmailValid,
+      'glyphicon glyphicon-remove form-control-feedback': this.isEmailInvalid()
+    });
+    return <span className={ classNames }></span>
+  },
+
+  renderEmail: function(){
+    var classNames = React.addons.classSet({
+      'form-group': true,
+      'form-group has-feedback has-success': this.state.isEmailValid,
+      'form-group has-feedback has-error': this.isEmailInvalid()
+    });
+    return (
               <div className="row">
                 <div className="col-md-12">
-                  <div className="form-group">
+                  <div className={ classNames }>
                     {/* TODO: locale is missing  */}
                     <label className="control-label" htmlFor="user_email">Email address</label>
-                    <input className="form-control" id="user_email" name="user[email]" required="required" type="email" autoComplete="off"/>
+                    <input className="form-control" id="user_email" name="user[email]" required="required"
+                           autoComplete="off" onBlur={ this.checkEmail } onChange={ this.handleEmailChange }/>
+
+                    { this.renderEmailValidationIcon() }
                   </div>
                 </div>
               </div>
+    )
+  },
 
+  renderPassword: function(){
+    return (
               <div className="row">
                 <div className="col-md-12">
                   <div className="form-group">
@@ -204,11 +265,28 @@ var SignUpForm = React.createClass({
                   </div>
                 </div>
               </div>
-          </fieldset>
-        )
+    )
+  },
+
+  renderPersonalInfo: function(){
+    return (
+            <fieldset>
+              {/* TODO: locale is missing  */}
+              <h2>Personal Information</h2>
+
+              { this.renderFullName() }
+              { this.renderEmail() }
+              { this.renderPassword() }
+            </fieldset>
+           )
   },
 
   renderSubmitArea: function(){
+    var classNames = React.addons.classSet({
+      'btn': true,
+      'btn-disabled': this.isInvalid(),
+      'btn-primary': !this.isInvalid()
+    });
     return (
             <fieldset>
               {/*  TODO: locale is missing */}
@@ -219,9 +297,10 @@ var SignUpForm = React.createClass({
 
               <div className="form-group">
                 {/* TODO: locale is missing */}
-                <input className="btn btn-primary"
+                <input className={ classNames }
                        name="commit" type="submit"
                        value="Sign up and start inviting your team!"
+                       disabled= { this.isInvalid() }
                        />
               </div>
 

@@ -60,6 +60,7 @@ Helpful::Application.routes.draw do
 
   resource :accounts, only: [:new, :create] do
     get :validate_name
+    get :validate_email
   end
 
   resources :accounts do
