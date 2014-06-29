@@ -7,6 +7,20 @@ class AccountsController < ApplicationController
     @account = Account.new(billing_plan_slug: 'starter-kit')
     @user = User.new
     @person = Person.new
+
+    @presenter = {
+      :account => @account,
+      :user => @user,
+      :person => @person,
+      :form => {
+        :action => accounts_path,
+        :csrf_param => request_forgery_protection_token,
+        :csrf_token => form_authenticity_token
+      },
+      :translations => {
+        :company_name => t('accounts.general.company_name')
+      }
+    }
   end
 
   def create
