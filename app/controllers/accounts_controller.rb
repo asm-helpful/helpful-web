@@ -88,6 +88,14 @@ class AccountsController < ApplicationController
     find_account!
   end
 
+  def validate_name
+    if Account.where(name: params[:name]).present?
+      render :json => {}, :status => 409
+    else
+      render :json => {}, :status => 200
+    end
+  end
+
   private
 
   def find_account!

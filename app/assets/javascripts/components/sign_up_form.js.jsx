@@ -11,6 +11,34 @@ var SignUpForm = React.createClass({
     return false;
   },
 
+  handleAccountNameChange: function(event){
+    this.setState({accountName: event.target.value});
+  },
+
+  checkAccountName: function(){
+    var accountName = this.state.accountName;
+    if (accountName.length > 0){
+      $.ajax({
+        type: 'GET',
+        url: '/accounts/validate_name',
+        data: {name: accountName},
+        dataType: 'json',
+        contentType: 'application/json',
+        accepts: { json: 'application/json' },
+        success: function(response) {
+          this.setState({accountNameIsValid: true});
+        }.bind(this),
+        error: function(response) {
+          this.setState({accountNameIsValid: false});
+        }.bind(this)
+      });
+    }
+  },
+
+  accountNameIsInvalid: function(){
+    return this.state.accountNameIsValid == false;
+  },
+
   renderTitle: function(){
     // TODO: locale is missing 
     return (
@@ -28,7 +56,45 @@ var SignUpForm = React.createClass({
     )
   },
 
+  renderCompanyValidationMessage: function(){
+    if (!(this.state.accountName && this.state.accountName.length > 0))
+      return
+
+    var validationMessage;
+    if (this.accountNameIsInvalid()){
+      validationMessage = <span className="help-block"> That company name has already been taken.  Please choose a unique name so we can give you a Helpful.io URL. </span>
+    } else {
+      validationMessage = <span className="help-block"> Your sweet profile URL will be <b>http://helpful.io/{ this.state.accountName }</b></span>
+    }
+    
+    return validationMessage;
+  },
+
+  renderCompanyValidationIcon: function(){
+    var classNames = React.addons.classSet({
+      'glyphicon': true,
+      'glyphicon glyphicon-ok form-control-feedback': this.state.accountNameIsValid,
+      'glyphicon glyphicon-remove form-control-feedback': this.state.accountNameIsValid == false
+    });
+    return <span className={ classNames }></span>
+  },
+
+  renderCompanyValidation: function(){
+    return (
+      <div>
+        { this.renderCompanyValidationMessage() }
+        { this.renderCompanyValidationIcon() }
+      </div>
+    )
+  },
+
   renderCompanyName: function(){
+    var classNames = React.addons.classSet({
+      'form-group': true,
+      'form-group has-feedback has-success': this.state.accountNameIsValid,
+      'form-group has-feedback has-error': this.state.accountNameIsValid == false
+    });
+
     return (
       <fieldset>
           {/* TODO: locale is missing */}
@@ -39,15 +105,18 @@ var SignUpForm = React.createClass({
 
           <div className="row">
             <div className="col-md-12">
-              <div className="form-group">
+              <div className={ classNames }>
                 <label className='control-label' htmlFor='account_name'>
                    { this.state.translations.company_name }
                 </label>
 
                 <input autofocus="autofocus" className="form-control"
                        name="account[name]" id="account_name"
-                       required="required" type="text"
+                       required="required" type="text" onBlur={ this.checkAccountName }
+                       onChange={ this.handleAccountNameChange }
                 />
+
+                { this.renderCompanyValidation() }
               </div>
             </div>
           </div>
