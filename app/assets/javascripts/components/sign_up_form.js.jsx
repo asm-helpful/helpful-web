@@ -1,6 +1,7 @@
 /** @jsx React.DOM */
 
 var SignUpForm = React.createClass({
+  // TODO: duplication: validation
   getInitialState: function(){
     return JSON.parse(this.props.presenter);
   },
@@ -9,9 +10,11 @@ var SignUpForm = React.createClass({
     return !this.state.accountName || 
       !this.state.email ||
       !this.state.personName ||
+      !this.state.password ||
       this.isEmailInvalid() ||
       this.isAccountNameInvalid() ||
-      this.isPersonNameInvalid();
+      this.isPersonNameInvalid() ||
+      this.isPasswordInvalid();
   },
 
   handleSubmit: function(event){
@@ -30,6 +33,10 @@ var SignUpForm = React.createClass({
 
   handleEmailChange: function(event){
     this.setState({email: event.target.value});
+  },
+
+  handlePasswordChange: function(event){
+    this.setState({password: event.target.value});
   },
 
   checkEmail: function(event){
@@ -89,6 +96,19 @@ var SignUpForm = React.createClass({
     }
   },
 
+  checkPassword: function(){
+    var password = this.state.password;
+    if (password && password.length > 0){
+      if (password.length >= 8){
+        this.setState({isPasswordValid: true});
+      } else {
+        this.setState({isPasswordValid: false, passwordError: 'format'});
+      }
+    } else {
+      this.setState({isPasswordValid: false, passwordError: 'blank'});
+    }
+  },
+
   isAccountNameInvalid: function(){
     return this.state.isAccountNameValid == false;
   },
@@ -99,6 +119,10 @@ var SignUpForm = React.createClass({
 
   isEmailInvalid: function(){
     return this.state.isEmailValid == false;
+  },
+
+  isPasswordInvalid: function(){
+    return this.state.isPasswordValid == false;
   },
 
   renderTitle: function(){
@@ -133,8 +157,8 @@ var SignUpForm = React.createClass({
   renderCompanyValidationIcon: function(){
     var classNames = React.addons.classSet({
       'glyphicon': true,
-      'glyphicon glyphicon-ok form-control-feedback': this.state.isAccountNameValid,
-      'glyphicon glyphicon-remove form-control-feedback': this.isAccountNameInvalid()
+      'glyphicon-ok form-control-feedback': this.state.isAccountNameValid,
+      'glyphicon-remove form-control-feedback': this.isAccountNameInvalid()
     });
     return <span className={ classNames }></span>
   },
@@ -151,8 +175,8 @@ var SignUpForm = React.createClass({
   renderCompanyName: function(){
     var classNames = React.addons.classSet({
       'form-group': true,
-      'form-group has-feedback has-success': this.state.isAccountNameValid,
-      'form-group has-feedback has-error': this.isAccountNameInvalid()
+      'has-feedback has-success': this.state.isAccountNameValid,
+      'has-feedback has-error': this.isAccountNameInvalid()
     });
 
     return (
@@ -224,8 +248,8 @@ var SignUpForm = React.createClass({
   renderPersonNameValidationIcon: function(){
     var classNames = React.addons.classSet({
       'glyphicon': true,
-      'glyphicon glyphicon-ok form-control-feedback': this.state.isPersonNameValid,
-      'glyphicon glyphicon-remove form-control-feedback': this.isPersonNameInvalid()
+      'glyphicon-ok form-control-feedback': this.state.isPersonNameValid,
+      'glyphicon-remove form-control-feedback': this.isPersonNameInvalid()
     });
     return <span className={ classNames }></span>
   },
@@ -272,8 +296,8 @@ var SignUpForm = React.createClass({
   renderEmailValidationIcon: function(){
     var classNames = React.addons.classSet({
       'glyphicon': true,
-      'glyphicon glyphicon-ok form-control-feedback': this.state.isEmailValid,
-      'glyphicon glyphicon-remove form-control-feedback': this.isEmailInvalid()
+      'glyphicon-ok form-control-feedback': this.state.isEmailValid,
+      'glyphicon-remove form-control-feedback': this.isEmailInvalid()
     });
     return <span className={ classNames }></span>
   },
@@ -322,22 +346,56 @@ var SignUpForm = React.createClass({
     )
   },
 
+  renderPasswordValidationIcon: function(){
+    var classNames = React.addons.classSet({
+      'glyphicon': true,
+      'glyphicon-ok form-control-feedback': this.state.isPasswordValid,
+      'glyphicon-remove form-control-feedback': this.isPasswordInvalid()
+    });
+    return <span className={ classNames }></span>
+  },
+
+  renderPasswordValidationText: function(){
+    if (this.state.isPasswordValid == true)
+      return
+
+    if (this.state.passwordError == 'blank'){
+      return (<span className='help-block'> Password can't be blank. </span>)
+    } else {
+      return (<span className='help-block'> Your password must be at least 8 characters.</span>)
+    }
+  },
+
+  renderPasswordValidation: function(){
+    return (
+      <div>
+        { this.renderPasswordValidationText() }
+        { this.renderPasswordValidationIcon() }
+      </div>
+    )
+  },
+
+
   renderPassword: function(){
+    var classNames = React.addons.classSet({
+      'form-group': true,
+      'has-feedback has-success': this.state.isPasswordValid,
+      'has-feedback has-error': this.isPasswordInvalid()
+    });
     return (
               <div className="row">
                 <div className="col-md-12">
-                  <div className="form-group">
+                  <div className={ classNames }>
                     {/* TODO: locale is missing  */}
                     <label className="control-label" htmlFor="user_password">Password</label>
                     <input className="form-control" id="user_password"
                            name="user[password]" pattern=".{8,}" 
                            placeholder="Pretend you're a spy. Make it a good one"
                            required="required" title="Make sure you use at least 8 characters"
-                           type="password" autoComplete="off"/>
+                           type="password" autoComplete="off" onChange={ this.handlePasswordChange } 
+                           onBlur={ this.checkPassword }/>
 
-                    <span className="help-block">
-                      Your password must be at least 8 characters.
-                    </span>
+                    { this.renderPasswordValidation() }
                   </div>
                 </div>
               </div>
