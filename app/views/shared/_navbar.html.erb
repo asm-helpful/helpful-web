@@ -5,7 +5,7 @@
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
         <a class="dropdown-toggle" href="#" data-toggle="dropdown">
-          <%= avatar(current_user, 20, 'avatar avatar-small') %>
+          <%= avatar(current_user, 20) %>
           <b class="caret"></b>
         </a>
         <ul class="dropdown-menu">
@@ -38,7 +38,7 @@
           <li>
             <a href="<%= edit_account_path(@account) %>"><%= t('.company_profile') %></a>
           </li>
-          
+
           <li>
             <a href="<%= setup_account_path(@account) %>"><%= t('.technical_setup') %></a>
           </li>
@@ -46,7 +46,7 @@
           <li>
             <%= link_to t('canned_responses.index.canned_responses'), account_canned_responses_path(@account) %>
           </li>
-          
+
           <li class="divider"></li>
 
           <% other_accounts.each do |account| %>
@@ -93,7 +93,7 @@
               <% @account.users.includes(:person).order('people.name ASC').each do |user| %>
                 <li class="search-result">
                   <%= link_to search_account_conversations_path(@account, assignee: user.id) do %>
-                    <%= avatar(user, 20, 'avatar avatar-small') %>
+                    <%= avatar(user, 20) %>
                     <span class="username">
                       <%= user.name %>
                     </span>

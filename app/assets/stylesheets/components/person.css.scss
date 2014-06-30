@@ -2,6 +2,10 @@
 }
 
 .person-avatar {
-  display: inline-block;
+  float: left;
   margin-right: .4em;
-} 
+
+  > .avatar {
+    display: block;
+  }
+}
