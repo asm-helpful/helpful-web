@@ -41,7 +41,7 @@ var SignUpForm = React.createClass({
 
   checkEmail: function(event){
     var email = this.state.email;
-    if (email && email.length > 0){
+    if ($.trim(email).length > 0){
       if (/@/.test(email)) {
         $.ajax({
           type: 'GET',
@@ -67,7 +67,7 @@ var SignUpForm = React.createClass({
 
   checkAccountName: function(){
     var accountName = this.state.accountName;
-    if (accountName && accountName.length > 0){
+    if ($.trim(accountName).length > 0){
       $.ajax({
         type: 'GET',
         url: this.state.validation_url.company,
@@ -89,7 +89,7 @@ var SignUpForm = React.createClass({
 
   checkPersonName: function(){
     var personName = this.state.personName;
-    if (personName && personName.length > 0){
+    if ($.trim(personName).length > 0){
       this.setState({isPersonNameValid: true});
     } else {
       this.setState({isPersonNameValid: false});
@@ -143,7 +143,7 @@ var SignUpForm = React.createClass({
   },
 
   renderCompanyValidationText: function(){
-    if (!this.isAccountNameInvalid() && this.state.accountName)
+    if (!this.isAccountNameInvalid() && $.trim(this.state.accountName).length > 0)
       return (<span className="help-block"> Your sweet profile URL will be <b>http://helpful.io/{ this.state.accountName }</b></span>)
 
     var reason = this.state.accountNameError;
