@@ -61,7 +61,9 @@ var Response = React.createClass({
 
         <div className="form-actions">
           <div className="pull-right">
-            <input className="btn btn-primary" type="submit" name="commit" value="Send" />
+            <button className="btn btn-primary" type="submit" name="commit">
+              {this.primaryActionLabel()}
+            </button>
           </div>
 
           <div className="btn-group">
@@ -72,5 +74,14 @@ var Response = React.createClass({
         </div>
       </form>
     );
+  },
+
+  primaryActionLabel: function() {
+    if(this.props.sendAndArchive) {
+      return 'Send & Archive';
+    } else {
+      return 'Send';
+    }
   }
+
 });
