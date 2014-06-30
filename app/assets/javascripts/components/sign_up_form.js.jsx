@@ -42,7 +42,7 @@ var SignUpForm = React.createClass({
   checkEmail: function(event){
     var email = this.state.email;
     if ($.trim(email).length > 0){
-      if (/@/.test(email)) {
+      if (/.+@.+\..+/.test(email)) {
         $.ajax({
           type: 'GET',
           url: this.state.validation_url.email,
@@ -307,7 +307,7 @@ var SignUpForm = React.createClass({
       return
 
     if (this.state.emailError == 'format'){
-      return (<span className='help-block'> Email is in incorrect format, it doesn't contain '@'. </span>)
+      return (<span className='help-block'> Email is in incorrect format. </span>)
     } else if (this.state.emailError == 'taken') {
       return (<span className='help-block'> Email is already taken. </span>)
     } else {
