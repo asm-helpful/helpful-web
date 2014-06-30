@@ -4,7 +4,7 @@ module AvatarHelper
   end
 
   def avatar(person, size, *html_classes)
-    image_tag(avatar_path(person, size), size: size, class: html_classes)
+    image_tag(avatar_path(person, size), height: size, width: size, class: html_classes)
   end
 
   def avatar_path(person, size)
