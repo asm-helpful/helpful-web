@@ -41,7 +41,7 @@
       margin-right: 0;
     }
 
-    a { 
+    a {
       border: none;
       color: #7B8193;
       font-size: 13px;
@@ -79,19 +79,6 @@
   width: 96%;
   height: $navbar-height;
 
-  &::after {
-    content: "\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7";
-    color: $gray-dark;
-    font-size: 10px;
-    letter-spacing: 3px;
-    position: absolute;
-    top: 0;
-    height: $navbar-height;
-    line-height: $navbar-height;
-    overflow: hidden;
-    width: 100%;
-  }
-
   > li {
     float: none;
     position: relative;
@@ -100,11 +87,12 @@
 
     > a, div {
       background-color: $navbar-default-bg;
-      color: $gray-dark !important;
+      color: $gray-dark;
       display: inline-block;
       padding: 15px 10px;
       position: relative;
       white-space: nowrap;
+      height: $navbar-height;
 
       .glyphicon {
         font-size: 10px;
@@ -119,14 +107,30 @@
       }
 
       &.completed {
+        color: white;
+
         .glyphicon {
           display: block;
+          color: white;
+        }
+
+        &::after {
+          content: "\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7";
+          color: white;
+          font-size: 10px;
+          letter-spacing: 3px;
+          position: absolute;
+          top: 0;
+          height: $navbar-height;
+          line-height: $navbar-height;
+          overflow: hidden;
+          padding: 0 10px;
         }
       }
 
       &.active {
         font-weight: bold;
-        color: white !important;
+        color: white;
 
         &::after {
           bottom: 0;
