@@ -14,11 +14,14 @@
   <% if @canned_responses.any? %>
     <div class="list">
       <% @canned_responses.each do |canned_response| %>
-        <div class="list-item">
-          <a href="<%= edit_account_canned_response_path(canned_response.account, canned_response) %>">
+        <div class="list-item clearfix">
+          <div class="pull-left">
             <strong><%= canned_response.key %></strong>
-            <p><%= canned_response.message %></p>
-          </a>
+            <p><%= canned_response.message[0..50].strip %><%= canned_response.message.length > 50 ? '...' : '' %></p>
+          </div>
+          <div class="btn-group pull-right">
+            <a href="<%= edit_account_canned_response_path(canned_response.account, canned_response) %>" class="btn btn-default">Edit</a>
+          </div>
         </div>
       <% end %>
     </div>
