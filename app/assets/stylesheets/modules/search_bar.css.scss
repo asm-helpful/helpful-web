@@ -1,6 +1,7 @@
 .search-bar {
   overflow: auto;
   position: relative;
+  border-left: 1px solid #4b4d50;
 
   input {
     background-color: $navbar-default-bg;
@@ -20,12 +21,12 @@
     &:focus {
       background-color: $navbar-default-link-hover-bg;
       color: white;
-      
+
       @include placeholder {
         color: $gray-dark;
       }
 
-      // ~ .search-bar-clear-icon { 
+      // ~ .search-bar-clear-icon {
       //   visibility: visible;
       // }
     }
