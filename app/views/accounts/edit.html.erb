@@ -50,38 +50,40 @@
       <p>How many support requests do you think you'll have each month? Select the plan that works for you or <a href="mailto:helpful@helpful.io">ask us for help</a>.</p>
 
       <div class="form-group">
-        <div class="list-group list-group-horizontal plan-list">
+        <div class="row">
           <% @plans.each do |plan| %>
-            <div class="list-group-item plan">
-              <h3>
-                <%= plan.name %>
-              </h3>
-              <p class="plan-info">
-                <%= plan.max_conversations %> conversations
-              </p>
-              <p class="plan-price">
-                <% if plan.price.zero? %>
-                  Totally Free!
-                <% else %>
-                  <%= number_to_currency(plan.price, precision: 0) %> per month
-                <% end %>
-              </p>
-              <button class="btn btn-default plan-select <%= "btn-selected" if plan == @account.billing_plan %>"
-                data-plan-slug="<%= plan.slug %>"
-                data-plan-name="<%= plan.name %>"
-                data-plan-amount="<%= plan.formatted_price %>"
-                data-plan-subscribe="<%= !plan.price.zero? %>">
-
-                <span class="glyphicon glyphicon-ok"></span>
-                <span class="plan-select-message">
-                  <% if plan == @plans.first %>
-                    Subscribed
+            <div class="col-xs-12 col-sm-6 col-md-3">
+              <div class="panel panel-default text-center">
+                <h4 class="text-capitalize">
+                  <%= plan.name %>
+                </h4>
+                <p>
+                  <strong><%= plan.max_conversations %> conversations</strong>
+                </p>
+                <p>
+                  <% if plan.price.zero? %>
+                    Totally Free!
                   <% else %>
-                    Subscribe
+                    <%= number_to_currency(plan.price, precision: 0) %>/month
                   <% end %>
-                </span>
+                </p>
+                <button class="btn btn-default <%= "btn-success" if plan == @account.billing_plan %>"
+                  data-plan-slug="<%= plan.slug %>"
+                  data-plan-name="<%= plan.name %>"
+                  data-plan-amount="<%= plan.formatted_price %>"
+                  data-plan-subscribe="<%= !plan.price.zero? %>">
 
-              </button>
+                  <span class="glyphicon glyphicon-ok"></span>
+                  <span class="plan-select-message">
+                    <% if plan == @account.billing_plan %>
+                      Subscribed
+                    <% else %>
+                      Subscribe
+                    <% end %>
+                  </span>
+
+                </button>
+              </div>
             </div>
           <% end %>
         </div>
