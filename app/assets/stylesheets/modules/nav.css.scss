@@ -8,9 +8,11 @@
 
   > li {
     list-style-type: none;
+  }
 
-    > a {
-    }
+  .image-dropdown {
+    padding-top: 11px;
+    padding-bottom: 11px;
   }
 }
 
@@ -41,7 +43,7 @@
       margin-right: 0;
     }
 
-    a { 
+    a {
       border: none;
       color: #7B8193;
       font-size: 13px;
@@ -79,19 +81,6 @@
   width: 96%;
   height: $navbar-height;
 
-  &::after {
-    content: "\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7";
-    color: $gray-dark;
-    font-size: 10px;
-    letter-spacing: 3px;
-    position: absolute;
-    top: 0;
-    height: $navbar-height;
-    line-height: $navbar-height;
-    overflow: hidden;
-    width: 100%;
-  }
-
   > li {
     float: none;
     position: relative;
@@ -100,11 +89,12 @@
 
     > a, div {
       background-color: $navbar-default-bg;
-      color: $gray-dark !important;
+      color: $gray-dark;
       display: inline-block;
       padding: 15px 10px;
       position: relative;
       white-space: nowrap;
+      height: $navbar-height;
 
       .glyphicon {
         font-size: 10px;
@@ -119,14 +109,30 @@
       }
 
       &.completed {
+        color: $blue-gray;
+
         .glyphicon {
           display: block;
+          color: $blue-gray;
+        }
+
+        &::after {
+          content: "\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7";
+          color: $blue-gray;
+          font-size: 10px;
+          letter-spacing: 3px;
+          position: absolute;
+          top: 0;
+          height: $navbar-height;
+          line-height: $navbar-height;
+          overflow: hidden;
+          padding: 0 10px;
         }
       }
 
       &.active {
         font-weight: bold;
-        color: white !important;
+        color: white;
 
         &::after {
           bottom: 0;
@@ -135,7 +141,7 @@
           font-size: 30px;
           height: 5px;
           left: 0;
-          line-height: 5px;
+          line-height: 9px;
           margin: auto;
           overflow: hidden;
           position: absolute;
@@ -147,7 +153,6 @@
       i.ss-check {
         padding-right: 4px;
       }
-
     }
   }
 
