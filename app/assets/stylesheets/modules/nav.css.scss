@@ -8,10 +8,11 @@
 
   > li {
     list-style-type: none;
+  }
 
-    > a {
-      min-height: $navbar-height;
-    }
+  .image-dropdown {
+    padding-top: 11px;
+    padding-bottom: 11px;
   }
 }
 
