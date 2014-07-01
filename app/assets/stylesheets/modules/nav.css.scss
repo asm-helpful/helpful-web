@@ -10,6 +10,7 @@
     list-style-type: none;
 
     > a {
+      min-height: $navbar-height;
     }
   }
 }
