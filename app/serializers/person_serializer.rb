@@ -11,6 +11,6 @@ class PersonSerializer < BaseSerializer
   end
 
   def agent
-    object.user.present?
+    object.user_id.present?
   end
 end

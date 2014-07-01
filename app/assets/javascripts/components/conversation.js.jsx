@@ -80,11 +80,11 @@ var Conversation = React.createClass({
       return (
         <div className="conversation-body">
           <div className="conversation-stream">
-            <Stream items={this.props.conversation.stream_items} />
+            <Stream items={this.streamItems()} />
           </div>
 
           <div className="conversation-response">
-            <Response conversation={this.props.conversation} addStreamItemHandler={this.props.addStreamItemHandler} />
+            <Response conversation={this.props.conversation} addStreamItemHandler={this.props.addStreamItemHandler} archiveHandler={this.props.archiveHandler} />
           </div>
         </div>
       );
@@ -104,6 +104,16 @@ var Conversation = React.createClass({
         {this.renderBody()}
       </div>
     );
+  },
+
+  streamItems: function() {
+    var items = _.flatten([
+      this.props.conversation.messages,
+      this.props.conversation.assignment_events,
+      this.props.conversation.tag_events
+    ])
+
+    return _.sortBy(items, function(item) { return item.created });
   },
 
   // TODO: Implement read receipts

@@ -14,6 +14,9 @@ var Message = React.createClass({
   render: function() {
     return (
       <div className="message">
+        <small className="pull-right text-muted">
+          {this.created()}
+        </small>
         <div className="message-person">
           <Person person={this.props.person} />
         </div>
@@ -21,6 +24,10 @@ var Message = React.createClass({
         <div className="message-content" dangerouslySetInnerHTML={{__html: this.content()}} />
       </div>
     );
+  },
+
+  created: function() {
+    return moment(this.props.created).format("h:ma D/M/YYYY");
   },
 
   content: function() {

@@ -3,9 +3,9 @@ require 'spec_helper'
 describe 'showing all converastions' do
   let!(:user) { create(:user_with_account) }
   let(:account) { user.accounts.first }
-  let!(:inbox_conversation) { create(:conversation, account: account, archived: false) }
-  let!(:archive_conversation) { create(:conversation, account: account, archived: true) }
-  let!(:unpaid_conversation) { create(:conversation, account: account, archived: false, hidden: true) }
+  let!(:inbox_conversation) { create(:conversation_with_messages, account: account, archived: false) }
+  let!(:archive_conversation) { create(:conversation_with_messages, account: account, archived: true) }
+  let!(:unpaid_conversation) { create(:conversation_with_messages, account: account, archived: false, hidden: true) }
 
   before { login_as(user) }
 

@@ -81,6 +81,12 @@ describe Webhooks::MailgunController do
           }.to change { Message.count }.by(1)
         end
 
+        it 'stores the raw webhook in the message' do
+          post_create(recipient: email)
+          message = Message.order('created_at DESC').first
+          expect(message.webhook).to_not be_blank
+        end
+
         it "persists attachments" do
           file = Rack::Test::UploadedFile.new(
             Rails.root.join('LICENSE'),

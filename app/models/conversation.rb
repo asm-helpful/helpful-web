@@ -64,7 +64,7 @@ class Conversation < ActiveRecord::Base
 
   scope :unresolved, -> { where(archived: false) }
 
-  scope :with_messages_count, -> { select('conversations.*, (SELECT COUNT(messages.id) FROM messages WHERE messages.conversation_id = conversations.id) AS messages_count') }
+  scope :with_message_count, -> { select('conversations.*, (SELECT COUNT(messages.id) FROM messages WHERE messages.conversation_id = conversations.id) AS message_count') }
 
   scope :welcome_email, -> { where(subject: WelcomeConversation::SUBJECT) }
 
@@ -100,8 +100,8 @@ class Conversation < ActiveRecord::Base
     first_message && first_message.person
   end
 
-  def messages_count
-    self['messages_count'] || messages.count
+  def message_count
+    self['message_count'] || messages.count
   end
 
   # Public: Conversation specific email address for incoming email replies.

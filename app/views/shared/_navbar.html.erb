@@ -5,7 +5,7 @@
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown">
         <a class="dropdown-toggle" href="#" data-toggle="dropdown">
-          <%= avatar(current_user, 20, 'avatar avatar-small') %>
+          <%= avatar(current_user, 20) %>
           <b class="caret"></b>
         </a>
         <ul class="dropdown-menu">
@@ -23,9 +23,9 @@
     </ul>
 
     <ul class="nav navbar-nav navbar-left">
-      <li class="navbar-brand-icon">
-        <%= link_to inbox_account_conversations_path(@account) do %>
-          <%= image_tag 'life_saver.png', alt: 'Helpful' %>
+      <li>
+        <%= link_to inbox_account_conversations_path(@account), class: 'navbar-brand' do %>
+          <%= image_tag image_path('logo.png'), alt: 'Helpful' %>
         <% end %>
       </li>
 
@@ -38,7 +38,7 @@
           <li>
             <a href="<%= edit_account_path(@account) %>"><%= t('.company_profile') %></a>
           </li>
-          
+
           <li>
             <a href="<%= setup_account_path(@account) %>"><%= t('.technical_setup') %></a>
           </li>
@@ -47,8 +47,11 @@
             <%= link_to t('canned_responses.index.canned_responses'), account_canned_responses_path(@account) %>
           </li>
 
-          <% other_accounts.each do |account| %>
+          <% if other_accounts.count > 0 %>
             <li class="divider"></li>
+          <% end %>
+
+          <% other_accounts.each do |account| %>
             <li>
               <%= link_to account.name, inbox_account_conversations_path(account), class: 'navbar-company-link' %>
             </li>
@@ -89,10 +92,10 @@
               Search by Assignee
             </div>
             <ul class="search-results">
-              <% @account.users.includes(:person).order('people.name ASC').each do |user| %>
+              <% @account.users.where('users.invitation_token IS NULL').includes(:person).order('people.name ASC').each do |user| %>
                 <li class="search-result">
                   <%= link_to search_account_conversations_path(@account, assignee: user.id) do %>
-                    <%= avatar(user, 20, 'avatar avatar-small') %>
+                    <%= avatar(user, 20) %>
                     <span class="username">
                       <%= user.name %>
                     </span>

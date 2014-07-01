@@ -40,7 +40,13 @@ class ConversationMailbox
   end
 
   def account_conversations
-    account.conversations
+    account.conversations.with_messages.
+      includes(messages: [:person, :attachments]).
+      includes(first_message: :person).
+      includes(:most_recent_message).
+      includes(assignment_events: [{ user: :person }, { assignee: :person }]).
+      includes(tag_events: { user: :person }).
+      with_message_count
   end
 
   def search

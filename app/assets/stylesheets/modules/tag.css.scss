@@ -1,9 +1,8 @@
 .tag {
   background-color: transparent;
-  border-radius: $btn-border-radius;
-  border: $btn-border-width solid rgba($dark-blue, .4);
-  color: $dark-blue !important;
-  font-family: $font-body;
+  border-radius: $btn-radius;
+  border: 1px solid darken($blue, 20%);
+  color: darken($blue, 20%) !important;
   font-size: 14px;
   line-height: 30px;
   margin-left: 6px;
@@ -11,8 +10,8 @@
   padding: 4px 12px 6px 12px;
 
   &:hover {
-    background-color: $light-gray;
-    border: $btn-border-width solid $blue;
-    color: $dark-blue;
+    background-color: $gray-light;
+    border: 1px solid $blue;
+    color: darken($blue, 20%);
   }
 }

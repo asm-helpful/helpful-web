@@ -5,19 +5,11 @@ class ConversationSerializer < BaseSerializer
 
   has_one :creator_person
   has_many :messages
-  has_many :participants
-  has_many :stream_items
-
-  def include_messages?
-    options.fetch(:include_messages, true)
-  end
-
-  def message_count
-    object.messages.count
-  end
+  has_many :assignment_events
+  has_many :tag_events
 
   def unread
-    object.messages.count - object.read_receipts.count > 0
+    object.message_count - object.read_receipts.count > 0
   end
 
   def account_slug
@@ -46,9 +38,5 @@ class ConversationSerializer < BaseSerializer
 
   def canned_responses_path
     url_helpers.account_canned_responses_path(object.account)
-  end
-
-  def stream_items
-    ConversationStream.new(object).stream_items
   end
 end

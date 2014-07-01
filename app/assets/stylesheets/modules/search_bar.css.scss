@@ -5,7 +5,7 @@
   input {
     background-color: $navbar-default-bg;
     border: none;
-    color: $black;
+    color: $gray-darker;
     font-size: 14px;
     height: 50px;
     outline: none;
@@ -19,10 +19,10 @@
 
     &:focus {
       background-color: $navbar-default-link-hover-bg;
-      color: $white;
+      color: white;
       
       @include placeholder {
-        color: $dark-gray;
+        color: $gray-dark;
       }
 
       // ~ .search-bar-clear-icon { 
@@ -31,12 +31,12 @@
     }
 
     @include placeholder {
-      color: $white;
+      color: white;
       -webkit-font-smoothing: antialiased;
     }
 
     &.filled {
-      color: $white;
+      color: white;
 
       ~ .search-bar-clear-icon {
         visibility: visible;
@@ -45,7 +45,7 @@
   }
 
   .search-bar-icon {
-    color: $white;
+    color: white;
     font-size: 14px;
     line-height: 20px;
     margin-top: 14px;

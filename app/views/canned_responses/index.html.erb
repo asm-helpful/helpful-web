@@ -15,12 +15,10 @@
     <div class="list">
       <% @canned_responses.each do |canned_response| %>
         <div class="list-item">
-          <div class="canned-response-row">
-            <a href="<%= edit_account_canned_response_path(canned_response.account, canned_response) %>">
-              <div class="canned-response-key"><%= canned_response.key %></div>
-              <div class="canned-response-message"><%= canned_response.message %></div>
-            </a>
-          </div>
+          <a href="<%= edit_account_canned_response_path(canned_response.account, canned_response) %>">
+            <strong><%= canned_response.key %></strong>
+            <p><%= canned_response.message %></p>
+          </a>
         </div>
       <% end %>
     </div>
