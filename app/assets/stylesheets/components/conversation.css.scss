@@ -1,6 +1,11 @@
 $brand-border: #E6EBEB;
 $gutter: 46px;
 
+body {
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+}
+
 .conversation {
   border-top: 1px solid $brand-border;
 
@@ -21,8 +26,7 @@ $gutter: 46px;
     &.is-expanded {
       background-color: white;
       border-top: none;
-      border-radius: $border-radius-base;
-      box-shadow: inset 0 0 0 1px $brand-border;
+      box-shadow: inset 0 0 0 1px #ecf2f1;
       padding-top: 1px;
 
       .conversation-actions {
@@ -39,7 +43,7 @@ $gutter: 46px;
 
 .conversation-header {
   color: $gray-darker;
-  padding: $padding-large-vertical $padding-large-horizontal;
+  padding: $padding-xlarge-vertical $padding-large-horizontal;
   padding-left: $gutter;
 
   > .status {
@@ -59,6 +63,7 @@ $gutter: 46px;
 }
 
 .conversation-preview {
+  font-size: 14px;
   height: $line-height-computed;
 
   > .reply {
