@@ -63,6 +63,7 @@ class Webhooks::MailgunController < WebhooksController
         content: params.fetch('stripped-text'),
         body:    params['stripped-html'],
         subject: params['subject'],
+        webhook: Hash[params.reject {|k,_| k.match(/attachment*/) }],
         attachments_attributes: attachments
       )
     end
