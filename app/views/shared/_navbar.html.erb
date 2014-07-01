@@ -92,7 +92,7 @@
               Search by Assignee
             </div>
             <ul class="search-results">
-              <% @account.users.includes(:person).order('people.name ASC').each do |user| %>
+              <% @account.users.where('users.invitation_token IS NULL').includes(:person).order('people.name ASC').each do |user| %>
                 <li class="search-result">
                   <%= link_to search_account_conversations_path(@account, assignee: user.id) do %>
                     <%= avatar(user, 20) %>
