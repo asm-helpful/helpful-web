@@ -29,15 +29,6 @@
       <%= f.text_field :webhook_url, placeholder: t('.webhook_url_placeholder'), class: 'form-control' %>
     </div>
 
-    <div class="form-group">
-      <div class="checkbox">
-        <%= f.label :prefers_archiving do %>
-          <%= t('.auto_archiving') %>
-          <%= f.check_box :prefers_archiving %>
-        <% end %>
-      </div>
-    </div>
-
     <div class="form-actions">
       <%= f.submit t('.update_account'), class: 'btn btn-primary' %>
     </div>
