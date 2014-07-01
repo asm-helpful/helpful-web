@@ -107,16 +107,16 @@
       }
 
       &.completed {
-        color: white;
+        color: $blue-gray;
 
         .glyphicon {
           display: block;
-          color: white;
+          color: $blue-gray;
         }
 
         &::after {
           content: "\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7";
-          color: white;
+          color: $blue-gray;
           font-size: 10px;
           letter-spacing: 3px;
           position: absolute;
@@ -139,7 +139,7 @@
           font-size: 30px;
           height: 5px;
           left: 0;
-          line-height: 5px;
+          line-height: 9px;
           margin: auto;
           overflow: hidden;
           position: absolute;
