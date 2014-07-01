@@ -2,6 +2,16 @@
   font-weight: 300;
 }
 
+.navbar-static-top {
+  border-width: 0;
+}
+
+.navbar-nav {
+  > li > a {
+    line-height: 21px;
+  }
+}
+
 // TODO: Use navbar-inverse variables instead
 .navbar-default {
   .dropdown-menu {
