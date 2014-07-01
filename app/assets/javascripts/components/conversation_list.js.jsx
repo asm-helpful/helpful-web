@@ -81,7 +81,6 @@ var ConversationList = React.createClass({
     return function(streamItem) {
       var conversations = this.state.conversations.map(function(conversation) {
         if(conversation === addedTo) {
-          console.log(streamItem);
           switch(streamItem.type) {
             case 'message':
               conversation.messages.push(streamItem);
@@ -104,8 +103,10 @@ var ConversationList = React.createClass({
 
   archiveHandler: function(conversation) {
     return function(event) {
-      event.stopPropagation();
-      event.preventDefault();
+      if(event) {
+        event.stopPropagation();
+        event.preventDefault();
+      }
 
       var data = {
         conversation: {

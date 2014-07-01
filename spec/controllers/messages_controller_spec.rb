@@ -29,11 +29,10 @@ describe MessagesController do
   end
 
   it "adds a message to the conversation and archives it" do
-    account.update(prefers_archiving: true)
-
     post :create,
       {
         account_id: account.slug,
+        archive_conversation: true,
         message: {
           content: 'I need help please.',
           conversation_id: conversation.id

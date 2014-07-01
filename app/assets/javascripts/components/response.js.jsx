@@ -12,12 +12,24 @@ var Response = React.createClass({
     });
   },
 
-  // TODO: Include file attachments
-  createMessage: function(event) {
+  sendMessage: function(event) {
     event.stopPropagation();
     event.preventDefault();
 
+    this.createMessage(false);
+  },
+
+  sendAndArchiveMessage: function(event) {
+    event.stopPropagation();
+    event.preventDefault();
+
+    this.createMessage(true);
+  },
+
+  // TODO: Include file attachments
+  createMessage: function(archiveConversation) {
     var data = {
+      archive_conversation: archiveConversation,
       message: {
         conversation_id: this.props.conversation.id,
         content: $('.medium-editor').html()
@@ -34,6 +46,10 @@ var Response = React.createClass({
       success: function(response) {
         this.addStreamItem(response.message);
         this.clearResponse();
+
+        if(archiveConversation) {
+          this.props.archiveHandler();
+        }
       }.bind(this)
     });
   },
@@ -54,16 +70,27 @@ var Response = React.createClass({
 
   render: function() {
     return (
-      <form className="form" onSubmit={this.createMessage}>
+      <form className="form">
         <div className="form-group">
           <div className="form-control form-control-invisible medium-editor" placeholder="Write your reply..."></div>
         </div>
 
         <div className="form-actions">
           <div className="pull-right">
-            <button className="btn btn-primary" type="submit" name="commit">
-              {this.primaryActionLabel()}
-            </button>
+            <div className="btn-group">
+              <button type="button" className="btn btn-primary" onClick={this.sendMessage}>Send</button>
+              <button type="button" className="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                <span className="caret"></span>
+                <span className="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul className="dropdown-menu" role="menu">
+                <li>
+                  <a href="#" onClick={this.sendAndArchiveMessage}>
+                    Send &amp; Archive
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
 
           <div className="btn-group">
@@ -74,14 +101,5 @@ var Response = React.createClass({
         </div>
       </form>
     );
-  },
-
-  primaryActionLabel: function() {
-    if(this.props.sendAndArchive) {
-      return 'Send & Archive';
-    } else {
-      return 'Send';
-    }
   }
-
 });

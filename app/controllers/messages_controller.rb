@@ -15,7 +15,7 @@ class MessagesController < ApplicationController
         properties: { action: params['commit'] }
       )
 
-      message.conversation.archive! if @account.prefers_archiving?
+      message.conversation.archive! if archive_conversation?
 
       respond_with message, location: account_conversation_path(@account, message.conversation) do |format|
         format.html do
@@ -58,5 +58,9 @@ class MessagesController < ApplicationController
     ).merge(
       person_id: current_user.person.id
     )
+  end
+
+  def archive_conversation?
+    params[:archive_conversation].to_s == 'true'
   end
 end
