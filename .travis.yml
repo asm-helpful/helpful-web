@@ -2,6 +2,8 @@ language: ruby
 bundler_args: "--without development production autotest"
 rvm:
 - 2.1.1
+addons:
+  postgresql: "9.3"
 before_install:
 - gem install bundler -v '>= 1.5.1'
 before_script:
