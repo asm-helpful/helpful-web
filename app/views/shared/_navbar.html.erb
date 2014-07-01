@@ -47,7 +47,9 @@
             <%= link_to t('canned_responses.index.canned_responses'), account_canned_responses_path(@account) %>
           </li>
 
-          <li class="divider"></li>
+          <% if other_accounts.count > 0 %>
+            <li class="divider"></li>
+          <% end %>
 
           <% other_accounts.each do |account| %>
             <li>
