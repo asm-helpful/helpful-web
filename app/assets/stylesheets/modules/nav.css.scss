@@ -30,8 +30,8 @@
 
   li {
     float: left;
-    margin-left: 15px;
-    margin-right: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
 
     &:first-child {
       margin-left: 0;
@@ -41,10 +41,11 @@
       margin-right: 0;
     }
 
-    a { 
+    a {
       border: none;
       color: #7B8193;
       font-size: 13px;
+      font-weight: 400;
       line-height: 28px;
       margin-right: 0;
       padding-left: 0;
@@ -54,12 +55,12 @@
       &.hover,
       &.active {
         background-color: transparent;
-        box-shadow: inset 0 -6px 0 0 #b5cbd0;
+        box-shadow: inset 0 -5px 0 0 #b5cbd0;
         color: $gray-darker;
       }
 
       &.active {
-        font-weight: bold;
+        font-weight: 600;
       }
     }
   }
@@ -67,7 +68,7 @@
   &.nav-tabs-lg {
     li {
       a {
-        font-size: 16px;
+        font-size: 15px;
       }
     }
   }
