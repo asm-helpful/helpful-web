@@ -67,7 +67,7 @@
                     <%= number_to_currency(plan.price, precision: 0) %>/month
                   <% end %>
                 </p>
-                <button class="btn btn-default <%= "btn-success" if plan == @account.billing_plan %>"
+                <button class="btn btn-default plan-select <%= "btn-success" if plan == @account.billing_plan %>"
                   data-plan-slug="<%= plan.slug %>"
                   data-plan-name="<%= plan.name %>"
                   data-plan-amount="<%= plan.formatted_price %>"
