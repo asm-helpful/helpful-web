@@ -23,7 +23,7 @@ var AssignmentButton = React.createClass({
   },
 
   focusInput: function(event) {
-    var $input = $('input', $(event.target).closest('.dropdown-menu'));
+    var $input = $('input', $(event.target).closest('button').siblings('.dropdown-menu'));
     setTimeout(function() { $input.focus() }, 0);
   },
 
