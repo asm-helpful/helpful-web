@@ -1,10 +1,10 @@
 var selectPlan = function($plan) {
   var slug = $plan.attr('data-plan-slug');
 
-  $('.plan-select').removeClass('btn-selected');
+  $('.plan-select').removeClass('btn-success');
   $('.plan-select-message').text('Subscribe');
 
-  $plan.addClass('btn-selected');
+  $plan.addClass('btn-success');
   $plan.children('.plan-select-message').text('Subscribed');
   $('[name="account[billing_plan_slug]"]').val(slug);
 }

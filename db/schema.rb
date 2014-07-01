@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140630204802) do
+ActiveRecord::Schema.define(version: 20140701165831) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 20140630204802) do
   add_index "beta_invites", ["email"], name: "index_beta_invites_on_email", unique: true, using: :btree
 
   create_table "billing_plans", id: false, force: true do |t|
-    t.uuid     "id",                  null: false
+    t.uuid     "id",                                  null: false
     t.string   "slug"
     t.string   "name"
     t.string   "chargify_product_id"
@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 20140630204802) do
     t.decimal  "price"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "hidden",              default: false, null: false
   end
 
   create_table "canned_responses", id: :uuid, default: "uuid_generate_v4()", force: true do |t|

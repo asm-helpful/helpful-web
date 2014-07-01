@@ -13,7 +13,7 @@ class AccountsController < ApplicationController
     @account = Account.new(account_params.merge(billing_plan_slug: 'starter-kit'))
     @user = User.new(user_params)
     @person = Person.new(person_params)
-    @plans = BillingPlan.order('price ASC')
+    @plans = BillingPlan.visible.order('price ASC')
 
     @person.email = @user.email
     @person.account = @account
@@ -53,7 +53,7 @@ class AccountsController < ApplicationController
   end
 
   def edit
-    @plans = BillingPlan.order('price ASC')
+    @plans = BillingPlan.visible.order('price ASC')
     @user = User.new
   end
 
