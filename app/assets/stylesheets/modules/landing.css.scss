@@ -148,9 +148,7 @@ border-top-color: rgb(228, 228, 228);
   margin-left: -60px;
   margin-right: -60px;
   &:after {
-    width: 630px;
-    margin-top: -178px;
-    margin-left: 101px;
+    margin: -178px 12.5% 0 12.5%;
     height: 100px;
     border-bottom: 3px solid lighten($blue, 20%);
     content: "";
