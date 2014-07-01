@@ -88,19 +88,11 @@ FEATURES
   div {
     margin-bottom: 40px;
   }
-  .feature1 {
-    float: left;
-    width: 68%;
-    margin-left: -20%;
-  }
-  .feature2 {
-    float: right;
-    width: 68%;
-    margin-right: -20%;
-  }
-  .feature3 {
+
+  .feature1, .feature2, .feature3 {
     width: 68%;
     margin: 0 auto;
+    text-align: center;
   }
 }
 
