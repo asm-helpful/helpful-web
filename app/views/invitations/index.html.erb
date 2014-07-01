@@ -27,7 +27,7 @@
 
             <div class="col-md-3">
               <div class="control-label-margin"></div>
-              <button class="btn btn-primary btn-block" rel="invite">Invite</button>
+              <button class="btn btn-primary btn-block large-margin-top" rel="invite">Invite</button>
             </div>
 
           </div>
@@ -35,7 +35,7 @@
         </div>
 
       </div>
-      
+
     </fieldset>
 
     <fieldset>
@@ -45,7 +45,7 @@
       <div class="form-group">
         <%= link_to 'Continue to try out the inbox', configuration_account_path(@account), class: 'btn btn-primary' %>
       </div>
-      
+
     </fieldset>
 
   </form>
@@ -65,7 +65,7 @@
 
     <div class="col-md-3">
       <div class="control-label-margin"></div>
-      <button class="btn btn-primary btn-block" rel="invite">Invite</button>
+      <button class="btn btn-primary btn-block large-margin-top" rel="invite">Invite</button>
     </div>
 
   </div>
@@ -91,7 +91,7 @@ var inviteUser = function($row) {
     dataType: 'json',
     contentType: 'application/json',
     data: JSON.stringify({
-      user: { email: email },  
+      user: { email: email },
       account_id: accountSlug,
       membership_role: 'agent'
     }),
@@ -105,7 +105,7 @@ var inviteUser = function($row) {
           )
         )
       );
-      
+
       $emailInput.parent().html(
         '<div class="form-text">' + email + '</div>'
       );
