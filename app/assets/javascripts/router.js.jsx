@@ -4,6 +4,9 @@ var Router = Backbone.Router.extend({
   routes : {
     ':accountSlug/inbox': 'inbox',
     ':accountSlug/archived': 'archive',
+    ':accountSlug/search': 'search',
+    ':accountSlug/search?q=:query': 'search',
+    ':accountSlug/search?utf8=%E2%9C%93&q=:query': 'search',
     ':accountSlug/:conversationNumber': 'conversation'
   },
 
@@ -13,6 +16,10 @@ var Router = Backbone.Router.extend({
 
   archive: function(accountSlug) {
     React.renderComponent(<ConversationList accountSlug={accountSlug} archived={true} />, $('.react')[0]);
+  },
+
+  search: function(accountSlug, query) {
+    React.renderComponent(<ConversationList accountSlug={accountSlug} query={query} />, $('.react')[0]);
   },
 
   conversation: function(accountSlug, conversationNumber) {

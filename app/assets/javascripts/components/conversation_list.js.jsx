@@ -56,7 +56,9 @@ var ConversationList = React.createClass({
             this.read(conversation);
             router.navigate(conversation.path);
           } else {
-            if(conversation.archived) {
+            if(this.props.query) {
+              router.navigate(this.searchPath());
+            } else if(conversation.archived) {
               router.navigate(this.archivePath());
             } else {
               router.navigate(this.inboxPath());
@@ -209,6 +211,8 @@ var ConversationList = React.createClass({
   updateRoute: function(conversation) {
     if(conversation.expanded) {
       router.navigate(conversation.path);
+    } else if(this.props.query) {
+      router.navigate(this.searchPath());
     } else if(conversation.archived) {
       router.navigate(this.archivePath());
     } else {
@@ -222,6 +226,10 @@ var ConversationList = React.createClass({
 
   archivePath: function() {
     return '/' + this.props.accountSlug + '/archived';
+  },
+
+  searchPath: function() {
+    return '/' + this.props.accountSlug + '/search?q=' + encodeURIComponent(this.props.query);
   },
 
   conversationsPath: function() {

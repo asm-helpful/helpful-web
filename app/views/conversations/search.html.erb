@@ -3,5 +3,6 @@
 <%= render "layouts/flash" %>
 
 <div class="container">
-  <%= react_component('ConversationList', 'accountSlug' => @account.slug, 'query' => params[:q]) %>
+  <h3 class="page-title">Search results for "<%= params[:q] %>"</h3>
+  <div class="react"><div>
 </div>
