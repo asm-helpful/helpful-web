@@ -1,5 +1,9 @@
 .navbar {
   font-weight: 300;
+
+  &.nav-justified {
+    text-align: justify !important;
+  }
 }
 
 .navbar-static-top {
