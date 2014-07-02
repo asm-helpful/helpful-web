@@ -1,5 +1,5 @@
 class WelcomeConversation
-  FROM = 'helpful@helpful.io'
+  FROM = 'patrick@helpful.io'
   SUBJECT = 'Welcome to Helpful!'
   CONTENT = <<END
 Glad you signed up. This is what your incoming support requests will look
@@ -15,7 +15,7 @@ like. Here are examples of how to use our important features.
 
 3.  Use a canned response to reply with a saved message.
 
-    ![canned-response.gif](https://d1015h9unskp4y.cloudfront.net/attachments/b39716a1-d17c-4fa5-84d1-ed12814eef64/tag.gif) 
+    ![canned-response.gif](https://d1015h9unskp4y.cloudfront.net/attachments/b39716a1-d17c-4fa5-84d1-ed12814eef64/tag.gif)
 
 **If you have any more questions just respond below.**
 
