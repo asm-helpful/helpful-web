@@ -33,6 +33,8 @@ class AccountsController < ApplicationController
         @account.subscribe!
       end
 
+      WelcomeConversation.create(@account, current_user) unless @account.conversations.welcome_email.exists?
+
       sign_in(@user)
 
       Analytics.identify(user_id: @user.id, traits: { email: @user.email, account_id: @account.id })
