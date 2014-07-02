@@ -1,0 +1,77 @@
+<div class="row">
+  <div class="col-md-6">
+    <table class="table">
+      <tbody>
+        <% @account.team.each do |membership| %>
+          <tr>
+            <td>
+              <%= avatar(membership.user, 40) %>
+            </td>
+            <td>
+              <% if membership.user.name %>
+                <strong><%= membership.user.name %></strong>
+                <br>
+                <span class="text-muted"><%= membership.user.email %></span>
+              <% else %>
+                <span class="geomicon ss-envelope text-muted"></span>
+                <%= membership.user.email %>
+              <% end %>
+            </td>
+            <td>
+              <% unless membership.user.accepted_or_not_invited? %>
+                <%= t('.invitation_sent') %> <%= time_ago_in_words(membership.user.invitation_sent_at) %> <%= t('general.ago') %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </div>
+  <div class="col-md-6">
+
+    <% if @user %>
+      <%= render 'shared/error_messages', target: @user %>
+    <% end %>
+
+    <%= form_for @user, url: invitation_path(:user), html: { method: :post } do |f| %>
+      <%= hidden_field_tag :account_id, @account.slug %>
+      <div class="form-group">
+        <%= f.label :email, class: 'control-label' %>
+        <div class="row">
+          <div class="col-md-6">
+            <%= f.text_field :email, class: 'form-control' %></p>
+          </div>
+          <div class="col-md-3">
+            <%= select_tag :membership_role, options_for_select(@account.roles_allowed_by(current_user)), class: 'form-control' %>
+          </div>
+          <div class="col-md-3">
+            <%= f.submit 'Send', class: 'btn btn-primary' %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <h4 class="section-title">
+      Invitations
+    </h4>
+
+    <table class="table">
+      <% @account.invitations.each do |membership| %>
+        <tr>
+          <td>
+            <% if membership.user.name %>
+              <strong><%= membership.user.name %></strong>
+            <% else %>
+              <%= membership.user.email %>
+            <% end %>
+          </td>
+
+          <td class="text-muted">
+            <%= t('.invitation_sent') %> <%= time_ago_in_words(membership.user.invitation_sent_at) %> <%= t('general.ago') %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

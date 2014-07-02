@@ -1,0 +1,59 @@
+<%= form_for @account, method: :patch, html: {class: 'form'} do |f| %>
+
+  <fieldset>
+
+    <h2>Upgrade Your Plan</h2>
+
+    <p>How many support requests do you think you'll have each month? Select the plan that works for you or <a href="mailto:helpful@helpful.io">ask us for help</a>.</p>
+
+    <div class="form-group">
+      <div class="row">
+        <% @plans.each do |plan| %>
+          <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="panel panel-default text-center">
+              <h4 class="text-capitalize">
+                <%= plan.name %>
+              </h4>
+              <p>
+                <strong><%= plan.max_conversations %> conversations</strong>
+              </p>
+              <p>
+                <% if plan.price.zero? %>
+                  Totally Free!
+                <% else %>
+                  <%= number_to_currency(plan.price, precision: 0) %>/month
+                <% end %>
+              </p>
+              <button class="btn btn-default <%= "btn-success" if plan == @account.billing_plan %>"
+                data-plan-slug="<%= plan.slug %>"
+                data-plan-name="<%= plan.name %>"
+                data-plan-amount="<%= plan.formatted_price %>"
+                data-plan-subscribe="<%= !plan.price.zero? %>">
+
+                <span class="glyphicon glyphicon-ok"></span>
+                <span class="plan-select-message">
+                  <% if plan == @account.billing_plan %>
+                    Subscribed
+                  <% else %>
+                    Subscribe
+                  <% end %>
+                </span>
+
+              </button>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <p>Think you might go through more than 300 conversations in a month? <a href="mailto:helpful@helpful.io">Let us know</a>, and we'll give you the best deal ever.</p>
+
+    <%= f.hidden_field :billing_plan_slug %>
+    <%= f.hidden_field :stripe_token %>
+
+    <div class="form-actions">
+      <%= f.submit t('.update_account'), class: 'btn btn-primary' %>
+    </div>
+  </fieldset>
+
+<% end %>

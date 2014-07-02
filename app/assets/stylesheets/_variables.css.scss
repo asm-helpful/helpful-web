@@ -14,8 +14,7 @@ $yellow:                #edda3b;
 $red:                   #ff4b4b;
 
 $brand-color:           $blue;
-$brand-bg:              #f4faf9;
-$brand-bg: desaturate(lighten($brand-color, 50%), 30%);
+$brand-bg:              desaturate(lighten($brand-color, 50%), 40%);
 $brand-border:          #dae8ec;
 $brand-primary:         $blue;
 $brand-success:         $green;

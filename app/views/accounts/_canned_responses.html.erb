@@ -1,0 +1,24 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Key</th>
+      <th>Response</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @account.canned_responses.each do |canned_response| %>
+      <tr>
+        <td valign="top"><strong><code><%= canned_response.key %></code></strong></td>
+        <td valign="top"><%= canned_response.message %></td>
+        <td valign="top">
+          <a href="<%= edit_account_canned_response_path(canned_response.account, canned_response) %>">Edit</a>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<a class="btn btn-success btn-sm" href="<%= new_account_canned_response_path(@account) %>">
+  <%= t('.create_canned_response') %>
+</a>

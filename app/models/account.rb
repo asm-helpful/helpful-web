@@ -198,6 +198,14 @@ class Account < ActiveRecord::Base
     conversations.where(archived: true).count
   end
 
+  def team
+    memberships.select {|m| m.user.accepted_or_not_invited? }
+  end
+
+  def invitations
+    memberships.reject {|m| m.user.accepted_or_not_invited? }
+  end
+
   protected
 
   def generate_webhook_secret

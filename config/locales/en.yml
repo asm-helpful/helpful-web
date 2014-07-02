@@ -86,7 +86,7 @@ en:
       webhook_url_placeholder: "https://www.example.com/webhooks/helpful"
       webhook_secret: "Webhook Secret"
       incoming_email: "Incoming e-mail address"
-      update_account: "Save"
+      update_account: "Update account settings"
       invitations: "Invitations"
       send_invitation: "Send an Invitation"
       invitations_sent: "Invitations Sent"

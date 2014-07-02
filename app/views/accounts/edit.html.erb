@@ -48,156 +48,15 @@
     </div><!-- #basic -->
 
     <div class="tab-pane" id="team">
-
-      <h1 class="page-title">
-        <%= t('.invitations') %>
-      </h1>
-
-      <h4 class="section-title">
-        <%= t('.send_invitation') %>
-      </h4>
-
-      <% if @user %>
-        <%= render 'shared/error_messages', target: @user %>
-      <% end %>
-
-      <%= form_for @user, url: invitation_path(:user), html: { method: :post } do |f| %>
-        <%= hidden_field_tag :account_id, @account.slug %>
-        <div class="form-group">
-          <%= f.label :email, class: 'control-label' %>
-          <div class="row">
-            <div class="col-md-6">
-              <%= f.text_field :email, class: 'form-control' %></p>
-            </div>
-            <div class="col-md-3">
-              <%= select_tag :membership_role, options_for_select(@account.roles_allowed_by(current_user)), class: 'form-control' %>
-            </div>
-            <div class="col-md-3">
-              <%= f.submit 'Send', class: 'btn btn-primary' %>
-            </div>
-          </div>
-        </div>
-      <% end %>
-
-      <h4 class="section-title">
-        <%= t('invitations_sent') %>
-      </h4>
-
-      <ul class="list-unstyled">
-        <% @account.memberships.each do |membership| %>
-          <li>
-            <p>
-              <% if membership.user.name %>
-                <strong><%= membership.user.name %></strong>
-              <% else %>
-                <%= membership.user.email %>
-              <% end %>
-
-              <span class="badge badge-info">
-                <%= t('general.roles.' + membership.role) %>
-              </span>
-
-              <% unless membership.user.accepted_or_not_invited? %>
-                <span class="badge badge-timestamp badge-timestamp-stale">
-                  <%= t('.invitation_sent') %> <%= time_ago_in_words(membership.user.invitation_sent_at) %> <%= t('general.ago') %>
-                </span>
-              <% end %>
-            </p>
-          </li>
-        <% end %>
-      </ul>
-
+      <%= render 'team' %>
     </div><!-- #team -->
 
     <div class="tab-pane" id="billing">
-
-
-      <%= form_for @account, method: :patch, html: {class: 'form'} do |f| %>
-
-        <fieldset>
-
-          <h2>Upgrade Your Plan</h2>
-
-          <p>How many support requests do you think you'll have each month? Select the plan that works for you or <a href="mailto:helpful@helpful.io">ask us for help</a>.</p>
-
-          <div class="form-group">
-            <div class="row">
-              <% @plans.each do |plan| %>
-                <div class="col-xs-12 col-sm-6 col-md-3">
-                  <div class="panel panel-default text-center">
-                    <h4 class="text-capitalize">
-                      <%= plan.name %>
-                    </h4>
-                    <p>
-                      <strong><%= plan.max_conversations %> conversations</strong>
-                    </p>
-                    <p>
-                      <% if plan.price.zero? %>
-                        Totally Free!
-                      <% else %>
-                        <%= number_to_currency(plan.price, precision: 0) %>/month
-                      <% end %>
-                    </p>
-                    <button class="btn btn-default <%= "btn-success" if plan == @account.billing_plan %>"
-                      data-plan-slug="<%= plan.slug %>"
-                      data-plan-name="<%= plan.name %>"
-                      data-plan-amount="<%= plan.formatted_price %>"
-                      data-plan-subscribe="<%= !plan.price.zero? %>">
-
-                      <span class="glyphicon glyphicon-ok"></span>
-                      <span class="plan-select-message">
-                        <% if plan == @account.billing_plan %>
-                          Subscribed
-                        <% else %>
-                          Subscribe
-                        <% end %>
-                      </span>
-
-                    </button>
-                  </div>
-                </div>
-              <% end %>
-            </div>
-          </div>
-
-          <p>Think you might go through more than 300 conversations in a month? <a href="mailto:helpful@helpful.io">Let us know</a>, and we'll give you the best deal ever.</p>
-
-          <%= f.hidden_field :billing_plan_slug %>
-          <%= f.hidden_field :stripe_token %>
-
-          <div class="form-actions">
-            <%= f.submit t('.update_account'), class: 'btn btn-primary' %>
-          </div>
-        </fieldset>
-
-      <% end %>
+      <%= render 'billing' %>
     </div><!-- #billing -->
 
     <div class="tab-pane" id="canned-responses">
-      <div>
-        <a class="btn btn-primary pull-right" href="<%= new_account_canned_response_path(@account) %>">
-          <%= t('.create_canned_response') %>
-        </a>
-
-        <h1 class="page-title">
-          <%= t('.canned_responses') %>
-        </h1>
-      </div>
-
-      <% if @account.canned_responses.any? %>
-        <div class="list">
-          <% @account.canned_responses.each do |canned_response| %>
-            <div class="list-item">
-              <a href="<%= edit_account_canned_response_path(canned_response.account, canned_response) %>">
-                <strong><%= canned_response.key %></strong>
-                <p><%= canned_response.message %></p>
-              </a>
-            </div>
-          <% end %>
-        </div>
-      <% else %>
-        <p><%= t('.none_created') %></p>
-      <% end %>
+      <%= render 'canned_responses' %>
     </div><!-- #canned-responses -->
   </div>
 
