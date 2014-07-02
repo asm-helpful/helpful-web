@@ -290,11 +290,11 @@ $navbar-inverse-border:                     darken($navbar-inverse-bg, 10%);
 // Inverted navbar links
 $navbar-inverse-link-color:                 $navbar-inverse-color;
 $navbar-inverse-link-hover-color:           white;
-$navbar-inverse-link-hover-bg:              transparent;
+$navbar-inverse-link-hover-bg:              darken($navbar-inverse-bg, 20%);
 $navbar-inverse-link-active-color:          $navbar-inverse-link-hover-color;
 $navbar-inverse-link-active-bg:             darken($navbar-inverse-bg, 20%);
-$navbar-inverse-link-disabled-color:        #444;
-$navbar-inverse-link-disabled-bg:           transparent;
+$navbar-inverse-link-disabled-color:        $navbar-inverse-color;
+$navbar-inverse-link-disabled-bg:           #333;
 
 // Inverted navbar brand label
 $navbar-inverse-brand-color:                $navbar-inverse-link-color;

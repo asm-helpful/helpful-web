@@ -1,12 +1,20 @@
-@import 'addons/clearfix';
-
-// inspect this once again, doesn't look like its required to do such stuff
-
 .nav-steps {
-  position: relative;
-  text-align: justify !important;
-  width: 96%;
+  width: 100%;
   height: $navbar-height;
+  overflow: hidden;
+  position: relative;
+
+  &::after {
+    content: "\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7";
+    color: $blue-gray;
+    letter-spacing: 3px;
+    position: absolute;
+    top: 0;
+    height: $navbar-height;
+    line-height: $navbar-height;
+    overflow: hidden;
+    padding: 0 10px;
+  }
 
   > li {
     float: none;
@@ -14,9 +22,8 @@
     z-index: 2;
     display: inline-block;
 
-    > a, div {
-      background-color: $navbar-default-bg;
-      color: $gray-dark;
+    > a {
+      background-color: $navbar-inverse-bg;
       display: inline-block;
       padding: 15px 10px;
       position: relative;
@@ -41,19 +48,6 @@
         .glyphicon {
           display: block;
           color: $blue-gray;
-        }
-
-        &::after {
-          content: "\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7\00B7";
-          color: $blue-gray;
-          font-size: 10px;
-          letter-spacing: 3px;
-          position: absolute;
-          top: 0;
-          height: $navbar-height;
-          line-height: $navbar-height;
-          overflow: hidden;
-          padding: 0 10px;
         }
       }
 
