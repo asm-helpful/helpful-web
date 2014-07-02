@@ -44,12 +44,12 @@
   <%= form_for @account, method: :patch, html: {class: 'form'} do |f| %>
 
     <fieldset>
-      
+
       <h2>Upgrade Your Plan</h2>
 
       <p>How many support requests do you think you'll have each month? Select the plan that works for you or <a href="mailto:helpful@helpful.io">ask us for help</a>.</p>
 
-      <div class="form-group">
+      <div class="form-group" id="subscription-plans">
         <div class="row">
           <% @plans.each do |plan| %>
             <div class="col-xs-12 col-sm-6 col-md-3">
