@@ -195,7 +195,12 @@ var ConversationList = React.createClass({
       var conversations = this.state.conversations.map(this.renderConversation);
       return <div className="list list-conversations">{conversations}</div>
     } else if(this.state.loaded) {
-      return <InboxZero />
+      if (this.state.archived) {
+        return <ArchiveZero />
+      }
+      else {
+        return <InboxZero />
+      }
     } else {
       return <div></div>
     }
