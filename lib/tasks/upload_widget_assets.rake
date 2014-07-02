@@ -4,8 +4,8 @@ WIDGET_ASSETS = [
   'widget.js',
   'widget-content.js',
   'widget.css',
-  'icons/arrow.svg',
-  'icons/close.svg'
+  'widget-arrow.svg',
+  'widget-close.svg'
 ]
 
 desc 'Compile assets and upload widget assets to S3'
