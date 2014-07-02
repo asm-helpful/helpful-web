@@ -3,19 +3,5 @@
 <%= render "layouts/flash" %>
 
 <div class="container">
-  <h1 class="page-title">
-    <% if params[:tag].present? %>
-      Tagged with #<%= params[:tag] %>
-    <% elsif @assignee %>
-      Assigned to <%= @assignee.name %>
-    <% else %>
-      <%= t('.search_results_for') %> "<%= params[:q] %>"
-    <% end %>
-  </h1>
-
-  <% if @conversations.any? %>
-    <%= render 'conversations/inbox', conversations: @conversations %>
-  <% else %>
-    <h3><%= t('.no_results') %></h3>
-  <% end %>
+  <%= react_component('ConversationList', 'accountSlug' => @account.slug, 'query' => params[:q]) %>
 </div>

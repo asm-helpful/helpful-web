@@ -5,7 +5,7 @@ var ConversationList = React.createClass({
     return {
       loaded: false,
       conversations: [],
-      archived: this.props.archived
+      archived: this.props.archived,
     };
   },
 
@@ -195,7 +195,7 @@ var ConversationList = React.createClass({
       var conversations = this.state.conversations.map(this.renderConversation);
       return <div className="list list-conversations">{conversations}</div>
     } else if(this.state.loaded) {
-      if (this.state.archived) {
+      if (this.state.archived || this.props.query) {
         return <EmptyConversationList />
       }
       else {
@@ -225,7 +225,15 @@ var ConversationList = React.createClass({
   },
 
   conversationsPath: function() {
-    return '/accounts/' + this.props.accountSlug + '/conversations.json?archived=' + this.state.archived;
+    var path = '/accounts/' + this.props.accountSlug + '/conversations.json';
+
+    if(!this.props.query) {
+      path += '?archive=' + this.state.archive;
+    } else {
+      path += '?q=' + this.props.query;
+    }
+
+    return path;
   },
 
   conversationPath: function() {

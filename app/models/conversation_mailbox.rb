@@ -58,6 +58,6 @@ class ConversationMailbox
   end
 
   def query
-    params[:query].to_s.strip
+    params[:q].to_s.strip
   end
 end
