@@ -1,4 +1,6 @@
 .dropdown-menu {
+  border: none;
+
   .form-control {
     margin: $padding-small-vertical $padding-small-horizontal;
     width: auto;
@@ -6,6 +8,10 @@
 
   .avatar {
     margin-right: $padding-small-horizontal;
+  }
+
+  > li > a > .badge {
+    margin-left: $padding-base-horizontal;
   }
 
   > .active .badge {
