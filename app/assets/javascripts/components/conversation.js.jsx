@@ -38,7 +38,7 @@ var Conversation = React.createClass({
     if(this.hasReply() && !this.props.conversation.expanded) {
       return (
         <div className="reply">
-          <i className="ss-reply"></i>
+          <span className="geomicon ss-reply"></span>
         </div>
       );
     }

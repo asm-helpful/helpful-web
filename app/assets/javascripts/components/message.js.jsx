@@ -5,7 +5,7 @@ var Message = React.createClass({
     if(this.props.person.agent) {
       return (
         <div className="reply">
-          <i className="ss-reply"></i>
+          <span className="geomicon ss-reply"></span>
         </div>
       );
     }
@@ -27,7 +27,7 @@ var Message = React.createClass({
   },
 
   created: function() {
-    return moment(this.props.created).format("h:ma D/M/YYYY");
+    return moment(this.props.created).format("h:mma D/M/YYYY");
   },
 
   content: function() {
