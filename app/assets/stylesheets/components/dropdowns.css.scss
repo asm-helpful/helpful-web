@@ -7,4 +7,9 @@
   .avatar {
     margin-right: $padding-small-horizontal;
   }
+
+  > .active .badge {
+    color: $component-active-bg;
+    background-color: $component-active-color;
+  }
 }

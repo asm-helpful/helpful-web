@@ -190,6 +190,14 @@ class Account < ActiveRecord::Base
     conversations.including_unpaid.pluck(:tags).flatten.uniq.sort
   end
 
+  def inbox_count
+    conversations.where(archived: false).count
+  end
+
+  def archived_count
+    conversations.where(archived: true).count
+  end
+
   protected
 
   def generate_webhook_secret

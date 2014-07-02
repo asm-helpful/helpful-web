@@ -3,8 +3,6 @@
   position: relative;
 
   input {
-    background-color: $navbar-default-bg;
-    border: none;
     color: $gray-darker;
     font-size: 14px;
     height: 50px;
@@ -20,12 +18,12 @@
     &:focus {
       background-color: $navbar-default-link-hover-bg;
       color: white;
-      
+
       @include placeholder {
         color: $gray-dark;
       }
 
-      // ~ .search-bar-clear-icon { 
+      // ~ .search-bar-clear-icon {
       //   visibility: visible;
       // }
     }

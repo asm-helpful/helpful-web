@@ -1,47 +1,38 @@
 .navbar {
-  font-weight: 300;
+  border-bottom: none;
 }
 
-.navbar-static-top {
-  border-width: 0;
-}
+.navbar-inverse {
 
-// TODO: Use navbar-inverse variables instead
-.navbar-default {
   .dropdown-menu {
-    background-color: $gray-darker;
+    background-color: $navbar-inverse-link-active-bg;
 
-    li {
-      background-color: $gray-darker;
+    > .divider {
+      background-color: rgba(white, .1);
+    }
 
-      &.divider {
-        background-color: $gray-dark;
-      }
+    > li:not(.active) {
+      color: $navbar-inverse-color;
 
-      a {
-        color: white;
-        font-weight: 300;
-        padding: $padding-large-vertical $padding-base-horizontal;
+      > a {
+        color: $navbar-inverse-link-color;
 
         &:hover {
-          background-color: $gray-dark;
+          color: $navbar-inverse-link-hover-color;
+          background-color: $navbar-inverse-link-hover-bg;
         }
       }
     }
   }
-}
 
-.navbar-brand {
-  background-color: $brand-color;
+  .navbar-input-group {
+    > .input-group-addon {
+      color: $navbar-inverse-color;
+    }
 
-  &:hover {
-    background-color: darken($brand-color, 5%) !important;
-  }
-
-  img {
-    margin-top: -3px;
-    height: 30px;
-    width: 30px;
+    > .form-control {
+      color: $navbar-inverse-link-active-color;
+    }
   }
 }
 

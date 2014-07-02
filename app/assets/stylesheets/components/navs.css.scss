@@ -1,0 +1,20 @@
+.nav-tabs {
+  border-bottom: none;
+
+  > li,
+  > li.active {
+    margin-bottom: 0;
+
+    > a,
+    > a:hover,
+    > a:focus {
+      border: none;
+    }
+  }
+}
+
+.tab-content {
+  background-color: white;
+  padding: 60px - 1px;
+  border-top: none;
+}
