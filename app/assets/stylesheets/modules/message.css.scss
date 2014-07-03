@@ -4,7 +4,7 @@
 
 .message-header {
   font-size: $font-size-small;
-  padding: $padding-large-vertical $padding-large-horizontal;
+  padding: $padding-large-vertical $grid-gutter-width;
 
   > .avatar {
     float: left;
@@ -14,6 +14,6 @@
 }
 
 .message-content {
-  padding-left: $padding-large-horizontal;
-  padding-right: $padding-large-horizontal;
+  padding-left: $grid-gutter-width;
+  padding-right: $grid-gutter-width;
 }

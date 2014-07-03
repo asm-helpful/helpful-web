@@ -36,8 +36,8 @@
 
 .conversation-header {
   color: $gray-darker;
-  padding: $padding-large-vertical $padding-large-horizontal;
-  padding-left: $padding-large-horizontal + 30px + $padding-base-horizontal;
+  padding: 15px $grid-gutter-width;
+  padding-left: $grid-gutter-width + 30px + $padding-base-horizontal;
 
   > .status {
     float: left;
@@ -68,7 +68,7 @@
 
 .conversation-response {
   border-top: 1px solid $brand-border;
-  padding: $padding-large-vertical $padding-large-horizontal;
+  padding: $padding-large-vertical $grid-gutter-width;
 
   .form-control {
     height: auto !important;
