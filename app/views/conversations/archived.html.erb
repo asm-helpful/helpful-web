@@ -3,5 +3,6 @@
 <%= render 'shared/navbar' %>
 <%= render 'layouts/flash' %>
 
-<div class="container react">
+<div class="container">
+  <%= react_component('ConversationList', 'accountSlug' => @account.slug, 'archived' => true) %>
 </div>

@@ -4,5 +4,5 @@
 
 <div class="container">
   <h3 class="page-title">Search results for "<%= params[:q] %>"</h3>
-  <div class="react"><div>
+  <%= react_component('ConversationList', 'accountSlug' => @account.slug, 'query' => params[:q]) %>
 </div>
