@@ -236,7 +236,7 @@ var ConversationList = React.createClass({
     var path = '/accounts/' + this.props.accountSlug + '/conversations.json';
 
     if(!this.props.query) {
-      path += '?archive=' + this.state.archive;
+      path += '?archive=' + this.state.archived;
     } else {
       path += '?q=' + this.props.query;
     }
