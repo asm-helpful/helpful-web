@@ -1,2 +1,5 @@
 <%= render 'shared/navbar' %>
-<div class="container react"></div>
+
+<div class="container">
+  <%= react_component('ConversationList', 'accountSlug' => @account.slug, 'conversationNumber' => params[:id]) %>
+</div>

@@ -54,15 +54,6 @@ var ConversationList = React.createClass({
           if(expanded) {
             conversation.unread = false;
             this.read(conversation);
-            router.navigate(conversation.path);
-          } else {
-            if(this.props.query) {
-              router.navigate(this.searchPath());
-            } else if(conversation.archived) {
-              router.navigate(this.archivePath());
-            } else {
-              router.navigate(this.inboxPath());
-            }
           }
         } else {
           conversation.expanded = false;
@@ -86,13 +77,13 @@ var ConversationList = React.createClass({
           switch(streamItem.type) {
             case 'message':
               conversation.messages.push(streamItem);
-              break;
+            break;
             case 'assignmentevent':
               conversation.assignment_events.push(streamItem);
-              break;
+            break;
             case 'tagevent':
               conversation.tag_events.push(streamItem);
-              break;
+            break;
           }
         }
 
@@ -138,8 +129,6 @@ var ConversationList = React.createClass({
       concat(this.state.conversations.slice(index + 1));
 
     this.setState({ conversations: conversations });
-
-    this.updateRoute(conversation);
   },
 
   unarchiveHandler: function(conversation) {
@@ -175,8 +164,6 @@ var ConversationList = React.createClass({
       concat(this.state.conversations.slice(index + 1));
 
     this.setState({ conversations: conversations });
-
-    this.updateRoute(conversation);
   },
 
   renderConversation: function(conversation) {
@@ -205,18 +192,6 @@ var ConversationList = React.createClass({
       }
     } else {
       return <div></div>
-    }
-  },
-
-  updateRoute: function(conversation) {
-    if(conversation.expanded) {
-      router.navigate(conversation.path);
-    } else if(this.props.query) {
-      router.navigate(this.searchPath());
-    } else if(conversation.archived) {
-      router.navigate(this.archivePath());
-    } else {
-      router.navigate(this.inboxPath());
     }
   },
 

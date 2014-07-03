@@ -99,10 +99,6 @@ GEM
     codeclimate-test-reporter (0.3.0)
       simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.1.0)
-    coffee-script (2.2.0)
-      coffee-script-source
-      execjs
-    coffee-script-source (1.7.0)
     columnize (0.8.9)
     confyio (1.2.0)
       faraday (>= 0.9.0)
@@ -140,7 +136,6 @@ GEM
     dotenv (0.9.0)
     dotenv-rails (0.9.0)
       dotenv (= 0.9.0)
-    ejs (1.0.0)
     elasticsearch (1.0.1)
       elasticsearch-api (= 1.0.1)
       elasticsearch-transport (= 1.0.1)
@@ -310,10 +305,6 @@ GEM
     rails-assets-js-md5 (1.1.0)
     rails-assets-moment (2.5.0)
     rails-assets-showdown (0.3.1)
-    rails-backbone (0.7.2)
-      coffee-script (~> 2.2.0)
-      ejs (~> 1.0.0)
-      railties (>= 3.1.0)
     rails_12factor (0.0.2)
       rails_serve_static_assets
       rails_stdout_logging
@@ -477,7 +468,6 @@ DEPENDENCIES
   rails-assets-js-md5
   rails-assets-moment
   rails-assets-showdown
-  rails-backbone
   rails_12factor
   rake
   react-rails!
