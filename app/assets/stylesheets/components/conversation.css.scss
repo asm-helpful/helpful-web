@@ -68,14 +68,6 @@ $gutter: 46px;
   }
 }
 
-.conversation-stream {
-  .stream-item:first-child {
-    .person {
-      display: none;
-    }
-  }
-}
-
 .conversation-response {
   border-top: 1px solid $brand-border;
   padding: $padding-large-vertical $padding-large-horizontal;
