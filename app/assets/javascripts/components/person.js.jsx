@@ -4,10 +4,6 @@ var Person = React.createClass({
   render: function() {
     return (
       <div className="person">
-        <div className="person-avatar">
-          <Avatar person={this.props.person} size="22" />
-        </div>
-
         {this.label()}
       </div>
     );

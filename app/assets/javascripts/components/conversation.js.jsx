@@ -56,7 +56,10 @@ var Conversation = React.createClass({
         <div className="conversation-header">
           {this.renderStatus()}
 
+          <Avatar person={this.props.conversation.creator_person} size="30" />
+
           {this.renderActions()}
+
           <div className="conversation-person">
             <Person person={this.props.conversation.creator_person} />
           </div>
