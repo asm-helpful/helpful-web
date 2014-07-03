@@ -12,13 +12,11 @@ var Person = React.createClass({
   label: function() {
     if(this.props.person.name) {
       return (
-        <span>
-          <strong>{this.props.person.name}</strong>
-        </span>
+        <span>{this.props.person.name}</span>
       )
     } else {
       return (
-        <strong>{this.props.person.email}</strong>
+        <span>{this.props.person.email}</span>
       )
     }
   }
