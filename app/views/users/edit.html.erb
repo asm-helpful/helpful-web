@@ -23,10 +23,12 @@
         <%= ff.label :username, t('accounts.general.username'), class: 'control-label' %>
         <%= ff.text_field :username, placeholder: t('accounts.general.username_placeholder'), class: 'form-control' %>
       </div>
-      <div class="form-group">
+      <div id="update-avatar" class="form-group">
         <%= ff.label :avatar, t('general.avatar'), class: 'control-label' %>
-        <%= ff.file_field :avatar %>
-        <%= avatar(current_user, 30) %>
+        <div>
+          <%= avatar(current_user, 30) %>
+          <%= ff.file_field :avatar %>
+        </div>
       </div>
     <% end %>
 
