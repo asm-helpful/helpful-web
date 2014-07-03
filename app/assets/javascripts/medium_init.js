@@ -2,7 +2,8 @@ $(function(){
   var $replyMessage = $('[data-reply-to-message]');
 
   var editor = new MediumEditor($replyMessage, {
-    placeholder: $replyMessage.attr('placeholder')
+    placeholder: $replyMessage.attr('placeholder'),
+    cleanPastedHTML: true
   });
 
   setTimeout(function() { $replyMessage.focus() }, 0);
