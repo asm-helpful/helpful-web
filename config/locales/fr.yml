@@ -168,7 +168,9 @@ fr:
       in_house: "Interne"
       in_house_text: "Si vous préférez votre propre logiciel, vous pouvez prendre Helpful et le privatiser pour vos propres applications."
       contact_us: "Contactez-Nous"
-  
+      footer:
+        copyright: "All content &copy; Assembly Inc. who loves customers, hates spam, and believes support is naturally human."
+
   canned_responses:
     general:
       canned_response: "Réponse Tout Fait"
@@ -178,7 +180,7 @@ fr:
       none_created: "Personne a créé une réponse tout fait created a canned response à l'instant."
     new:
       help: |-
-        Créez une réponse tout fait pour les messages qui sont envoyés souvent ou qui ont besoin d'être cohérente. 
+        Créez une réponse tout fait pour les messages qui sont envoyés souvent ou qui ont besoin d'être cohérente.
         Commencez avec une touche, qui est utilisé  pour remonter la réponse complète
         de la barre de commande. Pour en savoir plus, lisez l'
       faq: "FAQ"
