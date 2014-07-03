@@ -5,7 +5,7 @@ var Message = React.createClass({
     if(this.props.person.agent) {
       return (
         <div className="reply">
-          <span className="geomicon ss-reply"></span>
+          <span className="geomicon geomicon-reply"></span>
         </div>
       );
     }
