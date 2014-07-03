@@ -191,11 +191,11 @@ class Account < ActiveRecord::Base
   end
 
   def inbox_count
-    conversations.where(archived: false).count
+    conversations.with_messages.where(archived: false).count
   end
 
   def archived_count
-    conversations.where(archived: true).count
+    conversations.with_messages.where(archived: true).count
   end
 
   def team
