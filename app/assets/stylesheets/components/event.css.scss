@@ -1,5 +1,9 @@
 .event {
-  .person {
-    display: inline-block;
+  padding: $padding-large-vertical $padding-large-horizontal;
+  color: $text-muted;
+  font-size: $font-size-small;
+
+  > .person {
+    display: inline;
   }
 }

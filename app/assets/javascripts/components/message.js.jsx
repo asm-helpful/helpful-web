@@ -14,12 +14,14 @@ var Message = React.createClass({
   render: function() {
     return (
       <div className="message">
-        <small className="pull-right text-muted">
-          {this.created()}
-        </small>
-        <div className="message-person">
+        <div className="message-header">
+          <span className="pull-right text-muted">
+            {this.created()}
+          </span>
+          <Avatar person={this.props.person} size="20" />
           <Person person={this.props.person} />
         </div>
+
         {this.renderReply()}
         <div className="message-content" dangerouslySetInnerHTML={{__html: this.content()}} />
       </div>

@@ -14,8 +14,6 @@ var Person = React.createClass({
       return (
         <span>
           <strong>{this.props.person.name}</strong>
-          &nbsp;
-          <span className="text-muted">{this.props.person.email}</span>
         </span>
       )
     } else {

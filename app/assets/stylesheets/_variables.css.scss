@@ -13,14 +13,15 @@ $green:                 #82c451;
 $yellow:                #edda3b;
 $red:                   #ff4b4b;
 
-$brand-color:           $blue;
-$brand-bg:              desaturate(lighten($brand-color, 50%), 40%);
-$brand-border:          #dae8ec;
 $brand-primary:         $blue;
 $brand-success:         $green;
 $brand-info:            $yellow;
 $brand-warning:         $yellow;
 $brand-danger:          $red;
+
+$brand-bg:              desaturate(lighten($brand-primary, 50%), 40%);
+$brand-border:          #dae8ec;
+$brand-divider:         rgba(black, .02);
 
 
 // Scaffolding
@@ -112,7 +113,7 @@ $table-border-color:            #ddd;
 
 $btn-font-weight:                normal;
 
-$btn-default-color:              $brand-color;
+$btn-default-color:              $brand-primary;
 $btn-default-bg:                 white;
 $btn-default-border:             $brand-border;
 
@@ -155,7 +156,7 @@ $input-bg-disabled:              $gray-lighter;
 $input-color:                    $gray-darker;
 $input-border:                   $brand-border;
 $input-border-radius:            $border-radius-base;
-$input-border-focus:             $brand-color;
+$input-border-focus:             $brand-primary;
 
 $input-color-placeholder:        $gray-light;
 
@@ -163,7 +164,7 @@ $input-height-base:              ($line-height-computed + ($padding-base-vertica
 $input-height-large:             (ceil($font-size-large * $line-height-large) + ($padding-large-vertical * 2) + 2) * 1.3;
 $input-height-small:             (floor($font-size-small * $line-height-small) + ($padding-small-vertical * 2) + 2) * 1.3;
 
-$legend-color:                   darken($brand-color, 25%);
+$legend-color:                   darken($brand-primary, 25%);
 $legend-border-color:            $brand-border;
 
 $input-group-addon-bg:           $gray-lighter;
