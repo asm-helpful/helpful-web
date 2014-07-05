@@ -2,8 +2,9 @@
   border-bottom: none;
 
   .navbar-header .navbar-brand {
+    background-color: #16a0b5;
     margin-left: 0px;
-    padding: 10px 0;
+    padding: 10px;
   }
 }
 
@@ -107,7 +108,7 @@
 @media (max-width: 768px) {
   .navbar {
     .navbar-header .navbar-brand {
-      padding: 14px 15px;
+      width: 100%;
     }
   }
 
