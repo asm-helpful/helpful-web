@@ -1,10 +1,15 @@
 <div class="navbar navbar-inverse navbar-static-top">
 
   <div class="container">
+    <div class="navbar-header">
+      <a href="<%= root_path %>" class="navbar-brand">
+        <%= image_tag image_path('logo.png'), alt: 'Helpful', width: 30, height: 30 %>
+      </a>
+    </div>
+
     <ul class="nav navbar-nav navbar-left">
       <li class="dropdown <%= nav_active_class(:account) %>">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          <%#= image_tag image_path('logo.png'), alt: 'Helpful', width: 20, height: 20, class: 'navbar-brand' %>
           <%= @account.name %>
           <b class="caret"></b>
         </a>

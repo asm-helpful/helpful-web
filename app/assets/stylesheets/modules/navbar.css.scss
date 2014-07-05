@@ -1,5 +1,10 @@
 .navbar {
   border-bottom: none;
+
+  .navbar-header  .navbar-brand {
+    margin-left: 0px;
+    padding: 10px 0;
+  }
 }
 
 .navbar-inverse {
@@ -100,6 +105,12 @@
 }
 
 @media (max-width: 768px) {
+  .navbar {
+    .navbar-header  .navbar-brand {
+      padding: 14px 15px;
+    }
+  }
+
   .navbar-nav {
     background: #4D5055;
     .btn-primary {
