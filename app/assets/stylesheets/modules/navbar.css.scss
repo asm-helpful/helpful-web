@@ -1,14 +1,13 @@
 .navbar {
   border-bottom: none;
+}
 
+.navbar-inverse {
   .navbar-header .navbar-brand {
     background-color: #16a0b5;
     margin-left: 0px;
     padding: 10px;
   }
-}
-
-.navbar-inverse {
 
   .dropdown-menu {
     background-color: $navbar-inverse-link-active-bg;
