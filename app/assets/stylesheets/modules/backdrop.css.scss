@@ -3,12 +3,13 @@
 
   h1 {
     color: white;
-    font-size: 30px;
+    font-size: 34px;
     line-height: 1.2;
   }
 
   h1 + p {
-    margin-top: 20px;
+    margin: 35px 0 55px 0;
+    font-family: $font-family-serif;
   }
 
   p + p {
@@ -16,15 +17,19 @@
   }
 
   p {
-    font-family: $font-family-serif;
     color: $gray-light;
-    font-size: 20px;
+    font-size: 24px;
   }
 
   .btn {
     background-color: transparent;
     border: 1px solid $blue-highlight;
     color: $blue-highlight;
+  }
+
+  .hero .btn {
+    font-size: 18px;
+    padding: 12px 38px;
   }
 
   .btn-default {
