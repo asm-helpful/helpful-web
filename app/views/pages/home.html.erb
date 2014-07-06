@@ -107,6 +107,9 @@
         </ul>
       </div>
     </div>
+    <div class="text-center">
+      <p class="call-to-action-btn wow pulse" data-wow-duration="0.8s" data-wow-delay="0.2s"><%= link_to 'View Features', '#features', class: 'btn btn-danger btn-lg' %></p>
+    </div>
   </div>
 </div>
 
@@ -116,7 +119,7 @@
 
       <div class="container text-center wow fadeInDown" data-wow-duration="0.8s">
         <div class="col-md-8 col-md-offset-2">
-          <h1>Features that serve a purpose</h1>
+          <h1>Features that serve a purpose.</h1>
           <h3>Assign teammates on the fly. Organize with tags, and use consistent canned responses to speed up your workflow. Spend more time with your customers.</h3>
         </div>
       </div>
@@ -136,14 +139,19 @@
         </div>
       </div>
     </div>
+    <div class="text-center">
+      <p class="call-to-action-btn wow pulse" data-wow-duration="0.8s" data-wow-delay="0.2s"><%= link_to 'View Pricing', '#pricing', class: 'btn btn-danger btn-lg' %></p>
+    </div>
   </div>
 </div>
 
 <div class="page page-section pricing-section" id="pricing">
   <div class="container text-center wow fadeInDown" data-wow-duration="0.8s">
-    <h1>A price that grows with your product</h1>
-    <p>The number of people you want supporting customers should never be constrained by your support tool. With helpful, you'll never pay per seat, you pay per conversations.
-    <p class="conversation-explaination simptip-smooth simptip-position-top" data-tooltip="<%= t(".conversation-explaination") %>"><u>Customer Conversation</u> per month</p>
+    <div class="col-md-8 col-md-offset-2">
+      <h1>A price that grows with your product.</h1>
+      <h3>The number of people you want supporting customers should never be constrained by your support tool. With helpful, you'll never pay per seat, you pay per conversations.</h3>
+      <p class="conversation-explaination simptip-smooth simptip-position-top" data-tooltip="<%= t(".conversation-explaination") %>"><u>Customer Conversation</u> per month</p>
+    </div>
   </div>
   <div class="container">
     <div class="pricing-showcase wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="0.1s">
@@ -170,8 +178,8 @@
   </div>
   <div class="container">
     <div class="pricing-call-to-action text-center">
-      <p class="wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="0.2s">You’ll never be surprise charged. Every plan starts at free.</p>
-      <p class="call-to-action-btn wow pulse" data-wow-duration="0.8s" data-wow-delay="0.2s"><%= link_to 'Get Started Now', new_accounts_path, class: 'btn btn-primary btn-lg' %></p>
+      <p class="wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="0.2s">You’ll never be surprise charged <span class="html-bullet">&#8226;</span> Every plan starts at free.</p>
+      <p class="call-to-action-btn wow pulse" data-wow-duration="0.8s" data-wow-delay="0.2s"><%= link_to 'Get Started Now', new_accounts_path, class: 'btn btn-danger btn-lg' %></p>
       <div class="clearfix"></div>
     </div>
   </div>

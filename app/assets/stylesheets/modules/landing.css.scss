@@ -34,11 +34,6 @@ GENERAL
   font-size: 36px;
   font-weight: 600;
 }
-#reasons p, #pricing p {
-  font-family: $font-family-serif;
-  font-size: 24px;
-  color: $gray-dark;
-}
 
 /*-------------------------------
 REASONS
@@ -88,19 +83,6 @@ REASONS
 FEATURES
 -------------------------------*/
 
-#features {
-  // text-align: center;
-  // div {
-  //   margin-bottom: 40px;
-  // }
-
-  // .feature1, .feature2, .feature3 {
-  //   width: 68%;
-  //   margin: 0 auto;
-  //   text-align: center;
-  // }
-}
-
 #feature-showcase {
   margin-top: 40px;
 
@@ -115,13 +97,12 @@ PRICING
 -------------------------------*/
 
 #pricing {
-  h1 {
-  }
-  h1 + p {
+  .html-bullet {
+    padding: 0px 14px;
   }
 
   .conversation-explaination {
-    font-family: $font-family-serif;
+    font-family: $font-family-sans-serif;
     font-size: 12px;
     text-transform: uppercase;
     margin-top: 50px;
@@ -129,14 +110,17 @@ PRICING
   [data-tooltip].conversation-explaination {
 	  &:after {
       @include multiline(300px, center);
-      //border: 2px solid red;
+      border: 1px solid #d6dbdd;
+      font-family: $font-family-sans-serif;
       text-transform: none;
-      font-size: 15px;
+      font-size: 16px;
       line-height: 1.4;
-      -moz-box-shadow:    0px 0px 10px 0px #ccc;
-      -webkit-box-shadow: 0px 0px 10px 0px #ccc;
-      box-shadow:         0px 0px 10px 0px #ccc;
+      -moz-box-shadow:    0px 0px 8px 0px #eaeaea;
+      -webkit-box-shadow: 0px 0px 8px 0px #eaeaea;
+      box-shadow:         0px 0px 8px 0px #eaeaea;
       margin-bottom: 30px;
+      padding: 30px;
+      width: 360px;
     }
     @include applyColor(#fff, $gray-dark);
     &:before {
@@ -149,7 +133,7 @@ PRICING
 }
 
 #pricing [data-tooltip].conversation-explaination.simptip-position-top:before {
-border-top-color: rgb(228, 228, 228);
+  border-top-color: white;
 }
 
 .pricing-section {
