@@ -6,6 +6,10 @@
   margin-top: 150px;
   padding-bottom: 245px;
   padding-top: 100px;
+
+  h1 {
+    color: $gray-darker;
+  }
 }
 
 .navbar-placeholder + .page-section {

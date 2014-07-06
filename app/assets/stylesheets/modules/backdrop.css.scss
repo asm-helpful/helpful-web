@@ -1,5 +1,5 @@
 .backdrop {
-  background-color: $gray-dark;
+  background-color: $gray-darker;
 
   h1 {
     color: white;
@@ -36,7 +36,7 @@
     &:not([disabled]) {
       &:hover,
       &.hover {
-        background-color: $gray-darker;
+        background-color: $gary-darkest;
       }
     }
   }

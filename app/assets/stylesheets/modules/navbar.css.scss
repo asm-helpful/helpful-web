@@ -49,12 +49,12 @@
 }
 
 .navbar-homepage.navbar-static-top {
-  border-top: 1px solid lighten($gray-dark, 5%);
+  border-top: 1px solid lighten($gray-darker, 5%);
 }
 
 .navbar-homepage {
   height: 90px;
-  background: $gray-dark;
+  background: $gray-darker;
   border-top: 1px solid white;
   border-bottom: 2px solid white;
 
@@ -110,7 +110,7 @@
 
       &:hover {
         color: $blue-highlight;
-        background-color: $gray-darker;
+        background-color: $gary-darkest;
       }
     }
 
