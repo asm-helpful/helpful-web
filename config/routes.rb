@@ -12,7 +12,6 @@ Helpful::Application.routes.draw do
   get '/embed.js' => 'pages#embed', :as => :embed
   get '/styleguide' => 'pages#styleguide', :as => :styleguide
   get '/docs' => 'pages#docs', :as => :docs
-  get '/404' => 'pages#404'
 
   devise_for :users, skip: :registrations, :controllers => { :invitations => 'users/invitations' }
 
