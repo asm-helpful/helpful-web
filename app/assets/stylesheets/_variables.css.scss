@@ -1,13 +1,14 @@
 // Colors
 
-$gray-darker:            lighten(#000, 13.5%);
-$gray-dark:              lighten(#000, 20%);
+$gary-darkest:           lighten(#000, 13.5%);
+$gray-darker:            #393c41;
+$gray-dark:              #6e727f;
 $gray:                   lighten(#000, 33.5%);
-$gray-light:             lighten(#000, 46.7%);
+$gray-light:             #85999d;
 $gray-lighter:           lighten(#000, 93.5%);
 
 $blue:                  #00b3ed;
-$blue-highlight:        #0093cd;
+$blue-highlight:        #16a0b5;
 $blue-gray:             #929ea0;
 $green:                 #82c451;
 $yellow:                #edda3b;
@@ -20,7 +21,7 @@ $brand-primary:         $blue;
 $brand-success:         $green;
 $brand-info:            $yellow;
 $brand-warning:         $yellow;
-$brand-danger:          $red;
+$brand-danger:          #ff4b4b;
 
 
 // Scaffolding

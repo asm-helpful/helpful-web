@@ -17,15 +17,15 @@
 
   <%= link_to 'Sign in', new_user_session_path, class: 'btn signin_absolute btn-default' %>
 
-  <div class="page page-full page-center text-center">
+  <div class="page page-full page-center text-center hero">
     <div>
       <div class="container">
         <div class="row">
-          <div class="col-md-8 col-md-offset-2 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay=".4s">
+          <div class="col-md-6 col-md-offset-3 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay=".4s">
             <%= image_tag('logo.png', data: {animate_logo: "" }) %>
             <h1 data-animate-heading>We redesigned the support tool to get out of the way, so you focus on being a helpful human.</h1>
             <p data-animate-lead>Helping your customers with good answers and thoughtful direction should be a breeze, focused 100% on support &ndash; and nothing else.</p>
-            <a href="#page-showcase" id="btn" class="btn btn-default btn-lg" data-scroll-to-content="true">Let us show how simple it is</a>
+            <a href="#page-showcase" id="btn" class="btn btn-default btn-lg" data-scroll-to-content="true">Let us show you how simple it is.</a>
           </div>
         </div>
       </div>
@@ -62,20 +62,19 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand">
-          <%= image_tag 'life_saver.png', alt: 'Helpful' %>
           Helpful
         </a>
       </div>
 
       <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav navbar-left">
           <li><a href="#reasons">Who's it for?</a></li>
           <li><a href="#features">Features</a></li>
           <li><a href="#pricing">Pricing</a></li>
         </ul>
-        <ul class="nav navbar-nav pull-right">
+        <ul class="nav navbar-nav navbar-right">
           <li><%= link_to 'Sign in', new_user_session_path, class: 'btn btn-default' %></li>
-          <li><%= link_to 'Sign up for free', new_accounts_path, class: 'btn btn-primary', rel: 'signup' %></li>
+          <li><%= link_to 'Get Started', new_accounts_path, class: 'btn btn-danger', rel: 'signup' %></li>
         </ul>
       </div>
 
@@ -88,10 +87,10 @@
     <div class="row">
 
       <div class="container text-center wow fadeInDown" data-wow-duration="0.8s">
-        <h1>Helpful is good for you</h1>
+        <h1>Helpful is good for you.</h1>
       </div>
 
-      <div>
+      <div class="col-md-8 col-md-offset-2">
         <ul>
           <li class="wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="0.1s">
             <span class="glyphicon glyphicon-ok text-success hidden-xs"></span>
@@ -108,6 +107,9 @@
         </ul>
       </div>
     </div>
+    <div class="text-center">
+      <p class="call-to-action-btn wow pulse" data-wow-duration="0.8s" data-wow-delay="0.2s"><%= link_to 'View Features', '#features', class: 'btn btn-danger btn-lg' %></p>
+    </div>
   </div>
 </div>
 
@@ -116,33 +118,40 @@
     <div class="row">
 
       <div class="container text-center wow fadeInDown" data-wow-duration="0.8s">
-        <h1>Features that serve a purpose</h1>
-        <p>Assign teammates on the fly. Organize with tags, and use consistent canned responses to speed up your workflow. Spend more time with your customers.</p>
+        <div class="col-md-8 col-md-offset-2">
+          <h1>Features that serve a purpose.</h1>
+          <h3>Assign teammates on the fly. Organize with tags, and use consistent canned responses to speed up your workflow. Spend more time with your customers.</h3>
+        </div>
       </div>
 
-      <div class="container">
-        <div class="feature1 wow fadeInLeft" data-wow-duration="0.6s" data-wow-delay="0.1s">
+      <div id="feature-showcase" class="container">
+        <div class="feature1 col-xs-12 col-md-6 text-center wow fadeInLeft" data-wow-duration="0.6s" data-wow-delay="0.1s">
           <%= image_tag('home/features_editing.png') %>
           <p>Customize your text, but only when you have a good reason for it.</p>
         </div>
-        <div class="feature2 wow fadeInRight" data-wow-duration="0.6s" data-wow-delay="0.2s">
+        <div class="feature2 col-xs-12 col-md-6 text-center wow fadeInRight" data-wow-duration="0.6s" data-wow-delay="0.2s">
           <%= image_tag('home/features_tagging.png') %>
           <p>Tag your conversations so you can start to learn more about your organization.</p>
         </div>
-        <div class="feature3 wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="0.3s">
+        <div class="feature3 col-xs-12 col-md-6 col-md-offset-3 text-center wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="0.3s">
           <%= image_tag('home/features_canned.png') %>
           <p>Canned Responses save time, and can help answer questions for your customers with double-time.</p>
         </div>
       </div>
+    </div>
+    <div class="text-center">
+      <p class="call-to-action-btn wow pulse" data-wow-duration="0.8s" data-wow-delay="0.2s"><%= link_to 'View Pricing', '#pricing', class: 'btn btn-danger btn-lg' %></p>
     </div>
   </div>
 </div>
 
 <div class="page page-section pricing-section" id="pricing">
   <div class="container text-center wow fadeInDown" data-wow-duration="0.8s">
-    <h1>A price that grows with your product</h1>
-    <p>The number of people you want supporting customers should never be constrained by your support tool. With helpful, you'll never pay per seat, you pay per conversations.
-    <p class="conversation-explaination simptip-smooth simptip-position-top" data-tooltip="<%= t(".conversation-explaination") %>"><u>Customer Conversation</u> per month</p>
+    <div class="col-md-8 col-md-offset-2">
+      <h1>A price that grows with your product.</h1>
+      <h3>The number of people you want supporting customers should never be constrained by your support tool. With helpful, you'll never pay per seat, you pay per conversations.</h3>
+      <p class="conversation-explaination simptip-smooth simptip-position-top" data-tooltip="<%= t(".conversation-explaination") %>"><u>Customer Conversation</u> per month</p>
+    </div>
   </div>
   <div class="container">
     <div class="pricing-showcase wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="0.1s">
@@ -169,8 +178,8 @@
   </div>
   <div class="container">
     <div class="pricing-call-to-action text-center">
-      <p class="wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="0.2s">You’ll never be surprise charged. Every plan starts at free.</p>
-      <p class="call-to-action-btn wow pulse" data-wow-duration="0.8s" data-wow-delay="0.2s"><%= link_to 'Get Started Now', new_accounts_path, class: 'btn btn-primary btn-lg' %></p>
+      <p class="wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="0.2s">You’ll never be surprise charged <span class="html-bullet">&#8226;</span> Every plan starts at free.</p>
+      <p class="call-to-action-btn wow pulse" data-wow-duration="0.8s" data-wow-delay="0.2s"><%= link_to 'Get Started Now', new_accounts_path, class: 'btn btn-danger btn-lg' %></p>
       <div class="clearfix"></div>
     </div>
   </div>
