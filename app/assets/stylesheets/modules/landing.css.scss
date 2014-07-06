@@ -89,14 +89,23 @@ FEATURES
 -------------------------------*/
 
 #features {
-  div {
-    margin-bottom: 40px;
-  }
+  // text-align: center;
+  // div {
+  //   margin-bottom: 40px;
+  // }
 
-  .feature1, .feature2, .feature3 {
-    width: 68%;
-    margin: 0 auto;
-    text-align: center;
+  // .feature1, .feature2, .feature3 {
+  //   width: 68%;
+  //   margin: 0 auto;
+  //   text-align: center;
+  // }
+}
+
+#feature-showcase {
+  margin-top: 40px;
+
+  p {
+    margin: 0 18%;
   }
 }
 
