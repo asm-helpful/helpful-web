@@ -62,20 +62,19 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand">
-          <%= image_tag 'life_saver.png', alt: 'Helpful' %>
           Helpful
         </a>
       </div>
 
       <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav navbar-left">
           <li><a href="#reasons">Who's it for?</a></li>
           <li><a href="#features">Features</a></li>
           <li><a href="#pricing">Pricing</a></li>
         </ul>
-        <ul class="nav navbar-nav pull-right">
+        <ul class="nav navbar-nav navbar-right">
           <li><%= link_to 'Sign in', new_user_session_path, class: 'btn btn-default' %></li>
-          <li><%= link_to 'Sign up for free', new_accounts_path, class: 'btn btn-primary', rel: 'signup' %></li>
+          <li><%= link_to 'Get Started', new_accounts_path, class: 'btn btn-danger', rel: 'signup' %></li>
         </ul>
       </div>
 

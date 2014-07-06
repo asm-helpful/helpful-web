@@ -39,10 +39,12 @@ var affixNavbar = function($navbarPlaceholder) {
 };
 
 var scrollToContentButtons = function() {
-  $('[data-scroll-to-content="true"] a, #btn').click(function() {
+  $('[data-scroll-to-content="true"] a').click(function() {
     var $target = $(this.hash);
     $target = $target.length ? $target : $('#' + this.hash.slice(1));
     if ($target.length) {
+      removeActiveContentButton();
+      $(this).addClass('active');
       $('html, body').animate({
         scrollTop: $target.offset().top + ($target.height() / 2) - ($(window).height() / 2)
       }, 400);
@@ -50,6 +52,10 @@ var scrollToContentButtons = function() {
     }
   });
 };
+
+var removeActiveContentButton = function() {
+  $('[data-scroll-to-content="true"] a.active').removeClass('active');
+}
 
 function isMobile() {
   return window.matchMedia("only screen and (max-width: 760px)").matches;
