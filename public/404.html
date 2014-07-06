@@ -2,33 +2,31 @@
 <html>
 <head>
   <title>Oops, 404!</title>
-  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?Droid+Serif:400|Lato:400,700" />
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?Droid+Serif:400|Open+Sans:400,700" />
   <style>
   body {
     text-align: center;
-    font-family: Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif;
     background-color: #393C41;
     -webkit-font-smoothing: antialiased;
   }
 
   img {
-    width: 5em;
-    height: 5em;
-    margin: 2em auto 0 auto;
+    margin: 2em auto;
   }
 
   h1 {
-    color: #fff;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: white;
     font-size: 39px;
     font-weight: bold;
     line-height: 43px;
+    margin-top: 0;
   }
 
   p {
     color: #99b1b5;
     font-family: 'Droid Serif', 'Georgia', 'Times New Roman', Times, serif;
     font-size: 24px;
-    font-weight: 400;
   }
 
   a {
@@ -36,37 +34,42 @@
   }
 
   button {
-    font-family: Lato, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 18px;
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    padding: 10px 24px;
+    font-size: 20px;
+    line-height: 1.33;
+    border-radius: 90px;
     color: white;
     text-align: center;
     cursor: pointer;
     display: block;
-    border-radius: 99px;
-    background-color: rgb(255, 75, 75);
-    padding: 10px 50px;
+    background-image: none;
     border: 0;
+    background-color: rgb(0, 179, 237);
     vertical-align: middle;
     margin: 1.75em auto;
+  }
+  button:hover {
+    background-color: rgb(0, 160, 211);
+  }
+  button:active {
+    background-color: rgb(0, 160, 211);
   }
   </style>
 </head>
 
 <body>
-
-  <div class="dialog">
-    <img src="/assets/logo@2x.png">
-    <h1>
-      Oh dear, it's a 404!
-    </h1>
-    <p>
-      We can't find the page you were looking for.
-    </p>
-    <a href="http://helpful.io/">
-      <button>
-        Go Home
-      </button>
-    </a>
-  </div>
+  <img src="/assets/logo.png">
+  <h1>
+    Oh dear, it's a 404!
+  </h1>
+  <p>
+    We can't find the page you were looking for.
+  </p>
+  <a href="http://helpful.io/">
+    <button>
+      Go Home
+    </button>
+  </a>
 </body>
 </html>
