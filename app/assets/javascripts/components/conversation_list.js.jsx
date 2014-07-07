@@ -182,7 +182,14 @@ var ConversationList = React.createClass({
   render: function() {
     if(this.state.conversations.length) {
       var conversations = this.state.conversations.map(this.renderConversation);
-      return <div className="list list-conversations">{conversations}</div>
+
+      return (
+        <div className="row">
+          <div className="col-md-8 col-md-offset-2">
+            <div className="list list-conversations">{conversations}</div>
+          </div>
+        </div>
+      )
     } else if(this.state.loaded) {
       if (this.state.archived || this.props.query) {
         return <EmptyConversationList />
