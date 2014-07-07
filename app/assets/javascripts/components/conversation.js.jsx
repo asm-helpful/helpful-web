@@ -22,13 +22,13 @@ var Conversation = React.createClass({
     if(this.props.conversation.archived) {
       return (
         <div className="conversation-actions btn-group pull-right">
-          <button className="btn btn-default btn-sm" onClick={this.props.unarchiveHandler}>Move to Inbox</button>
+          <button className="btn btn-link btn-xs" onClick={this.props.unarchiveHandler}>Move to Inbox</button>
         </div>
       );
     } else {
       return (
         <div className="conversation-actions btn-group pull-right">
-          <button className="btn btn-default btn-sm" onClick={this.props.archiveHandler}>Archive</button>
+          <button className="btn btn-link btn-xs" onClick={this.props.archiveHandler}>Archive</button>
         </div>
       );
     }
