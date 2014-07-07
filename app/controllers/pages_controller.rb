@@ -9,10 +9,6 @@ class PagesController < ApplicationController
   end
 
   def docs
-    renderer = Redcarpet::Render::HTML.new
-    markdown = Redcarpet::Markdown.new(renderer)
-    text = markdown.render(Rails.root.join('apiary.apib').read).html_safe
-    render inline: text, layout: true
   end
 
 end
