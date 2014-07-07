@@ -13,7 +13,7 @@ module AvatarHelper
 
   def gravatar_url(email, size)
     id = gravatar_id(email)
-    "https://secure.gravatar.com/avatar/#{id}.png?s=#{size}&d=mm"
+    "https://secure.gravatar.com/avatar/#{id}.png?s=#{size}&d=identicon"
   end
 
   def gravatar_id(email)

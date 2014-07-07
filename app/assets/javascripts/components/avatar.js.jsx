@@ -19,6 +19,6 @@ var Avatar = React.createClass({
   },
 
   gravatarUrl: function(size) {
-    return "https://secure.gravatar.com/avatar/" + gravatarId(this.props.person.email) + "?d=mm&size=" + size + ".png"
+    return "https://secure.gravatar.com/avatar/" + gravatarId(this.props.person.email) + "?d=identicon&size=" + size + ".png"
   }
 });
