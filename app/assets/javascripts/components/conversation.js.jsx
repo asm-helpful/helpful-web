@@ -8,8 +8,8 @@ var Conversation = React.createClass({
     if(isUnread || isStale) {
       var classes = React.addons.classSet({
         'status': true,
-        'status-unread': !isStale && isUnread,
-        'status-urgent': isStale
+        'status-info': !isStale && isUnread,
+        'status-warning': isStale
       });
 
       return (
@@ -21,13 +21,13 @@ var Conversation = React.createClass({
   renderActions: function() {
     if(this.props.conversation.archived) {
       return (
-        <div className="conversation-actions btn-group pull-right">
+        <div className="conversation-actions pull-right">
           <button className="btn btn-link btn-xs" onClick={this.props.unarchiveHandler}>Move to Inbox</button>
         </div>
       );
     } else {
       return (
-        <div className="conversation-actions btn-group pull-right">
+        <div className="conversation-actions pull-right">
           <button className="btn btn-link btn-xs" onClick={this.props.archiveHandler}>Archive</button>
         </div>
       );
@@ -64,7 +64,7 @@ var Conversation = React.createClass({
             {this.renderReply()}
 
             <div className="ellipsis-overflow">
-              {this.props.conversation.subject}
+              <strong>{this.props.conversation.subject}</strong>
               &nbsp;
               {previewBody}
             </div>
