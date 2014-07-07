@@ -1,9 +1,6 @@
-<%= render 'shared/navbar' %>
-
 <div class="container">
 
-  <h1 class="page-title">Change your password</h1>
-  <h2><%= t('.resend_unlock_instructions') %></h2>
+  <h1><%= t('.resend_unlock_instructions') %></h1>
   <hr />
 
   <%= form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :method => :post }) do |f| %>
@@ -29,7 +26,7 @@
     </div>
 
   </fieldset>
-  
+
   <% end %>
 
   <div class="row">

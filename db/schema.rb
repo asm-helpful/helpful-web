@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(version: 20140702184227) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
-  enable_extension "pg_stat_statements"
   enable_extension "uuid-ossp"
+  enable_extension "pg_stat_statements"
 
   create_table "accounts", id: false, force: true do |t|
     t.uuid     "id",                          null: false
