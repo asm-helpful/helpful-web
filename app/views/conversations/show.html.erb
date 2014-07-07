@@ -1,5 +1,7 @@
-<%= render 'shared/navbar' %>
+<script>
+  _inbox = <%= Conversation.first(20).each_with_object({}) {|c, o| o[c.id] = ConversationSerializer.new(c, root: false) }.to_json.html_safe %>
 
-<div class="container">
-  <%= react_component('ConversationList', 'accountSlug' => @account.slug, 'conversationNumber' => params[:id]) %>
-</div>
+  document.addEventListener('DOMContentLoaded', function(){
+    React.renderComponent(App({inbox: _inbox}), document.body)
+  })
+</script>

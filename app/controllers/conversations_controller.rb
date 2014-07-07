@@ -46,7 +46,7 @@ class ConversationsController < ApplicationController
       end
     end
 
-    respond_with @conversation
+    respond_with @conversation, layout: 'app'
   end
 
   def update
@@ -87,6 +87,6 @@ class ConversationsController < ApplicationController
     elsif @conversation.just_unarchived?
       flash[:notice] = "The conversation has been moved to the inbox."
     end
-  end 
+  end
 
 end

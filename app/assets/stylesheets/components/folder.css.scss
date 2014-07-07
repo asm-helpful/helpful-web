@@ -1,0 +1,10 @@
+.folder {
+}
+
+.folder-item {
+  border-top: 1px solid $brand-divider;
+
+  &:first-child {
+    border-top: none;
+  }
+}

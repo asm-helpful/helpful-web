@@ -96,9 +96,11 @@ class Conversation < ActiveRecord::Base
     new_archived == false
   end
 
-  def creator_person
+  def creator
     first_message && first_message.person
   end
+
+  alias_method :creator_person, :creator # Legacy
 
   def message_count
     self['message_count'] || messages.count

@@ -1,40 +1,20 @@
-.conversation {
-  border-top: 1px solid $brand-border;
-
-  &:first-child {
-    border-top: none;
-    padding-top: 1px;
-  }
+.conversation-row {
+  position: relative;
 
   &:hover,
   &.hover {
-    background-color: rgba(black, 0.05);
+    background-color: white;
   }
 
-  // Quick actions
-  &.is-collapsed .conversation-actions {
+  > .quick-actions {
     display: none;
+    position: absolute;
+    top: 15px;
+    right: $padding-base-horizontal;
   }
 
-  &:hover .conversation-actions,
-  &.hover .conversation-actions {
+  &:hover > .quick-actions {
     display: block;
-  }
-
-
-  &:not(.conversation-row-empty) {
-    &.is-expanded {
-      background-color: white;
-      border-top: none;
-      border-radius: $border-radius-base;
-      box-shadow: inset 0 0 0 1px $brand-border;
-      padding-top: 1px;
-
-      &+ .conversation {
-        border-top: none;
-        padding-top: 1px;
-      }
-    }
   }
 }
 
@@ -43,20 +23,12 @@
   padding: 15px $grid-gutter-width;
   padding-left: $grid-gutter-width + 30px + $padding-base-horizontal;
 
-  > .status {
-    float: left;
-    margin-left: -25px;
-    margin-top: 5px;
-  }
+  font-size: 14px;
+  color: #393C41;
 
   > .avatar {
     float: left;
     margin-left: - (30px + $padding-base-horizontal);
-  }
-
-  > .person {
-    font-size: $font-size-small;
-    color: $text-muted;
   }
 }
 

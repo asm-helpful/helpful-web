@@ -6,19 +6,32 @@ var gravatarId = function gravatarId(email) {
 }
 
 var Avatar = React.createClass({
+
   render: function() {
-    var size = this.props.size;
-
-    if(size === 'small') {
-      size = 26;
-    }
-
     return (
-      <img className="avatar" src={this.gravatarUrl(size * 2)} width={size} height={size} />
+      <img className="avatar"
+           src={this.gravatarUrl()}
+           width={this.size()}
+           height={this.size()}
+      />
     );
   },
 
-  gravatarUrl: function(size) {
-    return "https://secure.gravatar.com/avatar/" + gravatarId(this.props.person.email) + "?d=mm&size=" + size + ".png"
+  // --
+
+  size: function() {
+    return this.props.size || 20;
+  },
+
+  retinaSize: function() {
+    return this.size() * 2;
+  },
+
+  gravatarUrl: function() {
+    return "https://secure.gravatar.com/avatar/" +
+             gravatarId(this.props.person.email) +
+             "?d=mm&size=" +
+             this.retinaSize() +
+             ".png"
   }
 });
