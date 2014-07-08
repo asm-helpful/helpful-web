@@ -29,11 +29,7 @@
     font-size: 24px;
   }
 
-  a {
-    text-decoration: none;
-  }
-
-  button {
+  a.button {
     font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     padding: 10px 24px;
     font-size: 20px;
@@ -42,17 +38,15 @@
     color: white;
     text-align: center;
     cursor: pointer;
-    display: block;
+    display: inline-block;
+    text-decoration: none;
     background-image: none;
     border: 0;
     background-color: rgb(0, 179, 237);
     vertical-align: middle;
-    margin: 1.75em auto;
+    margin: 1em auto;
   }
-  button:hover {
-    background-color: rgb(0, 160, 211);
-  }
-  button:active {
+  a.button:hover, a.button:active {
     background-color: rgb(0, 160, 211);
   }
   </style>
@@ -66,10 +60,8 @@
   <p>
     We can't find the page you were looking for.
   </p>
-  <a href="http://helpful.io/">
-    <button>
-      Go Home
-    </button>
+  <a href="http://helpful.io/" class="button">
+    Go Home
   </a>
 </body>
 </html>
