@@ -4,8 +4,7 @@
   background-color: white;
 }
 
-#update-avatar {
-  input {
-    display: inline-block;
-  }
+.avatar + input[type="file"] {
+  display: inline-block;
+  padding-left: $padding-base-horizontal;
 }
