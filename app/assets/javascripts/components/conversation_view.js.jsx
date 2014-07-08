@@ -16,7 +16,7 @@ var ConversationView = React.createClass({
     $.getJSON(this.conversationPath(), function(response) {
       var conversation = response.conversation;
       conversation.expanded = true;
-      this.setState({ conversation: conversation, archived: conversation.archive });
+      this.setState({ conversation: conversation, archived: conversation.archived });
     }.bind(this));
   },
 
@@ -105,15 +105,13 @@ var ConversationView = React.createClass({
   renderMailboxLink: function() {
     if(this.state.archived) {
       return (
-        <a href="#" className="text-muted">
-          <span className="glyphicon glyphicon-chevron-left"></span>
-          Back to Archive 
+        <a href={this.archivePath()} className="text-muted">
+          Back to Archive
         </a>
       );
     } else {
       return (
-        <a href="#" className="text-muted">
-          <span className="glyphicon glyphicon-chevron-left"></span>
+        <a href={this.inboxPath()} className="text-muted">
           Back to Inbox
         </a>
       );
@@ -124,7 +122,9 @@ var ConversationView = React.createClass({
     if(this.state.conversation && this.state.conversation.messages.length > 0) {
       return (
         <div>
-          {this.renderMailboxLink()}
+          <div className="link-bar">
+            {this.renderMailboxLink()}
+          </div>
           {this.renderConversation()}
         </div>
       );
@@ -135,5 +135,13 @@ var ConversationView = React.createClass({
 
   conversationPath: function() {
     return '/accounts/' + this.props.accountSlug + '/conversations/' + this.props.conversationNumber + '.json';
+  },
+
+  inboxPath: function() {
+    return '/' + this.props.accountSlug + '/inbox';
+  },
+
+  archivePath: function() {
+    return '/' + this.props.accountSlug + '/archived';
   }
 });
