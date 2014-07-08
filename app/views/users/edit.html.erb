@@ -27,9 +27,11 @@
       <div class="form-group">
         <%= ff.label :avatar, t('general.avatar'), class: 'control-label' %>
         <div>
-          <%= avatar(current_user, 30) %>
+          <span class="padding-right">
+            <%= avatar(current_user, 30) %>
+          </span>
 
-          <%= ff.file_field :avatar %>
+          <%= ff.file_field :avatar, style: 'display: inline-block' %>
         </div>
       </div>
     <% end %>
