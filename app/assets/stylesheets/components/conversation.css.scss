@@ -41,6 +41,10 @@
   }
 }
 
+.container .conversation.conversation-row-empty:hover {
+  background-color: $body-bg;
+}
+
 .conversation-header {
   color: $gray-darker;
   padding: 20px $grid-gutter-width;
