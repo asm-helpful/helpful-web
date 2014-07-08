@@ -103,8 +103,7 @@ PRICING
 
 #pricing {
   h1 {
-  }
-  h1 + p {
+    + p {
   }
 
   .conversation-explaination {
@@ -136,7 +135,7 @@ PRICING
 }
 
 #pricing [data-tooltip].conversation-explaination.simptip-position-top:before {
-border-top-color: rgb(228, 228, 228);
+  border-top-color: rgb(228, 228, 228);
 }
 
 .pricing-section {
@@ -220,8 +219,7 @@ border-top-color: rgb(228, 228, 228);
 MOBILE 
 -------------------------------*/
 
-@media (max-width: 768px) {
-
+@media (max-width: $screen-sm) {
   .backdrop {
     padding-top: 100px;
   }
@@ -252,10 +250,8 @@ MOBILE
       opacity: .9;
     }
   }
-  
 }
 @media (max-width: 960px) {
-
   .signin_absolute {
     display: none;    
   }
@@ -271,11 +267,9 @@ MOBILE
       }
     }
   }
-
 }
 
-@media (max-width: 1200px) {
-
+@media (max-width: $screen-lg) {
   .screenshot-list .screenshot > p {
     width: 100%;
   }

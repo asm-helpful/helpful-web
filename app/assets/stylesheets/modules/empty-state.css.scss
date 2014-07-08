@@ -1,15 +1,14 @@
 .empty-state {
-  display: none
+  display: none;
 }
 
 .empty-state-smiley {
-  background-image: url(image-path('inbox-empty-state.png'));
+  background: url(image-path('inbox-empty-state.png')) no-repeat;
   background-size: 100%;
-  background-repeat: no-repeat;
   display: block;
-  height: 60px;
   margin: 0 auto 1em;
   width: 60px;
+  height: 60px;
 }
 
 .empty-state-quote {
