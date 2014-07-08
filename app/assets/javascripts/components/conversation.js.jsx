@@ -46,10 +46,17 @@ var Conversation = React.createClass({
 
     if(this.props.conversation.subject) {
       title = this.props.conversation.subject;
-      previewBody = <span className="text-muted" dangerouslySetInnerHTML={{__html: this.preview()}} />;
     } else {
       title = this.props.conversation.summary;
     }
+
+    if(this.props.conversation.subject && !this.props.conversation.expanded) {
+      previewBody = <span className="text-muted" dangerouslySetInnerHTML={{__html: this.preview()}} />;
+    }
+
+    var classes = React.addons.classSet({
+      'ellipsis-overflow': !this.props.conversation.expanded,
+    });
 
     return (
       <a href="#" onClick={this.props.toggleHandler}>
@@ -63,7 +70,7 @@ var Conversation = React.createClass({
           <div className="conversation-preview">
             {this.renderReply()}
 
-            <div className="ellipsis-overflow">
+            <div className={classes}>
               <strong>{title}</strong>
               &nbsp;
               {previewBody}
