@@ -24,18 +24,13 @@ $panel-title: $gray-darker;
 .panel-error {
   border: 1px solid lighten($brand-danger, 25%);
 
-  i.geomicon-alert {
-    display: inline-block;
-    padding-right: 5px;
-    font-size: 20px;
-    vertical-align: top;
+  > .geomicon {
     color: $brand-danger;
+    padding-right: $padding-xs-horizontal;
   }
 
   .panel-title {
     display: inline-block;
-    font-weight: bold;
-    color: $gray-darker;
   }
 
   ul {
@@ -43,6 +38,7 @@ $panel-title: $gray-darker;
     color: $gray-darker;
     line-height: 1.5;
     padding-left: 0;
+    margin-bottom: 3px;
   }
 }
 
