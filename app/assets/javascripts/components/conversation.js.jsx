@@ -19,19 +19,15 @@ var Conversation = React.createClass({
   },
 
   renderActions: function() {
+    var button = null;
+
     if(this.props.conversation.archived) {
-      return (
-        <div className="conversation-actions pull-right">
-          <button className="btn btn-link btn-xs" onClick={this.props.unarchiveHandler}>Move to Inbox</button>
-        </div>
-      );
+      button = <button className="btn btn-link btn-xs" onClick={this.props.unarchiveHandler}>Move to Inbox</button>
     } else {
-      return (
-        <div className="conversation-actions pull-right">
-          <button className="btn btn-link btn-xs" onClick={this.props.archiveHandler}>Archive</button>
-        </div>
-      );
+      button = <button className="btn btn-link btn-xs" onClick={this.props.archiveHandler}>Archive</button>
     }
+
+    return <div className="conversation-actions pull-right">{button}</div>
   },
 
   renderReply: function() {
@@ -45,10 +41,14 @@ var Conversation = React.createClass({
   },
 
   renderHeader: function() {
+    var title = null;
     var previewBody = null;
 
-    if(!this.props.conversation.expanded) {
+    if(this.props.conversation.subject) {
+      title = this.props.conversation.subject;
       previewBody = <span className="text-muted" dangerouslySetInnerHTML={{__html: this.preview()}} />;
+    } else {
+      title = this.props.conversation.summary;
     }
 
     return (
@@ -64,7 +64,7 @@ var Conversation = React.createClass({
             {this.renderReply()}
 
             <div className="ellipsis-overflow">
-              <strong>{this.props.conversation.subject}</strong>
+              <strong>{title}</strong>
               &nbsp;
               {previewBody}
             </div>
