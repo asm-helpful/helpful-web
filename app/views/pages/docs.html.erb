@@ -36,17 +36,34 @@
       <div class="col-md-8 col-md-pull-3">
         <h2 id="email-forwarding">Email Forwarding</h2>
 
-        <p>Getting your support emails into Helpful is the first step to providing awesome customer support.</p>
+        <p>Let your customers send support requests to an email from your own domain and then automatically forward them to your Helpful account.</p>
 
         <h3>Forward emails from a Google Apps account</h3>
+
         <h4>Step 1: Go to your account settings page in Google Apps</h4>
-        <p>It's usually something like <a href="https://google.com/a/example.com">https://google.com/a/&lt;example.com&gt;</a>.</p>
+        <p>Login to your Google Apps account. It's usually something like <a href="https://admin.google.com/your-domain.com">https://admin.google.com/&lt;your-domain.com&gt;</a>.</p>
+        <p>Click on the "Groups" section from the Admin console. <strong>You may need to expand the "More controls" drawer at the bottom of the screen.</strong></p>
+
+        <span class="thumbnail">
+          <%= image_tag 'docs/click-groups-more-controls.png', class: 'img-responsive' %>
+        </span>
 
         <h4>Step 2: Create a new group</h4>
-        <p>Name it something nice (like support, or help).</p>
+        <p>Click on "Create a group" and enter a name and email address you would like your customers to use for support requests. Make sure you check off the option for "Also allow anyone on the internet to post messages".</p>
+
+        <span class="thumbnail">
+          <%= image_tag 'docs/create-group-form.png', class: 'img-responsive' %>
+        </span>
 
         <h4>Step 3: Add your forwarding address to as a member of that group</h4>
-        <p>You can find your forwarding address in the settings page of your account.</p>
+        <p>Type in your Helpful address as a member of the group and click "Add".</p>
+        <p>You can always find your forwarding address in the settings page of your account.</p>
+
+        <span class="thumbnail">
+          <%= image_tag 'docs/group-new-member-form.png', class: 'img-responsive' %>
+        </span>
+
+        <p>And that's it! Emails sent to your custom support email show automatically show up in Helpful.</p>
 
         <h2 id="widget">Widget</h2>
 
