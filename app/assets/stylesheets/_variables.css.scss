@@ -637,6 +637,22 @@ $alert-default-text:          white;
 $alert-link-color:            white;
 $alert-link-hover-color:      white;
 
+$alert-success-bg:            $alert-default-bg;
+$alert-success-text:          $alert-default-text;
+$alert-success-border:        $alert-default-bg;
+
+$alert-info-bg:               $alert-default-bg;
+$alert-info-text:             $alert-default-text;
+$alert-info-border:           $alert-default-bg;
+
+$alert-warning-bg:            $alert-default-bg;
+$alert-warning-text:          $alert-default-text;
+$alert-warning-border:        $alert-default-bg;
+
+$alert-danger-bg:             $alert-default-bg;
+$alert-danger-text:           $alert-default-text;
+$alert-danger-border:         $alert-default-bg;
+
 
 // Avatar
 
