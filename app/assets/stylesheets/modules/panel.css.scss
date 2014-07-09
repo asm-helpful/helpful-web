@@ -13,7 +13,24 @@ $panel-title: $gray-darker;
   blockquote {
     color: $gray-dark;
     border-color: #ddd;
-    border-color: rgba(0,0,0,.15);
+    border-color: rgba(0, 0, 0, 0.15);
+  }
+
+  .plan-selected {
+    color: $brand-success;
+    height: 36px;
+    padding-top: 7px;
+
+    .geomicon.geomicon-check {
+      font-size: $font-size-large;
+      display: inline-block;
+      padding-right: $padding-xs-horizontal;
+      top: 2px;
+    }
+
+    .plan-select-message {
+      font-weight: 700;
+    }
   }
 }
 
