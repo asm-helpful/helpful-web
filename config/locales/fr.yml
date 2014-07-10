@@ -227,8 +227,9 @@ fr:
         didnt_receive_unlock: "Vous n'avez pas reçu des instructions pour déverrouiller?"
     passwords:
       new:
-        did_you_forget: "Avez-vous oublié votre mot de passe?"
-        dont_worry: "Pas de soucis, vous êtes assuré."
+        forgot_password: "Mot de passe oublié?"
+        no_worries: "Pas de soucis!"
+        we_got_you: "Vous êtes assuré."
         reset: "Réinitialiser mon mot de passe"
     unlocks:
       new:
