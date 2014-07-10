@@ -140,7 +140,7 @@ en:
     empty:
       inbox_zero: "Inbox Zero"
       no_open_conversations: "No open conversations, nice work!"
-      customer_support_quote: "Be the customer support you wish to see in the world"
+      customer_support_quote: "Be the customer support you wish to see in the world."
 
   pages:
     home:
@@ -208,7 +208,7 @@ en:
 
   devise:
     general:
-      sign_in: "Sign in"
+      sign_up: "Sign up"
     sessions:
       new:
         welcome_back: "Welcome Back!"
@@ -226,22 +226,11 @@ en:
         please_ignore: "If you didn't request this, please ignore this email."
         wont_change: "Your password won't change until you access the link below and create a new one."
         change_password: "Change my password"
-      unlock_instructions:
-        unlock_instructions: "Unlock Instructions"
-        account_locked: "Your account has been locked due to an excessive number of unsuccessful sign in attempts."
-        click_below: "Click the link below to unlock your account."
-        unlock_account: "Unlock my account"
-    shared:
-      links:
-        dont_have_account: "Don't have an account?"
-        forgot_password: "Forgot your password?"
-        didnt_receive_confirmation: "Didn't receive confirmation instructions?"
-        didnt_receive_unlock: "Didn't receive unlock instructions?"
     passwords:
       new:
-        forgot_password: "Forgot your password?"
-        no_worries: "No worries!"
-        we_got_you: "We got you covered. It happens to the best of us."
+        forgot_your_password: "Forgot your password?"
+        no_worry: "No worries!"
+        youre_covered: "We got you covered. It happens to the best of us."
         reset: "Reset my password"
     unlocks:
       new:
