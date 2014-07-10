@@ -8,8 +8,8 @@ var Conversation = React.createClass({
     if(isUnread || isStale) {
       var classes = React.addons.classSet({
         'status': true,
-        'status-unread': !isStale && isUnread,
-        'status-urgent': isStale
+        'status-info': !isStale && isUnread,
+        'status-warning': isStale
       });
 
       return (
@@ -19,53 +19,59 @@ var Conversation = React.createClass({
   },
 
   renderActions: function() {
+    var button = null;
+
     if(this.props.conversation.archived) {
-      return (
-        <div className="conversation-actions btn-group pull-right">
-          <button className="btn btn-default btn-sm" onClick={this.props.unarchiveHandler}>Move to Inbox</button>
-        </div>
-      );
+      button = <button className="btn btn-link btn-xs" onClick={this.props.unarchiveHandler}>Move to Inbox</button>
     } else {
-      return (
-        <div className="conversation-actions btn-group pull-right">
-          <button className="btn btn-default btn-sm" onClick={this.props.archiveHandler}>Archive</button>
-        </div>
-      );
+      button = <button className="btn btn-link btn-xs" onClick={this.props.archiveHandler}>Archive</button>
     }
+
+    return <div className="conversation-actions pull-right">{button}</div>
   },
 
   renderReply: function() {
     if(this.hasReply() && !this.props.conversation.expanded) {
       return (
         <div className="reply">
-          <span className="geomicon ss-reply"></span>
+          <span className="geomicon geomicon-reply"></span>
         </div>
       );
     }
   },
 
   renderHeader: function() {
+    var title = null;
     var previewBody = null;
 
-    if(!this.props.conversation.expanded) {
+    if(this.props.conversation.subject) {
+      title = this.props.conversation.subject;
+    } else {
+      title = this.props.conversation.summary;
+    }
+
+    if(this.props.conversation.subject && !this.props.conversation.expanded) {
       previewBody = <span className="text-muted" dangerouslySetInnerHTML={{__html: this.preview()}} />;
     }
+
+    var classes = React.addons.classSet({
+      'ellipsis-overflow': !this.props.conversation.expanded,
+    });
 
     return (
       <a href="#" onClick={this.props.toggleHandler}>
         <div className="conversation-header">
           {this.renderStatus()}
-
           {this.renderActions()}
-          <div className="conversation-person">
-            <Person person={this.props.conversation.creator_person} />
-          </div>
+
+          <Avatar person={this.props.conversation.creator_person} size="30" />
+          <Person person={this.props.conversation.creator_person} />
 
           <div className="conversation-preview">
             {this.renderReply()}
 
-            <div className="ellipsis-overflow">
-              {this.props.conversation.subject}
+            <div className={classes}>
+              <strong>{title}</strong>
               &nbsp;
               {previewBody}
             </div>

@@ -1,0 +1,20 @@
+<footer class="text-center">
+  <nav data-scroll-to-content="true">
+    <ul class="list-inline">
+      <li><%= link_to 'Helpful', root_path %></li>
+      <li><%= link_to "Who's it for", '#reasons' %></li>
+      <li><%= link_to 'Features', '#features' %></li>
+      <li><%= link_to 'Pricing', '#pricing' %></li>
+      <li><%= mail_to 'helpful@helpful.io', 'Contact' %></li>
+      <li><%= link_to 'Twitter', 'https://twitter.com/tryhelpful' %></li>
+      <li class="divider"></li>
+      <li><%= link_to 'Sign In', new_user_session_path %></li>
+    </ul>
+  </nav>
+
+  <h2>Thank you for your time. We know it's precious.</h2>
+
+  <a href="#" data-helpful="helpful" class="btn btn-primary">Still have a question?</a>
+
+  <p class="copyright"><%= t('.copyright').html_safe %></p>
+</footer>

@@ -1,0 +1,30 @@
+footer {
+  background-color: $gray-dark;
+  margin-top: 20px;
+  padding-bottom: 40px;
+  padding-top: 40px;
+
+  h2 {
+    color: white;
+    padding: 40px;
+  }
+
+  nav {
+    padding-bottom: 40px;
+
+    li {
+      a {
+        color: white;
+        font-size: $font-size-small;
+        padding-right: 40px;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  .copyright {
+    color: $gray;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}

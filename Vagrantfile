@@ -14,7 +14,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:5000" will access port 5000 on the guest machine.
+  config.vm.network :private_network, ip: "192.168.50.4"
   config.vm.network :forwarded_port, guest: 5000, host: 5000
+
+  config.vm.synced_folder(".", "/vagrant", nfs: true)
 
   config.vm.provider "virtualbox" do |vb|
     vb.customize ['modifyvm', :id, '--cpus', '2']

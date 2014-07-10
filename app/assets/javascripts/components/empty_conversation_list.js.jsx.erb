@@ -3,13 +3,9 @@
 var EmptyConversationList = React.createClass({
   render: function() {
     return (
-      <div>
-        <div className="conversation conversation-row conversation-row-empty">
-          <div className="summary text-center">
-            <%= image_tag 'logo.png' %>
-            <p className="lead">No conversations found.</p>
-          </div>
-        </div>
+      <div className="jumbotron text-center">
+        <%= image_tag 'logo.png' %>
+        <p className="lead">No conversations found.</p>
       </div>
     );
   }

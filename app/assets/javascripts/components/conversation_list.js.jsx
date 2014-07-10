@@ -54,15 +54,6 @@ var ConversationList = React.createClass({
           if(expanded) {
             conversation.unread = false;
             this.read(conversation);
-            router.navigate(conversation.path);
-          } else {
-            if(this.props.query) {
-              router.navigate(this.searchPath());
-            } else if(conversation.archived) {
-              router.navigate(this.archivePath());
-            } else {
-              router.navigate(this.inboxPath());
-            }
           }
         } else {
           conversation.expanded = false;
@@ -86,13 +77,13 @@ var ConversationList = React.createClass({
           switch(streamItem.type) {
             case 'message':
               conversation.messages.push(streamItem);
-              break;
+            break;
             case 'assignmentevent':
               conversation.assignment_events.push(streamItem);
-              break;
+            break;
             case 'tagevent':
               conversation.tag_events.push(streamItem);
-              break;
+            break;
           }
         }
 
@@ -138,8 +129,6 @@ var ConversationList = React.createClass({
       concat(this.state.conversations.slice(index + 1));
 
     this.setState({ conversations: conversations });
-
-    this.updateRoute(conversation);
   },
 
   unarchiveHandler: function(conversation) {
@@ -175,8 +164,6 @@ var ConversationList = React.createClass({
       concat(this.state.conversations.slice(index + 1));
 
     this.setState({ conversations: conversations });
-
-    this.updateRoute(conversation);
   },
 
   renderConversation: function(conversation) {
@@ -195,7 +182,14 @@ var ConversationList = React.createClass({
   render: function() {
     if(this.state.conversations.length) {
       var conversations = this.state.conversations.map(this.renderConversation);
-      return <div className="list list-conversations">{conversations}</div>
+
+      return (
+        <div className="row">
+          <div className="col-md-8 col-md-offset-2">
+            <div className="list list-conversations">{conversations}</div>
+          </div>
+        </div>
+      )
     } else if(this.state.loaded) {
       if (this.state.archived || this.props.query) {
         return <EmptyConversationList />
@@ -205,18 +199,6 @@ var ConversationList = React.createClass({
       }
     } else {
       return <div></div>
-    }
-  },
-
-  updateRoute: function(conversation) {
-    if(conversation.expanded) {
-      router.navigate(conversation.path);
-    } else if(this.props.query) {
-      router.navigate(this.searchPath());
-    } else if(conversation.archived) {
-      router.navigate(this.archivePath());
-    } else {
-      router.navigate(this.inboxPath());
     }
   },
 
@@ -236,7 +218,7 @@ var ConversationList = React.createClass({
     var path = '/accounts/' + this.props.accountSlug + '/conversations.json';
 
     if(!this.props.query) {
-      path += '?archive=' + this.state.archive;
+      path += '?archived=' + this.state.archived;
     } else {
       path += '?q=' + this.props.query;
     }

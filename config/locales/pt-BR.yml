@@ -171,6 +171,8 @@ pt-BR:
       in_house: "In-House"
       in_house_text: "Se você prefere utilizar o serviço por conta própria, você pode ter o Helpful rodando em sua própria infra."
       contact_us: "Entre em Contato"
+      footer:
+        copyright: "All content &copy; Assembly Inc. who loves customers, hates spam, and believes support is naturally human."
 
   canned_responses:
     general:

@@ -165,10 +165,6 @@ class Conversation < ActiveRecord::Base
     !archived? && last_activity_at < 3.days.ago
   end
 
-  def subject
-    super.presence || first_message && first_message.content.to_s[0..140]
-  end
-
   private
 
   def message_added_callback(message)

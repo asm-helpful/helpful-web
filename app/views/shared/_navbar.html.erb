@@ -1,6 +1,5 @@
 <div class="navbar navbar-inverse navbar-static-top">
-
-  <div class="container">
+  <div class="container-fluid">
     <ul class="nav navbar-nav navbar-left">
       <li class="dropdown <%= nav_active_class(:account) %>">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -13,11 +12,11 @@
           <% current_user.accounts.each do |account| %>
             <li class="<%= 'active' if @account == account %>">
 
-              <a href="<%= inbox_account_conversations_path(account) %>">
-                <% unless account.inbox_count.zero? %>
-                  <span class="badge pull-right"><%= account.inbox_count %></span>
-                <% end %>
+              <a href="<%= inbox_account_conversations_path(account) %>" class="clearfix" style="white-space:nowrap">
                 <%= account.name %>
+                <% unless account.inbox_count.zero? %>
+                  <span class="badge"><%= account.inbox_count %></span>
+                <% end %>
               </a>
             </li>
           <% end %>
@@ -32,7 +31,7 @@
 
       <li class="<%= nav_active_class(:inbox) %>">
         <%= link_to inbox_account_conversations_path(@account), class: "#{'active' if current_page?(inbox_account_conversations_path(@account)) }" do %>
-          <span class="geomicon ss-inbox"></span>
+          <span class="geomicon geomicon-inbox"></span>
           <span class="">Inbox</span>
           <% unless @account.inbox_count.zero? %>
             <span class="badge"><%= @account.inbox_count %></span>
@@ -42,7 +41,7 @@
 
       <li class="<%= nav_active_class(:archive) %>">
         <%= link_to archived_account_conversations_path(@account), class: "#{'active' if current_page?(archived_account_conversations_path(@account)) }" do %>
-          <span class="geomicon ss-storagebox"></span>
+          <span class="geomicon geomicon-storagebox"></span>
           <span class="">Archive</span>
         <% end %>
       </li>

@@ -11,14 +11,10 @@ class ConversationsController < ApplicationController
 
   def archived
     counts = @account.conversations.with_messages.group(:archived).count
-    @inbox_count = counts[false]
-    @archive_count = counts[true]
   end
 
   def inbox
     counts = @account.conversations.with_messages.group(:archived).count
-    @inbox_count = counts[false]
-    @archive_count = counts[true]
   end
 
   def search

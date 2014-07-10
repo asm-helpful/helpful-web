@@ -2,23 +2,18 @@
   color: $gray-darker;
 }
 
-.message-person {
-  > .person {
-    display: inline-block;
-  }
+.message-header {
+  font-size: $font-size-small;
+  padding: $padding-large-vertical $grid-gutter-width;
 
   > .avatar {
+    float: left;
     display: inline-block;
     margin-right: $padding-small-horizontal;
   }
 }
 
 .message-content {
-  font-size: $font-size-small;
-  padding-top: $padding-base-vertical;
-  padding-bottom: $padding-base-vertical;
-
-  p:last-child {
-    margin-bottom: 0;
-  }
+  padding-left: $grid-gutter-width;
+  padding-right: $grid-gutter-width;
 }

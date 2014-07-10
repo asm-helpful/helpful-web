@@ -10,17 +10,17 @@ $status-size: 12px;
   height: $status-size;
 }
 
-.status-unread {
-  background-color: $status-unread-background-color;
+.status-info {
+  background-color: $blue;
 }
 
-.status-urgent {
-  background-color: $status-urgent-background-color;
+.status-warning {
+  background-color: $red;
 }
 
 .status-reply {
   &:after {
-    color: $status-reply-color;
+    color: $text-muted;
     content: "↩";
     font-family: "SSGeomiconsSquared";
     font-style: normal;

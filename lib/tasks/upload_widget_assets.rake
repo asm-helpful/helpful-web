@@ -1,5 +1,13 @@
 require 'fileutils'
 
+WIDGET_ASSETS = [
+  'widget.js',
+  'widget-content.js',
+  'widget.css',
+  'widget-arrow.svg',
+  'widget-close.svg'
+]
+
 desc 'Compile assets and upload widget assets to S3'
 task 'assets:precompile' do
   manifest = Dir['public/assets/manifest-*.json'].first
@@ -14,7 +22,7 @@ task 'assets:precompile' do
   directory = connection.directories.get(ENV['FOG_DIRECTORY'])
 
   assets.each do |asset, digested_asset|
-    if asset.match(/widget/)
+    if WIDGET_ASSETS.include?(asset)
       directory.files.create(
         key: "assets/#{asset}",
         body: File.open("public/assets/#{digested_asset}"),

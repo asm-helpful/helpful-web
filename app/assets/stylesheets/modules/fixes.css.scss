@@ -14,18 +14,16 @@
   }
 }
 
+/* sticky footer */
+html, body {
+    height: 100%;
+}
+
 #wrap {
 	min-height: 100%;
 	height: auto;
 	margin-bottom: -80px;
 	padding-bottom: 80px;
-}
-footer {
-	padding: 20px 0;
-	margin-top: 20px;
-	border-top: 1px solid rgba(116,129,143,.1);
-	color: rgba(116,129,143,.5);
-	font-size: 12px;
 }
 
 /* panel */
