@@ -1,5 +1,5 @@
 <div class="container">
-  <h1 class="page-title">Change your password</h1>
+  <h1 class="page-title"><%= t('.change_password') %></h1>
 
   <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put, role: 'form' }) do |f| %>
   <%= devise_error_messages! %>
@@ -33,12 +33,3 @@
     </div>
   </fieldset>
 <% end %>
-
-  <div class="row">
-    <div class="col-md-12">
-      <div class="help-block">
-        <%= render "devise/shared/links" %>
-      </div>
-    </div>
-  </div>
-</div>
