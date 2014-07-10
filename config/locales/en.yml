@@ -184,7 +184,7 @@ en:
     index:
       create_canned_response: "Create canned response"
       canned_responses: "Canned Responses"
-      none_created: "No one has created a canned response yet."
+      none_created: "No one has created a canned response yet. Click below to create one to quickly respond to an incoming message."
     new:
       help: |-
         Create a canned response for messages that are sent often or need to be
