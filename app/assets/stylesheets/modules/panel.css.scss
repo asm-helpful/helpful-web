@@ -16,20 +16,20 @@ $panel-title: $gray-darker;
     border-color: rgba(0, 0, 0, 0.15);
   }
 
-  .plan-selected {
+  .plan-subscribed {
     color: $brand-success;
     height: 36px;
     padding-top: 7px;
 
-    .geomicon.geomicon-check {
-      font-size: $font-size-large;
+    .geomicon-check {
+      font-size: 20px;
       display: inline-block;
-      padding-right: $padding-xs-horizontal;
+      padding-right: 2px;
       top: 2px;
     }
 
     .plan-select-message {
-      font-weight: 700;
+      font-weight: 400;
     }
   }
 }
