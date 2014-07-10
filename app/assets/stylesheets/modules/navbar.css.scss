@@ -3,12 +3,6 @@
 }
 
 .navbar-inverse {
-  .navbar-header .navbar-brand {
-    background-color: #16a0b5;
-    margin-left: 0px;
-    padding: 10px;
-  }
-
   .dropdown-menu {
     background-color: $navbar-inverse-link-active-bg;
 
@@ -38,6 +32,12 @@
     > .form-control {
       color: $navbar-inverse-link-active-color;
     }
+  }
+}
+
+.navbar-header {
+  > .navbar-brand {
+    padding: $padding-large-vertical $padding-large-horizontal;
   }
 }
 
