@@ -19,30 +19,6 @@
   &.hover .conversation-actions {
     display: block;
   }
-
-
-  &:not(.conversation-row-empty) {
-    &.is-expanded {
-      background-color: white;
-      border-top: none;
-      border-radius: $border-radius-base;
-      box-shadow: inset 0 0 0 1px $brand-border;
-      padding-top: 1px;
-
-      &+ .conversation {
-        border-top: none;
-        padding-top: 1px;
-      }
-
-      .conversation-preview {
-        height: auto;
-      }
-    }
-  }
-}
-
-.container .conversation.conversation-row-empty:hover {
-  background-color: $body-bg;
 }
 
 .conversation-header {
