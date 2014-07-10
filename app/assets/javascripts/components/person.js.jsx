@@ -10,14 +10,12 @@ var Person = React.createClass({
   },
 
   label: function() {
-    if(this.props.person.name) {
-      return (
+    return (
+      <div>
         <span>{this.props.person.name}</span>
-      )
-    } else {
-      return (
-        <span>{this.props.person.email}</span>
-      )
-    }
+        &nbsp;
+        <span className="text-muted">{this.props.person.email}</span>
+      </div>
+    );
   }
 });
