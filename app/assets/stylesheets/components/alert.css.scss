@@ -1,4 +1,11 @@
 .alert {
+  margin-bottom: 0;
+  border-bottom: 1px solid darken($alert-default-bg, 5%);
+
+  &:last-child {
+    border-bottom: 0;
+  }
+
   a {
     color: $alert-link-color;
     font-weight: $alert-link-font-weight;
@@ -13,9 +20,24 @@
   }
 
   .icon {
-    padding-right: $padding-xs-horizontal;
     font-size: 20px;
-    top: 4px;
+    padding-right: $padding-xs-horizontal;
+    top: $padding-small-vertical;
+  }
+
+  .close-button {
+    float: right;
+    background-color: transparent;
+    border: 0;
+    
+    .geomicon {
+      font-size: $font-size-large;
+      opacity: 0.5;
+
+      &:hover {
+        opacity: 0.75;
+      }
+    }
   }
 }
 
