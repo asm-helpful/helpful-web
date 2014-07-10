@@ -3,7 +3,6 @@
 }
 
 .navbar-inverse {
-
   .dropdown-menu {
     background-color: $navbar-inverse-link-active-bg;
 
@@ -33,6 +32,12 @@
     > .form-control {
       color: $navbar-inverse-link-active-color;
     }
+  }
+}
+
+.navbar-header {
+  > .navbar-brand {
+    padding: $padding-large-vertical $padding-large-horizontal;
   }
 }
 
