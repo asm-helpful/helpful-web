@@ -18,8 +18,17 @@
     <% end %>
   </tbody>
 </table>
-<% unless @account.canned_responses.any? %>
-  <p><%= t('canned_responses.index.none_created') %></p>
+<% if @account.canned_responses.empty? %>
+  <div class="panel panel-default">
+    <div class="panel-title">
+      <%= t('canned_responses.none_created.title') %>
+    </div>
+    <div class="panel-body">
+      <%= t('canned_responses.none_created.explanation') %>
+    </div>
+  </div>
+  <p>
+  </p>
 <% end %>
 
 <a class="btn btn-success btn-sm" href="<%= new_account_canned_response_path(@account) %>">
