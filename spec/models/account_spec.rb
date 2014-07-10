@@ -40,35 +40,33 @@ describe Account do
   describe '.conversations_limit_reached?' do
     before do
       account.save
-
-      24.times do
-        account.conversations << build(:conversation)
-      end
+      account.stub(conversations_limit: 2)
     end
 
-    it 'does not reach its limit for the first 24 conversations' do
+    it 'knows when the limit has not been reached' do
+      account.conversations << FactoryGirl.build(:conversation)
+
       expect(account.conversations_limit_reached?).to eq(false)
     end
 
-    it 'reaches its limit after 25 conversations' do
-      account.conversations << build(:conversation)
+    it 'knows when the limit is reached' do
+      2.times { account.conversations << FactoryGirl.build(:conversation) }
+
       expect(account.conversations_limit_reached?).to eq(true)
     end
 
     it 'marks conversations after the limit is reached as unpaid' do
-      2.times do
-        account.conversations << build(:conversation)
-      end
+      3.times { account.conversations << FactoryGirl.build(:conversation) }
 
-      expect(account.conversations.including_unpaid.most_recent.first.unpaid?).to eq(true)
+      last_conversation = account.conversations.including_unpaid.most_recent.first
+
+      expect(last_conversation).to be_unpaid
     end
 
     it 'removes conversations over the limit from any scopes' do
-      2.times do
-        account.conversations << build(:conversation)
-      end
+      3.times { account.conversations << FactoryGirl.build(:conversation) }
 
-      expect(account.conversations.size).to eq(25)
+      expect(account.conversations.size).to eq(2)
     end
   end
 
