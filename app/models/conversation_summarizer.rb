@@ -14,7 +14,7 @@ class ConversationSummarizer
   end
 
   def summary
-    if subject
+    if subject.present?
       subject
     elsif first_sentence.size <= LENGTH
       first_sentence
@@ -29,7 +29,7 @@ class ConversationSummarizer
 
   def first_sentence
     sentence = first_message && first_message.partition(/\.|\?|\!|\s\-\s/)[0..1].join
-    sentence.strip.chomp('-').strip
+    sentence.to_s.strip.chomp('-').strip
   end
 
   def truncated_message
