@@ -11,8 +11,14 @@
     background-color: white;
   }
 
-  &.is-collapsed .conversation-actions {
-    display: none;
+  &.is-collapsed {
+    .conversation-actions {
+      display: none;
+    }
+
+    .conversation-preview {
+      height: $line-height-computed;
+    }
   }
 
   &:hover .conversation-actions,
@@ -46,8 +52,6 @@
 }
 
 .conversation-preview {
-  height: $line-height-computed;
-
   > .reply {
     color: $gray;
     float: left;
