@@ -1,26 +1,42 @@
-# Takes a conversation and consistently summarizes it to at maximum LENGTH.
-# Consistently is important because it shouldn't change after the first message
-# so the labels in the UI are consistent.
 class ConversationSummarizer
+  include ActionView::Helpers::TextHelper
 
-  LENGTH = 140
+  LENGTH = 200
 
   attr_accessor :conversation
+
+  def self.summary(conversation)
+    new(conversation).summary
+  end
 
   def initialize(conversation)
     self.conversation = conversation
   end
 
   def summary
-    self.conversation.subject || tweet_sized_snippet_from_first_message
+    if subject
+      subject
+    elsif first_sentence.size <= LENGTH
+      first_sentence
+    else
+      truncated_message
+    end
   end
 
-  def tweet_sized_snippet_from_first_message
-    first_message && first_message.content[0...LENGTH]
+  def subject
+    conversation.subject
+  end
+
+  def first_sentence
+    sentence = first_message && first_message.partition(/\.|\?|\!|\s\-\s/)[0..1].join
+    sentence.strip.chomp('-').strip
+  end
+
+  def truncated_message
+    first_message && truncate(first_message, length: LENGTH, separator: ' ').html_safe
   end
 
   def first_message
-    conversation.first_message
+    conversation.first_message && conversation.first_message.content
   end
-
 end
