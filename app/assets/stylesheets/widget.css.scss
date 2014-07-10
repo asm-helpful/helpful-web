@@ -1,6 +1,3 @@
-@import 'addons/prefixer';
-@import 'css3/box-sizing';
-
 .helpful-reset * {
   animation : none;
   animation-delay : 0;
@@ -170,7 +167,7 @@
 .helpful-embed {
   * { margin: 0; }
 
-  @include box-sizing(border-box);
+  box-sizing: border-box;
 
   z-index: 99999;
   position: absolute;
@@ -185,7 +182,7 @@
   height: 340px;
 
   .helpful-btn {
-    @include box-sizing(border-box);
+    box-sizing: border-box;
     -webkit-appearance: none;
     display: inline-block;
     vertical-align: baseline;
@@ -226,7 +223,7 @@
   }
 
   textarea {
-    @include box-sizing(border-box);
+    box-sizing: border-box;
     border: 0;
     color: #333333;
     background-color: transparent;
@@ -256,7 +253,7 @@
   }
 
   input[type=text], input[type=email] {
-    @include box-sizing(border-box);
+    box-sizing: border-box;
     display: block;
     width: 250px;
     padding: 6px 12px;
