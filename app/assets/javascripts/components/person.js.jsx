@@ -4,10 +4,6 @@ var Person = React.createClass({
   render: function() {
     return (
       <div className="person">
-        <div className="person-avatar">
-          <Avatar person={this.props.person} size="22" />
-        </div>
-
         {this.label()}
       </div>
     );
@@ -16,15 +12,11 @@ var Person = React.createClass({
   label: function() {
     if(this.props.person.name) {
       return (
-        <span>
-          <strong>{this.props.person.name}</strong>
-          &nbsp;
-          <span className="text-muted">{this.props.person.email}</span>
-        </span>
+        <span>{this.props.person.name}</span>
       )
     } else {
       return (
-        <strong>{this.props.person.email}</strong>
+        <span>{this.props.person.email}</span>
       )
     }
   }

@@ -55,7 +55,7 @@ log "Starting Helpful"
 su vagrant -lc "cd /vagrant && sudo foreman export upstart /etc/init \
   --app helpful \
   --user vagrant \
-  --log /vagrant/log \
+  --log /var/log/helpful.log \
   --template /vagrant/config/vagrant/foreman/export_templates/upstart"
 
 if ! restart helpful 2> /dev/null ; then

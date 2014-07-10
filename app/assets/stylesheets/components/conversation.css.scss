@@ -1,6 +1,3 @@
-$brand-border: #E6EBEB;
-$gutter: 46px;
-
 .conversation {
   border-top: 1px solid $brand-border;
 
@@ -9,52 +6,42 @@ $gutter: 46px;
     padding-top: 1px;
   }
 
-  &.is-collapsed {
-    .conversation-actions {
-      display: none;
-    }
+  &:hover,
+  &.hover {
+    background-color: white;
   }
 
-  &:not(.conversation-row-empty) {
-    &:hover,
-    &.hover,
-    &.is-expanded {
-      background-color: white;
-      border-top: none;
-      border-radius: $border-radius-base;
-      box-shadow: inset 0 0 0 1px $brand-border;
-      padding-top: 1px;
+  &.is-collapsed .conversation-actions {
+    display: none;
+  }
 
-      .conversation-actions {
-        display: block;
-      }
-
-      &+ .conversation {
-        border-top: none;
-        padding-top: 1px;
-      }
-    }
+  &:hover .conversation-actions,
+  &.hover .conversation-actions {
+    display: block;
   }
 }
 
 .conversation-header {
   color: $gray-darker;
-  padding: $padding-large-vertical $padding-large-horizontal;
-  padding-left: $gutter;
+  padding: 20px $grid-gutter-width;
+  padding-left: $grid-gutter-width + 30px + $padding-base-horizontal;
+  position: relative;
 
   > .status {
-    float: left;
-    margin-left: -25px;
-    margin-top: 5px;
+    left: 10px;
+    top: 20px + ((30px / 2) - (12px / 2));
+    z-index: 1;
+    position: absolute;
   }
-}
 
-
-.conversation-person {
-  padding-bottom: $padding-base-vertical;
+  > .avatar {
+    float: left;
+    margin-left: - (30px + $padding-base-horizontal);
+  }
 
   > .person {
-    @extend .ellipsis-overflow;
+    font-size: $font-size-small;
+    color: $gray;
   }
 }
 
@@ -69,17 +56,12 @@ $gutter: 46px;
 }
 
 .conversation-stream {
-  .stream-item:first-child {
-    .person {
-      display: none;
-    }
-  }
+  border-top: 1px solid $brand-border;
 }
 
 .conversation-response {
   border-top: 1px solid $brand-border;
-  padding: $padding-large-vertical $padding-large-horizontal;
-  padding-left: $gutter;
+  padding: $padding-large-vertical $grid-gutter-width;
 
   .form-control {
     height: auto !important;

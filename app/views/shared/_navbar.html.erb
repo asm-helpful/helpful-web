@@ -1,6 +1,6 @@
 <div class="navbar navbar-inverse navbar-static-top">
 
-  <div class="container">
+  <div class="container-fluid">
     <div class="navbar-header">
       <a href="<%= root_path %>" class="navbar-brand">
         <%= image_tag image_path('logo.png'), alt: 'Helpful', width: 30, height: 30 %>
@@ -37,7 +37,7 @@
 
       <li class="<%= nav_active_class(:inbox) %>">
         <%= link_to inbox_account_conversations_path(@account), class: "#{'active' if current_page?(inbox_account_conversations_path(@account)) }" do %>
-          <span class="geomicon ss-inbox"></span>
+          <span class="geomicon geomicon-inbox"></span>
           <span class="">Inbox</span>
           <% unless @account.inbox_count.zero? %>
             <span class="badge"><%= @account.inbox_count %></span>
@@ -47,7 +47,7 @@
 
       <li class="<%= nav_active_class(:archive) %>">
         <%= link_to archived_account_conversations_path(@account), class: "#{'active' if current_page?(archived_account_conversations_path(@account)) }" do %>
-          <span class="geomicon ss-storagebox"></span>
+          <span class="geomicon geomicon-storagebox"></span>
           <span class="">Archive</span>
         <% end %>
       </li>

@@ -10,10 +10,10 @@ module ConversationHelper
 
   def flash_icon_class(level)
     case level.to_sym
-      when :notice then "ss-info"
-      when :success then "ss-check"
-      when :error then "ss-alert"
-      when :alert then "ss-alert"
+      when :notice then "geomicon-info geomicon"
+      when :success then "geomicon-check geomicon"
+      when :error then "geomicon-alert geomicon"
+      when :alert then "geomicon-alert geomicon"
     end
   end
 end

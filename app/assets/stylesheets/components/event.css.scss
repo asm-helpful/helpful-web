@@ -1,5 +1,9 @@
 .event {
-  .person {
-    display: inline-block;
+  padding: $padding-large-vertical $grid-gutter-width;
+  color: $text-muted;
+  font-size: $font-size-small;
+
+  > .person {
+    display: inline;
   }
 }

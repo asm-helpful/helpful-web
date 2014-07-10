@@ -4,18 +4,18 @@ var AssignmentEvent = React.createClass({
   render: function() {
     return (
       <div className="event">
+        <div className="pull-right">{this.timestamp()}</div>
+
         <Person person={this.props.user.person} />
         &nbsp;
-        assigned
+        assigned this to
         &nbsp;
         <Person person={this.props.assignee.person} />
-        &nbsp;
-        to this conversation {this.timeAgoInWords()}
       </div>
     );
   },
 
-  timeAgoInWords: function() {
-    return moment(this.props.updated_at).fromNow();
+  timestamp: function() {
+    return moment(this.props.created).format("h:mma D/M/YYYY");
   }
 });

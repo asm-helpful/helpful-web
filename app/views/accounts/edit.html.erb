@@ -12,52 +12,54 @@
   </ul>
 
   <!-- Tab panes -->
-  <div class="tab-content">
-    <div class="tab-pane active" id="basic">
+  <div class="sheet">
+    <div class="tab-content">
+      <div class="tab-pane active" id="basic">
 
-      <%= form_for @account, method: :patch, html: {class: 'form'} do |f| %>
+        <%= form_for @account, method: :patch, html: {class: 'form'} do |f| %>
 
-        <div class="form-group">
-          <div class="row">
-            <div class="col-md-6">
-              <%= f.label :name, t('accounts.general.company_name'), class: 'control-label' %>
-              <%= f.text_field :name, autofocus: true, placeholder: t('accounts.general.company_name_placeholder'), class: 'form-control' %>
-            </div>
-            <div class="col-md-6">
-              <%= f.label :website_url, t('.website'), class: 'control-label' %>
-              <%= f.text_field :website_url, placeholder: t('.website_placeholder'), class: 'form-control' %>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-6">
+                <%= f.label :name, t('accounts.general.company_name'), class: 'control-label' %>
+                <%= f.text_field :name, autofocus: true, placeholder: t('accounts.general.company_name_placeholder'), class: 'form-control' %>
+              </div>
+              <div class="col-md-6">
+                <%= f.label :website_url, t('.website'), class: 'control-label' %>
+                <%= f.text_field :website_url, placeholder: t('.website_placeholder'), class: 'form-control' %>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="form-group">
-          <%= f.label :signature, t('.signature'), class: 'control-label' %>
-          <%= f.text_area :signature, placeholder: t('.signature_placeholder'), class: 'form-control', rows: 3, 'data-autosize' => '' %>
-        </div>
+          <div class="form-group">
+            <%= f.label :signature, t('.signature'), class: 'control-label' %>
+            <%= f.text_area :signature, placeholder: t('.signature_placeholder'), class: 'form-control', rows: 3, 'data-autosize' => '' %>
+          </div>
 
-        <div class="form-group">
-          <%= f.label :webhook_url, t('.webhook_url'), class: 'control-label' %>
-          <%= f.text_field :webhook_url, placeholder: t('.webhook_url_placeholder'), class: 'form-control' %>
-        </div>
+          <div class="form-group">
+            <div class="control-label">Forwarding Address</div>
+            <%= mail_to @account.mailbox_email.address, @account.mailbox_email.address, class: 'form-control-static' %>
+          </code>
+          </div>
 
-        <div class="form-actions">
-          <%= f.submit t('.update_account'), class: 'btn btn-primary' %>
-        </div>
-      <% end %>
+          <div class="form-actions">
+            <%= f.submit t('.update_account'), class: 'btn btn-primary' %>
+          </div>
+        <% end %>
 
-    </div><!-- #basic -->
+      </div><!-- #basic -->
 
-    <div class="tab-pane" id="team">
-      <%= render 'team' %>
-    </div><!-- #team -->
+      <div class="tab-pane" id="team">
+        <%= render 'team' %>
+      </div><!-- #team -->
 
-    <div class="tab-pane" id="billing">
-      <%= render 'billing' %>
-    </div><!-- #billing -->
+      <div class="tab-pane" id="billing">
+        <%= render 'billing' %>
+      </div><!-- #billing -->
 
-    <div class="tab-pane" id="canned-responses">
-      <%= render 'canned_responses' %>
-    </div><!-- #canned-responses -->
+      <div class="tab-pane" id="canned-responses">
+        <%= render 'canned_responses' %>
+      </div><!-- #canned-responses -->
+    </div>
   </div>
-
 </div>

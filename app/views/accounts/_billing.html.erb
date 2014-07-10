@@ -24,29 +24,41 @@
                   <%= number_to_currency(plan.price, precision: 0) %>/month
                 <% end %>
               </p>
-              <button class="btn btn-default <%= "btn-success" if plan == @account.billing_plan %>"
+
+              <% if plan == @account.billing_plan %>
+                <div class="plan-subscribed text-center">
+                  <span class="geomicon geomicon-check"></span>
+                  <span class="plan-select-message">
+                    Subscribed
+                  </span>
+                </div>
+              <% else %>
+                <button class="btn btn-default"
                 data-plan-slug="<%= plan.slug %>"
                 data-plan-name="<%= plan.name %>"
                 data-plan-amount="<%= plan.formatted_price %>"
                 data-plan-subscribe="<%= !plan.price.zero? %>">
 
-                <span class="glyphicon glyphicon-ok"></span>
+                <% if plan == @account.billing_plan %>
+                  <span class="geomicon geomicon-check"></span>
+                <% end %>
+
                 <span class="plan-select-message">
-                  <% if plan == @account.billing_plan %>
-                    Subscribed
-                  <% else %>
-                    Subscribe
-                  <% end %>
+                  Subscribe
                 </span>
 
               </button>
+              <% end %>
+              
             </div>
           </div>
         <% end %>
       </div>
     </div>
 
-    <p>Think you might go through more than 300 conversations in a month? <a href="mailto:helpful@helpful.io">Let us know</a>, and we'll give you the best deal ever.</p>
+    <p>
+      Think you might go through more than <%= @plans.last.max_conversations %> conversations in a month? <a href="mailto:helpful@helpful.io">Let us know</a>, and we'll give you the best deal ever.
+    </p>
 
     <%= f.hidden_field :billing_plan_slug %>
     <%= f.hidden_field :stripe_token %>

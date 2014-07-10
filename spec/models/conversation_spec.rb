@@ -96,19 +96,9 @@ describe Conversation do
   end
 
   describe ".match_mailbox" do
-
     it "matches a mailbox email to a conversation" do
       subject.save
       expect(described_class.match_mailbox(subject.mailbox_email.to_s)).to eq(subject)
-    end
-
-    it "raises an exception if a converstion is not found" do
-      subject.save
-      address = subject.mailbox_email.to_s
-      subject.delete
-      expect {
-        described_class.match_mailbox!(address)
-      }.to raise_error(ActiveRecord::RecordNotFound)
     end
   end
 
@@ -173,14 +163,6 @@ describe Conversation do
       conversation.subject = 'Can haz help?'
 
       expect(conversation.subject).to eq('Can haz help?')
-    end
-
-    it 'return the first 140 characters of the first message if the subject is blank' do
-      conversation.subject = ''
-      message = double('Message', content: 'May I please have some help?')
-      expect(conversation).to receive(:first_message).twice { message }
-
-      expect(conversation.subject).to eq('May I please have some help?')
     end
   end
 end

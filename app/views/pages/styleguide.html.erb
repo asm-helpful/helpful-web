@@ -14,25 +14,31 @@
 
 <div class="alert alert-info alert-dismissible">
   <div class="container">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true" data-target=".alert-dismissible">&times;</button>
-    <i class="ss-info icon"></i>
+    <span class="geomicon geomicon-info icon"></span>
     This alert is happening. You will feel informed about it. It's so <a href="#">alertful</a>!
+    <button type="button" class="close-button" data-dismiss="alert" data-target=".alert-dismissable">
+      <span class="geomicon geomicon-delete"></span>
+    </button>
   </div>
 </div>
 
 <div class="alert alert-success alert-dismissible">
   <div class="container">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true" data-target=".alert-dismissible">&times;</button>
-    <i class="ss-check icon"></i>
+    <span class="geomicon geomicon-check icon"></span>
     This alert is happening. You will feel informed about it. It's so <a href="#">alertful</a>!
+    <button type="button" class="close-button" data-dismiss="alert" data-target=".alert-dismissable">
+      <span class="geomicon geomicon-delete"></span>
+    </button>
   </div>
 </div>
 
 <div class="alert alert-danger alert-dismissible">
   <div class="container">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true" data-target=".alert-dismissible">&times;</button>
-    <i class="ss-alert icon"></i>
+    <span class="geomicon geomicon-alert icon"></span>
     This alert is happening. You will feel informed about it. It's so <a href="#">alertful</a>!
+    <button type="button" class="close-button" data-dismiss="alert" data-target=".alert-dismissable">
+      <span class="geomicon geomicon-delete"></span>
+    </button>
   </div>
 </div>
 
@@ -138,19 +144,19 @@
           <div class="form-group has-success has-feedback">
             <label class="control-label">Field with successful validation</label>
             <input type="text" class="form-control" value="Greenville Good!">
-            <i class="ss-check form-control-feedback"></i>
+            <span class="geomicon geomicon-check form-control-feedback"></span>
           </div>
 
           <div class="form-group has-loading has-feedback">
             <label class="control-label sr-only">Field in loading state</label>
             <input type="text" class="form-control" value="Loading">
-            <i class="ss-sync form-control-feedback"></i>
+            <span class="geomicon geomicon-sync form-control-feedback"></span>
           </div>
 
           <div class="form-group has-error has-feedback">
             <label class="control-label sr-only">Field with failing validation</label>
             <input type="text" class="form-control focus" value="No can do, Kemosabe.">
-            <i class="ss-alert form-control-feedback"></i>
+            <span class="geomicon geomicon-alert form-control-feedback"></span>
             <span class="help-block help-error">Your password must be at least 8 characters long.</span>
           </div>
 
@@ -355,6 +361,8 @@
 
       <div class="panel panel-error">
 
+        <span class="geomicon geomicon-alert"></span>
+
         <div class="panel-title">
           Panel heading
         </div>
@@ -365,8 +373,8 @@
 
           <br>
 
-          <button class="btn btn-default">
-            This Thing
+          <button class="btn btn-danger">
+            Delete
           </button>
 
         </div>
@@ -387,21 +395,21 @@
 
           <li>
             <a href="#" class="completed">
-              <span class="geomicon ss-check"></span>
+              <span class="geomicon geomicon-check"></span>
               Sign Up
             </a>
           </li>
 
           <li>
             <a href="#" class="active">
-              <span class="geomicon ss-check"></span>
+              <span class="geomicon geomicon-check"></span>
               Invite Your Team
             </a>
           </li>
 
           <li>
             <a href="#">
-              <span class="geomicon ss-check"></span>
+              <span class="geomicon geomicon-check"></span>
               Start Using Helpful
             </a>
           </li>
