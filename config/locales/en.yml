@@ -99,6 +99,8 @@ en:
       try_out_command: "To try out Helpfuls incoming messages API, run this command from your terminal:"
       embed_form: "Want to embed a help form on your site?"
       embed_help_text: "You can also embed a web form anywhere that will allow your customers to submit their help requests directly to Helpful:"
+    billing:
+      update_account: 'Update account'
 
   conversations:
     conversation:
