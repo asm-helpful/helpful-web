@@ -97,6 +97,8 @@ fr:
       signature_placeholder: "Signature est ajoutée à la fin de tous les messages que vous envoyez"
       auto_archiving: "Archiver mes conversations automatiquement après que je répond"
       embed_help_text: "Vous pouvez également intégrer un formulaire Web qui permettra vos clients de soumettre leurs demandes d'aide directement à Helpful:"
+    billing:
+      update_account: 'Sauvegarder'
 
   conversations:
     conversation:
