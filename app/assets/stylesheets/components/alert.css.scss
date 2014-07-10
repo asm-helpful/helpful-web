@@ -1,12 +1,14 @@
 .alert {
   a {
     color: $alert-link-color;
-    text-decoration: underline;
+    font-weight: $alert-link-font-weight;
+    text-decoration: none;
+    border-bottom: 2px solid white;
 
     .hover,
     &:hover {
-      color: darken($alert-link-hover-color, 10%);
-      text-decoration: underline;
+      color: $gray-lighter;
+      border-color: $gray-lighter;
     }
   }
 
