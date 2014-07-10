@@ -64,23 +64,6 @@ class Account < ActiveRecord::Base
     email
   end
 
-  # Public: Given an email address try to match to an account.
-  #
-  # Returns one Account or nil.
-  def self.match_mailbox(email)
-    address = Mail::Address.new(email).address
-    slug = MAILBOX_REGEX.match(address)[:slug]
-    find_by!(slug: slug)
-  end
-
-  # Public: Given an email address try to match to an account or raise
-  # ActiveRecord::RecordNotFound.
-  #
-  # Returns one Account or raises ActiveRecord::RecordNotFound.
-  def self.match_mailbox!(email)
-    self.match_mailbox(email) || raise(ActiveRecord::RecordNotFound)
-  end
-
   # Overrides the portal url attribute to regenerate every few days with a newly valid link
   def chargify_portal_url
 

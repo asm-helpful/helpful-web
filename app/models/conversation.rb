@@ -113,20 +113,9 @@ class Conversation < ActiveRecord::Base
     email
   end
 
-  # Public: Given an email address try to match to a conversation.
-  #
-  # Returns a Conversation or nil.
   def self.match_mailbox(email)
     address = Mail::Address.new(email)
-    Conversation.find_by_id(address.local)
-  end
-
-  # Public: Given an email address try to match to a conversation or raise
-  # ActiveRecord::RecordNotFound.
-  #
-  # Returns a Conversation or raises ActiveRecord::RecordNotFound.
-  def self.match_mailbox!(email)
-    self.match_mailbox(email) || raise(ActiveRecord::RecordNotFound)
+    Conversation.find_by(id: address.local)
   end
 
   def last_activity_at

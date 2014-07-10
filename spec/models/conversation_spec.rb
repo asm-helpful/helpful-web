@@ -96,19 +96,9 @@ describe Conversation do
   end
 
   describe ".match_mailbox" do
-
     it "matches a mailbox email to a conversation" do
       subject.save
       expect(described_class.match_mailbox(subject.mailbox_email.to_s)).to eq(subject)
-    end
-
-    it "raises an exception if a converstion is not found" do
-      subject.save
-      address = subject.mailbox_email.to_s
-      subject.delete
-      expect {
-        described_class.match_mailbox!(address)
-      }.to raise_error(ActiveRecord::RecordNotFound)
     end
   end
 
