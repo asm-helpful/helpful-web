@@ -42,6 +42,7 @@ class Account < ActiveRecord::Base
 
   before_create :generate_webhook_secret
   before_create :set_default_billing_plan
+  before_save :subscribe!
   after_commit :unhide_paid_conversations
 
   friendly_id :name, use: :slugged
@@ -162,16 +163,28 @@ class Account < ActiveRecord::Base
   end
 
   def subscribe!
-    return if billing_plan.free?
+    return if !self.billing_plan_id_changed? || (self.stripe_customer_id.blank? && self.billing_plan.free?)
 
-    customer = Stripe::Customer.create(
-      card: stripe_token,
-      plan: billing_plan_slug,
-      email: owner && owner.email
-    )
+    if self.stripe_customer_id.blank?
+      # first time subscriber
+      customer = Stripe::Customer.create(
+        card: stripe_token,
+        plan: self.billing_plan.slug,
+        email: owner && owner.email
+      )
 
-    self.stripe_customer_id = customer.id
-    self.save!
+      self.stripe_customer_id = customer.id
+    else
+      # already had a subscription before
+      customer = Stripe::Customer.retrieve(self.stripe_customer_id)
+
+      if self.billing_plan.free?
+        # new subscription is free so cancel
+        customer.cancel_subscription
+      else
+        customer.update_subscription(plan: billing_plan.slug)
+      end
+    end
   end
 
   def unhide_paid_conversations

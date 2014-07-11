@@ -12,10 +12,19 @@
     border-color: rgba(0, 0, 0, 0.15);
   }
 
+  [data-plan-slug]:not(.plan-subscribed) .geomicon-check {
+    display: none;
+  }
+
   .plan-subscribed {
     color: $brand-success;
     height: 36px;
     padding-top: 7px;
+
+    &:hover {
+      text-decoration: none;
+      cursor: default;
+    }
 
     .geomicon-check {
       font-size: 20px;
