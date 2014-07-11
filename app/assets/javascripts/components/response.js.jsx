@@ -16,20 +16,12 @@ var Response = React.createClass({
     event.stopPropagation();
     event.preventDefault();
 
-    this.createMessage(false);
-  },
-
-  sendAndArchiveMessage: function(event) {
-    event.stopPropagation();
-    event.preventDefault();
-
-    this.createMessage(true);
+    this.createMessage();
   },
 
   // TODO: Include file attachments
-  createMessage: function(archiveConversation) {
+  createMessage: function() {
     var data = {
-      archive_conversation: archiveConversation,
       message: {
         conversation_id: this.props.conversation.id,
         content: $('.medium-editor').html()
@@ -46,10 +38,6 @@ var Response = React.createClass({
       success: function(response) {
         this.addStreamItem(response.message);
         this.clearResponse();
-
-        if(archiveConversation) {
-          this.props.archiveHandler();
-        }
       }.bind(this)
     });
   },
@@ -68,6 +56,14 @@ var Response = React.createClass({
     $('.medium-editor').focus();
   },
 
+  renderArchiveButton: function() {
+    if(!this.props.conversation.archived) {
+      return (
+          <button className="btn btn-danger" onClick={this.props.archiveHandler}>Archive</button>
+      );
+    }
+  },
+
   render: function() {
     return (
       <form className="form">
@@ -77,19 +73,9 @@ var Response = React.createClass({
 
         <div className="form-actions">
           <div className="pull-right">
-            <div className="btn-group">
-              <button type="button" className="btn btn-primary" onClick={this.sendMessage}>Send</button>
-              <button type="button" className="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                <span className="caret"></span>
-                <span className="sr-only">Toggle Dropdown</span>
-              </button>
-              <ul className="dropdown-menu" role="menu">
-                <li>
-                  <a href="#" onClick={this.sendAndArchiveMessage}>
-                    Send &amp; Archive
-                  </a>
-                </li>
-              </ul>
+            <div className="btn-toolbar">
+              {this.renderArchiveButton()}
+              <button className="btn btn-primary" onClick={this.sendMessage}>Send</button>
             </div>
           </div>
 
