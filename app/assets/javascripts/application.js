@@ -15,7 +15,7 @@
 //= require wow.min.js
 //= require moment
 //= require moment/min/langs
-//= require moment_locale
+//= require moment_lang
 //= require showdown
 //= require underscore
 //= require react
