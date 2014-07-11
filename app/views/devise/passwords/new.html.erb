@@ -1,29 +1,55 @@
+<%= render 'layouts/flash' %>
+
 <div class="container">
 
-  <h1><%= t('.did_you_forget') %></h1>
-  <p><%= t('.dont_worry') %></p>
-  <hr />
+  <div class="row">
 
-  <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
+      <div class="col-md-6 col-md-offset-3">
+
+          <h1 class="page-title"><%= t('.forgot_password') %></h1>
+
+      </div>
+
+  </div>
+
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { role: 'form', method: :post }) do |f| %>
+
+  <div class="row">
+
+    <div class="col-md-6 col-md-offset-3 text-center">
+
+        <h2><%= t('.no_worries') %></h2>
+
+        <p><%= t('.we_got_you') %></p>
+
+    </div>
+
+  </div>
 
   <fieldset>
 
     <div class="row">
-      <div class="col-md-12">
+
+      <div class="col-md-6 col-md-offset-3 text-center">
+
         <div class="form-group">
-          <%= f.label :email, t('general.email'), :class => "control-label" %><br />
-          <%= f.email_field :email, :autofocus => true, :class => "form-control", :placeholder => t('general.email_placeholder') %>
+          <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: t('general.email_placeholder'), class: 'form-control inline-label' %>
         </div>
+
       </div>
+
     </div>
 
     <div class="row">
-      <div class="col-md-12">
+
+      <div class="col-md-6 col-md-offset-3 text-center">
+
         <div class="form-group">
-          <%= f.submit t('.reset'), :class => 'btn btn-lg btn-primary' %>
+          <%= f.submit t('.reset'), class: 'btn btn-lg btn-primary' %>
         </div>
+
       </div>
+
     </div>
 
   </fieldset>
@@ -31,11 +57,15 @@
   <% end %>
 
   <div class="row">
-    <div class="col-md-12">
-      <div class="help-block">
+
+    <div class="col-md-6 col-md-offset-3">
+
+      <div class="help-block help-block-right">
         <%= render "devise/shared/links" %>
       </div>
+
     </div>
+
   </div>
 
 </div>

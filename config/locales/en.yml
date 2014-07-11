@@ -239,8 +239,9 @@ en:
         didnt_receive_unlock: "Didn't receive unlock instructions?"
     passwords:
       new:
-        did_you_forget: "Did you forget your password?"
-        dont_worry: "No worries, we got you covered. It happens to the best of us."
+        forgot_password: "Forgot your password?"
+        no_worries: "No worries!"
+        we_got_you: "We got you covered. It happens to the best of us."
         reset: "Reset my password"
     unlocks:
       new:
