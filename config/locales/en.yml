@@ -179,12 +179,17 @@ en:
         copyright: "All content &copy; Assembly Inc. who loves customers, hates spam, and believes support is naturally human."
 
   canned_responses:
-    general:
-      canned_response: "Canned Response"
     index:
+      canned_response: "Canned Response"
       create_canned_response: "Create canned response"
       canned_responses: "Canned Responses"
-      none_created: "No one has created a canned response yet."
+    none_yet:
+      header: "No canned responses yet"
+      body: >
+        Canned responses are a way to reply to frequently-received questions with a standard response. For example,
+        many users email support when they forget their passwords. A canned response would make replying to those
+        messages a lot faster — just click the “forgot password” canned response and you’re all done.
+      button: "Create your first canned response"
     new:
       help: |-
         Create a canned response for messages that are sent often or need to be
@@ -195,7 +200,7 @@ en:
       key: "Key"
       key_placeholder: "Enter key used to lookup the response"
       message: "Message"
-      message_placeholder: "Include the full message to include in future responses"
+      message_placeholder: "The full message to include in future responses"
       create: "Create"
       update: "Update"
     edit:

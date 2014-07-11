@@ -1,24 +1,38 @@
-<table class="table">
-  <thead>
-    <tr>
-      <th>Key</th>
-      <th>Response</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @account.canned_responses.each do |canned_response| %>
+<% if @account.canned_responses.empty? %>
+  <div class="panel panel-default">
+    <div class="panel-title">
+      <%= t('canned_responses.none_yet.header') %>
+    </div>
+    <div class="panel-body">
+      <%= t('canned_responses.none_yet.body') %>
+      <br>
+      <a class="btn btn-success btn-sm" href="<%= new_account_canned_response_path(@account) %>">
+        <%= t('canned_responses.none_yet.button') %>
+      </a>
+    </div>
+  </div>
+<% else %>
+  <table class="table">
+    <thead>
       <tr>
-        <td valign="top"><strong><code><%= canned_response.key %></code></strong></td>
-        <td valign="top"><%= canned_response.message %></td>
-        <td valign="top">
-          <a href="<%= edit_account_canned_response_path(canned_response.account, canned_response) %>">Edit</a>
-        </td>
+        <th>Key</th>
+        <th>Response</th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<a class="btn btn-success btn-sm" href="<%= new_account_canned_response_path(@account) %>">
-  <%= t('.create_canned_response') %>
-</a>
+    </thead>
+    <tbody>
+      <% @account.canned_responses.each do |canned_response| %>
+        <tr>
+          <td valign="top"><strong><code><%= canned_response.key %></code></strong></td>
+          <td valign="top"><%= canned_response.message %></td>
+          <td valign="top">
+            <a href="<%= edit_account_canned_response_path(canned_response.account, canned_response) %>">Edit</a>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <a class="btn btn-success btn-sm" href="<%= new_account_canned_response_path(@account) %>">
+    <%= t('.create_canned_response') %>
+  </a>
+<% end %>
