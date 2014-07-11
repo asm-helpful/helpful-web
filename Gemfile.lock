@@ -303,7 +303,7 @@ GEM
     rails-assets-jquery-autosize (1.18.6)
       rails-assets-jquery (>= 1.7)
     rails-assets-js-md5 (1.1.0)
-    rails-assets-moment (2.5.0)
+    rails-assets-moment (2.7.0)
     rails-assets-showdown (0.3.1)
     rails_12factor (0.0.2)
       rails_serve_static_assets

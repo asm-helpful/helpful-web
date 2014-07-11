@@ -29,7 +29,7 @@ var Message = React.createClass({
   },
 
   created: function() {
-    return moment(this.props.created).format("h:mma D/M/YYYY");
+    return moment(this.props.created).format("LT L");
   },
 
   content: function() {

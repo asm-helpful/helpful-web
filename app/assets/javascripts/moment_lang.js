@@ -1,0 +1,1 @@
+moment.lang(navigator.language);
