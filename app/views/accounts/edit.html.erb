@@ -14,7 +14,6 @@
   <!-- Tab panes -->
   <div class="sheet">
     <div class="tab-content">
-      <!-- #basic -->
       <div class="tab-pane active" id="basic">
 
         <%= form_for @account, method: :patch, html: {class: 'form'} do |f| %>
@@ -48,22 +47,19 @@
           </div>
         <% end %>
 
-      </div>
+      </div><!-- #basic -->
 
-      <!-- #team -->
       <div class="tab-pane" id="team">
         <%= render 'team' %>
-      </div>
+      </div><!-- #team -->
 
-      <!-- #billing -->
       <div class="tab-pane" id="billing">
         <%= render 'billing' %>
-      </div>
-      
-      <!-- #canned-responses -->
+      </div><!-- #billing -->
+
       <div class="tab-pane" id="canned-responses">
         <%= render 'canned_responses' %>
-      </div>
+      </div><!-- #canned-responses -->
     </div>
   </div>
 </div>
