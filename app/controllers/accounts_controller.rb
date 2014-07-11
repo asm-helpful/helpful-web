@@ -29,8 +29,6 @@ class AccountsController < ApplicationController
         @person.save!
 
         @account.add_owner!(@user)
-
-        @account.subscribe!
       end
 
       WelcomeConversation.create(@account, current_user) unless @account.conversations.welcome_email.exists?
