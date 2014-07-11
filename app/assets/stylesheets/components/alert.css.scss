@@ -9,19 +9,19 @@
   a {
     color: $alert-link-color;
     font-weight: $alert-link-font-weight;
-    text-decoration: none;
-    border-bottom: 2px solid white;
+    text-decoration: underline;
 
     .hover,
     &:hover {
       color: $gray-lighter;
-      border-color: $gray-lighter;
+      text-decoration: underline;
     }
   }
 
-  .icon {
+  .geomicon {
     font-size: 20px;
     padding-right: $padding-xs-horizontal;
+    padding-left: $padding-xs-horizontal;
     top: $padding-small-vertical;
   }
 
@@ -31,7 +31,6 @@
     border: 0;
     
     .geomicon {
-      font-size: $font-size-large;
       opacity: 0.5;
 
       &:hover {
