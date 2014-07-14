@@ -1,16 +1,6 @@
 /** @jsx React.DOM */
 
 var Message = React.createClass({
-  renderReply: function() {
-    if(this.props.person.agent) {
-      return (
-        <div className="reply">
-          <span className="geomicon geomicon-reply"></span>
-        </div>
-      );
-    }
-  },
-
   render: function() {
     return (
       <div className="message">
@@ -22,7 +12,6 @@ var Message = React.createClass({
           <Person person={this.props.person} />
         </div>
 
-        {this.renderReply()}
         <div className="message-content" dangerouslySetInnerHTML={{__html: this.content()}} />
       </div>
     );

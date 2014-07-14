@@ -1,19 +1,21 @@
 .message {
   color: $gray-darker;
+  padding: 20px 40px;
 }
 
 .message-header {
   font-size: $font-size-small;
-  padding: $padding-large-vertical $grid-gutter-width;
+  padding-bottom: $padding-large-vertical;
 
   > .avatar {
     float: left;
     display: inline-block;
-    margin-right: $padding-small-horizontal;
+    margin-right: $padding-xs-horizontal;
   }
 }
 
 .message-content {
-  padding-left: $grid-gutter-width;
-  padding-right: $grid-gutter-width;
+  p:last-child {
+    margin-bottom: 0;
+  }
 }

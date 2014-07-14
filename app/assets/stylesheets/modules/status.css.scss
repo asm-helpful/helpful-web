@@ -1,7 +1,6 @@
 $status-unread-background-color: $blue;
 $status-urgent-background-color: $red;
-$status-reply-color: #b5cbd0;
-$status-size: 12px;
+$status-size: 10px;
 
 .status {
   border-radius: 50%;
@@ -16,18 +15,4 @@ $status-size: 12px;
 
 .status-warning {
   background-color: $red;
-}
-
-.status-reply {
-  &:after {
-    color: $text-muted;
-    content: "↩";
-    font-family: "SSGeomiconsSquared";
-    font-style: normal;
-    font-size: 13px;
-    font-weight: 400;
-    text-decoration: none;
-    text-rendering: optimizeLegibility;
-    white-space: nowrap;
-  }
 }

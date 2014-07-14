@@ -30,16 +30,6 @@ var Conversation = React.createClass({
     return <div className="conversation-actions pull-right">{button}</div>
   },
 
-  renderReply: function() {
-    if(this.hasReply() && !this.props.conversation.expanded) {
-      return (
-        <div className="reply">
-          <span className="geomicon geomicon-reply"></span>
-        </div>
-      );
-    }
-  },
-
   renderHeader: function() {
     var title = null;
     var previewBody = null;
@@ -64,12 +54,10 @@ var Conversation = React.createClass({
           {this.renderStatus()}
           {this.renderActions()}
 
-          <Avatar person={this.props.conversation.creator_person} size="30" />
+          <Avatar person={this.props.conversation.creator_person} size="20" />
           <Person person={this.props.conversation.creator_person} />
 
           <div className="conversation-preview">
-            {this.renderReply()}
-
             <div className={classes}>
               <strong>{title}</strong>
               &nbsp;

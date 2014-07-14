@@ -9,12 +9,4 @@ $gutter: 46px;
   &:first-child {
     border-top: none;
   }
-
-  .reply {
-    display: none;
-    color: $gray;
-    float: left;
-    margin-left: -25px;
-    margin-top: 6px;
-  }
 }

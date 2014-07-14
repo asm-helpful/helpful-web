@@ -1,11 +1,11 @@
 .medium-editor {
   color: $gray-darker;
-  font-size: $font-size-small;
+  font-size: $font-size-base;
   min-height: 100px;
 }
 
 .medium-editor-placeholder::after {
-  color: $gray;
-  font-size: $font-size-small;
+  color: $gray-light;
+  font-size: $font-size-base;
   font-style: normal;
 }

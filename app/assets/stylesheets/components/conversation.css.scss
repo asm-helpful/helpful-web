@@ -17,7 +17,7 @@
     }
 
     .conversation-preview {
-      height: $line-height-computed;
+      height: 28px;
     }
   }
 
@@ -42,33 +42,33 @@
 
 .conversation-header {
   color: $gray-darker;
-  padding: 20px $grid-gutter-width;
-  padding-left: $grid-gutter-width + 30px + $padding-base-horizontal;
+  padding: 20px 40px;
   position: relative;
 
   > .status {
-    left: 10px;
-    top: 20px + ((30px / 2) - (12px / 2));
+    left: 15px;
+    top: 40px;
     z-index: 1;
     position: absolute;
   }
 
   > .avatar {
     float: left;
-    margin-left: - (30px + $padding-base-horizontal);
+    display: inline-block;
+    margin-right: $padding-xs-horizontal;
   }
 
   > .person {
-    font-size: $font-size-small;
     color: $gray-dark;
   }
 }
 
 .conversation-preview {
-  > .reply {
-    color: $gray;
-    float: left;
-    margin-left: -25px;
+  padding-top: $padding-small-vertical;
+
+  strong {
+    font-size: 18px;
+    font-weight: 600;
   }
 }
 
@@ -78,7 +78,7 @@
 
 .conversation-response {
   border-top: 1px solid $brand-border;
-  padding: $padding-large-vertical $grid-gutter-width;
+  padding: 20px 40px;
 
   .form-control {
     height: auto !important;
