@@ -1,14 +1,14 @@
 class DeviseMailerPreview < ActionMailer::Preview
   def confirmation_instructions
-    Devise::Mailer.confirmation_instructions(user, 'invitation-token')
+    DeviseMailer.confirmation_instructions(user, 'invitation-token')
   end
 
   def reset_password_instructions
-    Devise::Mailer.reset_password_instructions(user, 'invitation-token')
+    DeviseMailer.reset_password_instructions(user, 'invitation-token')
   end
 
   def unlock_instructions
-    Devise::Mailer.unlock_instructions(user, 'invitation-token')
+    DeviseMailer.unlock_instructions(user, 'invitation-token')
   end
 
   def user
