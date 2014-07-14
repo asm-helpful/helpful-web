@@ -37,9 +37,7 @@ module Helpful
     # Stop assets from accessing models. Useful for Heroku and Devise.
     config.assets.initialize_on_precompile = false
 
-    # TODO Remove once the Embeddable form is in a seperate repo
-    config.assets.precompile << 'embed.css'
-    config.assets.precompile << 'embed.js'
+    config.assets.precompile << 'email.css'
 
     config.to_prepare do
       Devise::Mailer.layout "email"
