@@ -3,52 +3,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width"/>
-<%#= stylesheet_link_tag "mailer/ink" %>
-<%#= stylesheet_link_tag "mailer/layout" %>
+<%= stylesheet_link_tag "email" %>
 </head>
 <body>
-<table class="body">
-  <tr>
-    <td class="center" align="center" valign="top">
-      <center>
-        <table class="container">
-          <tr>
-            <td>
-              <table class="row header">
-                <tr>
-                  <td class="wrapper last">
-                    <table class="twelve columns">
-                      <tr>
-                        <td>
-                          <%= image_tag(image_url('logo64.png')) %>
-                        </td>
-                        <td class="expander"></td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
-              </table>
-
-              <table class="row">
-                <tr>
-                  <td class="wrapper last">
-                    <table class="twelve columns">
-                      <tr>
-                        <td>
-                          <%= yield %>
-                        </td>
-                        <td class="expander"></td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-        </table>
-      </center>
-    </td>
-  </tr>
-</table>
+  <div class="container" style="margin: 20px 40px">
+    <%= yield %>
+  </div>
 </body>
 </html>
