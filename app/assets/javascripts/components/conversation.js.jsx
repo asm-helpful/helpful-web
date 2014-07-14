@@ -64,7 +64,7 @@ var Conversation = React.createClass({
           {this.renderStatus()}
           {this.renderActions()}
 
-          <Avatar person={this.props.conversation.creator_person} size="30" />
+          <Avatar person={this.props.conversation.creator_person} size="20" />
           <Person person={this.props.conversation.creator_person} />
 
           <div className="conversation-preview">
