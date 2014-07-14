@@ -17,7 +17,7 @@
     }
 
     .conversation-preview {
-      height: $line-height-computed;
+      height: 28px;
     }
   }
 
@@ -59,12 +59,18 @@
   }
 
   > .person {
-    font-size: $font-size-small;
     color: $gray-dark;
   }
 }
 
 .conversation-preview {
+  padding-top: $padding-small-vertical;
+
+  strong {
+    font-size: $font-size-large;
+    font-weight: 600;
+  }
+
   > .reply {
     color: $gray;
     float: left;
