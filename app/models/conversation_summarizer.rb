@@ -1,7 +1,7 @@
 class ConversationSummarizer
   include ActionView::Helpers::TextHelper
 
-  LENGTH = 200
+  LENGTH = 140
 
   attr_accessor :conversation
 
