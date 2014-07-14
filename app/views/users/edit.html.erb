@@ -18,12 +18,12 @@
       <%= f.text_field :name, class: 'form-control' %>
     </div>
 
-    <%= fields_for current_user.person do |ff| %>
-      <div class="form-group">
-        <%= ff.label :username, t('accounts.general.username'), class: 'control-label' %>
-        <%= ff.text_field :username, placeholder: t('accounts.general.username_placeholder'), class: 'form-control' %>
-      </div>
+    <div class="form-group">
+      <%= f.label :email, t('general.email'), class: 'control-label' %>
+      <%= f.text_field :email, class: 'form-control' %>
+    </div>
 
+    <%= fields_for current_user.person do |ff| %>
       <div class="form-group">
         <%= ff.label :avatar, t('general.avatar'), class: 'control-label' %>
         <div>
@@ -35,11 +35,6 @@
         </div>
       </div>
     <% end %>
-
-    <div class="form-group">
-      <%= f.label :email, t('general.email'), class: 'control-label' %>
-      <%= f.text_field :email, class: 'form-control' %>
-    </div>
 
     <div class="form-actions">
       <%= f.submit t('.update_personal_settings'), class: %W(btn btn-primary), rel: 'submit' %>
