@@ -21,6 +21,9 @@ en:
     registrations:
       signed_up: "Welcome! You have signed up successfully."
       updated: "We have successfully updated your account."
+    sessions:
+      signed_in: ""
+      signed_out: ""
   errors:
     messages:
       already_confirmed: "was already confirmed, please try signing in"
