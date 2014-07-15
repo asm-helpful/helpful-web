@@ -26,6 +26,11 @@ class Account < ActiveRecord::Base
   has_many :users,
     through: :memberships
 
+  has_many :accepted_users,
+    -> { where.not(invitation_accepted_at: nil) },
+    through: :memberships,
+    source: :user
+
   has_many :user_people,
     through: :users,
     source: :person

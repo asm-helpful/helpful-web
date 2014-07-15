@@ -50,14 +50,22 @@ class ConversationMailbox
   end
 
   def search
-    ConversationSearch.new(account, user, { q: query }).matching_conversations
+    ConversationSearch.new(account, user, { q: query, tag: tag, assignee: assignee }).matching_conversations
   end
 
   def search?
-    query.present?
+    [query, tag, assignee].any?(&:present?)
   end
 
   def query
     params[:q].to_s.strip
+  end
+
+  def tag
+    params[:tag].to_s.strip
+  end
+
+  def assignee
+    params[:assignee].to_s.strip
   end
 end

@@ -10,8 +10,15 @@ $(function() {
     $dropdown.removeClass('open');
   };
 
-  $search.focus(function() { open() });
-  $search.blur(function() { close() });
+  $search.focus(function() {
+    open();
+  });
+
+  $search.blur(function() {
+    setTimeout(function() {
+      close();
+    }, 200);
+  });
 
   $search.keypress(function() {
     if($search.val() === '') {

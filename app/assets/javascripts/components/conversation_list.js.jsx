@@ -191,7 +191,7 @@ var ConversationList = React.createClass({
         </div>
       )
     } else if(this.state.loaded) {
-      if (this.state.archived || this.props.query) {
+      if (this.state.archived || this.props.query || this.props.tag || this.props.assignee) {
         return <EmptyConversationList />
       }
       else {
@@ -210,20 +210,29 @@ var ConversationList = React.createClass({
     return '/' + this.props.accountSlug + '/archived';
   },
 
-  searchPath: function() {
-    return '/' + this.props.accountSlug + '/search?q=' + encodeURIComponent(this.props.query);
-  },
-
   conversationsPath: function() {
-    var path = '/accounts/' + this.props.accountSlug + '/conversations.json';
+    var path = [];
+    path.push('/accounts/');
+    path.push(this.props.accountSlug);
+    path.push('/conversations.json');
 
-    if(!this.props.query) {
-      path += '?archived=' + this.state.archived;
+    if(this.props.query || this.props.tag || this.props.assignee) {
+      if(this.props.query) {
+        path.push('?q=');
+        path.push(encodeURIComponent(this.props.query));
+      } else if(this.props.tag) {
+        path.push('?tag=');
+        path.push(encodeURIComponent(this.props.tag));
+      } else if(this.props.assignee) {
+        path.push('?assignee=');
+        path.push(encodeURIComponent(this.props.assignee));
+      }
     } else {
-      path += '?q=' + this.props.query;
+      path.push('?archived=');
+      path.push(this.state.archived);
     }
 
-    return path;
+    return path.join('');
   },
 
   conversationPath: function() {
