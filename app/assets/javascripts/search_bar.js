@@ -1,63 +1,23 @@
-var searchConversations = function($element) {
-  var searchPath = $element.attr('data-search-path');
-  var searchTimeout = null;
-  var searchResultsTemplate = Handlebars.compile($('#search-results-template').html());
-
-  $element.keypress(function() {
-    if(searchTimeout) {
-      clearTimeout(searchTimeout);
-    }
-
-    searchTimeout = setTimeout(function() {
-      $.getJSON(
-        searchPath,
-        {
-          q: $element.val()
-        },
-        function(results) {
-          $('.search-results-container').html(
-            searchResultsTemplate(results)
-          )
-        }
-      );
-    }, 200);
-  });
-};
-
-var clearInputButton = function($element) {
-  var $clearButton = $element.siblings('.glyphicon-remove');
-
-  $clearButton.click(function() {
-    $element.val('').blur();
-    return false;
-  });
-};
-
-var toggleHighlight = function($element) {
-  $element.focus(function() {  
-    $(this).removeClass('filled');
-    $('.search-results-container').show();
-  });
-
-  $element.blur(function() {
-    if(this.value.length > 0){
-      $(this).addClass('filled');
-    } else {
-      $(this).removeClass('filled');
-    }
-
-    setTimeout(function() {
-      $('.search-results-container').hide();
-    }, 200);
-  });
-}
-
 $(function() {
-  $searchQuery = $('#search-query');
+  var $search = $('#q');
+  var $dropdown = $search.closest('form').find('.dropdown');
 
-  if(!!$searchQuery.length) {
-    searchConversations($searchQuery);
-    clearInputButton($searchQuery);
-    toggleHighlight($searchQuery);
-  }
+  var open = function() {
+    $dropdown.addClass('open');
+  };
+
+  var close = function() {
+    $dropdown.removeClass('open');
+  };
+
+  $search.focus(function() { open() });
+  $search.blur(function() { close() });
+
+  $search.keypress(function() {
+    if($search.val() === '') {
+      open();
+    } else {
+      close();
+    }
+  });
 });
