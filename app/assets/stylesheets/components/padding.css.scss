@@ -1,3 +1,60 @@
+.padding {
+  padding: $padding-base-vertical $padding-base-horizontal;
+}
+
+.padding-vertical {
+  padding-top: $padding-base-vertical;
+  padding-bottom: $padding-base-vertical;
+}
+
+.padding-horizontal {
+  padding-top: $padding-base-horizontal;
+  padding-bottom: $padding-base-horizontal;
+}
+
+.padding-top {
+  padding-top: $padding-base-vertical;
+}
+
 .padding-right {
   padding-right: $padding-base-horizontal;
+}
+
+.padding-bottom {
+  padding-bottom: $padding-base-vertical;
+}
+
+.padding-left {
+  padding-left: $padding-base-horizontal;
+}
+
+
+.padding-large {
+  padding: $padding-large-vertical $padding-large-horizontal;
+}
+
+.padding-vertical {
+  padding-top: $padding-large-vertical;
+  padding-bottom: $padding-large-vertical;
+}
+
+.padding-horizontal {
+  padding-top: $padding-large-horizontal;
+  padding-bottom: $padding-large-horizontal;
+}
+
+.padding-large-top {
+  padding-top: $padding-large-vertical;
+}
+
+.padding-large-right {
+  padding-right: $padding-large-horizontal;
+}
+
+.padding-large-bottom {
+  padding-bottom: $padding-large-vertical;
+}
+
+.padding-large-left {
+  padding-left: $padding-large-horizontal;
 }

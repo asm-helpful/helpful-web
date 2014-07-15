@@ -57,18 +57,22 @@
 
       <div class="row">
 
-        <div class="col-md-6 col-md-offset-3 clearfix">
+        <div class="col-md-6 col-md-offset-3">
 
-          <div class="help-block help-block-right">
-            <%= link_to t('general.forgot_password'), new_password_path(resource_name) %>
-          </div>
+          <div class="row">
 
-          <div class="checkbox">
-            <%= f.label :remember_me do %>
-              <%= f.check_box :remember_me, checked: 'checked' %>
-              <%= t('.remember_me') %>
-            <% end %>
-          </div>
+            <div class="col-xs-6">
+              <div class="checkbox">
+                <%= f.label :remember_me do %>
+                  <%= f.check_box :remember_me, checked: 'checked' %>
+                  <%= t('.remember_me') %>
+                <% end %>
+              </div>
+            </div>
+
+            <div class="col-xs-6">
+              <%= link_to t('general.forgot_password'), new_password_path(resource_name), class: 'padding-large-top padding-large-bottom pull-right' %>
+            </div>
 
         </div>
 
