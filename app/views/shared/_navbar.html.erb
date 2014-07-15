@@ -94,14 +94,25 @@
       <div class="dropdown">
         <ul class="dropdown-menu" role="menu">
           <li class="dropdown-header" role="presentation">Search by Tag</li>
-          <li><a href="#">widget</a></li>
-          <li><a href="#">billing</a></li>
-          <li><a href="#">inquiry</a></li>
+          <% @account.tags.each do |tag_name| %>
+            <li>
+              <%= link_to tag_name, search_account_conversations_path(@account, tag: tag_name) %>
+            </li>
+          <% end %>
+
           <li class="divider" role="presentation"></li>
+
           <li class="dropdown-header" role="presentation">Search by Assignee</li>
-          <li><a href="#">Patrick Van Stee</a></li>
-          <li><a href="#">Matt Deiters</a></li>
-          <li><a href="#">Chris Lloyd</a></li>
+          <% @account.accepted_users.includes(:person).order('people.name ASC').each do |user| %>
+            <li>
+              <%= link_to search_account_conversations_path(@account, assignee: user.id) do %>
+                <%= avatar(user, 20) %>
+                <span class="username">
+                  <%= user.name %>
+                </span>
+              <% end %>
+            </li>
+          <% end %>
         </ul>
       </div>
     <% end %>
@@ -127,7 +138,7 @@
         Search by Assignee
       </div>
       <ul class="search-results">
-        <% @account.users.includes(:person).order('people.name ASC').each do |user| %>
+        <% @account.accepted_users.includes(:person).order('people.name ASC').each do |user| %>
           <li class="search-result">
             <%= link_to search_account_conversations_path(@account, assignee: user.id) do %>
               <%= avatar(user, 20) %>

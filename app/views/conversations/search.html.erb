@@ -3,6 +3,17 @@
 <%= render "layouts/flash" %>
 
 <div class="container">
-  <h3 class="page-title">Search results for "<%= params[:q] %>"</h3>
-  <%= react_component('ConversationList', 'accountSlug' => @account.slug, 'query' => params[:q]) %>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <% if params[:q].present? %>
+        <h3 class="page-title">Search results for "<%= params[:q] %>"</h3>
+      <% elsif params[:tag] %>
+        <h3 class="page-title">Conversations with tag "<%= params[:tag] %>"</h3>
+      <% elsif params[:assignee] %>
+        <h3 class="page-title">Conversations assigned to "<%= User.find(params[:assignee]).name %>"</h3>
+      <% end %>
+    </div>
+  </div>
+
+  <%= react_component('ConversationList', 'accountSlug' => @account.slug, 'query' => params[:q], 'tag' => params[:tag], 'assignee' => params[:assignee]) %>
 </div>
