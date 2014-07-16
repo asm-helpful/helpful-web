@@ -1,3 +1,10 @@
+.dropdown {
+  .navbar-form {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
 .dropdown-menu {
   border: none;
 
@@ -10,8 +17,22 @@
     margin-right: $padding-small-horizontal;
   }
 
-  > li > a > .badge {
-    margin-left: $padding-base-horizontal;
+  > li {
+    > a {
+      padding: $padding-large-vertical $padding-large-horizontal;
+
+      > .badge {
+        margin-left: $padding-base-horizontal;
+      }
+    }
+
+    &.dropdown-header {
+      color: $dropdown-header-color !important;
+      font-size: $font-size-xs;
+      letter-spacing: 1px;
+      padding: $padding-large-vertical $padding-large-horizontal;
+      text-transform: uppercase;
+    }
   }
 
   > .active .badge {

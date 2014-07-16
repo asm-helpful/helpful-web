@@ -4,10 +4,10 @@
 
 .navbar-inverse {
   .dropdown-menu {
-    background-color: $navbar-inverse-link-active-bg;
+    background-color: darken($navbar-inverse-bg, 6%);
 
     > .divider {
-      background-color: rgba(white, .1);
+      background-color: lighten($navbar-inverse-bg, 6%);
     }
 
     > li:not(.active) {
