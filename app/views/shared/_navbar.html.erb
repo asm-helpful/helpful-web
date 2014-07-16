@@ -61,37 +61,23 @@
     </ul>
 
     <ul class="nav navbar-nav navbar-right">
-      <li class="dropdown">
-        <a class="dropdown-toggle" href="#" data-toggle="dropdown">
-          <%= avatar(current_user, 19) %>
-          <b class="caret"></b>
-        </a>
-        <ul class="dropdown-menu">
-          <li class="<%= nav_active_class(:personal) %>">
-            <a href="<%= edit_user_path %>"><%= t('.settings') %></a>
-          </li>
-          <li>
-            <%= link_to t('.logout'), destroy_user_session_path, method: :delete, class: 'nav-text' %>
-          </li>
-        </ul>
-      </li>
-    </ul>
+      <li class="dropdown open">
+        <%= form_tag search_account_conversations_path(@account), method: 'get', class: 'navbar-form navbar-right', role: 'search' do %>
+          <div class="form-group">
+            <div class="input-group input-group-invisible navbar-input-group">
+              <span class="input-group-addon">
+                <span class="glyphicon glyphicon-search"></span>
+              </span>
+              <%= search_field_tag :q, @query, autocomplete: 'off', placeholder: t('.search'), class: 'form-control form-control-invisible' %>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-default sr-only">Search</button>
+          <button type="button" class="btn btn-default dropdown-toggle sr-only" data-toggle="dropdown" tabindex="-1">
+            <span class="caret"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+        <% end %>
 
-    <%= form_tag search_account_conversations_path(@account), method: 'get', class: 'navbar-form navbar-right', role: 'search' do %>
-      <div class="form-group">
-        <div class="input-group input-group-invisible navbar-input-group">
-          <span class="input-group-addon">
-            <span class="glyphicon glyphicon-search"></span>
-          </span>
-          <%= search_field_tag :q, @query, autocomplete: 'off', placeholder: t('.search'), class: 'form-control form-control-invisible' %>
-        </div>
-      </div>
-      <button type="submit" class="btn btn-default sr-only">Search</button>
-      <button type="button" class="btn btn-default dropdown-toggle sr-only" data-toggle="dropdown" tabindex="-1">
-        <span class="caret"></span>
-        <span class="sr-only">Toggle Dropdown</span>
-      </button>
-      <div class="dropdown">
         <ul class="dropdown-menu" role="menu">
           <li class="dropdown-header" role="presentation">Search by Tag</li>
           <% @account.tags.each do |tag_name| %>
@@ -114,8 +100,24 @@
             </li>
           <% end %>
         </ul>
-      </div>
-    <% end %>
+      </li>
+
+      <li class="dropdown">
+        <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+          <%= avatar(current_user, 19) %>
+          <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+          <li class="<%= nav_active_class(:personal) %>">
+            <a href="<%= edit_user_path %>"><%= t('.settings') %></a>
+          </li>
+          <li>
+            <%= link_to t('.logout'), destroy_user_session_path, method: :delete, class: 'nav-text' %>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
 
   </div><!-- .container -->
 </div><!-- .navbar -->
