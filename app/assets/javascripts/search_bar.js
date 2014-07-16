@@ -1,6 +1,6 @@
 $(function() {
   var $search = $('#q');
-  var $dropdown = $search.closest('form').find('.dropdown');
+  var $dropdown = $search.closest('.dropdown');
 
   var open = function() {
     $dropdown.addClass('open');
