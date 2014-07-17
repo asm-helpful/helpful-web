@@ -75,14 +75,19 @@ $(function() {
     showFeedback($formGroup, 'loading');
 
     timer = setTimeout(function() {
-      // TODO: Replace with AJAX request
+      var email = $email.val();
+      var slug = email.toLowerCase().replace('@helpful.io', '');
 
-      if(Math.round(Math.random())) {
-        showFeedback($formGroup, 'success');
-      } else {
+      $.get('/account_emails/' + slug + '.json').done(function() {
         showFeedback($formGroup, 'error');
-      }
-    }, 2000);
+      }).error(function(xhr) {
+        if(xhr.status === 404) {
+          showFeedback($formGroup, 'success');
+        } else {
+          hideFeedback($formGroup);
+        }
+      });
+    }, 600);
   };
 
   $name.keyup(function(event) {

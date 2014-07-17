@@ -64,6 +64,8 @@ Helpful::Application.routes.draw do
     resources :conversations
   end
 
+  resources :account_emails, only: [:show]
+
   scope '/:id' do
     resource :account, path: '/', only: [:show, :edit, :update] do
       resources :invitations
