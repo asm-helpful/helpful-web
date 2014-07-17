@@ -15,19 +15,21 @@
         </a>
 
         <ul class="dropdown-menu">
-          <% current_user.accounts.each do |account| %>
-            <li class="<%= 'active' if @account == account %>">
+          <% if current_user.accounts.size > 1 %>
+            <% current_user.accounts.each do |account| %>
+              <li class="<%= 'active' if @account == account %>">
 
-              <a href="<%= inbox_account_conversations_path(account) %>" class="clearfix" style="white-space:nowrap">
-                <%= account.name %>
-                <% unless account.inbox_count.zero? %>
-                  <span class="badge"><%= account.inbox_count %></span>
-                <% end %>
-              </a>
-            </li>
+                <a href="<%= inbox_account_conversations_path(account) %>" class="clearfix" style="white-space:nowrap">
+                  <%= account.name %>
+                  <% unless account.inbox_count.zero? %>
+                    <span class="badge"><%= account.inbox_count %></span>
+                  <% end %>
+                </a>
+              </li>
+            <% end %>
+
+            <li class="divider"></li>
           <% end %>
-
-          <li class="divider"></li>
 
           <li><a href="<%= docs_path %>">Documentation</a></li>
           <li><a href="" data-helpful="helpful" data-helpful-modal="on" data-helpful-name="<%= current_user.name %>" data-helpful-email="<%= current_user.email %>">Help</a></li>
