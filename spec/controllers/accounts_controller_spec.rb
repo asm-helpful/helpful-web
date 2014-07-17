@@ -10,32 +10,39 @@ describe AccountsController do
   end
 
 
-  describe "GET #new" do
-    it "is successful" do
+  describe 'visiting the new account page' do
+    it 'is successful' do
       get :new
       expect(response).to be_successful
     end
   end
 
-  it "POST create with name" do
-    post :create, {
-      account: {
-        name: 'MyCompany',
-        billing_plan_slug: 'starter-kit'
-      },
-      person: {
-        name: 'John Doe',
-        username: 'john'
-      },
-      user: {
-        email: 'user@user.com',
-        password: 'password',
-        password_confirmation: 'password'
+  describe 'creating an account' do
+    it 'creates an account with the name and email specified' do
+      post :create, {
+        account: {
+          name: 'Assembly',
+          email: 'asm@helpful.io',
+          billing_plan_slug: 'starter-kit'
+        },
+        person: {
+          name: 'Patrick Van Stee'
+        },
+        user: {
+          email: 'patrick@assebly.com',
+          password: 'password',
+          password_confirmation: 'password'
+        }
       }
-    }
 
-    expect(response).to redirect_to(account_invitations_path(assigns(:account)))
-    expect(assigns(:person).username).to eq "john"
+      account = assigns(:account)
+      person = assigns(:person)
+
+      expect(response).to redirect_to(account_invitations_path(account))
+      expect(account.name).to eq('Assembly')
+      expect(account.slug).to eq('asm')
+      expect(person.name).to eq('Patrick Van Stee')
+    end
   end
 
   describe "GET #show" do
