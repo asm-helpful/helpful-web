@@ -19,7 +19,7 @@
 
       <div class="row">
 
-        <div class="col-md-12">
+        <div class="col-xs-12 col-md-6">
 
           <div class="form-group">
             <%= f.label :name, t('accounts.general.company_name'), class: 'control-label' %>
@@ -32,42 +32,6 @@
 
     </fieldset>
 
-    <!-- TODO: (vanstee) Add support for linking social accounts, prefilling info, and uploading avatars here
-
-    <fieldset>
-
-      <h2>Be a real person to your customers</h2>
-
-      <p>Add a face to the name so your customers can relate to a fellow human</p>
-
-      <div class="form-group">
-
-        <button class="btn btn-default">
-          <span class="glyphicon glyphicon-user"></span>
-          Upload a Picture
-        </button>
-
-        <button class="btn btn-default">
-          <span class="glyphicon fa fa-twitter"></span>
-          Twitter
-        </button>
-
-        <button class="btn btn-default">
-          <span class="glyphicon fa fa-facebook"></span>
-          Facebook
-        </button>
-
-        <button class="btn btn-default">
-          <span class="glyphicon fa fa-google-plus"></span>
-          Google+
-        </button>
-
-      </div>
-
-    </fieldset>
-
-    -->
-
     <fieldset>
 
       <!-- TODO: locale is missing -->
@@ -79,7 +43,7 @@
 
         <div class="row">
 
-          <div class="col-md-12">
+          <div class="col-xs-12 col-md-6">
 
             <div class="form-group">
               <!-- TODO: locale is missing -->
@@ -97,7 +61,7 @@
 
         <div class="row">
 
-          <div class="col-md-12">
+          <div class="col-xs-12 col-md-6">
 
             <div class="form-group">
               <!-- TODO: locale is missing -->
@@ -111,14 +75,14 @@
 
         <div class="row">
 
-          <div class="col-md-12">
+          <div class="col-xs-12 col-md-6">
 
             <div class="form-group">
               <!-- TODO: locale is missing -->
               <%= ff.label :password, 'Password', class: 'control-label' %>
-              <%= ff.password_field :password, class: 'form-control', placeholder: "Pretend you're a spy. Make it a good one", required: true, pattern: '.{8,}', title: 'Make sure you use at least 8 characters' %>
+              <%= ff.password_field :password, class: 'form-control', required: true, pattern: '.{8,}', title: 'Make sure you use at least 8 characters' %>
               <span class="help-block">
-                Your password must be at least 8 characters.
+                Make sure you use at least 8 characters.
               </span>
             </div>
 
@@ -130,17 +94,11 @@
 
     </fieldset>
 
-    <fieldset>
-
-      <!-- TODO: locale is missing -->
-      <h2>Clearly this isn't your first rodeo</h2>
-
-      <!-- TODO: locale is missing -->
-      <p>Your support experience is about to change for the better</p>
+    <fieldset class="padding-large-top">
 
       <div class="form-group">
         <!-- TODO: locale is missing -->
-        <%= f.submit 'Sign up and start inviting your team!', class: 'btn btn-primary' %>
+        <%= f.submit 'Sign up and start inviting your team!', class: 'btn btn-lg btn-primary' %>
       </div>
 
     </fieldset>
