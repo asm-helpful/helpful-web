@@ -36,3 +36,14 @@
 .form-actions {
   @include clearfix;
 }
+
+.form-control-feedback {
+  position: absolute !important;
+  top: ($line-height-computed + 5) !important;
+  right: 0 !important;
+  z-index: 2 !important; // Ensure icon is above input groups
+  width: $input-height-base !important;
+  height: $input-height-base !important;
+  line-height: $input-height-base !important;
+  text-align: center !important;
+}

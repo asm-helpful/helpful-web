@@ -3,4 +3,8 @@
   @include animation-duration(3000ms);
   @include animation-iteration-count(infinite);
   @include animation-timing-function(linear);
+
+  &.geomicon {
+    @include transform-origin(50% 44%);
+  }
 }

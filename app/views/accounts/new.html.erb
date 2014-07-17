@@ -35,8 +35,12 @@
         <div class="col-xs-12 col-md-6">
 
           <div class="form-group">
-            <%= f.label :email, t('accounts.general.email'), class: 'control-label' %>
+            <%= f.label :email, 'Helpful Email', class: 'control-label' %>
             <%= f.text_field :email, autofocus: true, class: 'form-control', required: true %>
+            <span class="geomicon geomicon-check form-control-feedback" style="display: none"></span>
+            <span class="geomicon geomicon-sync  form-control-feedback spin" style="display: none"></span>
+            <span class="geomicon geomicon-alert form-control-feedback" style="display: none"></span>
+            <span class="help-block">This is the email your customers will use to send you support requests.</span>
           </div>
 
         </div>
