@@ -58,7 +58,10 @@ Helpful::Application.routes.draw do
       only: [:show]
   end
 
-  resource :accounts, only: [:new, :create]
+  resource :accounts, only: [:new, :create] do
+    get :validate_name
+    get :validate_email
+  end
 
   resources :accounts do
     resources :conversations

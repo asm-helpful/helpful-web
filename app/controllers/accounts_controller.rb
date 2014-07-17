@@ -7,6 +7,24 @@ class AccountsController < ApplicationController
     @account = Account.new(billing_plan_slug: 'starter-kit')
     @user = User.new
     @person = Person.new
+
+    @presenter = {
+      :account => @account,
+      :user => @user,
+      :person => @person,
+      :form => {
+        :action => accounts_path,
+        :csrf_param => request_forgery_protection_token,
+        :csrf_token => form_authenticity_token
+      },
+      :validation_url => {
+        :company => validate_name_accounts_path,
+        :email   => validate_email_accounts_path
+      },
+      :translations => {
+        :company_name => t('accounts.general.company_name')
+      }
+    }
   end
 
   def create
@@ -72,6 +90,22 @@ class AccountsController < ApplicationController
 
   def web_form
     find_account!
+  end
+
+  def validate_name
+    if Account.where(name: params[:name]).present?
+      render :json => {}, :status => 409
+    else
+      render :json => {}, :status => 200
+    end
+  end
+
+  def validate_email
+    if Person.where(email: params[:email]).present?
+      render :json => {}, :status => 409
+    else
+      render :json => {}, :status => 200
+    end
   end
 
   private
