@@ -23,7 +23,20 @@
 
           <div class="form-group">
             <%= f.label :name, t('accounts.general.company_name'), class: 'control-label' %>
-            <%= f.text_field :name, autofocus: true, class: 'form-control', required: true %>
+            <%= f.text_field :name, autofocus: true, class: 'form-control', required: true, autocomplete: :off %>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-xs-12 col-md-6">
+
+          <div class="form-group">
+            <%= f.label :email, t('accounts.general.email'), class: 'control-label' %>
+            <%= f.text_field :email, autofocus: true, class: 'form-control', required: true %>
           </div>
 
         </div>

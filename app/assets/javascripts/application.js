@@ -8,6 +8,7 @@
 //= require search_bar
 //= require billing
 //= require homepage
+//= require email_check
 //= require handlebars
 //= require medium-editor
 //= require medium_init

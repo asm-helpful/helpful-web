@@ -71,7 +71,7 @@ class ConversationsController < ApplicationController
   end
 
   def find_account!
-    @account = Account.friendly.find_by!(slug: params.fetch(:account_id))
+    @account = Account.find_by!(slug: params.fetch(:account_id))
     authorize! AccountReadPolicy.new(@account, current_user)
   end
 

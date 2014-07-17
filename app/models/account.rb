@@ -2,7 +2,6 @@ require 'activerecord/uuid'
 
 class Account < ActiveRecord::Base
   include ActiveRecord::UUID
-  extend FriendlyId
 
   attr_accessor :stripe_token, :billing_plan_slug
 
@@ -33,27 +32,37 @@ class Account < ActiveRecord::Base
   has_many :webhooks,
     dependent: :destroy
 
+  validates :billing_plan,
+    presence: true
+
   validates :name,
     presence: true,
     uniqueness: true
 
-  validates :billing_plan,
-    presence: true
+  validate :email_presence
+  validate :email_uniqueness
 
   before_create :generate_webhook_secret
   before_create :set_default_billing_plan
   before_save :subscribe!
+  before_validation :generate_slug
   after_commit :unhide_paid_conversations
 
-  friendly_id :name, use: :slugged
-
-  # Internal: Regex to extract an account slug from a Account#mailbox address
   MAILBOX_REGEX = Regexp.new(/^(?<slug>(\w|-)+)(\+\w+)?@.+$/).freeze
 
-  # Public: Customer specific email address for incoming email.
-  #
-  # Returns the email address customers should send email to.
+  def email=(new_email)
+    address = Mail::Address.new(new_email).address
+    matches = MAILBOX_REGEX.match(address)
+    self.slug = matches && matches[:slug]
+  end
+
+  def email
+    mailbox_email && mailbox_email.address
+  end
+
   def mailbox_email
+    return unless slug.present?
+
     email = Mail::Address.new([
       slug,
       '@',
@@ -200,6 +209,24 @@ class Account < ActiveRecord::Base
 
   def invitations
     memberships.reject {|m| m.user.accepted_or_not_invited? }
+  end
+
+  def generate_slug
+    self.slug ||= ActiveSupport::Inflector.transliterate(name).
+      downcase.gsub(/[^\w\ ]+/, '').gsub(/\ +/,'-')
+  end
+
+  def email_presence
+    errors.add(:email, 'is not present') unless slug.present?
+  end
+
+  def email_uniqueness
+    conflicting_account = Account.find_by(slug: slug)
+    errors.add(:email, 'is not unique') if conflicting_account && conflicting_account != self
+  end
+
+  def to_param
+    slug
   end
 
   protected
