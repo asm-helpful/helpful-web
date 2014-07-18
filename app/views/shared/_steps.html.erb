@@ -12,14 +12,6 @@
         </a>
       </li>
 
-      <li class="<%= 'disabled' if @account.persisted? && current_page?(configuration_account_path(@account)) %>">
-        <a href="#" class="<%= 'active' if @account.persisted? && current_page?(account_invitations_path(@account)) %> <%= 'completed' if @account.persisted? && current_page?(configuration_account_path(@account)) %>">
-          <span class="glyphicon glyphicon-ok"></span>
-          <!-- TODO: locale is missing -->
-          Invite Your Team
-        </a>
-      </li>
-
       <li>
         <a href="#" class="<%= 'active' if @account.persisted? && current_page?(configuration_account_path(@account)) %>">
           <span class="glyphicon glyphicon-ok"></span>
