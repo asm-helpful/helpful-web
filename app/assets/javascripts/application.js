@@ -2,6 +2,7 @@
 //= require jquery_ujs
 //= require pusher
 //= require bootstrap-sprockets
+//= require tabs
 //= require conversations
 //= require command_bar
 //= require jquery-autosize
