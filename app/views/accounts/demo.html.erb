@@ -142,13 +142,13 @@
         <% end %>
       </li>
       <li class="padding-vertical">
-        <%= link_to inbox_account_conversations_path(@account), class: 'btn btn-link' do %>
+        <%= link_to edit_account_path(@account, anchor: 'team'), class: 'btn btn-link' do %>
           Invite the rest of your team
           <span class="geomicon geomicon-navigateright"></span>
         <% end %>
       </li>
       <li class="padding-vertical">
-        <%= link_to inbox_account_conversations_path(@account), class: 'btn btn-link' do %>
+        <%= link_to docs_path, class: 'btn btn-link' do %>
           Add the widget to your site
           <span class="geomicon geomicon-navigateright"></span>
         <% end %>
