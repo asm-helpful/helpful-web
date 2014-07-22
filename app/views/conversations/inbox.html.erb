@@ -4,5 +4,9 @@
 <%= render 'layouts/flash' %>
 
 <div class="container">
-  <%= react_component('ConversationList', 'accountSlug' => @account.slug, 'archived' => false) %>
+  <div className="row">
+    <div className="col-md-8 col-md-offset-2">
+      <%= react_component('ConversationList', 'accountSlug' => @account.slug, 'archived' => false) %>
+    </div>
+  </div>
 </div>

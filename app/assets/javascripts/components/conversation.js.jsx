@@ -78,7 +78,7 @@ var Conversation = React.createClass({
           </div>
 
           <div className="conversation-response">
-            <Response conversation={this.props.conversation} addStreamItemHandler={this.props.addStreamItemHandler} archiveHandler={this.props.archiveHandler} />
+            <Response conversation={this.props.conversation} addStreamItemHandler={this.props.addStreamItemHandler} archiveHandler={this.props.archiveHandler} demo={this.props.demo} />
           </div>
         </div>
       );

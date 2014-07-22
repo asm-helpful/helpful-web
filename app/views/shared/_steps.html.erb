@@ -4,8 +4,8 @@
 
     <ul class="nav navbar-nav nav-steps text-justify">
 
-      <li class="<%= 'disabled' if @account.persisted? && (current_page?(account_invitations_path(@account)) || current_page?(configuration_account_path(@account))) %>">
-        <a href="#" class="<%= 'active' if current_page?(new_accounts_path) %> <%= 'completed' if @account.persisted? && (current_page?(account_invitations_path(@account)) || current_page?(configuration_account_path(@account))) %>">
+      <li class="<%= 'disabled' if @account.persisted? && (current_page?(account_invitations_path(@account)) || current_page?(demo_account_path(@account))) %>">
+        <a href="#" class="<%= 'active' if current_page?(new_accounts_path) %> <%= 'completed' if @account.persisted? && (current_page?(account_invitations_path(@account)) || current_page?(demo_account_path(@account))) %>">
           <span class="glyphicon glyphicon-ok"></span>
           <!-- TODO: locale is missing -->
           Sign Up
@@ -13,7 +13,7 @@
       </li>
 
       <li>
-        <a href="#" class="<%= 'active' if @account.persisted? && current_page?(configuration_account_path(@account)) %>">
+        <a href="#" class="<%= 'active' if @account.persisted? && current_page?(demo_account_path(@account)) %>">
           <span class="glyphicon glyphicon-ok"></span>
           <!-- TODO: locale is missing -->
           Start Using Helpful

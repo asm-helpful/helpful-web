@@ -42,4 +42,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def page_specific_js
+    asset = params.slice(:controller, :action).values.join('_')
+    asset if Rails.application.assets.find_asset(asset)
+  end
+  helper_method :page_specific_js
+
 end

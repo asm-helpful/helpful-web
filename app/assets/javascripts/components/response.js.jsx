@@ -21,6 +21,22 @@ var Response = React.createClass({
 
   // TODO: Include file attachments
   createMessage: function() {
+    if(this.props.demo) {
+      $.get('/user.json', function(response) {
+        var message = {
+          id: 'message-' + (new Date()).getTime(),
+          content: $('.medium-editor').html(),
+          type: 'message',
+          person: response.user.person
+        };
+
+        this.addStreamItem(message);
+        this.clearResponse();
+      }.bind(this));
+
+      return;
+    }
+
     var data = {
       message: {
         conversation_id: this.props.conversation.id,
@@ -56,6 +72,18 @@ var Response = React.createClass({
     $('.medium-editor').focus();
   },
 
+  renderCommandBar: function() {
+    if(!this.props.demo) {
+      return (
+        <div className="btn-group">
+          <AssignmentButton conversation={this.props.conversation} addStreamItemHandler={this.props.addStreamItemHandler} />
+          <TagButton conversation={this.props.conversation} addStreamItemHandler={this.props.addStreamItemHandler} />
+          <CannedResponseButton conversation={this.props.conversation} addStreamItemHandler={this.props.addStreamItemHandler} useCannedResponseHandler={this.useCannedResponseHandler} />
+        </div>
+      );
+    }
+  },
+
   renderArchiveButton: function() {
     if(!this.props.conversation.archived) {
       return (
@@ -79,11 +107,7 @@ var Response = React.createClass({
             </div>
           </div>
 
-          <div className="btn-group">
-            <AssignmentButton conversation={this.props.conversation} addStreamItemHandler={this.props.addStreamItemHandler} />
-            <TagButton conversation={this.props.conversation} addStreamItemHandler={this.props.addStreamItemHandler} />
-            <CannedResponseButton conversation={this.props.conversation} addStreamItemHandler={this.props.addStreamItemHandler} useCannedResponseHandler={this.useCannedResponseHandler} />
-          </div>
+          {this.renderCommandBar()}
         </div>
       </form>
     );

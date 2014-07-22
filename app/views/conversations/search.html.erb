@@ -15,5 +15,9 @@
     </div>
   </div>
 
-  <%= react_component('ConversationList', 'accountSlug' => @account.slug, 'query' => params[:q], 'tag' => params[:tag], 'assignee' => params[:assignee]) %>
+  <div className="row">
+    <div className="col-md-8 col-md-offset-2">
+      <%= react_component('ConversationList', 'accountSlug' => @account.slug, 'query' => params[:q], 'tag' => params[:tag], 'assignee' => params[:assignee]) %>
+    </div>
+  </div>
 </div>

@@ -2,6 +2,12 @@
 
 var Inbox = React.createClass({
   render: function() {
-    return <ConversationList accountSlug={this.props.accountSlug} archived={false} />;
+    return (
+      <div className="row">
+        <div className="col-md-8 col-md-offset-2">
+          <ConversationList accountSlug={this.props.accountSlug} archived={false} />;
+        </div>
+      </div>
+    );
   }
 });

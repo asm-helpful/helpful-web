@@ -10,6 +10,11 @@ var ConversationList = React.createClass({
   },
 
   componentDidMount: function() {
+    if(this.props.demo) {
+      this.setState({ loaded: true });
+      return;
+    }
+
     if(this.props.conversationNumber) {
       this.getConversation();
     } else {
@@ -101,6 +106,11 @@ var ConversationList = React.createClass({
         event.preventDefault();
       }
 
+      if(this.props.demo) {
+        this.moveToArchive(conversation);
+        return;
+      }
+
       var data = {
         conversation: {
           archive: true
@@ -174,7 +184,8 @@ var ConversationList = React.createClass({
         addStreamItemHandler: this.addStreamItemHandler(conversation),
         archiveHandler: this.archiveHandler(conversation),
         unarchiveHandler: this.unarchiveHandler(conversation),
-        key: conversation.id
+        key: conversation.id,
+        demo: this.props.demo
       });
     }
   },
@@ -184,11 +195,7 @@ var ConversationList = React.createClass({
       var conversations = this.state.conversations.map(this.renderConversation);
 
       return (
-        <div className="row">
-          <div className="col-md-8 col-md-offset-2">
-            <div className="list list-conversations">{conversations}</div>
-          </div>
-        </div>
+        <div className="list list-conversations">{conversations}</div>
       )
     } else if(this.state.loaded) {
       if (this.state.archived || this.props.query || this.props.tag || this.props.assignee) {

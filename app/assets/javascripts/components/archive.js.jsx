@@ -2,6 +2,12 @@
 
 var Archive = React.createClass({
   render: function() {
-    return <ConversationList accountSlug={this.props.accountSlug} archived={true} />;
+    return (
+      <div className="row">
+        <div className="col-md-8 col-md-offset-2">
+          <ConversationList accountSlug={this.props.accountSlug} archived={true} />;
+        </div>
+      </div>
+    );
   }
 });
