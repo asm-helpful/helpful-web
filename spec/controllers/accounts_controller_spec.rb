@@ -38,7 +38,7 @@ describe AccountsController do
       account = assigns(:account)
       person = assigns(:person)
 
-      expect(response).to redirect_to(account_invitations_path(account))
+      expect(response).to redirect_to(demo_account_path(account))
       expect(account.name).to eq('Assembly')
       expect(account.slug).to eq('asm')
       expect(person.name).to eq('Patrick Van Stee')

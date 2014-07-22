@@ -8,8 +8,8 @@ describe "new user signup" do
     fill_in "person_name", :with => "Jess Brown"
     fill_in "user_email", :with => "helper@helpful.io"
     fill_in "user_password", :with => "xxx12223xxx"
-    click_on "Sign up and start inviting your team!"
-    expect(page).to have_selector('h1', text: "Invite your whole team.")
+    click_on "Sign up and start using Helpful!"
+    expect(page).to have_selector('h1', text: "Try it out and see how Helpful works.")
   end
 
   context "when filling out the form with something invalid" do
@@ -20,7 +20,7 @@ describe "new user signup" do
       fill_in "person_name", :with => "Jess Brown"
       fill_in "user_email", :with => "helper@helpful.io"
       fill_in "user_password", :with => "short"
-      click_on "Sign up and start inviting your team!"
+      click_on "Sign up and start using Helpful!"
       expect(page).to have_selector(".panel-title", text: "Oops! Something went wrong.")
       expect(page).to have_selector("body", "Password is too short (minimum is 8 characters)")
     end

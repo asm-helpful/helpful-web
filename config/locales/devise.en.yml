@@ -2,8 +2,10 @@
 
 en:
   devise:
+    general:
+      sign_in: "Sign in"
     failure:
-      already_authenticated: "You are already signed in."
+      already_authenticated: ""
       invalid: "Invalid email or password."
       invalid_token: "Invalid authentication token."
       not_found_in_database: "Invalid email or password."
