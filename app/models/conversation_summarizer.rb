@@ -28,7 +28,7 @@ class ConversationSummarizer
   end
 
   def first_sentence
-    sentence = first_message && first_message.partition(/\.|\?|\!|\s\-\s/)[0..1].join
+    sentence = first_message && first_message.partition(/\.\s|\?\s|\!\s|\s\-\s/)[0..1].join
     sentence.to_s.strip.chomp('-').strip
   end
 

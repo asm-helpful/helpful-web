@@ -22,9 +22,9 @@ var Conversation = React.createClass({
     var button = null;
 
     if(this.props.conversation.archived) {
-      button = <button className="btn btn-link btn-xs" onClick={this.props.unarchiveHandler}>Move to Inbox</button>
+      button = <button className="btn btn-link btn-xs pull-right" onClick={this.props.unarchiveHandler}>Move to Inbox</button>
     } else {
-      button = <button className="btn btn-link btn-xs" onClick={this.props.archiveHandler}>Archive</button>
+      button = <button className="btn btn-link btn-xs pull-right" onClick={this.props.archiveHandler}>Archive</button>
     }
 
     return <div className="conversation-actions pull-right">{button}</div>
@@ -32,7 +32,8 @@ var Conversation = React.createClass({
 
   renderHeader: function() {
     var title = null;
-    var previewBody = null;
+    var preview = null;
+    var timestamp = null;
 
     if(this.props.conversation.subject) {
       title = this.props.conversation.subject;
@@ -41,11 +42,19 @@ var Conversation = React.createClass({
     }
 
     if(this.props.conversation.subject && !this.props.conversation.expanded) {
-      previewBody = <span className="text-muted" dangerouslySetInnerHTML={{__html: this.preview()}} />;
+      preview = (
+        <div className="conversation-preview ellipsis-overflow text-muted">
+          {this.previewText()}
+        </div>
+      );
     }
 
-    var classes = React.addons.classSet({
-      'ellipsis-overflow': !this.props.conversation.expanded,
+    if(this.props.conversation.expanded) {
+    }
+
+    var subjectClasses = React.addons.classSet({
+      'conversation-subject': true,
+      'ellipsis-overflow': !this.props.conversation.expanded
     });
 
     return (
@@ -57,13 +66,15 @@ var Conversation = React.createClass({
           <Avatar person={this.props.conversation.creator_person} size="20" />
           <Person person={this.props.conversation.creator_person} />
 
-          <div className="conversation-preview">
-            <div className={classes}>
-              <strong>{title}</strong>
-              &nbsp;
-              {previewBody}
-            </div>
+          <small className="pull-right text-muted padding-top">
+            {this.created()}
+          </small>
+
+          <div className={subjectClasses}>
+            <strong>{title}</strong>
           </div>
+
+          {preview}
         </div>
       </a>
     );
@@ -124,8 +135,12 @@ var Conversation = React.createClass({
     return this.props.conversation.messages.length > 1;
   },
 
-  preview: function() {
+  previewText: function() {
     var converter = new Showdown.converter();
     return $(converter.makeHtml(this.props.conversation.messages[0].content)).text();
+  },
+
+  created: function() {
+    return moment(this.props.conversation.created).format("LT L");
   }
 });

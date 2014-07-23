@@ -79,3 +79,9 @@
     color: darken($btn-danger-color, 5%);
   }
 }
+
+.btn-link {
+  padding-top: 0;
+  padding-bottom: 0;
+  border: none;
+}
