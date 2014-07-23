@@ -15,7 +15,16 @@
         </a>
 
         <ul class="dropdown-menu">
+
+          <li><a href="<%= edit_account_path(@account, anchor: 'basic') %>">Account</a></li>
+          <li><a href="<%= edit_account_path(@account, anchor: 'team') %>">Team</a></li>
+          <li><a href="<%= edit_account_path(@account, anchor: 'billing') %>">Billing</a></li>
+          <li><a href="<%= edit_account_path(@account, anchor: 'canned-responses') %>">Canned Responses</a></li>
+          <li><a href="<%= help_account_path(@account) %>">Help</a></li>
+
           <% if current_user.accounts.size > 1 %>
+            <li class="divider"></li>
+
             <% current_user.accounts.each do |account| %>
               <li class="<%= 'active' if @account == account %>">
 
@@ -27,12 +36,7 @@
                 </a>
               </li>
             <% end %>
-
-            <li class="divider"></li>
           <% end %>
-
-          <li><a href="<%= docs_path %>">Documentation</a></li>
-          <li><a href="" data-helpful="helpful" data-helpful-modal="on" data-helpful-name="<%= current_user.name %>" data-helpful-email="<%= current_user.email %>">Help</a></li>
 
         </ul>
       </li>
@@ -52,13 +56,6 @@
           <span class="geomicon geomicon-storagebox"></span>
           <span class="">Archive</span>
         <% end %>
-      </li>
-
-      <li class="<%= nav_active_class(:account_settings) %>">
-        <a href="<%= edit_account_path(@account) %>" rel="account.edit">
-          <span class="glyphicon glyphicon-cog"></span>
-          <span>Settings</span>
-        </a>
       </li>
     </ul>
 

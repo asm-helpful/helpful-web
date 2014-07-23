@@ -8,5 +8,13 @@ $gutter: 46px;
 
   &:first-child {
     border-top: none;
+
+    .message {
+      padding-top: 0;
+
+      .message-header {
+        display: none;
+      }
+    }
   }
 }

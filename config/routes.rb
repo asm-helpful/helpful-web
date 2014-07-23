@@ -73,6 +73,7 @@ Helpful::Application.routes.draw do
       get :demo
       get :setup
       get :web_form
+      get :help
     end
   end
 

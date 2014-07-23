@@ -3,63 +3,68 @@
 <%= render 'layouts/flash' %>
 
 <div class="container">
-  <!-- Nav tabs -->
-  <ul class="nav nav-tabs" role="tablist">
-    <li class="active"><a href="#basic" role="tab" data-toggle="tab">Account</a></li>
-    <li><a href="#team" role="tab" data-toggle="tab">Team</a></li>
-    <li><a href="#billing" role="tab" data-toggle="tab">Billing</a></li>
-    <li><a href="#canned-responses" role="tab" data-toggle="tab">Canned Responses</a></li>
-  </ul>
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1">
 
-  <!-- Tab panes -->
-  <div class="sheet">
-    <div class="tab-content">
-      <div class="tab-pane active" id="basic">
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="active"><a href="#basic" role="tab" data-toggle="tab">Account</a></li>
+        <li><a href="#team" role="tab" data-toggle="tab">Team</a></li>
+        <li><a href="#billing" role="tab" data-toggle="tab">Billing</a></li>
+        <li><a href="#canned-responses" role="tab" data-toggle="tab">Canned Responses</a></li>
+      </ul>
 
-        <%= form_for @account, method: :patch, html: {class: 'form'} do |f| %>
+      <!-- Tab panes -->
+      <div class="sheet">
+        <div class="tab-content">
+          <div class="tab-pane active" id="basic">
 
-          <div class="form-group">
-            <div class="row">
-              <div class="col-md-6">
-                <%= f.label :name, t('accounts.general.company_name'), class: 'control-label' %>
-                <%= f.text_field :name, autofocus: true, placeholder: t('accounts.general.company_name_placeholder'), class: 'form-control' %>
+            <%= form_for @account, method: :patch, html: {class: 'form'} do |f| %>
+
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-6">
+                    <%= f.label :name, t('accounts.general.company_name'), class: 'control-label' %>
+                    <%= f.text_field :name, autofocus: true, placeholder: t('accounts.general.company_name_placeholder'), class: 'form-control' %>
+                  </div>
+                  <div class="col-md-6">
+                    <%= f.label :website_url, t('.website'), class: 'control-label' %>
+                    <%= f.text_field :website_url, placeholder: t('.website_placeholder'), class: 'form-control' %>
+                  </div>
+                </div>
               </div>
-              <div class="col-md-6">
-                <%= f.label :website_url, t('.website'), class: 'control-label' %>
-                <%= f.text_field :website_url, placeholder: t('.website_placeholder'), class: 'form-control' %>
+
+              <div class="form-group">
+                <%= f.label :signature, t('.signature'), class: 'control-label' %>
+                <%= f.text_area :signature, placeholder: t('.signature_placeholder'), class: 'form-control', rows: 3, 'data-autosize' => '' %>
               </div>
-            </div>
-          </div>
 
-          <div class="form-group">
-            <%= f.label :signature, t('.signature'), class: 'control-label' %>
-            <%= f.text_area :signature, placeholder: t('.signature_placeholder'), class: 'form-control', rows: 3, 'data-autosize' => '' %>
-          </div>
+              <div class="form-group">
+                <div class="control-label">Forwarding Address</div>
+                <%= mail_to @account.mailbox_email.address, @account.mailbox_email.address, class: 'form-control-static' %>
+              </code>
+              </div>
 
-          <div class="form-group">
-            <div class="control-label">Forwarding Address</div>
-            <%= mail_to @account.mailbox_email.address, @account.mailbox_email.address, class: 'form-control-static' %>
-          </code>
-          </div>
+              <div class="form-actions">
+                <%= f.submit t('.update_account'), class: 'btn btn-primary' %>
+              </div>
+            <% end %>
 
-          <div class="form-actions">
-            <%= f.submit t('.update_account'), class: 'btn btn-primary' %>
-          </div>
-        <% end %>
+          </div><!-- #basic -->
 
-      </div><!-- #basic -->
+          <div class="tab-pane" id="team">
+            <%= render 'team' %>
+          </div><!-- #team -->
 
-      <div class="tab-pane" id="team">
-        <%= render 'team' %>
-      </div><!-- #team -->
+          <div class="tab-pane" id="billing">
+            <%= render 'billing' %>
+          </div><!-- #billing -->
 
-      <div class="tab-pane" id="billing">
-        <%= render 'billing' %>
-      </div><!-- #billing -->
-
-      <div class="tab-pane" id="canned-responses">
-        <%= render 'canned_responses' %>
-      </div><!-- #canned-responses -->
+          <div class="tab-pane" id="canned-responses">
+            <%= render 'canned_responses' %>
+          </div><!-- #canned-responses -->
+        </div>
+      </div>
     </div>
   </div>
 </div>

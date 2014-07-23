@@ -74,6 +74,10 @@ class AccountsController < ApplicationController
     find_account!
   end
 
+  def help
+    find_account!
+  end
+
   private
 
   def find_account!

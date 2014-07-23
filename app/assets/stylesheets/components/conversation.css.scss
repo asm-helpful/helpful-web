@@ -15,10 +15,6 @@
     .conversation-actions {
       display: none;
     }
-
-    .conversation-preview {
-      height: 28px;
-    }
   }
 
   &.is-expanded {
@@ -47,14 +43,13 @@
 
   > .status {
     left: 15px;
-    top: 40px;
+    top: 55px;
     z-index: 1;
     position: absolute;
   }
 
   > .avatar {
     float: left;
-    display: inline-block;
     margin-right: $padding-xs-horizontal;
   }
 
@@ -63,7 +58,8 @@
   }
 }
 
-.conversation-preview {
+
+.conversation-subject {
   padding-top: $padding-small-vertical;
 
   strong {
@@ -72,8 +68,8 @@
   }
 }
 
-.conversation-stream {
-  border-top: 1px solid $brand-border;
+.conversation-preview {
+  padding-top: $padding-small-vertical;
 }
 
 .conversation-response {
