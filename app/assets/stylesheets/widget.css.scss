@@ -173,13 +173,13 @@
   position: absolute;
 
   background-color: #F2F7F8;
-  border-radius: 4px;
+  border-radius: 8px;
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
   color: #333333;
   text-align: center;
 
   width: 350px;
-  height: 340px;
+  height: 350px;
 
   .helpful-btn {
     box-sizing: border-box;
@@ -187,34 +187,38 @@
     display: inline-block;
     vertical-align: baseline;
     zoom: 1;
-    border-radius: 99px;
-    border: 0;
+    border-radius: 90px;
+    border: 1px solid #dae8ec;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
     color: white;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 400;
-    line-height: 30px;
-    padding: 3px 20px;
+    line-height: 22.85714340209961px;
+    padding: 6px 18px;
     cursor: pointer;
     margin: 0;
   }
 
   .helpful-btn-default {
-    background-color: #F2F7F8;
-    border: 2px solid rgba(22, 160, 181, 0.4);
-    color: #16a0b5;
-    padding: 1px 18px;
+    background-color: white;
+    color: #00b3ed;
 
-    &:hover {
-      background-color: white;
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: darken(white, 5%);
+      color: darken(#00b3ed, 5%);
     }
   }
 
   .helpful-btn-primary {
-    background-color: #ff6c6c;
-    margin-top: 25px;
+    background-color: #00b3ed;
+    border-color: #00b3ed;
+    margin-top: 15px;
 
     &:hover {
-      background-color: #ff4b4b;
+      background-color: darken(#00b3ed, 5%);
+      border-color: darken(#00b3ed, 5%);
     }
   }
 
@@ -229,14 +233,14 @@
     background-color: transparent;
     display: block;
     width: 100%;
-    height: 185px;
+    height: 210px;
     padding: 20px 40px;
     font-family: "Open Sans", Helvetica, Arial, sans-serif;
     font-size: 1em;
-    line-height: 1.375;
+    line-height: 1.5;
     outline: 0;
     resize: none;
-    text-align: center;
+    text-align: left;
     -webkit-font-smoothing: antialiased;
   }
 
@@ -248,8 +252,18 @@
     display: none;
   }
 
+  .helpful-thanks-container p {
+    margin-top: 50px;
+  }
+
   p {
-    margin-top: 10px;
+    margin-top: 12px;
+  }
+
+  label {
+    text-align: left;
+    width: 248px;
+    margin: 10px auto 2px auto;
   }
 
   input[type=text], input[type=email] {
@@ -268,11 +282,11 @@
     font-size: 1em;
     font-weight: lighter;
     height: 46px;
-    margin: 10px auto 0 auto;
+    margin: 0 auto;
 
     &:focus {
       background-color: white;
-      border-color: #46c4d7;
+      border-color: #00b3ed;
       box-shadow: none;
       outline: none;
     }
@@ -283,10 +297,10 @@
   }
 
   .helpful-header {
-    height: 65px;
+    height: 55px;
     border: 0;
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-    border-radius: 4px 4px 0 0;
+    border-radius: 8px 8px 0 0;
     text-align: center;
     background-color: white;
     padding: 0;
@@ -294,21 +308,23 @@
 
     h1 {
       font-size: 18px;
-      line-height: 65px;
+      line-height: 55px;
+    }
+
+    .helpful-icon {
+      position: absolute;
+      top: 10px;
+      width: 12px;
+      height: 12px;
+      cursor: pointer;
     }
 
     .helpful-close-button {
-      position: absolute;
-      top: 5px;
-      right: 5px;
-      cursor: pointer;
+      right: 10px;
     }
 
     .helpful-back-button {
-      position: absolute;
-      top: 5px;
-      left: 5px;
-      cursor: pointer;
+      left: 10px;
     }
   }
 
@@ -321,14 +337,28 @@
     bottom: 0;
     padding-bottom: 20px;
     text-align: center;
-    font-size: 12px;
+    font-size: 10px;
     color: #ccc;
     font-family: "Open Sans", Helvetica, Arial, sans-serif;
 
-    a {
-      color: #ccc;
-      font-weight: bold;
-      text-decoration: none;
+    p {
+      position: relative;
+      margin-top: 0;
+      top: 5px;
+      font-size: 14px;
+
+      a {
+        color: #ccc;
+        border-bottom: 1px solid lighten(#ccc, 3%);
+        font-size: 14px;
+        font-weight: 400;
+        text-decoration: none;
+
+        &:hover {
+          color: darken(#ccc, 8%);
+          border-color: darken(#ccc, 5%);
+        }
+      }
     }
   }
 
@@ -363,9 +393,5 @@
     .helpful-pointer {
       border-top: 12px solid white;
     }
-  }
-
-  .helpful-icon {
-    width: 10px;
   }
 }
