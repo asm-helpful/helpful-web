@@ -16,10 +16,10 @@
 
         <ul class="dropdown-menu">
 
-          <li><a href="<%= edit_account_path(@account, anchor: 'basic') %>">Account</a></li>
-          <li><a href="<%= edit_account_path(@account, anchor: 'team') %>">Team</a></li>
-          <li><a href="<%= edit_account_path(@account, anchor: 'billing') %>">Billing</a></li>
-          <li><a href="<%= edit_account_path(@account, anchor: 'canned-responses') %>">Canned Responses</a></li>
+          <li><a href="<%= edit_account_path(@account, anchor: 'basic') %>" rel="account.edit">Account</a></li>
+          <li><a href="<%= edit_account_path(@account, anchor: 'team') %>" rel="account.edit.team">Team</a></li>
+          <li><a href="<%= edit_account_path(@account, anchor: 'billing') %>" rel="account.edit.billing">Billing</a></li>
+          <li><a href="<%= edit_account_path(@account, anchor: 'canned-responses') %>" rel="account.edit.canned-responses">Canned Responses</a></li>
           <li><a href="<%= help_account_path(@account) %>">Help</a></li>
 
           <% if current_user.accounts.size > 1 %>
