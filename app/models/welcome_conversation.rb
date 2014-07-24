@@ -1,6 +1,6 @@
 class WelcomeConversation
   FROM = 'patrick@assembly.com'
-  SUBJECT = 'Welcome to Helpful!'
+  SUBJECT = 'Welcome to Helpful! Test drive your new Inbox.'
 
   def self.create(account, user)
     email = Mail::Address.new(FROM)
