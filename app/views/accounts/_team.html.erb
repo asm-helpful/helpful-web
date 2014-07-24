@@ -45,7 +45,7 @@
             <%= f.text_field :email, class: 'form-control' %></p>
           </div>
           <div class="col-md-3">
-            <%= f.submit "send", class: 'btn btn-primary' %>
+            <%= f.submit t('.send'), class: 'btn btn-primary' %>
           </div>
         </div>
       </div>
@@ -75,7 +75,7 @@
 
     <% else %>
 
-    <p class="text-muted">There aren't any unaccepted invitations.</p>
+    <p class="text-muted"><%= t('.no_unaccepted') %></p>
 
     <% end %>
   </div>
