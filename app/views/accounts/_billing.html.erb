@@ -2,9 +2,20 @@
 
   <fieldset>
 
-    <h2>Upgrade Your Plan</h2>
+    <div class="form-group">
 
-    <p>How many support requests do you think you'll have each month? Select the plan that works for you or <a href="mailto:helpful@helpful.io">ask us for help</a>.</p>
+      <h2><%= t('.upgrade_plan') %></h2>
+
+      <p><%= t('.up_help') %></p>
+
+      <script async src="https://assets.helpful.io/assets/widget.js"></script>
+      <% if signed_in? %>
+        <%= mail_to 'helpful@helpful.io', t('.ask_for_help'), data: {helpful: 'helpful', 'helpful-email' => current_user.email, 'helpful-name' => current_user.name}, class: 'btn btn-default' %>
+      <% else %>
+        <%= mail_to 'helpful@helpful.io', t('.ask_for_help'), data: {helpful: 'helpful'}, class: 'btn btn-default' %>
+      <% end %>
+
+    </div>
 
     <div class="form-group">
       <div class="row">
@@ -15,11 +26,11 @@
                 <%= plan.name %>
               </h4>
               <p>
-                <strong><%= plan.max_conversations %> conversations</strong>
+                <strong><%= plan.max_conversations %> <%= t('.conversations') %></strong>
               </p>
               <p>
                 <% if plan.price.zero? %>
-                  Totally Free!
+                  <%= t('.totally_free') %>
                 <% else %>
                   <%= number_to_currency(plan.price, precision: 0) %>/month
                 <% end %>
@@ -31,25 +42,26 @@
               data-plan-amount="<%= plan.formatted_price %>"
               data-plan-subscribe="<%= !plan.price.zero? %>">
 
-              
                 <span class="geomicon geomicon-check"></span>
-                
 
                 <span class="plan-select-message">
-                  Subscribe<% if plan == @account.billing_plan %>d<% end %>
+                  <%= t('.subscribe') %><% if plan == @account.billing_plan %><%= t('.letter_d') %><% end %>
                 </span>
 
               </button>
-              
+
             </div>
           </div>
         <% end %>
       </div>
     </div>
 
-    <p>
-      Think you might go through more than <%= @plans.last.max_conversations %> conversations in a month? <a href="mailto:helpful@helpful.io">Let us know</a>, and we'll give you the best deal ever.
-    </p>
+    <% if signed_in? %>
+      <%= mail_to 'helpful@helpful.io', t('.need_more'), data: {helpful: 'helpful', 'helpful-email' => current_user.email, 'helpful-name' => current_user.name}, class: 'btn btn-default' %>
+    <% else %>
+      <%= mail_to 'helpful@helpful.io', t('.need_more'), data: {helpful: 'helpful'}, class: 'btn btn-default' %>
+    <% end %>
+
 
     <%= f.hidden_field :billing_plan_slug %>
     <%= f.hidden_field :stripe_token %>
