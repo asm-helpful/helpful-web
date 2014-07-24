@@ -1,34 +1,34 @@
 class WelcomeConversation
-  FROM = 'patrick@helpful.io'
+  FROM = 'patrick@assembly.com'
   SUBJECT = 'Welcome to Helpful!'
-  CONTENT = <<END
-Glad you signed up. This is what your incoming support requests will look
-like. Here are examples of how to use our important features.
-
-1.  Assign it to another team member.
-
-    ![assign.gif](https://d1015h9unskp4y.cloudfront.net/attachments/9e1eb4d9-03a0-4137-9c14-2fd927914ee2/assign.gif)
-
-2.  Add a tag to group it with other support tickets.
-
-    ![tag.gif](https://d1015h9unskp4y.cloudfront.net/attachments/5736caaa-83bd-47b3-bd2b-d616f0a1e51f/canned-response.gif)
-
-3.  Use a canned response to reply with a saved message.
-
-    ![canned-response.gif](https://d1015h9unskp4y.cloudfront.net/attachments/b39716a1-d17c-4fa5-84d1-ed12814eef64/tag.gif)
-
-**If you have any more questions just respond below.**
-
-Happy supporting!
-END
 
   def self.create(account, user)
     email = Mail::Address.new(FROM)
     author = MessageAuthor.new(account, email)
 
     conversation = Concierge.new(account, subject: SUBJECT).find_conversation
-    author.compose_message(conversation, CONTENT).save
+    author.compose_message(conversation, content(account)).save
 
     conversation
+  end
+
+  def self.content(account)
+    <<END
+Glad you signed up. You just clicked on your first support request. Cool, huh?
+And this entire page is your Inbox, where all of the messages from your
+customers will show up. You can think of it just like a shared email inbox.
+
+Oh, and here's your new Helpful email address:
+<a href="mailto:#{account.email}">#{account.email}</a>. Go ahead and try it out by
+sending an email to that address. It will show up right above this
+conversation. You can go ahead and start using this as your support email or
+start <a href="/#{account.slug}/help#email-forwarding">forwarding emails from another email address</a>.
+
+If you have any trouble or want to ask a question, just send a reply below.
+Your message will be sent straight to me. Animated cat gifs are also
+appreciated.
+
+Happy supporting!
+END
   end
 end
