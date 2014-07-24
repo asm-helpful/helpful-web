@@ -11,13 +11,13 @@ describe Concierge do
     it "should find a conversation based on params[:conversation]" do
       @conversation.save
       params = { conversation: @conversation.number }
-      assert_equal @conversation.id, Concierge.new(@account, params).find_conversation.id
+      assert_equal @conversation.id, Concierge.find_conversation(@account, params).id
     end
 
     it "should find a conversation based on params[:recipient]" do
       @conversation.save
       params = { recipient: @conversation.mailbox_email.to_s }
-      assert_equal @conversation.id, Concierge.new(@account, params).find_conversation.id
+      assert_equal @conversation.id, Concierge.find_conversation(@account, params).id
     end
 
     it "should prefer params[:conversation] over params[:recipient]" do
@@ -27,14 +27,14 @@ describe Concierge do
         conversation: @conversation.number,
         recipient:    @conversation_2.mailbox_email.to_s
       }
-      assert_equal @conversation.id, Concierge.new(@account, params).find_conversation.id
+      assert_equal @conversation.id, Concierge.find_conversation(@account, params).id
     end
 
     it "should create a new conversation when one cannot be found" do
       @conversation.save
       params = { conversation: 10000000 }
       assert_difference "@account.conversations.count" do
-        Concierge.new(@account, params).find_conversation
+        Concierge.find_conversation(@account, params)
       end
     end
 
@@ -43,7 +43,7 @@ describe Concierge do
       params = { recipient: @conversation.mailbox_email.to_s }
       @conversation.delete
       assert_difference "@account.conversations.count" do
-        Concierge.new(@account, params).find_conversation
+        Concierge.find_conversation(@account, params)
       end
     end
 
@@ -51,7 +51,7 @@ describe Concierge do
       @conversation.save
       params = { conversation: @conversation.number }
       assert_no_difference "@account.conversations.count" do
-        Concierge.new(@account, params).find_conversation
+        Concierge.find_conversation(@account, params)
       end
     end
   end

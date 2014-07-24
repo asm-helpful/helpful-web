@@ -6,7 +6,7 @@ class IncomingMessagesController < ApplicationController
     email = Mail::Address.new params.fetch(:email)
     author = MessageAuthor.new(account, email)
 
-    conversation = Concierge.new(account, params).find_conversation
+    conversation = Concierge.find_conversation(account, params)
     @message = author.compose_message(conversation, params.fetch(:content))
 
     content_type = 'application/json'
