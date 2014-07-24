@@ -26,7 +26,7 @@ END
     email = Mail::Address.new(FROM)
     author = MessageAuthor.new(account, email)
 
-    conversation = Concierge.new(account, subject: SUBJECT).find_conversation
+    conversation = Concierge.find_conversation(account, subject: SUBJECT)
     author.compose_message(conversation, CONTENT).save
 
     conversation

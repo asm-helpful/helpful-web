@@ -1,12 +1,6 @@
 # Figures out which conversation an incoming message belongs to. If it can't
 # match it to a conversation it creates a new one.
-class Concierge
-  def initialize(account, params)
-    @account = account
-    @conversations = account.conversations
-    @params = params
-  end
-
+module Concierge
   # Public: Finds or creates a conversation based on the params hash. The order
   # of precedence is:
   #   - An explicit conversation number (params[:conversation]).
@@ -14,14 +8,15 @@ class Concierge
   # If no conversation has been found, create a new one.
   #
   # Returns a Conversation.
-  def find_conversation
+  def self.find_conversation(account, params)
+    conversations = account.conversations
     # If we have an explicit conversation number try that first
-    conversation = @conversations.where(number: @params[:conversation]).first
+    conversations.find_by(number: params[:conversation]) ||
 
     # If that didn't work, match on the recipient email address, looking for replies
-    conversation ||= Conversation.match_mailbox(@params[:recipient])
+    Conversation.match_mailbox(params[:recipient])  ||
 
     # If that didn't work, create a new conversation
-    conversation ||= @conversations.create(subject: @params[:subject])
+    conversations.create(subject: params[:subject])
   end
 end
