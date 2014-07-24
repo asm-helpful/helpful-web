@@ -68,15 +68,22 @@ en:
       username: "Username"
       username_placeholder: "jane"
     new:
-      sign_up_free_accounts: "Sign Up for a Free Account"
-      quick_easy_sign_up: "Quick and easy sign up process."
-      no_cc_required: "No credit card is required."
+      welcome_to_helpful: "Welcome to Helpful"
+      sign_up_free_account: "Sign Up for a Free Account"
+      get_setup_get_ready: "We'll get your company and personal information setup so you can be ready to answer those support requests and make some customers happy."
+      personal_info: "Personal Information"
+      sign_up_helpful: "Sign up for Helpful"
       already_have_account: "If you already have a Helpful account,"
       please_sign_in: "please sign in"
-      password_confirmation: "Password confirmation"
-      must_meet_requirements: "Must meet *these requirements*"
-      create_account: "Create my account"
+      helpful_email: "Helpful email"
+      helpful_email_help: "This is the email your customers will use to send you support requests."
+      full_name: "Your full name"
+      your_email: "Your email"
+      eight_char: "You must use at least 8 characters."
+      sign_up_start_using: "Sign up and start using Helpful!"
     edit:
+      edit: "Edit"
+      forwarding_address: "Forwarding address"
       get_code: "Get the code"
       company_name: "Company name"
       company_name_placeholder: "Acme Corp"
@@ -85,7 +92,6 @@ en:
       webhook_url: "Webhook URL"
       webhook_url_placeholder: "https://www.example.com/webhooks/helpful"
       webhook_secret: "Webhook Secret"
-      incoming_email: "Incoming e-mail address"
       update_account: "Update account settings"
       invitations: "Invitations"
       send_invitation: "Send an Invitation"
@@ -94,16 +100,24 @@ en:
       signature: "Response Signature"
       signature_placeholder: "Signature included at the end of every e-mail"
       auto_archiving: "Auto-archive conversations after replying"
-    setup:
-      try_api: "Try our API"
-      try_out_command: "To try out Helpfuls incoming messages API, run this command from your terminal:"
-      embed_form: "Want to embed a help form on your site?"
-      embed_help_text: "You can also embed a web form anywhere that will allow your customers to submit their help requests directly to Helpful:"
     billing:
+      upgrade_plan: "Upgrade Your Plan"
+      up_help: "How many support requests do you think you'll have each month? Select the plan that works for you below. If you need help, just ask us!"
+      ask_for_help: "Ask for help"
+      totally_free: "Totally free!"
+      conversations: "conversations"
+      subscribe: "Subscribe"
+      letter_d: "d"
+      need_more: "Need more than 10,000 conversations?"
       update_account: "Update account"
     team:
       invitations: "Invitations"
       members: "Members"
+      send: "Send"
+      no_unaccepted: "There aren't any unaccepted invitations."
+    canned_responses:
+      key: "Key"
+      message: "Response"
 
   conversations:
     conversation:
@@ -197,8 +211,7 @@ en:
       help: |-
         Create a canned response for messages that are sent often or need to be
         consistent. Start with a key, which is used to pull up the full response
-        from the command bar. To learn more read the
-      faq: "FAQ"
+        from the command bar.
     form:
       key: "Key"
       key_placeholder: "Enter key used to lookup the response"
@@ -215,6 +228,7 @@ en:
     sessions:
       new:
         welcome_back: "Welcome Back!"
+        quick_details: "We just need some quick details from you and then you can get right back to work."
         password_placeholder: "Your Password"
         remember_me: "Remember me"
     mailer:
@@ -239,3 +253,36 @@ en:
       new:
         resend_unlock_intstructions: "Resend unlock instructions"
         resend: "Resend instructions"
+
+  shared:
+    error_messages:
+      oops_went_wrong: "Oops! Something went wrong."
+    navbar:
+      account: "Account"
+      team: "Team"
+      billing: "Billing"
+      canned_responses: "Canned Responses"
+      inbox: "Inbox"
+      archive: "Archive"
+      search: "Search"
+      search_by_assignee: "Search by Assignee"
+      search_by_tag: "Search by Tag"
+      settings: "Settings"
+      logout: "Log Out"
+    steps:
+      sign_up: "Sign Up"
+      start_using_helpful: "Start Using Helpful"
+
+  technical:
+    general:
+      technical_header: "Getting Setup and Technical Details"
+    widget:
+      widget_is_simple: "Adding our widget to your site is very simple. First, include the following script add the end of the body of your page."
+      widget_next: "Next, all you need to do is adding an attribute containing your company slug to the element you want to open the widget after clicking it."
+      widget_thats_it: "That's it! Clicking the element will open up the widget. Additionally some extra options are available:"
+    setup:
+      try_api: "Try our API"
+      try_out_command: "To try out Helpfuls incoming messages API, run this command from your terminal:"
+      embed_form: "Want to embed a help form on your site?"
+      embed_help_text: "You can also embed a web form anywhere that will allow your customers to submit their help requests directly to Helpful:"
+      other_details: "Other details"
