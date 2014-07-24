@@ -41,7 +41,7 @@ class AccountsController < ApplicationController
       Analytics.identify(user_id: @user.id, traits: { email: @user.email, account_id: @account.id })
       Analytics.track(user_id: @user.id, event: 'Signed Up')
 
-      redirect_to demo_account_path(@account)
+      redirect_to inbox_account_conversations_path(@account)
     rescue ActiveRecord::RecordInvalid
       render 'new'
     end
