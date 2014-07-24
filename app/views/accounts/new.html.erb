@@ -2,16 +2,13 @@
 
 <div class="container">
 
-  <!-- TODO: locale is missing -->
-  <h1 class="page-title">Welcome to Helpful</h1>
+  <h1 class="page-title"><%= t('.welcome_to_helpful') %></h1>
 
   <%= form_for @account, html: { role: 'form' } do |f| %>
 
-    <!-- TODO: locale is missing -->
-    <h2>Sign Up for a Free Account</h2>
+    <h2><%= t('.sign_up_free_account') %></h2>
 
-    <!-- TODO: locale is missing -->
-    <p>We'll get your company and personal information setup so you can be ready to answer those support requests and make some customers happy.</p>
+    <p><%= t('.get_setup_get_ready') %></p>
 
     <fieldset>
 
@@ -35,12 +32,12 @@
         <div class="col-xs-12 col-md-6">
 
           <div class="form-group">
-            <%= f.label :email, 'Helpful Email', class: 'control-label' %>
+            <%= f.label :email, t('.helpful_email'), class: 'control-label' %>
             <%= f.text_field :email, class: 'form-control', required: true %>
             <span class="geomicon geomicon-check form-control-feedback" style="display: none"></span>
             <span class="geomicon geomicon-sync  form-control-feedback spin" style="display: none"></span>
             <span class="geomicon geomicon-alert form-control-feedback" style="display: none"></span>
-            <span class="help-block">This is the email your customers will use to send you support requests.</span>
+            <span class="help-block"><%= t('.helpful_email_help') %></span>
           </div>
 
         </div>
@@ -51,8 +48,7 @@
 
     <fieldset>
 
-      <!-- TODO: locale is missing -->
-      <h2>Personal Information</h2>
+      <h2><%= t('.personal_info') %></h2>
 
       <%= render 'shared/error_messages', target: @user %>
 
@@ -63,8 +59,7 @@
           <div class="col-xs-12 col-md-6">
 
             <div class="form-group">
-              <!-- TODO: locale is missing -->
-              <%= ff.label :name, 'Full name', class: 'control-label' %>
+              <%= ff.label :name, t('.full_name'), class: 'control-label' %>
               <%= ff.text_field :name, class: 'form-control', required: true %>
             </div>
 
@@ -81,8 +76,7 @@
           <div class="col-xs-12 col-md-6">
 
             <div class="form-group">
-              <!-- TODO: locale is missing -->
-              <%= ff.label :email, 'Email address', class: 'control-label' %>
+              <%= ff.label :email, t('.your_email'), class: 'control-label' %>
               <%= ff.email_field :email, class: 'form-control', required: true %>
             </div>
 
@@ -95,12 +89,9 @@
           <div class="col-xs-12 col-md-6">
 
             <div class="form-group">
-              <!-- TODO: locale is missing -->
-              <%= ff.label :password, 'Password', class: 'control-label' %>
+              <%= ff.label :password, t('general.password'), class: 'control-label' %>
               <%= ff.password_field :password, class: 'form-control', required: true, pattern: '.{8,}', title: 'Make sure you use at least 8 characters' %>
-              <span class="help-block">
-                Make sure you use at least 8 characters.
-              </span>
+              <span class="help-block"><%= t('.eight_char') %></span>
             </div>
 
           </div>
@@ -114,8 +105,7 @@
     <fieldset class="padding-large-top">
 
       <div class="form-group">
-        <!-- TODO: locale is missing -->
-        <%= f.submit 'Sign up and start using Helpful!', class: 'btn btn-lg btn-primary' %>
+        <%= f.submit t('.sign_up_start_using'), class: 'btn btn-lg btn-primary' %>
       </div>
 
     </fieldset>
