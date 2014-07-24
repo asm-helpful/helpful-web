@@ -8,10 +8,10 @@
 
       <!-- Nav tabs -->
       <ul class="nav nav-tabs" role="tablist">
-        <li class="active"><a href="#basic" role="tab" data-toggle="tab">Account</a></li>
-        <li><a href="#team" role="tab" data-toggle="tab">Team</a></li>
-        <li><a href="#billing" role="tab" data-toggle="tab">Billing</a></li>
-        <li><a href="#canned-responses" role="tab" data-toggle="tab">Canned Responses</a></li>
+        <li class="active"><a href="#basic" role="tab" data-toggle="tab"><%= t('shared.navbar.account') %></a></li>
+        <li><a href="#team" role="tab" data-toggle="tab"><%= t('shared.navbar.team') %></a></li>
+        <li><a href="#billing" role="tab" data-toggle="tab"><%= t('shared.navbar.billing') %></a></li>
+        <li><a href="#canned-responses" role="tab" data-toggle="tab"><%= t('shared.navbar.canned_responses') %></a></li>
       </ul>
 
       <!-- Tab panes -->
@@ -40,7 +40,7 @@
               </div>
 
               <div class="form-group">
-                <div class="control-label">Forwarding Address</div>
+                <div class="control-label"><%= t('.forwarding_adress') %></div>
                 <%= mail_to @account.mailbox_email.address, @account.mailbox_email.address, class: 'form-control-static' %>
               </code>
               </div>
