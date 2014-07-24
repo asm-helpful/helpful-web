@@ -1,5 +1,9 @@
 <div class="row">
   <div class="col-md-6">
+    <h4 class="section-title">
+      Members
+    </h4>
+
     <table class="table">
       <tbody>
         <% @account.team.each do |membership| %>
@@ -39,11 +43,8 @@
       <div class="form-group">
         <%= f.label :email, class: 'control-label' %>
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-9">
             <%= f.text_field :email, class: 'form-control' %></p>
-          </div>
-          <div class="col-md-3">
-            <%= select_tag :membership_role, options_for_select(@account.roles_allowed_by(current_user)), class: 'form-control' %>
           </div>
           <div class="col-md-3">
             <%= f.submit 'Send', class: 'btn btn-primary' %>
@@ -57,6 +58,12 @@
     </h4>
 
     <table class="table">
+      <% if @account.invitations.empty? %>
+        <tr>
+          <td class="text-muted">There aren't any unaccepted invitations.</td>
+        </tr>
+      <% end %>
+
       <% @account.invitations.each do |membership| %>
         <tr>
           <td>
