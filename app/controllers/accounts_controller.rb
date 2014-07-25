@@ -31,14 +31,17 @@ class AccountsController < ApplicationController
         @account.add_owner!(@user)
       end
 
-      WelcomeConversation.create(@account, current_user) unless @account.conversations.welcome_email.exists?
+      # TODO: Use flag in conversation model to check for these
+      ProtipConversation.create(@account, current_user) unless @account.conversations.protip_conversation.exists?
+      WidgetConversation.create(@account, current_user) unless @account.conversations.widget_conversation.exists?
+      WelcomeConversation.create(@account, current_user) unless @account.conversations.welcome_conversation.exists?
 
       sign_in(@user)
 
       Analytics.identify(user_id: @user.id, traits: { email: @user.email, account_id: @account.id })
       Analytics.track(user_id: @user.id, event: 'Signed Up')
 
-      redirect_to demo_account_path(@account)
+      redirect_to inbox_account_conversations_path(@account)
     rescue ActiveRecord::RecordInvalid
       render 'new'
     end

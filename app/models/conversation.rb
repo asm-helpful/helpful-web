@@ -66,7 +66,9 @@ class Conversation < ActiveRecord::Base
 
   scope :with_message_count, -> { select('conversations.*, (SELECT COUNT(messages.id) FROM messages WHERE messages.conversation_id = conversations.id) AS message_count') }
 
-  scope :welcome_email, -> { where(subject: WelcomeConversation::SUBJECT) }
+  scope :welcome_conversation, -> { where(subject: WelcomeConversation::SUBJECT) }
+  scope :widget_conversation,  -> { where(subject: WidgetConversation::SUBJECT) }
+  scope :protip_conversation,  -> { where(subject: ProtipConversation::SUBJECT) }
 
   scope :with_messages, -> { where('(SELECT COUNT(messages.id) FROM messages WHERE messages.conversation_id = conversations.id) > 0') }
 
