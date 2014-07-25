@@ -16,9 +16,6 @@ class Membership < ActiveRecord::Base
     presence: true,
     uniqueness: { scope: :account_id }
 
-  validates :role,
-    inclusion: ROLES
-
   ROLES.each do |role_name|
     define_method("#{role_name}?") do
       role == role_name

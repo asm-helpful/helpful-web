@@ -9,7 +9,6 @@ class Users::InvitationsController < Devise::InvitationsController
     end
 
     @membership = Membership.new(
-      role: params.fetch(:membership_role),
       user: @user,
       account: @account
     )
