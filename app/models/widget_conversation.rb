@@ -22,7 +22,9 @@ head on over to our <a href="/#{account.slug}/help#widget">help page</a> and try
 
 Here's a quick gif of how it looks on Assembly's website:
 
-<img src="https://d1015h9unskp4y.cloudfront.net/attachments/e1969d33-ae54-4a87-8c3a-54d7a76c08fc/widget-on-assembly.gif">
+<p align="center">
+  <img src="https://d1015h9unskp4y.cloudfront.net/attachments/a88a7595-6fa0-4b0a-ad7b-897cb6753fb9/widget.gif">
+</p>
 
 If you're having any trouble, you have a direct line to the developer who
 created it, me, Wesley. Just ask a question below and I'd be happy to help out.
