@@ -55,27 +55,27 @@
 
     <% if @account.invitations.present? %>
 
-    <table class="table">
-      <% @account.invitations.each do |membership| %>
-        <tr>
-          <td>
-            <% if membership.user.name %>
-              <strong><%= membership.user.name %></strong>
-            <% else %>
-              <%= membership.user.email %>
-            <% end %>
-          </td>
+      <table class="table">
+        <% @account.invitations.each do |membership| %>
+          <tr>
+            <td>
+              <% if membership.user.name %>
+                <strong><%= membership.user.name %></strong>
+              <% else %>
+                <%= membership.user.email %>
+              <% end %>
+            </td>
 
-          <td class="text-muted">
-            <%= t('.invitation_sent') %> <%= time_ago_in_words(membership.user.invitation_sent_at) %> <%= t('general.ago') %>
-          </td>
-        </tr>
-      <% end %>
-    </table>
+            <td class="text-muted">
+              <%= t('.invitation_sent') %> <%= time_ago_in_words(membership.user.invitation_sent_at) %> <%= t('general.ago') %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
 
     <% else %>
 
-    <p class="text-muted"><%= t('.no_unaccepted') %></p>
+      <p class="text-muted"><%= t('.no_unaccepted') %></p>
 
     <% end %>
   </div>
