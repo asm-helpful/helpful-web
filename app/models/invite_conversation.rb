@@ -1,7 +1,19 @@
 class InviteConversation
   FROM = 'wesleylancel@gmail.com'
   SUBJECT = 'Install our handy widget on your website.'
-  CONTENT = <<END
+
+  def self.create(account, user)
+    email = Mail::Address.new(FROM)
+    author = MessageAuthor.new(account, email)
+
+    conversation = Concierge.new(account, subject: SUBJECT).find_conversation
+    author.compose_message(conversation, self.content(account)).save
+
+    conversation
+  end
+
+  def self.content(account)
+    <<END
 Want to give your users a quicker way to send you feedback? Check out or embeddable widget.
 
 All you have to do is include our script on your site and wire up a new button.
@@ -18,16 +30,5 @@ created it, me, Wesley. Just ask a question below and I'd be happy to help out.
 Cheers!
 
 END
-
-END
-
-  def self.create(account, user)
-    email = Mail::Address.new(FROM)
-    author = MessageAuthor.new(account, email)
-
-    conversation = Concierge.new(account, subject: SUBJECT).find_conversation
-    author.compose_message(conversation, CONTENT).save
-
-    conversation
   end
 end
