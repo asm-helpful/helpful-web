@@ -21,9 +21,9 @@
 
             <script async src="https://assets.helpful.io/assets/widget.js"></script>
             <% if signed_in? %>
-              <%= mail_to 'helpful@helpful.io', 'See the Widget', data: {helpful: 'helpful', 'helpful-email' => current_user.email, 'helpful-name' => current_user.name}, class: 'btn btn-primary' %>
+              <%= mail_to @account.mailbox_email.address, 'Try the Widget', data: {helpful: @account.slug, 'helpful-email' => current_user.email, 'helpful-name' => current_user.name}, class: 'btn btn-primary' %>
             <% else %>
-              <%= mail_to 'helpful@helpful.io', 'See the Widget', data: {helpful: 'helpful'}, class: 'btn btn-primary' %>
+              <%= mail_to 'helpful@helpful.io', 'Try the Widget', data: {helpful: @account.slug}, class: 'btn btn-primary' %>
             <% end %>
 
             <h3>Setting up Your Widget</h3>
