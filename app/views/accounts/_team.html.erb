@@ -53,7 +53,7 @@
 
     <h4 class="section-title"><%= t('.invitations') %></h4>
 
-    <% if @account.invitations.empty? == false %>
+    <% if @account.invitations.present? %>
 
     <table class="table">
       <% @account.invitations.each do |membership| %>
