@@ -45,7 +45,11 @@
                 <span class="geomicon geomicon-check"></span>
 
                 <span class="plan-select-message">
-                  <%= t('.subscribe') %><% if plan == @account.billing_plan %><%= t('.letter_d') %><% end %>
+                  <% if plan == @account.billing_plan %>
+                    <%= t('.subscribed') %>
+                  <% else %>
+                    <%= t('.subscribe') %>
+                  <% end %>
                 </span>
 
               </button>

@@ -107,7 +107,7 @@ en:
       totally_free: "Totally free!"
       conversations: "conversations"
       subscribe: "Subscribe"
-      letter_d: "d"
+      subscribed: "Subscribed"
       need_more: "Need more than 10,000 conversations?"
       update_account: "Update account"
     team:
