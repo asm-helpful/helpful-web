@@ -27,7 +27,7 @@
       <div class="list-item clearfix">
         <div class="pull-left">
           <strong><%= canned_response.key %></strong>
-          <p><%= canned_response.message.truncate(50) %></p>
+          <p><%= canned_response.message.truncate(140) %></p>
         </div>
         <div class="btn-group pull-right">
           <a href="<%= edit_account_canned_response_path(canned_response.account, canned_response) %>" class="btn btn-default"><%= t('edit') %></a>
