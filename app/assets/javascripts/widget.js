@@ -10,7 +10,7 @@
 // The value of `data-helpful` should be the account slug of the Helpful account
 // where the new message should be created.
 //
-// 
+//
 // No need for jQuery! Plain old Javascript!
 //
 (function() {
@@ -77,7 +77,7 @@
     {
       // calculate widget location, width = 300px, height = 325px, minimum viewport margin = 25px
       var el_pos = this.source.getBoundingClientRect();
-      
+
       var widget_top = 0;
       var widget_left = 0;
 
@@ -91,7 +91,7 @@
         // show above
         widget_top = this.source.offsetTop - 355;
       }
-      
+
       widget_left = this.source.offsetLeft + (this.source.offsetWidth / 2) - 175; // center relative to source
       document.querySelector('.helpful-pointer').style.left = '50%';
 
