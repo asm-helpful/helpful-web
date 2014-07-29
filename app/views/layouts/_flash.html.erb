@@ -1,6 +1,7 @@
 <% unless flash.empty? %>
   <div id="flash-messages">
     <% flash.each do |key, value| %>
+      <% next if key == "timedout" %>
       <div class="<%= flash_class(key) %> alert-dismissible">
         <div class="container">
           <span class="<%= flash_icon_class(key) %>"></span>
