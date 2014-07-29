@@ -21,159 +21,128 @@
     <div>
       <div class="container">
         <div class="row">
-          <div class="col-md-8 col-md-offset-2 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay=".4s">
+          <div class="col-md-6 col-md-offset-3 wow fadeInUp" data-wow-duration="0.8s" data-wow-delay=".4s">
             <%= image_tag('logo.png', data: {animate_logo: "" }) %>
             <h1 data-animate-heading>We redesigned the support tool to get out of the way, so you focus on being a helpful human.</h1>
             <p data-animate-lead>Helping your customers with good answers and thoughtful direction should be a breeze, focused 100% on support &ndash; and nothing else.</p>
-            <a href="#page-showcase" id="btn" class="btn btn-default btn-lg" data-scroll-to-content="true">Let us show how simple it is</a>
+            <%= link_to 'Sign up and see how simple it is', new_accounts_path, class: 'btn btn-default btn-lg', style: 'margin-top: 20px' %>
           </div>
         </div>
       </div>
     </div>
   </div>
-
-  <div id="page-showcase" class="page page-section">
-    <div class="screenshot-list">
-      <div class="screenshot wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="1.0s">
-        <p>Give your customers a simple way to send you a message.</p>
-        <%= image_tag('home/widget_light.png') %>
-      </div>
-      <div class="screenshot wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="1.1s">
-        <p>Manage interactions with customers from a familiar inbox.</p>
-        <%= image_tag('home/app_light.png') %>
-      </div>
-      <div class="screenshot wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="1.2s">
-        <p>Respond directly with a plain text email.</p>
-        <%= image_tag('home/email_light.png') %>
-      </div>
-    </div>
-  </div>
 </div>
 
-<div class="navbar-placeholder">
-  <div class="navbar navbar-default navbar-static-top navbar-homepage" data-scroll-to-content="true">
-    <div class="container">
-
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand">
-          <%= image_tag 'life_saver.png', alt: 'Helpful' %>
-          Helpful
-        </a>
-      </div>
-
-      <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-          <li><a href="#reasons">Who's it for?</a></li>
-          <li><a href="#features">Features</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-        </ul>
-        <ul class="nav navbar-nav pull-right">
-          <li><%= link_to 'Sign in', new_user_session_path, class: 'btn btn-default' %></li>
-          <li><%= link_to 'Sign up for free', new_accounts_path, class: 'btn btn-primary', rel: 'signup' %></li>
-        </ul>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<div class="page page-section" id="reasons">
-  <div class="container">
-    <div class="row">
-
-      <div class="container text-center wow fadeInDown" data-wow-duration="0.8s">
-        <h1>Helpful is good for you</h1>
-      </div>
-
-      <div>
-        <ul>
-          <li class="wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="0.1s">
-            <span class="glyphicon glyphicon-ok text-success hidden-xs"></span>
-            Because you believe good support comes from a great team – not neat software.
-          </li>
-          <li class="wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="0.2s">
-            <span class="glyphicon glyphicon-ok text-success hidden-xs"></span>
-            Because you expect that anyone on your team whether CEO, Developer, or Jessica at the support desk should be able to offer a customer some help without the extra cost of additional seats.
-          </li>
-          <li class="wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="0.3s">
-            <span class="glyphicon glyphicon-ok text-success hidden-xs"></span>
-            You want your customers to feel that they are getting one-on-one attention, not that they are assigned to ticket #3421.
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="page page-section" id="features">
-  <div class="container">
-    <div class="row">
-
-      <div class="container text-center wow fadeInDown" data-wow-duration="0.8s">
-        <h1>Features that serve a purpose</h1>
-        <p>Assign teammates on the fly. Organize with tags, and use consistent canned responses to speed up your workflow. Spend more time with your customers.</p>
-      </div>
-
-      <div class="container">
-        <div class="feature1 wow fadeInLeft" data-wow-duration="0.6s" data-wow-delay="0.1s">
-          <%= image_tag('home/features_editing.png') %>
-          <p>Customize your text, but only when you have a good reason for it.</p>
-        </div>
-        <div class="feature2 wow fadeInRight" data-wow-duration="0.6s" data-wow-delay="0.2s">
-          <%= image_tag('home/features_tagging.png') %>
-          <p>Tag your conversations so you can start to learn more about your organization.</p>
-        </div>
-        <div class="feature3 wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="0.3s">
-          <%= image_tag('home/features_canned.png') %>
-          <p>Canned Responses save time, and can help answer questions for your customers with double-time.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="page page-section pricing-section" id="pricing">
-  <div class="container text-center wow fadeInDown" data-wow-duration="0.8s">
-    <h1>A price that grows with your product</h1>
-    <p>The number of people you want supporting customers should never be constrained by your support tool. With helpful, you'll never pay per seat, you pay per conversations.
-    <p class="conversation-explaination simptip-smooth simptip-position-top" data-tooltip="<%= t(".conversation-explaination") %>"><u>Customer Conversation</u> per month</p>
-  </div>
-  <div class="container">
-    <div class="pricing-showcase wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="0.1s">
-      <% display_plans @plans do |plan, range| %>
-        <div class="pricing-showcase-item">
-          <div class="pricing-showcase-item-conversations">
-            <%= range %>
+<div class="backdrop" style="position: relative; z-index: -3">
+  <div id="page-showcase" class="backdrop-shadow" style="position: relative">
+    <div class="container" style="position: relative; z-index: -2">
+      <div class="row">
+        <div class="col-xs-10 col-xs-offset-1">
+          <div class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="1.0s">
+            <%= image_tag('home/app.png', class: 'img-responsive', style: 'margin-left: auto; margin-right: auto; margin-bottom: -15%') %>
           </div>
-          <div class="pricing-showcase-item-price">
-            <div class="pricing-circle"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container hidden-xs" style="position: absolute; bottom: 0; left: 0; right: 0; z-index: -1">
+      <div class="row">
+        <div class="col-xs-6">
+          <div class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="1.5s">
+            <%= image_tag('home/widget.png', class: 'img-responsive', style: 'margin-left: auto; margin-right: auto; margin-top: 5%; margin-bottom: -50%') %>
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="1.5s">
+            <%= image_tag('home/email.png', class: 'img-responsive', style: 'margin-left: auto; margin-right: auto; margin-bottom: -50%') %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container" style="padding-top: 120px; padding-bottom: 120px">
+
+  <h3 class="text-uppercase text-center" style="padding-bottom: 40px">Built with your customers in mind</h3>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+      <div class="padding-large">
+        <h4>
+          <span class="geomicon geomicon-envelope"></span>
+          Feels personal to your customers
+        </h4>
+        <p>Customers receive emails from your support team just like they would if you had personally sent them. No automated robot-queue junk in each email; just a direct conversation with your users.</p>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      <div class="padding-large">
+        <h4>
+          <span class="geomicon geomicon-lightning"></span>
+          Fast, simple features that serve a purpose
+        </h4>
+        <p>Helpful is built for speed. Read messages, assign co-workers to help out, organize, and respond in seconds without ever leaving the inbox.</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+      <div class="padding-large">
+        <h4>
+          <span class="geomicon geomicon-box"></span>
+          Choose your communication method
+        </h4>
+        <p>Helpful comes with a embeddable help box you can install on your own website. This lets your customers quickly send you feedback from any page. Needs something even more custom? Use our API.</p>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      <div class="padding-large">
+        <h4>
+          <span class="geomicon geomicon-users"></span>
+          Unlimited team members
+        </h4>
+        <p>Let everyone on your team talk to your customers without paying any additional costs. Helpful is priced on conversations, not how many seats you need so invite the CEO and even the new intern.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container" style="padding-bottom: 120px">
+  <h3 class="text-uppercase text-center" style="padding-bottom: 40px">Simple pricing that fits your business</h3>
+
+  <div class="row">
+    <% BillingPlan.options.each do |plan| %>
+      <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="panel panel-default text-center">
+          <h4 class="text-capitalize">
+            <%= plan.name %>
+          </h4>
+          <p>
+            <strong><%= plan.max_conversations %> conversations</strong>
+          </p>
+          <p>
             <% if plan.price.zero? %>
-              <span class="pricing-showcase-item-free">FREE</span>
+              Totally Free!
             <% else %>
-              <div class="monthly-price">
-                <%= number_to_currency(plan.price, precision: 0) %>
-                <span class="pricing-showcase-item-price-frequency"> /mo </span>
-              </div>
+              <%= number_to_currency(plan.price, precision: 0) %>/month
             <% end %>
-          </div>
+          </p>
+
+          <%= link_to new_accounts_path, class: 'btn btn-default' do %>
+            <span class="plan-select-message">
+              Sign up
+            </span>
+          <% end %>
+          
         </div>
-      <% end %>
-      <div class="clearfix"></div>
-    </div>
+      </div>
+    <% end %>
   </div>
-  <div class="container">
-    <div class="pricing-call-to-action text-center">
-      <p class="wow fadeInUp" data-wow-duration="0.6s" data-wow-delay="0.2s">You’ll never be surprise charged. Every plan starts at free.</p>
-      <p class="call-to-action-btn wow pulse" data-wow-duration="0.8s" data-wow-delay="0.2s"><%= link_to 'Get Started Now', new_accounts_path, class: 'btn btn-primary btn-lg' %></p>
-      <div class="clearfix"></div>
-    </div>
-  </div>
+
+  <p style="padding-top: 20px">
+    Need to install Helpful behind your firewall? <a href="#" data-helpful="helpful">Contact us</a> for a <strong>self-hosted license</strong>.
+  </p>
 </div>
 
 <%= render 'pages/home/footer' %>

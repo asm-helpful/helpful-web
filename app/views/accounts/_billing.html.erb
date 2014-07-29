@@ -19,7 +19,7 @@
 
     <div class="form-group">
       <div class="row">
-        <% @plans.each do |plan| %>
+        <% BillingPlan.options.each do |plan| %>
           <div class="col-xs-12 col-sm-6 col-md-3">
             <div class="panel panel-default text-center">
               <h4 class="text-capitalize">
@@ -65,7 +65,6 @@
     <% else %>
       <%= mail_to 'helpful@helpful.io', t('.need_more'), data: {helpful: 'helpful'}, class: 'btn btn-default' %>
     <% end %>
-
 
     <%= f.hidden_field :billing_plan_slug %>
     <%= f.hidden_field :stripe_token %>

@@ -6,7 +6,7 @@
 
   <p><a href="<%= @account.chargify_portal_url %>">View statements & make changes to your subscription</a></p>
 <% else -%>
-  <% BillingPlan.ordered.each do |plan| -%>
+  <% BillingPlan.options.each do |plan| -%>
     <p><%= chargify_signup_link("Sign up for #{number_to_currency plan.price} plan", plan.chargify_product_id) %></p>
   <% end -%>
 
