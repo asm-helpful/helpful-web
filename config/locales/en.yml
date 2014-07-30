@@ -61,7 +61,7 @@ en:
 
   accounts:
     general:
-      company_name: "Account Name"
+      company_name: "Company Name"
       company_name_placeholder: "Acme Corp"
       your_name: "Your Name"
       your_name_placeholder: "Jane Doe"

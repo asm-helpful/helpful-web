@@ -1,6 +1,6 @@
 class ProtipConversation
   FROM = 'chris@assembly.com'
-  SUBJECT = '3 tips for answerng support requests like a boss.'
+  SUBJECT = '3 tips for answering support requests like a boss.'
   def self.create(account, user)
     email = Mail::Address.new(FROM)
     author = MessageAuthor.new(account, email)
