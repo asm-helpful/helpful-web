@@ -9,6 +9,8 @@ class BillingPlan < ActiveRecord::Base
 
   scope :visible, -> { where(hidden: false) }
 
+  scope :options, -> { visible.ordered }
+
   def formatted_price
     (price * 100).to_i.to_s
   end

@@ -14,7 +14,6 @@ class Users::InvitationsController < Devise::InvitationsController
     )
 
     @person = Person.new
-    @plans = BillingPlan.visible.order('price ASC')
 
     authorize! InvitationCreatePolicy.new(@account, current_user, @membership)
 

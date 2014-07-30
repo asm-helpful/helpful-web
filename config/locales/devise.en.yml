@@ -9,7 +9,7 @@ en:
       invalid: "Invalid email or password."
       invalid_token: "Invalid authentication token."
       not_found_in_database: "Invalid email or password."
-      timeout: "You haven't been here for a while. Please sign in again to continue."
+      timeout: ""
       unauthenticated: "You need to sign in or sign up before continuing."
     mailer:
       reset_password_instructions:
@@ -21,7 +21,7 @@ en:
       updated: "Your password was changed successfully. You're now back into Helpful!"
       updated_not_active: "Your password was changed successfully."
     registrations:
-      signed_up: "Welcome! You have signed up successfully."
+      signed_up: ""
       updated: "We have successfully updated your account."
     sessions:
       signed_in: ""
