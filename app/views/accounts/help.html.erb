@@ -5,14 +5,60 @@
     <div class="col-xs-10 col-xs-offset-1">
       <ul class="nav nav-tabs" role="tablist">
         <%# <li class="active"><a href="#getting-started" role="tab" data-toggle="tab">Getting Started</a></li> %>
-        <li class="active"><a href="#email-forwarding" role="tab" data-toggle="tab">Setup Email Forwarding</a></li>
-        <li><a href="#widget" role="tab" data-toggle="tab">Install Widget on Your Website</a></li>
+        <li class="active"><a href="#widget" role="tab" data-toggle="tab">Helpful Widget</a></li>
+        <li><a href="#email-forwarding" role="tab" data-toggle="tab">Set Up Email Forwarding</a></li>
       </ul>
 
       <div class="sheet">
         <div class="tab-content">
           <%# <div class="tab-pane active" id="getting-started"></div> %>
-          <div class="tab-pane active" id="email-forwarding">
+          <div class="tab-pane active" id="widget">
+            <p>Your Helpful account comes with a Helpful Widget. It's a nifty way for customers to get help from you, right on your website — in the place your customers need it the most.</p>
+
+            <p>Conversations are created from the widget like they would an email, and you reply the the users via an email.</p>
+
+            <p>To see the widget in action, click the button below.</p>
+
+            <script async src="https://assets.helpful.io/assets/widget.js"></script>
+            <% if signed_in? %>
+              <%= mail_to @account.mailbox_email.address, 'Try the Widget', data: {helpful: @account.slug, 'helpful-email' => current_user.email, 'helpful-name' => current_user.name}, class: 'btn btn-primary' %>
+            <% else %>
+              <%= mail_to 'helpful@helpful.io', 'Try the Widget', data: {helpful: @account.slug}, class: 'btn btn-primary' %>
+            <% end %>
+
+            <h3>Setting up Your Widget</h3>
+
+            <p>Installing the Helpful Widget on your website is really easy. First, copy and paste the code below into your HTML:</p>
+
+            <pre><code>&lt;script async src="https://assets.helpful.io/assets/widget.js"&gt;&lt;/script&gt;</code></pre>
+
+            <p>Then add the <code>data-helpful</code> attribute to any link on your site. The value of the attribute should be the name of your account.</p>
+
+            <pre><code>&lt;a href="#" data-helpful="&lt;HELPFUL ACCOUNT&gt;"&gt;Help!&lt;a&gt;</code></pre>
+
+            <h3>Customize</h3>
+
+            <p>If you already have information about your customer, you can save them typing by having it pre-filled.</p>
+
+            <pre><code>&lt;a href="#" data-helpful="&lt;HELPFUL ACCOUNT&gt;" data-helpful-name="Jane Smith" data-helpful-email="jane@icloud.com"&gt;Help!&lt;a&gt;</code></pre>
+
+            <% if signed_in? %>
+              <%= mail_to 'helpful@helpful.io', 'Customized widget example', data: {helpful: 'helpful', 'helpful-email' => current_user.email, 'helpful-name' => current_user.name} %>
+            <% else %>
+              <%= mail_to 'helpful@helpful.io', 'Customized widget example', data: {helpful: 'helpful'} %>
+            <% end %>
+
+            <h3>Need help with the widget?</h3>
+
+            <p>If you need help installing the widget, just ask through the Helpful Widget below.</p>
+
+            <% if signed_in? %>
+              <%= mail_to 'helpful@helpful.io', 'Help!', data: {helpful: 'helpful', 'helpful-email' => current_user.email, 'helpful-name' => current_user.name}, class: 'btn btn-primary' %>
+            <% else %>
+              <%= mail_to 'helpful@helpful.io', 'Help!', data: {helpful: 'helpful'}, class: 'btn btn-primary' %>
+            <% end %>
+          </div>
+          <div class="tab-pane" id="email-forwarding">
             <p>Let your customers send support requests to an email from your own domain and then automatically forward them to your Helpful account.</p>
 
             <h3>Forward emails from a Google Apps account</h3>
@@ -41,40 +87,6 @@
             </span>
 
             <p>And that's it! Emails sent to your custom support email show automatically show up in Helpful.</p>
-
-          </div>
-          <div class="tab-pane" id="widget">
-            <p>Helpful comes with Widget, a nify way to offer direct support to visitors to your website. It lets of offer awesome support right at the point when your customers need it the most.</p>
-
-            <p>Conversations are created from the widget like they would an email, and you reply the the users via an email.</p>
-
-            <span class="thumbnail">
-              <%= image_tag 'docs/widget-preview.png' %>
-            </span>
-
-            <h3>Setup</h3>
-
-            <p>To install Widget on your website you need to copy and paste the following code your HTML:</p>
-
-            <pre><code>&lt;script async src="https://assets.helpful.io/assets/widget.js"&gt;&lt;/script&gt;</code></pre>
-
-            <p>Then add the <code>data-helpful</code> attribute to any link on your site. The value of the attribute should be the name of your account.</p>
-
-            <pre><code>&lt;a href="#" data-helpful="&lt;HELPFUL ACCOUNT&gt;"&gt;Help!&lt;a&gt;</code></pre>
-
-            <%= mail_to 'helpful@helpful.io', 'Widget example', data: {helpful: 'helpful'} %>
-
-            <h3>Customize</h3>
-
-            <p>If you already have information about your customer, you can save them typing by having it pre-filled.</p>
-
-            <pre><code>&lt;a href="#" data-helpful="&lt;HELPFUL ACCOUNT&gt;" data-helpful-name="Jane Smith" data-helpful-email="jane@example.com"&gt;Help!&lt;a&gt;</code></pre>
-
-            <% if signed_in? %>
-              <%= mail_to 'helpful@helpful.io', 'Customized widget example', data: {helpful: 'helpful', 'helpful-email' => current_user.email, 'helpful-name' => current_user.name} %>
-            <% else %>
-              <%= mail_to 'helpful@helpful.io', 'Customized widget example', data: {helpful: 'helpful'} %>
-            <% end %>
 
           </div>
         </div>

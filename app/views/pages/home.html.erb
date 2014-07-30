@@ -25,7 +25,7 @@
             <%= image_tag('logo.png', data: {animate_logo: "" }) %>
             <h1 data-animate-heading>We redesigned the support tool to get out of the way, so you focus on being a helpful human.</h1>
             <p data-animate-lead>Helping your customers with good answers and thoughtful direction should be a breeze, focused 100% on support &ndash; and nothing else.</p>
-            <%= link_to 'Sign up and see how simple it is', new_accounts_path, class: 'btn btn-default btn-lg', style: 'margin-top: 20px' %>
+            <%= link_to 'Sign up and see how simple it is', new_accounts_path, rel: 'signup', class: 'btn btn-default btn-lg', style: 'margin-top: 20px' %>
           </div>
         </div>
       </div>
@@ -39,7 +39,7 @@
       <div class="row">
         <div class="col-xs-10 col-xs-offset-1">
           <div class="wow fadeInUp" data-wow-duration="0.8s" data-wow-delay="1.0s">
-            <%= image_tag('home/app.png', class: 'img-responsive', style: 'margin-left: auto; margin-right: auto; margin-bottom: -15%') %>
+            <%= image_tag('home/app.png', class: 'img-responsive', style: 'margin-left: auto; margin-right: auto; margin-bottom: -10%') %>
           </div>
         </div>
       </div>
@@ -146,3 +146,5 @@
 </div>
 
 <%= render 'pages/home/footer' %>
+
+<script async src="//assets.helpful.io/assets/widget.js"></script>
