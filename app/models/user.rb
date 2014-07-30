@@ -40,4 +40,12 @@ class User < ActiveRecord::Base
   def avatar
     self.try(:person).try(:avatar)
   end
+
+  def notify?
+    notification_setting == 'message'
+  end
+
+  def notify_when_assigned?
+    notification_setting == 'assignment'
+  end
 end

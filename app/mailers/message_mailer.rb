@@ -4,11 +4,7 @@ class MessageMailer < ActionMailer::Base
   include MarkdownHelper
   include ConversationHelper
 
-  # Public: Triggered on Message create
-  #
-  # Returns nothing.
   def created(message_id, recipient_id)
-
     @message = Message.find(message_id)
     @recipient = Person.find(recipient_id)
     @message_markdown = markdown(@message.content)
