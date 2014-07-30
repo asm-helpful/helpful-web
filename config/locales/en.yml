@@ -67,6 +67,7 @@ en:
       your_name_placeholder: "Jane Doe"
       username: "Username"
       username_placeholder: "jane"
+      notification_setting: 'Email notifications'
     new:
       sign_up_free_accounts: "Sign Up for a Free Account"
       quick_easy_sign_up: "Quick and easy sign up process."
