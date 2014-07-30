@@ -29,10 +29,10 @@
               <li class="<%= 'active' if @account == account %>">
 
                 <a href="<%= inbox_account_conversations_path(account) %>" class="clearfix" style="white-space:nowrap">
-                  <%= account.name %>
                   <% unless account.inbox_count.zero? %>
-                    <span class="badge"><%= account.inbox_count %></span>
+                    <span class="badge pull-right"><%= account.inbox_count %></span>
                   <% end %>
+                  <%= account.name %>
                 </a>
               </li>
             <% end %>
