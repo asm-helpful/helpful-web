@@ -1,9 +1,10 @@
 class WelcomeConversation
-  FROM = 'patrick@assembly.com'
   SUBJECT = 'Welcome to Helpful! Test drive your new Inbox.'
 
   def self.create(account, user)
-    email = Mail::Address.new(FROM)
+    email = Mail::Address.new('patrick@mail.helpful.io')
+    email.display_name = 'Patrick Van Stee'
+
     author = MessageAuthor.new(account, email)
 
     conversation = Concierge.new(account, subject: SUBJECT).find_conversation

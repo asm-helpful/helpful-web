@@ -1,8 +1,10 @@
 class ProtipConversation
-  FROM = 'chris@assembly.com'
   SUBJECT = '3 tips for answering support requests like a boss.'
+
   def self.create(account, user)
-    email = Mail::Address.new(FROM)
+    email = Mail::Address.new('chris@mail.helpful.io')
+    email.display_name = 'Chris Lloyd'
+
     author = MessageAuthor.new(account, email)
 
     conversation = Concierge.new(account, subject: SUBJECT).find_conversation
