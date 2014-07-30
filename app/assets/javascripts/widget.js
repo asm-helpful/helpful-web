@@ -37,6 +37,32 @@
     document.head.appendChild(css_el);
   }
 
+  HelpfulEmbed.prototype.getSourceOffsetTop = function () {
+    var currentElement = this.source;
+    var offset = this.source.offsetTop;
+
+    while (currentElement.offsetParent)
+    {
+      offset += currentElement.offsetParent.offsetTop;
+      currentElement = currentElement.offsetParent;
+    }
+
+    return offset;
+  }
+
+  HelpfulEmbed.prototype.getSourceOffsetLeft = function () {
+    var currentElement = this.source;
+    var offset = this.source.offsetLeft;
+
+    while (currentElement.offsetParent)
+    {
+      offset += currentElement.offsetParent.offsetLeft;
+      currentElement = currentElement.offsetParent;
+    }
+
+    return offset;
+  }
+
   HelpfulEmbed.prototype.showWidget = function () {
     // remove old style
     this.widget.className = this.widget.className.replace('helpful-shown-below', '');
@@ -82,32 +108,32 @@
       var widget_left = 0;
 
       // check if enough space on screen above source AND if enough space below in document UNLESS not enough above in document
-      if ((el_pos.top < 355) && ((this.source.offsetTop + this.source.offsetHeight + 355) < document_h || this.source.offsetTop < 355)) {
+      if ((el_pos.top < 355) && ((this.getSourceOffsetTop() + this.source.offsetHeight + 355) < document_h || this.getSourceOffsetTop() < 355)) {
         // show below
-        widget_top = this.source.offsetTop + this.source.offsetHeight + 15;
+        widget_top = this.getSourceOffsetTop() + this.source.offsetHeight + 15;
         this.widget.className += ' helpful-shown-below';
       } else
       {
         // show above
-        widget_top = this.source.offsetTop - 355;
+        widget_top = this.getSourceOffsetTop() - 355;
       }
       
-      widget_left = this.source.offsetLeft + (this.source.offsetWidth / 2) - 175; // center relative to source
+      widget_left = this.getSourceOffsetLeft() + (this.source.offsetWidth / 2) - 175; // center relative to source
       document.querySelector('.helpful-pointer').style.left = '50%';
 
       if (widget_left < 0) {
-        widget_left = Math.min(this.source.offsetLeft, 25); // compensate when centering would cause offscreen pos
+        widget_left = Math.min(this.getSourceOffsetLeft(), 25); // compensate when centering would cause offscreen pos
 
         // position arrow
-        var arrow_left = this.source.offsetLeft + this.source.offsetWidth / 2 - widget_left;
+        var arrow_left = this.getSourceOffsetLeft() + this.source.offsetWidth / 2 - widget_left;
         document.querySelector('.helpful-pointer').style.left = arrow_left + 'px';
       }
 
       if (widget_left + 350 > document_w) {
-        widget_left = Math.min(this.source.offsetLeft + this.source.offsetWidth - 300, document_w - 25); // compensate when centering would cause offscreen pos
+        widget_left = Math.min(this.getSourceOffsetLeft() + this.source.offsetWidth - 300, document_w - 25); // compensate when centering would cause offscreen pos
 
         // position arrow
-        var arrow_left = this.source.offsetLeft + this.source.offsetWidth / 2 - widget_left;
+        var arrow_left = this.getSourceOffsetLeft() + this.source.offsetWidth / 2 - widget_left;
         document.querySelector('.helpful-pointer').style.left = arrow_left + 'px';
       }
 
