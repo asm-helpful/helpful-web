@@ -53,6 +53,10 @@ class Person < ActiveRecord::Base
     end
   end
 
+  def external?
+    user.nil?
+  end
+
   private
 
   # Private: Make sure we only save the address portion of an email address.
