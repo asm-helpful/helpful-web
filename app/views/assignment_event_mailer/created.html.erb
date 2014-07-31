@@ -1,0 +1,9 @@
+Looks like <%= @assigner.name %> needs your help responding to a support
+request. Take a look and respond or assign it to someone else.
+
+<p style="font-size:small;-webkit-text-size-adjust:none;color:#666;">
+  &mdash;
+  <a href="<%= account_conversation_url(@assignment_event.conversation.account, @assignment_event.conversation) %>">
+    View Conversation on Helpful
+  </a>
+</p>
