@@ -116,6 +116,10 @@
       <div class="form-group">
         <!-- TODO: locale is missing -->
         <%= f.submit 'Sign up and start using Helpful!', class: 'btn btn-lg btn-primary' %>
+        
+        <span class="help-block">
+          By signing up, you agree to Helpful's <%= link_to 'Terms of Service', terms_path %>.
+        </span>
       </div>
 
     </fieldset>
