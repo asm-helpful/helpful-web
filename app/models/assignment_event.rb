@@ -10,6 +10,7 @@ class AssignmentEvent < ActiveRecord::Base
     on: :create
 
   def notify_assignee
+    return if assignee.never_notify?
     AssignmentEventMailer.delay.created(id)
   end
 end

@@ -48,4 +48,8 @@ class User < ActiveRecord::Base
   def notify_when_assigned?
     notification_setting == 'assignment'
   end
+
+  def never_notify?
+    notification_setting == 'never'
+  end
 end
