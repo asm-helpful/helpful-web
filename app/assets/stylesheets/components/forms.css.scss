@@ -1,13 +1,6 @@
 .control-label {
   color: $legend-color;
   font-weight: normal;
-
-  & + .radio,
-  & + .checkbox {
-    border-top: 1px solid $brand-border;
-    margin-top: 0;
-    padding-top: $padding-base-vertical;
-  }
 }
 
 .form-control {

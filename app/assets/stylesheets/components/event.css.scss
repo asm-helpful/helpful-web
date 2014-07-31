@@ -1,9 +1,20 @@
 .event {
   padding: $padding-large-vertical $grid-gutter-width;
-  color: $text-muted;
   font-size: $font-size-small;
 
-  > .person {
+  .person {
     display: inline;
+
+    div {
+      display: inline;
+
+      span {
+        display: none;
+
+        &:first-child {
+          display: inline;
+        }
+      }
+    }
   }
 }
