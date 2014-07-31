@@ -9,9 +9,9 @@ Helpful::Application.routes.draw do
     mount Sidekiq::Web, at: "/sidekiq"
   end
 
-  get '/embed.js' => 'pages#embed', :as => :embed
-  get '/styleguide' => 'pages#styleguide', :as => :styleguide
-  get '/docs' => 'pages#docs', :as => :docs
+  get '/embed.js' => 'pages#embed', as: :embed
+  get '/styleguide' => 'pages#styleguide', as: :styleguide
+  get '/terms' => 'pages#terms', as: :terms
 
   devise_for :users, skip: :registrations, :controllers => { :invitations => 'users/invitations' }
 

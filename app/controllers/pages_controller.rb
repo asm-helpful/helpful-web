@@ -1,5 +1,4 @@
 class PagesController < ApplicationController
-
   def home
   end
 
@@ -7,7 +6,6 @@ class PagesController < ApplicationController
     redirect_to ActionController::Base.helpers.javascript_path('embed.js')
   end
 
-  def docs
+  def terms
   end
-
 end
