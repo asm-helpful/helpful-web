@@ -1,6 +1,7 @@
 <%= render 'shared/navbar' %>
 
 <div class="container">
+
   <div>
     <a class="btn btn-primary pull-right" href="<%= new_account_canned_response_path %>">
       <%= t('.create_canned_response') %>
@@ -11,13 +12,29 @@
     </h1>
   </div>
 
-  <% if @canned_responses.any? %>
+  <% if @account.canned_responses.empty? %>
+
+    <div class="panel panel-default">
+      <div class="panel-title">
+        <%= t('canned_responses.none_yet.header') %>
+      </div>
+      <div class="panel-body">
+        <%= t('canned_responses.none_yet.body') %>
+        <br>
+        <a class="btn btn-success btn-sm" href="<%= new_account_canned_response_path(@account) %>">
+          <%= t('canned_responses.none_yet.button') %>
+        </a>
+      </div>
+    </div>
+
+  <% else %>
+
     <div class="list">
       <% @canned_responses.each do |canned_response| %>
         <div class="list-item clearfix">
           <div class="pull-left">
             <strong><%= canned_response.key %></strong>
-            <p><%= canned_response.message[0..50].strip %><%= canned_response.message.length > 50 ? '...' : '' %></p>
+            <p class="canned-response-message"><%= canned_response.message.truncate(140) %></p>
           </div>
           <div class="btn-group pull-right">
             <a href="<%= edit_account_canned_response_path(canned_response.account, canned_response) %>" class="btn btn-default">Edit</a>
@@ -25,7 +42,7 @@
         </div>
       <% end %>
     </div>
-  <% else %>
-    <p><%= t('.none_created') %></p>
+
   <% end %>
+
 </div>
