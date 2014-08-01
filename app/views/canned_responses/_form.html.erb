@@ -7,10 +7,14 @@
 
   <div class="form-group">
     <%= f.label :messsage, t('.message'), class: 'control-label' %>
-    <%= f.text_area :message, placeholder: t('.message_placeholder'), class: 'form-control' %>
+    <div class="editable form-control medium-editor" data-placeholder="<%= t('.message_placeholder') %>" contenteditable="true" id="canned-div">
+      <%= @canned_response.message && @canned_response.message.html_safe %>
+    </div>
+    <%= f.hidden_field :message, id: 'canned-field' %>
   </div>
 
   <div class="form-actions">
-    <%= f.submit @canned_response.persisted? ? t('.update') : t('.create'), class: 'btn btn-primary' %>
+    <%= f.submit @canned_response.persisted? ? t('.update') : t('.create'), class: 'btn btn-primary', id: 'submit-can-response' %>
   </div>
+
 <% end %>

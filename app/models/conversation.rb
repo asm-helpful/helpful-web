@@ -148,6 +148,12 @@ class Conversation < ActiveRecord::Base
     MessageMailman.deliver(most_recent_message, account_people)
   end
 
+  def notify?(recipient)
+    recipient.notify? ||
+      recipient.notify_when_assigned? &&
+      recipient == user
+  end
+
   def unpaid?
     hidden
   end

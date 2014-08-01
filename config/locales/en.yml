@@ -61,12 +61,13 @@ en:
 
   accounts:
     general:
-      company_name: "Account Name"
+      company_name: "Company Name"
       company_name_placeholder: "Acme Corp"
       your_name: "Your Name"
       your_name_placeholder: "Jane Doe"
       username: "Username"
       username_placeholder: "jane"
+      notification_setting: 'Email notifications'
     new:
       welcome_to_helpful: "Welcome to Helpful"
       sign_up_free_account: "Sign Up for a Free Account"

@@ -53,6 +53,22 @@ class Person < ActiveRecord::Base
     end
   end
 
+  def external?
+    user.nil?
+  end
+
+  def notify?
+    !user || user.notify?
+  end
+
+  def notify_when_assigned?
+    !user || user.notify_when_assigned?
+  end
+
+  def never_notify?
+    user && user.never_notify?
+  end
+
   private
 
   # Private: Make sure we only save the address portion of an email address.

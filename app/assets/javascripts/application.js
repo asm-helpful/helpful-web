@@ -1,8 +1,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require pusher
+//= require medium-editor
 //= require bootstrap-sprockets
 //= require tabs
+//= require canned_responses
 //= require conversations
 //= require command_bar
 //= require jquery-autosize
@@ -11,7 +13,6 @@
 //= require homepage
 //= require email_check
 //= require handlebars
-//= require medium-editor
 //= require medium_init
 //= require jquery.transform2d
 //= require wow.min.js

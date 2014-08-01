@@ -29,10 +29,12 @@ class UsersController < ApplicationController
   end
 
   def person_params
-    params.require(:user).permit(:name, :email).merge(params.require(:person).permit(:username, :avatar))
+    params.require(:person).permit(:name, :email, :avatar)
   end
 
   def user_params
-    { email: person_params[:email] }
+    params.require(:user).permit(:email, :notification_setting).merge(
+      email: person_params[:email]
+    )
   end
 end
