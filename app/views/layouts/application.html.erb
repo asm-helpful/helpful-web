@@ -16,6 +16,7 @@
 for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=f.createElement("script");a.type="text/javascript";a.async=!0;a.src="//cdn.mxpnl.com/libs/mixpanel-2.2.min.js";e=f.getElementsByTagName("script")[0];e.parentNode.insertBefore(a,e)}})(document,window.mixpanel||[]);
 mixpanel.init("afd8ab931330183bcaa1e60b21c48007");</script>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="pusher-key" content="<%= Pusher.key %>">
   <meta name="stripe-token" content="<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>">
 </head>
