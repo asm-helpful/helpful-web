@@ -16,10 +16,10 @@
 
         <ul class="dropdown-menu">
 
-          <li><a href="<%= edit_account_path(@account, anchor: 'basic') %>" rel="account.edit">Account</a></li>
-          <li><a href="<%= edit_account_path(@account, anchor: 'team') %>" rel="account.edit.team">Team</a></li>
-          <li><a href="<%= edit_account_path(@account, anchor: 'billing') %>" rel="account.edit.billing">Billing</a></li>
-          <li><a href="<%= edit_account_path(@account, anchor: 'canned-responses') %>" rel="account.edit.canned-responses">Canned Responses</a></li>
+          <li><a href="<%= edit_account_path(@account, anchor: 'basic') %>" rel="account.edit"><%= t('.account') %></a></li>
+          <li><a href="<%= edit_account_path(@account, anchor: 'team') %>" rel="account.edit.team"><%= t('.team') %></a></li>
+          <li><a href="<%= edit_account_path(@account, anchor: 'billing') %>" rel="account.edit.billing"><%= t('.billing') %></a></li>
+          <li><a href="<%= edit_account_path(@account, anchor: 'canned-responses') %>" rel="account.edit.canned-responses"><%= t('.canned_responses') %></a></li>
           <li><a href="<%= help_account_path(@account) %>">Help</a></li>
 
           <% if current_user.accounts.size > 1 %>
@@ -44,7 +44,7 @@
       <li class="<%= nav_active_class(:inbox) %>">
         <%= link_to inbox_account_conversations_path(@account), class: "#{'active' if current_page?(inbox_account_conversations_path(@account)) }" do %>
           <span class="geomicon geomicon-inbox"></span>
-          <span class="">Inbox</span>
+          <span class=""><%= t('.inbox') %></span>
           <% unless @account.inbox_count.zero? %>
             <span class="badge"><%= @account.inbox_count %></span>
           <% end %>
@@ -54,7 +54,7 @@
       <li class="<%= nav_active_class(:archive) %>">
         <%= link_to archived_account_conversations_path(@account), class: "#{'active' if current_page?(archived_account_conversations_path(@account)) }" do %>
           <span class="geomicon geomicon-storagebox"></span>
-          <span class="">Archive</span>
+          <span class=""><%= t('.archive') %></span>
         <% end %>
       </li>
     </ul>
@@ -70,7 +70,7 @@
               <%= search_field_tag :q, @query, autocomplete: 'off', placeholder: t('.search'), class: 'form-control form-control-invisible' %>
             </div>
           </div>
-          <button type="submit" class="btn btn-default sr-only">Search</button>
+          <button type="submit" class="btn btn-default sr-only"><%= t('.search') %></button>
           <button type="button" class="btn btn-default dropdown-toggle sr-only" data-toggle="dropdown" tabindex="-1">
             <span class="caret"></span>
             <span class="sr-only">Toggle Dropdown</span>
@@ -129,17 +129,13 @@
     <div class="arrow"></div>
 
     <div class="popover-content">
-      <div class="search-header">
-        Search by Tag
-      </div>
+      <div class="search-header"><%= t('.search_by_tag') %></div>
       <div class="search-result-populated">
         <% @account.conversations.pluck(:tags).flatten.uniq.sort.each do |tag_name| %>
           <%= link_to "##{tag_name}", search_account_conversations_path(@account, tag: tag_name), class: 'tag' %>
         <% end %>
       </div>
-      <div class="search-header">
-        Search by Assignee
-      </div>
+      <div class="search-header"><%= t('.search_by_assignee') %></div>
       <ul class="search-results">
         <% @account.users.joins(:person).order('people.name ASC').each do |user| %>
           <li class="search-result">

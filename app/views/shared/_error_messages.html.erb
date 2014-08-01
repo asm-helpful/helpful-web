@@ -1,9 +1,7 @@
 <% if target.errors.any? %>
   <div class="panel panel-error error-message">
     <span class="geomicon geomicon-alert"></span>
-    <div class="panel-title">
-      Oops! Something went wrong.
-    </div>
+    <div class="panel-title"><%= t('.oops_went_wrong') %></div>
 
     <div class="panel-body">
       <ul>

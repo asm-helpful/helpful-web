@@ -1,8 +1,6 @@
 <div class="row">
   <div class="col-md-6">
-    <h4 class="section-title">
-      Members
-    </h4>
+    <h4 class="section-title"><%= t('.members') %></h4>
 
     <table class="table">
       <tbody>
@@ -47,38 +45,38 @@
             <%= f.text_field :email, class: 'form-control' %></p>
           </div>
           <div class="col-md-3">
-            <%= f.submit 'Send', class: 'btn btn-primary' %>
+            <%= f.submit t('.send'), class: 'btn btn-primary' %>
           </div>
         </div>
       </div>
     <% end %>
 
-    <h4 class="section-title">
-      Invitations
-    </h4>
+    <h4 class="section-title"><%= t('.invitations') %></h4>
 
-    <table class="table">
-      <% if @account.invitations.empty? %>
-        <tr>
-          <td class="text-muted">There aren't any unaccepted invitations.</td>
-        </tr>
-      <% end %>
+    <% if @account.invitations.present? %>
 
-      <% @account.invitations.each do |membership| %>
-        <tr>
-          <td>
-            <% if membership.user.name %>
-              <strong><%= membership.user.name %></strong>
-            <% else %>
-              <%= membership.user.email %>
-            <% end %>
-          </td>
+      <table class="table">
+        <% @account.invitations.each do |membership| %>
+          <tr>
+            <td>
+              <% if membership.user.name %>
+                <strong><%= membership.user.name %></strong>
+              <% else %>
+                <%= membership.user.email %>
+              <% end %>
+            </td>
 
-          <td class="text-muted">
-            <%= t('.invitation_sent') %> <%= time_ago_in_words(membership.user.invitation_sent_at) %> <%= t('general.ago') %>
-          </td>
-        </tr>
-      <% end %>
-    </table>
+            <td class="text-muted">
+              <%= t('.invitation_sent') %> <%= time_ago_in_words(membership.user.invitation_sent_at) %> <%= t('general.ago') %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+
+    <% else %>
+
+      <p class="text-muted"><%= t('.no_unaccepted') %></p>
+
+    <% end %>
   </div>
 </div>

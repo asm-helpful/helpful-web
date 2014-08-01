@@ -1,6 +1,13 @@
 .list {
+  padding-top: 4px;
+
   > .list-item {
-    border-bottom: 1px solid #F2F2F2;
+    margin-top: 10px;
+    border-bottom: 1px solid $brand-border;
+
+    > .btn-group {
+      margin-top: 5px;
+    }
   }
 }
 

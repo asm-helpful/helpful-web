@@ -1,3 +1,13 @@
+<div>
+  <a class="btn btn-success pull-right" href="<%= new_account_canned_response_path(@account) %>">
+    <%= t('.create_canned_response') %>
+  </a>
+
+  <h1 class="page-title">
+    <%= t('.canned_responses') %>
+  </h1>
+</div>
+
 <% if @account.canned_responses.empty? %>
   <div class="panel panel-default">
     <div class="panel-title">
@@ -12,27 +22,17 @@
     </div>
   </div>
 <% else %>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Key</th>
-        <th>Response</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @account.canned_responses.each do |canned_response| %>
-        <tr>
-          <td valign="top"><strong><code><%= canned_response.key %></code></strong></td>
-          <td valign="top"><%= canned_response.message %></td>
-          <td valign="top">
-            <a href="<%= edit_account_canned_response_path(canned_response.account, canned_response) %>">Edit</a>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <a class="btn btn-success btn-sm" href="<%= new_account_canned_response_path(@account) %>">
-    <%= t('.create_canned_response') %>
-  </a>
+  <div class="list">
+    <% @account.canned_responses.each do |canned_response| %>
+      <div class="list-item clearfix">
+        <div class="pull-left">
+          <strong><%= canned_response.key %></strong>
+          <p><%= canned_response.message.truncate(106) %></p>
+        </div>
+        <div class="btn-group pull-right">
+          <a href="<%= edit_account_canned_response_path(canned_response.account, canned_response) %>" class="btn btn-default"><%= t('edit') %></a>
+        </div>
+      </div>
+    <% end %>
+  </div>
 <% end %>
