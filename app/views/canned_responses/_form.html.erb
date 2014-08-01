@@ -13,12 +13,6 @@
     <%= f.hidden_field :message, id: 'canned-field' %>
   </div>
 
-  <style>
-    .editable::after {
-      padding: 8px 0 0 13px;
-    }
-  </style>
-
   <div class="form-actions">
     <%= f.submit @canned_response.persisted? ? t('.update') : t('.create'), class: 'btn btn-primary', id: 'submit-can-response' %>
   </div>
