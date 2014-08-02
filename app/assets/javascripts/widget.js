@@ -286,17 +286,14 @@
     this.overlay.style.display = 'none';
   }
 
-  // TODO This should be store in the DOM on the target element. That will allow
-  // multiple popups to exist on the page. At the moment there's only a singular
-  // popup.
   window.helpful_embed = new HelpfulEmbed();
 
-  [].forEach.call(document.querySelectorAll('[data-helpful]'), function (el) {
-    el.addEventListener('click', function(e) {
+  document.addEventListener('click', function (e) {
+    if (e.target.hasAttribute('data-helpful')) {
       e.preventDefault();
       e.stopPropagation();
-      helpful_embed.open(this);
-    });
+      helpful_embed.open(e.target);
+    }
   });
 
 })();
