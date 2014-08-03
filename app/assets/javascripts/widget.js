@@ -246,12 +246,28 @@
     // set source of the click
     this.source = source;
 
+    var strings = false;
+
+    // check if custom strings should be used
+    if (this.source.hasAttribute('data-helpful-strings')) {
+      try {
+        var parsed = JSON.parse(this.source.getAttribute('data-helpful-strings'));
+        
+        if (typeof parsed == 'object')
+          strings = parsed;
+      } catch (e) {
+        if (this.source.getAttribute('data-helpful-strings').length > 0)
+          strings = this.source.getAttribute('data-helpful-strings');
+      }
+    }
+
     this.options = {
       company: source.getAttribute('data-helpful'),
       overlay: source.getAttribute('data-helpful-overlay') != 'off',
       modal: source.getAttribute('data-helpful-modal') == 'on',
       name: source.getAttribute('data-helpful-name') || '',
-      email: source.getAttribute('data-helpful-email') || ''
+      email: source.getAttribute('data-helpful-email') || '',
+      strings: strings
     };
 
     if (this.loaded)
@@ -265,8 +281,15 @@
   }
 
   HelpfulEmbed.prototype.htmlLoaded = function (data) {
+    var output = data.html;
+
+    // replace strings
+    for (var key in this.stringDefaults) {
+      output = output.replace('[' + key + ']', this.getString(key));
+    }
+
     // put loaded html into container
-    this.container.innerHTML = data.html;
+    this.container.innerHTML = output;
 
     // set widget element
     this.widget = document.querySelector('.helpful-embed');
@@ -284,6 +307,30 @@
   HelpfulEmbed.prototype.close = function () {
     this.container.style.display = 'none';
     this.overlay.style.display = 'none';
+  }
+
+  HelpfulEmbed.prototype.stringDefaults = {
+    title: 'How may we help you?',
+    message_placeholder: 'Type your message here...',
+    next: 'Next',
+    contact_information: 'Your contact information.',
+    contact_information_info: 'So we can respond to your question.',
+    name: 'Name',
+    email: 'Email',
+    submit: 'Submit your Question',
+    thanks: 'Thanks!',
+    thanks_message: 'Have a wonderful day.',
+    submit_another: 'Submit another question?'
+  }
+
+  HelpfulEmbed.prototype.getString = function (key) {
+    if (typeof this.options.strings == 'object' && typeof this.options.strings[key] != 'undefined')
+      return this.options.strings[key];
+
+    if (typeof this.options.strings == 'string' && typeof window.HelpfulStrings != 'undefined' && typeof window.HelpfulStrings[this.options.strings] != 'undefined' && typeof window.HelpfulStrings[this.options.strings][key] != 'undefined')
+      return window.HelpfulStrings[this.options.strings][key];
+
+    return this.stringDefaults[key];
   }
 
   window.helpful_embed = new HelpfulEmbed();
