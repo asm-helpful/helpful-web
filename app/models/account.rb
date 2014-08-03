@@ -225,6 +225,11 @@ class Account < ActiveRecord::Base
     errors.add(:email, 'is not unique') if conflicting_account && conflicting_account != self
   end
 
+  def email_errors
+    valid?
+    errors[:email]
+  end
+
   def to_param
     slug
   end
