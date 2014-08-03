@@ -119,7 +119,7 @@
             <%= plan.name %>
           </h4>
           <p>
-            <strong> &nbsp;<%= plan.max_conversations %> monthly conversation threads</strong>
+            <strong> &nbsp;<%=  number_with_delimiter(plan.max_conversations, delimiter: ",")  %> monthly conversation threads</strong>
           </p>
           <p>
             <% if plan.price.zero? %>
@@ -134,7 +134,7 @@
               Sign up
             </span>
           <% end %>
-          
+
         </div>
       </div>
     <% end %>
