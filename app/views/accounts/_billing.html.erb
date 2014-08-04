@@ -26,7 +26,7 @@
                 <%= plan.name %>
               </h4>
               <p>
-                <strong>&nbsp;<%= plan.max_conversations %> <%= t('.conversations') %></strong>
+                <strong>&nbsp;<%= number_with_delimiter(plan.max_conversations, delimiter: ",") %> <%= t('.conversations') %></strong>
               </p>
               <p>
                 <% if plan.price.zero? %>
