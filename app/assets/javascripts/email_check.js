@@ -88,8 +88,6 @@ $(function() {
         showFeedback($formGroup, 'error');
         data.account_emails.forEach(function (error) {
           var errorMessage = $("#email-error-" + error.replace(/ /g, '-'));
-          console.log(error);
-          console.log(errorMessage);
           errorMessage.show();
         });
       }).error(function(xhr) {
