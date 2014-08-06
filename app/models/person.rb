@@ -11,12 +11,12 @@ class Person < ActiveRecord::Base
 
   validates :email,
     allow_blank: true,
-    format: /\A[^@]+@[^@]+\z/,
+    email: true,
     uniqueness: { :scope => :account}
 
   validates :name,
     presence: true,
-    if: proc { |p| p.user.present? }
+    if: ->(p) { p.user.present? }
 
   validates :username,
     allow_blank: true,
@@ -24,9 +24,10 @@ class Person < ActiveRecord::Base
 
   validates :twitter,
     allow_blank: true,
+    twitter: true,
     uniqueness: {:scope => :account}
 
-  before_save :parse_email
+  before_validation :parse_email, if: :email_changed?
 
   mount_uploader :avatar, AvatarUploader
 
