@@ -63,11 +63,16 @@
                 <strong><%= membership.user.name %></strong>
               <% else %>
                 <%= membership.user.email %>
-              <% end %>
+              <% end %><br>
+              <span class="text-muted"><small><%= t('.invitation_sent') %> <%= time_ago_in_words(membership.user.invitation_sent_at) %> <%= t('general.ago') %></small></span>
             </td>
 
-            <td class="text-muted">
-              <%= t('.invitation_sent') %> <%= time_ago_in_words(membership.user.invitation_sent_at) %> <%= t('general.ago') %>
+            <td>
+              <%= form_for @user, url: invitation_path(:user), html: { method: :post } do |f| %>
+                <%= hidden_field_tag :account_id, @account.slug %>
+                <%= f.hidden_field :email, value: membership.user.email %>
+                <%= f.submit t('.reinvite'), class: 'btn btn-primary' %>
+              <% end %>
             </td>
           </tr>
         <% end %>

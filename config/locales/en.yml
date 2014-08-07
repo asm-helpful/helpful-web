@@ -100,7 +100,6 @@ en:
       invitations: "Invitations"
       send_invitation: "Send an Invitation"
       invitations_sent: "Invitations Sent"
-      invitation_sent: "Invitation sent"
       signature: "Response Signature"
       signature_placeholder: "Signature included at the end of every e-mail"
       auto_archiving: "Auto-archive conversations after replying"
@@ -119,6 +118,8 @@ en:
       members: "Members"
       send: "Send"
       no_unaccepted: "There aren't any unaccepted invitations."
+      invitation_sent: "Invitation sent"
+      reinvite: "Reinvite"
     canned_responses:
       key: "Key"
       message: "Response"

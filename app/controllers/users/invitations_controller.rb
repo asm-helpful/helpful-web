@@ -4,6 +4,21 @@ class Users::InvitationsController < Devise::InvitationsController
   def create
     if existing_user = User.find_by(email: params[:user][:email])
       @user = existing_user
+
+      # check if we only need to resend the invitation
+      existing_membership = Membership.find_by(user: @user, account: @account)
+
+      if existing_membership && !@user.invitation_accepted?
+        @user.invite!
+
+        return respond_with @user do |format|
+          format.html do
+            redirect_to edit_account_path(@account)
+          end
+
+          format.json
+        end
+      end
     else
       @user = invite_resource
     end
