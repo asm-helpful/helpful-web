@@ -13,7 +13,7 @@ class Users::InvitationsController < Devise::InvitationsController
 
         return respond_with @user do |format|
           format.html do
-            redirect_to edit_account_path(@account)
+            redirect_to edit_account_path(@account, anchor: 'team')
           end
 
           format.json
@@ -36,7 +36,7 @@ class Users::InvitationsController < Devise::InvitationsController
       respond_with @user do |format|
         format.html do
           set_flash_message :notice, :send_instructions, email: @user.email if @user.invitation_sent_at
-          redirect_to edit_account_path(@account)
+          redirect_to edit_account_path(@account, anchor: 'team')
         end
 
         format.json
