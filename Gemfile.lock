@@ -424,6 +424,7 @@ DEPENDENCIES
   active_model_serializers!
   analytics-ruby
   awesome_print
+  aws-sdk
   bootstrap-sass!
   bourbon
   bugsnag
