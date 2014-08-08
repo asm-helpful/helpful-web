@@ -108,8 +108,4 @@ $(function() {
   $email.keyup(function(event) {
     validateEmail();
   });
-
-  $(document).ready(function () {
-    hideErrors();
-  });
 });
