@@ -248,26 +248,13 @@
 
     var strings = false;
 
-    // check if custom strings should be used
-    if (this.source.hasAttribute('data-helpful-strings')) {
-      try {
-        var parsed = JSON.parse(this.source.getAttribute('data-helpful-strings'));
-        
-        if (typeof parsed == 'object')
-          strings = parsed;
-      } catch (e) {
-        if (this.source.getAttribute('data-helpful-strings').length > 0)
-          strings = this.source.getAttribute('data-helpful-strings');
-      }
-    }
-
     this.options = {
       company: source.getAttribute('data-helpful'),
       overlay: source.getAttribute('data-helpful-overlay') != 'off',
       modal: source.getAttribute('data-helpful-modal') == 'on',
       name: source.getAttribute('data-helpful-name') || '',
       email: source.getAttribute('data-helpful-email') || '',
-      strings: strings
+      strings: source.getAttribute('data-helpful-strings')
     };
 
     if (this.loaded)
@@ -324,8 +311,8 @@
   }
 
   HelpfulEmbed.prototype.getString = function (key) {
-    if (typeof this.options.strings == 'object' && typeof this.options.strings[key] != 'undefined')
-      return this.options.strings[key];
+    if (this.source.hasAttribute('data-helpful-' + key.replace('_', '-')))
+      return this.source.getAttribute('data-helpful-' + key.replace('_', '-'));
 
     if (typeof this.options.strings == 'string' && typeof window.HelpfulStrings != 'undefined' && typeof window.HelpfulStrings[this.options.strings] != 'undefined' && typeof window.HelpfulStrings[this.options.strings][key] != 'undefined')
       return window.HelpfulStrings[this.options.strings][key];

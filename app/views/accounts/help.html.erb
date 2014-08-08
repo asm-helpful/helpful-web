@@ -74,11 +74,11 @@
 
             <h4>Text</h4>
 
-            <p>The texts that are used in the widget can be customized. Every piece of text has been assigned a specific keys. The values of the keys can be overriden in two ways. First, you can include a JSON object in the strings option containing your custom text. The example only overrides the title of the widget.</p>
+            <p>The texts that are used in the widget can be customized. Every piece of text has been assigned a specific keys. The values of the keys can be overriden in two ways. First, you can include an extra attribute containing the custom text. The example only overrides the title of the widget. You can include as much attributes as you need. For a full list of keys, check out the example file below. Make sure to replace any underscores (_) with a dash (-) in attribute names.</p>
 
-            <pre><code>&lt;a href="mailto:your-account@helpful.io" data-helpful="&lt;HELPFUL ACCOUNT&gt;" data-helpful-strings='{"title": "Got a question?"}'&gt;Help!&lt;a&gt;</code></pre>
+            <pre><code>&lt;a href="mailto:your-account@helpful.io" data-helpful="&lt;HELPFUL ACCOUNT&gt;" data-helpful-title="Got a question?"&gt;Help!&lt;a&gt;</code></pre>
 
-            <p><a href="mailto:helpful@helpful.io" data-helpful="helpful" data-helpful-strings='{"title": "Got a question?"}'>Example</a></p>
+            <p><a href="mailto:helpful@helpful.io" data-helpful="helpful" data-helpful-title="Got a question?">Example</a></p>
 
             <p>Alternatively you can include your own Javascript file containing all your text and reference that from the strings option. The example shows a simple Dutch translation of the widget. First, create your Javascript file (named "helpful-widget-dutch.js" in the example).</p>
 
