@@ -34,19 +34,77 @@
 
             <p>Then add the <code>data-helpful</code> attribute to any link on your site. The value of the attribute should be the name of your account.</p>
 
-            <pre><code>&lt;a href="#" data-helpful="&lt;HELPFUL ACCOUNT&gt;"&gt;Help!&lt;a&gt;</code></pre>
+            <pre><code>&lt;a href="mailto:your-account@helpful.io" data-helpful="&lt;HELPFUL ACCOUNT&gt;"&gt;Help!&lt;a&gt;</code></pre>
+
+            <h3>Fallback</h3>
+
+            <p>To make sure your link isn't completely broken when the widget fails to load you can add a mailto to the link. The widget prevents any default events when it's properly loaded.</p>
+
+            <pre><code>&lt;a href="mailto:your-account@helpful.io" data-helpful="&lt;HELPFUL ACCOUNT&gt;"&gt;Help!&lt;a&gt;</code></pre>
 
             <h3>Customize</h3>
 
+            <h4>Customer information</h4>
+
             <p>If you already have information about your customer, you can save them typing by having it pre-filled.</p>
 
-            <pre><code>&lt;a href="#" data-helpful="&lt;HELPFUL ACCOUNT&gt;" data-helpful-name="Jane Smith" data-helpful-email="jane@icloud.com"&gt;Help!&lt;a&gt;</code></pre>
+            <pre><code>&lt;a href="mailto:your-account@helpful.io" data-helpful="&lt;HELPFUL ACCOUNT&gt;" data-helpful-name="Jane Smith" data-helpful-email="jane@icloud.com"&gt;Help!&lt;a&gt;</code></pre>
 
             <% if signed_in? %>
-              <%= mail_to 'helpful@helpful.io', 'Customized widget example', data: {helpful: 'helpful', 'helpful-email' => current_user.email, 'helpful-name' => current_user.name} %>
+              <%= mail_to 'helpful@helpful.io', 'Example', data: {helpful: 'helpful', 'helpful-email' => current_user.email, 'helpful-name' => current_user.name} %>
             <% else %>
-              <%= mail_to 'helpful@helpful.io', 'Customized widget example', data: {helpful: 'helpful'} %>
+              <%= mail_to 'helpful@helpful.io', 'Example', data: {helpful: 'helpful'} %>
             <% end %>
+
+            <h4>Modal</h4>
+
+            <p>By the default the widget pops up next to the element that was clicked to open it. If you rather have it open in the middle of the screen, you can enable the modal option.</p>
+
+            <pre><code>&lt;a href="mailto:your-account@helpful.io" data-helpful="&lt;HELPFUL ACCOUNT&gt;" data-helpful-modal="on"&gt;Help!&lt;a&gt;</code></pre>
+
+            <%= mail_to 'helpful@helpful.io', 'Example', data: {helpful: 'helpful', 'helpful-modal' => 'on'} %>
+
+            <h4>Overlay</h4>
+
+            <p>By the default a 70% transparent overlay is shown behind the widget. Use the overlay option to disable it. (Example is in combination with the modal option.)</p>
+
+            <pre><code>&lt;a href="mailto:your-account@helpful.io" data-helpful="&lt;HELPFUL ACCOUNT&gt;" data-helpful-modal="on" data-helpful-overlay="off"&gt;Help!&lt;a&gt;</code></pre>
+
+            <%= mail_to 'helpful@helpful.io', 'Example', data: {helpful: 'helpful', 'helpful-modal' => 'on', 'helpful-overlay' => 'off'} %>
+
+            <h4>Text</h4>
+
+            <p>The texts that are used in the widget can be customized. Every piece of text has been assigned a specific keys. The values of the keys can be overriden in two ways. First, you can include an extra attribute containing the custom text. The example only overrides the title of the widget. You can include as much attributes as you need. For a full list of keys, check out the example file below. Make sure to replace any underscores (_) with a dash (-) in attribute names.</p>
+
+            <pre><code>&lt;a href="mailto:your-account@helpful.io" data-helpful="&lt;HELPFUL ACCOUNT&gt;" data-helpful-title="Got a question?"&gt;Help!&lt;a&gt;</code></pre>
+
+            <p><a href="mailto:helpful@helpful.io" data-helpful="helpful" data-helpful-title="Got a question?">Example</a></p>
+
+            <p>Alternatively you can include your own Javascript file containing all your text and reference that from the strings option. The example shows a simple Dutch translation of the widget. First, create your Javascript file (named "helpful-widget-dutch.js" in the example).</p>
+
+            <pre><code>HelpfulStrings = {
+  dutch: {
+    title: 'Hulp nodig?',
+    message_placeholder: 'Stel hier je vraag...',
+    next: 'Volgende',
+    contact_information: 'Uw informatie.',
+    contact_information_info: 'Zodat we op uw vraag kunnen reageren.',
+    name: 'Naam',
+    email: 'Email',
+    submit: 'Verstuur uw vraag',
+    thanks: 'Bedankt!',
+    thanks_message: 'Fijne dag!',
+    submit_another: 'Nog een vraag stellen?'
+  }
+}</code></pre>
+
+            <p>Then include the script in your page:</p>
+
+            <pre><code>&lt;script async src="helpful-widget-dutch.js"&gt;&lt;/script&gt;</code></pre>
+
+            <p>Then reference the name you gave your custom text in the strings option (the key in the "HelpfulStrings" object):</p>
+
+            <pre><code>&lt;a href="mailto:your-account@helpful.io" data-helpful="&lt;HELPFUL ACCOUNT&gt;" data-helpful-strings="dutch"&gt;Help!&lt;a&gt;</code></pre>
 
             <h3>Need help with the widget?</h3>
 
