@@ -2,11 +2,7 @@ class AccountEmailsController < ApplicationController
   respond_to :json
 
   def show
-    render nothing: true,
-      status: account_exists? ? :ok : :not_found
-  end
-
-  def account_exists?
-    Account.where(slug: params[:id]).exists?
+    new_account = Account.new(slug: params[:id])
+    render json: new_account.email_errors, status: new_account.email_errors.empty? ? :not_found: :ok
   end
 end

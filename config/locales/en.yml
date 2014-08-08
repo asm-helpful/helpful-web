@@ -81,6 +81,7 @@ en:
       create_account: "Create my account"
       helpful_email: "Helpful email"
       helpful_email_help: "This is the email your customers will use to send you support requests."
+      helpful_email_error_is_not_unique: "Sorry, someone else is already using that address."
       full_name: "Your full name"
       your_email: "Your email"
       eight_char: "You must use at least 8 characters."

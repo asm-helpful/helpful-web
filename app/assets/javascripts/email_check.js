@@ -60,6 +60,12 @@ $(function() {
     $('.' + feedbackIconClass(feedback), $formGroup).show();
   };
 
+  var hideErrors = function () {
+    $formGroup.find(".error-message").each(function () {
+      $(this).hide();
+    });
+  };
+
   var timer;
 
   var validateEmail = function() {
@@ -78,14 +84,19 @@ $(function() {
       var email = $email.val();
       var slug = email.toLowerCase().replace('@helpful.io', '');
 
-      $.get('/account_emails/' + slug + '.json').done(function() {
+      $.get('/account_emails/' + slug + '.json').done(function (data) {
         showFeedback($formGroup, 'error');
+        data.account_emails.forEach(function (error) {
+          var errorMessage = $("#email-error-" + error.replace(/ /g, '-'));
+          errorMessage.show();
+        });
       }).error(function(xhr) {
         if(xhr.status === 404) {
           showFeedback($formGroup, 'success');
         } else {
           hideFeedback($formGroup);
         }
+        hideErrors();
       });
     }, 600);
   };
