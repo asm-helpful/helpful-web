@@ -164,14 +164,16 @@
     }
   }
 
-  HelpfulEmbed.prototype.setupEvents = function () {
+  HelpfulEmbed.prototype.setupEvents = function (skipOverlay) {
     var that = this;
 
     // event listener for closing on overlay click
-    document.querySelector('.helpful-overlay').addEventListener('click', function (e) {
-      e.stopPropagation();
-      helpful_embed.close();
-    });
+    if (!skipOverlay) {
+      document.querySelector('.helpful-overlay').addEventListener('click', function (e) {
+        e.stopPropagation();
+        helpful_embed.close();
+      });
+    }
 
     // event listener to change styles for textarea input
     document.querySelector('.helpful-embed textarea').addEventListener('keyup', function () {
@@ -243,11 +245,17 @@
 
   // Opens the embed on top of an element
   HelpfulEmbed.prototype.open = function (source) {
+    var reload = false;
+
+    if (this.source != source) {
+      // different source of widget, mark for reload
+      reload = true;
+    }
+
     // set source of the click
     this.source = source;
 
-    var strings = false;
-
+    // load options from data-* attributes
     this.options = {
       company: source.getAttribute('data-helpful'),
       overlay: source.getAttribute('data-helpful-overlay') != 'off',
@@ -257,8 +265,17 @@
       strings: source.getAttribute('data-helpful-strings')
     };
 
-    if (this.loaded)
+    if (this.loaded) {
+      if (reload) {
+        // new source, widget needs to be rebuild
+        this.setHTML();
+
+        // attach event handlers to new html, except container
+        this.setupEvents(true);
+      }
+
       return this.showWidget();
+    }
 
     // create container element
     this.createContainer();
@@ -267,8 +284,8 @@
     this.load();
   }
 
-  HelpfulEmbed.prototype.htmlLoaded = function (data) {
-    var output = data.html;
+  HelpfulEmbed.prototype.setHTML = function () {
+    var output = this.HTMLcache;
 
     // replace strings
     for (var key in this.stringDefaults) {
@@ -280,6 +297,13 @@
 
     // set widget element
     this.widget = document.querySelector('.helpful-embed');
+  }
+
+  HelpfulEmbed.prototype.htmlLoaded = function (data) {
+    this.HTMLcache = data.html;
+
+    // inject html
+    this.setHTML();
 
     // show widget
     this.showWidget();
