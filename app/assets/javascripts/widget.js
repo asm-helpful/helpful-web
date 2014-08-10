@@ -73,7 +73,7 @@
         this.overlay.className += ' transparent';
     } else
     {
-      this.overlay.className.replace('transparent', '');
+      this.overlay.className = this.overlay.className.replace('transparent', '');
     }
 
     // get documents measurements
