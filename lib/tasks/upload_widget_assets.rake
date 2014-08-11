@@ -31,7 +31,7 @@ task 'assets:precompile' do
         "assets/#{asset}",
         File.open("public/assets/#{digested_asset}"),
         acl: :public_read,
-        content_encoding: WIDGET_ASSETS[asset]
+        content_type: MIME::Types[WIDGET_ASSETS[asset]].first
       )
     end
   end
