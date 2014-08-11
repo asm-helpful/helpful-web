@@ -265,7 +265,7 @@
       strings: source.getAttribute('data-helpful-strings')
     };
 
-    if (this.loaded && this.widget && this.widget.parentElement.parentElement) {
+    if (this.loaded && this.widget && this.widget.parentElement.parentElement.parentElement) {
       if (reload) {
         // new source, widget needs to be rebuild
         this.setHTML();
