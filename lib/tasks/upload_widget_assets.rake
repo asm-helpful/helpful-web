@@ -2,13 +2,13 @@ require 'fileutils'
 require 'aws'
 require 'securerandom'
 
-WIDGET_ASSETS = [
-  'widget.js',
-  'widget-content.js',
-  'widget.css',
-  'widget-arrow.svg',
-  'widget-close.svg'
-]
+WIDGET_ASSETS = {
+  'widget.js'         => 'application/javascript',
+  'widget-content.js' => 'application/javascript',
+  'widget.css'        => 'text/css',
+  'widget-arrow.svg'  => 'image/svg+xml',
+  'widget-close.svg'  => 'image/svg+xml'
+}
 
 desc 'Compile assets and upload widget assets to S3'
 task 'assets:precompile' do
@@ -22,15 +22,16 @@ task 'assets:precompile' do
     access_key_id:     ENV['AWS_ACCESS_KEY_ID'],
     secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
   )
-  
+
   bucket = s3.buckets[ENV['S3_BUCKET']]
 
   assets.each do |asset, digested_asset|
-    if WIDGET_ASSETS.include?(asset)
+    if WIDGET_ASSETS.has_key?(asset)
       bucket.objects.create(
         "assets/#{asset}",
         File.open("public/assets/#{digested_asset}"),
-        acl: :public_read
+        acl: :public_read,
+        content_encoding: WIDGET_ASSETS[asset]
       )
     end
   end
@@ -47,7 +48,7 @@ task 'assets:precompile' do
     invalidation_batch: {
       paths: {
         quantity: WIDGET_ASSETS.size,
-        items: WIDGET_ASSETS.map do |asset|
+        items: WIDGET_ASSETS.map do |asset, _|
           "/assets/#{asset}"
         end
       },
