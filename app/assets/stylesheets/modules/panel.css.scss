@@ -18,8 +18,9 @@
 
   .plan-subscribed {
     color: $brand-success;
-    height: 36px;
-    padding-top: 7px;
+    border-radius: 0;
+    height: 57px;
+    padding: 18px 0 0 0;
 
     &:hover {
       text-decoration: none;
