@@ -14,7 +14,9 @@ module DeviseHelper
           <span class="geomicon geomicon-alert"></span>
           #{sentence}
         </div>
-        <ul>#{messages}</ul>
+        <div class="panel-body">
+          <ul>#{messages}</ul>
+        </div>
       </div>
     </div>
     HTML
