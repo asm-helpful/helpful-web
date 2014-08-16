@@ -33,5 +33,5 @@ en:
       expired: "has expired, please request a new one"
       not_found: "not found"
       not_saved:
-        one: "1 error prohibited this %{resource} from being saved:"
-        other: "%{count} errors prohibited this %{resource} from being saved:"
+        one: "Oops, something went wrong:"
+        other: "Yikes, there were %{count} errors:"
