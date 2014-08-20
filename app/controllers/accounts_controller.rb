@@ -37,8 +37,17 @@ class AccountsController < ApplicationController
 
       sign_in(@user)
 
-      Analytics.identify(user_id: @user.id, traits: { email: @user.email, account_id: @account.id })
-      Analytics.track(user_id: @user.id, event: 'Signed Up')
+      if Rails.env.production?
+        Analytics.identify(user_id: @user.id, traits: { email: @user.email, account_id: @account.id })
+        Analytics.track(user_id: @user.id, event: 'Signed Up')
+
+        Customerio.client.identify(
+          id: @user.id,
+          created_at: @user.created_at,
+          name: @user.name,
+          email: @user.email
+        )
+      end
 
       redirect_to inbox_account_conversations_path(@account)
     rescue ActiveRecord::RecordInvalid
