@@ -23,7 +23,7 @@ become a pro user.
 
 You can have as many members as you want, our plans are all related to how many
 support requests you handle each month. So add your CEO and even that new
-internet. If they can help with support, <a href="/#{account.slug}/edit#team">sign 'em up</a>.
+intern. If they can help with support, <a href="/#{account.slug}/edit#team">sign 'em up</a>.
 
 **2. Having support request Déjà vu? Use canned responses**
 
