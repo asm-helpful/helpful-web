@@ -43,7 +43,7 @@ class AccountsController < ApplicationController
 
         Customerio.client.identify(
           id: @user.id,
-          created_at: @user.created_at,
+          created_at: @user.created_at.to_i,
           name: @user.name,
           email: @user.email
         )
