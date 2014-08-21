@@ -66,6 +66,10 @@ class Webhooks::MailgunController < WebhooksController
         webhook: Hash[params.reject {|k,_| k.match(/attachment*/) }],
         attachments_attributes: attachments
       )
+
+      if Rails.env.production?
+        Customerio.client.track(account.owner.id, 'received_message')
+      end
     end
 
     head :accepted

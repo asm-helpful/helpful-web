@@ -23,6 +23,10 @@ class IncomingMessagesController < ApplicationController
 
         @message.attachments.create(file: attachment) if attachment.present?
 
+        if Rails.env.production?
+          Customerio.client.track(account.owner.id, 'received_message')
+        end
+
         respond_to do |format|
           format.html
           format.json do
