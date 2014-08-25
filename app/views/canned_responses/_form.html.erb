@@ -6,7 +6,7 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :messsage, t('.message'), class: 'control-label' %>
+    <%= f.label :message, t('.message'), class: 'control-label' %>
     <div class="editable form-control medium-editor" data-placeholder="<%= t('.message_placeholder') %>" contenteditable="true" id="canned-div">
       <%= @canned_response.message && @canned_response.message.html_safe %>
     </div>
