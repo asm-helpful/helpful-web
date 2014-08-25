@@ -103,16 +103,16 @@ en:
       invitations_sent: "Invitations Sent"
       signature: "Response Signature"
       signature_placeholder: "Signature included at the end of every e-mail"
-      auto_archiving: "Auto-archive conversations after replying"
+      auto_archiving: "Auto-archive support request after replying"
     billing:
       upgrade_plan: "Upgrade Your Plan"
       up_help: "How many support requests do you think you'll have each month? Select the plan that works for you below. If you need help, just ask us!"
       ask_for_help: "Ask for help"
       totally_free: "Totally free!"
-      conversations: "conversations"
+      conversations: "support requests"
       subscribe: "Subscribe"
       subscribed: "Subscribed"
-      need_more: "Need more than 10,000 conversations?"
+      need_more: "Need more than 10,000 support requests?"
       update_account: "Update account"
     team:
       invitations: "Invitations"
@@ -133,7 +133,7 @@ en:
       canned_response: "Canned Response"
       archive: "Archive"
       send: "Send"
-      next_conversation: "Next Conversation"
+      next_conversation: "Next Support Request"
       made_last_message: "You made it to the last message!"
       back_to_inbox: "Back to the Inbox"
       attach_files: "Attach Files"
@@ -152,7 +152,7 @@ en:
       image_example_url: "http://image_link.com/here.png"
       advanced_guide: "Advanced Guide"
     navbar:
-      search_conversations: "Search conversations"
+      search_conversations: "Search support requests"
       search: "Search"
     row:
       archive: "Archive"
@@ -162,7 +162,7 @@ en:
       no_results: "No results to show."
     empty:
       inbox_zero: "Inbox Zero"
-      no_open_conversations: "No open conversations, nice work!"
+      no_open_conversations: "No open support requests, nice work!"
       customer_support_quote: "Be the customer support you wish to see in the world."
 
   pages:
@@ -194,7 +194,7 @@ en:
       pricing_text_1: "Help that grows with you"
       pricing_text_2: "Pricing is by volume so you can start small and we'll grow as your support needs grow."
       pricing_text_end: "There are no contracts and plans can be cancelled at any time."
-      conversation-explaination: "A customer conversation is defined as any conversation that's an engagement - not just a customer telling you about their pet turtle."
+      conversation-explaination: "A customer support request is defined as any conversation that's an engagement - not just a customer telling you about their pet turtle."
       in_house: "In-House"
       in_house_text: "If you prefer to make software your own, you can take Helpful indoors and whitelabel it for your own purposes."
       contact_us: "Contact Us"

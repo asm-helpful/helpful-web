@@ -8,9 +8,9 @@
       <% if params[:q].present? %>
         <h3 class="page-title">Search results for "<%= params[:q] %>"</h3>
       <% elsif params[:tag] %>
-        <h3 class="page-title">Conversations with tag "<%= params[:tag] %>"</h3>
+        <h3 class="page-title">Support requests with tag "<%= params[:tag] %>"</h3>
       <% elsif params[:assignee] %>
-        <h3 class="page-title">Conversations assigned to "<%= User.find(params[:assignee]).name %>"</h3>
+        <h3 class="page-title">Support requests assigned to "<%= User.find(params[:assignee]).name %>"</h3>
       <% end %>
     </div>
   </div>

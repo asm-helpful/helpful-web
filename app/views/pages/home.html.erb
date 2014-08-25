@@ -102,7 +102,7 @@
           <span class="geomicon geomicon-users"></span>
           Unlimited team members
         </h4>
-        <p>Let everyone on your team talk to your customers without paying any additional costs. Helpful is priced on conversations, not how many seats you need so invite the CEO and even the new intern.</p>
+        <p>Let everyone on your team talk to your customers without paying any additional costs. Helpful is priced on support requests, not how many seats you need so invite the CEO and even the new intern.</p>
       </div>
     </div>
   </div>
@@ -119,7 +119,7 @@
             <%= plan.name %>
           </h4>
           <p>
-            <strong> &nbsp;<%=  number_with_delimiter(plan.max_conversations, delimiter: ",")  %> monthly conversation threads</strong>
+            <strong> &nbsp;<%=  number_with_delimiter(plan.max_conversations, delimiter: ",")  %> monthly support request threads</strong>
           </p>
           <p>
             <% if plan.price.zero? %>
