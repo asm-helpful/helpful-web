@@ -15,7 +15,11 @@ var TagButton = React.createClass({
 
   getTags: function() {
     $.getJSON(this.props.conversation.tags_path, function(response) {
-      this.setState({ tags: response.tags });
+      var tags = response.tags.filter(function(tag) {
+        return this.props.conversation.tags.indexOf(tag) < 0;
+      }.bind(this));
+
+      this.setState({ tags: tags });
     }.bind(this));
   },
 
@@ -49,6 +53,7 @@ var TagButton = React.createClass({
         accepts: { json: 'application/json' },
         success: function(response) {
           this.addStreamItem(response.tag_event);
+          this.removeTag(tag);
           this.clearTagFilter(event);
         }.bind(this)
       });
@@ -62,10 +67,15 @@ var TagButton = React.createClass({
   clearTagFilter: function(event) {
     $dropdown = $(event.target).closest('.dropdown-menu').removeClass('open');
 
-    this.setState({
-      newTag: '',
-      filter: ''
+    this.setState({ newTag: '', filter: '' });
+  },
+
+  removeTag: function(tagToRemove) {
+    var tags = this.state.tags.filter(function(tag) {
+      return tag != tagToRemove;
     });
+
+    this.setState({ tags: tags });
   },
 
   updateNewTag: function(event) {
