@@ -10,7 +10,7 @@ var TagEvent = React.createClass({
         &nbsp;
         tagged this with
         &nbsp;
-        <a href={this.props.user.search_path} className="label label-default">
+        <a href={this.props.search_path} className="label label-default">
           #{this.props.tag}
         </a>
       </div>
