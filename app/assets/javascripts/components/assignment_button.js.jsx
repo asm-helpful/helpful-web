@@ -74,7 +74,7 @@ var AssignmentButton = React.createClass({
         return (
           <li key={assignee.id}>
             <a href="#" onClick={this.assignConversationHandler(assignee)}>
-              <Avatar person={assignee.person} />
+              <Avatar person={assignee.person} size="20" />
               <span>{assignee.person.name}</span>
             </a>
           </li>
