@@ -6,10 +6,10 @@ var AssignmentEvent = React.createClass({
       <div className="event">
         <div className="pull-right">{this.timestamp()}</div>
 
+        <Avatar person={this.props.user.person} size="20" />
         <Person person={this.props.user.person} />
-        &nbsp;
-        assigned this to
-        &nbsp;
+        &nbsp;assigned this to&nbsp;
+        <Avatar person={this.props.assignee.person} size="20" />
         <Person person={this.props.assignee.person} />
       </div>
     );

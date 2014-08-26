@@ -1,6 +1,11 @@
 .event {
-  padding: $padding-large-vertical $grid-gutter-width;
+  padding: 20px 40px;
   font-size: $font-size-small;
+
+  .avatar {
+    display: inline-block;
+    margin-right: $padding-xs-horizontal;
+  }
 
   .person {
     display: inline;
