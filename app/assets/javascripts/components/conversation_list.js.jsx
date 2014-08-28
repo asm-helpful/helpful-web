@@ -75,6 +75,42 @@ var ConversationList = React.createClass({
     $.getJSON(conversation.path)
   },
 
+  // FIXME: Add more nested functions for no reason
+  removeTagHandler: function(removeFrom) {
+    return function(tag) {
+      return function(event) {
+        event.stopPropagation();
+        event.preventDefault();
+
+        var removeTagEvent = function() {
+          var conversations = this.state.conversations.map(function(conversation) {
+            if(conversation === removeFrom) {
+              var filteredTagEvents = conversation.tag_events.filter(function(tagEvent) {
+                return tagEvent.tag == tag;
+              });
+
+              conversation.tag_events = filteredTagEvents;
+            };
+
+            return conversation;
+          });
+
+          this.setState({ conversations: conversations });
+        }.bind(this);
+
+        var tagsPath = removeFrom.tags_path + '/' + tag.id;
+
+        $.ajax({
+          type: 'DELETE',
+          url: tagsPath,
+          success: function(response) {
+            removeTagEvent();
+          }.bind(this)
+        });
+      }.bind(this);
+    }.bind(this);
+  },
+
   addStreamItemHandler: function(addedTo) {
     return function(streamItem) {
       var conversations = this.state.conversations.map(function(conversation) {
@@ -184,6 +220,7 @@ var ConversationList = React.createClass({
         addStreamItemHandler: this.addStreamItemHandler(conversation),
         archiveHandler: this.archiveHandler(conversation),
         unarchiveHandler: this.unarchiveHandler(conversation),
+        removeTagHandler: this.removeTagHandler(conversation),
         key: conversation.id,
         demo: this.props.demo
       });

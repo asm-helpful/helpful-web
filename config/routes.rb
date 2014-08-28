@@ -87,7 +87,7 @@ Helpful::Application.routes.draw do
       get :list, on: :collection
 
       resources :assignees, only: [:index, :create]
-      resources :tags, only: [:index, :create]
+      resources :tags, only: [:index, :create, :destroy]
     end
 
     resources :messages, only: [:create]

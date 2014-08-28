@@ -9,8 +9,10 @@ var TagEvent = React.createClass({
         <Avatar person={this.props.user.person} size="20" />
         <Person person={this.props.user.person} />
         &nbsp;tagged this with&nbsp;
-        <a href={this.props.search_path} className="label label-default">
+        <a href="#" className="label label-default">
           #{this.props.tag}
+
+          <span onClick={this.props.removeTagHandler(this.props)} className="geomicon geomicon-delete"></span>
         </a>
       </div>
     );

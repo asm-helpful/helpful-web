@@ -1,0 +1,26 @@
+.label {
+  font-size: 14px;
+  font-weight: normal;
+
+  > .glyphicon,
+  .geomicon {
+    display: none;
+    font-size: 12px;
+    margin-left: 7px;
+  }
+
+  &:hover {
+    > .glyphicon,
+    .geomicon {
+      display: inline-block;
+    }
+  }
+}
+
+.label-default {
+  background-color: $brand-primary;
+
+  &:hover {
+    background-color: darken($brand-primary, 10%) !important;
+  }
+}

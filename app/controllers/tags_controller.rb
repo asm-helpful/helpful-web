@@ -22,6 +22,15 @@ class TagsController < ApplicationController
     respond_with @tag_event, location: account_conversation_path(@account, @conversation)
   end
 
+  def destroy
+    @tag_event = TagEvent.find(params[:id])
+    @conversation.tags = @conversation.tags - [@tag_event.tag]
+    @conversation.save
+    @tag_event.destroy
+
+    respond_with @tag_event
+  end
+
   private
 
   def find_conversation!

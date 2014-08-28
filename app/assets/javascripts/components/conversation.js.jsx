@@ -85,7 +85,7 @@ var Conversation = React.createClass({
       return (
         <div className="conversation-body">
           <div className="conversation-stream">
-            <Stream items={this.streamItems()} />
+            <Stream items={this.streamItems()} conversation={this.props.conversation} removeTagHandler={this.props.removeTagHandler} />
           </div>
 
           <div className="conversation-response">
