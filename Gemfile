@@ -61,6 +61,7 @@ group :development do
   gem 'rest-client', require: false
   gem 'sinatra', require: false
   gem 'slim', require: false
+  gem 'spring-commands-rspec'
 end
 
 group :development, :test do
