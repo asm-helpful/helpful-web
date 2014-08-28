@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "new user signup" do
   it 'allows the user to fill out the form and sign up' do
-    pending "Figure out what's going wrong with the js tests here"
+    skip "Figure out what's going wrong with the js tests here"
 
     visit root_path
     find('[rel="signup"]').click
