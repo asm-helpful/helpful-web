@@ -58,7 +58,7 @@ var Conversation = React.createClass({
     });
 
     return (
-      <a href="#" onClick={this.props.toggleHandler}>
+      <div onClick={this.props.toggleHandler}>
         <div className="conversation-header">
           {this.renderStatus()}
           {this.renderActions()}
@@ -76,7 +76,7 @@ var Conversation = React.createClass({
 
           {preview}
         </div>
-      </a>
+      </div>
     );
   },
 
