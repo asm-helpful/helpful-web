@@ -90,7 +90,7 @@ var ConversationList = React.createClass({
           var conversations = this.state.conversations.map(function(conversation) {
             if(conversation === removeFrom) {
               var filteredTagEvents = conversation.tag_events.filter(function(tagEvent) {
-                return tagEvent.tag == tag;
+                return tagEvent.id != tag.id;
               });
 
               conversation.tag_events = filteredTagEvents;
