@@ -29,7 +29,7 @@ intern. If they can help with support, <a href="/#{account.slug}/edit#team">sign
 
 Retyping common responses is a drag. That's why we built canned responses; so
 you can quickly send a saved response to frequent questions. Also you can
-refine these replies overtime to explain solutions the best way possible and
+refine these replies over time to explain solutions the best way possible and
 then stay consistent across your entire team.
 <a href="/#{account.slug}/edit#canned-responses">Go ahead and create your first
 canned response.</a>
