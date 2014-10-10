@@ -9,7 +9,7 @@ var Response = React.createClass({
     var $response = $('.medium-editor');
     var editor = new MediumEditor($response, {
       placeholder: $response.attr('placeholder'),
-      buttons: ['bold', 'italic', 'underline', 'anchor', 'quote']
+      buttons: ['bold', 'italic', 'underline', 'anchor', 'quote', 'indent', 'outdent']
     });
 
     $response.keydown(function (e) {
