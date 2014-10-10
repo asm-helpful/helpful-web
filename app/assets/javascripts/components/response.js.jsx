@@ -9,13 +9,13 @@ var Response = React.createClass({
     var $response = $('.medium-editor');
     var editor = new MediumEditor($response, {
       placeholder: $response.attr('placeholder'),
-      buttons: ['bold', 'italic', 'underline', 'anchor', 'header1', 'header2', 'quote','indent', 'outdent']
+      buttons: ['bold', 'italic', 'underline', 'anchor', 'quote', 'indent', 'outdent']
     });
 
     $response.keydown(function (e) {
       if (e.which === 9) {
         e.preventDefault();
-        
+
         if (e.shiftKey) {
           document.execCommand('outdent', false, null);
         } else {
