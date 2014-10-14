@@ -22,7 +22,7 @@ Helpful::Application.routes.draw do
              only: [:edit, :update, :destroy],
              path: 'users',
              path_names: { new: 'sign_up' },
-             controller: 'devise/registrations',
+             controller: 'users/registrations',
              as: :user_registration do
       get :cancel
     end
