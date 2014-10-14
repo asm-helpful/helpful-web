@@ -4,7 +4,7 @@ var ConversationTagList = React.createClass({
   render: function() {
     var renderTagLabel = function(tag) {
       return (
-        <span className="tag-label" key={tag}>
+        <span className="tag-label small text-muted" key={tag}>
           #{tag}
         </span>
       )

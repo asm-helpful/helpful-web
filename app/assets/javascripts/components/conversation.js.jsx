@@ -73,6 +73,7 @@ var Conversation = React.createClass({
           <div className={subjectClasses}>
             <strong>{title}</strong>
           </div>
+          <ConversationTagList tags={this.props.conversation.tags} />
 
           {preview}
         </div>
