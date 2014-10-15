@@ -61,7 +61,7 @@
       </div>
     </div>
     <div class="form-group">
-      <%= link_to "Cancel my account", user_registration_path(current_user), :confirm => "Are you sure?", :method => :delete, class: 'btn btn-danger' %>
+      <%= link_to "Cancel my account", user_registration_path(current_user, :format => ''), :confirm => "Are you sure?", :method => :delete, class: 'btn btn-danger' %>
     </div>
 
   <% end %>
