@@ -109,7 +109,7 @@ var Response = React.createClass({
     return (
       <form className="form">
         <div className="form-group">
-          <div className="form-control form-control-invisible medium-editor" placeholder="Write your reply..."></div>
+          <div className="form-control form-control-invisible medium-editor" placeholder="Write your reply..." onKeyDown={this.metaSend} onKeyPress={this.ctrlSend}></div>
         </div>
 
         <div className="form-actions">
@@ -124,5 +124,16 @@ var Response = React.createClass({
         </div>
       </form>
     );
+  },
+  metaSend: function(e){
+    if (e.keyCode == 13 && e.metaKey) {
+	  this.sendMessage(e)
+    }
+  },
+  ctrlSend: function(e){
+	if (e.keyCode == 13 && e.ctrlKey) {
+      e.preventDefault()
+	  this.sendMessage(e)
+	}
   }
 });
