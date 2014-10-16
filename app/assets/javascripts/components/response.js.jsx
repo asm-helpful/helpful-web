@@ -125,15 +125,17 @@ var Response = React.createClass({
       </form>
     );
   },
-  metaSend: function(e){
+
+  metaSend: function(e) {
     if (e.keyCode == 13 && e.metaKey) {
-	  this.sendMessage(e)
+      this.sendMessage(e);
     }
   },
-  ctrlSend: function(e){
-	if (e.keyCode == 13 && e.ctrlKey) {
-      e.preventDefault()
-	  this.sendMessage(e)
-	}
+
+  ctrlSend: function(e) {
+    if (e.keyCode == 13 && e.ctrlKey) {
+      e.preventDefault();
+      this.sendMessage(e);
+    }
   }
 });
