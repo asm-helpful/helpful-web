@@ -1,0 +1,30 @@
+.settings-profile-pic {
+	float: left;
+	height: auto;
+	margin-bottom: 10px;
+	padding: 25px;
+	text-align: center;
+
+	@media all and (min-width: 768px) {
+		max-width: 222px;
+	}
+}
+
+.settings-change-profile-pic {
+	@extend .settings-profile-pic;
+
+	@media all and (min-width: 768px) {
+		height: 222px;
+		padding-top: 90px; // extra padding until social accounts are present
+		margin-left: 30px;
+		max-width: 436px;
+	}
+
+	@media all and (min-width: 992px) {
+		max-width: 344px;
+	}
+
+	@media all and (min-width: 1200px) {
+		max-width: 478px;
+	}
+}

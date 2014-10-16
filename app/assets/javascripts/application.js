@@ -21,6 +21,7 @@
 //= require moment_lang
 //= require showdown
 //= require underscore
+//= require settings
 //= require react
 //= require react_ujs
 //= require_tree ./components
