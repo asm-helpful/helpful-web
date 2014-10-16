@@ -9,13 +9,13 @@ var Response = React.createClass({
     var $response = $('.medium-editor');
     var editor = new MediumEditor($response, {
       placeholder: $response.attr('placeholder'),
-      buttons: ['bold', 'italic', 'underline', 'anchor', 'header1', 'header2', 'quote','indent', 'outdent']
+      buttons: ['bold', 'italic', 'underline', 'anchor', 'quote', 'indent', 'outdent']
     });
 
     $response.keydown(function (e) {
       if (e.which === 9) {
         e.preventDefault();
-        
+
         if (e.shiftKey) {
           document.execCommand('outdent', false, null);
         } else {
@@ -109,7 +109,7 @@ var Response = React.createClass({
     return (
       <form className="form">
         <div className="form-group">
-          <div className="form-control form-control-invisible medium-editor" placeholder="Write your reply..."></div>
+          <div className="form-control form-control-invisible medium-editor" placeholder="Write your reply..." onKeyDown={this.metaSend} onKeyPress={this.ctrlSend}></div>
         </div>
 
         <div className="form-actions">
@@ -124,5 +124,18 @@ var Response = React.createClass({
         </div>
       </form>
     );
+  },
+
+  metaSend: function(e) {
+    if (e.keyCode == 13 && e.metaKey) {
+      this.sendMessage(e);
+    }
+  },
+
+  ctrlSend: function(e) {
+    if (e.keyCode == 13 && e.ctrlKey) {
+      e.preventDefault();
+      this.sendMessage(e);
+    }
   }
 });

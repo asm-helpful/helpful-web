@@ -4,9 +4,9 @@
   min-height: 100px;
 }
 
-.medium-editor::after {
+.medium-editor:after {
   color: $gray-light;
   font-size: $font-size-base;
   font-style: normal;
-  padding: 8px 0 0 13px;
+  padding: 0;
 }
