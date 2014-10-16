@@ -40,3 +40,23 @@
   line-height: $input-height-base !important;
   text-align: center !important;
 }
+
+.form-subtext {
+  color: $blue-gray;
+}
+
+.fake-input-file {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+
+  input {
+    cursor: pointer;
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+  }
+}

@@ -48,9 +48,13 @@ en:
 
   users:
     edit:
-      user_settings: "User settings"
+      user_settings: "Your Account Settings"
+      change_account: "Change your account"
+      change_account_subtext: "This is the name that will appear on conversations. The email address will be your login and where you receive notifications."
       name: "Name"
-      update_personal_settings: "Update my personal settings"
+      change_picture: "Change your account profile picture"
+      change_picture_subtext: "Choosing the right profile picture can help your team keep track of who you are and who to assign conversations to along the way. If you don't use a custom profile picture your initials will be used."
+      update_personal_settings: "Update My Profile"
     mailer:
       invitation_instructions:
         someone_invited: "Someone has invited you to"
@@ -68,6 +72,7 @@ en:
       username: "Username"
       username_placeholder: "jane"
       notification_setting: 'Email notifications'
+      notification_setting_subtext: "Change the frequency of emails you receive on conversation activity"
     new:
       welcome_to_helpful: "Welcome to Helpful"
       sign_up_free_account: "Sign Up for a Free Account"

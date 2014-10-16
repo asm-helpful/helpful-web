@@ -7,8 +7,16 @@ module AvatarHelper
     image_tag(avatar_path(person, size * 2), class: 'avatar', width: size, height: size)
   end
 
+  def avatar_upload(person, size)
+    image_tag(avatar_path_preview(person, size * 2), class: 'avatar', width: size, height: size, id: 'avatar-upload-preview')
+  end
+
   def avatar_path(person, size)
     person.avatar.try(:thumb).present? ? person.avatar.thumb : gravatar_url(person.email, size)
+  end
+
+  def avatar_path_preview(person, size)
+    person.avatar.try(:preview).present? ? person.avatar.preview : gravatar_url(person.email, size)
   end
 
   def gravatar_url(email, size)
