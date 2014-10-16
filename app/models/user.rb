@@ -2,6 +2,7 @@ require 'activerecord/uuid'
 
 class User < ActiveRecord::Base
   include ActiveRecord::UUID
+  acts_as_paranoid
 
   devise :invitable, :database_authenticatable, :registerable,
     :recoverable, :trackable, :validatable, :rememberable,

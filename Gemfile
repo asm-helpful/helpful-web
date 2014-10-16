@@ -33,6 +33,7 @@ gem 'medium-editor-rails'
 gem 'mini_magick'
 gem 'newrelic_rpm'
 gem 'oauth2'
+gem "paranoia", "~> 2.0"
 gem 'pg'
 gem 'premailer-rails'
 gem 'pry-rails'
