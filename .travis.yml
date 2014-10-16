@@ -1,11 +1,9 @@
 language: ruby
 bundler_args: "--without development production autotest"
 rvm:
-- 2.1.2
+- 2.2
 addons:
   postgresql: "9.3"
-before_install:
-- gem install bundler -v '>= 1.5.1'
 before_script:
 - gem install foreman
 - cp .env.example .env
