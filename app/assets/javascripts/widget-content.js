@@ -17,8 +17,8 @@ helpful_embed.htmlLoaded(
                 <img src="//assets.helpful.io/assets/widget-close.svg" class="helpful-icon helpful-close-button">\
             </div>\
             <p>[contact_information_info]</p>\
-            <input type="text" name="name" id="helpful-name" placeholder="[name]">\
-            <input type="email" name="email" id="helpful-email" placeholder="[email]">\
+            <input type="text" name="name" id="helpful-name" placeholder="[name_placeholder]">\
+            <input type="email" name="email" id="helpful-email" placeholder="[email_placeholder]">\
             <input type="submit" class="helpful-btn helpful-btn-primary" value="[submit]" />\
         </div>\
         <div class="helpful-thanks-container">\
