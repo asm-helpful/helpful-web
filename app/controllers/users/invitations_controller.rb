@@ -5,6 +5,11 @@ class Users::InvitationsController < Devise::InvitationsController
     if existing_user = User.find_by(email: params[:user][:email])
       @user = existing_user
 
+      if current_user.email == params[:user][:email]
+        set_flash_message :notice, :no_self_invite
+        return redirect_to edit_account_path(@account, anchor: 'team')
+      end
+
       # check if we only need to resend the invitation
       existing_membership = Membership.find_by(user: @user, account: @account)
 
