@@ -14,7 +14,7 @@ gem 'bugsnag'
 gem 'carrierwave'
 gem 'carrierwave-aws'
 gem 'confyio'
-gem 'curb', github: 'taf2/curb' # 0.8.6 is unreleased
+gem 'curb', github: 'seuros/curb', branch:'patch-1' # 0.8.6 is unreleased
 gem 'customerio'
 gem 'devise', '~> 3.1'
 gem 'devise-i18n'
