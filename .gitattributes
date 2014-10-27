@@ -1,0 +1,4 @@
+# From: https://help.github.com/articles/dealing-with-line-endings/#platform-windows
+# Git will always convert line endings to LF on checkout. We need this setting to make sure the code is checkout out with unix style line endings
+# This is because the vm has problems executing scripts with windows style line endings.
+text eol=lf
