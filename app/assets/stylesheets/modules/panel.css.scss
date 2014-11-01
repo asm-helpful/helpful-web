@@ -19,7 +19,7 @@
   .plan-subscribed {
     color: $brand-success;
     height: 36px;
-    padding-top: 7px;
+    padding: 0px;
 
     &:hover {
       text-decoration: none;
@@ -29,7 +29,6 @@
     .geomicon-check {
       font-size: 20px;
       display: inline-block;
-      padding-right: 2px;
       top: 2px;
     }
 
