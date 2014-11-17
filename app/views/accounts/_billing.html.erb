@@ -36,7 +36,7 @@
                 <% end %>
               </p>
 
-              <button class="btn btn-default<% if plan == @account.billing_plan %> plan-subscribed btn-link<% end %>"
+              <button class="btn btn-default<% if plan == @account.billing_plan %> btn-link plan-subscribed<% end %>"
               data-plan-slug="<%= plan.slug %>"
               data-plan-name="<%= plan.name %>"
               data-plan-amount="<%= plan.formatted_price %>"
