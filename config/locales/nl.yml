@@ -1,0 +1,294 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  general:
+    ago: "geleden"
+    email: "Email"
+    email_placeholder: "Uw Email"
+    password: "Wachtwoord"
+    roles:
+      owner: "eigenaar"
+      agent: "agent"
+    hello: "Hallo"
+
+  shared:
+    navbar:
+      settings: "Instellingen"
+      company_profile: "Bedrijfs profiel"
+      technical_setup: "Technische instellingen"
+      help: "Ondersteuning"
+      logout: "Uitloggen"
+      inbox: "Inbox"
+      archive: "Archief"
+      search: "Zoeken"
+
+  message_mailer:
+    created:
+      reply: "Reageer op dit bericht"
+      view: "bekijk Gesprek op"
+
+  users:
+    edit:
+      user_settings: "Uw Account Instellingen"
+      change_account: "Wijzig uw account"
+      change_account_subtext: "Dit is de naam die zal verschijnen op gesprekken. Het email adres wordt gebruikt als inlog naam, ook zullen notificaties naar dit adres gestuurd worden."
+      name: "Naam"
+      change_picture: "Wijzig uw profiel foto"
+      change_picture_subtext: "Door een goede profiel foto te kiezen help je jouw team om makkelijker gesprekken bij te houden en toe te wijzen aan de juist persoon. Als u geen profiel foto insteld worden uw initialen als profiel foto gebruikt."
+      update_personal_settings: "Sla wijzigingen op"
+    mailer:
+      invitation_instructions:
+        someone_invited: "Iemand heeft u uitgenodigd om"
+        you_can_accept: "u kunt dit accepteren door te klikken op onderstaande link."
+        accept: "Accepteer uitnodiging"
+        dont_want: "Indien u deze uitnodiging niet wenst te aanvaarden, dan kunt u deze email negeren."
+        account_wont_be_created: "Uw account wordt pas aangemaakt wanneer u de bovenstaande link benut en een wachtwoord insteld."
+
+  accounts:
+    general:
+      company_name: "Bedrijfs naam"
+      company_name_placeholder: "Acme Corp"
+      your_name: "Uw Naam"
+      your_name_placeholder: "Jane Doe"
+      username: "Gebruikersnaam"
+      username_placeholder: "jane"
+      notification_setting: 'Berichtgeving via email'
+      notification_setting_subtext: "Wijzig de frequentie waarop u berichten ontvangt over de lopende gesprekken"
+    new:
+      welcome_to_helpful: "Welkom bij Helpful"
+      sign_up_free_account: "Schrijf uzelf in voor een gratis account"
+      get_setup_get_ready: "Laten we uw bedrijfs informatie en persoonlijke informatie instellen zodat u snel hulp aanvragen kan afhandelen en uw klanten van dienst kunt zijn."
+      personal_info: "Persoonlijke informatie"
+      sign_up_helpful: "Inschrijven bij Helpful"
+      already_have_account: "Indien u al een Helpful account heeft,"
+      please_sign_in: "schrijf uzelf in"
+      password_confirmation: "Wachtwoord ter bevestiging"
+      must_meet_requirements: "Moet aan *deze eisen voldoen*"
+      create_account: "Account aanmaken"
+      helpful_email: "Helpful email"
+      helpful_email_help: "Dit is het email adres die uw klanten zullen gebruiken om support aanvragen te sturen."
+      helpful_email_error_is_not_unique: "Onze excuses, iemand gebruikt dit adres al."
+      full_name: "Uw volledige naam"
+      your_email: "U email"
+      eight_char: "U dient ten minste 8 karakters te gebruiken."
+      sign_up_start_using: "Schrijf je nu in en begin met het gebruiken van Helpful!"
+    edit:
+      edit: "Wijzig"
+      forwarding_address: "Doorstuur adres"
+      get_code: "Verkrijg de broncode"
+      company_name: "Bedrijfsnaam"
+      company_name_placeholder: "Acme Corp"
+      website: "Website"
+      website_placeholder: "https://www.example.com"
+      webhook_url: "Webhook URL"
+      webhook_url_placeholder: "https://www.example.com/webhooks/helpful"
+      webhook_secret: "Webhook Secret"
+      update_account: "Wijzig account instellingen"
+      invitations: "Uitnodigingen"
+      send_invitation: "Stuur een uitnodiging"
+      invitations_sent: "Uitnodiging verzonden"
+      signature: "Handtekeningen"
+      signature_placeholder: "Handtekening toevoegen aan het einde van elke email"
+      auto_archiving: "Conversaties automatisch archiveren na reageren"
+    billing:
+      upgrade_plan: "Upgrade uw abonnement"
+      up_help: "Hoeveel support aanvragen verwacht u per maand? Selecteer een abonnement dat past bij uw verwachte gebruik. Indien u hulp nodig heeft, schroom niet om ons te vragen!"
+      ask_for_help: "Vraag om hulp"
+      totally_free: "geheel gratis!"
+      conversations: "conversaties"
+      subscribe: "Abonneer"
+      subscribed: "Geabonneerd"
+      need_more: "Heeft u meer dan 10.000 conversaties nodig?"
+      update_account: "Abonnement bijwerken"
+    team:
+      invitations: "Uitnodigingen"
+      members: "Seden"
+      send: "Verstuur"
+      no_unaccepted: "Er zijn geen openstaande uitnodigingen."
+      invitation_sent: "Uitnodigingen verstuurd"
+      reinvite: "Opnieuw uitnodigen"
+    canned_responses:
+      key: "Sleutel"
+      message: "Reactie"
+
+  conversations:
+    conversation:
+      reply_to_conversation: "Schrijf uw reactie…"
+      assign: "Toewijzen"
+      tag: "Tag"
+      canned_response: "Voorgedefineerde reactie"
+      archive: "Archiveer"
+      send: "Verstuur"
+      next_conversation: "Volgende conversatie"
+      made_last_message: "U heeft het laatste bericht bereikt!"
+      back_to_inbox: "Terug naar uw Inbox"
+      attach_files: "Bestanden bijvoegen"
+    markdown:
+      we_use_markdown: "We gebruiken Markdown!"
+      tool_to_format_text: "Markdown is een hulpmiddel om eenvoduig tekst mee op te maken."
+      text_here: "tekst hier"
+      bold: "Vet"
+      bolded: "Vet gedrukt"
+      italic: "Cursief"
+      link: "Koppeling"
+      linked: "Gekoppeld"
+      link_example_url: "http://link_url.com/?test"
+      image: "Afbeelding"
+      image_description: "Afbeeldins beschrijving"
+      image_example_url: "http://image_link.com/here.png"
+      advanced_guide: "Handleiding voor gevorderden"
+    navbar:
+      search_conversations: "Doorzoek conversaties"
+      search: "Zoek"
+    row:
+      archive: "Archiveer"
+      unarchive: "Verplaats naar Inbox"
+    search:
+      search_results_for: "Zoek naar resultaten"
+      no_results: "Geen resultaten gevonden."
+    empty:
+      inbox_zero: "Inbox Zero"
+      no_open_conversations: "Geen openstaande conversaties, goed gedaan!"
+      customer_support_quote: "Wees de klaten service die u zelf vaker zou willen zien."
+
+  pages:
+    home:
+      general:
+        sign_up_free: "Gratis aanmelden"
+      header:
+        sign_up: "AANMELDEN"
+        login: "INLOGGEN"
+        build: "BOUW HELPFUL"
+        docs: "DOCUMENTATIE"
+      hero:
+        text_header: "Hulp die geen pijn doet"
+        text_1: "Helpful is een eenvoudige support tool waarbij u geen hulp nodig heeft in het gebruik."
+        text_2: "Vraag om hulp."
+      demo:
+        text_1: "Nog eenvoudiger dan email"
+        text_2: "U zou eigenlijk geen ondersteuning nodig moeten hebben bij een ondersteunings tool."
+        text_2_2: "Helpful heeft als doel het zo eenvoudig te maken dat het allemaalvanaf het begin intuitief werkt."
+      pricing_table:
+        great_value: "Fantastische meerwaarde!"
+        starter_kit: "Beginners kit"
+        growing: "Groeiend"
+        premium: "Premium"
+        super: "Super"
+        threads: "threads"
+        per_month: "per maand"
+        sign_up: "Aanmelden"
+      pricing_text_1: "Hulp die met u meegroeit"
+      pricing_text_2: "De prijs neemt toe naar gelang uw gebruik, u kunt klein beginnen en wij groeien met uw behoeften mee."
+      pricing_text_end: "Er zijn geen contracten en u kunt op elk moment opzeggen."
+      conversation-explaination: "Een klant contact is gedefineerd als iedere conversatie waarin sprake is van ondersteuning - dus niet een klant die even komt melden hoe fantastisch uw product is."
+      in_house: "In-House"
+      in_house_text: "Indien u dat wilt dan kunnen wij Helpful ook white-labelled leveren."
+      contact_us: "Neem contact met ons op"
+      footer:
+        copyright: "Alle ingoud &copy; Assembly Inc. wij houden van klanten, hekelen spam, en geloven ondersteuning van nature menselijk dient te zijn."
+
+  canned_responses:
+    index:
+      canned_response: "Voorgedefineerde reactie"
+      create_canned_response: "Voorgedefineerde reactie aanmaken"
+      canned_responses: "Voorgedefineerde reacties"
+    none_yet:
+      header: "Geen voorgedefineerde reactie"
+      body: > Voorgedefineerde reacties zijn een manier om snel te reageren op frequent gestelde vragen met een standaard reactie. Bijvoorbeeld, veel gebruikers nemen contact op wanneer zij hun wachtwoord zijn vergeten. Een voorgedefineerde reactie zou het reageren op deze verzoeken versnellen - enkel 1 klik op de "vergeten wachtwoord" voorgedefineerde reactie  is voldoende.
+      button: "Maak uw eerste voorgedefineerde reactie"
+    new:
+      help: |-
+        Maak een voorgedefineerde reactie aan voor reacties die vaak verstuurd worden of die consistent dienen te zijn. Begin met een sleutel, welke gebruikt wordt om de voorgedefineerde reactie te selecteren van de commando regel.
+    form:
+      key: "Sleutel"
+      key_placeholder: "Definieer een sleutel voor het opzoeken van de reactie"
+      message: "Bericht"
+      message_placeholder: "Het volledige bericht dat in toekomstige reacties ingevoegd moet worden"
+      create: "Aanmaken"
+      update: "Bijwerken"
+    edit:
+      delete: "Verwijderen"
+
+  devise:
+    general:
+      sign_up: "Aanmelden"
+    sessions:
+      new:
+        welcome_back: "Welkom terug!"
+        quick_details: "We hebben slechts een paar gegevens nodig en dan kunt u weer aan de slag."
+        password_placeholder: "Uw wachtwoord"
+        remember_me: "Onthoud mij"
+    mailer:
+      confirmation_instructions:
+        welcome: "Welkom"
+        registered: "We hebben u email adres vastgelegd als"
+        please_confirm: "Bevestig uw email adres met de onderstaande link."
+        confirm_account: "Bevestig mijn account"
+      reset_password_instructions:
+        reset_password_instructions: "Wachtwoord reset instructies"
+        someone_requested: "Iemand heeft een link aangevraagd om uw wachtwoord te herstellen. Uw wachtwoord kunt u herstellen met onderstaande link."
+        please_ignore: "Indien u geen wachtwoord herstel heeft aangevraagd, negeer dan deze email."
+        wont_change: "Uw wachtwoord zal niet wijzigen totdat u odnerstaande link gebruikt en een nieuw wachtwoord insteld."
+        change_password: "Wijzig mijn wachtwoor"
+    passwords:
+      new:
+        forgot_your_password: "Wachtwoord vergeten?"
+        no_worry: "Geen zorgen!"
+        youre_covered: "We staan klaar om u te helpen. Dit kan iedereen gebeuren."
+        reset: "Herstel mijn wachtwoord"
+    unlocks:
+      new:
+        resend_unlock_intstructions: "Herstel instructies opnieuw versturen"
+        resend: "Instructies opnieuw versturen"
+
+  shared:
+    error_messages:
+      oops_went_wrong: "Oh jee! Er is iets mis gegaan."
+    navbar:
+      account: "Account"
+      team: "Team"
+      billing: "Financieel"
+      canned_responses: "Voorgedefinieerde reactie"
+      inbox: "Inbox"
+      archive: "Archief"
+      search: "Zoek"
+      search_by_assignee: "Doorzoek op toegewezen medewerker"
+      search_by_tag: "Doorzoek op tag"
+      settings: "Instellingen"
+      logout: "Uitloggen"
+    steps:
+      sign_up: "Aanmelden"
+      start_using_helpful: "Begin met het gebruiken van Helpful"
+
+  technical:
+    general:
+      technical_header: "Hoe te beginnen en technische details"
+    widget:
+      widget_is_simple: "Een widget aan uw eigen site toevoegen is heel eenvoudig. Ten eerste, voeg het onderstaande script toe aan het einde van de body van uw pagina."
+      widget_next: "Vervolgens is het enige wat u enkel nog het attribuut met uw bedrijfs kenmerk toe te voegen aan het element waarmee u de widget wil activieren na het aanklikken door een gebruiker."
+      widget_thats_it: "Klikken op het element zal de widget openen. Er zijn een aantal extra opties beschikbaar:"
+    setup:
+      try_api: "Probeer onze API"
+      try_out_command: "Om de API voor binnenkomende berichten te proberen kunt u de volgende commando's draaien in uw terminal:"
+      embed_form: "Wilt u een hulp formulier toevoegen aan uw site?"
+      embed_help_text: "U kunt een web formulier overal toevoegen waar u dat wilt. Hiermee kunnen uw klanten direct via Helpful contact met u opnemen om uw hulp te vragen:"
+      other_details: "Overige details"
