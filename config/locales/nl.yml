@@ -213,7 +213,8 @@ en:
       canned_responses: "Voorgedefineerde reacties"
     none_yet:
       header: "Geen voorgedefineerde reactie"
-      body: > Voorgedefineerde reacties zijn een manier om snel te reageren op frequent gestelde vragen met een standaard reactie.
+      body: >
+        Voorgedefineerde reacties zijn een manier om snel te reageren op frequent gestelde vragen met een standaard reactie.
         Bijvoorbeeld, veel gebruikers nemen contact op wanneer zij hun wachtwoord zijn vergeten. Een voorgedefineerde
         reactie zou het reageren op deze verzoeken versnellen - enkel 1 klik op de "vergeten wachtwoord" voorgedefineerde reactie is voldoende.
       button: "Maak uw eerste voorgedefineerde reactie"
