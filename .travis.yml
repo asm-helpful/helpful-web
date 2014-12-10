@@ -1,17 +1,13 @@
 language: ruby
-bundler_args: "--without development production autotest"
+bundler_args: "--without development production"
 rvm:
-- 2.1.2
+- 2.2
 addons:
   postgresql: "9.3"
-before_install:
-- gem install bundler -v '>= 1.5.1'
 before_script:
-- gem install foreman
 - cp .env.example .env
 - cp config/database.yml.example config/database.yml
 - bin/rake db:create db:schema:load RAILS_ENV=test
-script: foreman run bin/rake CODECLIMATE_REPO_TOKEN=bc1f2e3577b0e97d31923693254d33208ebeeb970c0b5dd0d8e49023f23196d9
 deploy:
   provider: heroku
   strategy: git

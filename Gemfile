@@ -1,10 +1,6 @@
 source 'https://rubygems.org'
 source 'https://rails-assets.org'
-ruby '2.1.2'
-
-# Load environment variables first
-
-gem 'dotenv-rails', groups: [:development, :test]
+ruby '2.2.0'
 
 # Alphabetical list
 
@@ -18,7 +14,7 @@ gem 'bugsnag'
 gem 'carrierwave'
 gem 'carrierwave-aws'
 gem 'confyio'
-gem 'curb'
+gem 'curb', github: 'seuros/curb', branch:'patch-1' # 0.8.6 is unreleased
 gem 'customerio'
 gem 'devise', '~> 3.1'
 gem 'devise-i18n'
@@ -65,10 +61,11 @@ group :development do
 end
 
 group :development, :test do
+  # Load environment variables first
+  gem 'dotenv-rails'
+
   gem 'database_cleaner'
   gem 'factory_girl_rails', '~> 4.2.1'
-  gem 'faraday', '~> 0.9.0'
-  gem 'ffaker', '~> 1.20'
   gem 'jasmine', github: 'pivotal/jasmine-gem'
   gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
   gem 'pry-byebug'
@@ -77,8 +74,7 @@ group :development, :test do
   gem 'psych', '~> 2.0.5'
   gem 'rake'
   gem 'rspec-rails', '~> 2.99.0'
-  gem 'timecop'
-  gem 'vcr'
+
 end
 
 group :test do
@@ -86,6 +82,10 @@ group :test do
   gem 'codeclimate-test-reporter', require: nil
   gem 'poltergeist'
   gem 'webmock', '< 1.16'
+  gem 'timecop'
+  gem 'vcr'
+  gem 'faraday', '~> 0.9.0'
+  gem 'ffaker', '~> 1.20'
 end
 
 group :development, :production do
