@@ -28,4 +28,24 @@ describe "new user signup" do
       expect(page).to have_selector("body", "Password is too short (minimum is 8 characters)")
     end
   end
+
+  context 'if a user visits the signup but they are a returning user' do
+    let(:user) { FactoryGirl.create :user_with_account, email: 'helper@helpful.io', password: 'xxx12223xxx' }
+    let!(:person) { create(:person, user: user, name: 'Hello Kitty', email: 'kitty@example.com', username: 'kitty', account_id: user.accounts.first.id) }
+
+    it 'returns the user to the inbox not the signup' do
+      visit root_path
+      find('[rel="signup"]').click
+      visit root_path
+
+      click_on 'Sign in'
+
+      fill_in "user_email", :with => "helper@helpful.io"
+      fill_in "user_password", :with => "xxx12223xxx"
+
+      click_on 'Sign in'
+
+      expect(page.current_path).to match("inbox")
+    end
+  end
 end

@@ -29,7 +29,11 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    session[:previous_url] || inbox_account_conversations_path(resource.accounts.first)
+    if session[:previous_url] == new_accounts_path
+      inbox_account_conversations_path(resource.accounts.first)
+    else
+      session[:previous_url] || inbox_account_conversations_path(resource.accounts.first)
+    end
   end
 
   def authorize!(policy)
