@@ -76,7 +76,7 @@ describe Account do
       account.save
 
       2.times do
-        account.conversations << build(:conversation)
+        account.conversations << create(:conversation)
       end
 
       account.reload

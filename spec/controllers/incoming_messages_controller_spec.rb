@@ -66,16 +66,12 @@ describe(IncomingMessagesController, :create) do
   # Conversations
 
   it 'persists a new conversation when no conversation_id is present' do
-    assert_difference(-> { Conversation.count }, 1) do
-      create_post(@account)
-    end
+    expect { create_post(@account) }.to change { Conversation.count }.by(1)
   end
 
   it 'does not persist a new conversation when conversation_id is passed' do
     conversation = create(:conversation, account: @account)
-    assert_no_difference(-> { Conversation.count }) do
-      create_post(@account, conversation: conversation.number)
-    end
+    expect { create_post(@account, conversation: conversation.number) }.to_not change { Conversation.count }
   end
 
   it 'links to the correct conversation when conversation_id is passed' do
@@ -90,21 +86,5 @@ describe(IncomingMessagesController, :create) do
     create_post(@account, conversation: conversation.number, attachment: File.new(File.join(Rails.root, "app", "assets", "images", "logo.png")))
     message = find_message_from_response(@response)
     assert_equal message.attachments.count, 1
-  end
-
-  # Mailer
-
-  it "sends an email if reply from a new person" do
-    conversation = create(:conversation, account: @account)
-    create(:message, conversation: conversation)
-    person = create(:person)
-
-    Sidekiq::Testing.inline! do
-      assert_difference "ActionMailer::Base.deliveries.length" do
-        create_post(@account,
-                    conversation: conversation.number,
-                    email: person.email)
-      end
-    end
   end
 end

@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 source 'https://rails-assets.org'
-ruby '2.1.2'
+
+ruby '2.2.0'
 
 # Load environment variables first
 
@@ -8,7 +9,7 @@ gem 'dotenv-rails', groups: [:development, :test]
 
 # Alphabetical list
 
-gem 'active_model_serializers', github: 'rails-api/active_model_serializers'
+gem 'active_model_serializers', github: 'rails-api/active_model_serializers', branch: '0-8-stable'
 gem 'analytics-ruby'
 gem 'awesome_print'
 gem 'aws-sdk'
@@ -38,7 +39,7 @@ gem 'premailer-rails'
 gem 'pry-rails'
 gem 'puma'
 gem 'pusher'
-gem 'rails', '~> 4.1.1'
+gem 'rails', '4.2.0'
 gem 'rails-assets-animate.css'
 gem 'rails-assets-jquery-autosize'
 gem 'rails-assets-js-md5'

@@ -5,7 +5,7 @@ describe AvatarHelper do
 
   describe '#avatar_default' do
     it 'creates an avatar with default values' do
-      expect(avatar_default(person)).to eq('<img alt="55502f40dc8b7c769880b10874abc9d0" class="avatar" height="20" src="https://secure.gravatar.com/avatar/55502f40dc8b7c769880b10874abc9d0.png?s=40&amp;d=identicon" width="20" />')
+      expect(avatar_default(person)).to eq('<img class="avatar" width="20" height="20" src="https://secure.gravatar.com/avatar/55502f40dc8b7c769880b10874abc9d0.png?s=40&amp;d=identicon" alt="55502f40dc8b7c769880b10874abc9d0" />')
     end
   end
 

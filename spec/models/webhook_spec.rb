@@ -28,7 +28,7 @@ describe Webhook, vcr: true do
 
       webhook.dispatch!
 
-      expect(webhook.response_code).to eq(200)
+      expect(webhook.response_code).to eq('200')
     end
   end
 end
