@@ -13,7 +13,7 @@ class Webhooks::MailgunController < WebhooksController
   def create
     require_mailgun_params!
 
-    from = Mail::Address.new(params.fetch(:from).to_ascii)
+    from = Mail::Address.new(params['Reply-To'] || params.fetch(:from).to_ascii)
 
     identifiers = parse_identifiers(params.fetch(:recipient).to_ascii)
     
