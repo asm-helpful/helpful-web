@@ -1,14 +1,12 @@
 require "spec_helper"
 
 describe AccountsController do
-
   let(:owner) { create(:user) }
   let(:account) { create(:account) }
 
   before do
     create(:membership, account: account, user: owner, role: 'owner')
   end
-
 
   describe 'visiting the new account page' do
     it 'is successful' do
@@ -42,6 +40,32 @@ describe AccountsController do
       expect(account.name).to eq('Assembly')
       expect(account.slug).to eq('asm')
       expect(person.name).to eq('Patrick Van Stee')
+    end
+
+    it 'creates an account even if a person already exists with the email specified' do
+      create(:person, email: 'patrick@assembly.com')
+
+      post :create, {
+        account: {
+          name: 'Assembly',
+          email: 'asm@helpful.io',
+          billing_plan_slug: 'starter-kit'
+        },
+        person: {
+          name: 'Patrick Van Stee'
+        },
+        user: {
+          email: 'patrick@assembly.com',
+          password: 'password',
+          password_confirmation: 'password'
+        }
+      }
+
+      person = assigns(:person)
+
+      expect(person).to be_valid
+      expect(person.name).to eq('Patrick Van Stee')
+      expect(person.email).to eq('patrick@assembly.com')
     end
   end
 

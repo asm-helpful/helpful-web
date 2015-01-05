@@ -12,11 +12,10 @@ class AccountsController < ApplicationController
   def create
     @account = Account.new(account_params.merge(billing_plan_slug: 'starter-kit'))
     @user = User.new(user_params)
-    @person = Person.new(person_params)
 
-    @person.email = @user.email
+    @person = Person.where(email: @user.email).first_or_initialize
+    @person.assign_attributes(person_params)
     @person.account = @account
-
     @person.user = @user
 
     begin
