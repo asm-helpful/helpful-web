@@ -16,11 +16,10 @@ ActiveRecord::Schema.define(version: 20140730002216) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
-  enable_extension "pg_stat_statements"
   enable_extension "uuid-ossp"
+  enable_extension "pg_stat_statements"
 
-  create_table "accounts", id: false, force: true do |t|
-    t.uuid     "id",                          null: false
+  create_table "accounts", id: :uuid, force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -44,7 +43,7 @@ ActiveRecord::Schema.define(version: 20140730002216) do
   add_index "accounts", ["chargify_subscription_id"], name: "index_accounts_on_chargify_subscription_id", using: :btree
   add_index "accounts", ["slug"], name: "index_accounts_on_slug", unique: true, using: :btree
 
-  create_table "assignment_events", force: true do |t|
+  create_table "assignment_events", force: :cascade do |t|
     t.uuid     "conversation_id"
     t.uuid     "user_id"
     t.uuid     "assignee_id"
@@ -54,7 +53,7 @@ ActiveRecord::Schema.define(version: 20140730002216) do
 
   add_index "assignment_events", ["conversation_id"], name: "index_assignment_events_on_conversation_id", using: :btree
 
-  create_table "attachments", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
+  create_table "attachments", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.uuid     "message_id",   null: false
     t.string   "file",         null: false
     t.datetime "created_at"
@@ -63,7 +62,7 @@ ActiveRecord::Schema.define(version: 20140730002216) do
     t.string   "file_size"
   end
 
-  create_table "beta_invites", force: true do |t|
+  create_table "beta_invites", force: :cascade do |t|
     t.string   "email"
     t.string   "invite_token"
     t.uuid     "user_id"
@@ -73,8 +72,7 @@ ActiveRecord::Schema.define(version: 20140730002216) do
 
   add_index "beta_invites", ["email"], name: "index_beta_invites_on_email", unique: true, using: :btree
 
-  create_table "billing_plans", id: false, force: true do |t|
-    t.uuid     "id",                                  null: false
+  create_table "billing_plans", id: :uuid, force: :cascade do |t|
     t.string   "slug"
     t.string   "name"
     t.string   "chargify_product_id"
@@ -85,7 +83,7 @@ ActiveRecord::Schema.define(version: 20140730002216) do
     t.boolean  "hidden",              default: false, null: false
   end
 
-  create_table "canned_responses", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
+  create_table "canned_responses", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string   "key",        null: false
     t.text     "message",    null: false
     t.uuid     "account_id", null: false
@@ -95,8 +93,7 @@ ActiveRecord::Schema.define(version: 20140730002216) do
 
   add_index "canned_responses", ["key", "account_id"], name: "index_canned_responses_on_key_and_account_id", unique: true, using: :btree
 
-  create_table "conversations", id: false, force: true do |t|
-    t.uuid     "id",                         null: false
+  create_table "conversations", id: :uuid, force: :cascade do |t|
     t.integer  "number"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -113,8 +110,7 @@ ActiveRecord::Schema.define(version: 20140730002216) do
   add_index "conversations", ["hidden"], name: "index_conversations_on_hidden", using: :btree
   add_index "conversations", ["user_id"], name: "index_conversations_on_user_id", using: :btree
 
-  create_table "memberships", id: false, force: true do |t|
-    t.uuid     "id",         null: false
+  create_table "memberships", id: :uuid, force: :cascade do |t|
     t.uuid     "account_id", null: false
     t.uuid     "user_id",    null: false
     t.string   "role"
@@ -125,8 +121,7 @@ ActiveRecord::Schema.define(version: 20140730002216) do
   add_index "memberships", ["account_id", "user_id"], name: "index_memberships_on_account_id_and_user_id", unique: true, using: :btree
   add_index "memberships", ["user_id"], name: "index_memberships_on_user_id", using: :btree
 
-  create_table "messages", id: false, force: true do |t|
-    t.uuid     "id",              null: false
+  create_table "messages", id: :uuid, force: :cascade do |t|
     t.uuid     "conversation_id", null: false
     t.text     "content"
     t.hstore   "data"
@@ -139,7 +134,7 @@ ActiveRecord::Schema.define(version: 20140730002216) do
   add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
   add_index "messages", ["person_id"], name: "index_messages_on_person_id", using: :btree
 
-  create_table "oauth_access_grants", force: true do |t|
+  create_table "oauth_access_grants", force: :cascade do |t|
     t.integer  "resource_owner_id",              null: false
     t.integer  "application_id",                 null: false
     t.string   "token",                          null: false
@@ -152,7 +147,7 @@ ActiveRecord::Schema.define(version: 20140730002216) do
 
   add_index "oauth_access_grants", ["token"], name: "index_oauth_access_grants_on_token", unique: true, using: :btree
 
-  create_table "oauth_access_tokens", force: true do |t|
+  create_table "oauth_access_tokens", force: :cascade do |t|
     t.integer  "resource_owner_id"
     t.integer  "application_id",    null: false
     t.string   "token",             null: false
@@ -167,7 +162,7 @@ ActiveRecord::Schema.define(version: 20140730002216) do
   add_index "oauth_access_tokens", ["resource_owner_id"], name: "index_oauth_access_tokens_on_resource_owner_id", using: :btree
   add_index "oauth_access_tokens", ["token"], name: "index_oauth_access_tokens_on_token", unique: true, using: :btree
 
-  create_table "oauth_applications", force: true do |t|
+  create_table "oauth_applications", force: :cascade do |t|
     t.string   "name",                      null: false
     t.string   "uid",                       null: false
     t.string   "secret",                    null: false
@@ -181,8 +176,7 @@ ActiveRecord::Schema.define(version: 20140730002216) do
   add_index "oauth_applications", ["owner_id", "owner_type"], name: "index_oauth_applications_on_owner_id_and_owner_type", using: :btree
   add_index "oauth_applications", ["uid"], name: "index_oauth_applications_on_uid", unique: true, using: :btree
 
-  create_table "people", id: false, force: true do |t|
-    t.uuid     "id",         null: false
+  create_table "people", id: :uuid, force: :cascade do |t|
     t.uuid     "user_id"
     t.string   "name"
     t.string   "email"
@@ -199,8 +193,7 @@ ActiveRecord::Schema.define(version: 20140730002216) do
   add_index "people", ["twitter"], name: "index_people_on_twitter", using: :btree
   add_index "people", ["user_id"], name: "index_people_on_user_id", using: :btree
 
-  create_table "read_receipts", id: false, force: true do |t|
-    t.uuid     "id",         null: false
+  create_table "read_receipts", id: :uuid, force: :cascade do |t|
     t.uuid     "person_id"
     t.uuid     "message_id"
     t.datetime "created_at"
@@ -209,7 +202,7 @@ ActiveRecord::Schema.define(version: 20140730002216) do
 
   add_index "read_receipts", ["person_id", "message_id"], name: "index_read_receipts_on_person_id_and_message_id", unique: true, using: :btree
 
-  create_table "sequential", force: true do |t|
+  create_table "sequential", force: :cascade do |t|
     t.string   "model"
     t.string   "column"
     t.string   "scope"
@@ -221,7 +214,7 @@ ActiveRecord::Schema.define(version: 20140730002216) do
 
   add_index "sequential", ["model", "column", "scope", "scope_value"], name: "index_sequential_on_model_and_column_and_scope_and_scope_value", unique: true, using: :btree
 
-  create_table "tag_events", force: true do |t|
+  create_table "tag_events", force: :cascade do |t|
     t.uuid     "conversation_id"
     t.uuid     "user_id"
     t.string   "tag"
@@ -231,8 +224,7 @@ ActiveRecord::Schema.define(version: 20140730002216) do
 
   add_index "tag_events", ["conversation_id"], name: "index_tag_events_on_conversation_id", using: :btree
 
-  create_table "users", id: false, force: true do |t|
-    t.uuid     "id",                                         null: false
+  create_table "users", id: :uuid, force: :cascade do |t|
     t.string   "email",                  default: "",        null: false
     t.string   "encrypted_password",     default: ""
     t.string   "reset_password_token"
@@ -270,8 +262,7 @@ ActiveRecord::Schema.define(version: 20140730002216) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
-  create_table "webhooks", id: false, force: true do |t|
-    t.uuid     "id",            null: false
+  create_table "webhooks", id: :uuid, force: :cascade do |t|
     t.uuid     "account_id",    null: false
     t.string   "event",         null: false
     t.text     "body"
