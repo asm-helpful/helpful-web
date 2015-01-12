@@ -13,6 +13,11 @@ Helpful::Application.routes.draw do
   get '/styleguide' => 'pages#styleguide', as: :styleguide
   get '/terms' => 'pages#terms', as: :terms
 
+  # Errors
+  get '/404', :to => 'errors#not_found'
+  get '/500', :to => 'errors#internal_error'
+  get '/422', :to => 'errors#unprocessable_entity'
+
   devise_for :users, skip: :registrations, :controllers => { :invitations => 'users/invitations' }
 
   # This is the normal user registrations but NO new/create - That is handled by either:

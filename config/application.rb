@@ -39,6 +39,9 @@ module Helpful
 
     config.assets.precompile << 'email.css'
 
+    # Use or our own controller for errors
+    config.exceptions_app = self.routes
+
     config.to_prepare do
       Devise::Mailer.layout "email"
     end

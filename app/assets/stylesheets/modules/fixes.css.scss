@@ -3,6 +3,10 @@
 	margin-top: $large-margin-top;
 }
 
+.full-height {
+	min-height: 100%;
+}
+
 .btn {
   &:focus,
   &.focus,
@@ -42,4 +46,3 @@ html, body {
 		}
 	}
 }
-
