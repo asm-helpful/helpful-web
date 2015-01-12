@@ -1,0 +1,14 @@
+.error-messages {
+  .logo {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 2em;
+  }
+  .error-code {
+    @include border-radius(99px);
+    display: inline-block;
+    color: $red;
+    padding: $padding-base-horizontal;
+    border: solid 1px $red;
+  }
+}
