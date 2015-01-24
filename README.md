@@ -4,6 +4,7 @@ Help shouldn't hurt.
 [![Build Status](https://travis-ci.org/asm-helpful/helpful-web.png?branch=master)](https://travis-ci.org/asm-helpful/helpful-web)
 [![Code Climate](https://codeclimate.com/github/support-foo/web.png)](https://codeclimate.com/github/support-foo/web)
 [![Inline docs](http://inch-ci.org/github/asm-helpful/helpful-web.png)](http://inch-ci.org/github/asm-helpful/helpful-web)
+<a href="https://assembly.com/helpful/bounties?utm_campaign=assemblage&utm_source=helpful&utm_medium=repo_badge"><img src="http://badger.asm.co/helpful/badges/tasks.svg" height="20px" alt="Open Tasks" /></a>
 
 Helpful is an open product that's being built by a fantastic group of people on [Assembly](https://assemblymade.com/helpful). Anybody can join in building this product and earn a stake of the profit.
 
