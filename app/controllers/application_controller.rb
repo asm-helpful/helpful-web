@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize!(policy)
-    policy.access? || raise(ActiveRecord::RecordNotFound)
+    policy.authorize!
   end
 
   def configure_permitted_parameters
