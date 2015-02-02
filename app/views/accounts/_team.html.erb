@@ -12,6 +12,9 @@
             <td>
               <% if membership.user.name %>
                 <strong><%= membership.user.name %></strong>
+                <% if membership.owner? %>
+                  <span class="text-muted pull-right">(owner)</span>
+                <% end %>
                 <br>
                 <span class="text-muted"><%= membership.user.email %></span>
               <% else %>
