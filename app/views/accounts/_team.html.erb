@@ -35,23 +35,25 @@
   </div>
   <div class="col-md-6">
 
-    <% if @user %>
-      <%= render 'shared/error_messages', target: @user %>
-    <% end %>
+    <% if InvitationCreatePolicy.new(@account, current_user, Membership.new(user: @user, account: @account)).access? %>
+      <% if @user %>
+        <%= render 'shared/error_messages', target: @user %>
+      <% end %>
 
-    <%= form_for @user, url: invitation_path(:user), html: { method: :post } do |f| %>
-      <%= hidden_field_tag :account_id, @account.slug %>
-      <div class="form-group">
-        <%= f.label :email, class: 'control-label' %>
-        <div class="row">
-          <div class="col-md-9">
-            <%= f.text_field :email, class: 'form-control' %></p>
-          </div>
-          <div class="col-md-3">
-            <%= f.submit t('.send'), class: 'btn btn-primary' %>
+      <%= form_for @user, url: invitation_path(:user), html: { method: :post } do |f| %>
+        <%= hidden_field_tag :account_id, @account.slug %>
+        <div class="form-group">
+          <%= f.label :email, class: 'control-label' %>
+          <div class="row">
+            <div class="col-md-9">
+              <%= f.text_field :email, class: 'form-control' %></p>
+            </div>
+            <div class="col-md-3">
+              <%= f.submit t('.send'), class: 'btn btn-primary' %>
+            </div>
           </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
 
     <h4 class="section-title"><%= t('.invitations') %></h4>
