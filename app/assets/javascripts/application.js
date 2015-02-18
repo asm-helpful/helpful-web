@@ -17,7 +17,7 @@
 //= require jquery.transform2d
 //= require wow.min.js
 //= require moment
-//= require moment/min/langs
+//= require moment/min/locales
 //= require moment_lang
 //= require showdown
 //= require underscore

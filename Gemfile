@@ -1,6 +1,4 @@
 source 'https://rubygems.org'
-source 'https://rails-assets.org'
-
 ruby '2.2.0'
 
 # Load environment variables first
@@ -39,15 +37,9 @@ gem 'pry-rails'
 gem 'puma'
 gem 'pusher'
 gem 'rails', '4.2.0'
-gem 'rails-assets-animate.css'
-gem 'rails-assets-jquery-autosize'
-gem 'rails-assets-js-md5'
-gem 'rails-assets-handlebars'
-gem 'rails-assets-moment'
-gem 'rails-assets-showdown'
 gem 'react-rails', github: 'reactjs/react-rails'
 gem 'redcarpet'
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails', '~> 5'
 gem 'sequential', '>= 0.1'
 gem 'sidekiq'
 gem 'stringex'
@@ -55,6 +47,15 @@ gem 'stripe'
 gem 'uglifier', '>= 1.3.0'
 gem 'underscore-rails'
 gem 'unf'
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-animate.css',     '~> 3.2'
+  gem 'rails-assets-jquery-autosize', '~> 1'
+  gem 'rails-assets-js-md5',          '~> 1'
+  gem 'rails-assets-handlebars',      '~> 3.0'
+  gem 'rails-assets-moment',          '~> 2.9'
+  gem 'rails-assets-showdown',        '~> 0.3'
+end
 
 group :development do
   gem 'quiet_assets'
