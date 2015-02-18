@@ -1,3 +1,4 @@
+@import 'constants';
 @import 'variables';
 
 @import 'bootstrap-sprockets';
@@ -11,8 +12,10 @@
 @import 'medium-editor/medium-editor';
 @import 'medium-editor/themes/default';
 
-@import 'components/*';
-@import 'base/*';
+@import 'base/*',
+        'utilities/*',
+        'components/*';
+
 @import 'modules/*';
 
 @import 'widget';
