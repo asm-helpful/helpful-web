@@ -10,6 +10,7 @@
   <%= stylesheet_link_tag "//fonts.googleapis.com/css?family=Droid+Serif:400,500,700|Open+Sans:300,400,600,700" %>
   <%= javascript_include_tag "https://checkout.stripe.com/checkout.js" %>
   <%= javascript_include_tag "application" %>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <%= page_specific_js && javascript_include_tag(page_specific_js) %>
   <%= javascript_include_tag "//d3dy5gmtp8yhk7.cloudfront.net/2.1/pusher.min.js" %>
   <script type="text/javascript">(function(f,b){if(!b.__SV){var a,e,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");
