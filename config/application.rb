@@ -50,10 +50,6 @@ module Helpful
       config.console = Pry
     end
 
-    config.after_initialize do
-      Hirb.enable if Rails.env.development? || Rails.env.test?
-    end
-
     config.react.addons = true
     config.react.variant = :development
 

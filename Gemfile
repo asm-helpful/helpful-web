@@ -71,7 +71,6 @@ group :development, :test do
   gem 'faraday', '~> 0.9.0'
   gem 'ffaker', '~> 1.20'
   gem 'jasmine', github: 'pivotal/jasmine-gem'
-  gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
   gem 'pry-byebug'
   gem 'json_spec'
   gem 'pry'
