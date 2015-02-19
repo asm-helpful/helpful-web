@@ -40,7 +40,7 @@ describe Account do
   describe '.conversations_limit_reached?' do
     before do
       account.save
-      account.stub(conversations_limit: 2)
+      allow(account).to receive(:conversations_limit) { 2 }
     end
 
     it 'knows when the limit has not been reached' do
@@ -72,7 +72,7 @@ describe Account do
 
   describe '#unhide_paid_conversations', vcr: true do
     it 'checks for hidden conversations and toggles them if the limit has been increased' do
-      account.billing_plan = create(:billing_plan, max_conversations: 1) 
+      account.billing_plan = create(:billing_plan, max_conversations: 1)
       account.save
 
       2.times do

@@ -69,9 +69,7 @@ RSpec.configure do |config|
   config.order = "random"
   config.seed = srand % 0xFFFF
 
-  config.fixture_path = "#{Rails.root}/spec/fixtures"
-
-  config.treat_symbols_as_metadata_keys_with_true_values = true
+  config.fixture_path = Rails.root.join('spec', 'fixtures')
 
   config.infer_spec_type_from_file_location!
 end

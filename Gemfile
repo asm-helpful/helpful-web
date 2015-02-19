@@ -14,14 +14,13 @@ gem 'aws-sdk'
 gem 'bootstrap-sass', github: 'twbs/bootstrap-sass'
 gem 'bourbon'
 gem 'bugsnag'
-gem 'carrierwave'
 gem 'carrierwave-aws'
 gem 'confyio'
 gem 'curb'
 gem 'customerio'
-gem 'devise', '~> 3.1'
-gem 'devise-i18n'
 gem 'devise_invitable', '~> 1.3'
+gem 'devise-i18n'
+gem 'devise', '~> 3.1'
 gem 'doorkeeper'
 gem 'elasticsearch-model'
 gem 'font-awesome-rails'
@@ -33,7 +32,6 @@ gem 'newrelic_rpm'
 gem 'oauth2'
 gem 'pg'
 gem 'premailer-rails'
-gem 'pry-rails'
 gem 'puma'
 gem 'pusher'
 gem 'rails', '4.2.0'
@@ -59,6 +57,7 @@ end
 
 group :development do
   gem 'quiet_assets'
+  gem 'pry-rails'
   gem 'rest-client', require: false
   gem 'sinatra', require: false
   gem 'slim', require: false
@@ -72,13 +71,12 @@ group :development, :test do
   gem 'ffaker', '~> 1.20'
   gem 'jasmine', github: 'pivotal/jasmine-gem'
   gem 'pry-byebug'
-  gem 'json_spec'
-  gem 'pry'
+  gem 'json_spec', '~> 1.1'
   gem 'psych', '~> 2.0.5'
   gem 'rake'
-  gem 'rspec-rails', '~> 2.99.0'
+  gem 'rspec-rails', '~> 3'
   gem 'timecop'
-  gem 'vcr'
+  gem 'vcr', '~> 2.9'
 end
 
 group :test do

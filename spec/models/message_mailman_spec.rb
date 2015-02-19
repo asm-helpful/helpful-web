@@ -18,7 +18,7 @@ describe MessageMailman do
     it 'calls #deliver_to for each recipient' do
       recipients = [double('Patrick'), double('Chris')]
       message_mailman = MessageMailman.new(double('Message'), recipients)
-      message_mailman.stub(:notify?) { true }
+      allow(message_mailman).to receive(:notify?) { true }
 
       recipients.each do |recipient|
         expect(message_mailman).to receive(:deliver_to).with(recipient)
@@ -33,7 +33,7 @@ describe MessageMailman do
       recipients = [patrick, chris]
 
       message_mailman = MessageMailman.new(double('Message'), recipients)
-      message_mailman.stub(:notify?) { |person| person == patrick }
+      allow(message_mailman).to receive(:notify?) { |person| person == patrick }
 
       expect(message_mailman).to receive(:deliver_to).with(patrick)
 
