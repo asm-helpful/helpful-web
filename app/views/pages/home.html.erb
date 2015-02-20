@@ -112,32 +112,23 @@
   <h3 class="text-uppercase text-center" style="padding-bottom: 40px">Simple pricing that fits your business as it grows</h3>
 
   <div class="row">
-    <% BillingPlan.options.each do |plan| %>
-      <div class="col-xs-12 col-sm-6 col-md-3">
-        <div class="panel panel-default text-center">
-          <h4 class="text-capitalize">
-            <%= plan.name %>
-          </h4>
-          <p>
-            <strong> &nbsp;<%=  number_with_delimiter(plan.max_conversations, delimiter: ",")  %> monthly conversation threads</strong>
-          </p>
-          <p>
-            <% if plan.price.zero? %>
-              Totally Free!
-            <% else %>
-              <%= number_to_currency(plan.price, precision: 0) %>/month
-            <% end %>
-          </p>
+    <div class="col-xs-12 col-sm-6 col-md-3">
+      <div class="panel panel-default text-center">
+        <h4 class="text-capitalize">
+          Pro
+        </h4>
+        <p>
+          <%= number_to_currency(30, precision: 0) %>/month
+        </p>
 
-          <%= link_to new_accounts_path, class: 'btn btn-default' do %>
-            <span class="plan-select-message">
-              Sign up
-            </span>
-          <% end %>
+        <%= link_to new_accounts_path, class: 'btn btn-default' do %>
+          <span class="plan-select-message">
+            Sign up
+          </span>
+        <% end %>
 
-        </div>
       </div>
-    <% end %>
+    </div>
   </div>
 
   <p style="padding-top: 20px">

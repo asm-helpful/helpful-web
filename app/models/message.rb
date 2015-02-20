@@ -76,7 +76,6 @@ class Message < ActiveRecord::Base
   end
 
   def send_email
-    return if conversation.unpaid?
     MessageMailman.deliver(self, mail_recipients)
   end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140730002216) do
+ActiveRecord::Schema.define(version: 20150219233615) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,24 +23,17 @@ ActiveRecord::Schema.define(version: 20140730002216) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "slug",                        null: false
+    t.string   "slug",                               null: false
     t.string   "webhook_url"
     t.string   "webhook_secret"
     t.string   "website_url"
-    t.string   "chargify_subscription_id"
-    t.string   "chargify_customer_id"
-    t.uuid     "billing_plan_id"
-    t.string   "billing_status"
-    t.string   "chargify_portal_url"
-    t.datetime "chargify_portal_valid_until"
     t.boolean  "prefers_archiving"
     t.text     "signature"
     t.string   "url"
     t.string   "stripe_customer_id"
+    t.boolean  "is_pro",             default: false, null: false
   end
 
-  add_index "accounts", ["billing_plan_id"], name: "index_accounts_on_billing_plan_id", using: :btree
-  add_index "accounts", ["chargify_subscription_id"], name: "index_accounts_on_chargify_subscription_id", using: :btree
   add_index "accounts", ["slug"], name: "index_accounts_on_slug", unique: true, using: :btree
 
   create_table "assignment_events", force: :cascade do |t|
@@ -72,17 +65,6 @@ ActiveRecord::Schema.define(version: 20140730002216) do
 
   add_index "beta_invites", ["email"], name: "index_beta_invites_on_email", unique: true, using: :btree
 
-  create_table "billing_plans", id: :uuid, force: :cascade do |t|
-    t.string   "slug"
-    t.string   "name"
-    t.string   "chargify_product_id"
-    t.integer  "max_conversations"
-    t.decimal  "price"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "hidden",              default: false, null: false
-  end
-
   create_table "canned_responses", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string   "key",        null: false
     t.text     "message",    null: false
@@ -102,12 +84,10 @@ ActiveRecord::Schema.define(version: 20140730002216) do
     t.boolean  "archived",   default: false
     t.string   "tags",       default: [],                 array: true
     t.uuid     "user_id"
-    t.boolean  "hidden",     default: false, null: false
   end
 
   add_index "conversations", ["account_id", "archived"], name: "index_conversations_on_account_id_and_archived", using: :btree
   add_index "conversations", ["account_id"], name: "index_conversations_on_account_id", using: :btree
-  add_index "conversations", ["hidden"], name: "index_conversations_on_hidden", using: :btree
   add_index "conversations", ["user_id"], name: "index_conversations_on_user_id", using: :btree
 
   create_table "memberships", id: :uuid, force: :cascade do |t|

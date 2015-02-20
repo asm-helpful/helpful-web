@@ -14,10 +14,6 @@ describe Conversation do
     expect(subject).to_not be_archived
   end
 
-  it "is not hidden" do
-    expect(subject).to_not be_hidden
-  end
-
   it "is reopened when new messages are added" do
     subject.archived = true
     subject.messages << message
@@ -25,22 +21,22 @@ describe Conversation do
   end
 
   describe "#unarchive!" do
-    before do 
+    before do
       subject.save
       subject.unarchive!
     end
-    
+
     it "archives the conversation" do
       expect(subject).to_not be_archived
     end
   end
 
   describe "#archive!" do
-    before do 
+    before do
       subject.save
       subject.archive!
     end
-    
+
     it "archives the conversation" do
       expect(subject).to be_archived
     end
@@ -74,7 +70,7 @@ describe Conversation do
 
   describe "#mailbox_email" do
     before { subject.save }
-    
+
     it "must return a valid email" do
       expect(subject.mailbox_email.address).to_not be_empty
     end
@@ -135,7 +131,7 @@ describe Conversation do
 
     it "returns a hash containing the account_slug and the conversation_id" do
       expect(subject.to_mailbox_hash).to include(
-        { account_slug: subject.account.slug }, 
+        { account_slug: subject.account.slug },
         { conversation_number: subject.number }
       )
     end

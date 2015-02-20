@@ -37,8 +37,6 @@ Helpful::Application.routes.draw do
     resources :mailgun, only: :create
   end
 
-  post 'webhooks/chargify' => 'billings#webhook', :as => :webhook_billing
-
   namespace :api, format: 'json' do
     resources :accounts, except: [:new, :edit, :destroy] do
       resources :conversations, shallow: true, except: [:new, :edit, :destroy] do
@@ -96,9 +94,6 @@ Helpful::Application.routes.draw do
     end
 
     resources :messages, only: [:create]
-    resource :billing, only: [:show] do
-      get :return
-    end
   end
 
   unauthenticated :user do

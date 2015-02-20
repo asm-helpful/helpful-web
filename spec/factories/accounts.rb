@@ -3,7 +3,6 @@
 FactoryGirl.define do
   factory :account do
     name { Faker::Company.name + ' ' + Faker::Company.suffix }
-    billing_plan { BillingPlan.find_by(slug: 'starter-kit') }
 
     factory :account_with_users do
       ignore do
