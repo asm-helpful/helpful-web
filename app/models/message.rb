@@ -52,6 +52,10 @@ class Message < ActiveRecord::Base
     indexes :content
   end
 
+  def message_id
+    "<#{id}@#{Socket.gethostname}>"
+  end
+
   def webhook_data
     { message: {
       id: self.id,

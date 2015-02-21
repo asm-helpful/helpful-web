@@ -34,6 +34,7 @@ class MessageMailer < ActionMailer::Base
          # FIXME: CC recipient instead
          from: from,
          reply_to: reply_to,
-         subject: subject
+         subject: subject,
+         message_id: @message.message_id
   end
 end
