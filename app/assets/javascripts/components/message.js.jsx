@@ -18,7 +18,7 @@ var Message = React.createClass({
   },
 
   created: function() {
-    return moment(this.props.created).format("LT L");
+    return moment(this.props.created).format(CONSTANTS.dateFormat);
   },
 
   content: function() {
