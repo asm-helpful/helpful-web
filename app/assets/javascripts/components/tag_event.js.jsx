@@ -19,6 +19,6 @@ var TagEvent = React.createClass({
   },
 
   timestamp: function() {
-    return moment(this.props.created).format("h:mma D/M/YYYY");
+    return moment(this.props.created).format(CONSTANTS.dateFormat);
   }
 });

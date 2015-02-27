@@ -142,6 +142,6 @@ var Conversation = React.createClass({
   },
 
   created: function() {
-    return moment(this.props.conversation.created).format("LT L");
+    return moment(this.props.conversation.created).format(CONSTANTS.dateFormat);
   }
 });
