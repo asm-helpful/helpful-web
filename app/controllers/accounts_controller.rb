@@ -1,5 +1,5 @@
 class AccountsController < ApplicationController
-  before_action :authenticate_user!, only: [:edit, :update]
+  before_action :authenticate_user!, only: [:edit, :update, :show]
   before_action :find_account!, only: [:edit, :update, :show]
   respond_to :html
 
@@ -90,7 +90,7 @@ class AccountsController < ApplicationController
   private
 
   def find_account!
-    @account = Account.find_by!(slug: params.fetch(:id))
+    @account = Account.find_by(slug: params.fetch(:id))
     authorize! AccountReadPolicy.new(@account, current_user)
   end
 
