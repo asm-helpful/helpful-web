@@ -16,27 +16,27 @@ ActiveRecord::Schema.define(version: 20140730002216) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
-  enable_extension "uuid-ossp"
   enable_extension "pg_stat_statements"
+  enable_extension "uuid-ossp"
 
   create_table "accounts", id: :uuid, force: :cascade do |t|
-    t.string   "name"
+    t.string   "name",                        limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "slug",                        null: false
-    t.string   "webhook_url"
-    t.string   "webhook_secret"
-    t.string   "website_url"
-    t.string   "chargify_subscription_id"
-    t.string   "chargify_customer_id"
+    t.string   "slug",                        limit: 255, null: false
+    t.string   "webhook_url",                 limit: 255
+    t.string   "webhook_secret",              limit: 255
+    t.string   "website_url",                 limit: 255
+    t.string   "chargify_subscription_id",    limit: 255
+    t.string   "chargify_customer_id",        limit: 255
     t.uuid     "billing_plan_id"
-    t.string   "billing_status"
-    t.string   "chargify_portal_url"
+    t.string   "billing_status",              limit: 255
+    t.string   "chargify_portal_url",         limit: 255
     t.datetime "chargify_portal_valid_until"
     t.boolean  "prefers_archiving"
     t.text     "signature"
-    t.string   "url"
-    t.string   "stripe_customer_id"
+    t.string   "url",                         limit: 255
+    t.string   "stripe_customer_id",          limit: 255
   end
 
   add_index "accounts", ["billing_plan_id"], name: "index_accounts_on_billing_plan_id", using: :btree
@@ -54,17 +54,17 @@ ActiveRecord::Schema.define(version: 20140730002216) do
   add_index "assignment_events", ["conversation_id"], name: "index_assignment_events_on_conversation_id", using: :btree
 
   create_table "attachments", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
-    t.uuid     "message_id",   null: false
-    t.string   "file",         null: false
+    t.uuid     "message_id",               null: false
+    t.string   "file",         limit: 255, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "content_type"
-    t.string   "file_size"
+    t.string   "content_type", limit: 255
+    t.string   "file_size",    limit: 255
   end
 
   create_table "beta_invites", force: :cascade do |t|
-    t.string   "email"
-    t.string   "invite_token"
+    t.string   "email",        limit: 255
+    t.string   "invite_token", limit: 255
     t.uuid     "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -73,20 +73,20 @@ ActiveRecord::Schema.define(version: 20140730002216) do
   add_index "beta_invites", ["email"], name: "index_beta_invites_on_email", unique: true, using: :btree
 
   create_table "billing_plans", id: :uuid, force: :cascade do |t|
-    t.string   "slug"
-    t.string   "name"
-    t.string   "chargify_product_id"
+    t.string   "slug",                limit: 255
+    t.string   "name",                limit: 255
+    t.string   "chargify_product_id", limit: 255
     t.integer  "max_conversations"
     t.decimal  "price"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "hidden",              default: false, null: false
+    t.boolean  "hidden",                          default: false, null: false
   end
 
   create_table "canned_responses", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
-    t.string   "key",        null: false
-    t.text     "message",    null: false
-    t.uuid     "account_id", null: false
+    t.string   "key",        limit: 255, null: false
+    t.text     "message",                null: false
+    t.uuid     "account_id",             null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -111,9 +111,9 @@ ActiveRecord::Schema.define(version: 20140730002216) do
   add_index "conversations", ["user_id"], name: "index_conversations_on_user_id", using: :btree
 
   create_table "memberships", id: :uuid, force: :cascade do |t|
-    t.uuid     "account_id", null: false
-    t.uuid     "user_id",    null: false
-    t.string   "role"
+    t.uuid     "account_id",             null: false
+    t.uuid     "user_id",                null: false
+    t.string   "role",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -137,25 +137,25 @@ ActiveRecord::Schema.define(version: 20140730002216) do
   create_table "oauth_access_grants", force: :cascade do |t|
     t.integer  "resource_owner_id",              null: false
     t.integer  "application_id",                 null: false
-    t.string   "token",                          null: false
+    t.string   "token",             limit: 255,  null: false
     t.integer  "expires_in",                     null: false
     t.string   "redirect_uri",      limit: 2048, null: false
     t.datetime "created_at",                     null: false
     t.datetime "revoked_at"
-    t.string   "scopes"
+    t.string   "scopes",            limit: 255
   end
 
   add_index "oauth_access_grants", ["token"], name: "index_oauth_access_grants_on_token", unique: true, using: :btree
 
   create_table "oauth_access_tokens", force: :cascade do |t|
     t.integer  "resource_owner_id"
-    t.integer  "application_id",    null: false
-    t.string   "token",             null: false
-    t.string   "refresh_token"
+    t.integer  "application_id",                null: false
+    t.string   "token",             limit: 255, null: false
+    t.string   "refresh_token",     limit: 255
     t.integer  "expires_in"
     t.datetime "revoked_at"
-    t.datetime "created_at",        null: false
-    t.string   "scopes"
+    t.datetime "created_at",                    null: false
+    t.string   "scopes",            limit: 255
   end
 
   add_index "oauth_access_tokens", ["refresh_token"], name: "index_oauth_access_tokens_on_refresh_token", unique: true, using: :btree
@@ -163,14 +163,14 @@ ActiveRecord::Schema.define(version: 20140730002216) do
   add_index "oauth_access_tokens", ["token"], name: "index_oauth_access_tokens_on_token", unique: true, using: :btree
 
   create_table "oauth_applications", force: :cascade do |t|
-    t.string   "name",                      null: false
-    t.string   "uid",                       null: false
-    t.string   "secret",                    null: false
+    t.string   "name",         limit: 255,  null: false
+    t.string   "uid",          limit: 255,  null: false
+    t.string   "secret",       limit: 255,  null: false
     t.string   "redirect_uri", limit: 2048, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "owner_id"
-    t.string   "owner_type"
+    t.string   "owner_type",   limit: 255
   end
 
   add_index "oauth_applications", ["owner_id", "owner_type"], name: "index_oauth_applications_on_owner_id_and_owner_type", using: :btree
@@ -178,14 +178,14 @@ ActiveRecord::Schema.define(version: 20140730002216) do
 
   create_table "people", id: :uuid, force: :cascade do |t|
     t.uuid     "user_id"
-    t.string   "name"
-    t.string   "email"
-    t.string   "twitter"
+    t.string   "name",       limit: 255
+    t.string   "email",      limit: 255
+    t.string   "twitter",    limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
     t.uuid     "account_id"
-    t.string   "username"
-    t.string   "avatar"
+    t.string   "username",   limit: 255
+    t.string   "avatar",     limit: 255
   end
 
   add_index "people", ["account_id", "username"], name: "index_people_on_account_id_and_username", unique: true, using: :btree
@@ -203,10 +203,10 @@ ActiveRecord::Schema.define(version: 20140730002216) do
   add_index "read_receipts", ["person_id", "message_id"], name: "index_read_receipts_on_person_id_and_message_id", unique: true, using: :btree
 
   create_table "sequential", force: :cascade do |t|
-    t.string   "model"
-    t.string   "column"
-    t.string   "scope"
-    t.string   "scope_value"
+    t.string   "model",       limit: 255
+    t.string   "column",      limit: 255
+    t.string   "scope",       limit: 255
+    t.string   "scope_value", limit: 255
     t.integer  "value"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -217,7 +217,7 @@ ActiveRecord::Schema.define(version: 20140730002216) do
   create_table "tag_events", force: :cascade do |t|
     t.uuid     "conversation_id"
     t.uuid     "user_id"
-    t.string   "tag"
+    t.string   "tag",             limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -225,34 +225,34 @@ ActiveRecord::Schema.define(version: 20140730002216) do
   add_index "tag_events", ["conversation_id"], name: "index_tag_events_on_conversation_id", using: :btree
 
   create_table "users", id: :uuid, force: :cascade do |t|
-    t.string   "email",                  default: "",        null: false
-    t.string   "encrypted_password",     default: ""
-    t.string   "reset_password_token"
+    t.string   "email",                  limit: 255, default: "",        null: false
+    t.string   "encrypted_password",     limit: 255, default: ""
+    t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,         null: false
+    t.integer  "sign_in_count",                      default: 0,         null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.string   "confirmation_token"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
+    t.string   "confirmation_token",     limit: 255
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email"
-    t.integer  "failed_attempts",        default: 0,         null: false
-    t.string   "unlock_token"
+    t.string   "unconfirmed_email",      limit: 255
+    t.integer  "failed_attempts",                    default: 0,         null: false
+    t.string   "unlock_token",           limit: 255
     t.datetime "locked_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "invitation_token"
+    t.string   "invitation_token",       limit: 255
     t.datetime "invitation_created_at"
     t.datetime "invitation_sent_at"
     t.datetime "invitation_accepted_at"
     t.integer  "invitation_limit"
     t.uuid     "invited_by_id"
-    t.string   "invited_by_type"
-    t.integer  "invitations_count",      default: 0
-    t.string   "notification_setting",   default: "message", null: false
+    t.string   "invited_by_type",        limit: 255
+    t.integer  "invitations_count",                  default: 0
+    t.string   "notification_setting",   limit: 255, default: "message", null: false
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
@@ -263,10 +263,10 @@ ActiveRecord::Schema.define(version: 20140730002216) do
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
   create_table "webhooks", id: :uuid, force: :cascade do |t|
-    t.uuid     "account_id",    null: false
-    t.string   "event",         null: false
+    t.uuid     "account_id",                null: false
+    t.string   "event",         limit: 255, null: false
     t.text     "body"
-    t.string   "response_code"
+    t.string   "response_code", limit: 255
     t.text     "response_body"
     t.datetime "response_at"
     t.datetime "created_at"
