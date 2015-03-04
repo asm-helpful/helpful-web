@@ -1,4 +1,5 @@
 require 'activerecord/uuid'
+require 'mail'
 
 class Account < ActiveRecord::Base
   include ActiveRecord::UUID
@@ -35,6 +36,10 @@ class Account < ActiveRecord::Base
   validates :name,
     presence: true,
     uniqueness: true
+
+  # validates :forwarding_address,
+  #   format: /\A\S+@\S+\z/,
+  #   allow_nil: true
 
   validate :email_presence
   validate :email_uniqueness
@@ -99,6 +104,7 @@ class Account < ActiveRecord::Base
     end
   end
 
+
   def subscribe!
     return if self.stripe_token.blank?
 
@@ -124,6 +130,7 @@ class Account < ActiveRecord::Base
   def free?
     !is_pro?
   end
+
 
   def tags
     conversations.pluck(:tags).flatten.uniq.sort
@@ -166,6 +173,33 @@ class Account < ActiveRecord::Base
 
   def to_param
     slug
+  end
+
+  def forwarding_domain
+    return nil unless forwarding_address?
+    Mail::Address.new(forwarding_address).domain
+  end
+
+  def address
+    addr = Mail::Address.new
+    addr.address = if forwarding_address?
+        forwarding_address
+      else
+        "#{slug}@#{Helpful.incoming_email_domain}"
+      end
+    addr
+  end
+
+  def latest_domain_check
+    DomainCheck.find_latest_for(forwarding_domain)
+  end
+
+  def check_forwarding_domain!
+    DomainCheck.check!(forwarding_domain)
+  end
+
+  def participants
+    users.where(notification_setting: 'message').map {|u| u.person }
   end
 
   protected

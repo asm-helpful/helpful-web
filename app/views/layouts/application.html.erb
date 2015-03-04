@@ -29,7 +29,6 @@ mixpanel.init("afd8ab931330183bcaa1e60b21c48007");</script>
   <% if @conversation %>
     <input type="hidden" name="conversation-number" value="<%= @conversation.number %>">
   <% end %>
-
   <%= yield %>
   <%= javascript_include_tag "widget" %>
 

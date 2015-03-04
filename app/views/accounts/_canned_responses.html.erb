@@ -1,11 +1,7 @@
-<div>
+<div class="clearfix py2">
   <a class="btn btn-success pull-right" href="<%= new_account_canned_response_path(@account) %>">
     <%= t('.create_canned_response') %>
   </a>
-
-  <h1 class="page-title">
-    <%= t('.canned_responses') %>
-  </h1>
 </div>
 
 <% if @account.canned_responses.empty? %>
@@ -15,10 +11,6 @@
     </div>
     <div class="panel-body">
       <%= t('canned_responses.none_yet.body') %>
-      <br>
-      <a class="btn btn-success btn-sm" href="<%= new_account_canned_response_path(@account) %>">
-        <%= t('canned_responses.none_yet.button') %>
-      </a>
     </div>
   </div>
 <% else %>

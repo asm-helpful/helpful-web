@@ -12,6 +12,7 @@ Helpful::Application.routes.draw do
   get '/embed.js' => 'pages#embed', as: :embed
   get '/styleguide' => 'pages#styleguide', as: :styleguide
   get '/terms' => 'pages#terms', as: :terms
+  get '/home' => 'pages#home', as: :home
 
   # Errors
   get '/404', :to => 'errors#not_found'
@@ -93,7 +94,7 @@ Helpful::Application.routes.draw do
       resources :tags, only: [:index, :create, :destroy]
     end
 
-    resources :messages, only: [:create]
+    resources :messages, only: [:create], shallow: true
   end
 
   unauthenticated :user do

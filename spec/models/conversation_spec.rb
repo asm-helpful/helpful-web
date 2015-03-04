@@ -125,33 +125,6 @@ describe Conversation do
     end
   end
 
-  describe "#to_mailbox_hash" do
-
-    before { subject.save }
-
-    it "returns a hash containing the account_slug and the conversation_id" do
-      expect(subject.to_mailbox_hash).to include(
-        { account_slug: subject.account.slug },
-        { conversation_number: subject.number }
-      )
-    end
-  end
-
-  describe '#notify_account_people' do
-    it 'delivers the most recent message to account members' do
-      message = double('Message')
-      account_people = [double('Person')]
-
-      allow(subject).to receive(:messages) { [message] }
-      allow(subject).to receive(:most_recent_message) { message }
-      allow(subject).to receive(:account_people) { account_people }
-
-      expect(MessageMailman).to receive(:deliver).with(message, account_people)
-
-      subject.notify_account_people
-    end
-  end
-
   describe '#subject' do
     let(:conversation) { build(:conversation) }
 

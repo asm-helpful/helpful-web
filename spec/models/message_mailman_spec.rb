@@ -47,8 +47,8 @@ describe MessageMailman do
       recipient = double('Recipient', id: 2)
       message_mailman = MessageMailman.new(message, [recipient])
 
-      expect(MessageMailer).to receive(:delay) { MessageMailer }
-      expect(MessageMailer).to receive(:created).with(1, 2)
+      expect(MessageMailer).to receive(:forward).with(message, recipient) { MessageMailer}
+      expect(MessageMailer).to receive(:deliver_later)
 
       message_mailman.deliver_to(recipient)
     end

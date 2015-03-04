@@ -95,17 +95,15 @@ class AccountsController < ApplicationController
   end
 
   def account_params
-    obj = params.permit([:account, :stripeToken], {}).permit([
-      :name, :website_url, :webhook_url, :prefers_archiving, :signature,
-      :email, :stripe_subscription_id
-    ])
-
-    if @account.owner?(current_user) && params.has_key?(:stripeToken)
+    if @account.present? && @account.owner?(current_user) && params.has_key?(:stripeToken)
       params.permit(:stripeToken)
-      obj.merge!(stripe_token: params.fetch(:stripeToken, nil))
+      {stripe_token: params.fetch(:stripeToken)}
+    else
+      params.require(:account).permit([
+        :name, :website_url, :webhook_url, :prefers_archiving, :signature,
+        :email, :stripe_subscription_id, :forwarding_address
+      ])
     end
-
-    obj
   end
 
   def user_params

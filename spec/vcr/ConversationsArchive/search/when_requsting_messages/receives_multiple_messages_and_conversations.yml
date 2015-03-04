@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: delete
-    uri: http://127.0.0.1:9200/messages
+    uri: http://localhost:9200/messages
     body:
       encoding: UTF-8
       string: ''
@@ -17,15 +17,15 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Content-Length:
-      - '31'
+      - '21'
     body:
       encoding: UTF-8
-      string: '{"ok":true,"acknowledged":true}'
+      string: '{"acknowledged":true}'
     http_version: 
-  recorded_at: Thu, 17 Apr 2014 02:09:39 GMT
+  recorded_at: Fri, 20 Feb 2015 19:16:04 GMT
 - request:
     method: head
-    uri: http://127.0.0.1:9200/messages
+    uri: http://localhost:9200/messages
     body:
       encoding: UTF-8
       string: ''
@@ -45,10 +45,10 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Thu, 17 Apr 2014 02:09:39 GMT
+  recorded_at: Fri, 20 Feb 2015 19:16:04 GMT
 - request:
     method: put
-    uri: http://127.0.0.1:9200/messages
+    uri: http://localhost:9200/messages
     body:
       encoding: UTF-8
       string: '{"settings":{},"mappings":{"message":{"properties":{"content":{"type":"string"}}}}}'
@@ -65,26 +65,34 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Content-Length:
-      - '31'
+      - '21'
     body:
       encoding: UTF-8
-      string: '{"ok":true,"acknowledged":true}'
+      string: '{"acknowledged":true}'
     http_version: 
-  recorded_at: Thu, 17 Apr 2014 02:09:39 GMT
+  recorded_at: Fri, 20 Feb 2015 19:16:05 GMT
 - request:
     method: post
-    uri: http://127.0.0.1:9200/messages/message/_bulk?type=message
+    uri: http://localhost:9200/messages/message/_bulk?type=message
     body:
       encoding: UTF-8
       string: |
-        {"index":{"_id":"703b003a-f321-4fd0-9cfc-6dff32c22dfd"}}
-        {"id":"703b003a-f321-4fd0-9cfc-6dff32c22dfd","conversation_id":"ea1fd3f6-178b-4649-a13f-ffa66c6d5f13","content":"test message","data":null,"created_at":"2014-04-17T02:09:38.900Z","updated_at":"2014-04-17T02:09:38.900Z","person_id":"d7aab4e8-b9e8-464c-85a6-98f668d32d90"}
+        {"index":{"_id":"4c0ab3e1-f5f3-44ce-be79-83dbf2056b7f"}}
+        {"id":"4c0ab3e1-f5f3-44ce-be79-83dbf2056b7f","conversation_id":"2335d276-5ff8-4dda-9b83-5a8456ad8f65","content":"Oh bummer. They sent it to 15th street for some reason. I'll give them a call and see what's up.","data":null,"created_at":"2015-02-20T19:16:03.059Z","updated_at":"2015-02-20T19:16:03.059Z","person_id":"4e58ef46-20b0-4221-8ac4-514e14ab2169","webhook":null}
+        {"index":{"_id":"5041a722-cb8b-4d62-98d7-ed4ec19ea261"}}
+        {"id":"5041a722-cb8b-4d62-98d7-ed4ec19ea261","conversation_id":"1cfc2696-e72a-473a-b06f-06622db0a7bd","content":"The styling seems to be broken on the home page. Could you take a look?","data":null,"created_at":"2015-02-20T19:16:02.988Z","updated_at":"2015-02-20T19:16:02.988Z","person_id":"bcebc8ec-3f7e-4c73-b153-2e6e61dbcf2f","webhook":null}
+        {"index":{"_id":"9a084eb6-c553-4a2c-9d30-97253a27407c"}}
+        {"id":"9a084eb6-c553-4a2c-9d30-97253a27407c","conversation_id":"2335d276-5ff8-4dda-9b83-5a8456ad8f65","content":"Where's the espresso machine? Wasn't it supposed to be delivered today?","data":null,"created_at":"2015-02-20T19:16:03.049Z","updated_at":"2015-02-20T19:16:03.049Z","person_id":"ac78f669-78e6-4e31-869c-62512227d932","webhook":null}
+        {"index":{"_id":"bf6e5b13-ec19-4cf9-a00b-6e4c4849537d"}}
+        {"id":"bf6e5b13-ec19-4cf9-a00b-6e4c4849537d","conversation_id":"931302bf-6f26-48ab-98ed-c3a8d38366a0","content":"Do you want to grab breakfast to chat about Helpful?","data":null,"created_at":"2015-02-20T19:16:03.093Z","updated_at":"2015-02-20T19:16:03.093Z","person_id":"0f480096-5ff8-481e-948b-9f866e4d694e","webhook":null}
         {"index":{"_id":"c91d36fb-c406-4a06-a9b0-808c64b80e80"}}
-        {"id":"c91d36fb-c406-4a06-a9b0-808c64b80e80","conversation_id":"e1b505df-ab35-499c-957d-c734fdc8d17d","content":"test 0","data":null,"created_at":"2014-04-17T02:09:38.983Z","updated_at":"2014-04-17T02:09:38.989Z","person_id":"e55c467d-571d-4398-8a8c-ebfbf2eeef9e"}
+        {"id":"c91d36fb-c406-4a06-a9b0-808c64b80e80","conversation_id":"87d0b3b0-9a31-4236-a722-e0578ca8aee8","content":"test 0","data":null,"created_at":"2015-02-20T19:16:04.932Z","updated_at":"2015-02-20T19:16:04.936Z","person_id":"89a08329-787d-4108-952b-68b18c3735ad","webhook":null}
         {"index":{"_id":"c91d36fb-c406-4a06-a9b0-808c64b80e81"}}
-        {"id":"c91d36fb-c406-4a06-a9b0-808c64b80e81","conversation_id":"7992339d-a7b7-44dd-b55a-14daad7aa8db","content":"test 1","data":null,"created_at":"2014-04-17T02:09:39.043Z","updated_at":"2014-04-17T02:09:39.049Z","person_id":"1cd69d96-24fb-42b4-9c62-71ebd02d5c5b"}
+        {"id":"c91d36fb-c406-4a06-a9b0-808c64b80e81","conversation_id":"3cfc15b1-a1c7-4a57-8638-9a6fd2904ae1","content":"test 1","data":null,"created_at":"2015-02-20T19:16:04.948Z","updated_at":"2015-02-20T19:16:04.951Z","person_id":"0f758e86-3fbc-4648-aa38-71bec371d3e6","webhook":null}
         {"index":{"_id":"c91d36fb-c406-4a06-a9b0-808c64b80e82"}}
-        {"id":"c91d36fb-c406-4a06-a9b0-808c64b80e82","conversation_id":"77c70a8b-60ca-441b-aa77-f221a4cd968c","content":"test 2","data":null,"created_at":"2014-04-17T02:09:39.062Z","updated_at":"2014-04-17T02:09:39.068Z","person_id":"92e396f9-b261-4e17-8c5f-6bfa21088bef"}
+        {"id":"c91d36fb-c406-4a06-a9b0-808c64b80e82","conversation_id":"490c3269-b733-4d06-9c24-2cbfb872934b","content":"test 2","data":null,"created_at":"2015-02-20T19:16:04.962Z","updated_at":"2015-02-20T19:16:04.965Z","person_id":"864caf53-14a6-4f79-aeca-3deab7089a7c","webhook":null}
+        {"index":{"_id":"d6601223-c992-48b5-ba82-b4c671696cd4"}}
+        {"id":"d6601223-c992-48b5-ba82-b4c671696cd4","conversation_id":"b438594d-75a7-4539-acf7-00c631637494","content":"test message","data":null,"created_at":"2015-02-20T19:16:04.895Z","updated_at":"2015-02-20T19:16:04.895Z","person_id":"01f4bde9-6ddf-42d0-bf3a-af247e25baa6","webhook":null}
     headers:
       User-Agent:
       - Faraday v0.9.0
@@ -98,15 +106,15 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Content-Length:
-      - '493'
+      - '1004'
     body:
       encoding: UTF-8
-      string: '{"took":31,"items":[{"index":{"_index":"messages","_type":"message","_id":"703b003a-f321-4fd0-9cfc-6dff32c22dfd","_version":1,"ok":true}},{"index":{"_index":"messages","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e80","_version":1,"ok":true}},{"index":{"_index":"messages","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e81","_version":1,"ok":true}},{"index":{"_index":"messages","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e82","_version":1,"ok":true}}]}'
+      string: '{"took":35,"errors":false,"items":[{"index":{"_index":"messages","_type":"message","_id":"4c0ab3e1-f5f3-44ce-be79-83dbf2056b7f","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"5041a722-cb8b-4d62-98d7-ed4ec19ea261","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"9a084eb6-c553-4a2c-9d30-97253a27407c","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"bf6e5b13-ec19-4cf9-a00b-6e4c4849537d","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e80","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e81","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e82","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"d6601223-c992-48b5-ba82-b4c671696cd4","_version":1,"status":201}}]}'
     http_version: 
-  recorded_at: Thu, 17 Apr 2014 02:09:39 GMT
+  recorded_at: Fri, 20 Feb 2015 19:16:05 GMT
 - request:
     method: post
-    uri: http://127.0.0.1:9200/messages/_refresh
+    uri: http://localhost:9200/messages/_refresh
     body:
       encoding: UTF-8
       string: ''
@@ -125,15 +133,15 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Content-Length:
-      - '60'
+      - '50'
     body:
       encoding: UTF-8
-      string: '{"ok":true,"_shards":{"total":10,"successful":5,"failed":0}}'
+      string: '{"_shards":{"total":10,"successful":5,"failed":0}}'
     http_version: 
-  recorded_at: Thu, 17 Apr 2014 02:09:39 GMT
+  recorded_at: Fri, 20 Feb 2015 19:16:05 GMT
 - request:
     method: get
-    uri: http://127.0.0.1:9200/messages/message/_search
+    uri: http://localhost:9200/messages/message/_search
     body:
       encoding: UTF-8
       string: '{"query":{"match":{"content":"test"}}}'
@@ -150,23 +158,19 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Content-Length:
-      - '1665'
+      - '1711'
     body:
       encoding: UTF-8
-      string: '{"took":3,"timed_out":false,"_shards":{"total":5,"successful":5,"failed":0},"hits":{"total":4,"max_score":0.37158427,"hits":[{"_index":"messages","_type":"message","_id":"703b003a-f321-4fd0-9cfc-6dff32c22dfd","_score":0.37158427,
-        "_source" : {"id":"703b003a-f321-4fd0-9cfc-6dff32c22dfd","conversation_id":"ea1fd3f6-178b-4649-a13f-ffa66c6d5f13","content":"test
-        message","data":null,"created_at":"2014-04-17T02:09:38.900Z","updated_at":"2014-04-17T02:09:38.900Z","person_id":"d7aab4e8-b9e8-464c-85a6-98f668d32d90"}},{"_index":"messages","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e81","_score":0.37158427,
-        "_source" : {"id":"c91d36fb-c406-4a06-a9b0-808c64b80e81","conversation_id":"7992339d-a7b7-44dd-b55a-14daad7aa8db","content":"test
-        1","data":null,"created_at":"2014-04-17T02:09:39.043Z","updated_at":"2014-04-17T02:09:39.049Z","person_id":"1cd69d96-24fb-42b4-9c62-71ebd02d5c5b"}},{"_index":"messages","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e80","_score":0.19178301,
-        "_source" : {"id":"c91d36fb-c406-4a06-a9b0-808c64b80e80","conversation_id":"e1b505df-ab35-499c-957d-c734fdc8d17d","content":"test
-        0","data":null,"created_at":"2014-04-17T02:09:38.983Z","updated_at":"2014-04-17T02:09:38.989Z","person_id":"e55c467d-571d-4398-8a8c-ebfbf2eeef9e"}},{"_index":"messages","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e82","_score":0.19178301,
-        "_source" : {"id":"c91d36fb-c406-4a06-a9b0-808c64b80e82","conversation_id":"77c70a8b-60ca-441b-aa77-f221a4cd968c","content":"test
-        2","data":null,"created_at":"2014-04-17T02:09:39.062Z","updated_at":"2014-04-17T02:09:39.068Z","person_id":"92e396f9-b261-4e17-8c5f-6bfa21088bef"}}]}}'
+      string: '{"took":3,"timed_out":false,"_shards":{"total":5,"successful":5,"failed":0},"hits":{"total":4,"max_score":0.8784157,"hits":[{"_index":"messages","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e82","_score":0.8784157,"_source":{"id":"c91d36fb-c406-4a06-a9b0-808c64b80e82","conversation_id":"490c3269-b733-4d06-9c24-2cbfb872934b","content":"test
+        2","data":null,"created_at":"2015-02-20T19:16:04.962Z","updated_at":"2015-02-20T19:16:04.965Z","person_id":"864caf53-14a6-4f79-aeca-3deab7089a7c","webhook":null}},{"_index":"messages","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e80","_score":0.37158427,"_source":{"id":"c91d36fb-c406-4a06-a9b0-808c64b80e80","conversation_id":"87d0b3b0-9a31-4236-a722-e0578ca8aee8","content":"test
+        0","data":null,"created_at":"2015-02-20T19:16:04.932Z","updated_at":"2015-02-20T19:16:04.936Z","person_id":"89a08329-787d-4108-952b-68b18c3735ad","webhook":null}},{"_index":"messages","_type":"message","_id":"d6601223-c992-48b5-ba82-b4c671696cd4","_score":0.37158427,"_source":{"id":"d6601223-c992-48b5-ba82-b4c671696cd4","conversation_id":"b438594d-75a7-4539-acf7-00c631637494","content":"test
+        message","data":null,"created_at":"2015-02-20T19:16:04.895Z","updated_at":"2015-02-20T19:16:04.895Z","person_id":"01f4bde9-6ddf-42d0-bf3a-af247e25baa6","webhook":null}},{"_index":"messages","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e81","_score":0.19178301,"_source":{"id":"c91d36fb-c406-4a06-a9b0-808c64b80e81","conversation_id":"3cfc15b1-a1c7-4a57-8638-9a6fd2904ae1","content":"test
+        1","data":null,"created_at":"2015-02-20T19:16:04.948Z","updated_at":"2015-02-20T19:16:04.951Z","person_id":"0f758e86-3fbc-4648-aa38-71bec371d3e6","webhook":null}}]}}'
     http_version: 
-  recorded_at: Thu, 17 Apr 2014 02:09:39 GMT
+  recorded_at: Fri, 20 Feb 2015 19:16:05 GMT
 - request:
     method: get
-    uri: http://127.0.0.1:9200/messages/message/_search
+    uri: http://localhost:9200/messages/message/_search
     body:
       encoding: UTF-8
       string: '{"query":{"match":{"content":"test"}}}'
@@ -183,18 +187,14 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Content-Length:
-      - '1665'
+      - '1711'
     body:
       encoding: UTF-8
-      string: '{"took":4,"timed_out":false,"_shards":{"total":5,"successful":5,"failed":0},"hits":{"total":4,"max_score":0.37158427,"hits":[{"_index":"messages","_type":"message","_id":"703b003a-f321-4fd0-9cfc-6dff32c22dfd","_score":0.37158427,
-        "_source" : {"id":"703b003a-f321-4fd0-9cfc-6dff32c22dfd","conversation_id":"ea1fd3f6-178b-4649-a13f-ffa66c6d5f13","content":"test
-        message","data":null,"created_at":"2014-04-17T02:09:38.900Z","updated_at":"2014-04-17T02:09:38.900Z","person_id":"d7aab4e8-b9e8-464c-85a6-98f668d32d90"}},{"_index":"messages","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e81","_score":0.37158427,
-        "_source" : {"id":"c91d36fb-c406-4a06-a9b0-808c64b80e81","conversation_id":"7992339d-a7b7-44dd-b55a-14daad7aa8db","content":"test
-        1","data":null,"created_at":"2014-04-17T02:09:39.043Z","updated_at":"2014-04-17T02:09:39.049Z","person_id":"1cd69d96-24fb-42b4-9c62-71ebd02d5c5b"}},{"_index":"messages","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e80","_score":0.19178301,
-        "_source" : {"id":"c91d36fb-c406-4a06-a9b0-808c64b80e80","conversation_id":"e1b505df-ab35-499c-957d-c734fdc8d17d","content":"test
-        0","data":null,"created_at":"2014-04-17T02:09:38.983Z","updated_at":"2014-04-17T02:09:38.989Z","person_id":"e55c467d-571d-4398-8a8c-ebfbf2eeef9e"}},{"_index":"messages","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e82","_score":0.19178301,
-        "_source" : {"id":"c91d36fb-c406-4a06-a9b0-808c64b80e82","conversation_id":"77c70a8b-60ca-441b-aa77-f221a4cd968c","content":"test
-        2","data":null,"created_at":"2014-04-17T02:09:39.062Z","updated_at":"2014-04-17T02:09:39.068Z","person_id":"92e396f9-b261-4e17-8c5f-6bfa21088bef"}}]}}'
+      string: '{"took":2,"timed_out":false,"_shards":{"total":5,"successful":5,"failed":0},"hits":{"total":4,"max_score":0.8784157,"hits":[{"_index":"messages","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e82","_score":0.8784157,"_source":{"id":"c91d36fb-c406-4a06-a9b0-808c64b80e82","conversation_id":"490c3269-b733-4d06-9c24-2cbfb872934b","content":"test
+        2","data":null,"created_at":"2015-02-20T19:16:04.962Z","updated_at":"2015-02-20T19:16:04.965Z","person_id":"864caf53-14a6-4f79-aeca-3deab7089a7c","webhook":null}},{"_index":"messages","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e80","_score":0.37158427,"_source":{"id":"c91d36fb-c406-4a06-a9b0-808c64b80e80","conversation_id":"87d0b3b0-9a31-4236-a722-e0578ca8aee8","content":"test
+        0","data":null,"created_at":"2015-02-20T19:16:04.932Z","updated_at":"2015-02-20T19:16:04.936Z","person_id":"89a08329-787d-4108-952b-68b18c3735ad","webhook":null}},{"_index":"messages","_type":"message","_id":"d6601223-c992-48b5-ba82-b4c671696cd4","_score":0.37158427,"_source":{"id":"d6601223-c992-48b5-ba82-b4c671696cd4","conversation_id":"b438594d-75a7-4539-acf7-00c631637494","content":"test
+        message","data":null,"created_at":"2015-02-20T19:16:04.895Z","updated_at":"2015-02-20T19:16:04.895Z","person_id":"01f4bde9-6ddf-42d0-bf3a-af247e25baa6","webhook":null}},{"_index":"messages","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e81","_score":0.19178301,"_source":{"id":"c91d36fb-c406-4a06-a9b0-808c64b80e81","conversation_id":"3cfc15b1-a1c7-4a57-8638-9a6fd2904ae1","content":"test
+        1","data":null,"created_at":"2015-02-20T19:16:04.948Z","updated_at":"2015-02-20T19:16:04.951Z","person_id":"0f758e86-3fbc-4648-aa38-71bec371d3e6","webhook":null}}]}}'
     http_version: 
-  recorded_at: Thu, 17 Apr 2014 02:09:39 GMT
-recorded_with: VCR 2.8.0
+  recorded_at: Fri, 20 Feb 2015 19:16:05 GMT
+recorded_with: VCR 2.9.3

@@ -1,12 +1,10 @@
 require 'activerecord/uuid'
 require 'elasticsearch/model'
+require 'mail/elements/address'
 
 class Message < ActiveRecord::Base
   include ActiveRecord::UUID
   include Elasticsearch::Model
-
-  has_one :account,
-    through: :conversation
 
   has_many :attachments,
     inverse_of: :message
@@ -16,10 +14,13 @@ class Message < ActiveRecord::Base
 
   belongs_to :person
 
-  has_many :read_receipts
+  belongs_to :in_reply_to,
+    class_name: 'Message'
 
   delegate :account,
     to: :conversation
+
+  has_many :read_receipts
 
   store_accessor :data, :recipient, :headers, :raw, :body, :subject
 
@@ -27,6 +28,9 @@ class Message < ActiveRecord::Base
     presence: true
 
   validates :conversation_id,
+    presence: true
+
+  validates :message_id,
     presence: true
 
   validates :content,
@@ -41,15 +45,27 @@ class Message < ActiveRecord::Base
   after_commit :enqueue_to_update_search_index,
     on: [:create, :update]
 
-  after_commit :send_email,
+  after_commit :deliver,
     on: :create
 
   scope :most_recent, -> { order('updated_at DESC') }
 
   accepts_nested_attributes_for :attachments
 
+  before_validation :generate_message_id
+
   mapping do
     indexes :content
+  end
+
+  def reply?
+    in_reply_to.present?
+  end
+
+  def from_address
+    from = self.account.address.dup
+    from.display_name = self.person.name
+    from
   end
 
   def webhook_data
@@ -75,12 +91,12 @@ class Message < ActiveRecord::Base
     ElasticsearchMessageIndexWorker.perform_async(self.id)
   end
 
-  def send_email
-    MessageMailman.deliver(self, mail_recipients)
+  def deliver
+    MessageMailman.deliver(self, recipients)
   end
 
-  def mail_recipients
-    conversation.participants - [self.person]
+  def recipients
+    ((account.participants + conversation.participants_with_assignee) - [person]).compact
   end
 
   def trigger_pusher_new_message
@@ -94,4 +110,11 @@ class Message < ActiveRecord::Base
       logger.error e.message
     end
   end
+
+  private
+
+  def generate_message_id
+    self.message_id ||= "<#{SecureRandom.uuid}@helpful.mail>"
+  end
+
 end

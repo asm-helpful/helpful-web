@@ -67,9 +67,6 @@ class Conversation < ActiveRecord::Base
   sequential column: :number,
     scope: :account_id
 
-  after_commit :notify_account_people,
-    on: :create
-
   def archive!
     update(archived: true)
   end
@@ -122,30 +119,16 @@ class Conversation < ActiveRecord::Base
     number.to_param
   end
 
-  def to_mailbox_hash
-    {
-      account_slug: self.account.slug,
-      conversation_number: self.number
-    }
-  end
-
   def contains_message_id?(message_id)
     messages.detect { |message| message.id == message_id }
   end
 
-  def notify_account_people
-    return if messages.empty?
-    MessageMailman.deliver(most_recent_message, account_people)
-  end
-
-  def notify?(recipient)
-    recipient.notify? ||
-      recipient.notify_when_assigned? &&
-      recipient == user
-  end
-
   def stale?
     !archived? && last_activity_at < 3.days.ago
+  end
+
+  def participants_with_assignee
+    (participants | [user && user.person]).compact
   end
 
   private

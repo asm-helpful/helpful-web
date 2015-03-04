@@ -1,39 +1,21 @@
 class MessageMailer < ActionMailer::Base
   include SummaryHelper
-  include NicknameHelper
   include MarkdownHelper
   include ConversationHelper
 
-  def created(message_id, recipient_id)
-    @message = Message.find(message_id)
-    @recipient = Person.find(recipient_id)
-    @message_markdown = markdown(@message.content)
-    @message_text = stripdown(@message.content)
-
-    @conversation = @message.conversation
-    @account = @conversation.account
-
-    subject = summary(@conversation)
-
-    @signature_markdown = @account.signature ? markdown(@account.signature) : ''
-    @signature_text = @account.signature ? stripdown(@account.signature) : ''
-
-    to = Mail::Address.new(@recipient.email)
-    to.display_name = @recipient.name
-
-    from = Mail::Address.new("notifications@#{Helpful.incoming_email_domain}")
-    from.display_name = nickname(@message.person)
-
-    reply_to = @conversation.mailbox_email.dup
-
-    @message.attachments.each do |attachment|
-      attachments[File.basename(attachment.file.path)] = File.read(attachment.file.path)
+  def forward(message, person)
+    if message.reply?
+      headers['In-Reply-To'] = message.in_reply_to.message_id
     end
 
-    mail to: to,
-         # FIXME: CC recipient instead
-         from: from,
-         reply_to: reply_to,
-         subject: subject
+    mail(
+      to: person.email_address,
+      from: message.from_address,
+      subject: message.subject,
+      message_id: message.message_id,
+    ) do |format|
+      format.text { render(plain: message.content) }
+      format.html { render(html: message.html_content.html_safe) }
+    end
   end
 end

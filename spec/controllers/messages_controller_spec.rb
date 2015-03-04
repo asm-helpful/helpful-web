@@ -5,7 +5,8 @@ describe MessagesController do
   let!(:user) { create(:user) }
   let!(:person) { create(:person, user: user, account: account) }
   let!(:membership) { create(:membership, user: user, account: account, role: 'agent') }
-  let!(:conversation) { create(:conversation, account: account) }
+  let(:conversation) { create(:conversation, account: account) }
+  let!(:message) { create(:message, conversation: conversation) }
 
   before do
     sign_in(user)
@@ -16,16 +17,17 @@ describe MessagesController do
       {
         account_id: account.slug,
         message: {
-          content: 'I need help please.',
-          conversation_id: conversation.id
+          in_reply_to_id: message.id,
+          subject: 'Help!',
+          content: 'I need help please.'
         }
       }
 
-    message = conversation.messages.last
+    reply = message.conversation.messages.last
 
-    expect(message).to be_present
-    expect(message.person).to eq(person)
-    expect(response).to redirect_to(account_conversation_path(account, conversation))
+    expect(reply).to be_present
+    expect(reply.person).to eq(person)
+    expect(response).to redirect_to(account_conversation_path(account, reply.conversation))
   end
 
   it "adds a message to the conversation and archives it" do
@@ -34,14 +36,16 @@ describe MessagesController do
         account_id: account.slug,
         archive_conversation: true,
         message: {
+          in_reply_to_id: message.id,
+          subject: 'Help!',
           content: 'I need help please.',
-          conversation_id: conversation.id
         }
       }
-    message = conversation.messages.last
-    
-    expect(message).to be_present
-    expect(message.person).to eq(person)
+
+    reply = message.conversation.messages.last
+
+    expect(reply).to be_present
+    expect(reply.person).to eq(person)
     expect(response).to redirect_to(inbox_account_conversations_path(account))
     expect(flash[:notice]).to eq("The conversation has been archived and the message sent.")
   end

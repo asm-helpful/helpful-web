@@ -41,6 +41,17 @@ class Person < ActiveRecord::Base
     end
   end
 
+  def self.find_or_create_by_addr(addr)
+    find_by(email: addr.address) || initialize_by_addr(addr)
+  end
+
+  def self.initialize_by_addr(addr)
+    new(
+      email: addr.address,
+      name:  addr.display_name
+    )
+  end
+
   def account_member_role?(account, role)
     memberships.where(account_id: account.id, role: role).exists?
   end
@@ -54,20 +65,19 @@ class Person < ActiveRecord::Base
     end
   end
 
-  def external?
-    user.nil?
+  def email_address
+    addr = Mail::Address.new(email)
+    addr.display_name = name
+    addr
   end
 
   def notify?
-    !user || user.notify?
+    # Can't inverse the logic of this — #never_notify? isn't binary
+    !agent? || !user.never_notify?
   end
 
-  def notify_when_assigned?
-    !user || user.notify_when_assigned?
-  end
-
-  def never_notify?
-    user && user.never_notify?
+  def agent?
+    user.present?
   end
 
   private

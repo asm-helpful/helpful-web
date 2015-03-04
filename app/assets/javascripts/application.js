@@ -9,7 +9,6 @@
 //= require command_bar
 //= require jquery-autosize
 //= require search_bar
-//= require billing
 //= require homepage
 //= require email_check
 //= require handlebars

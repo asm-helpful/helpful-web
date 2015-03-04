@@ -16,12 +16,6 @@ class Api::ConversationsController < ApiController
     render json: @conversations, include_messages: false
   end
 
-  def create
-    find_account!
-    @conversation = @account.conversations.create!(conversation_params)
-    render json: @conversation, status: :created
-  end
-
   def show
     @conversation = Conversation.find(params.fetch(:id))
     authorize! AccountReadPolicy.new(@conversation.account, current_user)

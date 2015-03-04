@@ -2,20 +2,21 @@
 <%= render 'shared/navbar' %>
 <%= render 'layouts/flash' %>
 
-<div class="container">
+<div class="container py4">
   <div class="row">
     <div class="col-xs-10 col-xs-offset-1">
 
       <!-- Nav tabs -->
       <ul class="nav nav-tabs" role="tablist">
-        <li class="active"><a href="#basic" role="tab" data-toggle="tab"><%= t('shared.navbar.account') %></a></li>
-        <li><a href="#team" role="tab" data-toggle="tab"><%= t('shared.navbar.team') %></a></li>
-        <li><a href="#billing" role="tab" data-toggle="tab"><%= t('shared.navbar.billing') %></a></li>
+        <li class="active"><a href="#basic" role="tab" data-toggle="tab"><%= t('shared.navbar.general') %></a></li>
+        <li><a href="#team" role="tab" data-toggle="tab"><%= t('shared.navbar.members') %></a></li>
         <li><a href="#canned-responses" role="tab" data-toggle="tab"><%= t('shared.navbar.canned_responses') %></a></li>
+        <li><a href="#email-forwarding" role="tab" data-toggle="tab"><%= t('shared.navbar.email_forwarding') %></a></li>
+        <li><a href="#billing" role="tab" data-toggle="tab"><%= t('shared.navbar.billing') %></a></li>
       </ul>
 
       <!-- Tab panes -->
-      <div class="sheet">
+      <div class="bg-white p3">
         <div class="tab-content">
           <div class="tab-pane active" id="basic">
 
@@ -62,6 +63,10 @@
 
           <div class="tab-pane" id="canned-responses">
             <%= render 'canned_responses' %>
+          </div><!-- #canned-responses -->
+
+          <div class="tab-pane" id="email-forwarding">
+            <%= render 'email_forwarding' %>
           </div><!-- #canned-responses -->
         </div>
       </div>
