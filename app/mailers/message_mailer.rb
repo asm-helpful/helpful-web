@@ -4,6 +4,8 @@ class MessageMailer < ActionMailer::Base
   include ConversationHelper
 
   def forward(message, person)
+    headers['X-Auto-Response-Suppress'] = 'All'
+
     if message.reply?
       headers['In-Reply-To'] = message.in_reply_to.message_id
     end
