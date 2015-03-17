@@ -37,6 +37,9 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :person
 
+  after_commit :track_analytics,
+    on: :create
+
   def avatar
     self.try(:person).try(:avatar)
   end
@@ -52,4 +55,19 @@ class User < ActiveRecord::Base
   def never_notify?
     notification_setting == 'never'
   end
+
+  def track_analytics
+    Analytics.identify(
+      user_id: id,
+      traits: {
+        email: email
+      }
+    )
+    Analytics.track(
+      user_id: id,
+      event: 'Signed up',
+      timestamp: created_at
+    )
+  end
+
 end
