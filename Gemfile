@@ -8,7 +8,7 @@ gem 'dotenv-rails', groups: [:development, :test]
 # Alphabetical list
 
 gem 'active_model_serializers', github: 'rails-api/active_model_serializers', branch: '0-8-stable'
-gem 'analytics-ruby'
+gem 'analytics-ruby', '~> 2.0.0', require: 'segment/analytics'
 gem 'awesome_print'
 gem 'aws-sdk'
 gem 'bootstrap-sass', github: 'twbs/bootstrap-sass'

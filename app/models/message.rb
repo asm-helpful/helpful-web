@@ -48,6 +48,9 @@ class Message < ActiveRecord::Base
   after_commit :deliver,
     on: :create
 
+  after_commit :track_analytics,
+    on: :create
+
   scope :most_recent, -> { order('updated_at DESC') }
 
   accepts_nested_attributes_for :attachments
@@ -107,6 +110,14 @@ class Message < ActiveRecord::Base
     rescue Pusher::Error => e
       logger.error e.message
     end
+  end
+
+  def track_analytics
+    Analytics.track(
+      user_id: person.user.id,
+      event: 'Message created',
+      timestamp: created_at
+    ) if person.agent?
   end
 
   private
