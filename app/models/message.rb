@@ -115,7 +115,7 @@ class Message < ActiveRecord::Base
   def track_analytics
     Analytics.track(
       user_id: person.user.id,
-      event: 'Message created',
+      event: 'Message sent',
       timestamp: created_at
     ) if person.agent?
   end
