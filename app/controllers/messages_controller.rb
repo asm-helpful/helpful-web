@@ -7,12 +7,6 @@ class MessagesController < ApplicationController
     message = MessageFactory.build(message_params)
 
     if message.save
-      Analytics.track(
-        user_id: current_user.id,
-        event: 'New Message',
-        properties: { action: params['commit'] }
-      )
-
       message.conversation.archive! if archive_conversation?
 
       respond_with message, location: account_conversation_path(message.account, message.conversation) do |format|
@@ -32,8 +26,6 @@ class MessagesController < ApplicationController
       end
 
     else
-      Analytics.track(user_id: current_user.id, event: 'Message Save Problem')
-
       respond_with message do |format|
         format.html do
           redirect_to account_conversation_path(message.account, message.conversation),
