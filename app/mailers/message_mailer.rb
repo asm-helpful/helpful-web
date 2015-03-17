@@ -8,14 +8,11 @@ class MessageMailer < ActionMailer::Base
       headers['In-Reply-To'] = message.in_reply_to.message_id
     end
 
-    mail(
-      to: person.email_address,
-      from: message.from_address,
-      subject: message.subject,
-      message_id: message.message_id,
-    ) do |format|
-      format.text { render(plain: message.content) }
-      format.html { render(html: message.html_content.html_safe) }
-    end
+    @message = message
+
+    mail to: person.email_address,
+         from: message.from_address,
+         subject: message.conversation.subject,
+         message_id: message.message_id
   end
 end
