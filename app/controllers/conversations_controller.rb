@@ -1,7 +1,7 @@
 class ConversationsController < ApplicationController
   before_action :authenticate_user!
   before_action :find_account!, except: [:index]
-  
+
 
   respond_to :html, :json
 
@@ -28,8 +28,6 @@ class ConversationsController < ApplicationController
     end
 
     @assignee = User.find(params[:assignee]) if params[:assignee]
-
-    Analytics.track(user_id: current_user.id, event: 'Searched For', properties: { query: params[:q] })
 
     respond_with @conversations, location: inbox_account_conversations_path(@account)
   end
@@ -73,13 +71,13 @@ class ConversationsController < ApplicationController
 
   def find_account!
     @account = Account.find_by!(slug: params.fetch(:account_id))
-    
+
     begin
       authorize! AccountReadPolicy.new(@account, current_user)
     rescue
       redirect_to new_user_session_path
     end
-    
+
   end
 
   def conversation_params
@@ -94,6 +92,6 @@ class ConversationsController < ApplicationController
     elsif @conversation.just_unarchived?
       flash[:notice] = "The conversation has been moved to the inbox."
     end
-  end 
+  end
 
 end
