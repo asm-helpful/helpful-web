@@ -48,8 +48,8 @@ describe ConversationsController do
   describe '#search', vcr: true do
     let!(:messages) {
       [
-        create(:message, content: 'This is broken', account: account), 
-        create(:message, content: 'Hi, my name is Ben. I need help', account: account)
+        create(:message, content: 'This is broken', conversation: conversation),
+        create(:message, content: 'Hi, my name is Ben. I need help', conversation: conversation)
       ]
     }
 
@@ -77,8 +77,10 @@ describe ConversationsController do
           format: :json
         }
 
-      expect(JSON.parse(response.body)['conversations'].length).to eq(1)
-      expect(JSON.parse(response.body)['conversations'][0]['messages'][0]['body']).to include('Ben')
+      body = JSON.parse(response.body)
+
+      expect(body['conversations']).to_not be_empty
+      expect(body['conversations'][0]['messages'].any? {|m| m['body'].include?('Ben') }).to be_truthy
     end
   end
 end

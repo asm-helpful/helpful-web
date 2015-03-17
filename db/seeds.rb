@@ -1,25 +1,6 @@
-# Current billing plans
-starter_kit = BillingPlan.create slug: 'starter-kit',
-                   name: "Starter Kit",
-                   max_conversations: 500,
-                   price: 0
+# Accounts
 
-BillingPlan.create slug: 'growing',
-                   name: "Growing",
-                   max_conversations: 1000,
-                   price: 50
-
-BillingPlan.create slug: 'premium',
-                   name: "Premium",
-                   max_conversations: 3000,
-                   price: 100
-
-BillingPlan.create slug: 'super',
-                   name: "Super",
-                   max_conversations: 10000,
-                   price: 250
-
-account = Account.create!(name: 'Test Corp', billing_plan: starter_kit, stripe_token: 'testing')
+account = Account.create!(name: 'Test Corp')
 
 patrick = User.create!(email: 'patrick@example.com', password: 'password')
 Membership.create!(account: account, user: patrick, role: 'owner')

@@ -6,8 +6,6 @@ describe(IncomingMessagesController, :create) do
     post :create, :content      => args[:content] || 'test',
          :account      => args[:account] || account.slug,
          :email        => args[:email] || 'test@example.com',
-         :conversation => args[:conversation] || nil,
-         :attachment   => args[:attachment] || nil,
          :format       => :json
   end
 
@@ -63,28 +61,5 @@ describe(IncomingMessagesController, :create) do
     assert_equal 'Chris', message.person.name
   end
 
-  # Conversations
 
-  it 'persists a new conversation when no conversation_id is present' do
-    expect { create_post(@account) }.to change { Conversation.count }.by(1)
-  end
-
-  it 'does not persist a new conversation when conversation_id is passed' do
-    conversation = create(:conversation, account: @account)
-    expect { create_post(@account, conversation: conversation.number) }.to_not change { Conversation.count }
-  end
-
-  it 'links to the correct conversation when conversation_id is passed' do
-    conversation = create(:conversation, account: @account)
-    create_post(@account, conversation: conversation.number)
-    message = find_message_from_response(@response)
-    assert_equal conversation, message.conversation
-  end
-
-  it 'add attachments to messages' do
-    conversation = create(:conversation, account: @account)
-    create_post(@account, conversation: conversation.number, attachment: File.new(File.join(Rails.root, "app", "assets", "images", "logo.png")))
-    message = find_message_from_response(@response)
-    assert_equal message.attachments.count, 1
-  end
 end

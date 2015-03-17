@@ -1,92 +1,86 @@
-<div class="row">
-  <div class="col-md-6">
-    <h4 class="section-title"><%= t('.members') %></h4>
 
-    <table class="table">
-      <tbody>
-        <% @account.team.each do |membership| %>
-          <tr>
-            <td>
-              <%= avatar(membership.user, 40) %>
-            </td>
-            <td>
-              <% if membership.user.name %>
-                <strong><%= membership.user.name %></strong>
-                <% if membership.owner? %>
-                  <span class="text-muted pull-right">(owner)</span>
-                <% end %>
-                <br>
-                <span class="text-muted"><%= membership.user.email %></span>
-              <% else %>
-                <span class="geomicon geomicon-envelope text-muted"></span>
-                <%= membership.user.email %>
-              <% end %>
-            </td>
-            <td>
-              <% unless membership.user.accepted_or_not_invited? %>
-                <%= t('.invitation_sent') %> <%= time_ago_in_words(membership.user.invitation_sent_at) %> <%= t('general.ago') %>
-              <% end %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
 
-  </div>
-  <div class="col-md-6">
+<% if InvitationCreatePolicy.new(@account, current_user, Membership.new(user: @user, account: @account)).access? %>
+  <% if @user %>
+    <%= render 'shared/error_messages', target: @user %>
+  <% end %>
 
-    <% if InvitationCreatePolicy.new(@account, current_user, Membership.new(user: @user, account: @account)).access? %>
-      <% if @user %>
-        <%= render 'shared/error_messages', target: @user %>
-      <% end %>
-
-      <%= form_for @user, url: invitation_path(:user), html: { method: :post } do |f| %>
-        <%= hidden_field_tag :account_id, @account.slug %>
-        <div class="form-group">
-          <%= f.label :email, class: 'control-label' %>
-          <div class="row">
-            <div class="col-md-9">
-              <%= f.text_field :email, class: 'form-control' %></p>
-            </div>
-            <div class="col-md-3">
-              <%= f.submit t('.send'), class: 'btn btn-primary' %>
-            </div>
-          </div>
+  <%= form_for @user, url: invitation_path(:user), html: { method: :post } do |f| %>
+    <%= hidden_field_tag :account_id, @account.slug %>
+    <div class="form-group">
+      <%= f.label :email, class: 'control-label' %>
+      <div class="row">
+        <div class="col-md-9">
+          <%= f.text_field :email, class: 'form-control' %></p>
         </div>
-      <% end %>
+        <div class="col-md-3">
+          <%= f.submit t('.send'), class: 'btn btn-primary' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+
+<table class="table">
+  <tbody>
+    <% @account.team.each do |membership| %>
+      <tr>
+        <td width="1">
+          <%= avatar(membership.user, 44) %>
+        </td>
+        <td>
+          <% if membership.user.name %>
+            <strong><%= membership.user.name %></strong>
+
+            <br>
+            <span class="text-muted"><%= membership.user.email %></span>
+          <% else %>
+            <span class="geomicon geomicon-envelope text-muted"></span>
+            <%= membership.user.email %>
+          <% end %>
+        </td>
+        <td class="text-muted">
+          <% if membership.owner? %>
+            Owner
+          <% end %>
+        </td>
+        <td>
+          <% unless membership.user.accepted_or_not_invited? %>
+            <%= t('.invitation_sent') %> <%= time_ago_in_words(membership.user.invitation_sent_at) %> <%= t('general.ago') %>
+          <% end %>
+        </td>
+      </tr>
     <% end %>
 
-    <h4 class="section-title"><%= t('.invitations') %></h4>
+    <% @account.invitations.each do |membership| %>
+      <tr style="opacity:.5">
+        <td width="1">
+          <%= avatar(membership.user, 44) %>
+        </td>
+        <td>
+          <% if membership.user.name %>
+            <strong><%= membership.user.name %></strong>
+          <% else %>
+            <%= membership.user.email %>
+          <% end %><br>
+          <span class="text-muted"><small></small></span>
+        </td>
 
-    <% if @account.invitations.present? %>
+        <td>
+          <%= t('.invitation_sent') %>
+          <%= time_ago_in_words(membership.user.invitation_sent_at) %>
+          <%= t('general.ago') %>
+        </td>
 
-      <table class="table">
-        <% @account.invitations.each do |membership| %>
-          <tr>
-            <td>
-              <% if membership.user.name %>
-                <strong><%= membership.user.name %></strong>
-              <% else %>
-                <%= membership.user.email %>
-              <% end %><br>
-              <span class="text-muted"><small><%= t('.invitation_sent') %> <%= time_ago_in_words(membership.user.invitation_sent_at) %> <%= t('general.ago') %></small></span>
-            </td>
-
-            <td>
-              <%= form_for @user, url: invitation_path(:user), html: { method: :post } do |f| %>
-                <%= hidden_field_tag :account_id, @account.slug %>
-                <%= f.hidden_field :email, value: membership.user.email %>
-                <%= f.submit t('.reinvite'), class: 'btn btn-primary' %>
-              <% end %>
-            </td>
-          </tr>
-        <% end %>
-      </table>
-
-    <% else %>
-
-      <p class="text-muted"><%= t('.no_unaccepted') %></p>
-
+        <td>
+          <%= form_for @user, url: invitation_path(:user), html: { method: :post } do |f| %>
+            <%= hidden_field_tag :account_id, @account.slug %>
+            <%= f.hidden_field :email, value: membership.user.email %>
+            <%= f.submit t('.reinvite'), class: 'btn btn-link' %>
+          <% end %>
+        </td>
+      </tr>
     <% end %>
-  </div>
-</div>
+  </tbody>
+</table>

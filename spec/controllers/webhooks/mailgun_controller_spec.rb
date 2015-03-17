@@ -30,6 +30,7 @@ describe Webhooks::MailgunController do
     post :create, mailgun_webhook_signature.merge(
         from:             "test@test.com",
         subject:          "test email",
+        'Message-Id'      => "<#{SecureRandom.uuid}@example.mail",
         recipient:        "#{account.slug}@helpful.io",
         'body-plain'      =>  "Test email.\n Thanks",
         'stripped-text'   =>  "Test email.\n Thanks",
@@ -60,16 +61,16 @@ describe Webhooks::MailgunController do
       end
     end
 
-    # FIXME: would be nicer to reuse the tests in some way instead of 
+    # FIXME: would be nicer to reuse the tests in some way instead of
     # copying and pasting them and having seperate contexts
     # I tried meta programming but there were some weird issues
-    # maybe its a rspec beta issue. For now it works for testing the 
+    # maybe its a rspec beta issue. For now it works for testing the
     # seperate email address types
     context "with a valid signature" do
       context "accountslug@helpful.io type email" do
-        
+
         let(:email) { "#{account.slug}@helpful.io" }
-        
+
         it "is accepted" do
           post_create(recipient: email)
           expect(response).to be_success
@@ -102,7 +103,7 @@ describe Webhooks::MailgunController do
       end
 
       context "abc123sha@helpful.io type email" do
-        let(:email) { "#{conversation.id}@helpful.io" }
+        let(:email) { account.address }
 
         it "is accepted" do
           post_create(recipient: email)
@@ -164,39 +165,39 @@ describe Webhooks::MailgunController do
     # end
   end
 
-  describe "#parse_identifiers" do
-    context "abc123sha@helpful.io email format" do
-      
-      let(:to_address) { conversation.mailbox_email.to_s }
-
-      before do
-        @hash = controller.send(:parse_identifiers, to_address)
-      end
-
-      it "returns a hash containing the account_slug" do
-        expect(@hash[:account_slug]).to eq(account.slug)
-      end
-
-      it "returns a hash containing the conversation number" do
-        expect(@hash[:conversation_number]).to eq(conversation.number)
-      end
-    end
-
-    context "accountslug@helpful.io email format" do
-      
-      let(:to_address) { "#{account.slug}@helpful.io" }
-
-      before do
-        @hash = controller.send(:parse_identifiers, to_address)
-      end
-      
-      it "returns a hash containing the account_slug" do
-        expect(@hash[:account_slug]).to eq(account.slug)
-      end
-      
-      it "returns a hash that has a nil conversation_number" do
-        expect(@hash[:conversation_number]).to be_nil
-      end
-    end
-  end
+  # describe "#parse_identifiers" do
+  #   context "abc123sha@helpful.io email format" do
+  #
+  #     let(:to_address) { conversation.mailbox_email.to_s }
+  #
+  #     before do
+  #       @hash = controller.send(:parse_identifiers, to_address)
+  #     end
+  #
+  #     it "returns a hash containing the account_slug" do
+  #       expect(@hash[:account_slug]).to eq(account.slug)
+  #     end
+  #
+  #     it "returns a hash containing the conversation number" do
+  #       expect(@hash[:conversation_number]).to eq(conversation.number)
+  #     end
+  #   end
+  #
+  #   context "accountslug@helpful.io email format" do
+  #
+  #     let(:to_address) { "#{account.slug}@helpful.io" }
+  #
+  #     before do
+  #       @hash = controller.send(:parse_identifiers, to_address)
+  #     end
+  #
+  #     it "returns a hash containing the account_slug" do
+  #       expect(@hash[:account_slug]).to eq(account.slug)
+  #     end
+  #
+  #     it "returns a hash that has a nil conversation_number" do
+  #       expect(@hash[:conversation_number]).to be_nil
+  #     end
+  #   end
+  # end
 end

@@ -1,5 +1,6 @@
 class MessageSerializer < BaseSerializer
-  attributes :body, :body_html, :content, :conversation_id
+  attributes :message_id, :body, :body_html, :content, :conversation_id
+  attributes :in_reply_to_id
 
   has_one :person
 

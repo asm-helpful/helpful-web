@@ -21,6 +21,7 @@ describe UsersController do
       }
 
       user.reload
+      person.reload
 
       expect(response).to redirect_to(edit_user_path)
 

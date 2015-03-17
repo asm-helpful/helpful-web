@@ -5,7 +5,6 @@ describe 'showing all converastions' do
   let(:account) { user.accounts.first }
   let!(:inbox_conversation) { create(:conversation_with_messages, account: account, archived: false) }
   let!(:archive_conversation) { create(:conversation_with_messages, account: account, archived: true) }
-  let!(:unpaid_conversation) { create(:conversation_with_messages, account: account, archived: false, hidden: true) }
 
   before { login_as(user) }
 

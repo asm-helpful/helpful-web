@@ -52,8 +52,8 @@ var Response = React.createClass({
 
     var data = {
       message: {
-        conversation_id: this.props.conversation.id,
-        content: $('.medium-editor').html()
+        content: $('.medium-editor').html(),
+        in_reply_to_id: _.last(this.props.conversation.messages).id
       }
     };
 

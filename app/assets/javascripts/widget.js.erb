@@ -10,7 +10,7 @@
 // The value of `data-helpful` should be the account slug of the Helpful account
 // where the new message should be created.
 //
-// 
+//
 // No need for jQuery! Plain old Javascript!
 //
 (function() {
@@ -22,8 +22,11 @@
     var load_js = function () {
       var js_el = document.createElement('script');
       js_el.type = 'text/javascript';
-      // js_el.src = 'http://localhost:5000/assets/widget-content.js' // DEV
-      js_el.src = '//assets.helpful.io/assets/widget-content.js' // PROD
+      <% if Rails.env.development? %>
+        js_el.src = '<%= javascript_url('widget-content') %>'
+      <% else %>
+        js_el.src = '//assets.helpful.io/assets/widget-content.js'
+      <% end %>
       document.body.appendChild(js_el);
     }
 
@@ -31,8 +34,11 @@
     css_el.rel = 'stylesheet';
     css_el.type = 'text/css';
     css_el.addEventListener('load', load_js);
-    // css_el.href = 'http://localhost:5000/assets/widget.css'; // DEV
-    css_el.href = '//assets.helpful.io/assets/widget.css'; // PROD
+    <% if Rails.env.development? %>
+      css_el.href = '<%= stylesheet_url('widget') %>'
+    <% else %>
+      css_el.href = '//assets.helpful.io/assets/widget.css';
+    <% end %>
     css_el.media = 'all';
     document.head.appendChild(css_el);
   }
@@ -103,7 +109,7 @@
     {
       // calculate widget location, width = 300px, height = 325px, minimum viewport margin = 25px
       var el_pos = this.source.getBoundingClientRect();
-      
+
       var widget_top = 0;
       var widget_left = 0;
 
@@ -117,7 +123,7 @@
         // show above
         widget_top = this.getSourceOffsetTop() - 355;
       }
-      
+
       widget_left = this.getSourceOffsetLeft() + (this.source.offsetWidth / 2) - 175; // center relative to source
       document.querySelector('.helpful-pointer').style.left = '50%';
 
@@ -218,8 +224,11 @@
 
       var js_el = document.createElement('script');
       js_el.type = 'text/javascript';
-      // js_el.src = 'http://localhost:5000/incoming_message?' + params; // DEV
-      js_el.src = '//helpful.io/incoming_message?' + params; // PROD
+      <% if Rails.env.development? %>
+        js_el.src = '<%= Rails.application.routes.url_helpers.incoming_message_path %>?' + params;
+      <% else %>
+        js_el.src = '//helpful.io/incoming_message?' + params;
+      <% end %>
 
       document.body.appendChild(js_el);
     });

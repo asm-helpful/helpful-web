@@ -1,73 +1,36 @@
-<%= form_for @account, method: :patch, html: {class: 'form'} do |f| %>
-
-  <fieldset>
-
-    <div class="form-group">
-
-      <h2><%= t('.upgrade_plan') %></h2>
-
-      <p><%= t('.up_help') %></p>
-
-      <script async src="https://assets.helpful.io/assets/widget.js"></script>
-      <% if signed_in? %>
-        <%= mail_to 'helpful@helpful.io', t('.ask_for_help'), data: {helpful: 'helpful', 'helpful-email' => current_user.email, 'helpful-name' => current_user.name}, class: 'btn btn-default' %>
-      <% else %>
-        <%= mail_to 'helpful@helpful.io', t('.ask_for_help'), data: {helpful: 'helpful'}, class: 'btn btn-default' %>
-      <% end %>
-
-    </div>
-
-    <div class="form-group">
-      <div class="row">
-        <% BillingPlan.options.each do |plan| %>
-          <div class="col-xs-12 col-sm-6 col-md-3">
-            <div class="panel panel-default text-center">
-              <h4 class="text-capitalize">
-                <%= plan.name %>
-              </h4>
-              <p>
-                <strong>&nbsp;<%= number_with_delimiter(plan.max_conversations, delimiter: ",") %> <%= t('.conversations') %></strong>
-              </p>
-              <p>
-                <% if plan.price.zero? %>
-                  <%= t('.totally_free') %>
-                <% else %>
-                  <%= number_to_currency(plan.price, precision: 0) %>/month
-                <% end %>
-              </p>
-
-              <button class="btn btn-default<% if plan == @account.billing_plan %> btn-link plan-subscribed<% end %>"
-              data-plan-slug="<%= plan.slug %>"
-              data-plan-name="<%= plan.name %>"
-              data-plan-amount="<%= plan.formatted_price %>"
-              data-plan-subscribe="<%= !plan.price.zero? %>">
-
-                <span class="geomicon geomicon-check"></span>
-
-                <span class="plan-select-message">
-                  <% if plan == @account.billing_plan %>
-                    <%= t('.subscribed') %>
-                  <% else %>
-                    <%= t('.subscribe') %>
-                  <% end %>
-                </span>
-
-              </button>
-
-            </div>
-          </div>
-        <% end %>
+<div class="p4">
+  <% if @account.free? %>
+    <div class="clearfix mxn4 mb3">
+      <div class="col col-6 px4 text-right">
+        <h1 class="mt0 mb0 green text-bold">Helpful Pro</h1>
+      </div>
+      <div class="col col-6 px4 gray">
+        <p>Send email from your own domain</p>
+        <p>Canned Responses</p>
+        <p>Webhooks</p>
       </div>
     </div>
 
-    <% if signed_in? %>
-      <%= mail_to 'helpful@helpful.io', t('.need_more'), data: {helpful: 'helpful', 'helpful-email' => current_user.email, 'helpful-name' => current_user.name}, class: 'btn btn-default' %>
-    <% else %>
-      <%= mail_to 'helpful@helpful.io', t('.need_more'), data: {helpful: 'helpful'}, class: 'btn btn-default' %>
+    <%= form_for @account, method: :patch, html: {class: 'form text-center'} do |f| %>
+      <script
+        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="<%= ENV.fetch('STRIPE_PUBLISHABLE_KEY') %>"
+        data-label="Become a pro"
+        data-name="Helpful"
+        data-email="<%= current_user.email %>"
+        data-description="Helpful Pro ($20.00 per month)"
+        data-amount="3000">
+      </script>
     <% end %>
+  <% else %>
 
-    <%= f.hidden_field :billing_plan_slug %>
-    <%= f.hidden_field :stripe_token %>
-  </fieldset>
+    <h1 class="text-center">Thank you for subscribing to Helpful Pro.</h1>
 
-<% end %>
+  <% end %>
+
+</div>
+
+<div class="text-center">
+  <script async src="https://assets.helpful.io/assets/widget.js"></script>
+  <%= mail_to 'helpful@helpful.io', t('.ask_for_help'), data: {helpful: 'helpful', 'helpful-email' => current_user.email, 'helpful-name' => current_user.name} %>
+</div>

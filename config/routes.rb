@@ -12,6 +12,7 @@ Helpful::Application.routes.draw do
   get '/embed.js' => 'pages#embed', as: :embed
   get '/styleguide' => 'pages#styleguide', as: :styleguide
   get '/terms' => 'pages#terms', as: :terms
+  get '/home' => 'pages#home', as: :home
 
   # Errors
   get '/404', :to => 'errors#not_found'
@@ -36,8 +37,6 @@ Helpful::Application.routes.draw do
   namespace :webhooks do
     resources :mailgun, only: :create
   end
-
-  post 'webhooks/chargify' => 'billings#webhook', :as => :webhook_billing
 
   namespace :api, format: 'json' do
     resources :accounts, except: [:new, :edit, :destroy] do
@@ -95,10 +94,7 @@ Helpful::Application.routes.draw do
       resources :tags, only: [:index, :create, :destroy]
     end
 
-    resources :messages, only: [:create]
-    resource :billing, only: [:show] do
-      get :return
-    end
+    resources :messages, only: [:create], shallow: true
   end
 
   unauthenticated :user do

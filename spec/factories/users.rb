@@ -5,6 +5,7 @@ FactoryGirl.define do
     email     { Faker::Internet.email }
     password  'password'
     notification_setting 'message'
+    person
 
     factory :user_with_membership do
       after(:create) do |user, evaluator|

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140730002216) do
+ActiveRecord::Schema.define(version: 20150224220353) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,27 +20,21 @@ ActiveRecord::Schema.define(version: 20140730002216) do
   enable_extension "uuid-ossp"
 
   create_table "accounts", id: :uuid, force: :cascade do |t|
-    t.string   "name",                        limit: 255
+    t.string   "name",               limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "slug",                        limit: 255, null: false
-    t.string   "webhook_url",                 limit: 255
-    t.string   "webhook_secret",              limit: 255
-    t.string   "website_url",                 limit: 255
-    t.string   "chargify_subscription_id",    limit: 255
-    t.string   "chargify_customer_id",        limit: 255
-    t.uuid     "billing_plan_id"
-    t.string   "billing_status",              limit: 255
-    t.string   "chargify_portal_url",         limit: 255
-    t.datetime "chargify_portal_valid_until"
+    t.string   "slug",               limit: 255,                 null: false
+    t.string   "webhook_url",        limit: 255
+    t.string   "webhook_secret",     limit: 255
+    t.string   "website_url",        limit: 255
     t.boolean  "prefers_archiving"
     t.text     "signature"
-    t.string   "url",                         limit: 255
-    t.string   "stripe_customer_id",          limit: 255
+    t.string   "url",                limit: 255
+    t.string   "stripe_customer_id", limit: 255
+    t.boolean  "is_pro",                         default: false, null: false
+    t.string   "forwarding_address"
   end
 
-  add_index "accounts", ["billing_plan_id"], name: "index_accounts_on_billing_plan_id", using: :btree
-  add_index "accounts", ["chargify_subscription_id"], name: "index_accounts_on_chargify_subscription_id", using: :btree
   add_index "accounts", ["slug"], name: "index_accounts_on_slug", unique: true, using: :btree
 
   create_table "assignment_events", force: :cascade do |t|
@@ -72,17 +66,6 @@ ActiveRecord::Schema.define(version: 20140730002216) do
 
   add_index "beta_invites", ["email"], name: "index_beta_invites_on_email", unique: true, using: :btree
 
-  create_table "billing_plans", id: :uuid, force: :cascade do |t|
-    t.string   "slug",                limit: 255
-    t.string   "name",                limit: 255
-    t.string   "chargify_product_id", limit: 255
-    t.integer  "max_conversations"
-    t.decimal  "price"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "hidden",                          default: false, null: false
-  end
-
   create_table "canned_responses", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string   "key",        limit: 255, null: false
     t.text     "message",                null: false
@@ -102,13 +85,18 @@ ActiveRecord::Schema.define(version: 20140730002216) do
     t.boolean  "archived",   default: false
     t.string   "tags",       default: [],                 array: true
     t.uuid     "user_id"
-    t.boolean  "hidden",     default: false, null: false
   end
 
   add_index "conversations", ["account_id", "archived"], name: "index_conversations_on_account_id_and_archived", using: :btree
   add_index "conversations", ["account_id"], name: "index_conversations_on_account_id", using: :btree
-  add_index "conversations", ["hidden"], name: "index_conversations_on_hidden", using: :btree
   add_index "conversations", ["user_id"], name: "index_conversations_on_user_id", using: :btree
+
+  create_table "domain_checks", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.string   "domain"
+    t.boolean  "spf_valid",  default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
 
   create_table "memberships", id: :uuid, force: :cascade do |t|
     t.uuid     "account_id",             null: false
@@ -122,13 +110,16 @@ ActiveRecord::Schema.define(version: 20140730002216) do
   add_index "memberships", ["user_id"], name: "index_memberships_on_user_id", using: :btree
 
   create_table "messages", id: :uuid, force: :cascade do |t|
-    t.uuid     "conversation_id", null: false
+    t.uuid     "conversation_id",              null: false
     t.text     "content"
     t.hstore   "data"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.uuid     "person_id",       null: false
+    t.uuid     "person_id",                    null: false
     t.json     "webhook"
+    t.text     "message_id"
+    t.uuid     "in_reply_to_id"
+    t.text     "html_content",    default: ""
   end
 
   add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree

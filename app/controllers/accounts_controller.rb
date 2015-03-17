@@ -4,13 +4,13 @@ class AccountsController < ApplicationController
   respond_to :html
 
   def new
-    @account = Account.new(billing_plan_slug: 'starter-kit')
+    @account = Account.new
     @user = User.new
     @person = Person.new
   end
 
   def create
-    @account = Account.new(account_params.merge(billing_plan_slug: 'starter-kit'))
+    @account = Account.new(account_params)
     @user = User.new(user_params)
 
     @person = Person.where(email: @user.email).first_or_initialize
@@ -95,10 +95,10 @@ class AccountsController < ApplicationController
   end
 
   def account_params
-    permitted_account_params = [:name, :website_url, :webhook_url, :prefers_archiving, :signature, :email]
-    permitted_account_params += [:stripe_token, :billing_plan_slug] if !@account || @account.owner?(current_user)
-
-    params.require(:account).permit(permitted_account_params)
+    params.require(:account).permit([
+      :name, :website_url, :webhook_url, :prefers_archiving, :signature,
+      :email, :stripe_subscription_id, :forwarding_address
+    ])
   end
 
   def user_params

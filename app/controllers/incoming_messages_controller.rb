@@ -10,36 +10,33 @@ class IncomingMessagesController < ApplicationController
     end
 
     account = Account.find_by(slug: params.fetch(:account))
-    email = Mail::Address.new params.fetch(:email)
-    author = MessageAuthor.new(account, email)
-    attachment = params[:attachment]
+    person = Person.find_or_create_by_addr(
+      Mail::Address.new(params.fetch(:email))
+    )
 
-    begin
-      ActiveRecord::Base.transaction do
-        conversation = Concierge.new(account, params).find_conversation
+    person.save!
 
-        @message = author.compose_message(conversation, params.fetch(:content))
-        @message.save!
+    @message = MessageFactory.build(
+      account: account,
+      person:  person,
+      content: params.fetch(:content)
+    )
 
-        @message.attachments.create(file: attachment) if attachment.present?
+    if @message.save
+      if Rails.env.production?
+        Customerio.client.track(account.owner.id, 'received_message')
+      end
 
-        if Rails.env.production?
-          Customerio.client.track(account.owner.id, 'received_message')
-        end
-
-        respond_to do |format|
-          format.html
-          format.json do
-            render json: @message,
-              status: :created,
-              callback: params[:callback],
-              content_type: content_type
-          end
+      respond_to do |format|
+        format.json do
+          render json: @message,
+            status: :created,
+            callback: params[:callback],
+            content_type: content_type
         end
       end
-    rescue ActiveRecord::RecordInvalid
+    else
       respond_to do |format|
-        format.html
         format.json do
           render json: @message.errors,
              status: :unprocessable_entity,

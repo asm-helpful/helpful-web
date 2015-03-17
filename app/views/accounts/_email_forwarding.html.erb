@@ -1,0 +1,58 @@
+<% if @account.forwarding_address? %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Domain</th>
+        <th>SPF configured</th>
+        <th>Last checked</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @account.forwarding_domain %></td>
+        <% if @account.latest_domain_check.present? %>
+          <td>
+            <% if @account.latest_domain_check.spf_valid? %>
+              <span class="fa fa-check"></span>
+            <% else %>
+              <span class="fa fa-times"></span>
+            <% end %>
+          </td>
+          <td>
+            <%= time_ago_in_words(@account.latest_domain_check.created_at) %> ago
+          </td>
+        <% else %>
+          <td colspan="2">Checking domain configuration…</td>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
+<% end %>
+
+<%= form_for(@account, method: :patch, html: {class: 'form mb4'}) do |f| %>
+  <div class="clearfix mxn3">
+    <div class="col col-8 px3">
+      <%= f.text_field :forwarding_address, class: 'form-control' %>
+    </div>
+    <div class="col col-4 px3">
+      <%= f.button (f.object.forwarding_address? ? 'Update' : 'Add'), class: 'btn btn-default' %>
+    </div>
+  </div>
+<% end %>
+
+<hr>
+
+<h3>Setting up email forwarding on your domain</h3>
+
+<p>You can send support emails from your own domain by setting up SPF records on your domain. Go into your DNS provider and add this TXT record to your root domain:</p>
+<pre>
+  <code>
+    v=spf1 a include:helpful.io ~all
+  </code>
+</pre>
+<p>If you already have a similar TXT record (for instance if you're using Google Apps), just add <code>include:helpful.io</code> to the record like this:</p>
+<pre>
+  <code>
+    v=spf1 a include:_spf.google.com include:helpful.io ~all
+  </code>
+</pre>

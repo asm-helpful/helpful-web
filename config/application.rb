@@ -50,11 +50,11 @@ module Helpful
       config.console = Pry
     end
 
-    config.after_initialize do
-      Hirb.enable if Rails.env.development? || Rails.env.test?
-    end
-
     config.react.addons = true
     config.react.variant = :development
+
+    config.active_record.raise_in_transactional_callbacks = true
+
+    config.active_job.queue_adapter = :sidekiq
   end
 end

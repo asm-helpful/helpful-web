@@ -1,5 +1,6 @@
 class MessageMailman
-  attr_accessor :message, :recipients
+  attr_accessor :message
+  attr_accessor :recipients
 
   def self.deliver(message, recipients)
     new(message, recipients).deliver
@@ -16,26 +17,20 @@ class MessageMailman
     end
   end
 
-  def deliver_to(recipient)
-    MessageMailer.delay.created(message.id, recipient.id)
-  end
+  # private
 
   def recipients_to_notify
-    recipients.select do |recipient|
-      notify?(recipient)
+    recipients.uniq.select do |person|
+      notify?(person )
     end
   end
 
   def notify?(person)
-    person.external? ||
-      conversation.notify?(person)
+    person.notify?
   end
 
-  def assignee
-    conversation.user
+  def deliver_to(recipient)
+    MessageMailer.forward(message, recipient).deliver_later
   end
 
-  def conversation
-    message.conversation
-  end
 end
