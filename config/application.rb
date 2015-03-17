@@ -46,10 +46,6 @@ module Helpful
       Devise::Mailer.layout "email"
     end
 
-    console do
-      config.console = Pry
-    end
-
     config.react.addons = true
     config.react.variant = :development
 
