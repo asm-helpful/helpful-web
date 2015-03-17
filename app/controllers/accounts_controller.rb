@@ -95,15 +95,10 @@ class AccountsController < ApplicationController
   end
 
   def account_params
-    if @account.present? && @account.owner?(current_user) && params.has_key?(:stripeToken)
-      params.permit(:stripeToken)
-      {stripe_token: params.fetch(:stripeToken)}
-    else
-      params.require(:account).permit([
-        :name, :website_url, :webhook_url, :prefers_archiving, :signature,
-        :email, :stripe_subscription_id, :forwarding_address
-      ])
-    end
+    params.require(:account).permit([
+      :name, :website_url, :webhook_url, :prefers_archiving, :signature,
+      :email, :stripe_subscription_id, :forwarding_address
+    ])
   end
 
   def user_params

@@ -45,7 +45,6 @@ class Account < ActiveRecord::Base
   validate :email_uniqueness
 
   before_create :generate_webhook_secret
-  before_save :subscribe!
   before_validation :generate_slug
 
   MAILBOX_REGEX = Regexp.new(/^(?<slug>(\w|-)+)(\+\w+)?@.+$/).freeze
@@ -103,34 +102,6 @@ class Account < ActiveRecord::Base
       ['agent']
     end
   end
-
-
-  def subscribe!
-    return if self.stripe_token.blank?
-
-    # first time subscriber
-    customer = Stripe::Customer.create(
-      source: stripe_token,
-      plan: PRO_PLAN_ID,
-      email: owner.email,
-      description: name,
-      metadata: {
-        id: id
-      }
-    )
-
-    self.stripe_customer_id = customer.id
-    self.is_pro = true
-  end
-
-  def pro?
-    is_pro?
-  end
-
-  def free?
-    !is_pro?
-  end
-
 
   def tags
     conversations.pluck(:tags).flatten.uniq.sort

@@ -1,16 +1,16 @@
 namespace :db do
-  namespace :download do
+  namespace :backups do
     desc 'Create a production database backup'
-    task :generate do
+    task :create do
       Bundler.with_clean_env do
-        sh("heroku pgbackups:capture --expire --app helpful-production")
+        sh 'heroku pgbackups:capture --expire --app helpful-production'
       end
     end
 
     desc 'Download latest database backup'
-    task :latest do
+    task :pull do
       Bundler.with_clean_env do
-        sh("curl `heroku pgbackups:url` -o db/latest.dump")
+        sh 'curl `heroku pgbackups:url` -o db/latest.dump'
       end
     end
 
@@ -25,15 +25,16 @@ namespace :db do
       end
 
       puts 'Loading Production database locally'
-      `pg_restore --verbose --clean --no-acl --no-owner -h localhost -d helpful_development db/latest.dump`
+      sh 'pg_restore --verbose --clean --no-acl --no-owner -h localhost -d helpful_development db/latest.dump'
 
       puts '!!!!========= YOU MUST RESTART YOUR SERVER =========!!!!'
     end
 
     task :clean do
-      `rm db/latest.dump`
+      sh 'rm db/latest.dump'
     end
+
+    task :restore => [:create, :pull, :load, 'db:migrate']
   end
 
-  task :restore => ['db:download:generate', 'db:download:latest', 'db:download:load', 'db:download:clean', 'db:migrate']
 end
