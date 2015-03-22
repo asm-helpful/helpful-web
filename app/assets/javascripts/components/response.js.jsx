@@ -8,7 +8,6 @@ var Response = React.createClass({
   initMediumEditor: function() {
     var $response = $('.medium-editor');
     var editor = new MediumEditor($response, {
-      placeholder: $response.attr('placeholder'),
       buttons: ['bold', 'italic', 'underline', 'anchor', 'quote', 'indent', 'outdent']
     });
 
@@ -81,7 +80,6 @@ var Response = React.createClass({
 
   useCannedResponseHandler: function(cannedResponse) {
     $('.medium-editor').html(cannedResponse.rendered_message);
-    $('.medium-editor').removeClass('medium-editor-placeholder');
     $('.medium-editor').focus();
   },
 
@@ -108,9 +106,7 @@ var Response = React.createClass({
   render: function() {
     return (
       <form className="form">
-        <div className="form-group">
-          <div className="form-control form-control-invisible medium-editor" placeholder="Write your reply..." onKeyDown={this.metaSend} onKeyPress={this.ctrlSend}></div>
-        </div>
+        <div className="form-control form-control-invisible medium-editor" data-placeholder="Click and write your response..." onKeyDown={this.metaSend} onKeyPress={this.ctrlSend}></div>
 
         <div className="form-actions">
           <div className="pull-right">

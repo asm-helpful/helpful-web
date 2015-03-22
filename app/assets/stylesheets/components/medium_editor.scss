@@ -1,12 +1,16 @@
 .medium-editor {
-  color: $gray-darker;
-  font-size: $font-size-base;
   min-height: 100px;
+  overflow: scroll;
+  padding-top: 10px;
+
+  &:after {
+    color: $gray-light;
+    font-style: normal;
+    padding-top: 12px;
+    padding-left: 12px;
+  }
 }
 
-.medium-editor:after {
-  color: $gray-light;
-  font-size: $font-size-base;
-  font-style: normal;
-  padding: 0;
+.form-control-invisible.medium-editor:after {
+  padding-left: 0;
 }
