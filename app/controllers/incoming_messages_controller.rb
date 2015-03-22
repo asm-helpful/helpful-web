@@ -19,6 +19,7 @@ class IncomingMessagesController < ApplicationController
     @message = MessageFactory.build(
       account: account,
       person:  person,
+      subject: "New message for #{account.email}",
       content: params.fetch(:content)
     )
 
