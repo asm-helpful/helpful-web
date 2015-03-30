@@ -2,52 +2,52 @@
 http_interactions:
 - request:
     method: post
-    uri: http://localhost:9200/messages/message/_bulk?type=message
+    uri: http://127.0.0.1:9200/messages/message/_bulk?type=message
     body:
       encoding: UTF-8
       string: |
-        {"index":{"_id":"028e5652-5532-4c5e-8ece-6383a96cb3b6"}}
-        {"id":"028e5652-5532-4c5e-8ece-6383a96cb3b6","conversation_id":"a6394b4b-ec77-40b6-8b4d-ae015db0fb8f","content":"Do you want to grab breakfast to chat about Helpful?","data":null,"created_at":"2015-03-03T20:41:49.422Z","updated_at":"2015-03-03T20:41:49.422Z","person_id":"8f41b12f-7e97-48ec-a5d9-907bdfb4e58a","webhook":null,"message_id":"\u003cb6df7b42-aad6-4258-9ba0-10020b10486c@helpful.mail\u003e","in_reply_to_id":null,"html_content":"","subject":null}
-        {"index":{"_id":"0cf6356b-7cac-4c46-9c45-50db240e63c9"}}
-        {"id":"0cf6356b-7cac-4c46-9c45-50db240e63c9","conversation_id":"575e796d-ba8f-4d3f-8fcd-2010e31c4e2a","content":"Doloremque officiis expedita in. Omnis officia provident quis. Fugiat dolor consequatur voluptas quisquam non sit sunt. Sed accusantium eaque maxime natus officiis et.","data":null,"created_at":"2015-03-03T20:41:50.000Z","updated_at":"2015-03-03T20:41:50.000Z","person_id":"8d8c642c-c663-44d2-ac36-68de94c764cf","webhook":null,"message_id":"\u003c7b86374e-a030-477f-adcd-269bdf62292c@helpful.mail\u003e","in_reply_to_id":null,"html_content":"","subject":null}
-        {"index":{"_id":"0f7e4baa-8cf1-4dd6-81e3-e016960d2116"}}
-        {"id":"0f7e4baa-8cf1-4dd6-81e3-e016960d2116","conversation_id":"575e796d-ba8f-4d3f-8fcd-2010e31c4e2a","content":"Voluptas tempore facilis suscipit et voluptates quod aut. Assumenda explicabo tempora harum omnis et et. Nostrum quia esse non ut.","data":null,"created_at":"2015-03-03T20:41:50.011Z","updated_at":"2015-03-03T20:41:50.011Z","person_id":"f8b795df-9bc3-4edb-b091-5bbb1f2d32e7","webhook":null,"message_id":"\u003cfdb8336d-9be5-49c3-b0c0-9229e99db3be@helpful.mail\u003e","in_reply_to_id":null,"html_content":"","subject":null}
-        {"index":{"_id":"24e6ef6e-df0c-47a8-b47c-7286e2af3101"}}
-        {"id":"24e6ef6e-df0c-47a8-b47c-7286e2af3101","conversation_id":"f1f5835c-6993-41c8-8fe3-b7afb8df7c8a","content":"Odio commodi fugiat fugit molestiae sed aut. Quia similique aperiam odit omnis suscipit. Eveniet aspernatur perferendis debitis ut explicabo. Consequuntur quo ut et.","data":null,"created_at":"2015-03-03T20:41:50.124Z","updated_at":"2015-03-03T20:41:50.124Z","person_id":"027299c8-c32c-4f25-ac8e-fb5b7887f19b","webhook":null,"message_id":"\u003c936de501-1717-4bfe-bae1-8bbc1e278bb4@helpful.mail\u003e","in_reply_to_id":null,"html_content":"","subject":null}
-        {"index":{"_id":"2a671499-73d4-42a6-a976-07d16abfbef3"}}
-        {"id":"2a671499-73d4-42a6-a976-07d16abfbef3","conversation_id":"f1f5835c-6993-41c8-8fe3-b7afb8df7c8a","content":"Maxime sed adipisci omnis. Ipsam mollitia hic corrupti ut illum. Aliquid animi nihil rem. Architecto voluptatum voluptatem soluta ipsa debitis et dicta voluptate.","data":null,"created_at":"2015-03-03T20:41:50.113Z","updated_at":"2015-03-03T20:41:50.113Z","person_id":"c4b5605f-1075-4c63-afb9-e3ef612d833d","webhook":null,"message_id":"\u003ca505bdfd-1a4d-4307-accb-b5ce3dfc520d@helpful.mail\u003e","in_reply_to_id":null,"html_content":"","subject":null}
-        {"index":{"_id":"2eb4055b-bbb6-4e12-91e7-38e96cde471d"}}
-        {"id":"2eb4055b-bbb6-4e12-91e7-38e96cde471d","conversation_id":"f1f5835c-6993-41c8-8fe3-b7afb8df7c8a","content":"Dignissimos quo minus voluptatem voluptas. A ut quasi ab sit omnis sunt. Consequuntur vitae voluptas et reiciendis. Aspernatur in asperiores eaque facilis quis.","data":null,"created_at":"2015-03-03T20:41:50.136Z","updated_at":"2015-03-03T20:41:50.136Z","person_id":"10c3fcc3-7853-4763-9a97-2de490c3a46b","webhook":null,"message_id":"\u003cb9acfaa3-b2fd-48c2-a370-307c94581af0@helpful.mail\u003e","in_reply_to_id":null,"html_content":"","subject":null}
-        {"index":{"_id":"3cca19f8-1e17-491d-8dd9-2fa4e49a85c3"}}
-        {"id":"3cca19f8-1e17-491d-8dd9-2fa4e49a85c3","conversation_id":"575e796d-ba8f-4d3f-8fcd-2010e31c4e2a","content":"Provident nesciunt laudantium consequatur. Facilis placeat quia illum pariatur. Unde soluta et neque.","data":null,"created_at":"2015-03-03T20:41:49.964Z","updated_at":"2015-03-03T20:41:49.964Z","person_id":"f6f9e922-1dd6-4b54-a94d-c2a6373f262f","webhook":null,"message_id":"\u003c9698a076-36db-482c-ac02-733ad3c2dead@helpful.mail\u003e","in_reply_to_id":null,"html_content":"","subject":null}
-        {"index":{"_id":"46cfe66f-f45d-4e01-a20f-c11617990352"}}
-        {"id":"46cfe66f-f45d-4e01-a20f-c11617990352","conversation_id":"a130930b-7274-4d1c-bf20-024074a814aa","content":"The styling seems to be broken on the home page. Could you take a look?","data":null,"created_at":"2015-03-03T20:41:49.259Z","updated_at":"2015-03-03T20:41:49.259Z","person_id":"443d2530-1928-4327-91ac-43caf2128b32","webhook":null,"message_id":"\u003c99d0f5cf-a880-46b5-b62f-82d910e139cb@helpful.mail\u003e","in_reply_to_id":null,"html_content":"","subject":null}
+        {"index":{"_id":"0a3efc74-0245-40cd-bc1b-dc285d28d06e"}}
+        {"id":"0a3efc74-0245-40cd-bc1b-dc285d28d06e","conversation_id":"e150cae5-115d-4972-bade-58891c2c4664","content":"Quo sed quidem doloremque eaque magnam corporis. Quisquam sit voluptates sed. Id est est unde ducimus assumenda velit maiores. Dolor eligendi dolorum minus facere modi voluptatum.","data":null,"created_at":"2015-03-30T20:59:03.465Z","updated_at":"2015-03-30T20:59:03.465Z","person_id":"1c6ca94c-d4f6-410f-b87a-b95ce205a1df","webhook":null,"message_id":"\u003c70371230-5058-4ec0-8b61-944c25447c75@helpful.mail\u003e","in_reply_to_id":null,"html_content":""}
+        {"index":{"_id":"0ba8ff44-c99f-40f0-a244-71378475b09c"}}
+        {"id":"0ba8ff44-c99f-40f0-a244-71378475b09c","conversation_id":"e150cae5-115d-4972-bade-58891c2c4664","content":"Ipsa et ut ut qui. Quas laboriosam aut facilis eos eveniet veniam. Consequatur et saepe pariatur labore. Fugiat harum tempore iste non.","data":null,"created_at":"2015-03-30T20:59:03.488Z","updated_at":"2015-03-30T20:59:03.488Z","person_id":"9a4e23ac-e981-43eb-b8f8-a7856cd8e574","webhook":null,"message_id":"\u003c2379a038-0a67-41e8-9ec0-471e95b3ed77@helpful.mail\u003e","in_reply_to_id":null,"html_content":""}
+        {"index":{"_id":"171ce9b2-d4a9-4e1e-9e6e-a1b56ffdea1a"}}
+        {"id":"171ce9b2-d4a9-4e1e-9e6e-a1b56ffdea1a","conversation_id":"2908bde0-4a8f-43ff-be42-0f9c58ba2f30","content":"Distinctio soluta itaque doloribus qui. Rem sint voluptates tempora cumque non. Atque distinctio labore ut voluptas libero dolor debitis. Dolore maiores molestiae unde amet quo.","data":null,"created_at":"2015-03-30T20:59:03.521Z","updated_at":"2015-03-30T20:59:03.521Z","person_id":"bc5bd111-8017-46c9-ab46-020e579d4dea","webhook":null,"message_id":"\u003c9fa3109e-23e0-4025-bd3b-8836ea369118@helpful.mail\u003e","in_reply_to_id":null,"html_content":""}
+        {"index":{"_id":"1d79af80-bf9a-4a1c-92d3-398085d3757a"}}
+        {"id":"1d79af80-bf9a-4a1c-92d3-398085d3757a","conversation_id":"8594d608-6c3e-4a0b-80ea-85af6f45c63b","content":"Non sunt in ab eveniet rerum nihil est. Et laborum ut quia. Vel dicta porro odio. Aut aut totam iure quo voluptatum accusamus.","data":null,"created_at":"2015-03-30T20:59:03.593Z","updated_at":"2015-03-30T20:59:03.593Z","person_id":"73629fde-9b30-4da8-802e-d53b6739dc5a","webhook":null,"message_id":"\u003c2dcd660a-b126-444a-83b9-e2179d50af77@helpful.mail\u003e","in_reply_to_id":null,"html_content":""}
+        {"index":{"_id":"2625172b-4d62-42ef-9d79-a0a37bd11544"}}
+        {"id":"2625172b-4d62-42ef-9d79-a0a37bd11544","conversation_id":"e150cae5-115d-4972-bade-58891c2c4664","content":"Et qui quos sed provident mollitia et ut. Et necessitatibus debitis hic at dolor. Sint labore provident atque non veniam dolore accusamus sed. Corporis et assumenda rerum natus eum totam dignissimos. Et alias non qui similique.","data":null,"created_at":"2015-03-30T20:59:03.477Z","updated_at":"2015-03-30T20:59:03.477Z","person_id":"19b23bea-4ed2-495b-8b0c-d2634ee7fea6","webhook":null,"message_id":"\u003cd37d2928-e3ad-4016-aec0-839e78b30570@helpful.mail\u003e","in_reply_to_id":null,"html_content":""}
+        {"index":{"_id":"3d604ba7-3c2a-4228-a053-e2d84e97e27d"}}
+        {"id":"3d604ba7-3c2a-4228-a053-e2d84e97e27d","conversation_id":"2908bde0-4a8f-43ff-be42-0f9c58ba2f30","content":"Sequi modi ducimus libero temporibus impedit aspernatur cupiditate quisquam. Nihil architecto similique praesentium itaque. Earum omnis qui ullam nulla ducimus vel. Unde ut est eveniet aut itaque aperiam fugit ipsa. Cupiditate qui repellat id sit nam soluta aut.","data":null,"created_at":"2015-03-30T20:59:03.510Z","updated_at":"2015-03-30T20:59:03.510Z","person_id":"5e0f7c98-83a0-4411-b09d-eee7c77a76a9","webhook":null,"message_id":"\u003c6e82cc09-8ca7-469e-9f86-c70e9b47e0ae@helpful.mail\u003e","in_reply_to_id":null,"html_content":""}
+        {"index":{"_id":"49ef44f1-557b-415c-86a7-580814aa209f"}}
+        {"id":"49ef44f1-557b-415c-86a7-580814aa209f","conversation_id":"2908bde0-4a8f-43ff-be42-0f9c58ba2f30","content":"Sed suscipit molestiae in modi id laudantium quia recusandae. Quis occaecati unde voluptas. Natus quo a reiciendis.","data":null,"created_at":"2015-03-30T20:59:03.533Z","updated_at":"2015-03-30T20:59:03.533Z","person_id":"b2182ca0-16fc-499b-90c6-f1ea15e87c94","webhook":null,"message_id":"\u003c70183030-ab85-45c5-bac3-75b4ba4a3beb@helpful.mail\u003e","in_reply_to_id":null,"html_content":""}
         {"index":{"_id":"4b4f2e44-0462-41f1-9861-cedbaf377a99"}}
-        {"id":"4b4f2e44-0462-41f1-9861-cedbaf377a99","conversation_id":"677e5a68-c0ab-4a93-9419-c41521a8e8f4","content":"Hi, my name is Ben. I need help","data":null,"created_at":"2015-03-03T20:41:50.186Z","updated_at":"2015-03-03T20:41:50.193Z","person_id":"6a8755e7-248c-4255-97d5-e16b6fc26266","webhook":null,"message_id":"\u003c68232208-72d8-4951-bda4-b4b0586ee4b9@helpful.mail\u003e","in_reply_to_id":null,"html_content":"","subject":null}
-        {"index":{"_id":"60343968-ed79-4845-b404-7c57171bf54b"}}
-        {"id":"60343968-ed79-4845-b404-7c57171bf54b","conversation_id":"575e796d-ba8f-4d3f-8fcd-2010e31c4e2a","content":"Id cum vitae aut ea. Exercitationem expedita facilis quia nemo. Odit quisquam a repellendus. Aut voluptas non sed.","data":null,"created_at":"2015-03-03T20:41:49.975Z","updated_at":"2015-03-03T20:41:49.975Z","person_id":"7b39f453-fb07-4322-97fa-a36be5865a92","webhook":null,"message_id":"\u003c74535441-f7e9-4ffb-8e6c-9c929097ba04@helpful.mail\u003e","in_reply_to_id":null,"html_content":"","subject":null}
-        {"index":{"_id":"78b4578d-3931-4928-b14a-2b4ab331ff86"}}
-        {"id":"78b4578d-3931-4928-b14a-2b4ab331ff86","conversation_id":"677e5a68-c0ab-4a93-9419-c41521a8e8f4","content":"Voluptas repudiandae harum ratione ducimus non enim. Perspiciatis placeat expedita dolorem consequuntur unde vero sunt. Ad nisi facilis corrupti sed cumque. Eos eos molestiae est debitis suscipit vel. Atque sint sapiente optio.","data":null,"created_at":"2015-03-03T20:41:50.040Z","updated_at":"2015-03-03T20:41:50.040Z","person_id":"046a7ff6-fd33-4fe9-a170-83ff55c4c204","webhook":null,"message_id":"\u003c34db3d5e-5506-4f7c-8a4b-0379411c6403@helpful.mail\u003e","in_reply_to_id":null,"html_content":"","subject":null}
-        {"index":{"_id":"9485111d-7adc-4521-b655-0a6a08b8ad3c"}}
-        {"id":"9485111d-7adc-4521-b655-0a6a08b8ad3c","conversation_id":"677e5a68-c0ab-4a93-9419-c41521a8e8f4","content":"Ut et voluptatem officiis quia illo error ipsam velit. Rerum qui dolores molestiae. Nulla est commodi aut quia et excepturi.","data":null,"created_at":"2015-03-03T20:41:50.029Z","updated_at":"2015-03-03T20:41:50.029Z","person_id":"cd575803-4511-416b-8620-a44516414f55","webhook":null,"message_id":"\u003c80b55ffa-e8ba-4320-8e8a-a0ca8de74acc@helpful.mail\u003e","in_reply_to_id":null,"html_content":"","subject":null}
-        {"index":{"_id":"9ff2c0e9-57fc-4204-b68b-3e2f97c2eb8a"}}
-        {"id":"9ff2c0e9-57fc-4204-b68b-3e2f97c2eb8a","conversation_id":"677e5a68-c0ab-4a93-9419-c41521a8e8f4","content":"Laboriosam consequuntur sunt ut similique ipsam accusantium sequi. Assumenda soluta ut eos optio dolor earum totam facere. Sequi labore et odio. Architecto illo aut necessitatibus est sapiente.","data":null,"created_at":"2015-03-03T20:41:50.073Z","updated_at":"2015-03-03T20:41:50.073Z","person_id":"12a2e719-ea3c-4462-a8d7-788257f78fcd","webhook":null,"message_id":"\u003c8d14cfac-6291-475c-933c-f50e65053500@helpful.mail\u003e","in_reply_to_id":null,"html_content":"","subject":null}
-        {"index":{"_id":"a09b55d7-38fc-4791-9a72-fddae0bcad78"}}
-        {"id":"a09b55d7-38fc-4791-9a72-fddae0bcad78","conversation_id":"f1f5835c-6993-41c8-8fe3-b7afb8df7c8a","content":"Ipsa non velit deleniti nemo. At nostrum nobis optio. Est quidem molestiae autem sed.","data":null,"created_at":"2015-03-03T20:41:50.102Z","updated_at":"2015-03-03T20:41:50.102Z","person_id":"cf44631a-6700-4b89-8f4d-b4e1a9ac6c83","webhook":null,"message_id":"\u003c6fffccc2-f1d7-4345-aeb5-d98df02864bf@helpful.mail\u003e","in_reply_to_id":null,"html_content":"","subject":null}
-        {"index":{"_id":"a6f50a14-5c06-4ae6-b86f-c2483103aa03"}}
-        {"id":"a6f50a14-5c06-4ae6-b86f-c2483103aa03","conversation_id":"3d9c21b2-413c-4a7a-931a-98f41161b056","content":"Oh bummer. They sent it to 15th street for some reason. I'll give them a call and see what's up.","data":null,"created_at":"2015-03-03T20:41:49.387Z","updated_at":"2015-03-03T20:41:49.387Z","person_id":"f412bf8f-1d13-48a3-ac06-811d893eb700","webhook":null,"message_id":"\u003cf335d2f7-ee69-4e30-b1e0-f08721e4f77b@helpful.mail\u003e","in_reply_to_id":null,"html_content":"","subject":null}
-        {"index":{"_id":"be4e57a9-b499-4c1f-9533-09bd7e0101ee"}}
-        {"id":"be4e57a9-b499-4c1f-9533-09bd7e0101ee","conversation_id":"677e5a68-c0ab-4a93-9419-c41521a8e8f4","content":"Incidunt dignissimos repellendus fugiat voluptatem voluptatibus id eos alias. Et blanditiis quasi qui ea similique. Quidem et ducimus qui odio voluptate numquam enim totam.","data":null,"created_at":"2015-03-03T20:41:50.061Z","updated_at":"2015-03-03T20:41:50.061Z","person_id":"7af93e3b-2b86-43bb-9a19-f71470e33d03","webhook":null,"message_id":"\u003c7228eaea-fb4c-4e22-9150-37be1b6e45af@helpful.mail\u003e","in_reply_to_id":null,"html_content":"","subject":null}
+        {"id":"4b4f2e44-0462-41f1-9861-cedbaf377a99","conversation_id":"2908bde0-4a8f-43ff-be42-0f9c58ba2f30","content":"Hi, my name is Ben. I need help","data":null,"created_at":"2015-03-30T20:59:03.674Z","updated_at":"2015-03-30T20:59:03.681Z","person_id":"ebea3d12-09be-46a0-9eb8-8c66d918c659","webhook":null,"message_id":"\u003ca05054f8-ecd1-47cd-83c0-4db7a04da6f5@helpful.mail\u003e","in_reply_to_id":null,"html_content":""}
+        {"index":{"_id":"51211522-d128-49a6-a768-59ca8801d991"}}
+        {"id":"51211522-d128-49a6-a768-59ca8801d991","conversation_id":"8594d608-6c3e-4a0b-80ea-85af6f45c63b","content":"Ut est impedit et magnam sed laborum. Ducimus praesentium illum a porro est nihil voluptatem. Molestiae quis expedita dolorem consectetur aliquam nesciunt aut. Et rerum vitae delectus et rem.","data":null,"created_at":"2015-03-30T20:59:03.615Z","updated_at":"2015-03-30T20:59:03.615Z","person_id":"634115fa-506e-4fe5-b0cd-9fe3653a49de","webhook":null,"message_id":"\u003cf7f64158-e62d-4524-91b6-9ab6d2e48df6@helpful.mail\u003e","in_reply_to_id":null,"html_content":""}
+        {"index":{"_id":"527b2aae-0b9f-4b74-bd6b-e390f19c19b6"}}
+        {"id":"527b2aae-0b9f-4b74-bd6b-e390f19c19b6","conversation_id":"4c0fa614-dcf1-4eb8-a5c2-ba2a59438d25","content":"Where's the espresso machine? Wasn't it supposed to be delivered today?","data":null,"created_at":"2015-03-30T20:59:02.981Z","updated_at":"2015-03-30T20:59:02.981Z","person_id":"9c7dda6d-c7f2-4398-b0d0-d55e2c1795ea","webhook":null,"message_id":"\u003cf65b6ea6-c7ad-45c4-b710-f81ac4b2fc77@helpful.mail\u003e","in_reply_to_id":null,"html_content":""}
+        {"index":{"_id":"54e4368d-ed65-453e-a308-b1431674048b"}}
+        {"id":"54e4368d-ed65-453e-a308-b1431674048b","conversation_id":"e150cae5-115d-4972-bade-58891c2c4664","content":"Iure aperiam laborum mollitia libero illo est. Aut tenetur occaecati dolorum. Qui et rerum ex eum recusandae optio. Odio iste et quia omnis veritatis dolore.","data":null,"created_at":"2015-03-30T20:59:03.452Z","updated_at":"2015-03-30T20:59:03.452Z","person_id":"b559448c-9ef5-402e-8c6b-11116b061526","webhook":null,"message_id":"\u003cf09291c0-1a57-4757-b4ca-f034e795f3df@helpful.mail\u003e","in_reply_to_id":null,"html_content":""}
+        {"index":{"_id":"68e48688-f4e6-4944-a61c-771f3a3b529a"}}
+        {"id":"68e48688-f4e6-4944-a61c-771f3a3b529a","conversation_id":"8594d608-6c3e-4a0b-80ea-85af6f45c63b","content":"Est magnam omnis voluptas quibusdam voluptatem omnis qui aliquid. Voluptate laudantium consectetur nesciunt itaque voluptatem. Aut fugiat aliquam dolor voluptatem harum hic cum ipsum.","data":null,"created_at":"2015-03-30T20:59:03.572Z","updated_at":"2015-03-30T20:59:03.572Z","person_id":"36a4f743-f4be-4dc3-bdc4-a548deb865fa","webhook":null,"message_id":"\u003cd12c7721-f3f9-4c58-8081-e0edf2ab772b@helpful.mail\u003e","in_reply_to_id":null,"html_content":""}
+        {"index":{"_id":"779e5dac-bb0a-491f-a47b-1c1b9b04babb"}}
+        {"id":"779e5dac-bb0a-491f-a47b-1c1b9b04babb","conversation_id":"e150cae5-115d-4972-bade-58891c2c4664","content":"Minima rem eum qui eius vel debitis voluptatem id. Expedita maiores odio facere fugit. Fugiat laborum voluptatem iste eligendi saepe quia aspernatur ut. Repellat et ipsum dolorem magni eligendi officia veniam. Nam mollitia a voluptate minima.","data":null,"created_at":"2015-03-30T20:59:03.439Z","updated_at":"2015-03-30T20:59:03.439Z","person_id":"1ddd2f34-d2a7-453a-b20a-206d2febd061","webhook":null,"message_id":"\u003c77a2436d-efbc-43cd-8e1f-8660341baa27@helpful.mail\u003e","in_reply_to_id":null,"html_content":""}
+        {"index":{"_id":"9975275d-4bd6-483b-987f-329c567b3c65"}}
+        {"id":"9975275d-4bd6-483b-987f-329c567b3c65","conversation_id":"5fd0d038-d69f-45e3-bde0-45707100a64d","content":"The styling seems to be broken on the home page. Could you take a look?","data":null,"created_at":"2015-03-30T20:59:02.924Z","updated_at":"2015-03-30T20:59:02.924Z","person_id":"29b5739e-6af2-4cad-a901-a7d897a72aa0","webhook":null,"message_id":"\u003ca7812e77-00f4-4993-99b0-946d2070a9cb@helpful.mail\u003e","in_reply_to_id":null,"html_content":""}
+        {"index":{"_id":"9fca59cb-511a-4f73-a696-012e718d0a92"}}
+        {"id":"9fca59cb-511a-4f73-a696-012e718d0a92","conversation_id":"2908bde0-4a8f-43ff-be42-0f9c58ba2f30","content":"Ipsam rerum sunt sunt dolor labore architecto. Beatae deserunt amet minus dolor ut officiis id. Excepturi dolores repellat veniam nam et itaque. Est facere fugit nulla porro inventore aut.","data":null,"created_at":"2015-03-30T20:59:03.545Z","updated_at":"2015-03-30T20:59:03.545Z","person_id":"bcf182c6-456e-48ab-ae7c-ce7f301f7ddc","webhook":null,"message_id":"\u003c8e9c7fb7-3e4c-432f-996a-efdb3a5a5a66@helpful.mail\u003e","in_reply_to_id":null,"html_content":""}
+        {"index":{"_id":"bdef9669-e208-4910-9845-56ec1dc05bb9"}}
+        {"id":"bdef9669-e208-4910-9845-56ec1dc05bb9","conversation_id":"8594d608-6c3e-4a0b-80ea-85af6f45c63b","content":"Quasi ipsum cumque quia explicabo. Adipisci fugit quae aliquam quos. Cumque non voluptas vel soluta consequatur. Consequuntur aut et dolores expedita. Itaque vitae et reprehenderit magnam aut exercitationem.","data":null,"created_at":"2015-03-30T20:59:03.583Z","updated_at":"2015-03-30T20:59:03.583Z","person_id":"f175a70f-21d3-4ef8-84d1-474d6ef96185","webhook":null,"message_id":"\u003c4742577f-61a4-4c1b-ae31-407cb9b96ed9@helpful.mail\u003e","in_reply_to_id":null,"html_content":""}
         {"index":{"_id":"c795dcb6-8f64-4c1d-888d-c0064153f892"}}
-        {"id":"c795dcb6-8f64-4c1d-888d-c0064153f892","conversation_id":"677e5a68-c0ab-4a93-9419-c41521a8e8f4","content":"This is broken","data":null,"created_at":"2015-03-03T20:41:50.174Z","updated_at":"2015-03-03T20:41:50.189Z","person_id":"cf041b5b-872c-4800-9955-9de376c05a74","webhook":null,"message_id":"\u003c5672062e-0603-4222-b1f2-fcc4c1c3e0a5@helpful.mail\u003e","in_reply_to_id":null,"html_content":"","subject":null}
-        {"index":{"_id":"d3b7b43a-ea98-4d6b-b2d9-08f3d56d5162"}}
-        {"id":"d3b7b43a-ea98-4d6b-b2d9-08f3d56d5162","conversation_id":"3d9c21b2-413c-4a7a-931a-98f41161b056","content":"Where's the espresso machine? Wasn't it supposed to be delivered today?","data":null,"created_at":"2015-03-03T20:41:49.334Z","updated_at":"2015-03-03T20:41:49.334Z","person_id":"0cf891cd-d601-4ab5-b7e8-277d3fd2d5c0","webhook":null,"message_id":"\u003ca5ba795e-a412-4ba6-bcf2-8a8125c898f1@helpful.mail\u003e","in_reply_to_id":null,"html_content":"","subject":null}
-        {"index":{"_id":"e40b1e7d-ebe0-4fbb-bda1-ba910391aa00"}}
-        {"id":"e40b1e7d-ebe0-4fbb-bda1-ba910391aa00","conversation_id":"677e5a68-c0ab-4a93-9419-c41521a8e8f4","content":"Aliquid vero sit aut unde voluptatem in. Non magni sed dolores voluptatem quisquam eius. Dolorem neque aut aut voluptates laudantium ipsa quaerat harum. Nisi doloribus quia officia.","data":null,"created_at":"2015-03-03T20:41:50.051Z","updated_at":"2015-03-03T20:41:50.051Z","person_id":"57fb306a-3bec-4c86-ab8c-5c38f9bec223","webhook":null,"message_id":"\u003c3c8e89e2-aa4d-4dbf-853e-ce7e2831dafa@helpful.mail\u003e","in_reply_to_id":null,"html_content":"","subject":null}
-        {"index":{"_id":"f31f58fe-8c84-41d9-9a1b-b5fa426f2e43"}}
-        {"id":"f31f58fe-8c84-41d9-9a1b-b5fa426f2e43","conversation_id":"575e796d-ba8f-4d3f-8fcd-2010e31c4e2a","content":"Excepturi ut veritatis dolorem beatae. Eum quis illo molestias fugit sed quidem officiis. Et autem voluptas sunt vitae animi. Sed voluptatibus sit nostrum facere a rem totam. Et accusamus consequatur libero sit et corrupti adipisci aut.","data":null,"created_at":"2015-03-03T20:41:49.989Z","updated_at":"2015-03-03T20:41:49.989Z","person_id":"14eba600-b507-4b9c-be77-7ce2c1d4a6c3","webhook":null,"message_id":"\u003c00af79e4-bedc-461e-a108-374eaf5e3921@helpful.mail\u003e","in_reply_to_id":null,"html_content":"","subject":null}
-        {"index":{"_id":"f5c6fd56-91ea-44ea-947c-81fa5c5e8b88"}}
-        {"id":"f5c6fd56-91ea-44ea-947c-81fa5c5e8b88","conversation_id":"f1f5835c-6993-41c8-8fe3-b7afb8df7c8a","content":"Voluptas et quo distinctio sint qui in. Dolor eos totam laborum qui praesentium ipsum quis. Quibusdam sit est a amet. Eaque quasi voluptas maxime culpa quae. Vel consequatur omnis quia expedita et aperiam amet.","data":null,"created_at":"2015-03-03T20:41:50.090Z","updated_at":"2015-03-03T20:41:50.090Z","person_id":"eb2bd8fb-0d04-40a2-b5cc-86a8224697dc","webhook":null,"message_id":"\u003c0788df9c-a960-4ebd-b5eb-632e46e6814a@helpful.mail\u003e","in_reply_to_id":null,"html_content":"","subject":null}
+        {"id":"c795dcb6-8f64-4c1d-888d-c0064153f892","conversation_id":"2908bde0-4a8f-43ff-be42-0f9c58ba2f30","content":"This is broken","data":null,"created_at":"2015-03-30T20:59:03.665Z","updated_at":"2015-03-30T20:59:03.678Z","person_id":"5b7a72b0-08ac-4236-9221-f6c81e183d69","webhook":null,"message_id":"\u003c5acbe495-4207-4309-bbea-f75bb0f6713b@helpful.mail\u003e","in_reply_to_id":null,"html_content":""}
+        {"index":{"_id":"e49c630c-6733-4277-85cf-28b3ba5c55d2"}}
+        {"id":"e49c630c-6733-4277-85cf-28b3ba5c55d2","conversation_id":"8594d608-6c3e-4a0b-80ea-85af6f45c63b","content":"Repellat quia voluptatem possimus omnis enim temporibus laborum ratione. Modi atque ad non voluptatem odio. Quidem at architecto eaque. Ab ducimus deserunt facilis numquam est omnis. Pariatur accusamus reiciendis ea omnis quam modi nam repellat.","data":null,"created_at":"2015-03-30T20:59:03.604Z","updated_at":"2015-03-30T20:59:03.604Z","person_id":"6f775e35-3b49-4ef8-90c9-4ec6c1aaee2c","webhook":null,"message_id":"\u003cdcb53919-4dc7-4824-aab0-c8b5924a0057@helpful.mail\u003e","in_reply_to_id":null,"html_content":""}
+        {"index":{"_id":"ecd13f93-5efb-43b9-8c30-d1fe77c4c289"}}
+        {"id":"ecd13f93-5efb-43b9-8c30-d1fe77c4c289","conversation_id":"4c0fa614-dcf1-4eb8-a5c2-ba2a59438d25","content":"Oh bummer. They sent it to 15th street for some reason. I'll give them a call and see what's up.","data":null,"created_at":"2015-03-30T20:59:03.020Z","updated_at":"2015-03-30T20:59:03.020Z","person_id":"4c4a3034-843f-498e-aa8a-6d70dbbfffa6","webhook":null,"message_id":"\u003c206c36d0-eb9c-4e80-95a3-4e7f44edf7c1@helpful.mail\u003e","in_reply_to_id":null,"html_content":""}
+        {"index":{"_id":"f8c82b4b-abe8-491f-87e4-e01941895340"}}
+        {"id":"f8c82b4b-abe8-491f-87e4-e01941895340","conversation_id":"2908bde0-4a8f-43ff-be42-0f9c58ba2f30","content":"Sit possimus eum veniam. Quo aut veritatis corporis. Sed sunt aliquid ut minima ab.","data":null,"created_at":"2015-03-30T20:59:03.554Z","updated_at":"2015-03-30T20:59:03.554Z","person_id":"a7688bb4-7183-4bdf-9278-1047410312d5","webhook":null,"message_id":"\u003c76874224-c610-4c41-ad9c-04f11f22288e@helpful.mail\u003e","in_reply_to_id":null,"html_content":""}
+        {"index":{"_id":"fd87e39e-d988-4b5e-b0d4-9c0081493ea9"}}
+        {"id":"fd87e39e-d988-4b5e-b0d4-9c0081493ea9","conversation_id":"1fe0b950-ed24-4ac3-8539-ec4fb9140e63","content":"Do you want to grab breakfast to chat about Helpful?","data":null,"created_at":"2015-03-30T20:59:03.053Z","updated_at":"2015-03-30T20:59:03.053Z","person_id":"0efbe3b1-872e-4d83-91a2-3851d584ef39","webhook":null,"message_id":"\u003cf89b0d57-f2f6-43d4-bd02-9ab13c272c8f@helpful.mail\u003e","in_reply_to_id":null,"html_content":""}
     headers:
       User-Agent:
       - Faraday v0.9.0
@@ -61,15 +61,15 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Content-Length:
-      - '2576'
+      - '2578'
     body:
       encoding: UTF-8
-      string: '{"took":5,"errors":false,"items":[{"index":{"_index":"messages","_type":"message","_id":"028e5652-5532-4c5e-8ece-6383a96cb3b6","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"0cf6356b-7cac-4c46-9c45-50db240e63c9","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"0f7e4baa-8cf1-4dd6-81e3-e016960d2116","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"24e6ef6e-df0c-47a8-b47c-7286e2af3101","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"2a671499-73d4-42a6-a976-07d16abfbef3","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"2eb4055b-bbb6-4e12-91e7-38e96cde471d","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"3cca19f8-1e17-491d-8dd9-2fa4e49a85c3","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"46cfe66f-f45d-4e01-a20f-c11617990352","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"4b4f2e44-0462-41f1-9861-cedbaf377a99","_version":2,"status":200}},{"index":{"_index":"messages","_type":"message","_id":"60343968-ed79-4845-b404-7c57171bf54b","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"78b4578d-3931-4928-b14a-2b4ab331ff86","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"9485111d-7adc-4521-b655-0a6a08b8ad3c","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"9ff2c0e9-57fc-4204-b68b-3e2f97c2eb8a","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"a09b55d7-38fc-4791-9a72-fddae0bcad78","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"a6f50a14-5c06-4ae6-b86f-c2483103aa03","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"be4e57a9-b499-4c1f-9533-09bd7e0101ee","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"c795dcb6-8f64-4c1d-888d-c0064153f892","_version":4,"status":200}},{"index":{"_index":"messages","_type":"message","_id":"d3b7b43a-ea98-4d6b-b2d9-08f3d56d5162","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"e40b1e7d-ebe0-4fbb-bda1-ba910391aa00","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"f31f58fe-8c84-41d9-9a1b-b5fa426f2e43","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"f5c6fd56-91ea-44ea-947c-81fa5c5e8b88","_version":1,"status":201}}]}'
+      string: '{"took":219,"errors":false,"items":[{"index":{"_index":"messages","_type":"message","_id":"0a3efc74-0245-40cd-bc1b-dc285d28d06e","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"0ba8ff44-c99f-40f0-a244-71378475b09c","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"171ce9b2-d4a9-4e1e-9e6e-a1b56ffdea1a","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"1d79af80-bf9a-4a1c-92d3-398085d3757a","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"2625172b-4d62-42ef-9d79-a0a37bd11544","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"3d604ba7-3c2a-4228-a053-e2d84e97e27d","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"49ef44f1-557b-415c-86a7-580814aa209f","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"4b4f2e44-0462-41f1-9861-cedbaf377a99","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"51211522-d128-49a6-a768-59ca8801d991","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"527b2aae-0b9f-4b74-bd6b-e390f19c19b6","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"54e4368d-ed65-453e-a308-b1431674048b","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"68e48688-f4e6-4944-a61c-771f3a3b529a","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"779e5dac-bb0a-491f-a47b-1c1b9b04babb","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"9975275d-4bd6-483b-987f-329c567b3c65","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"9fca59cb-511a-4f73-a696-012e718d0a92","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"bdef9669-e208-4910-9845-56ec1dc05bb9","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"c795dcb6-8f64-4c1d-888d-c0064153f892","_version":2,"status":200}},{"index":{"_index":"messages","_type":"message","_id":"e49c630c-6733-4277-85cf-28b3ba5c55d2","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"ecd13f93-5efb-43b9-8c30-d1fe77c4c289","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"f8c82b4b-abe8-491f-87e4-e01941895340","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"fd87e39e-d988-4b5e-b0d4-9c0081493ea9","_version":1,"status":201}}]}'
     http_version: 
-  recorded_at: Tue, 03 Mar 2015 20:41:50 GMT
+  recorded_at: Mon, 30 Mar 2015 20:59:04 GMT
 - request:
     method: get
-    uri: http://localhost:9200/messages/message/_search
+    uri: http://127.0.0.1:9200/messages/message/_search
     body:
       encoding: UTF-8
       string: '{"query":{"match":{"content":"Ben"}}}'
@@ -86,469 +86,30 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Content-Length:
-      - '59173'
+      - '2191'
     body:
       encoding: UTF-8
-      string: '{"took":5,"timed_out":false,"_shards":{"total":5,"successful":5,"failed":0},"hits":{"total":24,"max_score":2.4896796,"hits":[{"_index":"messages","_type":"message","_id":"ef2ba983-5d10-4ec1-abff-1f1b1d7e2a8c","_score":2.4896796,"_source":{"id":"ef2ba983-5d10-4ec1-abff-1f1b1d7e2a8c","conversation_id":"1e0c3c6e-c22c-4831-b248-69956ba76a81","content":"\u003cp\u003eik
-        ben er mee bezig.\u003c/p\u003e","data":null,"created_at":"2015-01-15T14:14:03.394Z","updated_at":"2015-02-24T23:43:56.684Z","person_id":"9c5de09b-8ed6-4425-95ae-736735617d81","webhook":null,"message_id":"\u003cef2ba983-5d10-4ec1-abff-1f1b1d7e2a8c@helpful.mail\u003e","in_reply_to_id":null,"html_content":null,"subject":null}},{"_index":"messages","_type":"message","_id":"4b4f2e44-0462-41f1-9861-cedbaf377a99","_score":2.0928416,"_source":{"id":"4b4f2e44-0462-41f1-9861-cedbaf377a99","conversation_id":"464dcde4-aa95-4dde-8242-22516cc8b4a9","content":"Hi,
-        my name is Ben. I need help","data":null,"created_at":"2015-03-03T20:27:17.606Z","updated_at":"2015-03-03T20:27:17.614Z","person_id":"151b611c-8788-4a0d-beef-072b585648a2","webhook":null,"message_id":"\u003c599ae2cb-5f55-4ba2-bb70-393b106e4ad8@helpful.mail\u003e","in_reply_to_id":null,"html_content":"","subject":null}},{"_index":"messages","_type":"message","_id":"8e549a98-b8db-4696-9ab0-a29b9f561122","_score":1.8587369,"_source":{"id":"8e549a98-b8db-4696-9ab0-a29b9f561122","conversation_id":"808881e9-8856-4b80-99a5-3d0a50d4d2d7","content":"Collin,
-        \r\n\r\nOnce again, quick fix.  Thanks for being on top of it man.\r\n\r\nben","data":{"body":"\u003chtml\u003e\u003chead\u003e\u003c/head\u003e\u003cbody
-        style=\"word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break:
-        after-white-space;\"\u003eCollin,\u0026#160;\u003cdiv\u003e\u003cbr\u003e\u003c/div\u003e\u003cdiv\u003eOnce
-        again, quick fix. \u0026#160;Thanks for being on top of it man.\u003c/div\u003e\u003cdiv\u003e\u003cbr\u003e\u003c/div\u003e\u003cdiv\u003eben\u003c/div\u003e\u003cdiv\u003e\u003cbr\u003e\u003cdiv\u003e\u003cdiv\u003e\u003c/div\u003e\u003cbr
-        class=\"Apple-interchange-newline\"\u003e\u003c/div\u003e\u003cbr\u003e\u003c/div\u003e\u003c/body\u003e\u003c/html\u003e","subject":"Re:
-        Past \u0026 days at Coyote CrossFit is not showing any of the workouts that
-        are reflected in my full log book."},"created_at":"2014-08-21T04:18:01.884Z","updated_at":"2015-02-24T23:42:01.737Z","person_id":"fcb39d5f-9adc-4692-b992-1a76ee2df6e4","webhook":{"recipient":"808881e9-8856-4b80-99a5-3d0a50d4d2d7@helpful.io","sender":"benderrick@me.com","subject":"Re:
-        Past \u0026 days at Coyote CrossFit is not showing any of the workouts that
-        are reflected in my full log book.","from":"Ben Derrick \u003cbenderrick@me.com\u003e","X-Envelope-From":"\u003cbenderrick@me.com\u003e","Received":"from
-        [192.168.1.106] (adsl-74-240-61-86.jan.bellsouth.net [74.240.61.86]) by st11p02mm-asmtp002.mac.com
-        (Oracle Communications Messaging Server 7u4-27.10(7.0.4.27.9) 64bit (built
-        Jun 6 2014)) with ESMTPSA id \u003c0NAN00CN62LMGN20@st11p02mm-asmtp002.mac.com\u003e
-        for 808881e9-8856-4b80-99a5-3d0a50d4d2d7@helpful.io; Thu, 21 Aug 2014 04:17:48
-        +0000 (GMT)","X-Proofpoint-Virus-Version":"vendor=fsecure engine=2.50.10432:5.12.52,1.0.27,0.0.0000
-        definitions=2014-08-21_02:2014-08-20,2014-08-21,1970-01-01 signatures=0","X-Proofpoint-Spam-Details":"rule=notspam
-        policy=default score=0 spamscore=0 suspectscore=4 phishscore=0 adultscore=0
-        bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1 engine=7.0.1-1402240000
-        definitions=main-1408210057","From":"Ben Derrick \u003cbenderrick@me.com\u003e","Content-Type":"multipart/alternative;
-        boundary=\"Apple-Mail=_CA7EA900-6A3C-4A32-982F-872AF4ADE385\"","Message-Id":"\u003c4CA65038-8B38-480A-870A-C9ACD019350A@me.com\u003e","Mime-Version":"1.0
-        (Mac OS X Mail 7.3 \\(1878.2\\))","Subject":"Re: Past \u0026 days at Coyote
-        CrossFit is not showing any of the workouts that are reflected in my full
-        log book.","Date":"Wed, 20 Aug 2014 23:17:45 -0500","References":"\u003c53f55b8930406_23f8076f5f97020122@8828c5ee-2086-4e84-abaa-8a505b05aa62.mail\u003e","To":"CF
-        Whiteboard \u003c808881e9-8856-4b80-99a5-3d0a50d4d2d7@helpful.io\u003e","In-Reply-To":"\u003c53f55b8930406_23f8076f5f97020122@8828c5ee-2086-4e84-abaa-8a505b05aa62.mail\u003e","X-Mailer":"Apple
-        Mail (2.1878.2)","X-Mailgun-Incoming":"Yes","X-Mailgun-Sflag":"No","X-Mailgun-Sscore":"1.6","X-Mailgun-Spf":"Pass","message-headers":"[[\"X-Envelope-From\",
-        \"\u003cbenderrick@me.com\u003e\"], [\"Received\", \"from st11p02mm-asmtp002.mac.com
-        (st11p02mm-asmtpout002.mac.com [17.172.220.237]) by mxa.mailgun.org with ESMTP
-        id 53f572f3.7f27a5c42470-in3; Thu, 21 Aug 2014 04:17:55 -0000 (UTC)\"], [\"Received\",
-        \"from [192.168.1.106] (adsl-74-240-61-86.jan.bellsouth.net [74.240.61.86])
-        by st11p02mm-asmtp002.mac.com (Oracle Communications Messaging Server 7u4-27.10(7.0.4.27.9)
-        64bit (built Jun 6 2014)) with ESMTPSA id \u003c0NAN00CN62LMGN20@st11p02mm-asmtp002.mac.com\u003e
-        for 808881e9-8856-4b80-99a5-3d0a50d4d2d7@helpful.io; Thu, 21 Aug 2014 04:17:48
-        +0000 (GMT)\"], [\"X-Proofpoint-Virus-Version\", \"vendor=fsecure engine=2.50.10432:5.12.52,1.0.27,0.0.0000
-        definitions=2014-08-21_02:2014-08-20,2014-08-21,1970-01-01 signatures=0\"],
-        [\"X-Proofpoint-Spam-Details\", \"rule=notspam policy=default score=0 spamscore=0
-        suspectscore=4 phishscore=0 adultscore=0 bulkscore=0 classifier=spam adjust=0
-        reason=mlx scancount=1 engine=7.0.1-1402240000 definitions=main-1408210057\"],
-        [\"From\", \"Ben Derrick \u003cbenderrick@me.com\u003e\"], [\"Content-Type\",
-        \"multipart/alternative; boundary=\\\"Apple-Mail=_CA7EA900-6A3C-4A32-982F-872AF4ADE385\\\"\"],
-        [\"Message-Id\", \"\u003c4CA65038-8B38-480A-870A-C9ACD019350A@me.com\u003e\"],
-        [\"Mime-Version\", \"1.0 (Mac OS X Mail 7.3 \\\\(1878.2\\\\))\"], [\"Subject\",
-        \"Re: Past \u0026 days at Coyote CrossFit is not showing any of the workouts
-        that are reflected in my full log book.\"], [\"Date\", \"Wed, 20 Aug 2014
-        23:17:45 -0500\"], [\"References\", \"\u003c53f55b8930406_23f8076f5f97020122@8828c5ee-2086-4e84-abaa-8a505b05aa62.mail\u003e\"],
-        [\"To\", \"CF Whiteboard \u003c808881e9-8856-4b80-99a5-3d0a50d4d2d7@helpful.io\u003e\"],
-        [\"In-Reply-To\", \"\u003c53f55b8930406_23f8076f5f97020122@8828c5ee-2086-4e84-abaa-8a505b05aa62.mail\u003e\"],
-        [\"X-Mailer\", \"Apple Mail (2.1878.2)\"], [\"X-Mailgun-Incoming\", \"Yes\"],
-        [\"X-Mailgun-Sflag\", \"No\"], [\"X-Mailgun-Sscore\", \"1.6\"], [\"X-Mailgun-Spf\",
-        \"Pass\"]]","timestamp":"1408594681","token":"9d67c9d84f230084c77b1c167dfe687c89d786fb7e7a9a75b5","signature":"7c479c22c295cc8b03eed32652232699fe30e58872b3cf49ce081db58841f8d3","body-plain":"Collin,
-        \r\n\r\nOnce again, quick fix.  Thanks for being on top of it man.\r\n\r\nben\r\n\r\nOn
-        Aug 20, 2014, at 9:38 PM, Collin Donahue-Oponski \u003cnotifications@helpful.io\u003e
-        wrote:\r\n\r\n\u003e Hey Ben,\r\n\u003e \r\n\u003e Thanks so much for reporting
-        this issue. I found a small bug and deployed a fix just now. Please let me
-        know how that looks for you. coyotecrossfit.com/athletes/benderrick\r\n\u003e
-        \r\n\u003e \r\n\r\n","body-html":"\u003chtml\u003e\u003chead\u003e\u003cmeta
-        http-equiv=\"Content-Type\" content=\"text/html charset=us-ascii\"\u003e\u003c/head\u003e\u003cbody
-        style=\"word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break:
-        after-white-space;\"\u003eCollin,\u0026nbsp;\u003cdiv\u003e\u003cbr\u003e\u003c/div\u003e\u003cdiv\u003eOnce
-        again, quick fix. \u0026nbsp;Thanks for being on top of it man.\u003c/div\u003e\u003cdiv\u003e\u003cbr\u003e\u003c/div\u003e\u003cdiv\u003eben\u003c/div\u003e\u003cdiv\u003e\u003cbr\u003e\u003cdiv\u003e\u003cdiv\u003eOn
-        Aug 20, 2014, at 9:38 PM, Collin Donahue-Oponski \u0026lt;\u003ca href=\"mailto:notifications@helpful.io\"\u003enotifications@helpful.io\u003c/a\u003e\u0026gt;
-        wrote:\u003c/div\u003e\u003cbr class=\"Apple-interchange-newline\"\u003e\u003cblockquote
-        type=\"cite\"\u003e\r\n\u003cdiv\u003e\u003cp\u003eHey Ben,\u003c/p\u003e\u003cp\u003eThanks
-        so much for reporting this issue.  I found a small bug and deployed\r\na fix
-        just now.  Please let me know how that looks for you.\r\n\u003ca href=\"http://coyotecrossfit.com/athletes/benderrick\"\u003ecoyotecrossfit.com/athletes/benderrick\u003c/a\u003e\u003c/p\u003e\r\n\u003cimg
-        width=\"1px\" height=\"1px\" alt=\"\" src=\"http://email.helpful.io/o/aT01M2Y1NWI4OTMwNDA2XzIzZjgwNzZmNWY5NzAyMDEyMiU0MDg4MjhjNWVlLTIwODYtNGU4NC1hYmFhLThhNTA1YjA1YWE2Mi5tYWlsJmg9MzRjNTJiZjQ0MjJiMDEwMTc1ODY4MmVmYmU4ZGI3MjMmcj1iZW5kZXJyaWNrJTQwbWUuY29tJmQ9ZWMwYzg\"\u003e\u003c/div\u003e\r\n\u003c/blockquote\u003e\u003c/div\u003e\u003cbr\u003e\u003c/div\u003e\u003c/body\u003e\u003c/html\u003e","stripped-html":"\u003chtml\u003e\u003chead\u003e\u003c/head\u003e\u003cbody
-        style=\"word-wrap: break-word; -webkit-nbsp-mode: space; -webkit-line-break:
-        after-white-space;\"\u003eCollin,\u0026#160;\u003cdiv\u003e\u003cbr\u003e\u003c/div\u003e\u003cdiv\u003eOnce
-        again, quick fix. \u0026#160;Thanks for being on top of it man.\u003c/div\u003e\u003cdiv\u003e\u003cbr\u003e\u003c/div\u003e\u003cdiv\u003eben\u003c/div\u003e\u003cdiv\u003e\u003cbr\u003e\u003cdiv\u003e\u003cdiv\u003e\u003c/div\u003e\u003cbr
-        class=\"Apple-interchange-newline\"\u003e\u003c/div\u003e\u003cbr\u003e\u003c/div\u003e\u003c/body\u003e\u003c/html\u003e","stripped-text":"Collin,
-        \r\n\r\nOnce again, quick fix.  Thanks for being on top of it man.\r\n\r\nben","stripped-signature":"","mailbox":"808881e9-8856-4b80-99a5-3d0a50d4d2d7","action":"create","controller":"webhooks/mailgun"},"message_id":"\u003c4CA65038-8B38-480A-870A-C9ACD019350A@me.com\u003e","in_reply_to_id":null,"html_content":null,"subject":"Re:
-        Past \u0026 days at Coyote CrossFit is not showing any of the workouts that
-        are reflected in my full log book."}},{"_index":"messages","_type":"message","_id":"714a1fd2-6ef3-439d-80d1-ebb73d7e6261","_score":1.8124539,"_source":{"id":"714a1fd2-6ef3-439d-80d1-ebb73d7e6261","conversation_id":"c684e137-3bc5-47e3-a173-d55e434c6e69","content":"The
-        content of the message.\r\n\r\n--\r\nBen Shyong\r\nProduct \u0026 Growth\r\nassembly.com
-        | 909-274-9664\r\n\r\n---------- Forwarded message ----------\r\nFrom: Ben
-        Shyong \u003cben@assembly.com\u003e\r\nDate: Fri, Nov 7, 2014 at 12:32 PM\r\nSubject:
-        Test\r\nTo: commonsenselabs@helpful.io\r\n\r\n\r\ntest","data":{"body":"\u003chtml\u003e\u003cbody\u003e\u003cdiv
-        dir=\"ltr\"\u003e\u003cdiv\u003eThe content of the message.\u003c/div\u003e\u003cbr
-        clear=\"all\"\u003e\u003cdiv\u003e\u003cdiv dir=\"ltr\"\u003e--\u003cbr\u003eBen
-        Shyong\u003cbr\u003eProduct \u0026amp; Growth\u003cbr\u003e\u003cdiv style=\"text-align:start\"\u003e\u003cspan
-        style=\"text-align:right\"\u003e\u003ca href=\"http://assembly.com\" target=\"_blank\"\u003eassembly.com\u003c/a\u003e\u0026#160;\u003c/span\u003e\u003cspan
-        style=\"font-family:Arial,sans-serif;text-align:right\"\u003e| 909-274-9664\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e\u0026#13;\n\u003cbr\u003e\u003cbr\u003e\u003c/div\u003e\u003c/body\u003e\u003c/html\u003e","subject":"Test
-        Message #2"},"created_at":"2014-11-07T20:35:55.676Z","updated_at":"2015-02-24T23:41:26.066Z","person_id":"b08b01fe-12d7-4c4f-aca8-687723ae4c99","webhook":{"recipient":"commonsenselabs@helpful.io","sender":"ben@assembly.com","subject":"Test
-        Message #2","from":"Ben Shyong \u003cben@assembly.com\u003e","X-Envelope-From":"\u003cben@assembly.com\u003e","Received":"by
-        10.229.186.8 with HTTP; Fri, 7 Nov 2014 12:35:43 -0800 (PST)","X-Google-Dkim-Signature":"v=1;
-        a=rsa-sha256; c=relaxed/relaxed; d=1e100.net; s=20130820; h=x-gm-message-state:mime-version:date:message-id:subject:from:to
-        :content-type; bh=fH87MttHpo9r9BGv4GP5tKhqxJFdtTnhKALODwMqA2Q=; b=kbCKseMEv8C132zOKZiF8pfA+PWpboAB0Si0r9dxShx4c/TIGYfPYRES7FixM2o7Nx
-        +eC95SWocfZDIItwA5PKYFM8Ua0onz4lQblq44r9HmJhGrR1JQVeX+mV7bd9+FOST+x+ RlNbMNKgTd/Di1Ist7G3p13CE4Ne/kuFd1p0s9vn7g3kwpdEJG4NPD4DAVY8j85M3zNU
-        HjEi7ask9E6r++WfVDykk16GBCNrELNaVu78Jqk4KPSrUnMV+PRH5USl8CjjaRJf1DTp GVSUZQs4aH6ITHZU3jKop+TViR8R4AeVxnKxxj14khh+F8ntsxLyTZH5j/ucRR+QfNIN
-        qAIA==","X-Gm-Message-State":"ALoCoQnyDZ6hhtYEcB6kVqAKFtjpEJurrWqJ9gYEvVxtVTPbFm+qo512GUv2yovYJLCiyV9MIfaj","Mime-Version":"1.0","X-Received":"by
-        10.224.134.198 with SMTP id k6mr21418502qat.88.1415392543476; Fri, 07 Nov
-        2014 12:35:43 -0800 (PST)","Date":"Fri, 7 Nov 2014 12:35:43 -0800","Message-Id":"\u003cCADi=AFKvS+3WKYKDMxG1zw2U+kUSk_wiPwfwjqXMBJxb0fazyg@mail.gmail.com\u003e","Subject":"Test
-        Message #2","From":"Ben Shyong \u003cben@assembly.com\u003e","To":"commonsenselabs@helpful.io","Content-Type":"multipart/alternative;
-        boundary=\"047d7b5d2540c5ad0005074ac10d\"","X-Mailgun-Incoming":"Yes","X-Mailgun-Sflag":"No","X-Mailgun-Sscore":"-1.9","X-Mailgun-Spf":"Pass","message-headers":"[[\"X-Envelope-From\",
-        \"\u003cben@assembly.com\u003e\"], [\"Received\", \"from mail-qa0-f52.google.com
-        (mail-qa0-f52.google.com [209.85.216.52]) by mxa.mailgun.org with ESMTP id
-        545d2d20.7fca44b90cf0-in3; Fri, 07 Nov 2014 20:35:44 -0000 (UTC)\"], [\"Received\",
-        \"by mail-qa0-f52.google.com with SMTP id u7so2898768qaz.11 for \u003ccommonsenselabs@helpful.io\u003e;
-        Fri, 07 Nov 2014 12:35:43 -0800 (PST)\"], [\"X-Google-Dkim-Signature\", \"v=1;
-        a=rsa-sha256; c=relaxed/relaxed; d=1e100.net; s=20130820; h=x-gm-message-state:mime-version:date:message-id:subject:from:to
-        :content-type; bh=fH87MttHpo9r9BGv4GP5tKhqxJFdtTnhKALODwMqA2Q=; b=kbCKseMEv8C132zOKZiF8pfA+PWpboAB0Si0r9dxShx4c/TIGYfPYRES7FixM2o7Nx
-        +eC95SWocfZDIItwA5PKYFM8Ua0onz4lQblq44r9HmJhGrR1JQVeX+mV7bd9+FOST+x+ RlNbMNKgTd/Di1Ist7G3p13CE4Ne/kuFd1p0s9vn7g3kwpdEJG4NPD4DAVY8j85M3zNU
-        HjEi7ask9E6r++WfVDykk16GBCNrELNaVu78Jqk4KPSrUnMV+PRH5USl8CjjaRJf1DTp GVSUZQs4aH6ITHZU3jKop+TViR8R4AeVxnKxxj14khh+F8ntsxLyTZH5j/ucRR+QfNIN
-        qAIA==\"], [\"X-Gm-Message-State\", \"ALoCoQnyDZ6hhtYEcB6kVqAKFtjpEJurrWqJ9gYEvVxtVTPbFm+qo512GUv2yovYJLCiyV9MIfaj\"],
-        [\"Mime-Version\", \"1.0\"], [\"X-Received\", \"by 10.224.134.198 with SMTP
-        id k6mr21418502qat.88.1415392543476; Fri, 07 Nov 2014 12:35:43 -0800 (PST)\"],
-        [\"Received\", \"by 10.229.186.8 with HTTP; Fri, 7 Nov 2014 12:35:43 -0800
-        (PST)\"], [\"Date\", \"Fri, 7 Nov 2014 12:35:43 -0800\"], [\"Message-Id\",
-        \"\u003cCADi=AFKvS+3WKYKDMxG1zw2U+kUSk_wiPwfwjqXMBJxb0fazyg@mail.gmail.com\u003e\"],
-        [\"Subject\", \"Test Message #2\"], [\"From\", \"Ben Shyong \u003cben@assembly.com\u003e\"],
-        [\"To\", \"commonsenselabs@helpful.io\"], [\"Content-Type\", \"multipart/alternative;
-        boundary=\\\"047d7b5d2540c5ad0005074ac10d\\\"\"], [\"X-Mailgun-Incoming\",
-        \"Yes\"], [\"X-Mailgun-Sflag\", \"No\"], [\"X-Mailgun-Sscore\", \"-1.9\"],
-        [\"X-Mailgun-Spf\", \"Pass\"]]","timestamp":"1415392555","token":"43b04a3aab8322c1fe8dcd6e970e9ccd7fd333c4a9ef91e4fc","signature":"467b8d21e6024b36899c42af6b5bc76453dc0e307dac750e80d4dc33fac61d2a","body-plain":"The
-        content of the message.\r\n\r\n--\r\nBen Shyong\r\nProduct \u0026 Growth\r\nassembly.com
-        | 909-274-9664\r\n\r\n---------- Forwarded message ----------\r\nFrom: Ben
-        Shyong \u003cben@assembly.com\u003e\r\nDate: Fri, Nov 7, 2014 at 12:32 PM\r\nSubject:
-        Test\r\nTo: commonsenselabs@helpful.io\r\n\r\n\r\ntest\r\n--\r\nBen Shyong\r\nProduct
-        \u0026 Growth\r\nassembly.com | 909-274-9664\r\n","body-html":"\u003cdiv dir=\"ltr\"\u003e\u003cdiv\u003eThe
-        content of the message.\u003c/div\u003e\u003cbr clear=\"all\"\u003e\u003cdiv\u003e\u003cdiv
-        dir=\"ltr\"\u003e--\u003cbr\u003eBen Shyong\u003cbr\u003eProduct \u0026amp;
-        Growth\u003cbr\u003e\u003cdiv style=\"text-align:start\"\u003e\u003cspan style=\"text-align:right\"\u003e\u003ca
-        href=\"http://assembly.com\" target=\"_blank\"\u003eassembly.com\u003c/a\u003e\u0026nbsp;\u003c/span\u003e\u003cspan
-        style=\"font-family:Arial,sans-serif;text-align:right\"\u003e| 909-274-9664\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e\r\n\u003cbr\u003e\u003cdiv
-        class=\"gmail_quote\"\u003e---------- Forwarded message ----------\u003cbr\u003eFrom:
-        \u003cb class=\"gmail_sendername\"\u003eBen Shyong\u003c/b\u003e \u003cspan
-        dir=\"ltr\"\u003e\u0026lt;\u003ca href=\"mailto:ben@assembly.com\"\u003eben@assembly.com\u003c/a\u003e\u0026gt;\u003c/span\u003e\u003cbr\u003eDate:
-        Fri, Nov 7, 2014 at 12:32 PM\u003cbr\u003eSubject: Test\u003cbr\u003eTo: \u003ca
-        href=\"mailto:commonsenselabs@helpful.io\"\u003ecommonsenselabs@helpful.io\u003c/a\u003e\u003cbr\u003e\u003cbr\u003e\u003cbr\u003e\u003cdiv
-        dir=\"ltr\"\u003etest\u003cbr clear=\"all\"\u003e\u003cdiv\u003e\u003cdiv\u003e\u003cdiv
-        dir=\"ltr\"\u003e--\u003cbr\u003eBen Shyong\u003cbr\u003eProduct \u0026amp;
-        Growth\u003cbr\u003e\u003cdiv style=\"text-align:start\"\u003e\u003cspan style=\"text-align:right\"\u003e\u003ca
-        href=\"http://assembly.com\" target=\"_blank\"\u003eassembly.com\u003c/a\u003e\u0026nbsp;\u003c/span\u003e\u003cspan
-        style=\"font-family:Arial,sans-serif;text-align:right\"\u003e| \u003ca href=\"tel:909-274-9664\"
-        value=\"+19092749664\" target=\"_blank\"\u003e909-274-9664\u003c/a\u003e\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e\r\n\u003c/div\u003e\r\n\u003c/div\u003e\u003cbr\u003e\u003c/div\u003e\r\n","stripped-html":"\u003chtml\u003e\u003cbody\u003e\u003cdiv
-        dir=\"ltr\"\u003e\u003cdiv\u003eThe content of the message.\u003c/div\u003e\u003cbr
-        clear=\"all\"\u003e\u003cdiv\u003e\u003cdiv dir=\"ltr\"\u003e--\u003cbr\u003eBen
-        Shyong\u003cbr\u003eProduct \u0026amp; Growth\u003cbr\u003e\u003cdiv style=\"text-align:start\"\u003e\u003cspan
-        style=\"text-align:right\"\u003e\u003ca href=\"http://assembly.com\" target=\"_blank\"\u003eassembly.com\u003c/a\u003e\u0026#160;\u003c/span\u003e\u003cspan
-        style=\"font-family:Arial,sans-serif;text-align:right\"\u003e| 909-274-9664\u003c/span\u003e\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e\u0026#13;\n\u003cbr\u003e\u003cbr\u003e\u003c/div\u003e\u003c/body\u003e\u003c/html\u003e","stripped-text":"The
-        content of the message.\r\n\r\n--\r\nBen Shyong\r\nProduct \u0026 Growth\r\nassembly.com
-        | 909-274-9664\r\n\r\n---------- Forwarded message ----------\r\nFrom: Ben
-        Shyong \u003cben@assembly.com\u003e\r\nDate: Fri, Nov 7, 2014 at 12:32 PM\r\nSubject:
-        Test\r\nTo: commonsenselabs@helpful.io\r\n\r\n\r\ntest","stripped-signature":"--\r\nBen
-        Shyong\r\nProduct \u0026 Growth\r\nassembly.com | 909-274-9664","mailbox":"commonsenselabs","action":"create","controller":"webhooks/mailgun"},"message_id":"\u003cCADi=AFKvS+3WKYKDMxG1zw2U+kUSk_wiPwfwjqXMBJxb0fazyg@mail.gmail.com\u003e","in_reply_to_id":null,"html_content":null,"subject":"Test
-        Message #2"}},{"_index":"messages","_type":"message","_id":"755020b9-353c-4b29-aaad-9e5eee785bea","_score":1.6597863,"_source":{"id":"755020b9-353c-4b29-aaad-9e5eee785bea","conversation_id":"4a37ceec-5914-4416-ac63-3ebb8bafba5c","content":"\u003cp\u003eWell,
-        what problem do you have?\u003c/p\u003e\u003cp\u003eBen\u003c/p\u003e","data":{},"created_at":"2014-06-24T23:24:18.586Z","updated_at":"2015-02-24T23:41:30.858Z","person_id":"b8406737-7bba-4b70-9d86-ff5dd3da68b2","webhook":null,"message_id":"\u003c755020b9-353c-4b29-aaad-9e5eee785bea@helpful.mail\u003e","in_reply_to_id":null,"html_content":null,"subject":null}},{"_index":"messages","_type":"message","_id":"7e543ffb-058d-4668-a1c9-538fa0f73dc6","_score":1.3174253,"_source":{"id":"7e543ffb-058d-4668-a1c9-538fa0f73dc6","conversation_id":"2455b2fe-58b4-4fef-b86d-5d11c819a2fe","content":"\u003cp\u003eHello
-        Bidou,\u003c/p\u003e\u003cp\u003eWell, could you send me a screenshot of the
-        error please?\u003c/p\u003e\u003cp\u003eThanks,\u003c/p\u003e\u003cp\u003eBen\u003c/p\u003e","data":{},"created_at":"2014-06-24T23:20:18.527Z","updated_at":"2015-02-24T23:41:42.077Z","person_id":"b8406737-7bba-4b70-9d86-ff5dd3da68b2","webhook":null,"message_id":"\u003c7e543ffb-058d-4668-a1c9-538fa0f73dc6@helpful.mail\u003e","in_reply_to_id":null,"html_content":null,"subject":null}},{"_index":"messages","_type":"message","_id":"2b813ca6-3e8a-4138-b3b8-8e8e4435b706","_score":1.2448398,"_source":{"id":"2b813ca6-3e8a-4138-b3b8-8e8e4435b706","conversation_id":"8a154649-7ac7-4b2b-a532-fa247557a47e","content":"Cool,
-        just one for now. His e-mail address:\r\n\r\nbart@bridgemarketing.nl\r\n\r\nBest
-        regards,\r\nBen\r\n\r\n\r\n2014-10-20 22:58 GMT+02:00 Jeffrey Way \u003cnotifications@helpful.io\u003e:","data":{"body":"\u003chtml\u003e\u003cbody\u003e\u003cdiv
-        dir=\"ltr\"\u003eCool, just one for now. His e-mail address:\u003cdiv\u003e\u003cbr\u003e\u003c/div\u003e\u003cdiv\u003e\u003ca
-        href=\"mailto:bart@bridgemarketing.nl\"\u003ebart@bridgemarketing.nl\u003c/a\u003e\u003c/div\u003e\u003cdiv\u003e\u003cbr\u003e\u003c/div\u003e\u003cdiv\u003eBest
-        regards,\u003c/div\u003e\u003cdiv\u003eBen\u003c/div\u003e\u003cdiv class=\"gmail_extra\"\u003e\u003cdiv\u003e\u003cdiv
-        dir=\"ltr\"\u003e\u003cdiv\u003e\u003cdiv style=\"font-family:arial;font-size:small\"\u003e\u003cdiv
-        dir=\"ltr\"\u003e\u003cdiv dir=\"ltr\"\u003e\u003cbr\u003e\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e\u003cdiv
-        style=\"font-family:arial;font-size:small\"\u003e\u003c/div\u003e\u003cdiv
-        style=\"font-family:arial;font-size:small\"\u003e\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e\u0026#13;\n\u003cbr\u003e\u003cbr\u003e\u003c/div\u003e\u003c/div\u003e\u003c/body\u003e\u003c/html\u003e","subject":"Re:
-        Hi, how can I give a three month subscription to our developers as a gift?"},"created_at":"2014-10-22T13:47:40.384Z","updated_at":"2015-02-24T23:40:12.121Z","person_id":"51e5c8a9-c142-4edf-953c-916ade93e078","webhook":{"recipient":"8a154649-7ac7-4b2b-a532-fa247557a47e@helpful.io","sender":"ben@rogmansmedia.nl","subject":"Re:
-        Hi, how can I give a three month subscription to our developers as a gift?","from":"Ben
-        Rogmans \u003cben@rogmansmedia.nl\u003e","X-Envelope-From":"\u003cben@rogmansmedia.nl\u003e","Received":"by
-        10.220.86.68 with HTTP; Wed, 22 Oct 2014 06:45:46 -0700 (PDT)","X-Google-Dkim-Signature":"v=1;
-        a=rsa-sha256; c=relaxed/relaxed; d=1e100.net; s=20130820; h=x-gm-message-state:mime-version:in-reply-to:references:date
-        :message-id:subject:from:to:content-type; bh=K9nrjQ7hwVgS9mqH9wF+Z6Ck6JwhYB1BCSIj9itzI+g=;
-        b=CmD8n9WEs6Jt18bIAks8kBVEqtzkp5eXphPX9ZLxvIlP1YcvVHyTXWkDjJ0EdB7cwO AA004GAr465z17SBebhZNIxIb9X8WgBoT5w7cFxu4+kme67X/wJaUPUT8BL96Asr6jaN
-        Lmx2UhkV9T3PsPv8iNTTNPoQoxqa5jMhl2dm8Lq9OlNuI2mEaLLmf5DSWC8b6rFy7ACb lRrigxwMUXk0zr6LBC7hJS0kUfIwrG6tYIhpvgMAr7VpzUb86gJD5U9VXJk6bz5/+AfK
-        oQctCVMEsLNgLmGd2BxXaUoX1pgR0aYsA1p1LkOIL8RDlwwwkeizMDcp9P8y42h8wVKF zCqw==","X-Gm-Message-State":"ALoCoQknjt1Y7GbaQ0VX/mvN+Fi0rwAxPJ+7FT7MOq00qcUCbDBfSFv0RAHPDiXqsyAOv6eo95UH","Mime-Version":"1.0","X-Received":"by
-        10.52.99.199 with SMTP id es7mr988134vdb.61.1413985546479; Wed, 22 Oct 2014
-        06:45:46 -0700 (PDT)","In-Reply-To":"\u003c54457760500de_23fc4b1104a54773f@7406dd72-2ba7-47da-8334-861a73a1c903.mail\u003e","References":"\u003c54457760500de_23fc4b1104a54773f@7406dd72-2ba7-47da-8334-861a73a1c903.mail\u003e","Date":"Wed,
-        22 Oct 2014 15:45:46 +0200","Message-Id":"\u003cCAHHFkKqanM23cD1a0t-5v=8zDLqC+ZZpphyUUAbc4Wq7y_s0Yg@mail.gmail.com\u003e","Subject":"Re:
-        Hi, how can I give a three month subscription to our developers as a gift?","From":"Ben
-        Rogmans \u003cben@rogmansmedia.nl\u003e","To":"Laracasts \u003c8a154649-7ac7-4b2b-a532-fa247557a47e@helpful.io\u003e","Content-Type":"multipart/alternative;
-        boundary=\"20cf307f3526373e8d0506032a3f\"","X-Mailgun-Incoming":"Yes","X-Mailgun-Sflag":"No","X-Mailgun-Sscore":"1.1","X-Mailgun-Spf":"Neutral","message-headers":"[[\"X-Envelope-From\",
-        \"\u003cben@rogmansmedia.nl\u003e\"], [\"Received\", \"from mail-vc0-f171.google.com
-        (mail-vc0-f171.google.com [209.85.220.171]) by mxa.mailgun.org with ESMTP
-        id 5447b50b.6511070-in2; Wed, 22 Oct 2014 13:45:47 -0000 (UTC)\"], [\"Received\",
-        \"by mail-vc0-f171.google.com with SMTP id hy10so1968350vcb.16 for \u003c8a154649-7ac7-4b2b-a532-fa247557a47e@helpful.io\u003e;
-        Wed, 22 Oct 2014 06:45:46 -0700 (PDT)\"], [\"X-Google-Dkim-Signature\", \"v=1;
-        a=rsa-sha256; c=relaxed/relaxed; d=1e100.net; s=20130820; h=x-gm-message-state:mime-version:in-reply-to:references:date
-        :message-id:subject:from:to:content-type; bh=K9nrjQ7hwVgS9mqH9wF+Z6Ck6JwhYB1BCSIj9itzI+g=;
-        b=CmD8n9WEs6Jt18bIAks8kBVEqtzkp5eXphPX9ZLxvIlP1YcvVHyTXWkDjJ0EdB7cwO AA004GAr465z17SBebhZNIxIb9X8WgBoT5w7cFxu4+kme67X/wJaUPUT8BL96Asr6jaN
-        Lmx2UhkV9T3PsPv8iNTTNPoQoxqa5jMhl2dm8Lq9OlNuI2mEaLLmf5DSWC8b6rFy7ACb lRrigxwMUXk0zr6LBC7hJS0kUfIwrG6tYIhpvgMAr7VpzUb86gJD5U9VXJk6bz5/+AfK
-        oQctCVMEsLNgLmGd2BxXaUoX1pgR0aYsA1p1LkOIL8RDlwwwkeizMDcp9P8y42h8wVKF zCqw==\"],
-        [\"X-Gm-Message-State\", \"ALoCoQknjt1Y7GbaQ0VX/mvN+Fi0rwAxPJ+7FT7MOq00qcUCbDBfSFv0RAHPDiXqsyAOv6eo95UH\"],
-        [\"Mime-Version\", \"1.0\"], [\"X-Received\", \"by 10.52.99.199 with SMTP
-        id es7mr988134vdb.61.1413985546479; Wed, 22 Oct 2014 06:45:46 -0700 (PDT)\"],
-        [\"Received\", \"by 10.220.86.68 with HTTP; Wed, 22 Oct 2014 06:45:46 -0700
-        (PDT)\"], [\"In-Reply-To\", \"\u003c54457760500de_23fc4b1104a54773f@7406dd72-2ba7-47da-8334-861a73a1c903.mail\u003e\"],
-        [\"References\", \"\u003c54457760500de_23fc4b1104a54773f@7406dd72-2ba7-47da-8334-861a73a1c903.mail\u003e\"],
-        [\"Date\", \"Wed, 22 Oct 2014 15:45:46 +0200\"], [\"Message-Id\", \"\u003cCAHHFkKqanM23cD1a0t-5v=8zDLqC+ZZpphyUUAbc4Wq7y_s0Yg@mail.gmail.com\u003e\"],
-        [\"Subject\", \"Re: Hi, how can I give a three month subscription to our developers
-        as a gift?\"], [\"From\", \"Ben Rogmans \u003cben@rogmansmedia.nl\u003e\"],
-        [\"To\", \"Laracasts \u003c8a154649-7ac7-4b2b-a532-fa247557a47e@helpful.io\u003e\"],
-        [\"Content-Type\", \"multipart/alternative; boundary=\\\"20cf307f3526373e8d0506032a3f\\\"\"],
-        [\"X-Mailgun-Incoming\", \"Yes\"], [\"X-Mailgun-Sflag\", \"No\"], [\"X-Mailgun-Sscore\",
-        \"1.1\"], [\"X-Mailgun-Spf\", \"Neutral\"]]","timestamp":"1413985659","token":"82526101ff5a2a8dc395ec82789f690817beda0b707eefcf53","signature":"442548b775cd8bbe61f953b7c8060a72a3e8fa80162f638607d2cccc4eaf17a5","body-plain":"Cool,
-        just one for now. His e-mail address:\r\n\r\nbart@bridgemarketing.nl\r\n\r\nBest
-        regards,\r\nBen\r\n\r\n\r\n2014-10-20 22:58 GMT+02:00 Jeffrey Way \u003cnotifications@helpful.io\u003e:\r\n\r\n\u003e  Hey,
-        Ben -\r\n\u003e\r\n\u003e\r\n\u003e I can set that up for you. How many developers
-        will need three month\r\n\u003e subscriptions?\r\n\u003e\r\n\u003e\r\n\u003e
-        Jeffrey\r\n\u003e\r\n","body-html":"\u003cdiv dir=\"ltr\"\u003eCool, just
-        one for now. His e-mail address:\u003cdiv\u003e\u003cbr\u003e\u003c/div\u003e\u003cdiv\u003e\u003ca
-        href=\"mailto:bart@bridgemarketing.nl\"\u003ebart@bridgemarketing.nl\u003c/a\u003e\u003c/div\u003e\u003cdiv\u003e\u003cbr\u003e\u003c/div\u003e\u003cdiv\u003eBest
-        regards,\u003c/div\u003e\u003cdiv\u003eBen\u003c/div\u003e\u003cdiv class=\"gmail_extra\"\u003e\u003cdiv\u003e\u003cdiv
-        dir=\"ltr\"\u003e\u003cdiv\u003e\u003cdiv style=\"font-family:arial;font-size:small\"\u003e\u003cdiv
-        dir=\"ltr\"\u003e\u003cdiv dir=\"ltr\"\u003e\u003cbr\u003e\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e\u003cdiv
-        style=\"font-family:arial;font-size:small\"\u003e\u003c/div\u003e\u003cdiv
-        style=\"font-family:arial;font-size:small\"\u003e\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e\r\n\u003cbr\u003e\u003cdiv
-        class=\"gmail_quote\"\u003e2014-10-20 22:58 GMT+02:00 Jeffrey Way \u003cspan
-        dir=\"ltr\"\u003e\u0026lt;\u003ca href=\"mailto:notifications@helpful.io\"
-        target=\"_blank\"\u003enotifications@helpful.io\u003c/a\u003e\u0026gt;\u003c/span\u003e:\u003cbr\u003e\u003cblockquote
-        class=\"gmail_quote\" style=\"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex\"\u003e\u003cu\u003e\u003c/u\u003e\r\n\u003cdiv\u003e\r\n\u003cp\u003eHey,
-        Ben -\u0026nbsp;\u003c/p\u003e\r\n\u003cp\u003e\u003cbr\u003e\u003c/p\u003e\r\n\u003cp\u003eI
-        can set that up for you. How many developers will need three month subscriptions?\u003c/p\u003e\r\n\u003cp\u003e\u003cbr\u003e\u003c/p\u003e\r\n\u003cp\u003eJeffrey\u003c/p\u003e\r\n\u003cimg
-        width=\"1px\" height=\"1px\" alt=\"\" src=\"http://email.helpful.io/o/ZD1lYzBjOCZpPTU0NDU3NzYwNTAwZGVfMjNmYzRiMTEwNGE1NDc3M2YlNDA3NDA2ZGQ3Mi0yYmE3LTQ3ZGEtODMzNC04NjFhNzNhMWM5MDMubWFpbCZoPTRmZmE4NzI1YjJlNjcwMzViMmY4ODA0Mjg1ZjU1ZGE0JnI9YmVuJTQwcm9nbWFuc21lZGlhLm5s\"\u003e\u003c/div\u003e\r\n\u003c/blockquote\u003e\u003c/div\u003e\u003cbr\u003e\u003c/div\u003e\u003c/div\u003e\r\n","stripped-html":"\u003chtml\u003e\u003cbody\u003e\u003cdiv
-        dir=\"ltr\"\u003eCool, just one for now. His e-mail address:\u003cdiv\u003e\u003cbr\u003e\u003c/div\u003e\u003cdiv\u003e\u003ca
-        href=\"mailto:bart@bridgemarketing.nl\"\u003ebart@bridgemarketing.nl\u003c/a\u003e\u003c/div\u003e\u003cdiv\u003e\u003cbr\u003e\u003c/div\u003e\u003cdiv\u003eBest
-        regards,\u003c/div\u003e\u003cdiv\u003eBen\u003c/div\u003e\u003cdiv class=\"gmail_extra\"\u003e\u003cdiv\u003e\u003cdiv
-        dir=\"ltr\"\u003e\u003cdiv\u003e\u003cdiv style=\"font-family:arial;font-size:small\"\u003e\u003cdiv
-        dir=\"ltr\"\u003e\u003cdiv dir=\"ltr\"\u003e\u003cbr\u003e\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e\u003cdiv
-        style=\"font-family:arial;font-size:small\"\u003e\u003c/div\u003e\u003cdiv
-        style=\"font-family:arial;font-size:small\"\u003e\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e\u0026#13;\n\u003cbr\u003e\u003cbr\u003e\u003c/div\u003e\u003c/div\u003e\u003c/body\u003e\u003c/html\u003e","stripped-text":"Cool,
-        just one for now. His e-mail address:\r\n\r\nbart@bridgemarketing.nl\r\n\r\nBest
-        regards,\r\nBen\r\n\r\n\r\n2014-10-20 22:58 GMT+02:00 Jeffrey Way \u003cnotifications@helpful.io\u003e:","stripped-signature":"","mailbox":"8a154649-7ac7-4b2b-a532-fa247557a47e","action":"create","controller":"webhooks/mailgun"},"message_id":"\u003cCAHHFkKqanM23cD1a0t-5v=8zDLqC+ZZpphyUUAbc4Wq7y_s0Yg@mail.gmail.com\u003e","in_reply_to_id":null,"html_content":null,"subject":"Re:
-        Hi, how can I give a three month subscription to our developers as a gift?"}},{"_index":"messages","_type":"message","_id":"c1b10faf-2443-4517-ae5d-7b3974813cab","_score":1.18389,"_source":{"id":"c1b10faf-2443-4517-ae5d-7b3974813cab","conversation_id":"1449e93c-556a-4442-a309-2bfb6f550c6e","content":"Goedemiddag,
-        \r\nWaarschijnlijk is deze vraag / opmerking al een keer bij jullie neergelegd:\r\nIk
-        mis een \"navigatie\" functie als ik met een Path bezig ben.\r\nNu moet ik
-        steeds , als ik klaar ben binnen een SPACE, weer terug naar PATHS om een nieuw
-        SPACE binnen de gekozen PATH te volgen.\r\n\r\nGr,\r\n\r\nRonald","data":null,"created_at":"2015-02-02T13:42:21.398Z","updated_at":"2015-02-24T23:42:59.402Z","person_id":"1d521621-6e60-4891-94fd-7b75e0da478e","webhook":null,"message_id":"\u003cc1b10faf-2443-4517-ae5d-7b3974813cab@helpful.mail\u003e","in_reply_to_id":null,"html_content":null,"subject":null}},{"_index":"messages","_type":"message","_id":"df9a945b-aff6-47d1-9f2e-90a38057637a","_score":1.1736462,"_source":{"id":"df9a945b-aff6-47d1-9f2e-90a38057637a","conversation_id":"8a154649-7ac7-4b2b-a532-fa247557a47e","content":"Hi
-        Jeffrey, any news?\r\n\r\n--\r\nBridge Marketing\r\nKamers in Nederland\r\n\r\n*Mobiele
-        telefoon:*\r\n+31 (0) 6 16 533 538\r\n\r\n*Bezoekadres:*\r\nHerengracht 514\r\n1017
-        CC Amsterdam\r\n+31 (0) 20 30 80 282\r\n\r\nKamers in Nederland B.V.\r\nBTW
-        nummer: 852551976B01\r\nKVK nummer: 57372497\r\nBankrekening: 7734065\r\nIBAN:
-        NL57 INGB 0007 7340 65\r\n\r\n2014-10-22 15:45 GMT+02:00 Ben Rogmans \u003cben@rogmansmedia.nl\u003e:","data":{"body":"\u003chtml\u003e\u003cbody\u003e\u003cdiv
-        dir=\"ltr\"\u003eHi Jeffrey, any news?\u003c/div\u003e\u003cdiv class=\"gmail_extra\"\u003e\u003cbr
-        clear=\"all\"\u003e\u003cdiv\u003e\u003cdiv class=\"gmail_signature\"\u003e\u003cdiv
-        dir=\"ltr\"\u003e\u003cdiv\u003e\u003cdiv style=\"font-family:arial;font-size:small\"\u003e\u003cdiv
-        dir=\"ltr\"\u003e\u003cdiv\u003e\u003cdiv\u003e\u003cdiv dir=\"ltr\"\u003e\u003cdiv\u003e\u003cspan
-        style=\"font-family:arial,helvetica,sans-serif\"\u003e--\u003c/span\u003e\u003c/div\u003e\u003cdiv\u003e\u003cspan
-        style=\"font-family:arial,helvetica,sans-serif\"\u003eBridge Marketing\u003c/span\u003e\u003c/div\u003e\u003cdiv\u003e\u003cfont
-        face=\"arial, helvetica, sans-serif\"\u003eKamers in Nederland\u003c/font\u003e\u003c/div\u003e\u003cdiv\u003e\u003cfont
-        face=\"arial, helvetica, sans-serif\"\u003e\u003cbr\u003e\u003c/font\u003e\u003c/div\u003e\u003cdiv\u003e\u003cdiv\u003e\u003cfont
-        face=\"arial, helvetica, sans-serif\"\u003e\u003cb\u003eMobiele telefoon:\u003c/b\u003e\u0026#160;\u003c/font\u003e\u003c/div\u003e\u003cdiv\u003e\u003cfont
-        face=\"arial, helvetica, sans-serif\"\u003e+31 (0) 6 16 533 538\u003cbr\u003e\u003c/font\u003e\u003c/div\u003e\u003c/div\u003e\u003cdiv\u003e\u003cfont
-        face=\"arial, helvetica, sans-serif\"\u003e\u003cbr\u003e\u003c/font\u003e\u003c/div\u003e\u003cdiv\u003e\u003cb\u003e\u003cfont
-        face=\"arial, helvetica, sans-serif\"\u003eBezoekadres:\u003c/font\u003e\u003c/b\u003e\u003c/div\u003e\u003cdiv\u003e\u003cfont
-        face=\"arial, helvetica, sans-serif\"\u003eHerengracht 514\u003c/font\u003e\u003c/div\u003e\u003cdiv\u003e\u003cfont
-        face=\"arial, helvetica, sans-serif\"\u003e1017 CC Amsterdam\u003c/font\u003e\u003c/div\u003e\u003cdiv\u003e\u003cfont
-        face=\"arial, helvetica, sans-serif\"\u003e+31 (0) 20 30 80 282\u003c/font\u003e\u003c/div\u003e\u003cdiv\u003e\u003cfont
-        face=\"arial, helvetica, sans-serif\"\u003e\u003cbr\u003e\u003c/font\u003e\u003c/div\u003e\u003cdiv\u003e\u003cdiv\u003e\u003cspan
-        style=\"font-family:arial,helvetica,sans-serif;font-size:x-small\"\u003eKamers
-        in Nederland B.V.\u003c/span\u003e\u003c/div\u003e\u003cdiv\u003e\u003cfont
-        face=\"arial, helvetica, sans-serif\" size=\"1\"\u003eBTW nummer: 852551976B01\u003c/font\u003e\u003c/div\u003e\u003cdiv\u003e\u003cfont
-        face=\"arial, helvetica, sans-serif\" size=\"1\"\u003eKVK nummer: 57372497\u003c/font\u003e\u003c/div\u003e\u003cdiv\u003e\u003cfont
-        face=\"arial, helvetica, sans-serif\" size=\"1\"\u003eBankrekening: 7734065\u003c/font\u003e\u003c/div\u003e\u003cdiv\u003e\u003cfont
-        face=\"arial, helvetica, sans-serif\" size=\"1\"\u003eIBAN: NL57 INGB 0007
-        7340 65\u003c/font\u003e\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e\u003cdiv
-        style=\"font-family:arial;font-size:small\"\u003e\u003c/div\u003e\u003cdiv
-        style=\"font-family:arial;font-size:small\"\u003e\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e\u0026#13;\n\u003cbr\u003e\u003cbr\u003e\u003c/div\u003e\u003c/body\u003e\u003c/html\u003e","subject":"Re:
-        Hi, how can I give a three month subscription to our developers as a gift?"},"created_at":"2014-10-31T14:17:31.171Z","updated_at":"2015-02-24T23:43:37.886Z","person_id":"51e5c8a9-c142-4edf-953c-916ade93e078","webhook":{"recipient":"8a154649-7ac7-4b2b-a532-fa247557a47e@helpful.io","sender":"ben@rogmansmedia.nl","subject":"Re:
-        Hi, how can I give a three month subscription to our developers as a gift?","from":"Ben
-        Rogmans \u003cben@rogmansmedia.nl\u003e","X-Envelope-From":"\u003cben@rogmansmedia.nl\u003e","Received":"by
-        10.220.86.68 with HTTP; Fri, 31 Oct 2014 07:16:33 -0700 (PDT)","X-Google-Dkim-Signature":"v=1;
-        a=rsa-sha256; c=relaxed/relaxed; d=1e100.net; s=20130820; h=x-gm-message-state:mime-version:in-reply-to:references:date
-        :message-id:subject:from:to:content-type; bh=VjnE/NsgBCrfxlyTM+roMQH7fp8X2Uu6ecUnEMpL60o=;
-        b=HBiiBw2DhUKj7e9KhSImyxkVSFXMiYw3D9Wv6eArnunMbJCecfuYFhqgy8akWiNAsj KDsNNpwSWeUvCv7g5lx98+BduhRXo2XbBJefkGbLvPEZfFK8UhKw8KoG1dyCluDyruxi
-        /ZVzjdvEA1hMA7TW8zX3tjK7smY+Gpms2bYg9NLjVWQcIwj5vjjIPQJ3p1DfFUwiTq1f 0ufxxqfsm3cTjm+dHXT7zKDmm5Kn1klE/wJq7qboNUOe2qbkSZXH9n2DqKW8+gDRXz1+
-        ow8WfbVWOgcFdeIMkeWTjycT84WUszWmTzclACl2siTW0zhYeMrlyvaym7jYym04q2cs vruQ==","X-Gm-Message-State":"ALoCoQll92GIi+8WQXu11JSV5mCvVp0zMq1L3kyUNrZJeH7NJwSp2fS9lIIaryXzZStmIu2gg9nx","Mime-Version":"1.0","X-Received":"by
-        10.52.139.74 with SMTP id qw10mr202612vdb.73.1414764993919; Fri, 31 Oct 2014
-        07:16:33 -0700 (PDT)","In-Reply-To":"\u003cCAHHFkKqanM23cD1a0t-5v=8zDLqC+ZZpphyUUAbc4Wq7y_s0Yg@mail.gmail.com\u003e","References":"\u003c54457760500de_23fc4b1104a54773f@7406dd72-2ba7-47da-8334-861a73a1c903.mail\u003e\t\u003cCAHHFkKqanM23cD1a0t-5v=8zDLqC+ZZpphyUUAbc4Wq7y_s0Yg@mail.gmail.com\u003e","Date":"Fri,
-        31 Oct 2014 15:16:33 +0100","Message-Id":"\u003cCAHHFkKobax6Je6kWFy+0SEKKfwDftjfkZUhKFpqezY33pVogLQ@mail.gmail.com\u003e","Subject":"Re:
-        Hi, how can I give a three month subscription to our developers as a gift?","From":"Ben
-        Rogmans \u003cben@rogmansmedia.nl\u003e","To":"Laracasts \u003c8a154649-7ac7-4b2b-a532-fa247557a47e@helpful.io\u003e","Content-Type":"multipart/alternative;
-        boundary=\"bcaec52e63dfe7559e0506b8a441\"","X-Mailgun-Incoming":"Yes","X-Mailgun-Sflag":"No","X-Mailgun-Sscore":"0.0","X-Mailgun-Spf":"Neutral","message-headers":"[[\"X-Envelope-From\",
-        \"\u003cben@rogmansmedia.nl\u003e\"], [\"Received\", \"from mail-vc0-f174.google.com
-        (mail-vc0-f174.google.com [209.85.220.174]) by mxa.mailgun.org with ESMTP
-        id 545399c3.7f5b14942eb0-in3; Fri, 31 Oct 2014 14:16:35 -0000 (UTC)\"], [\"Received\",
-        \"by mail-vc0-f174.google.com with SMTP id im17so1389480vcb.33 for \u003c8a154649-7ac7-4b2b-a532-fa247557a47e@helpful.io\u003e;
-        Fri, 31 Oct 2014 07:16:34 -0700 (PDT)\"], [\"X-Google-Dkim-Signature\", \"v=1;
-        a=rsa-sha256; c=relaxed/relaxed; d=1e100.net; s=20130820; h=x-gm-message-state:mime-version:in-reply-to:references:date
-        :message-id:subject:from:to:content-type; bh=VjnE/NsgBCrfxlyTM+roMQH7fp8X2Uu6ecUnEMpL60o=;
-        b=HBiiBw2DhUKj7e9KhSImyxkVSFXMiYw3D9Wv6eArnunMbJCecfuYFhqgy8akWiNAsj KDsNNpwSWeUvCv7g5lx98+BduhRXo2XbBJefkGbLvPEZfFK8UhKw8KoG1dyCluDyruxi
-        /ZVzjdvEA1hMA7TW8zX3tjK7smY+Gpms2bYg9NLjVWQcIwj5vjjIPQJ3p1DfFUwiTq1f 0ufxxqfsm3cTjm+dHXT7zKDmm5Kn1klE/wJq7qboNUOe2qbkSZXH9n2DqKW8+gDRXz1+
-        ow8WfbVWOgcFdeIMkeWTjycT84WUszWmTzclACl2siTW0zhYeMrlyvaym7jYym04q2cs vruQ==\"],
-        [\"X-Gm-Message-State\", \"ALoCoQll92GIi+8WQXu11JSV5mCvVp0zMq1L3kyUNrZJeH7NJwSp2fS9lIIaryXzZStmIu2gg9nx\"],
-        [\"Mime-Version\", \"1.0\"], [\"X-Received\", \"by 10.52.139.74 with SMTP
-        id qw10mr202612vdb.73.1414764993919; Fri, 31 Oct 2014 07:16:33 -0700 (PDT)\"],
-        [\"Received\", \"by 10.220.86.68 with HTTP; Fri, 31 Oct 2014 07:16:33 -0700
-        (PDT)\"], [\"In-Reply-To\", \"\u003cCAHHFkKqanM23cD1a0t-5v=8zDLqC+ZZpphyUUAbc4Wq7y_s0Yg@mail.gmail.com\u003e\"],
-        [\"References\", \"\u003c54457760500de_23fc4b1104a54773f@7406dd72-2ba7-47da-8334-861a73a1c903.mail\u003e\\t\u003cCAHHFkKqanM23cD1a0t-5v=8zDLqC+ZZpphyUUAbc4Wq7y_s0Yg@mail.gmail.com\u003e\"],
-        [\"Date\", \"Fri, 31 Oct 2014 15:16:33 +0100\"], [\"Message-Id\", \"\u003cCAHHFkKobax6Je6kWFy+0SEKKfwDftjfkZUhKFpqezY33pVogLQ@mail.gmail.com\u003e\"],
-        [\"Subject\", \"Re: Hi, how can I give a three month subscription to our developers
-        as a gift?\"], [\"From\", \"Ben Rogmans \u003cben@rogmansmedia.nl\u003e\"],
-        [\"To\", \"Laracasts \u003c8a154649-7ac7-4b2b-a532-fa247557a47e@helpful.io\u003e\"],
-        [\"Content-Type\", \"multipart/alternative; boundary=\\\"bcaec52e63dfe7559e0506b8a441\\\"\"],
-        [\"X-Mailgun-Incoming\", \"Yes\"], [\"X-Mailgun-Sflag\", \"No\"], [\"X-Mailgun-Sscore\",
-        \"0.0\"], [\"X-Mailgun-Spf\", \"Neutral\"]]","timestamp":"1414765050","token":"cb78c91bd3b92877d89ca82f6abbfd75b32999f9d94cfdeb71","signature":"d35ed9cda6621d6fadbe64fef3cf345a8740bf0fd8ee7500a263175a8f088b01","body-plain":"Hi
-        Jeffrey, any news?\r\n\r\n--\r\nBridge Marketing\r\nKamers in Nederland\r\n\r\n*Mobiele
-        telefoon:*\r\n+31 (0) 6 16 533 538\r\n\r\n*Bezoekadres:*\r\nHerengracht 514\r\n1017
-        CC Amsterdam\r\n+31 (0) 20 30 80 282\r\n\r\nKamers in Nederland B.V.\r\nBTW
-        nummer: 852551976B01\r\nKVK nummer: 57372497\r\nBankrekening: 7734065\r\nIBAN:
-        NL57 INGB 0007 7340 65\r\n\r\n2014-10-22 15:45 GMT+02:00 Ben Rogmans \u003cben@rogmansmedia.nl\u003e:\r\n\r\n\u003e
-        Cool, just one for now. His e-mail address:\r\n\u003e\r\n\u003e bart@bridgemarketing.nl\r\n\u003e\r\n\u003e
-        Best regards,\r\n\u003e Ben\r\n\u003e\r\n\u003e\r\n\u003e 2014-10-20 22:58
-        GMT+02:00 Jeffrey Way \u003cnotifications@helpful.io\u003e:\r\n\u003e\r\n\u003e\u003e  Hey,
-        Ben -\r\n\u003e\u003e\r\n\u003e\u003e\r\n\u003e\u003e I can set that up for
-        you. How many developers will need three month\r\n\u003e\u003e subscriptions?\r\n\u003e\u003e\r\n\u003e\u003e\r\n\u003e\u003e
-        Jeffrey\r\n\u003e\u003e\r\n\u003e\r\n\u003e\r\n","body-html":"\u003cdiv dir=\"ltr\"\u003eHi
-        Jeffrey, any news?\u003c/div\u003e\u003cdiv class=\"gmail_extra\"\u003e\u003cbr
-        clear=\"all\"\u003e\u003cdiv\u003e\u003cdiv class=\"gmail_signature\"\u003e\u003cdiv
-        dir=\"ltr\"\u003e\u003cdiv\u003e\u003cdiv style=\"font-family:arial;font-size:small\"\u003e\u003cdiv
-        dir=\"ltr\"\u003e\u003cdiv\u003e\u003cdiv\u003e\u003cdiv dir=\"ltr\"\u003e\u003cdiv\u003e\u003cspan
-        style=\"font-family:arial,helvetica,sans-serif\"\u003e--\u003c/span\u003e\u003c/div\u003e\u003cdiv\u003e\u003cspan
-        style=\"font-family:arial,helvetica,sans-serif\"\u003eBridge Marketing\u003c/span\u003e\u003c/div\u003e\u003cdiv\u003e\u003cfont
-        face=\"arial, helvetica, sans-serif\"\u003eKamers in Nederland\u003c/font\u003e\u003c/div\u003e\u003cdiv\u003e\u003cfont
-        face=\"arial, helvetica, sans-serif\"\u003e\u003cbr\u003e\u003c/font\u003e\u003c/div\u003e\u003cdiv\u003e\u003cdiv\u003e\u003cfont
-        face=\"arial, helvetica, sans-serif\"\u003e\u003cb\u003eMobiele telefoon:\u003c/b\u003e\u0026nbsp;\u003c/font\u003e\u003c/div\u003e\u003cdiv\u003e\u003cfont
-        face=\"arial, helvetica, sans-serif\"\u003e+31 (0) 6 16 533 538\u003cbr\u003e\u003c/font\u003e\u003c/div\u003e\u003c/div\u003e\u003cdiv\u003e\u003cfont
-        face=\"arial, helvetica, sans-serif\"\u003e\u003cbr\u003e\u003c/font\u003e\u003c/div\u003e\u003cdiv\u003e\u003cb\u003e\u003cfont
-        face=\"arial, helvetica, sans-serif\"\u003eBezoekadres:\u003c/font\u003e\u003c/b\u003e\u003c/div\u003e\u003cdiv\u003e\u003cfont
-        face=\"arial, helvetica, sans-serif\"\u003eHerengracht 514\u003c/font\u003e\u003c/div\u003e\u003cdiv\u003e\u003cfont
-        face=\"arial, helvetica, sans-serif\"\u003e1017 CC Amsterdam\u003c/font\u003e\u003c/div\u003e\u003cdiv\u003e\u003cfont
-        face=\"arial, helvetica, sans-serif\"\u003e+31 (0) 20 30 80 282\u003c/font\u003e\u003c/div\u003e\u003cdiv\u003e\u003cfont
-        face=\"arial, helvetica, sans-serif\"\u003e\u003cbr\u003e\u003c/font\u003e\u003c/div\u003e\u003cdiv\u003e\u003cdiv\u003e\u003cspan
-        style=\"font-family:arial,helvetica,sans-serif;font-size:x-small\"\u003eKamers
-        in Nederland B.V.\u003c/span\u003e\u003c/div\u003e\u003cdiv\u003e\u003cfont
-        face=\"arial, helvetica, sans-serif\" size=\"1\"\u003eBTW nummer: 852551976B01\u003c/font\u003e\u003c/div\u003e\u003cdiv\u003e\u003cfont
-        face=\"arial, helvetica, sans-serif\" size=\"1\"\u003eKVK nummer: 57372497\u003c/font\u003e\u003c/div\u003e\u003cdiv\u003e\u003cfont
-        face=\"arial, helvetica, sans-serif\" size=\"1\"\u003eBankrekening: 7734065\u003c/font\u003e\u003c/div\u003e\u003cdiv\u003e\u003cfont
-        face=\"arial, helvetica, sans-serif\" size=\"1\"\u003eIBAN: NL57 INGB 0007
-        7340 65\u003c/font\u003e\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e\u003cdiv
-        style=\"font-family:arial;font-size:small\"\u003e\u003c/div\u003e\u003cdiv
-        style=\"font-family:arial;font-size:small\"\u003e\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e\r\n\u003cbr\u003e\u003cdiv
-        class=\"gmail_quote\"\u003e2014-10-22 15:45 GMT+02:00 Ben Rogmans \u003cspan
-        dir=\"ltr\"\u003e\u0026lt;\u003ca href=\"mailto:ben@rogmansmedia.nl\" target=\"_blank\"\u003eben@rogmansmedia.nl\u003c/a\u003e\u0026gt;\u003c/span\u003e:\u003cbr\u003e\u003cblockquote
-        class=\"gmail_quote\" style=\"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex\"\u003e\u003cdiv
-        dir=\"ltr\"\u003eCool, just one for now. His e-mail address:\u003cdiv\u003e\u003cbr\u003e\u003c/div\u003e\u003cdiv\u003e\u003ca
-        href=\"mailto:bart@bridgemarketing.nl\" target=\"_blank\"\u003ebart@bridgemarketing.nl\u003c/a\u003e\u003c/div\u003e\u003cdiv\u003e\u003cbr\u003e\u003c/div\u003e\u003cdiv\u003eBest
-        regards,\u003c/div\u003e\u003cdiv\u003eBen\u003c/div\u003e\u003cdiv\u003e\u003cdiv
-        class=\"h5\"\u003e\u003cdiv class=\"gmail_extra\"\u003e\u003cdiv\u003e\u003cdiv
-        dir=\"ltr\"\u003e\u003cdiv\u003e\u003cdiv style=\"font-family:arial;font-size:small\"\u003e\u003cdiv
-        dir=\"ltr\"\u003e\u003cdiv dir=\"ltr\"\u003e\u003cbr\u003e\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e\u003cdiv
-        style=\"font-family:arial;font-size:small\"\u003e\u003c/div\u003e\u003cdiv
-        style=\"font-family:arial;font-size:small\"\u003e\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e\r\n\u003cbr\u003e\u003cdiv
-        class=\"gmail_quote\"\u003e2014-10-20 22:58 GMT+02:00 Jeffrey Way \u003cspan
-        dir=\"ltr\"\u003e\u0026lt;\u003ca href=\"mailto:notifications@helpful.io\"
-        target=\"_blank\"\u003enotifications@helpful.io\u003c/a\u003e\u0026gt;\u003c/span\u003e:\u003cbr\u003e\u003cblockquote
-        class=\"gmail_quote\" style=\"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex\"\u003e\u003cu\u003e\u003c/u\u003e\r\n\u003cdiv\u003e\r\n\u003cp\u003eHey,
-        Ben -\u0026nbsp;\u003c/p\u003e\r\n\u003cp\u003e\u003cbr\u003e\u003c/p\u003e\r\n\u003cp\u003eI
-        can set that up for you. How many developers will need three month subscriptions?\u003c/p\u003e\r\n\u003cp\u003e\u003cbr\u003e\u003c/p\u003e\r\n\u003cp\u003eJeffrey\u003c/p\u003e\r\n\u003cimg
-        width=\"1px\" height=\"1px\" alt=\"\" src=\"http://email.helpful.io/o/ZD1lYzBjOCZpPTU0NDU3NzYwNTAwZGVfMjNmYzRiMTEwNGE1NDc3M2YlNDA3NDA2ZGQ3Mi0yYmE3LTQ3ZGEtODMzNC04NjFhNzNhMWM5MDMubWFpbCZoPTRmZmE4NzI1YjJlNjcwMzViMmY4ODA0Mjg1ZjU1ZGE0JnI9YmVuJTQwcm9nbWFuc21lZGlhLm5s\"\u003e\u003c/div\u003e\r\n\u003c/blockquote\u003e\u003c/div\u003e\u003cbr\u003e\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e\r\n\u003c/blockquote\u003e\u003c/div\u003e\u003cbr\u003e\u003c/div\u003e\r\n","stripped-html":"\u003chtml\u003e\u003cbody\u003e\u003cdiv
-        dir=\"ltr\"\u003eHi Jeffrey, any news?\u003c/div\u003e\u003cdiv class=\"gmail_extra\"\u003e\u003cbr
-        clear=\"all\"\u003e\u003cdiv\u003e\u003cdiv class=\"gmail_signature\"\u003e\u003cdiv
-        dir=\"ltr\"\u003e\u003cdiv\u003e\u003cdiv style=\"font-family:arial;font-size:small\"\u003e\u003cdiv
-        dir=\"ltr\"\u003e\u003cdiv\u003e\u003cdiv\u003e\u003cdiv dir=\"ltr\"\u003e\u003cdiv\u003e\u003cspan
-        style=\"font-family:arial,helvetica,sans-serif\"\u003e--\u003c/span\u003e\u003c/div\u003e\u003cdiv\u003e\u003cspan
-        style=\"font-family:arial,helvetica,sans-serif\"\u003eBridge Marketing\u003c/span\u003e\u003c/div\u003e\u003cdiv\u003e\u003cfont
-        face=\"arial, helvetica, sans-serif\"\u003eKamers in Nederland\u003c/font\u003e\u003c/div\u003e\u003cdiv\u003e\u003cfont
-        face=\"arial, helvetica, sans-serif\"\u003e\u003cbr\u003e\u003c/font\u003e\u003c/div\u003e\u003cdiv\u003e\u003cdiv\u003e\u003cfont
-        face=\"arial, helvetica, sans-serif\"\u003e\u003cb\u003eMobiele telefoon:\u003c/b\u003e\u0026#160;\u003c/font\u003e\u003c/div\u003e\u003cdiv\u003e\u003cfont
-        face=\"arial, helvetica, sans-serif\"\u003e+31 (0) 6 16 533 538\u003cbr\u003e\u003c/font\u003e\u003c/div\u003e\u003c/div\u003e\u003cdiv\u003e\u003cfont
-        face=\"arial, helvetica, sans-serif\"\u003e\u003cbr\u003e\u003c/font\u003e\u003c/div\u003e\u003cdiv\u003e\u003cb\u003e\u003cfont
-        face=\"arial, helvetica, sans-serif\"\u003eBezoekadres:\u003c/font\u003e\u003c/b\u003e\u003c/div\u003e\u003cdiv\u003e\u003cfont
-        face=\"arial, helvetica, sans-serif\"\u003eHerengracht 514\u003c/font\u003e\u003c/div\u003e\u003cdiv\u003e\u003cfont
-        face=\"arial, helvetica, sans-serif\"\u003e1017 CC Amsterdam\u003c/font\u003e\u003c/div\u003e\u003cdiv\u003e\u003cfont
-        face=\"arial, helvetica, sans-serif\"\u003e+31 (0) 20 30 80 282\u003c/font\u003e\u003c/div\u003e\u003cdiv\u003e\u003cfont
-        face=\"arial, helvetica, sans-serif\"\u003e\u003cbr\u003e\u003c/font\u003e\u003c/div\u003e\u003cdiv\u003e\u003cdiv\u003e\u003cspan
-        style=\"font-family:arial,helvetica,sans-serif;font-size:x-small\"\u003eKamers
-        in Nederland B.V.\u003c/span\u003e\u003c/div\u003e\u003cdiv\u003e\u003cfont
-        face=\"arial, helvetica, sans-serif\" size=\"1\"\u003eBTW nummer: 852551976B01\u003c/font\u003e\u003c/div\u003e\u003cdiv\u003e\u003cfont
-        face=\"arial, helvetica, sans-serif\" size=\"1\"\u003eKVK nummer: 57372497\u003c/font\u003e\u003c/div\u003e\u003cdiv\u003e\u003cfont
-        face=\"arial, helvetica, sans-serif\" size=\"1\"\u003eBankrekening: 7734065\u003c/font\u003e\u003c/div\u003e\u003cdiv\u003e\u003cfont
-        face=\"arial, helvetica, sans-serif\" size=\"1\"\u003eIBAN: NL57 INGB 0007
-        7340 65\u003c/font\u003e\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e\u003cdiv
-        style=\"font-family:arial;font-size:small\"\u003e\u003c/div\u003e\u003cdiv
-        style=\"font-family:arial;font-size:small\"\u003e\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e\u003c/div\u003e\u0026#13;\n\u003cbr\u003e\u003cbr\u003e\u003c/div\u003e\u003c/body\u003e\u003c/html\u003e","stripped-text":"Hi
-        Jeffrey, any news?\r\n\r\n--\r\nBridge Marketing\r\nKamers in Nederland\r\n\r\n*Mobiele
-        telefoon:*\r\n+31 (0) 6 16 533 538\r\n\r\n*Bezoekadres:*\r\nHerengracht 514\r\n1017
-        CC Amsterdam\r\n+31 (0) 20 30 80 282\r\n\r\nKamers in Nederland B.V.\r\nBTW
-        nummer: 852551976B01\r\nKVK nummer: 57372497\r\nBankrekening: 7734065\r\nIBAN:
-        NL57 INGB 0007 7340 65\r\n\r\n2014-10-22 15:45 GMT+02:00 Ben Rogmans \u003cben@rogmansmedia.nl\u003e:","stripped-signature":"","mailbox":"8a154649-7ac7-4b2b-a532-fa247557a47e","action":"create","controller":"webhooks/mailgun"},"message_id":"\u003cCAHHFkKobax6Je6kWFy+0SEKKfwDftjfkZUhKFpqezY33pVogLQ@mail.gmail.com\u003e","in_reply_to_id":null,"html_content":null,"subject":"Re:
-        Hi, how can I give a three month subscription to our developers as a gift?"}},{"_index":"messages","_type":"message","_id":"64499051-064f-4bb0-9aa3-72a1763ea14a","_score":1.0978544,"_source":{"id":"64499051-064f-4bb0-9aa3-72a1763ea14a","conversation_id":"808881e9-8856-4b80-99a5-3d0a50d4d2d7","content":"Hey
-        Ben,\r\n\r\nThanks so much for reporting this issue.  I found a small bug
-        and deployed\r\na fix just now.  Please let me know how that looks for you.\r\ncoyotecrossfit.com/athletes/benderrick","data":{"body":"\u003chtml\u003e\u003cbody\u003e\u003cdiv
-        dir=\"ltr\"\u003eHey Ben,\u003cdiv\u003e\u003cbr\u003e\u003c/div\u003e\u003cdiv\u003eThanks
-        so much for reporting this issue. \u0026#160;I found a small bug and deployed
-        a fix just now. \u0026#160;Please let me know how that looks for you.\u003c/div\u003e\u003cdiv\u003e\u003ca
-        href=\"http://coyotecrossfit.com/athletes/benderrick\"\u003ecoyotecrossfit.com/athletes/benderrick\u003c/a\u003e\u003cbr\u003e\u003c/div\u003e\u003cdiv\u003e\u003cbr\u003e\u003c/div\u003e\u003cdiv\u003eThanks,\u003c/div\u003e\u003cdiv\u003eCollin\u003c/div\u003e\u003c/div\u003e\u003cdiv
-        class=\"gmail_extra\"\u003e\u003cbr\u003e\u003cbr\u003e\u003cbr\u003e\u003c/div\u003e\u003c/body\u003e\u003c/html\u003e","subject":"Re:
-        Past \u0026 days at Coyote CrossFit is not showing any of the workouts that
-        are reflected in my full log book."},"created_at":"2014-08-21T02:38:00.972Z","updated_at":"2015-02-24T23:41:09.453Z","person_id":"b1bae5ce-4641-457b-abf9-97453f0b756f","webhook":{"recipient":"808881e9-8856-4b80-99a5-3d0a50d4d2d7@helpful.io","sender":"collin@cfwhiteboard.com","subject":"Re:
-        Past \u0026 days at Coyote CrossFit is not showing any of the workouts that
-        are reflected in my full log book.","from":"Collin Donahue-Oponski \u003ccollin@cfwhiteboard.com\u003e","X-Envelope-From":"\u003ccollin@cfwhiteboard.com\u003e","Received":"by
-        10.217.191.136 with HTTP; Wed, 20 Aug 2014 19:37:56 -0700 (PDT)","X-Google-Dkim-Signature":"v=1;
-        a=rsa-sha256; c=relaxed/relaxed; d=1e100.net; s=20130820; h=x-gm-message-state:mime-version:in-reply-to:references:date
-        :message-id:subject:from:to:content-type; bh=PnzCotjwawjJwojqgeDSS1eFdc1pKbylK4M0g3XFVUE=;
-        b=Mel4VT5wIEf2V4t4g6FuRldQNgstnhNCVRXKztcznhjRUC2ucQj+gIMl+YUxE86R33 x8IlwOEA+XtB3er9k75GTGrOHzbTCshNvcgCCudcKI3V7fGnnoOuPcnM030yhPR8VmTU
-        VQ7UbzO7HBi/hXNsRQ6HJZERUW4+HyUaZqHK1qLVO3mnCqkW/Hsx++ErNcUSdd+oes42 u+hvwrNc194X96tltesAPLJv22ulXgVCXj2cSv2rdjzyypKaWVLBONUyxhOKk3cD+hq0
-        ALkph/OA4HNpG9EGnQPeipnJFqwVaJg+UK23aOH5XXXXFm88OBdRr1IB/hkrsqTXzVNb UFkQ==","X-Gm-Message-State":"ALoCoQkrdhehHgeVZusqMH7m8ETRuOb+DjOBaIGsOx5o99+inwQiSp4n4zzo04m0iCJyvg8ff2RQ","Mime-Version":"1.0","X-Received":"by
-        10.194.92.71 with SMTP id ck7mr62934381wjb.11.1408588676167; Wed, 20 Aug 2014
-        19:37:56 -0700 (PDT)","In-Reply-To":"\u003c53f4e3a7d2d1e_23fccbb896f3079847@98a9bce5-0e50-407a-a67b-486984d4808d.mail\u003e","References":"\u003c53f4e3a7d2d1e_23fccbb896f3079847@98a9bce5-0e50-407a-a67b-486984d4808d.mail\u003e","Date":"Wed,
-        20 Aug 2014 20:37:56 -0600","Message-Id":"\u003cCAMBzHpCVC6rAex=5opa3D0ULiH-0fWy1gq2O6hWwLiAxvHmEww@mail.gmail.com\u003e","Subject":"Re:
-        Past \u0026 days at Coyote CrossFit is not showing any of the workouts that
-        are reflected in my full log book.","From":"Collin Donahue-Oponski \u003ccollin@cfwhiteboard.com\u003e","To":"CF
-        Whiteboard \u003c808881e9-8856-4b80-99a5-3d0a50d4d2d7@helpful.io\u003e","Content-Type":"multipart/alternative;
-        boundary=\"047d7bf0d534ad8f2105011a9b7d\"","X-Mailgun-Incoming":"Yes","X-Mailgun-Sflag":"No","X-Mailgun-Sscore":"-0.8","X-Mailgun-Spf":"Neutral","message-headers":"[[\"X-Envelope-From\",
-        \"\u003ccollin@cfwhiteboard.com\u003e\"], [\"Received\", \"from mail-wi0-f181.google.com
-        (mail-wi0-f181.google.com [209.85.212.181]) by mxa.mailgun.org with ESMTP
-        id 53f55b86.50de670-in1; Thu, 21 Aug 2014 02:37:58 -0000 (UTC)\"], [\"Received\",
-        \"by mail-wi0-f181.google.com with SMTP id bs8so7775651wib.2 for \u003c808881e9-8856-4b80-99a5-3d0a50d4d2d7@helpful.io\u003e;
-        Wed, 20 Aug 2014 19:37:56 -0700 (PDT)\"], [\"X-Google-Dkim-Signature\", \"v=1;
-        a=rsa-sha256; c=relaxed/relaxed; d=1e100.net; s=20130820; h=x-gm-message-state:mime-version:in-reply-to:references:date
-        :message-id:subject:from:to:content-type; bh=PnzCotjwawjJwojqgeDSS1eFdc1pKbylK4M0g3XFVUE=;
-        b=Mel4VT5wIEf2V4t4g6FuRldQNgstnhNCVRXKztcznhjRUC2ucQj+gIMl+YUxE86R33 x8IlwOEA+XtB3er9k75GTGrOHzbTCshNvcgCCudcKI3V7fGnnoOuPcnM030yhPR8VmTU
-        VQ7UbzO7HBi/hXNsRQ6HJZERUW4+HyUaZqHK1qLVO3mnCqkW/Hsx++ErNcUSdd+oes42 u+hvwrNc194X96tltesAPLJv22ulXgVCXj2cSv2rdjzyypKaWVLBONUyxhOKk3cD+hq0
-        ALkph/OA4HNpG9EGnQPeipnJFqwVaJg+UK23aOH5XXXXFm88OBdRr1IB/hkrsqTXzVNb UFkQ==\"],
-        [\"X-Gm-Message-State\", \"ALoCoQkrdhehHgeVZusqMH7m8ETRuOb+DjOBaIGsOx5o99+inwQiSp4n4zzo04m0iCJyvg8ff2RQ\"],
-        [\"Mime-Version\", \"1.0\"], [\"X-Received\", \"by 10.194.92.71 with SMTP
-        id ck7mr62934381wjb.11.1408588676167; Wed, 20 Aug 2014 19:37:56 -0700 (PDT)\"],
-        [\"Received\", \"by 10.217.191.136 with HTTP; Wed, 20 Aug 2014 19:37:56 -0700
-        (PDT)\"], [\"In-Reply-To\", \"\u003c53f4e3a7d2d1e_23fccbb896f3079847@98a9bce5-0e50-407a-a67b-486984d4808d.mail\u003e\"],
-        [\"References\", \"\u003c53f4e3a7d2d1e_23fccbb896f3079847@98a9bce5-0e50-407a-a67b-486984d4808d.mail\u003e\"],
-        [\"Date\", \"Wed, 20 Aug 2014 20:37:56 -0600\"], [\"Message-Id\", \"\u003cCAMBzHpCVC6rAex=5opa3D0ULiH-0fWy1gq2O6hWwLiAxvHmEww@mail.gmail.com\u003e\"],
-        [\"Subject\", \"Re: Past \u0026 days at Coyote CrossFit is not showing any
-        of the workouts that are reflected in my full log book.\"], [\"From\", \"Collin
-        Donahue-Oponski \u003ccollin@cfwhiteboard.com\u003e\"], [\"To\", \"CF Whiteboard
-        \u003c808881e9-8856-4b80-99a5-3d0a50d4d2d7@helpful.io\u003e\"], [\"Content-Type\",
-        \"multipart/alternative; boundary=\\\"047d7bf0d534ad8f2105011a9b7d\\\"\"],
-        [\"X-Mailgun-Incoming\", \"Yes\"], [\"X-Mailgun-Sflag\", \"No\"], [\"X-Mailgun-Sscore\",
-        \"-0.8\"], [\"X-Mailgun-Spf\", \"Neutral\"]]","timestamp":"1408588680","token":"182bf3749978f0367819ad079d80f461ba543be51d81beb775","signature":"fde49a29e89606f30ed8263539a398d533a991b670dd6019dbecfb5aab5ac81b","body-plain":"Hey
-        Ben,\r\n\r\nThanks so much for reporting this issue.  I found a small bug
-        and deployed\r\na fix just now.  Please let me know how that looks for you.\r\ncoyotecrossfit.com/athletes/benderrick\r\n\r\nThanks,\r\nCollin\r\n\r\n\r\nOn
-        Wed, Aug 20, 2014 at 12:06 PM, Ben Derrick \u003cnotifications@helpful.io\u003e\r\nwrote:\r\n\r\n\u003e  Past
-        \u0026 days at Coyote CrossFit is not showing any of the workouts that\r\n\u003e
-        are reflected in my full log book.\r\n\u003e\r\n\u003e —\r\n\u003e Reply to
-        this email or view Conversation on Helpful\r\n\u003e \u003chttp://helpful.io/accounts/cf-whiteboard/conversations/4\u003e\r\n\u003e\r\n","body-html":"\u003cdiv
-        dir=\"ltr\"\u003eHey Ben,\u003cdiv\u003e\u003cbr\u003e\u003c/div\u003e\u003cdiv\u003eThanks
-        so much for reporting this issue. \u0026nbsp;I found a small bug and deployed
-        a fix just now. \u0026nbsp;Please let me know how that looks for you.\u003c/div\u003e\u003cdiv\u003e\u003ca
-        href=\"http://coyotecrossfit.com/athletes/benderrick\"\u003ecoyotecrossfit.com/athletes/benderrick\u003c/a\u003e\u003cbr\u003e\r\n\u003c/div\u003e\u003cdiv\u003e\u003cbr\u003e\u003c/div\u003e\u003cdiv\u003eThanks,\u003c/div\u003e\u003cdiv\u003eCollin\u003c/div\u003e\u003c/div\u003e\u003cdiv
-        class=\"gmail_extra\"\u003e\u003cbr\u003e\u003cbr\u003e\u003cdiv class=\"gmail_quote\"\u003eOn
-        Wed, Aug 20, 2014 at 12:06 PM, Ben Derrick \u003cspan dir=\"ltr\"\u003e\u0026lt;\u003ca
-        href=\"mailto:notifications@helpful.io\" target=\"_blank\"\u003enotifications@helpful.io\u003c/a\u003e\u0026gt;\u003c/span\u003e
-        wrote:\u003cbr\u003e\r\n\u003cblockquote class=\"gmail_quote\" style=\"margin:0
-        0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex\"\u003e\u003cu\u003e\u003c/u\u003e\r\n\u003cdiv\u003e\r\n\u003cp\u003ePast
-        \u0026amp; days at Coyote CrossFit is not showing any of the workouts that
-        are reflected in my full log book.\u003c/p\u003e\r\n\r\n\r\n  \u003cp style=\"color:#666;font-size:small\"\u003e\r\n    —\r\n    \u003cbr\u003e\r\n    Reply
-        to this email or\r\n    \u003ca href=\"http://helpful.io/accounts/cf-whiteboard/conversations/4\"
-        target=\"_blank\"\u003e\r\n      view Conversation on Helpful\r\n    \u003c/a\u003e\r\n  \u003c/p\u003e\r\n\u003cimg
-        width=\"1px\" height=\"1px\" alt=\"\" src=\"http://email.helpful.io/o/aT01M2Y0ZTNhN2QyZDFlXzIzZmNjYmI4OTZmMzA3OTg0NyU0MDk4YTliY2U1LTBlNTAtNDA3YS1hNjdiLTQ4Njk4NGQ0ODA4ZC5tYWlsJmg9OGFjZDMwNjdlMjdlZmY5MzExZWU0MjJkZGU3OTFjOWMmcj1jb2xsaW4lNDBjZndoaXRlYm9hcmQuY29tJmQ9ZWMwYzg\"\u003e\u003c/div\u003e\r\n\r\n\u003c/blockquote\u003e\u003c/div\u003e\u003cbr\u003e\u003c/div\u003e\r\n","stripped-html":"\u003chtml\u003e\u003cbody\u003e\u003cdiv
-        dir=\"ltr\"\u003eHey Ben,\u003cdiv\u003e\u003cbr\u003e\u003c/div\u003e\u003cdiv\u003eThanks
-        so much for reporting this issue. \u0026#160;I found a small bug and deployed
-        a fix just now. \u0026#160;Please let me know how that looks for you.\u003c/div\u003e\u003cdiv\u003e\u003ca
-        href=\"http://coyotecrossfit.com/athletes/benderrick\"\u003ecoyotecrossfit.com/athletes/benderrick\u003c/a\u003e\u003cbr\u003e\u003c/div\u003e\u003cdiv\u003e\u003cbr\u003e\u003c/div\u003e\u003cdiv\u003eThanks,\u003c/div\u003e\u003cdiv\u003eCollin\u003c/div\u003e\u003c/div\u003e\u003cdiv
-        class=\"gmail_extra\"\u003e\u003cbr\u003e\u003cbr\u003e\u003cbr\u003e\u003c/div\u003e\u003c/body\u003e\u003c/html\u003e","stripped-text":"Hey
-        Ben,\r\n\r\nThanks so much for reporting this issue.  I found a small bug
-        and deployed\r\na fix just now.  Please let me know how that looks for you.\r\ncoyotecrossfit.com/athletes/benderrick","stripped-signature":"Thanks,\r\nCollin","mailbox":"808881e9-8856-4b80-99a5-3d0a50d4d2d7","action":"create","controller":"webhooks/mailgun"},"message_id":"\u003cCAMBzHpCVC6rAex=5opa3D0ULiH-0fWy1gq2O6hWwLiAxvHmEww@mail.gmail.com\u003e","in_reply_to_id":null,"html_content":null,"subject":"Re:
-        Past \u0026 days at Coyote CrossFit is not showing any of the workouts that
-        are reflected in my full log book."}}]}}'
+      string: '{"took":137,"timed_out":false,"_shards":{"total":5,"successful":5,"failed":0},"hits":{"total":1,"max_score":1.0565116,"hits":[{"_index":"messages","_type":"message","_id":"c795dcb6-8f64-4c1d-888d-c0064153f892","_score":1.0565116,"_source":{"id":"c795dcb6-8f64-4c1d-888d-c0064153f892","conversation_id":"4ed7a119-733c-4f61-88e5-d257d17be9ba","content":"Hi,\r\nCan
+        you please help me?\r\nI tried to start a WIP on the Helpful project in Assembly,
+        but the \"Start a WIP\" button.\r\nThanks.\r\nSincerely,Mohamed Ben-Salahhttp://about.me/mohamedbs
+        \t\t \t   \t\t  ","data":{"headers":"[[\"Received\", \"by luna.mailgun.net
+        with SMTP mgrt 8791811362361; Wed, 25 Dec 2013 19:49:21 +0000\"], [\"X-Envelope-From\",
+        \"\u003cmohamedbensalah@outlook.com\u003e\"], [\"Received\", \"from dub0-omc4-s23.dub0.hotmail.com
+        (dub0-omc4-s23.dub0.hotmail.com [157.55.2.98]) by mxa.mailgun.org with ESMTP
+        id 52bb36be.7a30c00-in2; Wed, 25 Dec 2013 19:49:18 -0000 (UTC)\"], [\"Received\",
+        \"from DUB125-W53 ([157.55.2.72]) by dub0-omc4-s23.dub0.hotmail.com with Microsoft
+        SMTPSVC(6.0.3790.4675);\\t Wed, 25 Dec 2013 11:49:17 -0800\"], [\"X-Tmn\",
+        \"[54p3AETyCDOvqENeHgJzk2TZ5No0IwwZ]\"], [\"X-Originating-Email\", \"[mohamedbensalah@outlook.com]\"],
+        [\"Message-Id\", \"\u003cDUB125-W5325A9C7DFB008AB9DFAE1A5C30@phx.gbl\u003e\"],
+        [\"Return-Path\", \"mohamedbensalah@outlook.com\"], [\"Content-Type\", \"multipart/alternative;
+        boundary=\\\"_e2e1d5e3-2609-4b08-92f1-c964445d1436_\\\"\"], [\"From\", \"Mohamed
+        Ben-Salah \u003cmohamedbensalah@outlook.com\u003e\"], [\"To\", \"\\\"assembly@helpful.io\\\"
+        \u003cassembly@helpful.io\u003e\"], [\"Subject\", \"A problem on Assembly\"],
+        [\"Date\", \"Wed, 25 Dec 2013 20:49:17 +0100\"], [\"Importance\", \"Normal\"],
+        [\"Mime-Version\", \"1.0\"], [\"X-Originalarrivaltime\", \"25 Dec 2013 19:49:17.0363
+        (UTC) FILETIME=[655C0030:01CF01AA]\"], [\"X-Mailgun-Incoming\", \"Yes\"],
+        [\"X-Mailgun-Sflag\", \"No\"], [\"X-Mailgun-Sscore\", \"1.8\"], [\"X-Mailgun-Spf\",
+        \"Pass\"]]","subject":"A problem on Assembly","recipient":"assembly@helpful.io"},"created_at":"2013-12-25T19:49:23.024Z","updated_at":"2013-12-25T19:49:23.024Z","person_id":"f21fe681-e9db-4010-a83a-5386889787fa"}}]}}'
     http_version: 
-  recorded_at: Tue, 03 Mar 2015 20:41:50 GMT
+  recorded_at: Mon, 30 Mar 2015 20:59:04 GMT
 recorded_with: VCR 2.9.3

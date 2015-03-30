@@ -50,7 +50,7 @@ describe MessageMailer, :created do
     end
 
     context "when using markdown to reply" do
-      let(:message) { create(:message, conversation: conversation, html_content: "<h3>Heading</h3>") }
+      let(:message) { create(:message, conversation: conversation, content: "<h3>Heading</h3>") }
 
       it 'formats the body in html' do
         expect(subject.body.encoded).to match "<h3>Heading</h3>"

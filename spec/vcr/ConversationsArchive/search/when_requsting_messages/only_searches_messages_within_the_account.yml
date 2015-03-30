@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: delete
-    uri: http://localhost:9200/messages
+    uri: http://127.0.0.1:9200/messages
     body:
       encoding: UTF-8
       string: ''
@@ -22,10 +22,10 @@ http_interactions:
       encoding: UTF-8
       string: '{"acknowledged":true}'
     http_version: 
-  recorded_at: Fri, 20 Feb 2015 19:16:39 GMT
+  recorded_at: Mon, 30 Mar 2015 20:59:06 GMT
 - request:
     method: head
-    uri: http://localhost:9200/messages
+    uri: http://127.0.0.1:9200/messages
     body:
       encoding: UTF-8
       string: ''
@@ -45,10 +45,10 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Fri, 20 Feb 2015 19:16:39 GMT
+  recorded_at: Mon, 30 Mar 2015 20:59:06 GMT
 - request:
     method: put
-    uri: http://localhost:9200/messages
+    uri: http://127.0.0.1:9200/messages
     body:
       encoding: UTF-8
       string: '{"settings":{},"mappings":{"message":{"properties":{"content":{"type":"string"}}}}}'
@@ -70,29 +70,29 @@ http_interactions:
       encoding: UTF-8
       string: '{"acknowledged":true}'
     http_version: 
-  recorded_at: Fri, 20 Feb 2015 19:16:39 GMT
+  recorded_at: Mon, 30 Mar 2015 20:59:06 GMT
 - request:
     method: post
-    uri: http://localhost:9200/messages/message/_bulk?type=message
+    uri: http://127.0.0.1:9200/messages/message/_bulk?type=message
     body:
       encoding: UTF-8
       string: |
-        {"index":{"_id":"0d63546f-f4a4-4e8f-b6f0-a8b1ff598b3b"}}
-        {"id":"0d63546f-f4a4-4e8f-b6f0-a8b1ff598b3b","conversation_id":"16b09d88-7951-49ce-b31c-03a1de544d8c","content":"Oh bummer. They sent it to 15th street for some reason. I'll give them a call and see what's up.","data":null,"created_at":"2015-02-20T19:16:36.858Z","updated_at":"2015-02-20T19:16:36.858Z","person_id":"f1ba2b05-29a1-4973-a55d-b945eae22a71","webhook":null}
-        {"index":{"_id":"54dafe65-efe4-409e-9be3-4a0b97f91d9d"}}
-        {"id":"54dafe65-efe4-409e-9be3-4a0b97f91d9d","conversation_id":"ced21590-8e7d-4478-be19-f220dd3934ec","content":"test message","data":null,"created_at":"2015-02-20T19:16:39.382Z","updated_at":"2015-02-20T19:16:39.382Z","person_id":"47b65fbd-3627-4a37-ac6f-b286df86385c","webhook":null}
-        {"index":{"_id":"ad038132-5a13-4501-8a51-76d5be7ac31e"}}
-        {"id":"ad038132-5a13-4501-8a51-76d5be7ac31e","conversation_id":"16b09d88-7951-49ce-b31c-03a1de544d8c","content":"Where's the espresso machine? Wasn't it supposed to be delivered today?","data":null,"created_at":"2015-02-20T19:16:36.848Z","updated_at":"2015-02-20T19:16:36.848Z","person_id":"ae3ea426-7cc7-435c-96bd-ea7f2e5150b0","webhook":null}
+        {"index":{"_id":"0f368cdc-af62-4911-a985-08e1adaf8b69"}}
+        {"id":"0f368cdc-af62-4911-a985-08e1adaf8b69","conversation_id":"546b667c-f645-45d1-919a-efe092d335ff","content":"test message","data":null,"created_at":"2015-03-30T20:59:06.383Z","updated_at":"2015-03-30T20:59:06.383Z","person_id":"95b3c5c8-36e7-4f68-81a3-da2b53394cea","webhook":null,"message_id":"\u003cf05c0236-38bf-49d0-a36f-f7d7769fed62@helpful.mail\u003e","in_reply_to_id":null,"html_content":""}
+        {"index":{"_id":"527b2aae-0b9f-4b74-bd6b-e390f19c19b6"}}
+        {"id":"527b2aae-0b9f-4b74-bd6b-e390f19c19b6","conversation_id":"4c0fa614-dcf1-4eb8-a5c2-ba2a59438d25","content":"Where's the espresso machine? Wasn't it supposed to be delivered today?","data":null,"created_at":"2015-03-30T20:59:02.981Z","updated_at":"2015-03-30T20:59:02.981Z","person_id":"9c7dda6d-c7f2-4398-b0d0-d55e2c1795ea","webhook":null,"message_id":"\u003cf65b6ea6-c7ad-45c4-b710-f81ac4b2fc77@helpful.mail\u003e","in_reply_to_id":null,"html_content":""}
+        {"index":{"_id":"9975275d-4bd6-483b-987f-329c567b3c65"}}
+        {"id":"9975275d-4bd6-483b-987f-329c567b3c65","conversation_id":"5fd0d038-d69f-45e3-bde0-45707100a64d","content":"The styling seems to be broken on the home page. Could you take a look?","data":null,"created_at":"2015-03-30T20:59:02.924Z","updated_at":"2015-03-30T20:59:02.924Z","person_id":"29b5739e-6af2-4cad-a901-a7d897a72aa0","webhook":null,"message_id":"\u003ca7812e77-00f4-4993-99b0-946d2070a9cb@helpful.mail\u003e","in_reply_to_id":null,"html_content":""}
         {"index":{"_id":"c91d36fb-c406-4a06-a9b0-808c64b80e80"}}
-        {"id":"c91d36fb-c406-4a06-a9b0-808c64b80e80","conversation_id":"2d8e122e-6e71-4c2b-a1ba-e8a4c6f56ed4","content":"test 0","data":null,"created_at":"2015-02-20T19:16:39.441Z","updated_at":"2015-02-20T19:16:39.452Z","person_id":"8009c9c6-b488-4f81-832e-bb7ba1b1133d","webhook":null}
+        {"id":"c91d36fb-c406-4a06-a9b0-808c64b80e80","conversation_id":"818eb2fb-2406-435e-9e98-ec79961223d2","content":"test 0","data":null,"created_at":"2015-03-30T20:59:06.421Z","updated_at":"2015-03-30T20:59:06.424Z","person_id":"171bdfaf-9bef-4b2b-a782-448396f6a9e4","webhook":null,"message_id":"\u003c94e94a7d-1b8c-4b20-bf87-2047ca8fa3c2@helpful.mail\u003e","in_reply_to_id":null,"html_content":""}
         {"index":{"_id":"c91d36fb-c406-4a06-a9b0-808c64b80e81"}}
-        {"id":"c91d36fb-c406-4a06-a9b0-808c64b80e81","conversation_id":"560afddd-89f3-4c4a-9843-74a73dabab47","content":"test 1","data":null,"created_at":"2015-02-20T19:16:39.469Z","updated_at":"2015-02-20T19:16:39.484Z","person_id":"0de4504f-7f32-47a8-aa1c-f519f82aa58c","webhook":null}
+        {"id":"c91d36fb-c406-4a06-a9b0-808c64b80e81","conversation_id":"26e9f08f-5e6a-4538-b314-feb71e9c6276","content":"test 1","data":null,"created_at":"2015-03-30T20:59:06.435Z","updated_at":"2015-03-30T20:59:06.438Z","person_id":"1da9a811-f119-4686-b1aa-3bc2eaa10e18","webhook":null,"message_id":"\u003c56047e59-98a1-470b-b57b-71f0da6e6116@helpful.mail\u003e","in_reply_to_id":null,"html_content":""}
         {"index":{"_id":"c91d36fb-c406-4a06-a9b0-808c64b80e82"}}
-        {"id":"c91d36fb-c406-4a06-a9b0-808c64b80e82","conversation_id":"46e84e2b-5a8b-4fb3-bc2d-b726ddfcb984","content":"test 2","data":null,"created_at":"2015-02-20T19:16:39.574Z","updated_at":"2015-02-20T19:16:39.578Z","person_id":"793fdf0b-4b97-456d-a88c-9ae726e7efdc","webhook":null}
-        {"index":{"_id":"d8df8c91-6003-4754-aaca-cdca13d712c2"}}
-        {"id":"d8df8c91-6003-4754-aaca-cdca13d712c2","conversation_id":"2b2369d4-3fa2-47d2-a356-ef3253764267","content":"Do you want to grab breakfast to chat about Helpful?","data":null,"created_at":"2015-02-20T19:16:36.889Z","updated_at":"2015-02-20T19:16:36.889Z","person_id":"e1176985-d936-4bc0-9296-c7fc100992d8","webhook":null}
-        {"index":{"_id":"f069e56b-eb75-4c6b-aa8a-abf9651bb8c5"}}
-        {"id":"f069e56b-eb75-4c6b-aa8a-abf9651bb8c5","conversation_id":"2165d33d-a71d-4f4d-9844-a8711c0b78c7","content":"The styling seems to be broken on the home page. Could you take a look?","data":null,"created_at":"2015-02-20T19:16:36.792Z","updated_at":"2015-02-20T19:16:36.792Z","person_id":"8844bcc7-3d51-499b-b92a-0483c1c87632","webhook":null}
+        {"id":"c91d36fb-c406-4a06-a9b0-808c64b80e82","conversation_id":"632dde9b-37f7-498b-af22-d7ced4f16a0e","content":"test 2","data":null,"created_at":"2015-03-30T20:59:06.449Z","updated_at":"2015-03-30T20:59:06.452Z","person_id":"9dc43743-2901-44fb-bc1d-6c12a720106b","webhook":null,"message_id":"\u003c5197976c-f3f3-4831-82a4-5895ee8835ff@helpful.mail\u003e","in_reply_to_id":null,"html_content":""}
+        {"index":{"_id":"ecd13f93-5efb-43b9-8c30-d1fe77c4c289"}}
+        {"id":"ecd13f93-5efb-43b9-8c30-d1fe77c4c289","conversation_id":"4c0fa614-dcf1-4eb8-a5c2-ba2a59438d25","content":"Oh bummer. They sent it to 15th street for some reason. I'll give them a call and see what's up.","data":null,"created_at":"2015-03-30T20:59:03.020Z","updated_at":"2015-03-30T20:59:03.020Z","person_id":"4c4a3034-843f-498e-aa8a-6d70dbbfffa6","webhook":null,"message_id":"\u003c206c36d0-eb9c-4e80-95a3-4e7f44edf7c1@helpful.mail\u003e","in_reply_to_id":null,"html_content":""}
+        {"index":{"_id":"fd87e39e-d988-4b5e-b0d4-9c0081493ea9"}}
+        {"id":"fd87e39e-d988-4b5e-b0d4-9c0081493ea9","conversation_id":"1fe0b950-ed24-4ac3-8539-ec4fb9140e63","content":"Do you want to grab breakfast to chat about Helpful?","data":null,"created_at":"2015-03-30T20:59:03.053Z","updated_at":"2015-03-30T20:59:03.053Z","person_id":"0efbe3b1-872e-4d83-91a2-3851d584ef39","webhook":null,"message_id":"\u003cf89b0d57-f2f6-43d4-bd02-9ab13c272c8f@helpful.mail\u003e","in_reply_to_id":null,"html_content":""}
     headers:
       User-Agent:
       - Faraday v0.9.0
@@ -106,15 +106,15 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Content-Length:
-      - '1004'
+      - '1003'
     body:
       encoding: UTF-8
-      string: '{"took":40,"errors":false,"items":[{"index":{"_index":"messages","_type":"message","_id":"0d63546f-f4a4-4e8f-b6f0-a8b1ff598b3b","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"54dafe65-efe4-409e-9be3-4a0b97f91d9d","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"ad038132-5a13-4501-8a51-76d5be7ac31e","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e80","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e81","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e82","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"d8df8c91-6003-4754-aaca-cdca13d712c2","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"f069e56b-eb75-4c6b-aa8a-abf9651bb8c5","_version":1,"status":201}}]}'
+      string: '{"took":8,"errors":false,"items":[{"index":{"_index":"messages","_type":"message","_id":"0f368cdc-af62-4911-a985-08e1adaf8b69","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"527b2aae-0b9f-4b74-bd6b-e390f19c19b6","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"9975275d-4bd6-483b-987f-329c567b3c65","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e80","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e81","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e82","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"ecd13f93-5efb-43b9-8c30-d1fe77c4c289","_version":1,"status":201}},{"index":{"_index":"messages","_type":"message","_id":"fd87e39e-d988-4b5e-b0d4-9c0081493ea9","_version":1,"status":201}}]}'
     http_version: 
-  recorded_at: Fri, 20 Feb 2015 19:16:39 GMT
+  recorded_at: Mon, 30 Mar 2015 20:59:06 GMT
 - request:
     method: post
-    uri: http://localhost:9200/messages/_refresh
+    uri: http://127.0.0.1:9200/messages/_refresh
     body:
       encoding: UTF-8
       string: ''
@@ -138,10 +138,10 @@ http_interactions:
       encoding: UTF-8
       string: '{"_shards":{"total":10,"successful":5,"failed":0}}'
     http_version: 
-  recorded_at: Fri, 20 Feb 2015 19:16:39 GMT
+  recorded_at: Mon, 30 Mar 2015 20:59:06 GMT
 - request:
     method: get
-    uri: http://localhost:9200/messages/message/_search
+    uri: http://127.0.0.1:9200/messages/message/_search
     body:
       encoding: UTF-8
       string: '{"query":{"match":{"content":"test"}}}'
@@ -158,14 +158,14 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Content-Length:
-      - '1701'
+      - '2179'
     body:
       encoding: UTF-8
-      string: '{"took":6,"timed_out":false,"_shards":{"total":5,"successful":5,"failed":0},"hits":{"total":4,"max_score":0.8784157,"hits":[{"_index":"messages","_type":"message","_id":"54dafe65-efe4-409e-9be3-4a0b97f91d9d","_score":0.8784157,"_source":{"id":"54dafe65-efe4-409e-9be3-4a0b97f91d9d","conversation_id":"ced21590-8e7d-4478-be19-f220dd3934ec","content":"test
-        message","data":null,"created_at":"2015-02-20T19:16:39.382Z","updated_at":"2015-02-20T19:16:39.382Z","person_id":"47b65fbd-3627-4a37-ac6f-b286df86385c","webhook":null}},{"_index":"messages","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e82","_score":0.625,"_source":{"id":"c91d36fb-c406-4a06-a9b0-808c64b80e82","conversation_id":"46e84e2b-5a8b-4fb3-bc2d-b726ddfcb984","content":"test
-        2","data":null,"created_at":"2015-02-20T19:16:39.574Z","updated_at":"2015-02-20T19:16:39.578Z","person_id":"793fdf0b-4b97-456d-a88c-9ae726e7efdc","webhook":null}},{"_index":"messages","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e80","_score":0.625,"_source":{"id":"c91d36fb-c406-4a06-a9b0-808c64b80e80","conversation_id":"2d8e122e-6e71-4c2b-a1ba-e8a4c6f56ed4","content":"test
-        0","data":null,"created_at":"2015-02-20T19:16:39.441Z","updated_at":"2015-02-20T19:16:39.452Z","person_id":"8009c9c6-b488-4f81-832e-bb7ba1b1133d","webhook":null}},{"_index":"messages","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e81","_score":0.19178301,"_source":{"id":"c91d36fb-c406-4a06-a9b0-808c64b80e81","conversation_id":"560afddd-89f3-4c4a-9843-74a73dabab47","content":"test
-        1","data":null,"created_at":"2015-02-20T19:16:39.469Z","updated_at":"2015-02-20T19:16:39.484Z","person_id":"0de4504f-7f32-47a8-aa1c-f519f82aa58c","webhook":null}}]}}'
+      string: '{"took":4,"timed_out":false,"_shards":{"total":5,"successful":5,"failed":0},"hits":{"total":4,"max_score":0.8784157,"hits":[{"_index":"messages","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e80","_score":0.8784157,"_source":{"id":"c91d36fb-c406-4a06-a9b0-808c64b80e80","conversation_id":"818eb2fb-2406-435e-9e98-ec79961223d2","content":"test
+        0","data":null,"created_at":"2015-03-30T20:59:06.421Z","updated_at":"2015-03-30T20:59:06.424Z","person_id":"171bdfaf-9bef-4b2b-a782-448396f6a9e4","webhook":null,"message_id":"\u003c94e94a7d-1b8c-4b20-bf87-2047ca8fa3c2@helpful.mail\u003e","in_reply_to_id":null,"html_content":""}},{"_index":"messages","_type":"message","_id":"0f368cdc-af62-4911-a985-08e1adaf8b69","_score":0.37158427,"_source":{"id":"0f368cdc-af62-4911-a985-08e1adaf8b69","conversation_id":"546b667c-f645-45d1-919a-efe092d335ff","content":"test
+        message","data":null,"created_at":"2015-03-30T20:59:06.383Z","updated_at":"2015-03-30T20:59:06.383Z","person_id":"95b3c5c8-36e7-4f68-81a3-da2b53394cea","webhook":null,"message_id":"\u003cf05c0236-38bf-49d0-a36f-f7d7769fed62@helpful.mail\u003e","in_reply_to_id":null,"html_content":""}},{"_index":"messages","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e81","_score":0.37158427,"_source":{"id":"c91d36fb-c406-4a06-a9b0-808c64b80e81","conversation_id":"26e9f08f-5e6a-4538-b314-feb71e9c6276","content":"test
+        1","data":null,"created_at":"2015-03-30T20:59:06.435Z","updated_at":"2015-03-30T20:59:06.438Z","person_id":"1da9a811-f119-4686-b1aa-3bc2eaa10e18","webhook":null,"message_id":"\u003c56047e59-98a1-470b-b57b-71f0da6e6116@helpful.mail\u003e","in_reply_to_id":null,"html_content":""}},{"_index":"messages","_type":"message","_id":"c91d36fb-c406-4a06-a9b0-808c64b80e82","_score":0.19178301,"_source":{"id":"c91d36fb-c406-4a06-a9b0-808c64b80e82","conversation_id":"632dde9b-37f7-498b-af22-d7ced4f16a0e","content":"test
+        2","data":null,"created_at":"2015-03-30T20:59:06.449Z","updated_at":"2015-03-30T20:59:06.452Z","person_id":"9dc43743-2901-44fb-bc1d-6c12a720106b","webhook":null,"message_id":"\u003c5197976c-f3f3-4831-82a4-5895ee8835ff@helpful.mail\u003e","in_reply_to_id":null,"html_content":""}}]}}'
     http_version: 
-  recorded_at: Fri, 20 Feb 2015 19:16:39 GMT
+  recorded_at: Mon, 30 Mar 2015 20:59:06 GMT
 recorded_with: VCR 2.9.3
