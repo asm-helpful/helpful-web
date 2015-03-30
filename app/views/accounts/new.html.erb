@@ -19,7 +19,7 @@
         <div class="col-xs-12 col-md-6">
 
           <div class="form-group">
-            <%= f.label :name, t('accounts.general.company_name'), class: 'control-label' %>
+            <%= f.label :name, 'Accout name', class: 'control-label' %>
             <%= f.text_field :name, autofocus: true, class: 'form-control', required: true, autocomplete: :off %>
           </div>
 
@@ -37,7 +37,7 @@
             <span class="geomicon geomicon-check form-control-feedback" style="display: none"></span>
             <span class="geomicon geomicon-sync  form-control-feedback spin" style="display: none"></span>
             <span class="geomicon geomicon-alert form-control-feedback" style="display: none"></span>
-            <span class="help-block"><%= t('.helpful_email_help') %></span>
+            <span class="help-block">This is the email your customers will use to send you support requests. You can always change this to be an email on your domain later.</span>
             <span id="email-error-is-not-unique" style="display: none;" class="error-message help-block"><%= t('.helpful_email_error_is_not_unique') %></span>
           </div>
 

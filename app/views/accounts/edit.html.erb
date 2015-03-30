@@ -11,7 +11,7 @@
         <li class="active"><a href="#basic" role="tab" data-toggle="tab"><%= t('shared.navbar.general') %></a></li>
         <li><a href="#team" role="tab" data-toggle="tab">Team</a></li>
         <li><a href="#canned-responses" role="tab" data-toggle="tab"><%= t('shared.navbar.canned_responses') %></a></li>
-        <li><a href="#email-forwarding" role="tab" data-toggle="tab"><%= t('shared.navbar.email_forwarding') %></a></li>
+        <li><a href="#email-forwarding" role="tab" data-toggle="tab">Custom domains</a></li>
       </ul>
 
       <!-- Tab panes -->
@@ -24,19 +24,10 @@
               <div class="form-group">
                 <div class="row">
                   <div class="col-md-6">
-                    <%= f.label :name, t('accounts.general.company_name'), class: 'control-label' %>
+                    <%= f.label :name, class: 'control-label' %>
                     <%= f.text_field :name, autofocus: true, placeholder: t('accounts.general.company_name_placeholder'), class: 'form-control' %>
                   </div>
-                  <div class="col-md-6">
-                    <%= f.label :website_url, t('.website'), class: 'control-label' %>
-                    <%= f.text_field :website_url, placeholder: t('.website_placeholder'), class: 'form-control' %>
-                  </div>
                 </div>
-              </div>
-
-              <div class="form-group">
-                <%= f.label :signature, t('.signature'), class: 'control-label' %>
-                <%= f.text_area :signature, placeholder: t('.signature_placeholder'), class: 'form-control', rows: 3, 'data-autosize' => '' %>
               </div>
 
               <div class="form-group">
