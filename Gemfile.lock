@@ -421,6 +421,7 @@ DEPENDENCIES
   font-awesome-rails
   font_assets
   friendly_id (~> 5.0)
+  httparty
   jasmine!
   jquery-rails
   json_spec (~> 1.1)

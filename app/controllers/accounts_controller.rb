@@ -29,6 +29,11 @@ class AccountsController < ApplicationController
         @account.add_owner!(@user)
       end
 
+      begin
+        CreateAccountBounty.award(@user.email)
+      rescue
+      end
+
       # TODO: Use flag in conversation model to check for these
       ProtipConversation.create(@account, current_user) unless @account.conversations.protip_conversation.exists?
       WidgetConversation.create(@account, current_user) unless @account.conversations.widget_conversation.exists?
