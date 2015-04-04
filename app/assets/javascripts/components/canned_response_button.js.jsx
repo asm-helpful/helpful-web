@@ -65,20 +65,36 @@ var CannedResponseButton = React.createClass({
   },
 
   render: function() {
-    return (
-      <div className="btn-group command-bar-action">
-        <button className="btn btn-default dropdown-toggle" data-toggle="dropdown" onClick={this.focusInput}>
-          Canned Response {' '}
-          <span className="caret"></span>
-        </button>
-        <ul className="dropdown-menu" role="menu">
-          <li>
-            <input type="text" className="form-control" placeholder="Search by key" onClick={this.ignore} onKeyUp={this.filterCannedResponses} />
-          </li>
-          <li className="divider"></li>
-          {this.renderFilteredCannedResponses()} 
-        </ul>
-      </div>
-    );
+    if(this.state.cannedResponses.length === 0){
+      return (
+        <div className="btn-group command-bar-action">
+          <button className="btn btn-default dropdown-toggle" data-toggle="dropdown" onClick={this.focusInput}>
+            Canned Response {' '}
+            <span className="caret"></span>
+          </button>
+          <ul className="dropdown-menu" role="menu">
+            <li class='disabled'>
+              <a href="#">No canned responses yet</a>
+            </li>
+          </ul>
+        </div>
+      );
+    } else {
+      return (
+        <div className="btn-group command-bar-action">
+          <button className="btn btn-default dropdown-toggle" data-toggle="dropdown" onClick={this.focusInput}>
+            Canned Response {' '}
+            <span className="caret"></span>
+          </button>
+          <ul className="dropdown-menu" role="menu">
+            <li>
+              <input type="text" className="form-control" placeholder="Search by Key" onClick={this.ignore} onKeyUp={this.filterCannedResponses}/>
+            </li>
+            <li className="divider"></li>
+            {this.renderFilteredCannedResponses()}
+          </ul>
+        </div>
+      );
+    }
   }
 });
