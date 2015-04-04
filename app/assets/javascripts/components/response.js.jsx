@@ -5,12 +5,18 @@ var Response = React.createClass({
     this.initMediumEditor();
     var savedResponse = sessionStorage.getItem(this.props.conversation.id)
     $('.medium-editor').html(savedResponse)
-    $('.medium-editor').removeClass('medium-editor-placeholder');
+    if (savedResponse != null) {
+      $('.medium-editor').removeClass('medium-editor-placeholder');
+    }
   },
 
   componentWillUnmount: function() {
     var content = $('.medium-editor').html()
-    sessionStorage.setItem(this.props.conversation.id, content)
+    if ($('.medium-editor').text()) {
+      sessionStorage.setItem(this.props.conversation.id, content)
+    } else {
+      sessionStorage.removeItem(this.props.conversation.id)
+    }
   },
 
   initMediumEditor: function() {
@@ -84,7 +90,7 @@ var Response = React.createClass({
 
   clearResponse: function() {
     $('.medium-editor').html('');
-    sessionStorage.setItem(this.props.conversation.id, null);
+    sessionStorage.removeItem(this.props.conversation.id);
   },
 
   useCannedResponseHandler: function(cannedResponse) {
