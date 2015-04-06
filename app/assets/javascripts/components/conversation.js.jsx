@@ -129,7 +129,7 @@ var Conversation = React.createClass({
 
   isStale: function() {
     return !this.props.conversation.archived &&
-      moment(this.props.conversation.last_activity_at) < moment().subtract('days', 3)
+      moment(this.props.conversation.last_activity_at) < moment().subtract(3, 'days')
   },
 
   hasReply: function() {
