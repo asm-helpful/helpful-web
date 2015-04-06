@@ -68,15 +68,19 @@ var CannedResponseButton = React.createClass({
     return (
       <div className="btn-group command-bar-action">
         <button className="btn btn-default dropdown-toggle" data-toggle="dropdown" onClick={this.focusInput}>
-          Canned Response {' '}
-          <span className="caret"></span>
+          Canned Response <span className="caret"></span>
         </button>
         <ul className="dropdown-menu" role="menu">
           <li>
             <input type="text" className="form-control" placeholder="Search by key" onClick={this.ignore} onKeyUp={this.filterCannedResponses} />
           </li>
           <li className="divider"></li>
-          {this.renderFilteredCannedResponses()} 
+          {this.renderFilteredCannedResponses()}
+          {(this.state.cannedResponses.length === 0) ?
+            <li className="text-muted blankslate">
+              <span>No canned responses yet! <a href={"/accounts/" + this.props.conversation.account_slug + "/edit#canned-responses"}>Learn more and create your first.</a></span>
+            </li>
+          : null}
         </ul>
       </div>
     );
