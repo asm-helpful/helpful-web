@@ -3,6 +3,23 @@
 var Response = React.createClass({
   componentDidMount: function() {
     this.initMediumEditor();
+    // Restore autosaved text
+    var savedResponse = localStorage.getItem("conversation-" + this.props.conversation.id);
+    $('.medium-editor').html(savedResponse);
+    if (savedResponse) {
+      // Remove placeholder text, otherwise it overlays your autosaved response
+      $('.medium-editor').removeClass('medium-editor-placeholder');
+    }
+  },
+
+  componentWillUnmount: function() {
+    var content = $('.medium-editor').html();
+    if ($('.medium-editor').text()) {
+      // Save response
+      localStorage.setItem("conversation-" + this.props.conversation.id, content);
+    } else {
+      this.clearResponse;
+    }
   },
 
   initMediumEditor: function() {
@@ -75,6 +92,7 @@ var Response = React.createClass({
   },
 
   clearResponse: function() {
+    localStorage.removeItem("conversation-" + this.props.conversation.id);
     $('.medium-editor').html('');
   },
 
@@ -106,7 +124,7 @@ var Response = React.createClass({
   render: function() {
     return (
       <form className="form">
-        <div className="form-control form-control-invisible medium-editor" data-placeholder="Click and write your response..." onKeyDown={this.metaSend} onKeyPress={this.ctrlSend}></div>
+        <div className="form-control form-control-invisible medium-editor" data-placeholder="Write your response..." onKeyDown={this.metaSend} onKeyPress={this.ctrlSend}></div>
 
         <div className="form-actions">
           <div className="pull-right">
