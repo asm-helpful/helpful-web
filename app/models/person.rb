@@ -10,7 +10,6 @@ class Person < ActiveRecord::Base
   has_many :read_receipts
 
   validates :email,
-    allow_blank: true,
     email: true,
     uniqueness: { :scope => :account}
 
