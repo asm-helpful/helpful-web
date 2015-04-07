@@ -26,6 +26,10 @@
       }
     }
 
+    &.blankslate {
+      padding: 0 $padding-base-horizontal $padding-base-vertical;
+    }
+
     &.dropdown-header {
       color: $dropdown-header-color !important;
       font-size: $font-size-xs;
