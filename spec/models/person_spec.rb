@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe Person do
-  let(:person) { Person.new }
+  let(:person) { build(:person) }
 
   it "must be valid" do
     expect(person).to be_valid
@@ -14,7 +14,7 @@ describe Person do
       expect(person).to be_invalid
     end
   end
-  
+
 
   describe "Person#parse_email" do
 
