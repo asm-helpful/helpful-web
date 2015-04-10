@@ -1,5 +1,6 @@
 class Users::InvitationsController < Devise::InvitationsController
   before_filter :find_account!, only: [:create]
+  after_action :process_promotion, only: [:create]
 
   def create
     if existing_user = User.find_by(email: params[:user][:email])
@@ -79,5 +80,11 @@ class Users::InvitationsController < Devise::InvitationsController
   def find_account!
     @account = Account.find_by!(slug: params.fetch(:account_id))
     authorize! AccountReadPolicy.new(@account, current_user)
+  end
+
+  def process_promotion
+    if @account.asm_signup_promotion_completed_at.nil?
+      AsmSignupPromotionWorker.perform_async(@account.id)
+    end
   end
 end

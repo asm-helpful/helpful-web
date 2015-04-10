@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
   before_action :authenticate_user!, :only => [:create]
+  after_action :process_promotion, only: [:create]
 
   respond_to :json
 
@@ -52,6 +53,12 @@ class MessagesController < ApplicationController
       person: current_user.person,
       account:   find_account!
     )
+  end
+
+  def process_promotion
+    if @account.asm_signup_promotion_completed_at.nil?
+      AsmSignupPromotionWorker.perform_async(@account.id)
+    end
   end
 
   def archive_conversation?
