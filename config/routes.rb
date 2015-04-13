@@ -4,11 +4,12 @@ Helpful::Application.routes.draw do
     controllers :applications => 'oauth/applications'
   end
 
-  if Rails.env.development?
-    require 'sidekiq/web'
-    mount Sidekiq::Web, at: "/sidekiq"
-  end
-
+  require "sidekiq/web"
+  Sidekiq::Web.use Rack::Auth::Basic do |username, password|
+    username == ENV["SIDEKIQ_USERNAME"] && password == ENV["SIDEKIQ_PASSWORD"]
+  end if Rails.env.production?
+  mount Sidekiq::Web, at: "/sidekiq"
+  
   get '/embed.js' => 'pages#embed', as: :embed
   get '/styleguide' => 'pages#styleguide', as: :styleguide
   get '/terms' => 'pages#terms', as: :terms
