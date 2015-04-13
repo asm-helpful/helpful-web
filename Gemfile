@@ -41,6 +41,7 @@ gem 'redcarpet'
 gem 'sass-rails', '~> 5'
 gem 'sequential', '>= 0.1'
 gem 'sidekiq'
+gem 'sinatra', require: nil
 gem 'stringex'
 gem 'stripe'
 gem 'uglifier', '>= 1.3.0'
