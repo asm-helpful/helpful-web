@@ -61,7 +61,6 @@ group :development do
   gem 'quiet_assets'
   gem 'pry-rails'
   gem 'rest-client', require: false
-  gem 'sinatra', require: false
   gem 'slim', require: false
   gem 'spring-commands-rspec'
 end
