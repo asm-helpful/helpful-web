@@ -11,7 +11,7 @@ class Webhooks::MailgunController < WebhooksController
 
     # TODO: (whatupdave) not sure what's going on but there's a tonne of these
     # coming in
-    return if params['subject'] == 'Welcome to Helpful!'
+    return head(:accepted) if params['subject'] == 'Welcome to Helpful!'
 
     ActiveRecord::Base.transaction do
       # Finds Account
