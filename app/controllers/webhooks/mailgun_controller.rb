@@ -9,10 +9,6 @@ class Webhooks::MailgunController < WebhooksController
   def create
     require_mailgun_params!
 
-    # TODO: (whatupdave) not sure what's going on but there's a tonne of these
-    # coming in
-    return head(:accepted) if params['subject'] == 'Welcome to Helpful!'
-
     ActiveRecord::Base.transaction do
       # Finds Account
       recipient = Mail::Address.new(params.fetch(:recipient).to_ascii)

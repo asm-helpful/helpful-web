@@ -12,6 +12,11 @@ class MessageMailer < ActionMailer::Base
 
     @message = message
 
+    if person.email_address =~ /.*@helpful.io$/
+      Rails.logger.warn "dropping email=#{person.email_address}"
+      mail.perform_deliveries = false
+    end
+
     mail to: person.email_address,
          from: message.from_address,
          subject: message.conversation.subject,
