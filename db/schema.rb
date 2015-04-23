@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150317010206) do
+ActiveRecord::Schema.define(version: 20150410030903) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,20 +19,21 @@ ActiveRecord::Schema.define(version: 20150317010206) do
   enable_extension "pg_stat_statements"
   enable_extension "uuid-ossp"
 
-  create_table "accounts", id: :uuid, force: :cascade do |t|
-    t.string   "name",               limit: 255
+  create_table "accounts", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
+    t.string   "name",                              limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "slug",               limit: 255,                 null: false
-    t.string   "webhook_url",        limit: 255
-    t.string   "webhook_secret",     limit: 255
-    t.string   "website_url",        limit: 255
+    t.string   "slug",                              limit: 255,                 null: false
+    t.string   "webhook_url",                       limit: 255
+    t.string   "webhook_secret",                    limit: 255
+    t.string   "website_url",                       limit: 255
     t.boolean  "prefers_archiving"
     t.text     "signature"
-    t.string   "url",                limit: 255
-    t.string   "stripe_customer_id", limit: 255
-    t.boolean  "is_pro",                         default: false, null: false
+    t.string   "url",                               limit: 255
+    t.string   "stripe_customer_id",                limit: 255
+    t.boolean  "is_pro",                                        default: false, null: false
     t.string   "forwarding_address"
+    t.datetime "asm_signup_promotion_completed_at"
   end
 
   add_index "accounts", ["slug"], name: "index_accounts_on_slug", unique: true, using: :btree
@@ -76,7 +77,7 @@ ActiveRecord::Schema.define(version: 20150317010206) do
 
   add_index "canned_responses", ["key", "account_id"], name: "index_canned_responses_on_key_and_account_id", unique: true, using: :btree
 
-  create_table "conversations", id: :uuid, force: :cascade do |t|
+  create_table "conversations", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.integer  "number"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -98,7 +99,7 @@ ActiveRecord::Schema.define(version: 20150317010206) do
     t.datetime "updated_at",                 null: false
   end
 
-  create_table "memberships", id: :uuid, force: :cascade do |t|
+  create_table "memberships", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.uuid     "account_id",             null: false
     t.uuid     "user_id",                null: false
     t.string   "role",       limit: 255
@@ -109,7 +110,7 @@ ActiveRecord::Schema.define(version: 20150317010206) do
   add_index "memberships", ["account_id", "user_id"], name: "index_memberships_on_account_id_and_user_id", unique: true, using: :btree
   add_index "memberships", ["user_id"], name: "index_memberships_on_user_id", using: :btree
 
-  create_table "messages", id: :uuid, force: :cascade do |t|
+  create_table "messages", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.uuid     "conversation_id",              null: false
     t.text     "content"
     t.hstore   "data"
@@ -167,7 +168,7 @@ ActiveRecord::Schema.define(version: 20150317010206) do
   add_index "oauth_applications", ["owner_id", "owner_type"], name: "index_oauth_applications_on_owner_id_and_owner_type", using: :btree
   add_index "oauth_applications", ["uid"], name: "index_oauth_applications_on_uid", unique: true, using: :btree
 
-  create_table "people", id: :uuid, force: :cascade do |t|
+  create_table "people", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.uuid     "user_id"
     t.string   "name",       limit: 255
     t.string   "email",      limit: 255
@@ -184,7 +185,7 @@ ActiveRecord::Schema.define(version: 20150317010206) do
   add_index "people", ["twitter"], name: "index_people_on_twitter", using: :btree
   add_index "people", ["user_id"], name: "index_people_on_user_id", using: :btree
 
-  create_table "read_receipts", id: :uuid, force: :cascade do |t|
+  create_table "read_receipts", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.uuid     "person_id"
     t.uuid     "message_id"
     t.datetime "created_at"
@@ -215,7 +216,7 @@ ActiveRecord::Schema.define(version: 20150317010206) do
 
   add_index "tag_events", ["conversation_id"], name: "index_tag_events_on_conversation_id", using: :btree
 
-  create_table "users", id: :uuid, force: :cascade do |t|
+  create_table "users", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "",        null: false
     t.string   "encrypted_password",     limit: 255, default: ""
     t.string   "reset_password_token",   limit: 255
@@ -253,7 +254,7 @@ ActiveRecord::Schema.define(version: 20150317010206) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
-  create_table "webhooks", id: :uuid, force: :cascade do |t|
+  create_table "webhooks", id: :uuid, default: "uuid_generate_v4()", force: :cascade do |t|
     t.uuid     "account_id",                null: false
     t.string   "event",         limit: 255, null: false
     t.text     "body"
