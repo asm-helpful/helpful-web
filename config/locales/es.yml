@@ -1,0 +1,278 @@
+es:
+  general:
+    ago: "atrás"
+    email: "Correo electrónico"
+    email_placeholder: "Tu correo electrónico"
+    password: "Contraseña"
+    roles:
+      owner: "propietario"
+      agent: "agente"
+    hello: "Hola"
+
+  shared:
+    navbar:
+      settings: "Configuración"
+      company_profile: "Perfil de la empresa"
+      technical_setup: "Configuración técnica"
+      help: "Ayuda"
+      logout: "Salir"
+      inbox: "Entrada"
+      archive: "Archivo"
+      search: "Buscar"
+
+  message_mailer:
+    created:
+      reply: "Responda a este correo o"
+      view: "vea la conversación en"
+
+  users:
+    edit:
+      user_settings: "Configuración de tu cuenta"
+      change_account: "Cambiar tu cuenta"
+      change_account_subtext: "Este es el nombre que aparecerá en las conversaciones. La dirección de correo será tu cuenta de usuario y donde recibirás las notificaciones."
+      name: "Nombre"
+      change_picture: "Cambia la imagen de tu cuenta."
+      change_picture_subtext: "Elegir una imagen correcta puede ayudar a tu equipo y a la persona que asigne las conversaciones a identificarte mejor. Si no usas una imagen personalizada, se mostrarán tus iniciales."
+      update_personal_settings: "Actualizar mi perfil"
+    mailer:
+      invitation_instructions:
+        someone_invited: "Alguien te ha invitado a"
+        you_can_accept: "puedes aceptarlo haciendo clic en el enlace de abajo."
+        accept: "Aceptar invitación"
+        dont_want: "Si no quieres aceptar la invitación, por favor, ignora este mensaje."
+        account_wont_be_created: "Tu cuenta no será creada hasta que accedas al enlace de abajo y elijas una contraseña."
+
+  accounts:
+    general:
+      company_name: "Nombre de la empresa"
+      company_name_placeholder: "Acme S.A."
+      your_name: "Tu nombre"
+      your_name_placeholder: "Juan Nadie"
+      username: "Usuario"
+      username_placeholder: "usuario"
+      notification_setting: 'Notificaciones'
+      notification_setting_subtext: "Cambia la frecuencia con que recibes correos electrónicos según la actividad de las conversaciones"
+    new:
+      welcome_to_helpful: "Bienvenido a Helpful"
+      sign_up_free_account: "Regístrate y obtén una cuenta gratuita"
+      get_setup_get_ready: "Guardaremos tu información y la de tu empresa para que solo tengas que responder las peticiones de soporte y que tus clientes estén felices."
+      personal_info: "Información personal"
+      sign_up_helpful: "Entrar en Helpful"
+      already_have_account: "Si ya tienes una cuenta en Helpful"
+      please_sign_in: "inicia sesión, por favor."
+      password_confirmation: "Confirmación de contraseña"
+      must_meet_requirements: "Debe cumplir *estos requisitos*"
+      create_account: "Crear mi cuenta"
+      helpful_email: "Correo electrónico de Helpful"
+      helpful_email_help: "Este es el correo electrónico que tus clientes usarán para enviarte las incidencias."
+      helpful_email_error_is_not_unique: "Lo siento, esa dirección ya está siend usada."
+      full_name: "Tu nombre completo"
+      your_email: "Tu correo electrónico"
+      eight_char: "Debe tener al menos 8 caracteres."
+      sign_up_start_using: "¡Entra y comienza a usar Helpful!"
+    edit:
+      edit: "Editar"
+      forwarding_address: "Correo de reenvío"
+      get_code: "Obtén el código"
+      company_name: "Nombre de la empresa"
+      company_name_placeholder: "Acme S.A."
+      website: "Sitio web"
+      website_placeholder: "https://www.example.com"
+      webhook_url: "Webhook URL"
+      webhook_url_placeholder: "https://www.example.com/webhooks/helpful"
+      webhook_secret: "Webhook Secret"
+      update_account: "Update account settings"
+      invitations: "Invitaciones"
+      send_invitation: "Enviar una invitación"
+      invitations_sent: "Invitaciones enviadas"
+      signature: "Firma de respuesta"
+      signature_placeholder: "Firma incluida al final de cada correo electrónico"
+      auto_archiving: "Auto-archivar conversaciones después de responder"
+    billing:
+      upgrade_plan: "Mejora tu suscripción"
+      up_help: "¿Cuántas incidencias crees que tendrás al mes? Selecciona la suscripción que mejor se adapte de las siguientes. Si neceistas ayuda, puedes preguntarnos."
+      ask_for_help: "Pedir ayuda"
+      totally_free: "Totalmente gratis!"
+      conversations: "conversaciones"
+      subscribe: "Suscribirse"
+      subscribed: "Suscrito"
+      need_more: "¿Necesitas más de 10.000 conversaciones?"
+      update_account: "Actualiza tu cuenta"
+    team:
+      invitations: "Invitaciones"
+      members: "Miembros"
+      send: "Enviar"
+      no_unaccepted: "No hay invitaciones sin aceptar."
+      invitation_sent: "Invitación enviada"
+      reinvite: "Volver a invitar"
+    canned_responses:
+      key: "Clave"
+      message: "Respuesta"
+
+  conversations:
+    conversation:
+      reply_to_conversation: "Escribe tu respuesta…"
+      assign: "Asignar"
+      tag: "Etiqueta"
+      canned_response: "Respuesta enlatada"
+      archive: "Archivar"
+      send: "Enviar"
+      next_conversation: "Siguiente conversación"
+      made_last_message: "¡Llegaste al último mensaje!"
+      back_to_inbox: "Volver a la bandeja de entrada"
+      attach_files: "Adjuntar ficheros"
+    markdown:
+      we_use_markdown: "¡Usamos Markdown!"
+      tool_to_format_text: "Markdown es una herramienta para dar formato al texto."
+      text_here: "texto aquí"
+      bold: "Negrita"
+      bolded: "Negrita"
+      italic: "Cursiva"
+      link: "Enlace"
+      linked: "Enlazado"
+      link_example_url: "http://link_url.com/?test"
+      image: "Imagen"
+      image_description: "Descripción de la imagen"
+      image_example_url: "http://image_link.com/here.png"
+      advanced_guide: "Guía avanzada"
+    navbar:
+      search_conversations: "Buscar conversación"
+      search: "Buscar"
+    row:
+      archive: "Archivar"
+      unarchive: "Mover a la bandeja de entrada"
+    search:
+      search_results_for: "Buscar resultados para"
+      no_results: "No hay resultados que mostrar."
+    empty:
+      inbox_zero: "Bandeja vacía"
+      no_open_conversations: "No hay conversaciones abiertas. ¡Buen trabajo!"
+      customer_support_quote: "Sé el soporte que desearías que el mundo viera."
+
+  pages:
+    home:
+      general:
+        sign_up_free: "Alta gratis"
+      header:
+        sign_up: "ALTA"
+        login: "ENTRAR"
+        build: "CONSTRUIR HELPFUL"
+        docs: "DOCUMENTACIÓN"
+      hero:
+        text_header: "La ayuda que no duele"
+        text_1: "Helpful es una herramienta de soporte tan fácil que no necesitas ayuda para usarla."
+        text_2: "Simplemente pregunta."
+      demo:
+        text_1: "Incluso más sencillo que el correo electrónico"
+        text_2: "No deberías necesitar soporte para dar soporte."
+        text_2_2: "El objetivo de Helpful es que usarlo sea pan comido nada más empezar."
+      pricing_table:
+        great_value: "¡Gran valor!"
+        starter_kit: "Kit para empezar"
+        growing: "Creciendo"
+        premium: "Premium"
+        super: "Super"
+        threads: "hilos"
+        per_month: "al mes"
+        sign_up: "Regístrate"
+      pricing_text_1: "La ayuda que crece contigo"
+      pricing_text_2: "La tarifa es por volumen, de modo que puedes empezar por poco e iremos creciendo a medida que tu soporte necesita crecer."
+      pricing_text_end: "No hay contratos y los planes pueden cancelarse en cualquier momento."
+      conversation-explaination: "Una conversación con el cliente se define como cualquier conversación con valor de compromiso. No es simplemente una conversación en la que el cliente te habla de su tortuga."
+      in_house: "Interno"
+      in_house_text: "Si prefieres hacer tuyo el software, puedes acceder a los entresijos de Helpful y modificarlo para tus propios fines."
+      contact_us: "Contacta con nosotros"
+      footer:
+        copyright: "Todo el contenido &copy; Assembly Inc. Amamos a nuestros clientes, odiamos el spam y creemos que el soporte es de naturaleza humana."
+
+  canned_responses:
+    index:
+      canned_response: "Respuesta enlatada"
+      create_canned_response: "Crear respuesta enlatada"
+      canned_responses: "Respuestas enlatadas"
+    none_yet:
+      header: "Todavía no hay respuestas enlatadas"
+      body: >
+        Las respuestas enlatadas son una manera de responder rápidamente a las preguntas frecuentes con respuestas estándar.
+         Por ejemplo, muchos usuarios contactan con soporte cuando olvidan sus contraseñas. Una respuesta enlatada permitirá
+        atender esos mensajes mucho más rápidamente. Simplemente haz clic en la respuesta “contraseña olvidada” y listo. 
+      button: "Crea tu primera respuesta enlatada"
+    new:
+      help: |-
+        Crear una respuesta enlatada para esos mensajes que llegan a menudo o
+        necesitan ser consistentes. Empieza por elegir una clave, que se
+        usará para rescatar la respuesta completa desde la barra de herramientas.
+    form:
+      key: "Clave"
+      key_placeholder: "Introduce la clave que usaremos para buscar la respuesta"
+      message: "Mensaje"
+      message_placeholder: "El mensaje completo que se incluirá en futuras respuestas."
+      create: "Crear"
+      update: "Actualizar"
+    edit:
+      delete: "Borrar"
+
+  devise:
+    general:
+      sign_up: "Alta"
+    sessions:
+      new:
+        welcome_back: "¡Bienvenido de nuevo!"
+        quick_details: "Solo necesitamos unos pequeños detalles y podrás volver al trabajo."
+        password_placeholder: "Tu contraseña"
+        remember_me: "Recordarme"
+    mailer:
+      confirmation_instructions:
+        welcome: "Bienvenido"
+        registered: "Hemos registrado tu correo electrónico como"
+        please_confirm: "Por favor, confirma tu dirección con el enlace de abajo."
+        confirm_account: "Confirmar mi cuenta"
+      reset_password_instructions:
+        reset_password_instructions: "Instrucciones para restablecer la contraseña"
+        someone_requested: "Alguien ha solicitado cambiar tu contraseña. Puedes hacerlo mediante el enlace de abajo."
+        please_ignore: "Si no has sito tú, por favor, ignora este mensaje."
+        wont_change: "Tu contraseña no se cambiará hasta que accedas al enlace y crees una nueva."
+        change_password: "Cambiar mi contraseña"
+    passwords:
+      new:
+        forgot_your_password: "¿Olvidaste tu contraseña?"
+        no_worry: "¡No hay problema!"
+        youre_covered: "Estamos contigo. Le pasa hasta a los mejores."
+        reset: "Restablecer mi contraseña"
+    unlocks:
+      new:
+        resend_unlock_intstructions: "Volver a enviar instrucciones para desploquear"
+        resend: "Volver a enviar instrucciones"
+
+  shared:
+    error_messages:
+      oops_went_wrong: "¡Uups! Algo ha ido mal."
+    navbar:
+      account: "Cuenta"
+      team: "Equipo"
+      billing: "Facturación"
+      canned_responses: "Respuestas enlatadas"
+      inbox: "Bandeja de entrada"
+      archive: "Archivado"
+      search: "Buscar"
+      search_by_assignee: "Buscar por asignación"
+      search_by_tag: "Buscar por etiqueta"
+      settings: "Configuración"
+      logout: "Salir"
+    steps:
+      sign_up: "Entrar"
+      start_using_helpful: "Empieza a usar Helpful"
+
+  technical:
+    general:
+      technical_header: "Configuracion y detalles técnicos"
+    widget:
+      widget_is_simple: "Agregar nuestro *widget* a tu web es muy simple. Primero, inserta el siguiente script al final de la sección *body* de tu página."
+      widget_next: "Después todo lo que necesitas es agregar un atributo que contenga el *slug* de tu empresa al elemento que quieres que se abra al hacer clic en el *widget*."
+      widget_thats_it: "¡Y ya está! Haciendo clic en el elemento se abrirá el *widget*. Adicionalmente, algunas opciones extra están disponibles:"
+    setup:
+      try_api: "Prueba nuestra API"
+      try_out_command: "Para probar la API de mensajes entrantes, ejecuta este comando en tu terminal:"
+      embed_form: "¿Quieres incluir un formulario de ayuda en tu web?"
+      embed_help_text: "También puedes empotrar un formulario en cualquier sitio donde quieras permitir a tus clientes que te envíen peticiones directamente a Helpful:"
+      other_details: "Otros detalles"
