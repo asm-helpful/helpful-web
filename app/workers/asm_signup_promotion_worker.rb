@@ -12,7 +12,7 @@ class AsmSignupPromotionWorker
       client = AsmClient.new
       client.post(
         "/orgs/#{ENV['ASM_SIGNUP_BOUNTY']}/awards",
-        email: @account.email,
+        email: @account.memberships.order(:created_at).first.user.email,
         reason: 'signup promotion'
       )
 
