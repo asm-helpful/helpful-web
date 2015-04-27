@@ -32,7 +32,7 @@ class ConversationMailbox
   end
 
   def archive
-    account_conversations.archived.order('created_at DESC')
+    account_conversations.archived.order('created_at DESC').limit(50)
   end
 
   def archive?
