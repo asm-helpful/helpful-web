@@ -1,5 +1,5 @@
 class Api::AttachmentsController < ApiController
-  doorkeeper_for :all, except: [ :create ]
+  before_action :doorkeeper_authorize!
 
   def index
     message = Message.includes(:attachments).find(params[:message_id])
