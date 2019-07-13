@@ -63,7 +63,7 @@ actual email workflow used in production.
 and add it to your .env file as MAILGUN_API_KEY.
 4. Get your Mailgun test subdomain from the same page and add it to your .env
 file as INCOMING_EMAIL_DOMAIN.
-5. In order to recieve webhooks from Mailgun we need to expose our development
+5. In order to receive webhooks from Mailgun we need to expose our development
 instance to the outside world. We can use a tool called
 [Ngrok](http://ngrok.com) for this. Download and setup Ngrok by following the
 instructions on the [Ngrok](http://ngrok.com) site.
